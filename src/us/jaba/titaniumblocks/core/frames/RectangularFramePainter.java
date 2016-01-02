@@ -1,0 +1,116 @@
+/*
+ * Copyright (c) 2015, Tony Beckett
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * The names of its contributors may not be used to endorse or promote
+ * products derived from this software without specific prior written
+ * permission.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package us.jaba.titaniumblocks.core.frames;
+
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.NoEffectPainter;
+ 
+
+/**
+ *
+ * @author tbeckett
+ */
+public class RectangularFramePainter extends CoreModel
+{
+
+    public static final int DEFAULT_FRAME_THICKNESS = 16;
+    private RectangularFrameEffectPainter linearEffect = new NoEffectPainter();
+    protected Paint innerFrameColor;
+    protected Paint outerFrameColor;
+    protected int frameThickness = DEFAULT_FRAME_THICKNESS;
+    protected Dimension interiorDimension = new Dimension(1,1);
+
+    public Dimension getInteriorDimension()
+    {
+        return interiorDimension;
+    }
+
+    public int getFrameThickness()
+    {
+        return frameThickness;
+    }
+
+    public void setFrameThickness(int frameThickness)
+    {
+        this.frameThickness = frameThickness;
+        changed();
+    }
+
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        super.paint(graphics, dimensions); 
+        
+        interiorDimension.setSize(dimensions.getWidth()-(2*frameThickness), dimensions.getHeight()-(2*frameThickness));
+        paintFrame(graphics, dimensions);
+    }
+   
+
+    public RectangularFrameEffectPainter getLinearEffect()
+    {
+        return linearEffect;
+    }
+
+    public void setLinearEffect(RectangularFrameEffectPainter linearEffect)
+    {
+        this.linearEffect = linearEffect;
+        changed();
+    }
+
+    public Paint getInnerFrameColor()
+    {
+        return innerFrameColor;
+    }
+
+    public Paint getOuterFrameColor()
+    {
+        return outerFrameColor;
+    }
+
+    public void setInnerFrameColor(Paint innerFrameColor)
+    {
+        this.innerFrameColor = innerFrameColor;
+        changed();
+    }
+
+    public void setOuterFrameColor(Paint outerFrameColor)
+    {
+        this.outerFrameColor = outerFrameColor;
+        changed();
+    }
+
+    protected void paintFrame(Graphics2D graphics, Dimension dimensions)
+    {
+        
+    }
+
+   
+}
