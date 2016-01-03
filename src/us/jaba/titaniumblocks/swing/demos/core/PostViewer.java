@@ -47,7 +47,7 @@ public class PostViewer extends BasicVerticalViewer
         backgroundColor = Color.GRAY;
         foregroundColor = Color.BLACK;
         
-        init("SymbolViewer", new Dimension(150, 150), PostCoreInfo.getInstanceOfEach());
+        init("PostViewer", new Dimension(150, 150), PostCoreInfo.getInstanceOfEach());
 
     }
 

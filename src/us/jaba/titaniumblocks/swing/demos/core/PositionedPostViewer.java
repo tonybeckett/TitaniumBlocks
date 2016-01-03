@@ -55,7 +55,7 @@ public class PositionedPostViewer extends BasicVerticalViewer
         backgroundColor = Color.WHITE;
         foregroundColor = Color.BLACK;
 
-        init("SymbolViewer", new Dimension(300, 300), PostCoreInfo.getAvailablePositioned());
+        init("PositionedPostViewer", new Dimension(300, 300), PostCoreInfo.getAvailablePositioned());
     }
 
     @Override

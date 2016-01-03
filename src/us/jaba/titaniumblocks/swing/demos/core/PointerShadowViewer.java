@@ -111,7 +111,7 @@ public class PointerShadowViewer extends javax.swing.JFrame
     {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("TitaniumBlocks - KnobViewer");
+        setTitle("TitaniumBlocks - PointerShadowViewer");
         pack();
     }// 
 
