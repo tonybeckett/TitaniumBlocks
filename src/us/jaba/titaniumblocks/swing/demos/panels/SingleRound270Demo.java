@@ -43,7 +43,7 @@ public class SingleRound270Demo extends SingleRoundDemo
     public SingleRound270Demo()
     {
 
-        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.75f, 245, 295));
+        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.75f, 235, 305));
         setTitle("270");
     }
 

@@ -29,7 +29,7 @@ package us.jaba.titaniumblocks.swing.properties;
 
 import java.beans.*;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.rectangular.BrushedMetalBackgroundPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.rectangular.BrushedMetalBackdropPainter;
 
 /**
  *
@@ -47,7 +47,7 @@ public class BackgroundPainterPropertyEditor extends PropertyEditorSupport
     {
         if (text.equals("BrushedMetalBackgroundPainter"))
         {
-            setValue(new BrushedMetalBackgroundPainter());
+            setValue(new BrushedMetalBackdropPainter());
         }
     }
 

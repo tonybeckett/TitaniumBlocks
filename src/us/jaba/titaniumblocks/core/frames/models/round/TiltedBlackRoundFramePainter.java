@@ -30,29 +30,27 @@ package us.jaba.titaniumblocks.core.frames.models.round;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
-import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class ShinyMetalRadialFramePainter extends RoundFrameModel
+public class TiltedBlackRoundFramePainter extends RoundFrameModel
 {
-    private boolean FRAME_BASECOLOR_ENABLED;
-    private Color FRAME_BASECOLOR;
 
-   
-     @Override
+    @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 //    public BufferedImage createRadialFrame(final int WIDTH, final FrameDesign FRAME_DESIGN, final Paint CUSTOM_FRAME_DESIGN, final Color FRAME_BASECOLOR, final boolean FRAME_BASECOLOR_ENABLED, final FrameEffect FRAME_EFFECT, final BufferedImage BACKGROUND_IMAGE)
-    
+
         super.paint(graphics, dimensions);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -73,55 +71,28 @@ public class ShinyMetalRadialFramePainter extends RoundFrameModel
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
 
-      
-                    float[] frameMainFractions3 =
-                    {
-                        0.0f,
-                        45.0f,
-                        90.0f,
-                        125.0f,
-                        180.0f,
-                        235.0f,
-                        270.0f,
-                        315.0f,
-                        360.0f
-                    };
-
-                    Color[] frameMainColors3;
-                    if (FRAME_BASECOLOR_ENABLED)
-                    {
-                        frameMainColors3 = new Color[]
-                        {
-                            new Color(254, 254, 254, 255),
-                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.brighter().brighter().getRed(), FRAME_BASECOLOR.brighter().brighter().getGreen(), FRAME_BASECOLOR.brighter().brighter().getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.brighter().brighter().getRed(), FRAME_BASECOLOR.brighter().brighter().getGreen(), FRAME_BASECOLOR.brighter().brighter().getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
-                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
-                            new Color(254, 254, 254, 255)
-                        };
-                    } else
-                    {
-                        frameMainColors3 = new Color[]
-                        {
-                            new Color(254, 254, 254, 255),
-                            new Color(210, 210, 210, 255),
-                            new Color(179, 179, 179, 255),
-                            new Color(238, 238, 238, 255),
-                            new Color(160, 160, 160, 255),
-                            new Color(238, 238, 238, 255),
-                            new Color(179, 179, 179, 255),
-                            new Color(210, 210, 210, 255),
-                            new Color(254, 254, 254, 255)
-                        };
-                    }
-
-                    Paint frameMainPaint3 = new ConicalGradientPaint(true, FRAME_MAIN_CENTER, 0, frameMainFractions3, frameMainColors3);
-                    graphics.setPaint(frameMainPaint3);
-                    graphics.fill(FRAME_MAIN);
- 
+        FRAME_MAIN_START.setLocation((0.22897196261682243 * imageWidth), (0.0794392523364486 * imageHeight));
+        FRAME_MAIN_STOP.setLocation(((0.22897196261682243 + 0.573576436351046) * imageWidth), ((0.0794392523364486 + 0.8191520442889918) * imageHeight));
+        float[] frameMainFractions10 =
+        {
+            0.0f,
+            0.21f,
+            0.47f,
+            0.99f,
+            1.0f
+        };
+        Color[] frameMainColors10 =
+        {
+            new Color(102, 102, 102, 255),
+            new Color(0, 0, 0, 255),
+            new Color(102, 102, 102, 255),
+            new Color(0, 0, 0, 255),
+            new Color(0, 0, 0, 255)
+        };
+        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
+        Paint frameMainPaint10 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions10, frameMainColors10);
+        graphics.setPaint(frameMainPaint10);
+        graphics.fill(FRAME_MAIN);
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
         final Area FRAME_INNERFRAME = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
@@ -133,7 +104,8 @@ public class ShinyMetalRadialFramePainter extends RoundFrameModel
 
         // Frame effect overlay
         final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-        
+       
+
         this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
         graphics.dispose();
 
@@ -143,9 +115,7 @@ public class ShinyMetalRadialFramePainter extends RoundFrameModel
 //            G.drawImage(radFrameImage, 0, 0, null);
 //            G.dispose();
 //        }
-  
+
     }
 
-   
-        
 }

@@ -28,9 +28,12 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
+import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
@@ -42,22 +45,23 @@ import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
 public class SingleRoundDemo extends javax.swing.JFrame
 {
 
+    final SingleRoundPanel panel;
+
     /**
      * Creates new form DisplaySingleDemo
      */
     public SingleRoundDemo(CircularLayout cl)
     {
         initComponents();
-       
-        final SingleRoundPanel panel = new SingleRoundPanel(cl);
+
+        panel = new SingleRoundPanel(cl);
 
         panel.getGauge().getTextPainter().setColor(ColorPalette.Almond);
-        panel.getGauge().getBackgroundPainter().setBackgroundColorModel(new WhiteBModel());
+        panel.getGauge().getBackdropPainter().setBackgroundColorModel(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500));
 
-        
         Antimate antimate = new Antimate(100.0)
         {
             @Override
@@ -68,6 +72,22 @@ public class SingleRoundDemo extends javax.swing.JFrame
         };
 
         new Thread(antimate).start();
+
+    }
+
+    public void setBackdropPainter(BackdropModel painter)
+    {
+        panel.setBackdropPainter(painter);
+    }
+
+    public void setRoundFramePainter(RoundFrameModel linearFramePainter)
+    {
+        panel.setRoundFramePainter(linearFramePainter);
+    }
+
+    public void setColor(Color c)
+    {
+        panel.setColor(c);
     }
 
     /**
@@ -86,7 +106,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

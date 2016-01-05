@@ -25,26 +25,38 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
+package us.jaba.titaniumblocks.core.backdrop.models.round;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
-import java.awt.Rectangle;
 import java.awt.TexturePaint;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
-import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
+import java.awt.geom.Ellipse2D;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
+import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
+import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
 
-
-public class StainlessBackgroundPainter extends AbstractRectangularBackdropModel
+public class StainlessGrindedBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    @Override
-    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
+    TextureImageBuilder builder;
+
+    public StainlessGrindedBackdropPainter()
     {
-        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
-        builder.setBrushColor(new Color(0x6E6E70));
-        Paint p = new TexturePaint(builder.build(dimensions), bounds);
+        StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
+        builder = new TextureImageBuilder(painter);
+    }
+    
+    /**
+     *
+     * @param dimensions
+     * @param ellipse
+     * @return
+     */
+    @Override
+    protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
+    {
+
+        Paint p = new TexturePaint(builder.build(dimensions),  new java.awt.Rectangle(0, 0, 100, 100));
 
         return p;
     }

@@ -36,7 +36,7 @@ import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.LcdBackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackbackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
 import us.jaba.titaniumblocks.core.color.lcdgradients.StandardGreenLcdPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
@@ -72,7 +72,7 @@ public class LinearLcdPainter extends CoreModel
     public LinearLcdPainter(Color c)
     {
         linearFrameImageBuilder = new RectangularFrameImageFactory(new ShinyMetalLinearFramePainter());
-        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackbackdropPainter());
+        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdropPainter());
         textImageBuilder = new TextImageFactory(new DoubleValueText());
         lcdBackgroundBuilder = new BackdropImageFactory(new LcdBackdropModel());
 

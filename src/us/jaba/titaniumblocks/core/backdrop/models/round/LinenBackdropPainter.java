@@ -25,57 +25,60 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
+package us.jaba.titaniumblocks.core.backdrop.models.round;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.Rectangle;
 import java.awt.TexturePaint;
-import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
+import java.awt.geom.Ellipse2D;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.CarbonTexturePainter;
+import us.jaba.titaniumblocks.core.textures.painters.LinenTexturePainter;
 
-public class CarbonBackgroundPainter extends AbstractRectangularBackdropModel
+public class LinenBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    CarbonTexturePainter painter;
-    private final Rectangle rectangle;
-    private final OverlayPainter overlayPainter;
+    LinenTexturePainter painter;
 
-    public CarbonBackgroundPainter()
+    Color color = new Color(0x686868);
+
+    public LinenBackdropPainter()
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
-        painter = new CarbonTexturePainter();
-        overlayPainter = new OverlayPainter();
-
+        painter = new LinenTexturePainter();
+        
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
+    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
     {
+        painter.setBrushColor(color);
         TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
+        Paint p = new TexturePaint(builder.build(dimensions), bounds.getBounds());
 
         return p;
     }
 
-    public CarbonTexturePainter getPainter()
+    public LinenTexturePainter getPainter()
     {
         return painter;
     }
 
-    public void setPainter(CarbonTexturePainter painter)
+    public void setPainter(LinenTexturePainter painter)
     {
         this.painter = painter;
+        changed();
     }
 
-    @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
+    public Color getColor()
     {
-        overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
+        return color;
+    }
+
+    public void setColor(Color color)
+    {
+        this.color = color;
+        changed();
     }
 
 }

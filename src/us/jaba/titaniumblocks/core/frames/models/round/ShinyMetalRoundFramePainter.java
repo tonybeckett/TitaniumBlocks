@@ -30,36 +30,35 @@ package us.jaba.titaniumblocks.core.frames.models.round;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import static javax.swing.text.html.CSS.Attribute.BACKGROUND_IMAGE;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 
 /**
  *
  * @author tbeckett
  */
-public class TiltedGrayRadialFramePainter extends RoundFrameModel
+public class ShinyMetalRoundFramePainter extends RoundFrameModel
 {
+    private boolean FRAME_BASECOLOR_ENABLED;
+    private Color FRAME_BASECOLOR;
 
-    private Paint innerFrameColor;
-    private Paint outerFrameColor;
-
-    @Override
+   
+     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 //    public BufferedImage createRadialFrame(final int WIDTH, final FrameDesign FRAME_DESIGN, final Paint CUSTOM_FRAME_DESIGN, final Color FRAME_BASECOLOR, final boolean FRAME_BASECOLOR_ENABLED, final FrameEffect FRAME_EFFECT, final BufferedImage BACKGROUND_IMAGE)
+    
         super.paint(graphics, dimensions);
-        
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
+
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
         final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
 
@@ -74,32 +73,55 @@ public class TiltedGrayRadialFramePainter extends RoundFrameModel
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
 
-        FRAME_MAIN_START.setLocation((0.2336448598130841 * imageWidth), (0.08411214953271028 * imageHeight));
-        FRAME_MAIN_STOP.setLocation(((0.2336448598130841 + 0.5789369637935792) * imageWidth), ((0.08411214953271028 + 0.8268076708711319) * imageHeight));
-        float[] frameMainFractions9 =
-        {
-            0.0f,
-            0.07f,
-            0.16f,
-            0.33f,
-            0.55f,
-            0.79f,
-            1.0f
-        };
-        Color[] frameMainColors9 =
-        {
-            new Color(255, 255, 255, 255),
-            new Color(210, 210, 210, 255),
-            new Color(179, 179, 179, 255),
-            new Color(255, 255, 255, 255),
-            new Color(197, 197, 197, 255),
-            new Color(255, 255, 255, 255),
-            new Color(102, 102, 102, 255)
-        };
-        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint9 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions9, frameMainColors9);
-        graphics.setPaint(frameMainPaint9);
-        graphics.fill(FRAME_MAIN);
+      
+                    float[] frameMainFractions3 =
+                    {
+                        0.0f,
+                        45.0f,
+                        90.0f,
+                        125.0f,
+                        180.0f,
+                        235.0f,
+                        270.0f,
+                        315.0f,
+                        360.0f
+                    };
+
+                    Color[] frameMainColors3;
+                    if (FRAME_BASECOLOR_ENABLED)
+                    {
+                        frameMainColors3 = new Color[]
+                        {
+                            new Color(254, 254, 254, 255),
+                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.brighter().brighter().getRed(), FRAME_BASECOLOR.brighter().brighter().getGreen(), FRAME_BASECOLOR.brighter().brighter().getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.brighter().brighter().getRed(), FRAME_BASECOLOR.brighter().brighter().getGreen(), FRAME_BASECOLOR.brighter().brighter().getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
+                            new Color(FRAME_BASECOLOR.getRed(), FRAME_BASECOLOR.getGreen(), FRAME_BASECOLOR.getBlue(), 255),
+                            new Color(254, 254, 254, 255)
+                        };
+                    } else
+                    {
+                        frameMainColors3 = new Color[]
+                        {
+                            new Color(254, 254, 254, 255),
+                            new Color(210, 210, 210, 255),
+                            new Color(179, 179, 179, 255),
+                            new Color(238, 238, 238, 255),
+                            new Color(160, 160, 160, 255),
+                            new Color(238, 238, 238, 255),
+                            new Color(179, 179, 179, 255),
+                            new Color(210, 210, 210, 255),
+                            new Color(254, 254, 254, 255)
+                        };
+                    }
+
+                    Paint frameMainPaint3 = new ConicalGradientPaint(true, FRAME_MAIN_CENTER, 0, frameMainFractions3, frameMainColors3);
+                    graphics.setPaint(frameMainPaint3);
+                    graphics.fill(FRAME_MAIN);
+ 
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
         final Area FRAME_INNERFRAME = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
@@ -121,7 +143,9 @@ public class TiltedGrayRadialFramePainter extends RoundFrameModel
 //            G.drawImage(radFrameImage, 0, 0, null);
 //            G.dispose();
 //        }
-
+  
     }
 
+   
+        
 }

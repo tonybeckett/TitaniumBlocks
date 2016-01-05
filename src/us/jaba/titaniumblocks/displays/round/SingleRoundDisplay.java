@@ -36,7 +36,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackgroundPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
@@ -46,7 +46,7 @@ import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
-import us.jaba.titaniumblocks.core.frames.models.round.SilverRadialFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.BasicRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.TopThirdRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
@@ -136,9 +136,9 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     {
         super();
         this.circularLayout = circularLayout;
-        frameImage = new RoundFrameImageFactory(new SilverRadialFramePainter());
+        frameImage = new RoundFrameImageFactory(new SilverRoundFramePainter());
         
-        NullBackgroundPainter bmbp = new NullBackgroundPainter();
+        NullBackdropPainter bmbp = new NullBackdropPainter();
         bmbp.setBackgroundColorModel(new WhiteBModel());
         backdropImage = new BackdropImageFactory(bmbp);
         
@@ -279,9 +279,10 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     public void setColor(Color c)
     {
         valueTextImage.getPainter().setColor(c);
+       
     }
 
-    public BackdropModel getBackgroundPainter()
+    public BackdropModel getBackdropPainter()
     {
         return backdropImage.getPainter();
     }
@@ -301,7 +302,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         return frontcoverImage.getPainter();
     }
 
-    public void setBackgroundPainter(BackdropModel painter)
+    public void setBackdropPainter(BackdropModel painter)
     {
         this.backdropImage = new BackdropImageFactory(painter);
     }

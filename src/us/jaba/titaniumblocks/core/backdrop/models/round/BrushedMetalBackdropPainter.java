@@ -28,55 +28,27 @@
 package us.jaba.titaniumblocks.core.backdrop.models.round;
 
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
-import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.CarbonTexturePainter;
+import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
 
-public class CarbonBackgroundPainter extends AbstractRoundBackdropModel
+public class BrushedMetalBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    CarbonTexturePainter painter;
-    private final Rectangle rectangle;
-    private final OverlayPainter overlayPainter;
-
-    public CarbonBackgroundPainter()
+    public BrushedMetalBackdropPainter()
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
-        painter = new CarbonTexturePainter();
-        overlayPainter = new OverlayPainter();
 
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
+    protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {
-        TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
+        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
+        Paint p = new TexturePaint(builder.build(dimensions), ellipse.getBounds());
 
         return p;
-    }
-
-    public CarbonTexturePainter getPainter()
-    {
-        return painter;
-    }
-
-    public void setPainter(CarbonTexturePainter painter)
-    {
-        this.painter = painter;
-    }
-
-    @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
-    {
-        overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
     }
 
 }

@@ -29,56 +29,62 @@ package us.jaba.titaniumblocks.core.backdrop.models.round;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 
-public class NullBackgroundPainter extends AbstractRoundBackdropModel
+public class StainlessBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    final float[] BACKGROUND_FRACTIONS =
+    float[] STAINLESS_FRACTIONS =
     {
-        0.0f,
-        0.4f,
+        0f,
+        0.03f,
+        0.10f,
+        0.14f,
+        0.24f,
+        0.33f,
+        0.38f,
+        0.5f,
+        0.62f,
+        0.67f,
+        0.76f,
+        0.81f,
+        0.85f,
+        0.97f,
         1.0f
     };
 
-    Color[] BACKGROUND_COLORS =
+// Define the colors of the conical gradient paint
+    Color[] STAINLESS_COLORS =
     {
-        backgroundColorModel.getGradientStartColor(),
-        backgroundColorModel.getGradientFractionColor(),
-        backgroundColorModel.getGradientStopColor()
+        new Color(0xFDFDFD),
+        new Color(0xFDFDFD),
+        new Color(0xB2B2B4),
+        new Color(0xACACAE),
+        new Color(0xFDFDFD),
+        new Color(0x6E6E70),
+        new Color(0x6E6E70),
+        new Color(0xFDFDFD),
+        new Color(0x6E6E70),
+        new Color(0x6E6E70),
+        new Color(0xFDFDFD),
+        new Color(0xACACAE),
+        new Color(0xB2B2B4),
+        new Color(0xFDFDFD),
+        new Color(0xFDFDFD)
     };
-
-    public NullBackgroundPainter()
-    {
-
-    }
 
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {
-        final Point2D BACKGROUND_START = new Point2D.Double(0, ellipse.getBounds2D().getMinY());
-        final Point2D BACKGROUND_STOP = new Point2D.Double(0, ellipse.getBounds2D().getMaxY());
-        PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
-        Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, BACKGROUND_FRACTIONS, BACKGROUND_COLORS);
+        final Point2D centerPoint = new Point2D.Double(ellipse.getCenterX(), ellipse.getCenterY());
+
+        Paint p = new ConicalGradientPaint(false, centerPoint, -0.45f, STAINLESS_FRACTIONS, STAINLESS_COLORS);
 
         return p;
-    }
-
-    @Override
-    public void setBackgroundColorModel(BackdropColorModel backgroundColorModel)
-    {
-        super.setBackgroundColorModel(backgroundColorModel);
-
-        BACKGROUND_COLORS[0] = backgroundColorModel.getGradientStartColor();
-        BACKGROUND_COLORS[1] = backgroundColorModel.getGradientFractionColor();
-        BACKGROUND_COLORS[2] = backgroundColorModel.getGradientStopColor();
-
     }
 
 }

@@ -34,7 +34,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackbackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
@@ -74,7 +74,7 @@ public class RectangularIndicatorModel extends CoreModel
     public RectangularIndicatorModel(SymbolPainter symbolPainter, Color c)
     {
         linearFrameImageBuilder = new RectangularFrameImageFactory(new ShinyMetalLinearFramePainter());
-        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackbackdropPainter());
+        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdropPainter());
 
         foregroundImageBuilder = new FrontcoverImageFactory(new BasicLinearFrontcoverModel());
         disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());

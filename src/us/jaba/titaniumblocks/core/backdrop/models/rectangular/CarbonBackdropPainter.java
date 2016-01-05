@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Gerrit Grunwald
+ * Copyright (c) 2015, Tony Beckett
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,28 +28,54 @@
 package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
-import java.awt.image.BufferedImage;
+import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
-import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
+import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
+import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
+import us.jaba.titaniumblocks.core.textures.painters.CarbonTexturePainter;
 
-/**
- *
- * @author hansolo
- */
-public class BrushedMetalBackgroundPainter extends AbstractRectangularBackdropModel
+public class CarbonBackdropPainter extends AbstractRectangularBackdropModel
 {
+
+    CarbonTexturePainter painter;
+    private final Rectangle rectangle;
+    private final OverlayPainter overlayPainter;
+
+    public CarbonBackdropPainter()
+    {
+        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
+        painter = new CarbonTexturePainter();
+        overlayPainter = new OverlayPainter();
+
+    }
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
-        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
-        BufferedImage image = builder.build(dimensions);
-        Paint p = new TexturePaint(image, bounds);
-        
+        TextureImageBuilder builder = new TextureImageBuilder(painter);
+        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
+
         return p;
+    }
+
+    public CarbonTexturePainter getPainter()
+    {
+        return painter;
+    }
+
+    public void setPainter(CarbonTexturePainter painter)
+    {
+        this.painter = painter;
+    }
+
+    @Override
+    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
+    {
+        overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
     }
 
 }

@@ -43,75 +43,54 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class BrassRadialFramePainter extends RoundFrameModel
+public class AnthraciteRoundFramePainter extends RoundFrameModel
 {
 
     /**
-     * Creates the frame image for a radial gauge. The image parameters and the
-     * image will be cached. If the current request has the same parameters as
-     * the last request it will return the already created image instead of
-     * creating a new image. If an image is passed to the method, it will paint
-     * to the image and return this image. This will reduce the memory
-     * consumption.
      *
-     * @param WIDTH
-     * @param FRAME_DESIGN
-     * @param CUSTOM_FRAME_DESIGN
-     * @param FRAME_BASECOLOR
-     * @param FRAME_BASECOLOR_ENABLED
-     * @param FRAME_EFFECT
-     * @param BACKGROUND_IMAGE
-     * @return a buffered image that contains the frame image for a radial gauge
      */
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 //    public BufferedImage createRadialFrame(final int WIDTH, final FrameDesign FRAME_DESIGN, final Paint CUSTOM_FRAME_DESIGN, final Color FRAME_BASECOLOR, final boolean FRAME_BASECOLOR_ENABLED, final FrameEffect FRAME_EFFECT, final BufferedImage BACKGROUND_IMAGE)
         super.paint(graphics, dimensions);
-
+        
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
+        
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-       
+
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
         final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
-
+        
         final Area FRAME_OUTERFRAME = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
         FRAME_OUTERFRAME.subtract(SUBTRACT);
         graphics.setPaint(outerFrameColor);
         graphics.fill(FRAME_OUTERFRAME);
-
+        
         final Area FRAME_MAIN = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
         FRAME_MAIN.subtract(SUBTRACT);
         final Point2D FRAME_MAIN_START = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMinY());
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
-
-        float[] frameMainFractions4 =
+        
+        float[] frameMainFractions8 =
         {
             0.0f,
-            0.05f,
-            0.10f,
-            0.50f,
-            0.90f,
-            0.95f,
+            0.06f,
+            0.12f,
             1.0f
         };
-
-        Color[] frameMainColors4 =
+        Color[] frameMainColors8 =
         {
-            new Color(249, 243, 155, 255),
-            new Color(246, 226, 101, 255),
-            new Color(240, 225, 132, 255),
-            new Color(90, 57, 22, 255),
-            new Color(249, 237, 139, 255),
-            new Color(243, 226, 108, 255),
-            new Color(202, 182, 113, 255)
+            new Color(118, 117, 135, 255),
+            new Color(74, 74, 82, 255),
+            new Color(50, 50, 54, 255),
+            new Color(97, 97, 108, 255)
         };
         PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint4 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions4, frameMainColors4);
-        graphics.setPaint(frameMainPaint4);
+        Paint frameMainPaint8 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions8, frameMainColors8);
+        graphics.setPaint(frameMainPaint8);
         graphics.fill(FRAME_MAIN);
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
@@ -124,16 +103,13 @@ public class BrassRadialFramePainter extends RoundFrameModel
 
         // Frame effect overlay
         final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+        
+        
         this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
-
+        
         graphics.dispose();
-
-//            if (BACKGROUND_IMAGE != null)
-//            {
-//                final Graphics2D G = BACKGROUND_IMAGE.createGraphics();
-//                G.drawImage(radFrameImage, 0, 0, null);
-//                G.dispose();
-//            }
+        
     }
-
+    
 }
+

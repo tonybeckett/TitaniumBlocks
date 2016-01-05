@@ -42,9 +42,10 @@ import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
  *
  * @author tbeckett
  */
-public class ChromeRadialFramePainter extends RoundFrameModel
+public class BlackMetalRoundFramePainter extends RoundFrameModel
 {
 
+   
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -52,7 +53,7 @@ public class ChromeRadialFramePainter extends RoundFrameModel
         super.paint(graphics, dimensions);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final int imageWidth = (int) dimensions.getWidth();
+           final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
@@ -69,50 +70,30 @@ public class ChromeRadialFramePainter extends RoundFrameModel
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
 
-        float[] frameMainFractions6 =
+        float[] frameMainFractions1 =
         {
             0.0f,
-            0.09f,
-            0.12f,
-            0.16f,
-            0.25f,
-            0.29f,
-            0.33f,
-            0.38f,
-            0.48f,
-            0.52f,
-            0.63f,
-            0.68f,
-            0.8f,
-            0.83f,
-            0.87f,
-            0.97f,
-            1.0f
+            45.0f,
+            125.0f,
+            180.0f,
+            245.0f,
+            315.0f,
+            360.0f
         };
 
-        Color[] frameMainColors6 =
+        Color[] frameMainColors1 =
         {
-            new Color(255, 255, 255, 255),
-            new Color(255, 255, 255, 255),
-            new Color(136, 136, 138, 255),
-            new Color(164, 185, 190, 255),
-            new Color(158, 179, 182, 255),
-            new Color(112, 112, 112, 255),
-            new Color(221, 227, 227, 255),
-            new Color(155, 176, 179, 255),
-            new Color(156, 176, 177, 255),
-            new Color(254, 255, 255, 255),
-            new Color(255, 255, 255, 255),
-            new Color(156, 180, 180, 255),
-            new Color(198, 209, 211, 255),
-            new Color(246, 248, 247, 255),
-            new Color(204, 216, 216, 255),
-            new Color(164, 188, 190, 255),
-            new Color(255, 255, 255, 255)
+            new Color(254, 254, 254, 255),
+            new Color(0, 0, 0, 255),
+            new Color(153, 153, 153, 255),
+            new Color(0, 0, 0, 255),
+            new Color(153, 153, 153, 255),
+            new Color(0, 0, 0, 255),
+            new Color(254, 254, 254, 255)
         };
 
-        Paint frameMainPaint6 = new ConicalGradientPaint(false, FRAME_MAIN_CENTER, 0, frameMainFractions6, frameMainColors6);
-        graphics.setPaint(frameMainPaint6);
+        Paint frameMainPaint1 = new ConicalGradientPaint(true, FRAME_MAIN_CENTER, 0, frameMainFractions1, frameMainColors1);
+        graphics.setPaint(frameMainPaint1);
         graphics.fill(FRAME_MAIN);
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
@@ -125,8 +106,8 @@ public class ChromeRadialFramePainter extends RoundFrameModel
 
         // Frame effect overlay
         final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+      
         this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
-
         graphics.dispose();
 
 //        if (BACKGROUND_IMAGE != null)
@@ -135,6 +116,7 @@ public class ChromeRadialFramePainter extends RoundFrameModel
 //            G.drawImage(radFrameImage, 0, 0, null);
 //            G.dispose();
 //        }
+
     }
 
 }

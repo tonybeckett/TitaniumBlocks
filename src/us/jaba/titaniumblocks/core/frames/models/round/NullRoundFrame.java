@@ -36,10 +36,10 @@ import java.awt.Graphics2D;
  *
  * @author tbeckett
  */
-public final class NullRadialFrame extends RoundFrameModel
+public final class NullRoundFrame extends RoundFrameModel
 {
 
-    public NullRadialFrame()
+    public NullRoundFrame()
     {
 //        this.frameThickness = 0;
     }

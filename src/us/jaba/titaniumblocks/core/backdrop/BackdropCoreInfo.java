@@ -100,26 +100,26 @@ public class BackdropCoreInfo
 
     public static final Class<?>[] RECT_BACKDROP_MODELS =
     {
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.BrushedMetalBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.CarbonBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.LinenBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.NoisyPlasticBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackbackdropPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.PunchedSteelBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.StainlessBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.rectangular.StainlessGrindedBackgroundPainter.class
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.BrushedMetalBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.CarbonBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.LinenBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.NoisyPlasticBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.PunchedSteelBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.StainlessBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.rectangular.StainlessGrindedBackdropPainter.class
     };
 
     public static final Class<?>[] ROUND_BACKDROP_MODELS =
     {
-        us.jaba.titaniumblocks.core.backdrop.models.round.BrushedMetalBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.CarbonBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.LinenBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.NoisyPlasticBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.NullBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.PunchedSteelBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.StainlessBackgroundPainter.class,
-        us.jaba.titaniumblocks.core.backdrop.models.round.StainlessGrindedBackgroundPainter.class
+        us.jaba.titaniumblocks.core.backdrop.models.round.BrushedMetalBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.CarbonBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.LinenBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.NoisyPlasticBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.PunchedSteelBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.StainlessBackdropPainter.class,
+        us.jaba.titaniumblocks.core.backdrop.models.round.StainlessGrindedBackdropPainter.class
     };
 
     public static List<Class<?>> getAvailableClasses()

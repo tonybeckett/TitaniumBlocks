@@ -27,6 +27,9 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
+import java.awt.Color;
+import us.jaba.titaniumblocks.core.backdrop.models.round.PunchedSteelBackdropPainter;
+import us.jaba.titaniumblocks.core.frames.models.round.BrassRoundFramePainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
@@ -43,7 +46,11 @@ public class SingleRound180Demo extends SingleRoundDemo
     public SingleRound180Demo()
     {
         super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.75f, 185, 355));
-           setTitle("180");
+        setTitle("180");
+
+        this.setRoundFramePainter(new BrassRoundFramePainter());
+        this.setBackdropPainter(new PunchedSteelBackdropPainter());
+        this.setColor(Color.WHITE);
     }
 
     /**
@@ -96,19 +103,7 @@ public class SingleRound180Demo extends SingleRoundDemo
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */

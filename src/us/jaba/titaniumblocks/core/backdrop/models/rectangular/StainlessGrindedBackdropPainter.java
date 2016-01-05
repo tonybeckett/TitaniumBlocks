@@ -27,78 +27,33 @@
  */
 package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.TexturePaint;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
 import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
-import us.jaba.titaniumblocks.core.color.ColorTools;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
-public class NoisyPlasticBackgroundPainter extends AbstractRectangularBackdropModel
+public class StainlessGrindedBackdropPainter extends AbstractRectangularBackdropModel
 {
 
     TextureImageBuilder builder;
-    private Color textureColor = new Color(0x686868);
-    private final NoisePainter noisePainter;
 
-    final float[] FRACTIONS =
+    public StainlessGrindedBackdropPainter()
     {
-        0.0f,
-        1.0f
-    };
-    final Color[] COLORS =
-    {
-        ColorTools.lighter(textureColor, 0.15f),
-        ColorTools.darker(textureColor, 0.15f)
-    };
-
-    public NoisyPlasticBackgroundPainter()
-    {
-        noisePainter = new NoisePainter();
         StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
         builder = new TextureImageBuilder(painter);
     }
+    
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
-        final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
-        final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
-        PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
-        Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, FRACTIONS, COLORS);
-//        Paint p = new TexturePaint(builder.build(dimensions), bounds);
+
+        Paint p = new TexturePaint(builder.build(dimensions), bounds);
 
         return p;
     }
 
-    @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
-    {
-        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
-    }
-
-   
-
-    
-
-    public Color getTextureColor()
-    {
-        return textureColor;
-    }
-
-    public void setTextureColor(Color textureColor)
-    {
-        this.textureColor = textureColor;
-        changed();
-    }
-    
-    
 }

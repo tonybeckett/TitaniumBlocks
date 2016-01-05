@@ -25,60 +25,79 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
+package us.jaba.titaniumblocks.core.backdrop.models.round;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.Paint;
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
-import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.PunchedSheetTexturePainter;
+import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
+import us.jaba.titaniumblocks.core.color.ColorTools;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
-public class PunchedSteelBackgroundPainter extends AbstractRectangularBackdropModel
+public class NoisyPlasticBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    PunchedSheetTexturePainter painter;
-    private final Rectangle rectangle;
-    private final OverlayPainter overlayPainter;
+    TextureImageBuilder builder;
+    private Color textureColor = new Color(0x686868);
     private final NoisePainter noisePainter;
 
-    public PunchedSteelBackgroundPainter()
+    final float[] FRACTIONS =
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
-        painter = new PunchedSheetTexturePainter();
-        overlayPainter = new OverlayPainter();
-        noisePainter = new NoisePainter();
+        0.0f,
+        1.0f
+    };
+    final Color[] COLORS =
+    {
+        ColorTools.lighter(textureColor, 0.15f),
+        ColorTools.darker(textureColor, 0.15f)
+    };
 
+    public NoisyPlasticBackdropPainter()
+    {
+        noisePainter = new NoisePainter();
+        StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
+        builder = new TextureImageBuilder(painter);
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
+    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
     {
-        TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
+        final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
+        final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
+        PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
+        Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, FRACTIONS, COLORS);
 
         return p;
     }
 
-    public PunchedSheetTexturePainter getPainter()
-    {
-        return painter;
-    }
-
-    public void setPainter(PunchedSheetTexturePainter painter)
-    {
-        this.painter = painter;
-    }
-
     @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
+    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
     {
-        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
+        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
     }
 
+   
+
+    
+
+    public Color getTextureColor()
+    {
+        return textureColor;
+    }
+
+    public void setTextureColor(Color textureColor)
+    {
+        this.textureColor = textureColor;
+        changed();
+    }
+    
+    
 }

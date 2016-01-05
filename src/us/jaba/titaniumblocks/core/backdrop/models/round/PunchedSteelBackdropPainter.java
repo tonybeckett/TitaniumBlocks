@@ -28,37 +28,57 @@
 package us.jaba.titaniumblocks.core.backdrop.models.round;
 
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Paint;
+import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.geom.Ellipse2D;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
+import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
+import us.jaba.titaniumblocks.core.textures.painters.PunchedSheetTexturePainter;
 
-public class StainlessGrindedBackgroundPainter extends AbstractRoundBackdropModel
+public class PunchedSteelBackdropPainter extends AbstractRoundBackdropModel
 {
 
-    TextureImageBuilder builder;
+    PunchedSheetTexturePainter painter;
+    private final Rectangle rectangle;
+    private final OverlayPainter overlayPainter;
+    private final NoisePainter noisePainter;
 
-    public StainlessGrindedBackgroundPainter()
+    public PunchedSteelBackdropPainter()
     {
-        StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
-        builder = new TextureImageBuilder(painter);
+        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
+        painter = new PunchedSheetTexturePainter();
+        overlayPainter = new OverlayPainter();
+        noisePainter = new NoisePainter();
+
     }
-    
-    /**
-     *
-     * @param dimensions
-     * @param ellipse
-     * @return
-     */
+
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {
-
-        Paint p = new TexturePaint(builder.build(dimensions),  new java.awt.Rectangle(0, 0, 100, 100));
+        TextureImageBuilder builder = new TextureImageBuilder(painter);
+        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
 
         return p;
+    }
+
+    public PunchedSheetTexturePainter getPainter()
+    {
+        return painter;
+    }
+
+    public void setPainter(PunchedSheetTexturePainter painter)
+    {
+        this.painter = painter;
+    }
+
+    @Override
+    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
+    {
+        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds().getBounds());
     }
 
 }

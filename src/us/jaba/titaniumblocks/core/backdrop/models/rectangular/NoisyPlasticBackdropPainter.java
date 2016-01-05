@@ -25,24 +25,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.round;
+package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.Paint;
-import java.awt.geom.Ellipse2D;
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
 import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
 import us.jaba.titaniumblocks.core.color.ColorTools;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
-public class NoisyPlasticBackgroundPainter extends AbstractRoundBackdropModel
+public class NoisyPlasticBackdropPainter extends AbstractRectangularBackdropModel
 {
 
     TextureImageBuilder builder;
@@ -60,7 +60,7 @@ public class NoisyPlasticBackgroundPainter extends AbstractRoundBackdropModel
         ColorTools.darker(textureColor, 0.15f)
     };
 
-    public NoisyPlasticBackgroundPainter()
+    public NoisyPlasticBackdropPainter()
     {
         noisePainter = new NoisePainter();
         StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
@@ -68,20 +68,21 @@ public class NoisyPlasticBackgroundPainter extends AbstractRoundBackdropModel
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
+    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
         final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
         final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
         PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
         Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, FRACTIONS, COLORS);
+//        Paint p = new TexturePaint(builder.build(dimensions), bounds);
 
         return p;
     }
 
     @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
+    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
     {
-        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
+        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
     }
 
    

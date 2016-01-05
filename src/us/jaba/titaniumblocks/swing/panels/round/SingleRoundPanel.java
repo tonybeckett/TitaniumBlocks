@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.swing.panels.round;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -38,6 +39,7 @@ import javax.swing.JComponent;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.displays.round.SingleRoundDisplay;
 
@@ -147,14 +149,19 @@ public class SingleRoundPanel extends JComponent
         singleGauge.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
     }
 
-    public BackdropModel getBackgroundPainter()
+    public BackdropModel getBackdropPainter()
     {
-        return singleGauge.getBackgroundPainter();
+        return singleGauge.getBackdropPainter();
     }
 
-    public void setBackgroundPainter(BackdropModel painter)
+    public void setBackdropPainter(BackdropModel painter)
     {
-        singleGauge.setBackgroundPainter(painter);
+        singleGauge.setBackdropPainter(painter);
+    }
+
+    public void setRoundFramePainter(RoundFrameModel linearFramePainter)
+    {
+        singleGauge.setRoundFramePainter(linearFramePainter);
     }
 
     @Override
@@ -171,6 +178,11 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setSize(preferredSize);
         invalidate();
         repaint();
+    }
+
+    public void setColor(Color c)
+    {
+        singleGauge.setColor(c);
     }
 
 }

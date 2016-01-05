@@ -34,7 +34,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackbackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.painters.NullLinearDisabledPainter;
@@ -76,7 +76,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
     {
         super();
         linearFrameImage = new RectangularFrameImageFactory(new ShinyMetalLinearFramePainter());
-        backgroundImage = new BackdropImageFactory(new NullBackbackdropPainter());
+        backgroundImage = new BackdropImageFactory(new NullBackdropPainter());
         doubleValueText = new DoubleValueText();
         
         valueTextImage = new TextImageFactory(doubleValueText);

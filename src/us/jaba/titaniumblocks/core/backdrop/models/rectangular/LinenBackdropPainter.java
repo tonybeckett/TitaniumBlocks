@@ -36,14 +36,14 @@ import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropMo
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
 import us.jaba.titaniumblocks.core.textures.painters.LinenTexturePainter;
 
-public class LinenBackgroundPainter extends AbstractRectangularBackdropModel
+public class LinenBackdropPainter extends AbstractRectangularBackdropModel
 {
 
     LinenTexturePainter painter;
 
     Color color = new Color(0x686868);
 
-    public LinenBackgroundPainter()
+    public LinenBackdropPainter()
     {
         painter = new LinenTexturePainter();
         

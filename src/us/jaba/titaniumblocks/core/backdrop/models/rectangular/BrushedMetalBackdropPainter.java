@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Tony Beckett
+ * Copyright (c) 2012, Gerrit Grunwald
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,28 +31,24 @@ import java.awt.Dimension;
 import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
+import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
-import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
+import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
 
-public class StainlessGrindedBackgroundPainter extends AbstractRectangularBackdropModel
+/**
+ *
+ * @author hansolo
+ */
+public class BrushedMetalBackdropPainter extends AbstractRectangularBackdropModel
 {
-
-    TextureImageBuilder builder;
-
-    public StainlessGrindedBackgroundPainter()
-    {
-        StainlessSteelPlateTexturePainter painter = new StainlessSteelPlateTexturePainter();
-        builder = new TextureImageBuilder(painter);
-    }
-    
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
-
-        Paint p = new TexturePaint(builder.build(dimensions), bounds);
-
+        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
+        BufferedImage image = builder.build(dimensions);
+        Paint p = new TexturePaint(image, bounds);
+        
         return p;
     }
 

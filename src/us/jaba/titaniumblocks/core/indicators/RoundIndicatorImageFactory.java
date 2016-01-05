@@ -33,14 +33,14 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackgroundPainter;
+import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
 
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.models.round.TopHalfRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.models.round.SilverRadialFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
 import us.jaba.titaniumblocks.core.symbols.SymbolImageFactory;
 import us.jaba.titaniumblocks.core.symbols.painters.Fuel;
@@ -63,8 +63,8 @@ public class RoundIndicatorImageFactory
 
     public RoundIndicatorImageFactory()
     {
-        radialFrameImageBuilder = new RoundFrameImageFactory(new SilverRadialFramePainter());
-        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackgroundPainter());
+        radialFrameImageBuilder = new RoundFrameImageFactory(new SilverRoundFramePainter());
+        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdropPainter());
         symbolOnImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOffImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOnImageBuilder.getPainter().setPaintColor(Color.RED);

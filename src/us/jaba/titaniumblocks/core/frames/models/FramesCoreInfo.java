@@ -43,19 +43,19 @@ import us.jaba.titaniumblocks.core.frames.models.rectangular.SilverLinearFramePa
 import us.jaba.titaniumblocks.core.frames.models.rectangular.SteelLinearFramePainter;
 import us.jaba.titaniumblocks.core.frames.models.rectangular.TiltedBlackLinearFramePainter;
 import us.jaba.titaniumblocks.core.frames.models.rectangular.TiltedGrayLinearFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.AnthraciteRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.BlackMetalRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.BrassRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.ChromeRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.GlossyMetalRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.GoldRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.MetalRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.NullRadialFrame;
-import us.jaba.titaniumblocks.core.frames.models.round.ShinyMetalRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.SilverRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.SteelRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.TiltedBlackRadialFramePainter;
-import us.jaba.titaniumblocks.core.frames.models.round.TiltedGrayRadialFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.AnthraciteRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.BlackMetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.BrassRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.ChromeRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.GlossyMetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.GoldRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.MetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.NullRoundFrame;
+import us.jaba.titaniumblocks.core.frames.models.round.ShinyMetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.SteelRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.TiltedBlackRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.models.round.TiltedGrayRoundFramePainter;
 
 /**
  *
@@ -66,19 +66,19 @@ public class FramesCoreInfo
 
     public static final Class<?>[] ROUND_MODELS =
     {
-        AnthraciteRadialFramePainter.class,
-        BlackMetalRadialFramePainter.class,
-        BrassRadialFramePainter.class,
-        ChromeRadialFramePainter.class,
-        GlossyMetalRadialFramePainter.class,
-        GoldRadialFramePainter.class,
-        MetalRadialFramePainter.class,
-        NullRadialFrame.class,
-        ShinyMetalRadialFramePainter.class,
-        SilverRadialFramePainter.class,
-        SteelRadialFramePainter.class,
-        TiltedBlackRadialFramePainter.class,
-        TiltedGrayRadialFramePainter.class
+        AnthraciteRoundFramePainter.class,
+        BlackMetalRoundFramePainter.class,
+        BrassRoundFramePainter.class,
+        ChromeRoundFramePainter.class,
+        GlossyMetalRoundFramePainter.class,
+        GoldRoundFramePainter.class,
+        MetalRoundFramePainter.class,
+        NullRoundFrame.class,
+        ShinyMetalRoundFramePainter.class,
+        SilverRoundFramePainter.class,
+        SteelRoundFramePainter.class,
+        TiltedBlackRoundFramePainter.class,
+        TiltedGrayRoundFramePainter.class
     };
 
     public static final Class<?>[] RECTANGUALR_MODELS =

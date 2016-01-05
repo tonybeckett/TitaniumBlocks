@@ -37,7 +37,7 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
-public class NullBackbackdropPainter extends AbstractRectangularBackdropModel
+public class NullBackdropPainter extends AbstractRectangularBackdropModel
 {
 
     final float[] BACKGROUND_FRACTIONS =
@@ -54,7 +54,7 @@ public class NullBackbackdropPainter extends AbstractRectangularBackdropModel
         backgroundColorModel.getGradientStopColor()
     };
 
-    public NullBackbackdropPainter()
+    public NullBackdropPainter()
     {
 
     }

@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class SilverRadialFramePainter extends RoundFrameModel
+public class SilverRoundFramePainter extends RoundFrameModel
 {
 
     @Override

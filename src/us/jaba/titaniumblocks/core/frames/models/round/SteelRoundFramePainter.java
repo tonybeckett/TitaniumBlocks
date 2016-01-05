@@ -30,70 +30,88 @@ package us.jaba.titaniumblocks.core.frames.models.round;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
-import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class BlackMetalRadialFramePainter extends RoundFrameModel
+public class SteelRoundFramePainter extends RoundFrameModel
 {
 
-   
+    /**
+     * Creates the frame image for a radial gauge. The image parameters and the
+     * image will be cached. If the current request has the same parameters as
+     * the last request it will return the already created image instead of
+     * creating a new image. If an image is passed to the method, it will paint
+     * to the image and return this image. This will reduce the memory
+     * consumption.
+     *
+     * @param WIDTH
+     * @param FRAME_DESIGN
+     * @param CUSTOM_FRAME_DESIGN
+     * @param FRAME_BASECOLOR
+     * @param FRAME_BASECOLOR_ENABLED
+     * @param FRAME_EFFECT
+     * @param BACKGROUND_IMAGE
+     * @return a buffered image that contains the frame image for a radial gauge
+     */
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 //    public BufferedImage createRadialFrame(final int WIDTH, final FrameDesign FRAME_DESIGN, final Paint CUSTOM_FRAME_DESIGN, final Color FRAME_BASECOLOR, final boolean FRAME_BASECOLOR_ENABLED, final FrameEffect FRAME_EFFECT, final BufferedImage BACKGROUND_IMAGE)
+        
         super.paint(graphics, dimensions);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-           final int imageWidth = (int) dimensions.getWidth();
+        
+        final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
         final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
-
+        
         final Area FRAME_OUTERFRAME = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
         FRAME_OUTERFRAME.subtract(SUBTRACT);
         graphics.setPaint(outerFrameColor);
         graphics.fill(FRAME_OUTERFRAME);
-
+        
         final Area FRAME_MAIN = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
         FRAME_MAIN.subtract(SUBTRACT);
         final Point2D FRAME_MAIN_START = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMinY());
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
-
-        float[] frameMainFractions1 =
+        
+        float[] frameMainFractions5 =
         {
             0.0f,
-            45.0f,
-            125.0f,
-            180.0f,
-            245.0f,
-            315.0f,
-            360.0f
+            0.05f,
+            0.10f,
+            0.50f,
+            0.90f,
+            0.95f,
+            1.0f
         };
-
-        Color[] frameMainColors1 =
+        
+        Color[] frameMainColors5 =
         {
-            new Color(254, 254, 254, 255),
-            new Color(0, 0, 0, 255),
-            new Color(153, 153, 153, 255),
-            new Color(0, 0, 0, 255),
-            new Color(153, 153, 153, 255),
-            new Color(0, 0, 0, 255),
-            new Color(254, 254, 254, 255)
+            new Color(231, 237, 237, 255),
+            new Color(189, 199, 198, 255),
+            new Color(192, 201, 200, 255),
+            new Color(23, 31, 33, 255),
+            new Color(196, 205, 204, 255),
+            new Color(194, 204, 203, 255),
+            new Color(189, 201, 199, 255)
         };
-
-        Paint frameMainPaint1 = new ConicalGradientPaint(true, FRAME_MAIN_CENTER, 0, frameMainFractions1, frameMainColors1);
-        graphics.setPaint(frameMainPaint1);
+        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
+        Paint frameMainPaint5 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions5, frameMainColors5);
+        graphics.setPaint(frameMainPaint5);
         graphics.fill(FRAME_MAIN);
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
@@ -106,7 +124,10 @@ public class BlackMetalRadialFramePainter extends RoundFrameModel
 
         // Frame effect overlay
         final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-      
+        final float[] EFFECT_FRACTIONS;
+        final Color[] EFFECT_COLORS;
+        final java.awt.Paint EFFECT_GRADIENT;
+        
         this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
         graphics.dispose();
 
@@ -116,7 +137,6 @@ public class BlackMetalRadialFramePainter extends RoundFrameModel
 //            G.drawImage(radFrameImage, 0, 0, null);
 //            G.dispose();
 //        }
-
     }
-
+    
 }

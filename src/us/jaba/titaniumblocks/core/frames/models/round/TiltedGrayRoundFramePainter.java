@@ -36,7 +36,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import static javax.swing.text.html.CSS.Attribute.BACKGROUND_IMAGE;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -44,15 +43,18 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class GoldRadialFramePainter extends RoundFrameModel
+public class TiltedGrayRoundFramePainter extends RoundFrameModel
 {
+
+    private Paint innerFrameColor;
+    private Paint outerFrameColor;
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 //    public BufferedImage createRadialFrame(final int WIDTH, final FrameDesign FRAME_DESIGN, final Paint CUSTOM_FRAME_DESIGN, final Color FRAME_BASECOLOR, final boolean FRAME_BASECOLOR_ENABLED, final FrameEffect FRAME_EFFECT, final BufferedImage BACKGROUND_IMAGE)
-
         super.paint(graphics, dimensions);
+        
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         final int imageWidth = (int) dimensions.getWidth();
@@ -71,38 +73,31 @@ public class GoldRadialFramePainter extends RoundFrameModel
         final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
         final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
 
-        float[] frameMainFractions7 =
+        FRAME_MAIN_START.setLocation((0.2336448598130841 * imageWidth), (0.08411214953271028 * imageHeight));
+        FRAME_MAIN_STOP.setLocation(((0.2336448598130841 + 0.5789369637935792) * imageWidth), ((0.08411214953271028 + 0.8268076708711319) * imageHeight));
+        float[] frameMainFractions9 =
         {
             0.0f,
-            0.15f,
-            0.22f,
-            0.3f,
-            0.38f,
-            0.44f,
-            0.51f,
-            0.6f,
-            0.68f,
-            0.75f,
+            0.07f,
+            0.16f,
+            0.33f,
+            0.55f,
+            0.79f,
             1.0f
         };
-
-        Color[] frameMainColors7 =
+        Color[] frameMainColors9 =
         {
-            new Color(255, 255, 207, 255),
-            new Color(255, 237, 96, 255),
-            new Color(254, 199, 57, 255),
-            new Color(255, 249, 203, 255),
-            new Color(255, 199, 64, 255),
-            new Color(252, 194, 60, 255),
-            new Color(255, 204, 59, 255),
-            new Color(213, 134, 29, 255),
-            new Color(255, 201, 56, 255),
-            new Color(212, 135, 29, 255),
-            new Color(247, 238, 101, 255)
+            new Color(255, 255, 255, 255),
+            new Color(210, 210, 210, 255),
+            new Color(179, 179, 179, 255),
+            new Color(255, 255, 255, 255),
+            new Color(197, 197, 197, 255),
+            new Color(255, 255, 255, 255),
+            new Color(102, 102, 102, 255)
         };
         PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint7 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions7, frameMainColors7);
-        graphics.setPaint(frameMainPaint7);
+        Paint frameMainPaint9 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions9, frameMainColors9);
+        graphics.setPaint(frameMainPaint9);
         graphics.fill(FRAME_MAIN);
 
         //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
@@ -115,18 +110,17 @@ public class GoldRadialFramePainter extends RoundFrameModel
 
         // Frame effect overlay
         final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-       
+        
         this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
-
         graphics.dispose();
 
-//            if (BACKGROUND_IMAGE != null)
-//            {
-//                final Graphics2D G = BACKGROUND_IMAGE.createGraphics();
-//                G.drawImage(radFrameImage, 0, 0, null);
-//                G.dispose();
-//            }
-    }
+//        if (BACKGROUND_IMAGE != null)
+//        {
+//            final Graphics2D G = BACKGROUND_IMAGE.createGraphics();
+//            G.drawImage(radFrameImage, 0, 0, null);
+//            G.dispose();
+//        }
 
+    }
 
 }

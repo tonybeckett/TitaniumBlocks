@@ -25,60 +25,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.round;
+package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Paint;
+import java.awt.Rectangle;
 import java.awt.TexturePaint;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
-import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.LinenTexturePainter;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
+import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
 
-public class LinenBackgroundPainter extends AbstractRoundBackdropModel
+
+public class StainlessBackdropPainter extends AbstractRectangularBackdropModel
 {
 
-    LinenTexturePainter painter;
-
-    Color color = new Color(0x686868);
-
-    public LinenBackgroundPainter()
-    {
-        painter = new LinenTexturePainter();
-        
-    }
-
     @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
+    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
-        painter.setBrushColor(color);
-        TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), bounds.getBounds());
+        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
+        builder.setBrushColor(new Color(0x6E6E70));
+        Paint p = new TexturePaint(builder.build(dimensions), bounds);
 
         return p;
-    }
-
-    public LinenTexturePainter getPainter()
-    {
-        return painter;
-    }
-
-    public void setPainter(LinenTexturePainter painter)
-    {
-        this.painter = painter;
-        changed();
-    }
-
-    public Color getColor()
-    {
-        return color;
-    }
-
-    public void setColor(Color color)
-    {
-        this.color = color;
-        changed();
     }
 
 }

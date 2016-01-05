@@ -25,21 +25,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.models.round;
+package us.jaba.titaniumblocks.core.backdrop.models.rectangular;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
+import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.backdrop.models.AbstractRectangularBackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
 import us.jaba.titaniumblocks.core.backdrop.models.OverlayPainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
 import us.jaba.titaniumblocks.core.textures.painters.PunchedSheetTexturePainter;
 
-public class PunchedSteelBackgroundPainter extends AbstractRoundBackdropModel
+public class PunchedSteelBackdropPainter extends AbstractRectangularBackdropModel
 {
 
     PunchedSheetTexturePainter painter;
@@ -47,7 +47,7 @@ public class PunchedSteelBackgroundPainter extends AbstractRoundBackdropModel
     private final OverlayPainter overlayPainter;
     private final NoisePainter noisePainter;
 
-    public PunchedSteelBackgroundPainter()
+    public PunchedSteelBackdropPainter()
     {
         rectangle = new java.awt.Rectangle(0, 0, 12, 12);
         painter = new PunchedSheetTexturePainter();
@@ -57,7 +57,7 @@ public class PunchedSteelBackgroundPainter extends AbstractRoundBackdropModel
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
+    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
     {
         TextureImageBuilder builder = new TextureImageBuilder(painter);
         Paint p = new TexturePaint(builder.build(dimensions), rectangle);
@@ -76,9 +76,9 @@ public class PunchedSteelBackgroundPainter extends AbstractRoundBackdropModel
     }
 
     @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
+    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
     {
-        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds().getBounds());
+        noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
     }
 
 }
