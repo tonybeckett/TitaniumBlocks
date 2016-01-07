@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.pointers.shadowpainters;
 
-import us.jaba.titaniumblocks.core.pointers.PointerPainter;
+import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -39,7 +39,7 @@ import java.awt.geom.Path2D;
  *
  * @author tbeckett
  */
-public class Type12ShadowPointerPainter extends PointerPainter
+public class Type12ShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override

@@ -33,8 +33,12 @@ import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.pointers.PointerPainter;
+import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
 
@@ -60,7 +64,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.getGauge().getBackdropPainter().setBackgroundColorModel(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500));
+        this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22
 
         Antimate antimate = new Antimate(100.0)
         {
@@ -90,6 +94,39 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setColor(c);
     }
 
+    public void setPointerGradient(GradientPalette cp)
+    {
+        panel.setPointerGradient(cp);
+    }
+
+    @Override
+    public void setTitle(String string)
+    {
+        super.setTitle(string);
+        panel.setTitle(string);
+    }
+
+    public void setUnits(String units)
+    {
+        panel.setUnits(units);
+    }
+
+    public void setCenterPostPainter(PostPainter postPainter)
+    {
+        panel.setCenterPostPainter(postPainter);
+    }
+
+    public void setSmallKnobsPainter(KnobPainter startPainter, KnobPainter endPainter)
+    {
+        panel.setSmallKnobsPainter(startPainter, endPainter);
+    }
+
+    public void setPointerPainter(PointerPainter pointerPainter)
+    {
+        panel.setPointerPainter(pointerPainter);
+    }
+
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

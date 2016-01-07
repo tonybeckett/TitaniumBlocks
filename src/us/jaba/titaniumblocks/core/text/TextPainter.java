@@ -32,6 +32,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 
 /**
@@ -46,7 +47,7 @@ public class TextPainter extends CoreModel
     protected double rightOffsetFactor = DEFAULT_RIGHT_OFFSET_FACTOR;
     protected double baselineScaleFactor = DEFAULT_BASELINE_SCALE_FACTOR;
     protected Font font = BaseFont.DEFAULT_FONT;
-    protected Color color = Color.BLACK;
+    protected Color color = ColorPalette.Black;
 
     public TextPainter()
     {

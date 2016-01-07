@@ -37,6 +37,7 @@ import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
@@ -50,6 +51,7 @@ import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.BasicRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.TopThirdRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
+import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
@@ -58,11 +60,13 @@ import static us.jaba.titaniumblocks.core.math.CoordinateDefs.INVERTED_TEXT;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
+import us.jaba.titaniumblocks.core.pointers.PointerPainter;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.painters.TaperedRoundedPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type1ShadowPointerPainter;
 import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
+import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.core.posts.painters.BigSilverPostPainter;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.TextPainter;
@@ -82,15 +86,15 @@ import us.jaba.titaniumblocks.displays.RoundDisplay;
 public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDisplay
 {
 
-    private final PointerImageFactory pointerImage;
+    private PointerImageFactory pointerImage;
     private final RNormalMajMedMinorTickmarkModel tickmarkModel;
     private final TextImageFactory titleTextImage;
     private final TitleText titleValueText;
-    private TextPainter unitsText;
+    private UnitsText unitsText;
     private final TextImageFactory unitsTextImage;
     private final SingleBargraphLedOff led;
     private final LedImageFactory ledImageFactory;
-    private final ShadowPointerImageFactory shadowImage;
+    private ShadowPointerImageFactory shadowImage;
     private CircularLayout circularLayout;
     private final TBText tbText;
     private final TextImageFactory tbTextImage;
@@ -114,7 +118,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     };
     private static final float DEFAULT_FONT_SCALE_FACTOR = 0.67f;
     private final DoubleValueText doubleValueText;
-    private final MySEPostFactory endPostImage;
+    private MySEPostFactory endPostImage;
     private float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
     private double normalizedValue = 0.39; // 0.0-1.0
 
@@ -122,7 +126,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     protected RoundFrameImageFactory frameImage;
     protected FrontcoverImageFactory frontcoverImage;
     protected DisabledImageFactory disabledImage;
-    private final MySWPostFactory startPostImage;
+    private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
     protected TextImageFactory valueTextImage;
     protected PostImageFactory centerPostImage;
@@ -137,11 +141,11 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         super();
         this.circularLayout = circularLayout;
         frameImage = new RoundFrameImageFactory(new SilverRoundFramePainter());
-        
+
         NullBackdropPainter bmbp = new NullBackdropPainter();
         bmbp.setBackgroundColorModel(new WhiteBModel());
         backdropImage = new BackdropImageFactory(bmbp);
-        
+
         doubleValueText = new DoubleValueText();
 
         valueTextImage = new TextImageFactory(doubleValueText);
@@ -176,9 +180,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         tickmarkModel = new RNormalMajMedMinorTickmarkModel();
 
-//        tickmarkModel.setBaselineColor(Color.WHITE);
-//        tickmarkModel.setMajorColor(Color.WHITE);
-//        tickmarkModel.setMinorColor(Color.WHITE);
+
         tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
         tickmarkModel.useFixedTextAdjust();
 
@@ -241,9 +243,9 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout);
 
-        graphics.rotate(angleStep, dimensions.width / 2 , dimensions.height / 2 );
+        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
-        graphics.drawImage(shadowImage.build(interiorDim), -2 , -2 , null);
+        graphics.drawImage(shadowImage.build(interiorDim), -2, -2, null);
         graphics.setTransform(currentTransform);
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
@@ -269,6 +271,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     public void setTitle(String string)
     {
         titleValueText.setValue(string);
+
     }
 
     public Color getColor()
@@ -278,8 +281,16 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public void setColor(Color c)
     {
-        valueTextImage.getPainter().setColor(c);
-       
+        doubleValueText.setColor(c);
+        titleTextImage.getPainter().setColor(c);
+        unitsTextImage.getPainter().setColor(c);
+        tbTextImage.getPainter().setColor(c);
+
+        tickmarkModel.setMajorColor(c);
+        tickmarkModel.setMediumColor(c);
+        tickmarkModel.setMinorColor(c);
+        tickmarkModel.setBaselineColor(c);
+        tickmarkModel.setTextColor(c);
     }
 
     public BackdropModel getBackdropPainter()
@@ -322,10 +333,26 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         this.disabledImage = new DisabledImageFactory(disabledPainter);
     }
 
+    public void setPointerPainter(PointerPainter pointerPainter)
+    {
+        this.pointerImage = new PointerImageFactory(pointerPainter);
+    }
+
     public void setValueTextPainter(TextPainter valueTextPainter)
     {
         valueTextPainter.setColor(valueTextImage.getPainter().getColor());
         this.valueTextImage = new TextImageFactory(valueTextPainter);
+    }
+
+    public void setCenterPostPainter(PostPainter postPainter)
+    {
+        this.centerPostImage = new PostImageFactory(postPainter);
+    }
+
+    public void setSmallKnobsPainter(KnobPainter startPainter, KnobPainter endPainter)
+    {
+        startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
+        endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));
     }
 
     public float getFontScaleFactor()
@@ -341,6 +368,16 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 
+    }
+
+    public void setPointerGradient(GradientPalette cp)
+    {
+        pointerImage.getPainter().setPointerColor(cp);
+    }
+
+    public void setUnits(String units)
+    {
+        unitsText.setValue(units);
     }
 
 }

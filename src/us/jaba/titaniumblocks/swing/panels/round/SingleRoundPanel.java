@@ -39,8 +39,12 @@ import javax.swing.JComponent;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.pointers.PointerPainter;
+import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.displays.round.SingleRoundDisplay;
 
 /**
@@ -80,7 +84,8 @@ public class SingleRoundPanel extends JComponent
                 setSize(getWidth(), getHeight());
             } else
             {
-                setPreferredSize(new Dimension(getWidth(), getHeight()));
+                int min = Math.min(getWidth(), getHeight());
+                setPreferredSize(new Dimension(min, min));
             }
 
             init(getInnerBounds().width, getInnerBounds().height);
@@ -184,5 +189,33 @@ public class SingleRoundPanel extends JComponent
     {
         singleGauge.setColor(c);
     }
+
+    public void setPointerGradient(GradientPalette cp)
+    {
+        singleGauge.setPointerGradient(cp);
+    }
+
+    public void setUnits(String units)
+    {
+        singleGauge.setUnits(units);
+    }
+
+    public void setCenterPostPainter(PostPainter postPainter)
+    {
+        singleGauge.setCenterPostPainter(postPainter);
+    }
+
+    public void setSmallKnobsPainter(KnobPainter startPainter, KnobPainter endPainter)
+    {
+        singleGauge.setSmallKnobsPainter(startPainter, endPainter);
+    }
+
+    public void setPointerPainter(PointerPainter pointerPainter)
+    {
+        singleGauge.setPointerPainter(pointerPainter);
+    }
+
+   
+     
 
 }

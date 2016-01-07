@@ -27,11 +27,15 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import java.awt.Color;
 import us.jaba.titaniumblocks.core.backdrop.models.round.PunchedSteelBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureOrange;
 import us.jaba.titaniumblocks.core.frames.models.round.BrassRoundFramePainter;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import us.jaba.titaniumblocks.core.pointers.painters.MonumentPointerPainter;
+import us.jaba.titaniumblocks.core.posts.painters.BigBrassPostPainter;
 
 /**
  *
@@ -50,7 +54,12 @@ public class SingleRound180Demo extends SingleRoundDemo
 
         this.setRoundFramePainter(new BrassRoundFramePainter());
         this.setBackdropPainter(new PunchedSteelBackdropPainter());
-        this.setColor(Color.WHITE);
+        this.setCenterPostPainter( new BigBrassPostPainter());
+        this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
+        this.setColor(ColorPalette.White);
+        this.setPointerPainter(new MonumentPointerPainter());
+        this.setPointerGradient( new PureOrange());
+        this.setUnits("degrees");
     }
 
     /**

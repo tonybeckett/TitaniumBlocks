@@ -176,4 +176,14 @@ public class TickmarkModel extends CoreModel
         changed();
     }
 
+    public Color getTextColor()
+    {
+        return textColor;
+    }
+
+    public void setTextColor(Color textColor)
+    {
+        this.textColor = textColor;
+    }
+
 }
