@@ -34,7 +34,6 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.backdrop.models.AbstractRoundBackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.NoisePainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
@@ -54,7 +53,7 @@ public class NoisyPlasticBackdropPainter extends AbstractRoundBackdropModel
         0.0f,
         1.0f
     };
-    final Color[] COLORS =
+    Color[] COLORS =
     {
         ColorTools.lighter(textureColor, 0.15f),
         ColorTools.darker(textureColor, 0.15f)
@@ -84,10 +83,6 @@ public class NoisyPlasticBackdropPainter extends AbstractRoundBackdropModel
         noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
     }
 
-   
-
-    
-
     public Color getTextureColor()
     {
         return textureColor;
@@ -96,8 +91,9 @@ public class NoisyPlasticBackdropPainter extends AbstractRoundBackdropModel
     public void setTextureColor(Color textureColor)
     {
         this.textureColor = textureColor;
+        COLORS[0] = ColorTools.lighter(textureColor, 0.15f);
+        COLORS[1] = ColorTools.darker(textureColor, 0.15f);
         changed();
     }
-    
-    
+
 }
