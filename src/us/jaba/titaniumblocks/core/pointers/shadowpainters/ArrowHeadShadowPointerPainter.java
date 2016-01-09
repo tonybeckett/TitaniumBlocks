@@ -39,14 +39,14 @@ import java.awt.geom.Path2D;
  *
  * @author tbeckett
  */
-public class Type14ShadowPointerPainter extends AbstractPointerPainter
+public class ArrowHeadShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        
+       
         final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -63,12 +63,13 @@ public class Type14ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
+        POINTER.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
+        POINTER.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

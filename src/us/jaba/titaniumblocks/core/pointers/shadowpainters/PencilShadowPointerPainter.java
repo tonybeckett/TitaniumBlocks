@@ -27,19 +27,19 @@
  */
 package us.jaba.titaniumblocks.core.pointers.shadowpainters;
 
+import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 
 /**
  *
  * @author tbeckett
  */
-public class Type11ShadowPointerPainter extends AbstractPointerPainter
+public class PencilShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
@@ -63,11 +63,12 @@ public class Type11ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
-        POINTER.curveTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight, 0.48130841121495327 * imageWidth, 0.5841121495327103 * imageHeight, 0.5 * imageWidth, 0.5841121495327103 * imageHeight);
-        POINTER.curveTo(0.514018691588785 * imageWidth, 0.5841121495327103 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
+        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
+        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
+        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

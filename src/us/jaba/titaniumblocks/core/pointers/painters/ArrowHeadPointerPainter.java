@@ -25,29 +25,39 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.pointers.shadowpainters;
+package us.jaba.titaniumblocks.core.pointers.painters;
 
-import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class Type13ShadowPointerPainter extends AbstractPointerPainter
+public class ArrowHeadPointerPainter extends AbstractPointerPainter
 {
+
+    public ArrowHeadPointerPainter()
+    {
+    }
+
+    public ArrowHeadPointerPainter(GradientPalette pointerColor)
+    {
+        super(pointerColor);
+    }
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-
-        
-        final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -60,17 +70,44 @@ public class Type13ShadowPointerPainter extends AbstractPointerPainter
         final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath POINTER;
+        final Point2D POINTER_START;
+        final Point2D POINTER_STOP;
+        final float[] POINTER_FRACTIONS;
+        final Color[] POINTER_COLORS;
+        final java.awt.Paint POINTER_GRADIENT;
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
+        POINTER.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
+        POINTER.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
+        POINTER.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
         POINTER.closePath();
-        graphics.setColor(SHADOW_COLOR);
+        POINTER_START = new Point2D.Double(0.46 * imageWidth, 0.26 * imageHeight);
+        POINTER_STOP = new Point2D.Double(0.53 * imageWidth, 0.26 * imageHeight);
+        POINTER_FRACTIONS = new float[]
+        {
+            0.0f,
+            0.5f,
+            1.0f
+        };
+//       
+            POINTER_COLORS = new Color[]
+            {
+                this.getPointerColor().getDarkest(),
+                this.getPointerColor().getMediumDark(),
+                this.getPointerColor().getDarkest()
+            };
+        
+        if (PointSupport.pointsEqual(POINTER_START, POINTER_STOP))
+        {
+            POINTER_STOP.setLocation(POINTER_STOP.getX(), POINTER_STOP.getY() + 1);
+        }
+        POINTER_GRADIENT = new LinearGradientPaint(POINTER_START, POINTER_STOP, POINTER_FRACTIONS, POINTER_COLORS);
+        graphics.setPaint(POINTER_GRADIENT);
         graphics.fill(POINTER);
 
         graphics.dispose();

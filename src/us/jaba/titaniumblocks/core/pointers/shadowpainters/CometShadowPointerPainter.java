@@ -39,14 +39,14 @@ import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
  *
  * @author tbeckett
  */
-public class Type5ShadowPointerPainter extends AbstractPointerPainter
+public class CometShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-       
+        
         final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -63,11 +63,11 @@ public class Type5ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
-        POINTER.lineTo(imageWidth * 0.5280373831775701, imageHeight * 0.4953271028037383);
-        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.14953271028037382);
-        POINTER.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.4953271028037383);
-        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
+        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382);
+        POINTER.curveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382, imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663, imageWidth * 0.4439252336448598, imageHeight * 0.5);
+        POINTER.curveTo(imageWidth * 0.4439252336448598, imageHeight * 0.5327102803738317, imageWidth * 0.4672897196261682, imageHeight * 0.5560747663551402, imageWidth * 0.5, imageHeight * 0.5560747663551402);
+        POINTER.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402, imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317, imageWidth * 0.5560747663551402, imageHeight * 0.5);
+        POINTER.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663, imageWidth * 0.5, imageHeight * 0.14953271028037382, imageWidth * 0.5, imageHeight * 0.14953271028037382);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

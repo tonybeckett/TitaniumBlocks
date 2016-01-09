@@ -39,14 +39,14 @@ import java.awt.geom.Path2D;
  *
  * @author tbeckett
  */
-public class Type4ShadowPointerPainter extends AbstractPointerPainter
+public class TaperedRoundedShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        
+       
         final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -63,14 +63,11 @@ public class Type4ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.1261682242990654);
-        POINTER.lineTo(imageWidth * 0.514018691588785, imageHeight * 0.13551401869158877);
-        POINTER.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5233644859813084, imageHeight * 0.602803738317757);
-        POINTER.lineTo(imageWidth * 0.4766355140186916, imageHeight * 0.602803738317757);
-        POINTER.lineTo(imageWidth * 0.4672897196261682, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.13551401869158877);
-        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.1261682242990654);
+        POINTER.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
+        POINTER.lineTo(0.5 * imageWidth, 0.5046728971962616 * imageHeight);
+        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5 * imageHeight);
+        POINTER.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

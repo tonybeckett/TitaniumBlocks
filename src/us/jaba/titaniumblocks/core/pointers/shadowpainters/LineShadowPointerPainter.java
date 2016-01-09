@@ -33,20 +33,18 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
 
 /**
  *
  * @author tbeckett
  */
-public class Type7ShadowPointerPainter extends AbstractPointerPainter
+public class LineShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-       
         final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -60,17 +58,6 @@ public class Type7ShadowPointerPainter extends AbstractPointerPainter
         final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath POINTER;
-
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        POINTER.closePath();
-        graphics.setColor(SHADOW_COLOR);
-        graphics.fill(POINTER);
 
         graphics.dispose();
     }

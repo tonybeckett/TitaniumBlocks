@@ -30,21 +30,19 @@ package us.jaba.titaniumblocks.core.pointers;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type10ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type11ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type12ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type13ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type14ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type15ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type1ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type2ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type3ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type4ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type5ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type6ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type7ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type8ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Type9ShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.CometShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedRoundedTailShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedRoundedShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.Pencil2ShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.PencilShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.ArrowHeadShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.LineShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.MonumentShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedThickShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.DualLinesShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedThickFlatShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.WideTaperedPointShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedDualLineShadowPointerPainter;
 
 /**
  *
@@ -54,21 +52,28 @@ public class ShadowCoreInfo
 {
     public static final Class<?>[] SHADOW_MODELS =
     {
-        Type1ShadowPointerPainter.class,
-        Type2ShadowPointerPainter.class,
-        Type3ShadowPointerPainter.class,
-        Type4ShadowPointerPainter.class,
-        Type5ShadowPointerPainter.class,
-        Type6ShadowPointerPainter.class,
-        Type7ShadowPointerPainter.class,
-        Type8ShadowPointerPainter.class,
-        Type9ShadowPointerPainter.class,
-        Type10ShadowPointerPainter.class,
-        Type11ShadowPointerPainter.class,
-        Type12ShadowPointerPainter.class,
-        Type13ShadowPointerPainter.class,
-        Type14ShadowPointerPainter.class,
-        Type15ShadowPointerPainter.class,
+        ArrowHeadShadowPointerPainter.class,
+        CometShadowPointerPainter.class,
+        DualLinesShadowPointerPainter.class,
+         LineShadowPointerPainter.class,
+        MonumentShadowPointerPainter.class,
+        PencilShadowPointerPainter.class,
+        Pencil2ShadowPointerPainter.class,
+        TaperedDualLineShadowPointerPainter.class,
+        TaperedRoundedShadowPointerPainter.class,
+        TaperedRoundedTailShadowPointerPainter.class,
+        TaperedThickFlatShadowPointerPainter.class,
+        TaperedThickShadowPointerPainter.class,
+        
+//        Type1ShadowPointerPainter.class,
+//        Type2ShadowPointerPainter.class,  
+        WideTaperedPointShadowPointerPainter.class,
+        
+        
+        
+        
+        
+        
          
     };
 

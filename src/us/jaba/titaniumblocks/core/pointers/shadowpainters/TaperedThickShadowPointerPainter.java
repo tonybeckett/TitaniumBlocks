@@ -27,19 +27,19 @@
  */
 package us.jaba.titaniumblocks.core.pointers.shadowpainters;
 
-import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
+import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 
 /**
  *
  * @author tbeckett
  */
-public class Type12ShadowPointerPainter extends AbstractPointerPainter
+public class TaperedThickShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
@@ -63,11 +63,11 @@ public class Type12ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.5046728971962616 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
+        POINTER.lineTo(imageWidth * 0.5280373831775701, imageHeight * 0.4953271028037383);
+        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.14953271028037382);
+        POINTER.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.4953271028037383);
+        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

@@ -39,14 +39,14 @@ import java.awt.geom.Path2D;
  *
  * @author tbeckett
  */
-public class Type9ShadowPointerPainter extends AbstractPointerPainter
+public class WideTaperedPointShadowPointerPainter extends AbstractPointerPainter
 {
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        
+       
         final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -63,22 +63,11 @@ public class Type9ShadowPointerPainter extends AbstractPointerPainter
 
         POINTER = new GeneralPath();
         POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.4953271028037383, imageHeight * 0.2336448598130841);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.2336448598130841);
-        POINTER.lineTo(imageWidth * 0.514018691588785, imageHeight * 0.4392523364485981);
-        POINTER.lineTo(imageWidth * 0.48598130841121495, imageHeight * 0.4392523364485981);
-        POINTER.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.2336448598130841);
-        POINTER.closePath();
-        POINTER.moveTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.4719626168224299);
-        POINTER.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.5280373831775701);
-        POINTER.curveTo(imageWidth * 0.4719626168224299, imageHeight * 0.5280373831775701, imageWidth * 0.4766355140186916, imageHeight * 0.602803738317757, imageWidth * 0.4766355140186916, imageHeight * 0.602803738317757);
-        POINTER.curveTo(imageWidth * 0.4766355140186916, imageHeight * 0.6074766355140186, imageWidth * 0.48130841121495327, imageHeight * 0.6074766355140186, imageWidth * 0.5, imageHeight * 0.6074766355140186);
-        POINTER.curveTo(imageWidth * 0.5186915887850467, imageHeight * 0.6074766355140186, imageWidth * 0.5233644859813084, imageHeight * 0.6074766355140186, imageWidth * 0.5233644859813084, imageHeight * 0.602803738317757);
-        POINTER.curveTo(imageWidth * 0.5233644859813084, imageHeight * 0.602803738317757, imageWidth * 0.5280373831775701, imageHeight * 0.5280373831775701, imageWidth * 0.5280373831775701, imageHeight * 0.5280373831775701);
-        POINTER.lineTo(imageWidth * 0.5280373831775701, imageHeight * 0.4719626168224299);
-        POINTER.lineTo(imageWidth * 0.5093457943925234, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
+        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
+        POINTER.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
+        POINTER.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5, imageWidth * 0.5093457943925234, imageHeight * 0.45794392523364486, imageWidth * 0.5, imageHeight * 0.14953271028037382);
+        POINTER.curveTo(imageWidth * 0.49065420560747663, imageHeight * 0.45794392523364486, imageWidth * 0.4672897196261682, imageHeight * 0.5, imageWidth * 0.4672897196261682, imageHeight * 0.5);
+        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
         POINTER.closePath();
         graphics.setColor(SHADOW_COLOR);
         graphics.fill(POINTER);

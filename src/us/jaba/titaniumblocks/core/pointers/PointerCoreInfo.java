@@ -37,6 +37,7 @@ import us.jaba.titaniumblocks.core.pointers.painters.MonumentPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.Pencil2PointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.PencilPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.TaperedDualLinePointerPainter;
+import us.jaba.titaniumblocks.core.pointers.painters.ArrowHeadPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.TaperedRoundedPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.TaperedRoundedTailPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.painters.TaperedThickFlatPointerPainter;
@@ -52,6 +53,7 @@ public class PointerCoreInfo
 
     public static final Class<?>[] POINTER_MODELS =
     {
+        ArrowHeadPointerPainter.class,
         CometPointerPainter.class,
         DualLinesPointerPainter.class,
         LinePointerPainter.class,
