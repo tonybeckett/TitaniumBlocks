@@ -70,25 +70,25 @@ public class TaperedRoundedTailPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
-        final Point2D POINTER_START;
-        final Point2D POINTER_STOP;
-        final float[] POINTER_FRACTIONS;
-        final Color[] POINTER_COLORS;
-        final java.awt.Paint POINTER_GRADIENT;
+        final GeneralPath pointerShape;
+        final Point2D startPoint;
+        final Point2D stopPoint;
+        final float[] gradientFractionArray;
+        final Color[] gradientColorArray;
+        final java.awt.Paint gradient;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
-        POINTER.curveTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight, 0.48130841121495327 * imageWidth, 0.5841121495327103 * imageHeight, 0.5 * imageWidth, 0.5841121495327103 * imageHeight);
-        POINTER.curveTo(0.514018691588785 * imageWidth, 0.5841121495327103 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
+        pointerShape.curveTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight, 0.48130841121495327 * imageWidth, 0.5841121495327103 * imageHeight, 0.5 * imageWidth, 0.5841121495327103 * imageHeight);
+        pointerShape.curveTo(0.514018691588785 * imageWidth, 0.5841121495327103 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight);
+        pointerShape.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.closePath();
 
-            if (PointSupport.pointsEquals(0d, POINTER.getBounds2D().getMinY(), 0d, POINTER.getBounds2D().getMaxY()))
+            if (PointSupport.pointsEquals(0d, pointerShape.getBounds2D().getMinY(), 0d, pointerShape.getBounds2D().getMaxY()))
             {
-                POINTER_GRADIENT = new LinearGradientPaint(new Point2D.Double(0, POINTER.getBounds2D().getMinY()), new Point2D.Double(0, POINTER.getBounds2D().getMaxY() + 1), new float[]
+                gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY() + 1), new float[]
                 {
                     0.0f, 1.0f
                 }, new Color[]
@@ -97,7 +97,7 @@ public class TaperedRoundedTailPointerPainter extends AbstractPointerPainter
                 });
             } else
             {
-                POINTER_GRADIENT = new LinearGradientPaint(new Point2D.Double(0, POINTER.getBounds2D().getMinY()), new Point2D.Double(0, POINTER.getBounds2D().getMaxY()), new float[]
+                gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY()), new float[]
                 {
                     0.0f, 1.0f
                 }, new Color[]
@@ -105,12 +105,12 @@ public class TaperedRoundedTailPointerPainter extends AbstractPointerPainter
                     this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
                 });
             }
-            graphics.setPaint(POINTER_GRADIENT);
-            graphics.fill(POINTER);
+            graphics.setPaint(gradient);
+            graphics.fill(pointerShape);
             graphics.setColor(this.getPointerColor().getDarkest());
 //        
         graphics.setStroke(new BasicStroke(0.004672897196261682f * imageWidth, 0, 1));
-        graphics.draw(POINTER);
+        graphics.draw(pointerShape);
 
         graphics.dispose();
     }

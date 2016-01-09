@@ -59,18 +59,18 @@ public class WideTaperedPointShadowPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
-        POINTER.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
-        POINTER.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5, imageWidth * 0.5093457943925234, imageHeight * 0.45794392523364486, imageWidth * 0.5, imageHeight * 0.14953271028037382);
-        POINTER.curveTo(imageWidth * 0.49065420560747663, imageHeight * 0.45794392523364486, imageWidth * 0.4672897196261682, imageHeight * 0.5, imageWidth * 0.4672897196261682, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
+        pointerShape.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
+        pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5, imageWidth * 0.5093457943925234, imageHeight * 0.45794392523364486, imageWidth * 0.5, imageHeight * 0.14953271028037382);
+        pointerShape.curveTo(imageWidth * 0.49065420560747663, imageHeight * 0.45794392523364486, imageWidth * 0.4672897196261682, imageHeight * 0.5, imageWidth * 0.4672897196261682, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
+        pointerShape.closePath();
         graphics.setColor(SHADOW_COLOR);
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

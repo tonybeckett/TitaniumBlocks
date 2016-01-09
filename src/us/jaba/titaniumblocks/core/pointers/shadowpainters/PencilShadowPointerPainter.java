@@ -59,19 +59,19 @@ public class PencilShadowPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
+        pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.closePath();
         graphics.setColor(SHADOW_COLOR);
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

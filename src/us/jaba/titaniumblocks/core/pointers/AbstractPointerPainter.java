@@ -55,6 +55,7 @@ public abstract class AbstractPointerPainter extends PointerPainter
         return pointerColor;
     }
 
+    @Override
     public void setPointerColor(GradientPalette pointerColor)
     {
         this.pointerColor = pointerColor;

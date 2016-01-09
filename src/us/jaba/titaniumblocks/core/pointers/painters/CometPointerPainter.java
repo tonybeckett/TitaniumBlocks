@@ -48,6 +48,14 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class CometPointerPainter extends AbstractPointerPainter
 {
 
+    final float[] gradientFractionArray = new float[]
+    {
+        0.0f,
+        0.4999f,
+        0.5f,
+        1.0f
+    };
+
     public CometPointerPainter()
     {
     }
@@ -71,32 +79,41 @@ public class CometPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
-        final Point2D POINTER_START;
-        final Point2D POINTER_STOP;
-        final float[] POINTER_FRACTIONS;
-        final Color[] POINTER_COLORS;
-        final java.awt.Paint POINTER_GRADIENT;
+        final GeneralPath pointerShape;
+        final Point2D startPoint;
+        final Point2D stopPoint;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382);
-        POINTER.curveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382, imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663, imageWidth * 0.4439252336448598, imageHeight * 0.5);
-        POINTER.curveTo(imageWidth * 0.4439252336448598, imageHeight * 0.5327102803738317, imageWidth * 0.4672897196261682, imageHeight * 0.5560747663551402, imageWidth * 0.5, imageHeight * 0.5560747663551402);
-        POINTER.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402, imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317, imageWidth * 0.5560747663551402, imageHeight * 0.5);
-        POINTER.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663, imageWidth * 0.5, imageHeight * 0.14953271028037382, imageWidth * 0.5, imageHeight * 0.14953271028037382);
-        POINTER.closePath();
-        POINTER_START = new Point2D.Double(POINTER.getBounds2D().getMinX(), 0);
-        POINTER_STOP = new Point2D.Double(POINTER.getBounds2D().getMaxX(), 0);
-        POINTER_FRACTIONS = new float[]
-        {
-            0.0f,
-            0.4999f,
-            0.5f,
-            1.0f
-        };
+        final Color[] gradientColorArray;
+        final java.awt.Paint gradient;
 
-        POINTER_COLORS = new Color[]
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        
+        Point2D tip = new Point2D.Double(0.5, 0.14953);
+        
+        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382);
+
+        pointerShape.curveTo(imageWidth * 0.5, imageHeight * 0.14953271028037382,
+                imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663,
+                imageWidth * 0.4439252336448598, imageHeight * 0.5);
+
+        pointerShape.curveTo(imageWidth * 0.4439252336448598, imageHeight * 0.5327102803738317,
+                imageWidth * 0.4672897196261682, imageHeight * 0.5560747663551402,
+                imageWidth * 0.5, imageHeight * 0.5560747663551402);
+
+        pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402,
+                imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317,
+                imageWidth * 0.5560747663551402, imageHeight * 0.5);
+
+        pointerShape.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663,
+                imageWidth * 0.5, imageHeight * 0.14953271028037382,
+                imageWidth * 0.5, imageHeight * 0.14953271028037382);
+
+        pointerShape.closePath();
+        startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
+        stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
+
+        gradientColorArray = new Color[]
         {
             this.getPointerColor().getMediumLight(),
             this.getPointerColor().getMediumLight(),
@@ -104,16 +121,16 @@ public class CometPointerPainter extends AbstractPointerPainter
             this.getPointerColor().getMediumDark()
         };
 
-        if (PointSupport.pointsEqual(POINTER_START, POINTER_STOP))
+        if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
-            POINTER_STOP.setLocation(POINTER_STOP.getX(), POINTER_STOP.getY() + 1);
+            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
-        POINTER_GRADIENT = new LinearGradientPaint(POINTER_START, POINTER_STOP, POINTER_FRACTIONS, POINTER_COLORS);
-        graphics.setPaint(POINTER_GRADIENT);
-        graphics.fill(POINTER);
+        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+        graphics.setPaint(gradient);
+        graphics.fill(pointerShape);
         graphics.setColor(this.getPointerColor().getMediumDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
-        graphics.draw(POINTER);
+        graphics.draw(pointerShape);
 
         graphics.dispose();
     }

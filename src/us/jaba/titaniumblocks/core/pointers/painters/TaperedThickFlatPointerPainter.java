@@ -69,42 +69,42 @@ public class TaperedThickFlatPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
-        final Point2D POINTER_START;
-        final Point2D POINTER_STOP;
-        final float[] POINTER_FRACTIONS;
-        final Color[] POINTER_COLORS;
-        final java.awt.Paint POINTER_GRADIENT;
+        final GeneralPath pointerShape;
+        final Point2D startPoint;
+        final Point2D stopPoint;
+        final float[] gradientFractionArray;
+        final Color[] gradientColorArray;
+        final java.awt.Paint gradient;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.5);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        POINTER.closePath();
-        POINTER_START = new Point2D.Double(POINTER.getBounds2D().getMinX(), 0);
-        POINTER_STOP = new Point2D.Double(POINTER.getBounds2D().getMaxX(), 0);
-        POINTER_FRACTIONS = new float[]
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
+        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
+        pointerShape.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
+        pointerShape.closePath();
+        startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
+        stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
+        gradientFractionArray = new float[]
         {
             0.0f,
             1.0f
         };
         
-            POINTER_COLORS = new Color[]
+            gradientColorArray = new Color[]
             {
                 this.getPointerColor().getDark(),
                 this.getPointerColor().getMediumDark()
             };
         
-        if (PointSupport.pointsEqual(POINTER_START, POINTER_STOP))
+        if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
-            POINTER_STOP.setLocation(POINTER_STOP.getX(), POINTER_STOP.getY() + 1);
+            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
-        POINTER_GRADIENT = new LinearGradientPaint(POINTER_START, POINTER_STOP, POINTER_FRACTIONS, POINTER_COLORS);
-        graphics.setPaint(POINTER_GRADIENT);
-        graphics.fill(POINTER);
+        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+        graphics.setPaint(gradient);
+        graphics.fill(pointerShape);
         
 
         graphics.dispose();

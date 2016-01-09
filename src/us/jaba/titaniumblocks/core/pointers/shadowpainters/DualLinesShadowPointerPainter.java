@@ -59,27 +59,27 @@ public class DualLinesShadowPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
-        POINTER.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.3925233644859813);
-        POINTER.lineTo(imageWidth * 0.48598130841121495, imageHeight * 0.3177570093457944);
-        POINTER.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
-        POINTER.lineTo(imageWidth * 0.514018691588785, imageHeight * 0.3177570093457944);
-        POINTER.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.3878504672897196);
-        POINTER.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.48598130841121495);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.48598130841121495);
-        POINTER.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.3878504672897196);
-        POINTER.lineTo(imageWidth * 0.5, imageHeight * 0.3177570093457944);
-        POINTER.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.3925233644859813);
-        POINTER.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.48598130841121495);
-        POINTER.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
+        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.3925233644859813);
+        pointerShape.lineTo(imageWidth * 0.48598130841121495, imageHeight * 0.3177570093457944);
+        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271);
+        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
+        pointerShape.lineTo(imageWidth * 0.514018691588785, imageHeight * 0.3177570093457944);
+        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.3878504672897196);
+        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.48598130841121495);
+        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.48598130841121495);
+        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.3878504672897196);
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.3177570093457944);
+        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.3925233644859813);
+        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.48598130841121495);
+        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
+        pointerShape.closePath();
         graphics.setColor(SHADOW_COLOR);
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

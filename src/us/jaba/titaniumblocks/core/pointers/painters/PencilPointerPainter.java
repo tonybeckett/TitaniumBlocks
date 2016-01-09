@@ -71,22 +71,22 @@ public class PencilPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
-//        final Point2D POINTER_START;
-//        final Point2D POINTER_STOP;
-//        final float[] POINTER_FRACTIONS;
-//        final Color[] POINTER_COLORS;
-//        final java.awt.Paint POINTER_GRADIENT;
+        final GeneralPath pointerShape;
+//        final Point2D startPoint;
+//        final Point2D stopPoint;
+//        final float[] gradientFractionArray;
+//        final Color[] gradientColorArray;
+//        final java.awt.Paint gradient;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
-        POINTER.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
+        pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.closePath();
         
             graphics.setPaint(new LinearGradientPaint(new Point2D.Double(0.5 * imageWidth, 0.5 * imageHeight), new Point2D.Double(0.5 * imageWidth, 0.1308411214953271 * imageHeight), new float[]
             {
@@ -96,7 +96,7 @@ public class PencilPointerPainter extends AbstractPointerPainter
                 labelColor, labelColor, this.getPointerColor().getMediumDark(), getPointerColor().getMediumDark()
             }));
 //        
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

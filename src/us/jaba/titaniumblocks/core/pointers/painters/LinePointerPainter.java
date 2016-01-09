@@ -63,14 +63,16 @@ public class LinePointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
        
+     
 
-        POINTER = new GeneralPath(new Rectangle2D.Double(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271, imageWidth * 0.009345794392523364, imageHeight * 0.37383177570093457));
+        pointerShape = new GeneralPath(new Rectangle2D.Double(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271, 
+                imageWidth * 0.009345794392523364, imageHeight * 0.37383177570093457));
 
         graphics.setColor(this.getPointerColor().getMediumLight());
 
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

@@ -57,7 +57,7 @@ public class LineShadowPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 
         graphics.dispose();
     }

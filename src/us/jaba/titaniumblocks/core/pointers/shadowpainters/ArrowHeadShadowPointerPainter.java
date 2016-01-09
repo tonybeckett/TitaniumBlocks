@@ -59,20 +59,20 @@ public class ArrowHeadShadowPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
-        POINTER.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
-        POINTER.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
-        POINTER.closePath();
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
+        pointerShape.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
+        pointerShape.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
+        pointerShape.closePath();
         graphics.setColor(SHADOW_COLOR);
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }

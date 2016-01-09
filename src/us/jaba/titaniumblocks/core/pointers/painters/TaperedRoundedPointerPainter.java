@@ -69,18 +69,18 @@ public class TaperedRoundedPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
+        final GeneralPath pointerShape;
 //        
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
 
-        POINTER.moveTo(0.5 * imageWidth, 0.125 * imageHeight);
-        POINTER.lineTo((0.5-0.015) /*0.485*/ * imageWidth, 0.5 * imageHeight);
-        POINTER.lineTo(0.5 * imageWidth, 0.5046 * imageHeight);
-        POINTER.lineTo((0.5+0.015)/*0.509*/ * imageWidth, 0.5 * imageHeight);
+        pointerShape.moveTo(0.5 * imageWidth, 0.125 * imageHeight);
+        pointerShape.lineTo((0.5-0.015) /*0.485*/ * imageWidth, 0.5 * imageHeight);
+        pointerShape.lineTo(0.5 * imageWidth, 0.5046 * imageHeight);
+        pointerShape.lineTo((0.5+0.015)/*0.509*/ * imageWidth, 0.5 * imageHeight);
 
-        POINTER.lineTo(0.5 * imageWidth, 0.125 * imageHeight);
-        POINTER.closePath();
+        pointerShape.lineTo(0.5 * imageWidth, 0.125 * imageHeight);
+        pointerShape.closePath();
 
         graphics.setPaint(new LinearGradientPaint(
                 new Point2D.Double(0.5 * imageWidth, 0.125 * imageHeight),
@@ -93,11 +93,11 @@ public class TaperedRoundedPointerPainter extends AbstractPointerPainter
                 {
                     this.getPointerColor().getMedium(), this.getPointerColor().getMediumDark()
                 }));
-        graphics.fill(POINTER);
+        graphics.fill(pointerShape);
         graphics.setColor(this.getPointerColor().getMediumDark());
 
         graphics.setStroke(new BasicStroke((0.004672897196261682f * imageWidth), 0, 1));
-        graphics.draw(POINTER);
+        graphics.draw(pointerShape);
 
         graphics.dispose();
     }

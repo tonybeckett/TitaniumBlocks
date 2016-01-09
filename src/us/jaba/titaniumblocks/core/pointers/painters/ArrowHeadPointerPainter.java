@@ -46,6 +46,13 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class ArrowHeadPointerPainter extends AbstractPointerPainter
 {
 
+    final float[] gradientFractionArray = new float[]
+    {
+        0.0f,
+        0.5f,
+        1.0f
+    };
+
     public ArrowHeadPointerPainter()
     {
     }
@@ -69,46 +76,41 @@ public class ArrowHeadPointerPainter extends AbstractPointerPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath POINTER;
-        final Point2D POINTER_START;
-        final Point2D POINTER_STOP;
-        final float[] POINTER_FRACTIONS;
-        final Color[] POINTER_COLORS;
-        final java.awt.Paint POINTER_GRADIENT;
+        final GeneralPath pointerShape;
+        final Point2D startPoint;
+        final Point2D stopPoint;
 
-        POINTER = new GeneralPath();
-        POINTER.setWindingRule(Path2D.WIND_EVEN_ODD);
-        POINTER.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
-        POINTER.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
-        POINTER.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
-        POINTER.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
-        POINTER.closePath();
-        POINTER_START = new Point2D.Double(0.46 * imageWidth, 0.26 * imageHeight);
-        POINTER_STOP = new Point2D.Double(0.53 * imageWidth, 0.26 * imageHeight);
-        POINTER_FRACTIONS = new float[]
-        {
-            0.0f,
-            0.5f,
-            1.0f
-        };
+        final Color[] gradientColorArray;
+        final java.awt.Paint gradient;
+
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
+        pointerShape.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
+        pointerShape.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
+        pointerShape.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
+        pointerShape.closePath();
+        startPoint = new Point2D.Double(0.46 * imageWidth, 0.26 * imageHeight);
+        stopPoint = new Point2D.Double(0.53 * imageWidth, 0.26 * imageHeight);
+
 //       
-            POINTER_COLORS = new Color[]
-            {
-                this.getPointerColor().getDarkest(),
-                this.getPointerColor().getMediumDark(),
-                this.getPointerColor().getDarkest()
-            };
-        
-        if (PointSupport.pointsEqual(POINTER_START, POINTER_STOP))
+        gradientColorArray = new Color[]
         {
-            POINTER_STOP.setLocation(POINTER_STOP.getX(), POINTER_STOP.getY() + 1);
+            this.getPointerColor().getDarkest(),
+            this.getPointerColor().getMediumDark(),
+            this.getPointerColor().getDarkest()
+        };
+
+        if (PointSupport.pointsEqual(startPoint, stopPoint))
+        {
+            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
-        POINTER_GRADIENT = new LinearGradientPaint(POINTER_START, POINTER_STOP, POINTER_FRACTIONS, POINTER_COLORS);
-        graphics.setPaint(POINTER_GRADIENT);
-        graphics.fill(POINTER);
+        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+        graphics.setPaint(gradient);
+        graphics.fill(pointerShape);
 
         graphics.dispose();
     }
