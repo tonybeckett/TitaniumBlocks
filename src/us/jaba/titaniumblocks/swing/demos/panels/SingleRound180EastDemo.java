@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
+import us.jaba.titaniumblocks.core.frames.models.round.AnthraciteRoundFramePainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
@@ -43,7 +44,9 @@ public class SingleRound180EastDemo extends SingleRoundDemo
     public SingleRound180EastDemo()
     {
         super(new CircularTwoPostLayout(90, 270, Direction.CLOCKWISE, 0.75f, 85, 275));
-           setTitle("180");
+        setTitle("180E");
+
+        this.setRoundFramePainter(new AnthraciteRoundFramePainter());
     }
 
     /**
@@ -95,67 +98,7 @@ public class SingleRound180EastDemo extends SingleRoundDemo
             java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
         //</editor-fold>
         //</editor-fold>
 

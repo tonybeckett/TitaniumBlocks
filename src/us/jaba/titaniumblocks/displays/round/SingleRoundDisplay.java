@@ -215,8 +215,10 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         image = frameImage.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = 0;//linearFrameImage.getPainter().getFrameThickness();
-        Dimension interiorDim = dimensions;//linearFrameImage.getPainter().getInteriorDimension();
+        int offset = 0;
+ //       frameImage.getPainter().getFrameThickness();
+        Dimension interiorDim = dimensions;
+//linearFrameImage.getPainter().getInteriorDimension();
 //        valueTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() * fontScaleFactor));
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
         valueTextImage.getPainter().setFontSize(fontSize);

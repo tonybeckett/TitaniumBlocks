@@ -65,7 +65,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.getGauge().getBackdropPainter().setBackgroundColorModel(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22
+        this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
 
         Antimate antimate = new Antimate(100.0)
         {

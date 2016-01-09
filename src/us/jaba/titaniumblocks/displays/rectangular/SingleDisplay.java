@@ -47,6 +47,7 @@ import us.jaba.titaniumblocks.core.frames.models.rectangular.ShinyMetalLinearFra
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.TextPainter;
 import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.painters.TBText;
 import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
 import us.jaba.titaniumblocks.displays.LinearDisplay;
 
@@ -78,7 +79,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         linearFrameImage = new RectangularFrameImageFactory(new ShinyMetalLinearFramePainter());
         backgroundImage = new BackdropImageFactory(new NullBackdropPainter());
         doubleValueText = new DoubleValueText();
-        
+
         valueTextImage = new TextImageFactory(doubleValueText);
 
         foregroundImage = new FrontcoverImageFactory(new BasicLinearFrontcoverModel());
@@ -108,6 +109,9 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
         paintPreText(graphics, image, interiorDim, offset);
 
+        graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
+
+        
         image = valueTextImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
 
@@ -189,6 +193,5 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
     {
 
     }
-
 
 }

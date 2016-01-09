@@ -29,6 +29,8 @@ package us.jaba.titaniumblocks.displays;
 
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.Painter;
+import us.jaba.titaniumblocks.core.text.TextImageFactory;
+import us.jaba.titaniumblocks.core.text.painters.TBText;
 
 /**
  *
@@ -36,5 +38,14 @@ import us.jaba.titaniumblocks.core.Painter;
  */
 public class AbstractLinearDisplay extends CoreModel implements Painter
 {
-    
+
+    private final TBText tbText;
+    protected final TextImageFactory tbTextImage;
+
+    public AbstractLinearDisplay()
+    {
+        tbText = new TBText();
+        tbTextImage = new TextImageFactory(tbText);
+    }
+
 }

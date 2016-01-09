@@ -44,7 +44,6 @@ import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import us.jaba.titaniumblocks.core.pointers.PointerCoreInfo;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
-import us.jaba.titaniumblocks.core.utils.ClassFinder;
 
 /**
  *
@@ -149,22 +148,7 @@ public class PointerViewer extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(PointerViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+  
         //</editor-fold>
 
         /* Create and display the form */
