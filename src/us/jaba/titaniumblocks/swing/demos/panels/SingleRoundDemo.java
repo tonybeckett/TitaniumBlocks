@@ -37,6 +37,7 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.led.LedModel;
 import us.jaba.titaniumblocks.core.pointers.PointerPainter;
 import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.swing.Antimate;
@@ -121,9 +122,14 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setSmallKnobsPainter(startPainter, endPainter);
     }
 
-    public void setPointerPainter(PointerPainter pointerPainter)
+    public void setPointerPainter(PointerPainter pointerPainter, PointerPainter shadowPainter)
     {
-        panel.setPointerPainter(pointerPainter);
+        panel.setPointerPainter(pointerPainter, shadowPainter);
+    }
+
+    public void setLedPainter(LedModel ledPainter)
+    {
+        panel.setLedPainter(ledPainter);
     }
 
    

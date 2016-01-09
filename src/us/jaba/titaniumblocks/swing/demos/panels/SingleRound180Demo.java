@@ -35,6 +35,7 @@ import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.pointers.painters.MonumentPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.MonumentShadowPointerPainter;
 import us.jaba.titaniumblocks.core.posts.painters.BigBrassPostPainter;
 
 /**
@@ -57,7 +58,7 @@ public class SingleRound180Demo extends SingleRoundDemo
         this.setCenterPostPainter( new BigBrassPostPainter());
         this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
         this.setColor(ColorPalette.White);
-        this.setPointerPainter(new MonumentPointerPainter());
+        this.setPointerPainter(new MonumentPointerPainter(), new MonumentShadowPointerPainter());
         this.setPointerGradient( new PureOrange());
         this.setUnits("degrees");
     }

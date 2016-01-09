@@ -27,8 +27,17 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
+import us.jaba.titaniumblocks.core.backdrop.models.round.NoisyPlasticBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
+import us.jaba.titaniumblocks.core.frames.models.round.BlackMetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallWhiteKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
+import us.jaba.titaniumblocks.core.led.models.NullLedModel;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import us.jaba.titaniumblocks.core.pointers.painters.DualLinesPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadowpainters.DualLinesShadowPointerPainter;
+import us.jaba.titaniumblocks.core.posts.painters.MetalBlackPostPainter;
 
 /**
  *
@@ -43,8 +52,20 @@ public class SingleRound270Demo extends SingleRoundDemo
     public SingleRound270Demo()
     {
 
-        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.75f, 235, 305));
+        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.75f, 230, 310));
         setTitle("270");
+        
+        this.setRoundFramePainter(new BlackMetalRoundFramePainter());
+        NoisyPlasticBackdropPainter bp = new NoisyPlasticBackdropPainter();
+        bp.setTextureColor(ColorPalette.QuillGray);
+        this.setBackdropPainter(bp);
+        this.setCenterPostPainter( new MetalBlackPostPainter());
+        this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());
+        this.setColor(ColorPalette.DarkBlue);
+        this.setPointerPainter(new DualLinesPointerPainter(), new DualLinesShadowPointerPainter());
+        this.setPointerGradient( new PureRed());
+        this.setUnits("degrees");
+        this.setLedPainter(new NullLedModel());
     }
 
     /**

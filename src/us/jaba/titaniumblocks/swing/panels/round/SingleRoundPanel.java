@@ -43,6 +43,7 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.led.LedModel;
 import us.jaba.titaniumblocks.core.pointers.PointerPainter;
 import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.displays.round.SingleRoundDisplay;
@@ -210,9 +211,14 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setSmallKnobsPainter(startPainter, endPainter);
     }
 
-    public void setPointerPainter(PointerPainter pointerPainter)
+    public void setPointerPainter(PointerPainter pointerPainter, PointerPainter shadowPainter)
     {
-        singleGauge.setPointerPainter(pointerPainter);
+        singleGauge.setPointerPainter(pointerPainter, shadowPainter);
+    }
+
+    public void setLedPainter(LedModel ledPainter)
+    {
+        singleGauge.setLedPainter(ledPainter);
     }
 
    

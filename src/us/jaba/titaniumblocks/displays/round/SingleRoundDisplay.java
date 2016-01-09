@@ -55,6 +55,7 @@ import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
+import us.jaba.titaniumblocks.core.led.LedModel;
 import us.jaba.titaniumblocks.core.led.models.SingleBargraphLedOff;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.INVERTED_TEXT;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
@@ -93,7 +94,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     private UnitsText unitsText;
     private final TextImageFactory unitsTextImage;
     private final SingleBargraphLedOff led;
-    private final LedImageFactory ledImageFactory;
+    private LedImageFactory ledImageFactory;
     private ShadowPointerImageFactory shadowImage;
     private CircularLayout circularLayout;
     private final TBText tbText;
@@ -179,7 +180,6 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         ledImageFactory = new LedImageFactory(led);
 
         tickmarkModel = new RNormalMajMedMinorTickmarkModel();
-
 
         tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
         tickmarkModel.useFixedTextAdjust();
@@ -333,9 +333,10 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         this.disabledImage = new DisabledImageFactory(disabledPainter);
     }
 
-    public void setPointerPainter(PointerPainter pointerPainter)
+    public void setPointerPainter(PointerPainter pointerPainter, PointerPainter shadowPainter)
     {
         this.pointerImage = new PointerImageFactory(pointerPainter);
+        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
     }
 
     public void setValueTextPainter(TextPainter valueTextPainter)
@@ -353,6 +354,11 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     {
         startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
         endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));
+    }
+
+    public void setLedPainter(LedModel ledPainter)
+    {
+        this.ledImageFactory = new LedImageFactory(ledPainter);
     }
 
     public float getFontScaleFactor()

@@ -39,13 +39,13 @@ import us.jaba.titaniumblocks.swing.panels.rectangular.SingleLineDoubleLinearPan
  *
  * @author tbeckett
  */
-public class SingleGaugeDemo extends javax.swing.JFrame
+public class SingleLineGaugeDemo extends javax.swing.JFrame
 {
 
     /**
      * Creates new form DisplaySingleDemo
      */
-    public SingleGaugeDemo()
+    public SingleLineGaugeDemo()
     {
         initComponents();
         final SingleLineDoubleLinearPanel panel = new SingleLineDoubleLinearPanel();
@@ -54,6 +54,7 @@ public class SingleGaugeDemo extends javax.swing.JFrame
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(400, 200));
+        setTitle("SingleLineGaugeDemo");
         
          Antimate antimate = new Antimate(100.0)
         {
@@ -104,17 +105,19 @@ public class SingleGaugeDemo extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(SingleGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(SingleGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(SingleGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(SingleGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         
@@ -123,7 +126,7 @@ public class SingleGaugeDemo extends javax.swing.JFrame
         {
             public void run()
             {
-                new SingleGaugeDemo().setVisible(true);
+                new SingleLineGaugeDemo().setVisible(true);
             }
         });
     }
