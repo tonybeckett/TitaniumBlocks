@@ -31,12 +31,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Shape;
 import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
 import us.jaba.titaniumblocks.core.font.BaseFont;
@@ -56,7 +53,7 @@ public class TBText extends TextPainter
     public TBText()
     {
         super(BaseFont.DEFAULT_FONT.deriveFont(Font.ITALIC), new Standard().getTextColor());
-        setFontSize(12);
+        setFontSize(10);
     }
 
     @Override
@@ -75,7 +72,7 @@ public class TBText extends TextPainter
         boundary.setFrame(stringLayout.getBounds());
         graphics.drawString(value,
                 (int) ((imageWidth / 2.0) - (stringLayout.getBounds().getWidth() / 2)),
-                (int) (imageHeight * 0.875)
+                (int) (imageHeight * 0.905)
         );
         
         FontRenderContext frc = graphics.getFontRenderContext();
