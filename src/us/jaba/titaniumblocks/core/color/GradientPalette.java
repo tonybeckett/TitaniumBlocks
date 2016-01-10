@@ -49,6 +49,22 @@ public class GradientPalette
     {
     }
 
+    public GradientPalette(HSLColor base)
+    {
+        this(new HSLColor(base.getHue(), base.getSaturation(), 10).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 23).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 37).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 50).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 67).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 72).getRGB(),
+                new HSLColor(base.getHue(), base.getSaturation(), 90).getRGB());
+    }
+
+    public GradientPalette(Color rgbBase)
+    {
+        this(new HSLColor(rgbBase));
+    }
+
     public GradientPalette(Color darkest, Color dark, Color mediumDark, Color medium, Color mediumLight, Color light, Color lightest)
     {
         this.mediumColor = medium;
@@ -129,7 +145,5 @@ public class GradientPalette
     {
         this.lightestColor = very_light;
     }
-    
-    
 
 }

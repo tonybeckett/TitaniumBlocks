@@ -39,14 +39,7 @@ public final class Gold extends GradientPalette
 
     public Gold()
     {
-        super(new HSLColor(51, 100, 10).getRGB(), 
-                new HSLColor(51, 100, 23).getRGB(), 
-                new HSLColor(51, 100, 37).getRGB(), 
-                new HSLColor(51, 100, 50).getRGB(), 
-                new HSLColor(51, 100, 67).getRGB(), 
-                new HSLColor(51, 100, 72).getRGB(), 
-                new HSLColor(51, 100, 90).getRGB()
-                );
+        super(new HSLColor(51, 254.0f / 2.55f, 0));
     }
 
 }

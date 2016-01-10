@@ -31,11 +31,21 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
+
+
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Bone;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Brass;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Bronze;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.CastIron;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Chrome;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Copper;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gold;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gray;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Ivory;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Lcd;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Nickel;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Porcelain;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlue;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureCyan;
@@ -67,11 +77,19 @@ public class GradientCoreInfo
 
     public static final Class<?>[] GRADIENT_MODELS =
     {
+        Aluminum.class,
+        Bone.class,
         Brass.class,
+        Bronze.class,
+        CastIron.class,
         Chrome.class,
         Copper.class,
+        Gray.class,
         Gold.class,
         Lcd.class,
+        Ivory.class,
+        Nickel.class,
+        Porcelain.class,
         PureBlack.class,
         PureBlue.class,
         PureCyan.class,

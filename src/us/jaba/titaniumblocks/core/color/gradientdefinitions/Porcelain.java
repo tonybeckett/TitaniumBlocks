@@ -34,12 +34,19 @@ import us.jaba.titaniumblocks.core.color.HSLColor;
  *
  * @author tbeckett
  */
-public final class Brass extends GradientPalette
+public final class Porcelain extends GradientPalette
 {
 
-    public Brass()
-    {
-        super(new HSLColor(52, 162.0f/2.55f, 0));
+    public Porcelain()
+    {        
+          super(new HSLColor(42, 4, 70).getRGB(), 
+                new HSLColor(42, 4, 75).getRGB(), 
+                new HSLColor(42, 4, 80).getRGB(), 
+                new HSLColor(42, 4, 85).getRGB(), 
+                new HSLColor(42, 4, 90).getRGB(), 
+                new HSLColor(42, 4, 95).getRGB(), 
+                new HSLColor(42, 4, 100).getRGB()
+                );
     }
 
 }

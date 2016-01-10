@@ -34,12 +34,19 @@ import us.jaba.titaniumblocks.core.color.HSLColor;
  *
  * @author tbeckett
  */
-public final class Brass extends GradientPalette
+public final class Ivory extends GradientPalette
 {
 
-    public Brass()
+    public Ivory()
     {
-        super(new HSLColor(52, 162.0f/2.55f, 0));
+         super(new HSLColor(64, 5, 70).getRGB(), 
+                new HSLColor(64, 5, 75).getRGB(), 
+                new HSLColor(64, 5, 80).getRGB(), 
+                new HSLColor(64, 5, 85).getRGB(), 
+                new HSLColor(64, 5, 90).getRGB(), 
+                new HSLColor(64, 5, 95).getRGB(), 
+                new HSLColor(64, 5, 100).getRGB()
+                );
     }
 
 }

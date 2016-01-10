@@ -34,12 +34,12 @@ import us.jaba.titaniumblocks.core.color.HSLColor;
  *
  * @author tbeckett
  */
-public final class Brass extends GradientPalette
+public final class Nickel extends GradientPalette
 {
 
-    public Brass()
+    public Nickel()
     {
-        super(new HSLColor(52, 162.0f/2.55f, 0));
+        super(new HSLColor(50, 8.0f / 2.55f, 0));
     }
 
 }

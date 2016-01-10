@@ -39,14 +39,7 @@ public final class Copper extends GradientPalette
 
     public Copper()
     {
-        super(new HSLColor(33, 82, 10).getRGB(), 
-                new HSLColor(33, 82, 23).getRGB(), 
-                new HSLColor(33, 82, 37).getRGB(), 
-                new HSLColor(33, 82, 50).getRGB(), 
-                new HSLColor(33, 82, 67).getRGB(), 
-                new HSLColor(33, 82, 72).getRGB(), 
-                new HSLColor(33, 82, 90).getRGB()
-                );
+        super(new HSLColor(29, 184.0f/2.55f, 0));
     }
 
 }
