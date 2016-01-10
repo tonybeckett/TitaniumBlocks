@@ -45,6 +45,7 @@ import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gray;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Ivory;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Lcd;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Nickel;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Pewter;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Porcelain;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlue;
@@ -89,6 +90,7 @@ public class GradientCoreInfo
         Lcd.class,
         Ivory.class,
         Nickel.class,
+        Pewter.class,
         Porcelain.class,
         PureBlack.class,
         PureBlue.class,
