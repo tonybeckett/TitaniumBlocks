@@ -46,6 +46,24 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class TiltedBlackRoundFramePainter extends RoundFrameModel
 {
 
+    float[] frameMainFractions10 =
+    {
+        0.0f,
+        0.21f,
+        0.47f,
+        0.99f,
+        1.0f
+    };
+
+    Color[] frameMainColors10 =
+    {
+        new Color(102, 102, 102, 255),
+        new Color(0, 0, 0, 255),
+        new Color(102, 102, 102, 255),
+        new Color(0, 0, 0, 255),
+        new Color(0, 0, 0, 255)
+    };
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -58,55 +76,39 @@ public class TiltedBlackRoundFramePainter extends RoundFrameModel
         final int imageHeight = (int) dimensions.getHeight();
 
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
-        final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
+        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
 
-        final Area FRAME_OUTERFRAME = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
-        FRAME_OUTERFRAME.subtract(SUBTRACT);
+        final Area outerArea = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
+        outerArea.subtract(subtractArea);
         graphics.setPaint(outerFrameColor);
-        graphics.fill(FRAME_OUTERFRAME);
+        graphics.fill(outerArea);
 
-        final Area FRAME_MAIN = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
-        FRAME_MAIN.subtract(SUBTRACT);
-        final Point2D FRAME_MAIN_START = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMinY());
-        final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
-        final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
+        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
+        mainArea.subtract(subtractArea);
+        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
-        FRAME_MAIN_START.setLocation((0.22897196261682243 * imageWidth), (0.0794392523364486 * imageHeight));
-        FRAME_MAIN_STOP.setLocation(((0.22897196261682243 + 0.573576436351046) * imageWidth), ((0.0794392523364486 + 0.8191520442889918) * imageHeight));
-        float[] frameMainFractions10 =
-        {
-            0.0f,
-            0.21f,
-            0.47f,
-            0.99f,
-            1.0f
-        };
-        Color[] frameMainColors10 =
-        {
-            new Color(102, 102, 102, 255),
-            new Color(0, 0, 0, 255),
-            new Color(102, 102, 102, 255),
-            new Color(0, 0, 0, 255),
-            new Color(0, 0, 0, 255)
-        };
-        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint10 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions10, frameMainColors10);
+        mainStartPoint.setLocation((0.22897196261682243 * imageWidth), (0.0794392523364486 * imageHeight));
+        mainStopPoint.setLocation(((0.22897196261682243 + 0.573576436351046) * imageWidth), ((0.0794392523364486 + 0.8191520442889918) * imageHeight));
+
+        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+        Paint frameMainPaint10 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions10, frameMainColors10);
         graphics.setPaint(frameMainPaint10);
-        graphics.fill(FRAME_MAIN);
+        graphics.fill(mainArea);
 
-        //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
-        final Area FRAME_INNERFRAME = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
-        FRAME_INNERFRAME.subtract(SUBTRACT);
+        //final Ellipse2D innerArea = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
+        final Area innerArea = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
+        innerArea.subtract(subtractArea);
 
         // Former white ring
         graphics.setPaint(innerFrameColor);
-        graphics.fill(FRAME_INNERFRAME);
+        graphics.fill(innerArea);
 
         // Frame effect overlay
-        final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-       
+        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
 
-        this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
+        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
         graphics.dispose();
 
 //        if (BACKGROUND_IMAGE != null)
@@ -115,7 +117,6 @@ public class TiltedBlackRoundFramePainter extends RoundFrameModel
 //            G.drawImage(radFrameImage, 0, 0, null);
 //            G.dispose();
 //        }
-
     }
 
 }

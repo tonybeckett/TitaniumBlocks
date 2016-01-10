@@ -46,6 +46,36 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GoldRoundFramePainter extends RoundFrameModel
 {
 
+    float[] frameMainFractions7 =
+    {
+        0.0f,
+        0.15f,
+        0.22f,
+        0.3f,
+        0.38f,
+        0.44f,
+        0.51f,
+        0.6f,
+        0.68f,
+        0.75f,
+        1.0f
+    };
+
+    Color[] frameMainColors7 =
+    {
+        new Color(255, 255, 207, 255),
+        new Color(255, 237, 96, 255),
+        new Color(254, 199, 57, 255),
+        new Color(255, 249, 203, 255),
+        new Color(255, 199, 64, 255),
+        new Color(252, 194, 60, 255),
+        new Color(255, 204, 59, 255),
+        new Color(213, 134, 29, 255),
+        new Color(255, 201, 56, 255),
+        new Color(212, 135, 29, 255),
+        new Color(247, 238, 101, 255)
+    };
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -57,75 +87,39 @@ public class GoldRoundFramePainter extends RoundFrameModel
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
-        final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
+        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
 
-        final Area FRAME_OUTERFRAME = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
-        FRAME_OUTERFRAME.subtract(SUBTRACT);
+        final Area outerArea = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
+        outerArea.subtract(subtractArea);
         graphics.setPaint(outerFrameColor);
-        graphics.fill(FRAME_OUTERFRAME);
+        graphics.fill(outerArea);
 
-        final Area FRAME_MAIN = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
-        FRAME_MAIN.subtract(SUBTRACT);
-        final Point2D FRAME_MAIN_START = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMinY());
-        final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
-        final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
+        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
+        mainArea.subtract(subtractArea);
+        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
-        float[] frameMainFractions7 =
-        {
-            0.0f,
-            0.15f,
-            0.22f,
-            0.3f,
-            0.38f,
-            0.44f,
-            0.51f,
-            0.6f,
-            0.68f,
-            0.75f,
-            1.0f
-        };
-
-        Color[] frameMainColors7 =
-        {
-            new Color(255, 255, 207, 255),
-            new Color(255, 237, 96, 255),
-            new Color(254, 199, 57, 255),
-            new Color(255, 249, 203, 255),
-            new Color(255, 199, 64, 255),
-            new Color(252, 194, 60, 255),
-            new Color(255, 204, 59, 255),
-            new Color(213, 134, 29, 255),
-            new Color(255, 201, 56, 255),
-            new Color(212, 135, 29, 255),
-            new Color(247, 238, 101, 255)
-        };
-        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint7 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions7, frameMainColors7);
+        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+        Paint frameMainPaint7 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions7, frameMainColors7);
         graphics.setPaint(frameMainPaint7);
-        graphics.fill(FRAME_MAIN);
+        graphics.fill(mainArea);
 
-        //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
-        final Area FRAME_INNERFRAME = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
-        FRAME_INNERFRAME.subtract(SUBTRACT);
+        //final Ellipse2D innerArea = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
+        final Area innerArea = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
+        innerArea.subtract(subtractArea);
 
         // Former white ring
         graphics.setPaint(innerFrameColor);
-        graphics.fill(FRAME_INNERFRAME);
+        graphics.fill(innerArea);
 
         // Frame effect overlay
-        final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-       
-        this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
+        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+
+        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
 
         graphics.dispose();
 
-//            if (BACKGROUND_IMAGE != null)
-//            {
-//                final Graphics2D G = BACKGROUND_IMAGE.createGraphics();
-//                G.drawImage(radFrameImage, 0, 0, null);
-//                G.dispose();
-//            }
     }
-
 
 }

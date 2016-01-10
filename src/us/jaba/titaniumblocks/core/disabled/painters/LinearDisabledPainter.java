@@ -49,39 +49,39 @@ public class LinearDisabledPainter extends DisabledPainter
         final int IMAGE_WIDTH = (int) dimensions.getWidth();
         final int IMAGE_HEIGHT = (int) dimensions.getHeight();
 
-        final double OUTER_FRAME_CORNER_RADIUS;
+        final double outerAreaCornerRadius;
         if (IMAGE_WIDTH >= IMAGE_HEIGHT)
         {
-            OUTER_FRAME_CORNER_RADIUS = IMAGE_HEIGHT * 0.05;
+            outerAreaCornerRadius = IMAGE_HEIGHT * 0.05;
         } else
         {
-            OUTER_FRAME_CORNER_RADIUS = IMAGE_WIDTH * 0.05;
+            outerAreaCornerRadius = IMAGE_WIDTH * 0.05;
         }
-        final java.awt.geom.RoundRectangle2D OUTER_FRAME = new java.awt.geom.RoundRectangle2D.Double(0.0, 0.0, IMAGE_WIDTH, IMAGE_HEIGHT, OUTER_FRAME_CORNER_RADIUS, OUTER_FRAME_CORNER_RADIUS);
-        final double FRAME_MAIN_CORNER_RADIUS;
+        final java.awt.geom.RoundRectangle2D outerArea = new java.awt.geom.RoundRectangle2D.Double(0.0, 0.0, IMAGE_WIDTH, IMAGE_HEIGHT, outerAreaCornerRadius, outerAreaCornerRadius);
+        final double mainAreaCornerRadius;
         if (IMAGE_WIDTH >= IMAGE_HEIGHT)
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getHeight() - IMAGE_HEIGHT - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getHeight() - IMAGE_HEIGHT - 2) / 2.0);
         } else
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getWidth() - IMAGE_WIDTH - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getWidth() - IMAGE_WIDTH - 2) / 2.0);
         }
-        final java.awt.geom.RoundRectangle2D FRAME_MAIN = new java.awt.geom.RoundRectangle2D.Double(1.0, 1.0, IMAGE_WIDTH - 2, IMAGE_HEIGHT - 2, FRAME_MAIN_CORNER_RADIUS, FRAME_MAIN_CORNER_RADIUS);
+        final java.awt.geom.RoundRectangle2D mainArea = new java.awt.geom.RoundRectangle2D.Double(1.0, 1.0, IMAGE_WIDTH - 2, IMAGE_HEIGHT - 2, mainAreaCornerRadius, mainAreaCornerRadius);
 
-        final double INNER_FRAME_CORNER_RADIUS;
+        final double innerAreaCornerRadius;
         if (IMAGE_WIDTH >= IMAGE_HEIGHT)
         {
-            INNER_FRAME_CORNER_RADIUS = IMAGE_HEIGHT * 0.02857143;
+            innerAreaCornerRadius = IMAGE_HEIGHT * 0.02857143;
         } else
         {
-            INNER_FRAME_CORNER_RADIUS = IMAGE_WIDTH * 0.02857143;
+            innerAreaCornerRadius = IMAGE_WIDTH * 0.02857143;
         }
 
-        final java.awt.geom.RoundRectangle2D INNER_FRAME = new java.awt.geom.RoundRectangle2D.Double(FRAME_MAIN.getX() + 16, FRAME_MAIN.getY() + 16, FRAME_MAIN.getWidth() - 32, FRAME_MAIN.getHeight() - 32, INNER_FRAME_CORNER_RADIUS, INNER_FRAME_CORNER_RADIUS);
+        final java.awt.geom.RoundRectangle2D innerArea = new java.awt.geom.RoundRectangle2D.Double(mainArea.getX() + 16, mainArea.getY() + 16, mainArea.getWidth() - 32, mainArea.getHeight() - 32, innerAreaCornerRadius, innerAreaCornerRadius);
 
-        final double BACKGROUND_CORNER_RADIUS = INNER_FRAME_CORNER_RADIUS - 1;
+        final double BACKGROUND_CORNER_RADIUS = innerAreaCornerRadius - 1;
 
-        final java.awt.geom.RoundRectangle2D BACKGROUND = new java.awt.geom.RoundRectangle2D.Double(INNER_FRAME.getX() + 1, INNER_FRAME.getY() + 1, INNER_FRAME.getWidth() - 2, INNER_FRAME.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS);
+        final java.awt.geom.RoundRectangle2D BACKGROUND = new java.awt.geom.RoundRectangle2D.Double(innerArea.getX() + 1, innerArea.getY() + 1, innerArea.getWidth() - 2, innerArea.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS);
 
         graphics.setColor(disabledColor);
         graphics.fill(BACKGROUND);

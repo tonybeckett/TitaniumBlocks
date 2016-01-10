@@ -62,39 +62,39 @@ public abstract class AbstractRectangularBackdropModel extends BackdropModel
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final double OUTER_FRAME_CORNER_RADIUS;
+        final double outerAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            OUTER_FRAME_CORNER_RADIUS = imageHeight * 0.05;
+            outerAreaCornerRadius = imageHeight * 0.05;
         } else
         {
-            OUTER_FRAME_CORNER_RADIUS = imageWidth * 0.05;
+            outerAreaCornerRadius = imageWidth * 0.05;
         }
-        final RoundRectangle2D OUTER_FRAME = new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, OUTER_FRAME_CORNER_RADIUS, OUTER_FRAME_CORNER_RADIUS);
-        final double FRAME_MAIN_CORNER_RADIUS;
+        final RoundRectangle2D outerArea = new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, outerAreaCornerRadius, outerAreaCornerRadius);
+        final double mainAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getHeight() - imageHeight - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getHeight() - imageHeight - 2) / 2.0);
         } else
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getWidth() - imageWidth - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getWidth() - imageWidth - 2) / 2.0);
         }
-        final RoundRectangle2D FRAME_MAIN = new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, FRAME_MAIN_CORNER_RADIUS, FRAME_MAIN_CORNER_RADIUS);
+        final RoundRectangle2D mainArea = new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, mainAreaCornerRadius, mainAreaCornerRadius);
 
-        final double INNER_FRAME_CORNER_RADIUS;
+        final double innerAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            INNER_FRAME_CORNER_RADIUS = imageHeight * 0.02857143;
+            innerAreaCornerRadius = imageHeight * 0.02857143;
         } else
         {
-            INNER_FRAME_CORNER_RADIUS = imageWidth * 0.02857143;
+            innerAreaCornerRadius = imageWidth * 0.02857143;
         }
 
-        final RoundRectangle2D INNER_FRAME = new RoundRectangle2D.Double(FRAME_MAIN.getX() + 0, FRAME_MAIN.getY() + 0, FRAME_MAIN.getWidth() - 0, FRAME_MAIN.getHeight() - 0, INNER_FRAME_CORNER_RADIUS, INNER_FRAME_CORNER_RADIUS);
+        final RoundRectangle2D innerArea = new RoundRectangle2D.Double(mainArea.getX() + 0, mainArea.getY() + 0, mainArea.getWidth() - 0, mainArea.getHeight() - 0, innerAreaCornerRadius, innerAreaCornerRadius);
 
-        final double BACKGROUND_CORNER_RADIUS = INNER_FRAME_CORNER_RADIUS - 1;
+        final double BACKGROUND_CORNER_RADIUS = innerAreaCornerRadius - 1;
 
-        final RoundRectangle2D GAUGE_BACKGROUND = new RoundRectangle2D.Double(INNER_FRAME.getX() + 1, INNER_FRAME.getY() + 1, INNER_FRAME.getWidth() - 2, INNER_FRAME.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS);
+        final RoundRectangle2D GAUGE_BACKGROUND = new RoundRectangle2D.Double(innerArea.getX() + 1, innerArea.getY() + 1, innerArea.getWidth() - 2, innerArea.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS);
         final Point2D BACKGROUND_START = new Point2D.Double(0, GAUGE_BACKGROUND.getBounds2D().getMinY());
         final Point2D BACKGROUND_STOP = new Point2D.Double(0, GAUGE_BACKGROUND.getBounds2D().getMaxY());
         if (BACKGROUND_START.equals(BACKGROUND_STOP))

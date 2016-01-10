@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
@@ -48,6 +49,31 @@ public class BaseBigPostPainter extends PostPainter
     final Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
     final Color[] BIGCENTER_FOREGROUND_COLORS;
 
+    public BaseBigPostPainter(GradientPalette gd)
+    {
+        this(new Color[]
+        {
+            gd.getMediumLight(),
+            gd.getMediumDark(),
+        }, new Color[]
+        {
+            gd.getMediumDark(),
+            gd.getMediumLight(),
+        }, new Color[]
+        {
+            gd.getMediumLight(),
+            gd.getMediumDark(),
+            gd.getMedium(),
+        }, new Color[]
+        {
+            gd.getLightest(),
+            gd.getMedium(),
+            gd.getMediumDark(),
+            gd.getMedium(),
+            gd.getLight()
+        });
+    }
+
     public BaseBigPostPainter(Color[] BIGCENTER_BACKGROUNDFRAME_COLORS, Color[] BIGCENTER_BACKGROUND_COLORS, Color[] BIGCENTER_FOREGROUNDFRAME_COLORS, Color[] BIGCENTER_FOREGROUND_COLORS)
     {
         this.BIGCENTER_BACKGROUNDFRAME_COLORS = BIGCENTER_BACKGROUNDFRAME_COLORS;
@@ -55,8 +81,6 @@ public class BaseBigPostPainter extends PostPainter
         this.BIGCENTER_FOREGROUNDFRAME_COLORS = BIGCENTER_FOREGROUNDFRAME_COLORS;
         this.BIGCENTER_FOREGROUND_COLORS = BIGCENTER_FOREGROUND_COLORS;
     }
-
-    
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
@@ -78,7 +102,6 @@ public class BaseBigPostPainter extends PostPainter
             1.0f
         };
 
-       
         PointSupport.validateGradientPoints(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP);
         final LinearGradientPaint BIGCENTER_BACKGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP, BIGCENTER_BACKGROUNDFRAME_FRACTIONS, BIGCENTER_BACKGROUNDFRAME_COLORS);
         graphics.setPaint(BIGCENTER_BACKGROUNDFRAME_GRADIENT);
@@ -93,7 +116,6 @@ public class BaseBigPostPainter extends PostPainter
             1.0f
         };
 
-        
         PointSupport.validateGradientPoints(BIGCENTER_BACKGROUND_START, BIGCENTER_BACKGROUND_STOP);
         final LinearGradientPaint BIGCENTER_BACKGROUND_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUND_START, BIGCENTER_BACKGROUND_STOP, BIGCENTER_BACKGROUND_FRACTIONS, BIGCENTER_BACKGROUND_COLORS);
         graphics.setPaint(BIGCENTER_BACKGROUND_GRADIENT);
@@ -109,7 +131,6 @@ public class BaseBigPostPainter extends PostPainter
             1.0f
         };
 
-      
         PointSupport.validateGradientPoints(BIGCENTER_FOREGROUNDFRAME_START, BIGCENTER_FOREGROUNDFRAME_STOP);
         final LinearGradientPaint BIGCENTER_FOREGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_FOREGROUNDFRAME_START, BIGCENTER_FOREGROUNDFRAME_STOP, BIGCENTER_FOREGROUNDFRAME_FRACTIONS, BIGCENTER_FOREGROUNDFRAME_COLORS);
         graphics.setPaint(BIGCENTER_FOREGROUNDFRAME_GRADIENT);
@@ -127,8 +148,6 @@ public class BaseBigPostPainter extends PostPainter
             1.0f
         };
 
-        
-      
         PointSupport.validateGradientPoints(BIGCENTER_FOREGROUND_START, BIGCENTER_FOREGROUND_STOP);
         final LinearGradientPaint BIGCENTER_FOREGROUND_GRADIENT = new LinearGradientPaint(BIGCENTER_FOREGROUND_START, BIGCENTER_FOREGROUND_STOP, BIGCENTER_FOREGROUND_FRACTIONS, BIGCENTER_FOREGROUND_COLORS);
         graphics.setPaint(BIGCENTER_FOREGROUND_GRADIENT);

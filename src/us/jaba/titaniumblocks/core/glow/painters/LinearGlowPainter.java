@@ -85,40 +85,40 @@ public class LinearGlowPainter extends GlowPainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final double OUTER_FRAME_CORNER_RADIUS;
+        final double outerAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            OUTER_FRAME_CORNER_RADIUS = imageHeight * 0.05;
+            outerAreaCornerRadius = imageHeight * 0.05;
         } else
         {
-            OUTER_FRAME_CORNER_RADIUS = imageWidth * 0.05;
+            outerAreaCornerRadius = imageWidth * 0.05;
         }
-        final RoundRectangle2D OUTER_FRAME = new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, OUTER_FRAME_CORNER_RADIUS, OUTER_FRAME_CORNER_RADIUS);
-        final double FRAME_MAIN_CORNER_RADIUS;
+        final RoundRectangle2D outerArea = new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, outerAreaCornerRadius, outerAreaCornerRadius);
+        final double mainAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getHeight() - imageHeight - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getHeight() - imageHeight - 2) / 2.0);
         } else
         {
-            FRAME_MAIN_CORNER_RADIUS = OUTER_FRAME_CORNER_RADIUS - ((OUTER_FRAME.getWidth() - imageWidth - 2) / 2.0);
+            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getWidth() - imageWidth - 2) / 2.0);
         }
-        final RoundRectangle2D FRAME_MAIN = new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, FRAME_MAIN_CORNER_RADIUS, FRAME_MAIN_CORNER_RADIUS);
+        final RoundRectangle2D mainArea = new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, mainAreaCornerRadius, mainAreaCornerRadius);
 
-        final double INNER_FRAME_CORNER_RADIUS;
+        final double innerAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
-            INNER_FRAME_CORNER_RADIUS = imageHeight * 0.02857143;
+            innerAreaCornerRadius = imageHeight * 0.02857143;
         } else
         {
-            INNER_FRAME_CORNER_RADIUS = imageWidth * 0.02857143;
+            innerAreaCornerRadius = imageWidth * 0.02857143;
         }
 
-        final RoundRectangle2D INNER_FRAME = new RoundRectangle2D.Double(FRAME_MAIN.getX() + 16, FRAME_MAIN.getY() + 16, FRAME_MAIN.getWidth() - 32, FRAME_MAIN.getHeight() - 32, INNER_FRAME_CORNER_RADIUS, INNER_FRAME_CORNER_RADIUS);
+        final RoundRectangle2D innerArea = new RoundRectangle2D.Double(mainArea.getX() + 16, mainArea.getY() + 16, mainArea.getWidth() - 32, mainArea.getHeight() - 32, innerAreaCornerRadius, innerAreaCornerRadius);
 
-        final double BACKGROUND_CORNER_RADIUS = INNER_FRAME_CORNER_RADIUS - 1;
+        final double BACKGROUND_CORNER_RADIUS = innerAreaCornerRadius - 1;
 
-        final Area GLOWRING = new Area(new RoundRectangle2D.Double(INNER_FRAME.getX() + 1, INNER_FRAME.getY() + 1, INNER_FRAME.getWidth() - 2, INNER_FRAME.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS));
-        final Area TMP_RING = new Area(new RoundRectangle2D.Double(INNER_FRAME.getX() + 6, INNER_FRAME.getY() + 6, INNER_FRAME.getWidth() - 12, INNER_FRAME.getHeight() - 12, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS));
+        final Area GLOWRING = new Area(new RoundRectangle2D.Double(innerArea.getX() + 1, innerArea.getY() + 1, innerArea.getWidth() - 2, innerArea.getHeight() - 2, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS));
+        final Area TMP_RING = new Area(new RoundRectangle2D.Double(innerArea.getX() + 6, innerArea.getY() + 6, innerArea.getWidth() - 12, innerArea.getHeight() - 12, BACKGROUND_CORNER_RADIUS, BACKGROUND_CORNER_RADIUS));
         GLOWRING.subtract(TMP_RING);
 
         if (!isActive())

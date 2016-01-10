@@ -46,23 +46,28 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BrassRoundFramePainter extends RoundFrameModel
 {
 
-    /**
-     * Creates the frame image for a radial gauge. The image parameters and the
-     * image will be cached. If the current request has the same parameters as
-     * the last request it will return the already created image instead of
-     * creating a new image. If an image is passed to the method, it will paint
-     * to the image and return this image. This will reduce the memory
-     * consumption.
-     *
-     * @param WIDTH
-     * @param FRAME_DESIGN
-     * @param CUSTOM_FRAME_DESIGN
-     * @param FRAME_BASECOLOR
-     * @param FRAME_BASECOLOR_ENABLED
-     * @param FRAME_EFFECT
-     * @param BACKGROUND_IMAGE
-     * @return a buffered image that contains the frame image for a radial gauge
-     */
+    float[] frameMainFractions4 =
+    {
+        0.0f,
+        0.05f,
+        0.10f,
+        0.50f,
+        0.90f,
+        0.95f,
+        1.0f
+    };
+
+    Color[] frameMainColors4 =
+    {
+        new Color(249, 243, 155, 255),
+        new Color(246, 226, 101, 255),
+        new Color(240, 225, 132, 255),
+        new Color(90, 57, 22, 255),
+        new Color(249, 237, 139, 255),
+        new Color(243, 226, 108, 255),
+        new Color(202, 182, 113, 255)
+    };
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -73,58 +78,36 @@ public class BrassRoundFramePainter extends RoundFrameModel
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-       
+
         // Shape that will be subtracted from the ellipse and will be filled by the background image later
-        final Area SUBTRACT = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
+        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031));
 
-        final Area FRAME_OUTERFRAME = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
-        FRAME_OUTERFRAME.subtract(SUBTRACT);
+        final Area outerArea = new Area(new Ellipse2D.Double(0.0, 0.0, imageWidth, imageHeight));
+        outerArea.subtract(subtractArea);
         graphics.setPaint(outerFrameColor);
-        graphics.fill(FRAME_OUTERFRAME);
+        graphics.fill(outerArea);
 
-        final Area FRAME_MAIN = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
-        FRAME_MAIN.subtract(SUBTRACT);
-        final Point2D FRAME_MAIN_START = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMinY());
-        final Point2D FRAME_MAIN_STOP = new Point2D.Double(0, FRAME_MAIN.getBounds2D().getMaxY());
-        final Point2D FRAME_MAIN_CENTER = new Point2D.Double(FRAME_MAIN.getBounds2D().getCenterX(), FRAME_MAIN.getBounds2D().getCenterY());
+        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * 0.004672897048294544, imageHeight * 0.004672897048294544, imageWidth * 0.9906542301177979, imageHeight * 0.9906542301177979));
+        mainArea.subtract(subtractArea);
+        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
-        float[] frameMainFractions4 =
-        {
-            0.0f,
-            0.05f,
-            0.10f,
-            0.50f,
-            0.90f,
-            0.95f,
-            1.0f
-        };
-
-        Color[] frameMainColors4 =
-        {
-            new Color(249, 243, 155, 255),
-            new Color(246, 226, 101, 255),
-            new Color(240, 225, 132, 255),
-            new Color(90, 57, 22, 255),
-            new Color(249, 237, 139, 255),
-            new Color(243, 226, 108, 255),
-            new Color(202, 182, 113, 255)
-        };
-        PointSupport.validateGradientPoints(FRAME_MAIN_START, FRAME_MAIN_STOP);
-        Paint frameMainPaint4 = new LinearGradientPaint(FRAME_MAIN_START, FRAME_MAIN_STOP, frameMainFractions4, frameMainColors4);
+        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+        Paint frameMainPaint4 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions4, frameMainColors4);
         graphics.setPaint(frameMainPaint4);
-        graphics.fill(FRAME_MAIN);
+        graphics.fill(mainArea);
 
-        //final Ellipse2D FRAME_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948);
-        final Area FRAME_INNERFRAME = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
-        FRAME_INNERFRAME.subtract(SUBTRACT);
+        final Area innerArea = new Area(new Ellipse2D.Double(imageWidth * 0.07943925261497498, imageHeight * 0.07943925261497498, imageWidth * 0.8411215543746948, imageHeight * 0.8411215543746948));
+        innerArea.subtract(subtractArea);
 
         // Former white ring
         graphics.setPaint(innerFrameColor);
-        graphics.fill(FRAME_INNERFRAME);
+        graphics.fill(innerArea);
 
         // Frame effect overlay
-        final Point2D EFFECT_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-        this.getEffect().paint(graphics, dimensions, FRAME_OUTERFRAME, EFFECT_CENTER);
+        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
 
         graphics.dispose();
 
