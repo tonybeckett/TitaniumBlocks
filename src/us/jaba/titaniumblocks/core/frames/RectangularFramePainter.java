@@ -59,6 +59,10 @@ public class RectangularFramePainter extends FrameModel
         0.12f,
         1.0f
     };
+    
+    protected static Color[] NULL_COLOR_ARRAY = {new Color(254, 254, 254, 255), new Color(0, 0, 0, 255)};
+
+
     protected static final float[] SEVENTEEN_FRACTION_ARRAY = {0.0F, 0.09F, 0.12F, 0.16F, 0.25F, 0.29F, 0.33F, 0.38F, 0.48F, 0.52F, 0.63F, 0.68F, 0.8F, 0.83F, 0.87F, 0.97F, 1.0F};
     
     private float[] gradientFractions;
