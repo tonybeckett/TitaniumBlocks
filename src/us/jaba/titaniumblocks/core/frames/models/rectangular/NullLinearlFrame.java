@@ -27,10 +27,10 @@
  */
 package us.jaba.titaniumblocks.core.frames.models.rectangular;
 
+import java.awt.Color;
 import us.jaba.titaniumblocks.core.frames.*;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
- 
 
 /**
  *
@@ -39,24 +39,38 @@ import java.awt.Graphics2D;
 public final class NullLinearlFrame extends RectangularFramePainter
 {
 
+    static float[] fractionArray =
+    {
+        0.0f,
+        1.0f
+    };
+
+    static Color[] colorArray =
+    {
+        new Color(254, 254, 254, 255),
+        new Color(0, 0, 0, 255)
+    };
+
     public NullLinearlFrame()
     {
-        this.frameThickness = 0;
+        super(fractionArray, colorArray);
+         this.frameThickness = 0;
     }
 
+   
     @Override
     public void setFrameThickness(int frameThickness)
     {
-        
+
     }
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        super.paint(graphics, dimensions); 
-        
+        super.paint(graphics, dimensions);
+
         interiorDimension.setSize(dimensions);
 
     }
-   
+
 }

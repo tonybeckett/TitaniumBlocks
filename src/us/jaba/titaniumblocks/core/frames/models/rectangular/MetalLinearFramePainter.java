@@ -30,12 +30,7 @@ package us.jaba.titaniumblocks.core.frames.models.rectangular;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
-import java.awt.RenderingHints;
 import java.awt.geom.Area;
-import java.awt.geom.Point2D;
-import java.awt.geom.RoundRectangle2D;
 import us.jaba.titaniumblocks.core.frames.RectangularFramePainter;
 
 /**
@@ -45,15 +40,7 @@ import us.jaba.titaniumblocks.core.frames.RectangularFramePainter;
 public class MetalLinearFramePainter extends RectangularFramePainter
 {
 
-    float[] frameMainFractions2 =
-    {
-        0.0f,
-        0.07f,
-        0.12f,
-        1.0f
-    };
-
-    Color[] frameMainColors2 =
+    static Color[] COLOR_ARRAY =
     {
         new Color(254, 254, 254, 255),
         new Color(210, 210, 210, 255),
@@ -61,94 +48,15 @@ public class MetalLinearFramePainter extends RectangularFramePainter
         new Color(213, 213, 213, 255)
     };
 
-    @Override
-    protected void paintFrame(Graphics2D graphics, Dimension dimensions)
+    public MetalLinearFramePainter()
     {
+        super(FOUR_FRACTION_ARRAY, COLOR_ARRAY);
+    }
 
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        final double outerAreaCornerRadius;
-        if (imageWidth >= imageHeight)
-        {
-            outerAreaCornerRadius = imageHeight * 0.05;
-        } else
-        {
-            outerAreaCornerRadius = imageWidth * 0.05;
-        }
-
-        final Area outerArea = new Area(new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, outerAreaCornerRadius, outerAreaCornerRadius));
-        graphics.setPaint(outerFrameColor);
-        // The outer frame will be painted later because first we have to subtract the inner background
-
-        final double mainAreaCornerRadius;
-        if (imageWidth >= imageHeight)
-        {
-            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getBounds2D().getHeight() - imageHeight - 2) / 2.0);
-        } else
-        {
-            mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getBounds2D().getWidth() - imageWidth - 2) / 2.0);
-        }
-        final Area mainArea = new Area(new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, mainAreaCornerRadius, mainAreaCornerRadius));
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
-
-        // Create shape that needs to be subtracted from rectangles
-        final double subtractAreaCornerRadius;
-        if (imageWidth >= imageHeight)
-        {
-            subtractAreaCornerRadius = imageHeight * 0.02857143;
-        } else
-        {
-            subtractAreaCornerRadius = imageWidth * 0.02857143;
-        }
-        final Area subtractArea = new Area(new RoundRectangle2D.Double(
-                mainArea.getBounds2D().getX() + frameThickness,
-                mainArea.getBounds2D().getY() + frameThickness,
-                mainArea.getBounds2D().getWidth() - (frameThickness * 2),
-                mainArea.getBounds2D().getHeight() - (frameThickness * 2),
-                subtractAreaCornerRadius, subtractAreaCornerRadius));
-
-        // Paint outer frame after we subtracted the inner background shape
-        outerArea.subtract(subtractArea);
-        graphics.fill(outerArea);
-
-        final float angleOffset = (float) Math.toDegrees(Math.atan((imageHeight / 8.0f) / (imageWidth / 2.0f)));
-//
-
-        Paint frameMainGradient2 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions2, frameMainColors2);
-        graphics.setPaint(frameMainGradient2);
-        mainArea.subtract(subtractArea);
-        graphics.fill(mainArea);;
-//
-        this.getLinearEffect().paint(graphics, new Dimension(imageWidth, imageHeight), outerArea);
-
-        final double innerAreaCornerRadius;
-        if (imageWidth >= imageHeight)
-        {
-            innerAreaCornerRadius = imageHeight * 0.02857143;
-        } else
-        {
-            innerAreaCornerRadius = imageWidth * 0.02857143;
-        }
-
-        final Area innerArea = new Area(new java.awt.geom.RoundRectangle2D.Double(
-                mainArea.getBounds2D().getX() + frameThickness,
-                mainArea.getBounds2D().getY() + frameThickness,
-                mainArea.getBounds2D().getWidth() - (frameThickness * 2),
-                mainArea.getBounds2D().getHeight() - (frameThickness * 2),
-                innerAreaCornerRadius, innerAreaCornerRadius));
-        graphics.setPaint(innerFrameColor);
-
-        innerArea.subtract(subtractArea);
-        graphics.fill(innerArea);
-
-        graphics.dispose();
-
+    @Override
+    protected void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
+    {
+        this.basicPaintFrame(graphics, dimensions, mainArea, outerArea, innerArea, subtractArea);
     }
 
 }

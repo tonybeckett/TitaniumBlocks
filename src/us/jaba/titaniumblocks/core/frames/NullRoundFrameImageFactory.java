@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public class NullRoundFrameImageFactory extends RoundFrameImageFactory
 {
 
-    public NullRoundFrameImageFactory(RoundFrameModel painter)
+    public NullRoundFrameImageFactory(FrameModel painter)
     {
         super(painter);
     }

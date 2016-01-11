@@ -32,7 +32,6 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.Paint;
-import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
@@ -47,19 +46,23 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GlossyMetalLinearFramePainter extends RectangularFramePainter
 {
 
-    Color[] frameMainColors4 =
+     
+
+    private static final Color[] COLOR_ARRAY =
     {
         new Color(0.9568627451f, 0.9568627451f, 0.9568627451f, 1f),
         new Color(0.8117647059f, 0.8117647059f, 0.8117647059f, 1f),
         new Color(0.8117647059f, 0.8117647059f, 0.8117647059f, 1f)
     };
 
-    @Override
-    protected void paintFrame(Graphics2D graphics, Dimension dimensions)
+    public GlossyMetalLinearFramePainter()
     {
+        super(NULL_FRACTION_ARRAY, COLOR_ARRAY);
+    }
 
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+    @Override
+    protected void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
+    {
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
@@ -73,10 +76,6 @@ public class GlossyMetalLinearFramePainter extends RectangularFramePainter
             outerAreaCornerRadius = imageWidth * 0.05;
         }
 
-        final Area outerArea = new Area(new RoundRectangle2D.Double(0.0, 0.0, imageWidth, imageHeight, outerAreaCornerRadius, outerAreaCornerRadius));
-        graphics.setPaint(outerFrameColor);
-        // The outer frame will be painted later because first we have to subtract the inner background
-
         final double mainAreaCornerRadius;
         if (imageWidth >= imageHeight)
         {
@@ -85,10 +84,6 @@ public class GlossyMetalLinearFramePainter extends RectangularFramePainter
         {
             mainAreaCornerRadius = outerAreaCornerRadius - ((outerArea.getBounds2D().getWidth() - imageWidth - 2) / 2.0);
         }
-        final Area mainArea = new Area(new RoundRectangle2D.Double(1.0, 1.0, imageWidth - 2, imageHeight - 2, mainAreaCornerRadius, mainAreaCornerRadius));
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         // Create shape that needs to be subtracted from rectangles
         final double subtractAreaCornerRadius;
@@ -99,19 +94,11 @@ public class GlossyMetalLinearFramePainter extends RectangularFramePainter
         {
             subtractAreaCornerRadius = imageWidth * 0.02857143;
         }
-        final Area subtractArea = new Area(new RoundRectangle2D.Double(
-                mainArea.getBounds2D().getX() + frameThickness,
-                mainArea.getBounds2D().getY() + frameThickness,
-                mainArea.getBounds2D().getWidth() - (frameThickness * 2),
-                mainArea.getBounds2D().getHeight() - (frameThickness * 2),
-                subtractAreaCornerRadius, subtractAreaCornerRadius));
 
         // Paint outer frame after we subtracted the inner background shape
         outerArea.subtract(subtractArea);
         graphics.fill(outerArea);
 
-        final float angleOffset = (float) Math.toDegrees(Math.atan((imageHeight / 8.0f) / (imageWidth / 2.0f)));
-//
         // The smaller side is important for the contour gradient
         float relFrameSize;
         if (imageWidth >= imageHeight)
@@ -128,7 +115,7 @@ public class GlossyMetalLinearFramePainter extends RectangularFramePainter
             1.0f
         };
 
-        Paint frameMainGradient4 = new ContourGradientPaint(outerArea.getBounds2D(), frameMainFractions4, frameMainColors4);
+        Paint frameMainGradient4 = new ContourGradientPaint(outerArea.getBounds2D(), frameMainFractions4, COLOR_ARRAY);
         graphics.setPaint(frameMainGradient4);
         graphics.fill(mainArea);
 
@@ -165,23 +152,8 @@ public class GlossyMetalLinearFramePainter extends RectangularFramePainter
         graphics.setPaint(new Color(0x333333));
         graphics.fill(FRAME_MAIN_GLOSSY4);
 //
-        this.getLinearEffect().paint(graphics, new Dimension(imageWidth, imageHeight), outerArea);
+        this.getLinearEffect().paint(graphics, dimensions, outerArea);
 
-        final double innerAreaCornerRadius;
-        if (imageWidth >= imageHeight)
-        {
-            innerAreaCornerRadius = imageHeight * 0.02857143;
-        } else
-        {
-            innerAreaCornerRadius = imageWidth * 0.02857143;
-        }
-
-        final Area innerArea = new Area(new java.awt.geom.RoundRectangle2D.Double(
-                mainArea.getBounds2D().getX() + frameThickness,
-                mainArea.getBounds2D().getY() + frameThickness,
-                mainArea.getBounds2D().getWidth() - (frameThickness * 2),
-                mainArea.getBounds2D().getHeight() - (frameThickness * 2),
-                innerAreaCornerRadius, innerAreaCornerRadius));
         graphics.setPaint(innerFrameColor);
 
         innerArea.subtract(subtractArea);

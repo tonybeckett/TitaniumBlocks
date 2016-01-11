@@ -36,7 +36,7 @@ import java.awt.Graphics2D;
  *
  * @author tbeckett
  */
-public final class NullRoundFrame extends RoundFrameModel
+public final class NullRoundFrame extends FrameModel
 {
 
     public NullRoundFrame()

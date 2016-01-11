@@ -36,9 +36,8 @@ import us.jaba.titaniumblocks.core.frames.effects.round.NoEffectPainter;
  *
  * @author tbeckett
  */
-public class RoundFrameModel extends CoreModel
+public class FrameModel extends CoreModel
 {
-
     private RoundFrameEffectPainter effect = new NoEffectPainter();
 
     protected Paint outerFrameColor = new Color(0x848484);

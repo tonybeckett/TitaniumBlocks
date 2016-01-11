@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFramePainter;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -41,31 +42,36 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class SteelRoundFramePainter extends RoundFramePainter
+public class GenericRoundFramePainter extends RoundFramePainter
 {
 
-    float[] frameMainFractions5 =
+    float[] fractionArray =
     {
         0.0f,
-        0.05f,
-        0.10f,
-        0.50f,
-        0.90f,
-        0.95f,
+        0.06f,
+        0.12f,
         1.0f
     };
 
-    Color[] frameMainColors5 =
+    Color[] colorArray =
     {
-        new Color(231, 237, 237, 255),
-        new Color(189, 199, 198, 255),
-        new Color(192, 201, 200, 255),
-        new Color(23, 31, 33, 255),
-        new Color(196, 205, 204, 255),
-        new Color(194, 204, 203, 255),
-        new Color(189, 201, 199, 255)
+        new Color(118, 117, 135, 255),
+        new Color(74, 74, 82, 255),
+        new Color(50, 50, 54, 255),
+        new Color(97, 97, 108, 255)
     };
 
+    public GenericRoundFramePainter(GradientPalette gp)
+    {
+        colorArray[0] = gp.getLight();
+        colorArray[1] = gp.getMediumLight();
+        colorArray[2] = gp.getMedium();
+        colorArray[3] = gp.getLight();
+    }
+
+    /**
+     *
+     */
     @Override
     public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
@@ -73,18 +79,18 @@ public class SteelRoundFramePainter extends RoundFramePainter
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
+        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+
         outerArea.subtract(subtractArea);
         graphics.setPaint(outerFrameColor);
         graphics.fill(outerArea);
 
         mainArea.subtract(subtractArea);
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint frameMainPaint5 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions5, frameMainColors5);
-        graphics.setPaint(frameMainPaint5);
+        Paint gPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, colorArray);
+        graphics.setPaint(gPaint);
         graphics.fill(mainArea);
 
         innerArea.subtract(subtractArea);
@@ -95,11 +101,10 @@ public class SteelRoundFramePainter extends RoundFramePainter
 
         // Frame effect overlay
         final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-        
 
         this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
-        graphics.dispose();
 
+        graphics.dispose();
     }
 
 }
