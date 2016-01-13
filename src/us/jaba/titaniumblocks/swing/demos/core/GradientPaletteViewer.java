@@ -27,7 +27,9 @@
  */
 package us.jaba.titaniumblocks.swing.demos.core;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -51,7 +53,27 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
     JPanel list = new JPanel();
 
-    
+    private JLabel makeLabel(Color c)
+    {
+        HSLColor hsl = new HSLColor(c);
+//        JLabel jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
+        JLabel jlabel = new JLabel(String.format("(%3.0f,%3.0f,%3.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
+
+        if (hsl.getLuminance() > 33)
+        {
+            jlabel.setForeground(ColorPalette.BLACK.brighter());
+        } else
+        {
+            jlabel.setForeground(ColorPalette.WHITE.darker());
+        }
+        jlabel.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+        jlabel.setBackground(c);
+        jlabel.setOpaque(true);
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
+
+        return jlabel;
+    }
+
     public GradientPaletteViewer() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
         initComponents();
@@ -60,7 +82,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
         int len = classes.size();
         GridLayout gl = new GridLayout();
-        gl.setRows(len+1);
+        gl.setRows(len + 1);
         list.setLayout(gl);
         HSLColor hsl;
 
@@ -68,96 +90,55 @@ public class GradientPaletteViewer extends javax.swing.JFrame
         GridLayout gridLayout = new GridLayout();
         gridLayout.setColumns(8);
         panel.setLayout(gridLayout);
-         JLabel jlabel = new JLabel("  HSL");
+        JLabel jlabel = new JLabel("HSL");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("Darkest");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("Dark");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("MediumDark");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("Medium");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("MediumLight");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("Light");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         jlabel = new JLabel("Lightest");
+        jlabel.setHorizontalAlignment(JLabel.CENTER);
         panel.add(jlabel);
         list.add(panel);
-         
+
         for (int i = 0; i < len; i++)
         {
             panel = new JPanel();
             gridLayout = new GridLayout();
             gridLayout.setColumns(8);
             panel.setLayout(gridLayout);
-//            panel.setBackground(ColorPalette.WHITE);
 
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
             GradientPalette gradientDef = (GradientPalette) c.newInstance();
 
-            jlabel = new JLabel("  "+aClass.getSimpleName().replace("", ""));
+            jlabel = new JLabel("  " + aClass.getSimpleName().replace("", ""));
             jlabel.setForeground(ColorPalette.BLACK);
 //            jlabel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel);
 
-            hsl = new HSLColor(gradientDef.getDarkest());
-            jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getDarkest());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getDark());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getDark());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getMediumDark());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getMediumDark());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getMedium());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getMedium());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getMediumLight());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getMediumLight());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getLight());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getLight());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
-
-            hsl = new HSLColor(gradientDef.getLightest());
-             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(ColorPalette.GRAY);
-            jlabel.setBackground(gradientDef.getLightest());
-            jlabel.setOpaque(true);
-            jlabel.setHorizontalAlignment(JLabel.CENTER);
-            panel.add(jlabel);
+            panel.add(makeLabel(gradientDef.getDarkest()));
+            panel.add(makeLabel(gradientDef.getDark()));
+            panel.add(makeLabel(gradientDef.getMediumDark()));
+            panel.add(makeLabel(gradientDef.getMedium()));
+            panel.add(makeLabel(gradientDef.getMediumLight()));
+            panel.add(makeLabel(gradientDef.getLight()));
+            panel.add(makeLabel(gradientDef.getLightest()));
 
             list.add(panel);
         }

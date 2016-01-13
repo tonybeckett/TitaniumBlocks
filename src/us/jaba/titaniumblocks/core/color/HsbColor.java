@@ -31,16 +31,11 @@ import java.awt.Color;
 
 public class HsbColor
 {
-
-    // <editor-fold defaultstate="collapsed" desc="Variable declarations">
-
     private final float mHue;
     private final float mSaturation;
     private final float mBrightness;
     private final Color mColor;
-    // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="Constructor">
     private HsbColor(Builder builder)
     {
         // private Constructor can only be called from Builder
@@ -50,9 +45,7 @@ public class HsbColor
         final Color TMP_COLOR = new Color(Color.HSBtoRGB(mHue, mSaturation, mBrightness));
         mColor = new Color(TMP_COLOR.getRed(), TMP_COLOR.getGreen(), TMP_COLOR.getBlue(), builder.getAlpha());
     }
-    //</editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public float getHue()
     {
         return mHue;
@@ -72,14 +65,11 @@ public class HsbColor
     {
         return mColor;
     }
-    // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="Builder">
     public static class Builder
     {
 
         // mandatory parameter
-
         private float hue = 0;
         private float saturation = 0;
         private float brightness = 0;
@@ -161,5 +151,5 @@ public class HsbColor
             return new HsbColor(this);
         }
     }
-    // </editor-fold>
+
 }

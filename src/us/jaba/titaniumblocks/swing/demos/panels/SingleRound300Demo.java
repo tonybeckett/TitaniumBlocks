@@ -47,7 +47,8 @@ public class SingleRound300Demo extends SingleRoundDemo
 
         super(new CircularTwoPostLayout(240, 300, Direction.CLOCKWISE, 0.75f, 245, 295));
         setTitle("300");
-        this.setRoundFramePainter(new GenericRoundFramePainter(new Gold()));
+  //      this.setRoundFramePainter(new GenericRoundFramePainter(new Gold()));
+          this.setUnits("degrees");
     }
 
     /**
