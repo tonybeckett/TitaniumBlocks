@@ -41,7 +41,7 @@ public class TickModel extends CoreModel
 
     public TickModel()
     {
-        color = ColorPalette.Black;
+        color = ColorPalette.BLACK;
     }
 
     public Color getColor()

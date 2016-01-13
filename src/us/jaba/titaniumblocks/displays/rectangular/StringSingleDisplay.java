@@ -40,11 +40,11 @@ public class StringSingleDisplay extends SingleDisplay
 
     public StringSingleDisplay()
     {
-        super(ColorPalette.AliceBlue);
+        super(ColorPalette.ALICEBLUE);
         valueTextImage = new TextImageFactory(new StringValueText());
         setValue("Default");
         
-        ((StringValueText) super.getTextPainter()).setColor(ColorPalette.Alpine);
+        ((StringValueText) super.getTextPainter()).setColor(ColorPalette.ALPINE);
     }
 
     public void setValue(String value)

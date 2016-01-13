@@ -97,18 +97,18 @@ public abstract class AbstractRadialKnobGlowPainter extends GlowPainter
      *
      * @return an image that simulates a glowing ring
      */
-//    public BufferedImage createRadialGlow(final int WIDTH, final Color GLOW_COLOR, final boolean ON, final GaugeType GAUGE_TYPE, final boolean KNOBS, final SSOrientation ORIENTATION) {
-//        if (WIDTH <= 0) {
+//    public BufferedImage createRadialGlow(final int width, final Color GLOW_COLOR, final boolean ON, final GaugeType GAUGE_TYPE, final boolean KNOBS, final SSOrientation ORIENTATION) {
+//        if (width <= 0) {
 //            return null;
 //        }
 //
 //        // Take image from cache instead of creating a new one if parameters are the same as last time
-//        if (radWidth == WIDTH && radGlowColor.equals(GLOW_COLOR) && radOn == ON && radGaugeType == GAUGE_TYPE && radKnobs == KNOBS && radOrientation == ORIENTATION) {
+//        if (radWidth == width && radGlowColor.equals(GLOW_COLOR) && radOn == ON && radGaugeType == GAUGE_TYPE && radKnobs == KNOBS && radOrientation == ORIENTATION) {
 //            return radGlowImage;
 //        }
 //
 //        radGlowImage.flush();
-//        radGlowImage = UTIL.createImage(WIDTH, WIDTH, Transparency.TRANSLUCENT);
+//        radGlowImage = UTIL.createImage(width, width, Transparency.TRANSLUCENT);
 //        final Graphics2D graphics = radGlowImage.createGraphics();
     @Override
     public void paint(final Graphics2D graphics, final Dimension dimensions)

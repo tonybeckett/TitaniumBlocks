@@ -57,7 +57,7 @@ public class SingleRound180Demo extends SingleRoundDemo
         this.setBackdropPainter(new PunchedSteelBackdropPainter());
         this.setCenterPostPainter( new BigBrassPostPainter());
         this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
-        this.setColor(ColorPalette.White);
+        this.setColor(ColorPalette.WHITE);
         this.setPointerPainter(new MonumentPointerPainter(), new MonumentShadowPointerPainter());
         this.setPointerGradient( new PureOrange());
         this.setUnits("degrees");

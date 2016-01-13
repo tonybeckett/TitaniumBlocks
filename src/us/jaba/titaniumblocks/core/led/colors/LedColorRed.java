@@ -40,13 +40,13 @@ public class LedColorRed extends LedColor
     public LedColorRed()
     {
         
-        super(ColorPalette.Red.brighter().brighter(),
-                ColorPalette.Red.brighter().brighter(),
-                ColorPalette.Red,
-                ColorPalette.Red,
-                ColorPalette.Red.darker(),
-                ColorPalette.Red.darker(),
-                ColorPalette.Red.darker().darker());
+        super(ColorPalette.RED.brighter().brighter(),
+                ColorPalette.RED.brighter().brighter(),
+                ColorPalette.RED,
+                ColorPalette.RED,
+                ColorPalette.RED.darker(),
+                ColorPalette.RED.darker(),
+                ColorPalette.RED.darker().darker());
 
     }
 

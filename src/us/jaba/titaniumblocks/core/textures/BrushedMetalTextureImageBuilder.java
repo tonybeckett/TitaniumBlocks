@@ -8,6 +8,7 @@ package us.jaba.titaniumblocks.core.textures;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.filters.BrushedMetalFilter;
 
 /**
@@ -43,7 +44,7 @@ public class BrushedMetalTextureImageBuilder extends TextureImageBuilder
 
     public BrushedMetalTextureImageBuilder()
     {
-        this(Color.lightGray);
+        this(ColorPalette.GRAY.brighter());
     }
 
     /**

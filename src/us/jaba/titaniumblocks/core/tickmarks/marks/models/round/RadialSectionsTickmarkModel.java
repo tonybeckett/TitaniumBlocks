@@ -46,22 +46,22 @@ public class RadialSectionsTickmarkModel extends AbstractRadialTickmarkModel
     {
 
 //        // Definitions
-//        final int WIDTH = (int) dimensions.getWidth();
-//        final int HEIGHT = (int) dimensions.getHeight();
+//        final int width = (int) dimensions.getWidth();
+//        final int height = (int) dimensions.getHeight();
 //
 //        final Font STD_FONT = getSTD_FONT();
 //        final Font SECTION_FONT = this.getBaseSectionFont();
-//        final int TEXT_DISTANCE = (int) (this.getTEXT_DISTANCE_FACTOR() * WIDTH);
+//        final int TEXT_DISTANCE = (int) (this.getTEXT_DISTANCE_FACTOR() * width);
 //        final double MAX_VALUE = this.getMAX_VALUE();
 //        final double MIN_VALUE = this.getMIN_VALUE();
 //
 //        double ticklabelRotationOffset = 0;
-//        final int MINOR_TICK_LENGTH = (int) (0.0133333333 * WIDTH);
-//        final int MEDIUM_TICK_LENGTH = (int) (0.02 * WIDTH);
-//        final int MAJOR_TICK_LENGTH = (int) (0.03 * WIDTH);
-//        final int MINOR_DIAMETER = (int) (0.0093457944 * WIDTH);
-//        //final int MEDIUM_DIAMETER = (int) (0.0186915888 * WIDTH);
-//        final int MAJOR_DIAMETER = (int) (0.03 * WIDTH);
+//        final int MINOR_TICK_LENGTH = (int) (0.0133333333 * width);
+//        final int MEDIUM_TICK_LENGTH = (int) (0.02 * width);
+//        final int MAJOR_TICK_LENGTH = (int) (0.03 * width);
+//        final int MINOR_DIAMETER = (int) (0.0093457944 * width);
+//        //final int MEDIUM_DIAMETER = (int) (0.0186915888 * width);
+//        final int MAJOR_DIAMETER = (int) (0.03 * width);
 //
 //        final Point2D textPoint = new Point2D.Double(0, 0);
 //        final Point2D innerPoint = new Point2D.Double(0, 0);
@@ -73,7 +73,7 @@ public class RadialSectionsTickmarkModel extends AbstractRadialTickmarkModel
 //        final GeneralPath TICK_TRIANGLE = new GeneralPath();
 //
 //        final double ROTATION_OFFSET = getGAUGE_TYPE().ROTATION_OFFSET; // Depends on GaugeType
-//        final float RADIUS = WIDTH * getRADIUS_FACTOR();
+//        final float RADIUS = width * getRADIUS_FACTOR();
 //        final double ANGLE_STEP = (getGAUGE_TYPE().ANGLE_RANGE / ((MAX_VALUE - MIN_VALUE) / getMINOR_TICK_SPACING()));
 //        double sinValue;
 //        double cosValue;

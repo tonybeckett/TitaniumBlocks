@@ -27,6 +27,8 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gold;
+import us.jaba.titaniumblocks.core.frames.models.round.GenericRoundFramePainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
@@ -45,6 +47,7 @@ public class SingleRound300Demo extends SingleRoundDemo
 
         super(new CircularTwoPostLayout(240, 300, Direction.CLOCKWISE, 0.75f, 245, 295));
         setTitle("300");
+        this.setRoundFramePainter(new GenericRoundFramePainter(new Gold()));
     }
 
     /**

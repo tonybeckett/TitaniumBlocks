@@ -48,7 +48,7 @@ public class HorizontalMeasuredIndicator extends ThresholdIndicatorModel
 
     public HorizontalMeasuredIndicator()
     {
-        color = ColorPalette.Walnut;
+        color = ColorPalette.WALNUT;
     }
 
     public HorizontalMeasuredIndicator(Color c)

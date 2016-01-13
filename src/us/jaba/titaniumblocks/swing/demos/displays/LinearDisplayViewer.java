@@ -28,10 +28,10 @@
 package us.jaba.titaniumblocks.swing.demos.displays;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
 import us.jaba.titaniumblocks.displays.LinearDisplayImageFactory;
 import us.jaba.titaniumblocks.displays.CoreInfo;
@@ -45,8 +45,8 @@ public class LinearDisplayViewer extends BasicVerticalViewer
 
     public LinearDisplayViewer()
     {
-        backgroundColor = Color.GRAY;
-        foregroundColor = Color.BLACK;
+        backgroundColor = ColorPalette.GRAY;
+        foregroundColor = ColorPalette.BLACK;
 
         init("LinearGaugeViewer", new Dimension(400, 155), CoreInfo.getInstanceOfEach());
 

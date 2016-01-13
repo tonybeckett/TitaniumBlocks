@@ -28,8 +28,8 @@
 package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import java.awt.Color;
-import static us.jaba.titaniumblocks.core.color.ColorPalette.Gold;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import static us.jaba.titaniumblocks.core.color.ColorPalette.GOLD;
 import us.jaba.titaniumblocks.core.color.HSLColor;
 
 /**
@@ -42,11 +42,11 @@ public class GoldBModel extends BackdropColorModel
     public GoldBModel()
     {
 
-        super(Gold,
-                new HSLColor(Gold).adjustLuminance((float) 70.0),
-                new HSLColor(Gold).adjustLuminance((float) 80.0),
-                Color.BLACK,
-                new HSLColor(Gold).adjustLuminance((float) 25.0));
+        super(GOLD,
+                new HSLColor(GOLD).adjustLuminance((float) 70.0),
+                new HSLColor(GOLD).adjustLuminance((float) 80.0),
+                ColorPalette.BLACK,
+                new HSLColor(GOLD).adjustLuminance((float) 25.0));
     }
 
 }

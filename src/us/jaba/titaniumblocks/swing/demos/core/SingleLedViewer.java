@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.led.LedCoreInfo;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
 import us.jaba.titaniumblocks.core.led.LedModel;
@@ -45,8 +45,8 @@ public class SingleLedViewer extends BasicVerticalViewer
     public SingleLedViewer()
     {
 
-        this.backgroundColor = Color.DARK_GRAY;
-        this.foregroundColor = Color.BLACK;
+        this.backgroundColor = ColorPalette.GRAY.darker().darker();
+        this.foregroundColor = ColorPalette.BLACK;
         init("SingleLedViewer", new Dimension(200, 200), LedCoreInfo.getInstanceOfEach());
 
     }

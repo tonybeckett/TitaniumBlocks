@@ -43,12 +43,12 @@ public class AreaSupport
      * Returns a radial gradient paint that will be used as overlay for the
      * track or area image to achieve some kind of a 3d effect.
      *
-     * @param WIDTH
+     * @param width
      * @param RADIUS_FACTOR
      * @return a radial gradient paint that will be used as overlay for the
      * track or area image
      */
-    protected RadialGradientPaint createArea3DEffectGradient(final int WIDTH, final float RADIUS_FACTOR)
+    protected RadialGradientPaint createArea3DEffectGradient(final int width, final float RADIUS_FACTOR)
     {
         final float[] FRACTIONS;
         final Color[] COLORS;
@@ -65,8 +65,8 @@ public class AreaSupport
             new Color(1.0f, 1.0f, 1.0f, 0.0f),
             new Color(0.0f, 0.0f, 0.0f, 0.3f)
         };
-        final Point2D GRADIENT_CENTER = new Point2D.Double(WIDTH / 2.0, WIDTH / 2.0);
+        final Point2D GRADIENT_CENTER = new Point2D.Double(width / 2.0, width / 2.0);
 
-        return new RadialGradientPaint(GRADIENT_CENTER, WIDTH * RADIUS_FACTOR, FRACTIONS, COLORS);
+        return new RadialGradientPaint(GRADIENT_CENTER, width * RADIUS_FACTOR, FRACTIONS, COLORS);
     }
 }

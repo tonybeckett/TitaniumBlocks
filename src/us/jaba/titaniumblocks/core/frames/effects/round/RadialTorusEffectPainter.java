@@ -48,8 +48,8 @@ public class RadialTorusEffectPainter implements RoundFrameEffectPainter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame, Point2D center)
     {
-        final int WIDTH = (int) dimensions.getWidth();
-        final int HEIGHT = (int) dimensions.getHeight();
+        final int width = (int) dimensions.getWidth();
+        final int height = (int) dimensions.getHeight();
 
         EFFECT_FRACTIONS = new float[]
         {
@@ -67,7 +67,7 @@ public class RadialTorusEffectPainter implements RoundFrameEffectPainter
             new Color(255, 255, 255, 64),
             new Color(0, 0, 0, 76)
         };
-        RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (float) (0.5 * WIDTH), EFFECT_FRACTIONS, EFFECT_COLORS);
+        RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (float) (0.5 * width), EFFECT_FRACTIONS, EFFECT_COLORS);
         graphics.setPaint(EFFECT_GRADIENT);
         graphics.fill(outerFrame);
     }

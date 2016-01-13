@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.backdrop.models;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -37,6 +36,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.shadows.InnerShadowImageGenerator;
 import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
 
@@ -109,7 +109,7 @@ public abstract class AbstractRectangularBackdropModel extends BackdropModel
         graphics.fill(GAUGE_BACKGROUND);
 
         final BufferedImage IMAGE = SoftClipImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0, 0);
-        BufferedImage CLP = InnerShadowImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0.65f, Color.BLACK, 20, 315);
+        BufferedImage CLP = InnerShadowImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0.65f, ColorPalette.BLACK, 20, 315);
 
         graphics.drawImage(CLP, GAUGE_BACKGROUND.getBounds().x, GAUGE_BACKGROUND.getBounds().y, null);
 

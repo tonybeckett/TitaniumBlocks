@@ -68,19 +68,19 @@ public class ImageSupport
         BufferedImage ret = IMAGE;
         BufferedImage scratchImage = null;
         Graphics2D g2 = null;
-        final int WIDTH = TARGET_WIDTH;
-        final int HEIGHT = TARGET_HEIGHT;
+        final int width = TARGET_WIDTH;
+        final int height = TARGET_HEIGHT;
         int previewWidth = ret.getWidth();
         int previewHeight = ret.getHeight();
 
         if (scratchImage == null)
         {
-            scratchImage = new BufferedImage(WIDTH, HEIGHT, TYPE);
+            scratchImage = new BufferedImage(width, height, TYPE);
             g2 = scratchImage.createGraphics();
         }
 
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, HINT);
-        g2.drawImage(ret, 0, 0, WIDTH, HEIGHT, 0, 0, previewWidth, previewHeight, null);
+        g2.drawImage(ret, 0, 0, width, height, 0, 0, previewWidth, previewHeight, null);
 
         ret = scratchImage;
 
@@ -177,21 +177,21 @@ public class ImageSupport
     /**
      * Returns a buffered image that contains a simple random noise
      *
-     * @param WIDTH
-     * @param HEIGHT
+     * @param width
+     * @param height
      * @param COLOR
      * @return a buffered image that contains a simple random noise
      */
-    public static BufferedImage createWithNoise(final int WIDTH, final int HEIGHT, final Color COLOR)
+    public static BufferedImage createWithNoise(final int width, final int height, final Color COLOR)
     {
         final GraphicsConfiguration GFX_CONF = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
-        if (WIDTH <= 0 || HEIGHT <= 0)
+        if (width <= 0 || height <= 0)
         {
             return GFX_CONF.createCompatibleImage(1, 1, Transparency.TRANSLUCENT);
         }
 
-        final BufferedImage IMAGE = GFX_CONF.createCompatibleImage(WIDTH, HEIGHT, Transparency.TRANSLUCENT);
+        final BufferedImage IMAGE = GFX_CONF.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
         final Graphics2D G2 = IMAGE.createGraphics();
         G2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         G2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);

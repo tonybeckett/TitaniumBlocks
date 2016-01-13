@@ -38,9 +38,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -49,8 +49,8 @@ import us.jaba.titaniumblocks.core.Images;
 public class BasicVerticalViewer extends javax.swing.JFrame
 {
 
-    protected Color backgroundColor = Color.BLACK;
-    protected Color foregroundColor = Color.WHITE;
+    protected Color backgroundColor = ColorPalette.BLACK;
+    protected Color foregroundColor = ColorPalette.WHITE;
     JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
     JPanel list = new JPanel();
     GridLayout gl = new GridLayout();
@@ -86,7 +86,7 @@ public class BasicVerticalViewer extends javax.swing.JFrame
             jlabel.setIcon(new ImageIcon(getImageFromInstance(o, imageDim)));
 
             jlabel.setForeground(foregroundColor);
-            jlabel.setBackground(Color.LIGHT_GRAY);
+            jlabel.setBackground(ColorPalette.GRAY.brighter());
 
             panel.setBackground(backgroundColor);
             panel.add(jlabel, BorderLayout.CENTER);

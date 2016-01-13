@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.core.tickmarks.marks.models.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarksCoreInfo;
@@ -45,8 +45,8 @@ public class TickmarkViewer extends BasicVerticalViewer
     public TickmarkViewer()
     {
 
-        this.backgroundColor = Color.GRAY;
-        this.foregroundColor = Color.BLACK;
+        this.backgroundColor = ColorPalette.GRAY;
+        this.foregroundColor = ColorPalette.BLACK;
         init("TickmarkViewer", new Dimension(500, 500), TickmarksCoreInfo.getInstanceOfEach());
 
     }

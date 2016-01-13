@@ -27,10 +27,10 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.sections.SectionImageFactory;
 import us.jaba.titaniumblocks.core.sections.painters.BasicSection;
 import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
@@ -47,11 +47,11 @@ public class SingleSectionDisplay extends SingleDisplay
 
     public SingleSectionDisplay()
     {
-        super(Color.BLACK);
+        super(ColorPalette.BLACK);
 
         basicSection = new BasicSection();
         section = new SectionImageFactory(basicSection);
-        basicSection.setColor(Color.RED);
+        basicSection.setColor(ColorPalette.RED);
         setValue(43.0);
     }
 

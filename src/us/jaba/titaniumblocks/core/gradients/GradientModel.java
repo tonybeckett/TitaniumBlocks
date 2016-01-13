@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.gradients;
 
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -47,7 +48,7 @@ public class GradientModel
         };
         colors = new Color[]
         {
-            Color.WHITE, Color.WHITE
+            ColorPalette.WHITE, ColorPalette.WHITE
         };
     }
 

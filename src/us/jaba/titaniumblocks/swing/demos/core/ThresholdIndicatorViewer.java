@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.threshold.indicators.IndicatorCoreInfo;
 import us.jaba.titaniumblocks.core.threshold.indicators.ThresholdIndicatorImageFactory;
 import us.jaba.titaniumblocks.core.threshold.indicators.ThresholdIndicatorModel;
@@ -46,8 +46,8 @@ public class ThresholdIndicatorViewer extends BasicVerticalViewer
     public ThresholdIndicatorViewer()
     {
 
-        this.backgroundColor = Color.GRAY;
-        this.foregroundColor = Color.BLACK;
+        this.backgroundColor = ColorPalette.GRAY;
+        this.foregroundColor = ColorPalette.BLACK;
         init("ThesholdIndicatorViewer", new Dimension(400, 200), IndicatorCoreInfo.getInstanceOfEach());
 
     }

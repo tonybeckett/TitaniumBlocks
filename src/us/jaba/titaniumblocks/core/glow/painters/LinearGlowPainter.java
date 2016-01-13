@@ -36,8 +36,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
-import static java.awt.image.ImageObserver.HEIGHT;
-import static java.awt.image.ImageObserver.WIDTH;
+
 import us.jaba.titaniumblocks.core.glow.GlowPainter;
 import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
 import us.jaba.titaniumblocks.core.color.ColorTools;
@@ -56,24 +55,24 @@ public class LinearGlowPainter extends GlowPainter
      * you are not in front of the screen and so one could see the current state
      * more easy.
      *
-     * @param WIDTH
-     * @param HEIGHT
+     * @param width
+     * @param height
      * @param getGlowColor()
      * @param ON
      * @return an image that simulates a glowing ring
      */
-//    public BufferedImage createLinearGlow(final int WIDTH, final int HEIGHT, final Color getGlowColor(), final boolean ON) {
-//        if (WIDTH <= 32 || HEIGHT <= 32) {
+//    public BufferedImage createLinearGlow(final int width, final int height, final Color getGlowColor(), final boolean ON) {
+//        if (width <= 32 || height <= 32) {
 //            return UTIL.createImage(1, 1, Transparency.TRANSLUCENT);
 //        }
 //
 //        // Take image from cache instead of creating a new one if parameters are the same as last time
-//        if (linWidth == WIDTH && linHeight == HEIGHT && linGlowColor.equals(getGlowColor()) && linOn == ON) {
+//        if (linWidth == width && linHeight == height && linGlowColor.equals(getGlowColor()) && linOn == ON) {
 //            return linGlowImage;
 //        }
 //
 //        linGlowImage.flush();
-//        linGlowImage = UTIL.createImage(WIDTH, HEIGHT, Transparency.TRANSLUCENT);
+//        linGlowImage = UTIL.createImage(width, height, Transparency.TRANSLUCENT);
 
 //        final Graphics2D graphics = linGlowImage.createGraphics();
     @Override
@@ -153,7 +152,7 @@ public class LinearGlowPainter extends GlowPainter
         } else
         {
             final float relFrameSize;
-            if (WIDTH >= HEIGHT)
+            if (imageWidth >= imageHeight)
             {
                 relFrameSize = (10f / GLOWRING.getBounds().height);
             } else
@@ -231,8 +230,8 @@ public class LinearGlowPainter extends GlowPainter
         graphics.dispose();
 
 //        // memoize parameters
-//        linWidth = WIDTH;
-//        linHeight = HEIGHT;
+//        linWidth = width;
+//        linHeight = height;
 //        linGlowColor = getGlowColor();
 //        linOn = ON;
 //

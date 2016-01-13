@@ -88,19 +88,19 @@ public class VerticalTracks extends TrackModel
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        int WIDTH = (int) dimensions.getWidth();
-        int HEIGHT = (int) dimensions.getHeight();
+        int width = (int) dimensions.getWidth();
+        int height = (int) dimensions.getHeight();
 
         final double TOP; // position of max value
         final double BOTTOM; // position of min value
         final double FULL_SIZE;
 
         // Vertical orientation
-        TOP = HEIGHT * 0.12864077669902912; // position of max value
-        BOTTOM = HEIGHT * 0.8567961165048543; // position of min value
+        TOP = height * 0.12864077669902912; // position of max value
+        BOTTOM = height * 0.8567961165048543; // position of min value
         FULL_SIZE = BOTTOM - TOP;
 
-        VALUE_BACKGROUND_TRACK.setRect(WIDTH * 0.4357142857142857, TOP, WIDTH * 0.14285714285714285, FULL_SIZE);
+        VALUE_BACKGROUND_TRACK.setRect(width * 0.4357142857142857, TOP, width * 0.14285714285714285, FULL_SIZE);
         VALUE_BACKGROUND_VERTICAL_START.setLocation(0, VALUE_BACKGROUND_TRACK.getBounds2D().getMinY());
         VALUE_BACKGROUND_VERTICAL_STOP.setLocation(0, VALUE_BACKGROUND_TRACK.getBounds2D().getMaxY());
 
@@ -118,8 +118,8 @@ public class VerticalTracks extends TrackModel
         graphics.fill(VALUE_BACKGROUND_TRACK);
 
         // Vertical orientation
-        VALUE_LEFT_BORDER.setRect(WIDTH * 0.4357142857142857, TOP, WIDTH * 0.007142857142857143, FULL_SIZE);
-        VALUE_RIGHT_BORDER.setRect(WIDTH * 0.5714285714285714, TOP, WIDTH * 0.007142857142857143, FULL_SIZE);
+        VALUE_LEFT_BORDER.setRect(width * 0.4357142857142857, TOP, width * 0.007142857142857143, FULL_SIZE);
+        VALUE_RIGHT_BORDER.setRect(width * 0.5714285714285714, TOP, width * 0.007142857142857143, FULL_SIZE);
         VALUE_BORDER_START.setLocation(0, VALUE_LEFT_BORDER.getBounds2D().getMinY());
         VALUE_BORDER_STOP.setLocation(0, VALUE_LEFT_BORDER.getBounds2D().getMaxY());
 

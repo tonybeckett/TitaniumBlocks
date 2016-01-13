@@ -48,39 +48,39 @@ public class RadialType2GlowPainter extends AbstractRadialKnobGlowPainter
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-        final Ellipse2D POST_GLOW = new Ellipse2D.Double();
-        final Point2D POST_GLOW_START = new Point2D.Double();
-        final Point2D POST_GLOW_STOP = new Point2D.Double();
+        final Ellipse2D postGlowShape = new Ellipse2D.Double();
+        final Point2D postGlowStartPoint = new Point2D.Double();
+        final Point2D postGlowStopPoint = new Point2D.Double();
 
         Paint postGlowGradient;
 
-        final Ellipse2D CENTER_GLOW = new Ellipse2D.Double();
-        final Point2D CENTER_GLOW_CENTER = new Point2D.Double();
+        final Ellipse2D centerGlowShape = new Ellipse2D.Double();
+        final Point2D centerGlowPoint = new Point2D.Double();
 
         Paint centerGlowGradient;
 
         // min knob
-        POST_GLOW.setFrame(imageWidth * 0.13084112107753754, imageHeight * 0.514018714427948, imageWidth * 0.0373831776, imageWidth * 0.0373831776);
-        POST_GLOW_START.setLocation(POST_GLOW.getMaxX(), POST_GLOW.getCenterY());
-        POST_GLOW_STOP.setLocation(POST_GLOW.getMinX(), POST_GLOW.getCenterY());
-        postGlowGradient = new LinearGradientPaint(POST_GLOW_START, POST_GLOW_STOP, POST_GLOW_FRACTIONS, POST_GLOW_COLORS);
+        postGlowShape.setFrame(imageWidth * 0.13084112107753754, imageHeight * 0.514018714427948, imageWidth * 0.0373831776, imageWidth * 0.0373831776);
+        postGlowStartPoint.setLocation(postGlowShape.getMaxX(), postGlowShape.getCenterY());
+        postGlowStopPoint.setLocation(postGlowShape.getMinX(), postGlowShape.getCenterY());
+        postGlowGradient = new LinearGradientPaint(postGlowStartPoint, postGlowStopPoint, POST_GLOW_FRACTIONS, POST_GLOW_COLORS);
         graphics.setPaint(postGlowGradient);
-        graphics.fill(POST_GLOW);
+        graphics.fill(postGlowShape);
 
         // max knob
-        POST_GLOW.setFrame(imageWidth * 0.8317757248878479, imageHeight * 0.514018714427948, imageWidth * 0.0373831776, imageWidth * 0.0373831776);
-        POST_GLOW_START.setLocation(POST_GLOW.getMinX(), POST_GLOW.getCenterY());
-        POST_GLOW_STOP.setLocation(POST_GLOW.getMaxX(), POST_GLOW.getCenterY());
-        postGlowGradient = new LinearGradientPaint(POST_GLOW_START, POST_GLOW_STOP, POST_GLOW_FRACTIONS, POST_GLOW_COLORS);
+        postGlowShape.setFrame(imageWidth * 0.8317757248878479, imageHeight * 0.514018714427948, imageWidth * 0.0373831776, imageWidth * 0.0373831776);
+        postGlowStartPoint.setLocation(postGlowShape.getMinX(), postGlowShape.getCenterY());
+        postGlowStopPoint.setLocation(postGlowShape.getMaxX(), postGlowShape.getCenterY());
+        postGlowGradient = new LinearGradientPaint(postGlowStartPoint, postGlowStopPoint, POST_GLOW_FRACTIONS, POST_GLOW_COLORS);
         graphics.setPaint(postGlowGradient);
-        graphics.fill(POST_GLOW);
+        graphics.fill(postGlowShape);
 
         // center knob
-        CENTER_GLOW.setFrame(imageWidth * 0.4579439252, imageWidth * 0.4579439252, imageWidth * 0.0841121495, imageWidth * 0.0841121495);
-        CENTER_GLOW_CENTER.setLocation(CENTER_GLOW.getCenterX(), CENTER_GLOW.getCenterY());
-        centerGlowGradient = new RadialGradientPaint(CENTER_GLOW_CENTER, (float) (CENTER_GLOW.getWidth() / 2.0), CENTER_GLOW_FRACTIONS, CENTER_GLOW_COLORS);
+        centerGlowShape.setFrame(imageWidth * 0.4579439252, imageWidth * 0.4579439252, imageWidth * 0.0841121495, imageWidth * 0.0841121495);
+        centerGlowPoint.setLocation(centerGlowShape.getCenterX(), centerGlowShape.getCenterY());
+        centerGlowGradient = new RadialGradientPaint(centerGlowPoint, (float) (centerGlowShape.getWidth() / 2.0), CENTER_GLOW_FRACTIONS, CENTER_GLOW_COLORS);
         graphics.setPaint(centerGlowGradient);
-        graphics.fill(CENTER_GLOW);
+        graphics.fill(centerGlowShape);
 
     }
 }

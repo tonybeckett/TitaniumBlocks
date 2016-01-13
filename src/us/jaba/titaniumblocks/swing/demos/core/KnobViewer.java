@@ -28,7 +28,6 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -42,6 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.knobs.KnobCoreInfo;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
@@ -74,7 +74,7 @@ public class KnobViewer extends javax.swing.JFrame
         for (int i = 0; i < len; i++)
         {
             JPanel panel = new JPanel();
-            panel.setBorder(new LineBorder(Color.BLACK, 1));
+            panel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
             panel.setLayout(new BorderLayout());
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
@@ -83,9 +83,9 @@ public class KnobViewer extends javax.swing.JFrame
             JLabel jlabel = new JLabel();
             jlabel.setText(aClass.getSimpleName().replace("Knob", "").replace("Painter", ""));
             jlabel.setIcon(new ImageIcon(new KnobImageFactory(bcm).build(dim)));
-//            jlabel.setForeground(Color.BLACK);
-            jlabel.setBackground(Color.WHITE);
-            panel.setBackground(Color.WHITE);
+//            jlabel.setForeground(ColorPalette.BLACK);
+            jlabel.setBackground(ColorPalette.WHITE);
+            panel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel, BorderLayout.CENTER);
 
             list.add(panel);

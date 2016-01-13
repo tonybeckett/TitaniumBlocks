@@ -35,6 +35,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.painters.NullLinearDisabledPainter;
@@ -47,7 +48,6 @@ import us.jaba.titaniumblocks.core.frames.models.rectangular.ShinyMetalLinearFra
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.TextPainter;
 import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
-import us.jaba.titaniumblocks.core.text.painters.TBText;
 import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
 import us.jaba.titaniumblocks.displays.LinearDisplay;
 
@@ -70,7 +70,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
     public SingleDisplay()
     {
-        this(Color.BLACK);
+        this(ColorPalette.BLACK);
     }
 
     public SingleDisplay(Color c)

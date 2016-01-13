@@ -31,6 +31,7 @@ import java.awt.Color;
 import java.awt.Paint;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.ColorTools;
 
 /**
@@ -52,7 +53,7 @@ public class SSSection
 
     public SSSection()
     {
-        this(-1, -1, Color.RED, null, null);
+        this(-1, -1, ColorPalette.RED, null, null);
     }
 
     public SSSection(final double START, final double STOP, final Color COLOR)

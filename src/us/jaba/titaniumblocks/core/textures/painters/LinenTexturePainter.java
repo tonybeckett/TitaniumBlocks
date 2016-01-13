@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.filters.LinenFilter;
 import us.jaba.titaniumblocks.core.filters.SSOrientation;
 import us.jaba.titaniumblocks.core.textures.TexturePainter;
@@ -38,7 +39,7 @@ public class LinenTexturePainter extends TexturePainter
 
     public LinenTexturePainter()
     {
-        brushColor = Color.lightGray;
+        brushColor = ColorPalette.GRAY.brighter();
     }
 
     public LinenTexturePainter(Color brushColor)

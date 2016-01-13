@@ -42,7 +42,7 @@ public class MetalGoldPostPainter extends BaseMetalPostPainter
     {
         super(new Color[]
         {
-            ColorPalette.Gold,
+            ColorPalette.GOLD,
             new Color(0x7C5F3D)
         });
     }

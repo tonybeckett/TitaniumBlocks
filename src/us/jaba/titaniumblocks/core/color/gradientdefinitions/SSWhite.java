@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.color.gradientdefinitions;
 
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 /**
@@ -39,7 +40,7 @@ public class SSWhite extends GradientPalette
 
     public SSWhite()
     {
-        super(new Color(210, 210, 210), new Color(220, 220, 220), new Color(235, 235, 235), new Color(245, 245, 245), Color.WHITE, Color.WHITE, Color.WHITE);
+        super(new Color(210, 210, 210), new Color(220, 220, 220), new Color(235, 235, 235), new Color(245, 245, 245), ColorPalette.WHITE, ColorPalette.WHITE, ColorPalette.WHITE);
     }
 
 }

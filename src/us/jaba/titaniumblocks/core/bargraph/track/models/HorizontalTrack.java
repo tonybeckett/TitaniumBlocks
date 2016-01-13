@@ -90,19 +90,19 @@ public class HorizontalTrack extends TrackModel
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        int WIDTH = (int) dimensions.getWidth();
-        int HEIGHT = (int) dimensions.getHeight();
+        int width = (int) dimensions.getWidth();
+        int height = (int) dimensions.getHeight();
 
 
         final double TOP; // position of max value
         final double BOTTOM; // position of min value
         final double FULL_SIZE;
 
-        TOP = WIDTH * 0.8567961165048543; // position of max value
-        BOTTOM = WIDTH * 0.12864077669902912; // position of min value
+        TOP = width * 0.8567961165048543; // position of max value
+        BOTTOM = width * 0.12864077669902912; // position of min value
         FULL_SIZE = TOP - BOTTOM;
 
-        VALUE_BACKGROUND_TRACK.setRect(WIDTH * 0.14285714285714285, HEIGHT * 0.4357142857142857, FULL_SIZE, HEIGHT * 0.14285714285714285);
+        VALUE_BACKGROUND_TRACK.setRect(width * 0.14285714285714285, height * 0.4357142857142857, FULL_SIZE, height * 0.14285714285714285);
         VALUE_BACKGROUND_VERTICAL_START.setLocation(TOP, 0);
         VALUE_BACKGROUND_VERTICAL_STOP.setLocation(BOTTOM, 0);
 
@@ -119,8 +119,8 @@ public class HorizontalTrack extends TrackModel
         graphics.fill(VALUE_BACKGROUND_TRACK);
 
         // Horizontal orientation
-        VALUE_LEFT_BORDER.setRect(WIDTH * 0.14285714285714285, HEIGHT * 0.4357142857, FULL_SIZE, HEIGHT * 0.007142857142857143);
-        VALUE_RIGHT_BORDER.setRect(WIDTH * 0.14285714285714285, HEIGHT * 0.5714285714, FULL_SIZE, HEIGHT * 0.007142857142857143);
+        VALUE_LEFT_BORDER.setRect(width * 0.14285714285714285, height * 0.4357142857, FULL_SIZE, height * 0.007142857142857143);
+        VALUE_RIGHT_BORDER.setRect(width * 0.14285714285714285, height * 0.5714285714, FULL_SIZE, height * 0.007142857142857143);
         VALUE_BORDER_START.setLocation(VALUE_LEFT_BORDER.getBounds2D().getMaxX(), 0);
         VALUE_BORDER_STOP.setLocation(VALUE_LEFT_BORDER.getBounds2D().getMinX(), 0);
 

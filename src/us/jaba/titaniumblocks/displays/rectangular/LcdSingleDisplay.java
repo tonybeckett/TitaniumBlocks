@@ -27,13 +27,13 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.LcdBackdropModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
 import us.jaba.titaniumblocks.displays.LinearDisplay;
@@ -50,7 +50,7 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
 
     public LcdSingleDisplay()
     {
-        super(Color.WHITE);
+        super(ColorPalette.WHITE);
         lcdBackgroundImage = new BackdropImageFactory(new LcdBackdropModel());
 
         this.valueTextImage.getPainter().setColor(palette.textColor);

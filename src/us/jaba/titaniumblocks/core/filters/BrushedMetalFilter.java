@@ -63,32 +63,32 @@ public class BrushedMetalFilter implements BufferedImageOp
     @Override
     public BufferedImage filter(final BufferedImage SOURCE, BufferedImage destination)
     {
-        final int WIDTH = SOURCE.getWidth();
-        final int HEIGHT = SOURCE.getHeight();
+        final int width = SOURCE.getWidth();
+        final int height = SOURCE.getHeight();
 
         if (destination == null)
         {
             destination = createCompatibleDestImage(SOURCE, null);
         }
 
-        final int[] IN_PIXELS = new int[WIDTH];
-        final int[] OUT_PIXELS = new int[WIDTH];
+        final int[] IN_PIXELS = new int[width];
+        final int[] OUT_PIXELS = new int[width];
 
         randomNumbers = new java.util.Random(0);
         final int ALPHA = color & 0xff000000;
         final int RED = (color >> 16) & 0xff;
         final int GREEN = (color >> 8) & 0xff;
         final int BLUE = color & 0xff;
-        for (int y = 0; y < HEIGHT; y++)
+        for (int y = 0; y < height; y++)
         {
-            for (int x = 0; x < WIDTH; x++)
+            for (int x = 0; x < width; x++)
             {
                 int tr = RED;
                 int tg = GREEN;
                 int tb = BLUE;
                 if (shine != 0)
                 {
-                    int f = (int) (255 * shine * Math.sin((double) x / WIDTH * Math.PI));
+                    int f = (int) (255 * shine * Math.sin((double) x / width * Math.PI));
                     tr += f;
                     tg += f;
                     tb += f;
@@ -105,11 +105,11 @@ public class BrushedMetalFilter implements BufferedImageOp
 
             if (radius != 0)
             {
-                blur(IN_PIXELS, OUT_PIXELS, WIDTH, radius);
-                setRGB(destination, 0, y, WIDTH, 1, OUT_PIXELS);
+                blur(IN_PIXELS, OUT_PIXELS, width, radius);
+                setRGB(destination, 0, y, width, 1, OUT_PIXELS);
             } else
             {
-                setRGB(destination, 0, y, WIDTH, 1, IN_PIXELS);
+                setRGB(destination, 0, y, width, 1, IN_PIXELS);
             }
         }
         return destination;
@@ -162,33 +162,33 @@ public class BrushedMetalFilter implements BufferedImageOp
         return a;
     }
 
-    public void blur(final int[] IN, final int[] OUT, final int WIDTH, final int RADIUS)
+    public void blur(final int[] IN, final int[] OUT, final int width, final int RADIUS)
     {
-        final int WIDTH_MINUS_1 = WIDTH - 1;
+        final int WIDTH_MINUS_1 = width - 1;
         final int R2 = 2 * RADIUS + 1;
         int tr = 0, tg = 0, tb = 0;
 
         for (int i = -RADIUS; i <= RADIUS; i++)
         {
-            int rgb = IN[mod(i, WIDTH)];
+            int rgb = IN[mod(i, width)];
             tr += (rgb >> 16) & 0xff;
             tg += (rgb >> 8) & 0xff;
             tb += rgb & 0xff;
         }
 
-        for (int x = 0; x < WIDTH; x++)
+        for (int x = 0; x < width; x++)
         {
             OUT[x] = 0xff000000 | ((tr / R2) << 16) | ((tg / R2) << 8) | (tb / R2);
 
             int i1 = x + RADIUS + 1;
             if (i1 > WIDTH_MINUS_1)
             {
-                i1 = mod(i1, WIDTH);
+                i1 = mod(i1, width);
             }
             int i2 = x - RADIUS;
             if (i2 < 0)
             {
-                i2 = mod(i2, WIDTH);
+                i2 = mod(i2, width);
             }
             int rgb1 = IN[i1];
             int rgb2 = IN[i2];
@@ -290,19 +290,19 @@ public class BrushedMetalFilter implements BufferedImageOp
      * @param IMAGE
      * @param X
      * @param Y
-     * @param WIDTH
-     * @param HEIGHT
+     * @param width
+     * @param height
      * @param PIXELS
      */
-    public void setRGB(final BufferedImage IMAGE, final int X, final int Y, final int WIDTH, final int HEIGHT, final int[] PIXELS)
+    public void setRGB(final BufferedImage IMAGE, final int X, final int Y, final int width, final int height, final int[] PIXELS)
     {
         int type = IMAGE.getType();
         if (type == BufferedImage.TYPE_INT_ARGB || type == BufferedImage.TYPE_INT_RGB)
         {
-            IMAGE.getRaster().setDataElements(X, Y, WIDTH, HEIGHT, PIXELS);
+            IMAGE.getRaster().setDataElements(X, Y, width, height, PIXELS);
         } else
         {
-            IMAGE.setRGB(X, Y, WIDTH, HEIGHT, PIXELS, 0, WIDTH);
+            IMAGE.setRGB(X, Y, width, height, PIXELS, 0, width);
         }
     }
 

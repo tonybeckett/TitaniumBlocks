@@ -32,7 +32,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Area;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
-import static java.awt.image.ImageObserver.HEIGHT;
+
 import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
 
 /**
@@ -48,16 +48,16 @@ public class LinearConeEffectPainter implements RectangularFrameEffectPainter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
-        final int WIDTH = (int) dimensions.getWidth();
-        final int HEIGHT = (int) dimensions.getHeight();
+        final int width = (int) dimensions.getWidth();
+        final int height = (int) dimensions.getHeight();
         float relFrameSize;
         // The smaller side is important for the contour gradient
-        if (WIDTH >= HEIGHT)
+        if (width >= height)
         {
-            relFrameSize = 32f / HEIGHT;
+            relFrameSize = 32f / height;
         } else
         {
-            relFrameSize = 32f / WIDTH;
+            relFrameSize = 32f / width;
         }
         EFFECT_FRACTIONS = new float[]
         {
@@ -76,18 +76,18 @@ public class LinearConeEffectPainter implements RectangularFrameEffectPainter
         };
         EFFECT_COLORS = new Color[]
         {
-            //Color.BLUE,     // 0.0f                   Outer border of frame
-            //Color.RED,      // 0.1f * relFrameSize
-            //Color.WHITE,    // 0.2f * relFrameSize
-            //Color.BLACK,    // 0.3f * relFrameSize
-            //Color.YELLOW,   // 0.4f * relFrameSize
-            //Color.MAGENTA,  // 0.5f * relFrameSize
-            //Color.CYAN,    // 0.6f * relFrameSize
-            //Color.GREEN,    // 0.7f * relFrameSize
-            //Color.GRAY,     // 0.8f * relFrameSize
-            //Color.BLUE,     // 0.9f * relFrameSize
-            //Color.RED,      // 1.0f * relFrameSize    Inner border of frame
-            //Color.WHITE,    // 1.0f
+            //ColorPalette.BLUE,     // 0.0f                   Outer border of frame
+            //ColorPalette.RED,      // 0.1f * relFrameSize
+            //ColorPalette.WHITE,    // 0.2f * relFrameSize
+            //ColorPalette.BLACK,    // 0.3f * relFrameSize
+            //ColorPalette.YELLOW,   // 0.4f * relFrameSize
+            //ColorPalette.MAGENTA,  // 0.5f * relFrameSize
+            //ColorPalette.CYAN,    // 0.6f * relFrameSize
+            //ColorPalette.GREEN,    // 0.7f * relFrameSize
+            //ColorPalette.GRAY,     // 0.8f * relFrameSize
+            //ColorPalette.BLUE,     // 0.9f * relFrameSize
+            //ColorPalette.RED,      // 1.0f * relFrameSize    Inner border of frame
+            //ColorPalette.WHITE,    // 1.0f
 
             new Color(0f, 0f, 0f, 0.3f),
             new Color(0f, 0f, 0f, 0.3f),

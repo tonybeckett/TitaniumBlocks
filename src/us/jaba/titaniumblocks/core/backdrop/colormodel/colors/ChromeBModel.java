@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.HSLColor;
  
 
@@ -44,7 +44,7 @@ public class ChromeBModel extends BackdropColorModel
         super(new HSLColor(156, 7, 40).getRGB(),
                 new HSLColor(156, 7, 40).adjustLuminance((float) 70.0),
                 new HSLColor(156, 7, 40).adjustLuminance((float) 80.0),
-                Color.BLACK,
+                ColorPalette.BLACK,
                 new HSLColor(156, 7, 40).adjustLuminance((float) 25.0));
     }
 

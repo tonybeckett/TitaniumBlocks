@@ -47,7 +47,7 @@ public class TextPainter extends CoreModel
     protected double rightOffsetFactor = DEFAULT_RIGHT_OFFSET_FACTOR;
     protected double baselineScaleFactor = DEFAULT_BASELINE_SCALE_FACTOR;
     protected Font font = BaseFont.DEFAULT_FONT;
-    protected Color color = ColorPalette.Black;
+    protected Color color = ColorPalette.BLACK;
 
     public TextPainter()
     {

@@ -109,9 +109,9 @@ public class EllipticGradientPaint implements Paint
             this.centerPoint = centerPoint;
             final double X = centerPoint.getX() - RADIUS_X_Y.getX();
             final double Y = centerPoint.getY() - RADIUS_X_Y.getY();
-            final double WIDTH = 2 * RADIUS_X_Y.getX();
-            final double HEIGHT = 2 * RADIUS_X_Y.getY();
-            ELLIPSE = new Ellipse2D.Double(X, Y, WIDTH, HEIGHT);
+            final double width = 2 * RADIUS_X_Y.getX();
+            final double height = 2 * RADIUS_X_Y.getY();
+            ELLIPSE = new Ellipse2D.Double(X, Y, width, height);
             LINE = new Line2D.Double();
             R = Point2D.distance(0, 0, RADIUS_X_Y.getX(), RADIUS_X_Y.getY());
             initLookup();

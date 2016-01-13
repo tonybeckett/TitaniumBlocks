@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.swing.demos.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -38,6 +37,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.GradientCoreInfo;
 import us.jaba.titaniumblocks.core.color.HSLColor;
@@ -92,20 +92,20 @@ public class GradientPaletteViewer extends javax.swing.JFrame
             gridLayout = new GridLayout();
             gridLayout.setColumns(8);
             panel.setLayout(gridLayout);
-//            panel.setBackground(Color.WHITE);
+//            panel.setBackground(ColorPalette.WHITE);
 
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
             GradientPalette gradientDef = (GradientPalette) c.newInstance();
 
             jlabel = new JLabel("  "+aClass.getSimpleName().replace("", ""));
-            jlabel.setForeground(Color.BLACK);
-//            jlabel.setBackground(Color.WHITE);
+            jlabel.setForeground(ColorPalette.BLACK);
+//            jlabel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel);
 
             hsl = new HSLColor(gradientDef.getDarkest());
             jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getDarkest());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -113,7 +113,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getDark());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getDark());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -121,7 +121,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getMediumDark());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getMediumDark());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -129,7 +129,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getMedium());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getMedium());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -137,7 +137,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getMediumLight());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getMediumLight());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -145,7 +145,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getLight());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getLight());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
@@ -153,7 +153,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
 
             hsl = new HSLColor(gradientDef.getLightest());
              jlabel = new JLabel(String.format("(%4.0f,%4.0f,%4.0f)", hsl.getHue(), hsl.getSaturation(), hsl.getLuminance()));
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(gradientDef.getLightest());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);

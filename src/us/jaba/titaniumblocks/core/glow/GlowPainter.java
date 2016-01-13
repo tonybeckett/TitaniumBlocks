@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.glow;
 
 import java.awt.Color;
 import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -41,7 +42,7 @@ public class GlowPainter extends CoreModel
 
     public GlowPainter()
     {
-        glowColor = Color.YELLOW;
+        glowColor = ColorPalette.YELLOW;
     }
 
     public Color getGlowColor()

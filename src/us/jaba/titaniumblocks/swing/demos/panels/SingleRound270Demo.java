@@ -57,11 +57,11 @@ public class SingleRound270Demo extends SingleRoundDemo
         
         this.setRoundFramePainter(new BlackMetalRoundFramePainter());
         NoisyPlasticBackdropPainter bp = new NoisyPlasticBackdropPainter();
-        bp.setTextureColor(ColorPalette.QuillGray);
+        bp.setTextureColor(ColorPalette.QUILLGRAY);
         this.setBackdropPainter(bp);
         this.setCenterPostPainter( new MetalBlackPostPainter());
         this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());
-        this.setColor(ColorPalette.DarkBlue);
+        this.setColor(ColorPalette.DARKBLUE);
         this.setPointerPainter(new DualLinesPointerPainter(), new DualLinesShadowPointerPainter());
         this.setPointerGradient( new PureRed());
         this.setUnits("degrees");

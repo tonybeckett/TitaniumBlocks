@@ -138,20 +138,20 @@ public class VerticalLinearTickmarkModel extends AbstractLinearTickmarkModel
 //            numberFormat = NUMBER_FORMAT;
 //        }
 
-//        int WIDTH = (int) dimensions.getWidth();
-//        int HEIGHT = (int) dimensions.getHeight();
+//        int width = (int) dimensions.getWidth();
+//        int height = (int) dimensions.getHeight();
 //
 //        // Horizontal orientation
-//        final Font STD_FONT = new Font("Verdana", 0, (int) (0.042 * HEIGHT));
-//        Rectangle2D.Double SCALE_BOUNDS = new Rectangle2D.Double(0, HEIGHT * 0.12864077669902912, 0, (HEIGHT * 0.8567961165048543 - HEIGHT * 0.12864077669902912));
+//        final Font STD_FONT = new Font("Verdana", 0, (int) (0.042 * height));
+//        Rectangle2D.Double SCALE_BOUNDS = new Rectangle2D.Double(0, height * 0.12864077669902912, 0, (height * 0.8567961165048543 - height * 0.12864077669902912));
 //
 //   
-//        int MINOR_TICK_START = (int) (0.34 * WIDTH);
-//        int MINOR_TICK_STOP = (int) (0.36 * WIDTH);
-//        int MEDIUM_TICK_START = (int) (0.33 * WIDTH);
-//        int MEDIUM_TICK_STOP = (int) (0.36 * WIDTH);
-//        int MAJOR_TICK_START = (int) (0.32 * WIDTH);
-//        int MAJOR_TICK_STOP = (int) (0.36 * WIDTH);
+//        int MINOR_TICK_START = (int) (0.34 * width);
+//        int MINOR_TICK_STOP = (int) (0.36 * width);
+//        int MEDIUM_TICK_START = (int) (0.33 * width);
+//        int MEDIUM_TICK_STOP = (int) (0.36 * width);
+//        int MAJOR_TICK_START = (int) (0.32 * width);
+//        int MAJOR_TICK_STOP = (int) (0.36 * width);
 //
 //        double tickSpaceScaling = SCALE_BOUNDS.getHeight() / (MAX_VALUE - MIN_VALUE);
 //
@@ -196,7 +196,7 @@ public class VerticalLinearTickmarkModel extends AbstractLinearTickmarkModel
 //                {
 ////                    paint(Graphics2D graphics, Shape shape, Dimension dimensions, double startPosition, double stopPosition, double currentPosition)
 //                    linearTickModel.paintTicks(graphics, TICK_LINE, dimensions, null);
-////                    drawLinearTicks(graphics, WIDTH, HEIGHT, ORIENTATION, currentPos, MAJOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MAJOR_TICK_START, MAJOR_TICK_STOP, MAJOR_DIAMETER);
+////                    drawLinearTicks(graphics, width, height, ORIENTATION, currentPos, MAJOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MAJOR_TICK_START, MAJOR_TICK_STOP, MAJOR_DIAMETER);
 //                }
 //
 //                // Draw the standard tickmark labels
@@ -206,7 +206,7 @@ public class VerticalLinearTickmarkModel extends AbstractLinearTickmarkModel
 //                    currentBounds = currentLayout.getBounds();
 //
 //                    float textOffset = (float) (MAX_BOUNDS.getWidth() - currentBounds.getWidth());
-//                    graphics.drawString(numberFormat.format(valueCounter), 0.18f * WIDTH + textOffset, (float) (currentPosY - currentBounds.getHeight() / 2.0 + currentBounds.getHeight()));
+//                    graphics.drawString(numberFormat.format(valueCounter), 0.18f * width + textOffset, (float) (currentPosY - currentBounds.getHeight() / 2.0 + currentBounds.getHeight()));
 //
 //                }
 //
@@ -224,13 +224,13 @@ public class VerticalLinearTickmarkModel extends AbstractLinearTickmarkModel
 //                    graphics.setStroke(mediumStroke);
 //                    linearTickModel.paintTicks(graphics, TICK_LINE, dimensions, null);
 ////                    linearTickModel.paint(graphics, TICK_LINE, currentPos, centerPoint, centerPoint, centerPoint, alpha);
-////                    drawLinearTicks(graphics, WIDTH, HEIGHT, ORIENTATION, currentPos, MINOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MEDIUM_TICK_START, MEDIUM_TICK_STOP, MINOR_DIAMETER);
+////                    drawLinearTicks(graphics, width, height, ORIENTATION, currentPos, MINOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MEDIUM_TICK_START, MEDIUM_TICK_STOP, MINOR_DIAMETER);
 //
 //                } else
 //                {
 //                    linearTickModel.paintTicks(graphics, TICK_LINE, dimensions, null);
 ////                    linearTickModel.paint(graphics, TICK_LINE, currentPos, centerPoint, centerPoint, centerPoint, alpha);
-////                    drawLinearTicks(graphics, WIDTH, HEIGHT, ORIENTATION, currentPos, MINOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MINOR_TICK_START, MINOR_TICK_STOP, MINOR_DIAMETER);
+////                    drawLinearTicks(graphics, width, height, ORIENTATION, currentPos, MINOR_TICKMARK_TYPE, TICK_LINE, TICK_CIRCLE, TICK_TRIANGLE, MINOR_TICK_START, MINOR_TICK_STOP, MINOR_DIAMETER);
 //                }
 //            }
 //        }

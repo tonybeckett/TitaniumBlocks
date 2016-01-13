@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.posts.PostPainter;
 import us.jaba.titaniumblocks.core.posts.PostCoreInfo;
@@ -44,8 +44,8 @@ public class PostViewer extends BasicVerticalViewer
 
     public PostViewer()
     {
-        backgroundColor = Color.GRAY;
-        foregroundColor = Color.BLACK;
+        backgroundColor = ColorPalette.GRAY;
+        foregroundColor = ColorPalette.BLACK;
         
         init("PostViewer", new Dimension(150, 150), PostCoreInfo.getInstanceOfEach());
 

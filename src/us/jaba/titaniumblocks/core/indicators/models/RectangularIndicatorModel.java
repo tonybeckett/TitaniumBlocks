@@ -35,6 +35,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
@@ -68,7 +69,7 @@ public class RectangularIndicatorModel extends CoreModel
 
     public RectangularIndicatorModel(SymbolPainter symbolPainter)
     {
-        this(symbolPainter, Color.RED);
+        this(symbolPainter, ColorPalette.RED);
     }
 
     public RectangularIndicatorModel(SymbolPainter symbolPainter, Color c)

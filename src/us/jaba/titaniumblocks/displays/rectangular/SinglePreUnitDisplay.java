@@ -27,11 +27,11 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import static us.jaba.titaniumblocks.core.font.BaseFont.DEFAULT_FONT;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.TextPainter;
@@ -49,7 +49,7 @@ public class SinglePreUnitDisplay extends SingleDisplay
 
     public SinglePreUnitDisplay()
     {
-        super(Color.BLACK);
+        super(ColorPalette.BLACK);
 
         Font unitFont = DEFAULT_FONT;
         StringPreUnitsText dvt = new StringPreUnitsText("$");

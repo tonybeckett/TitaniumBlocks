@@ -35,6 +35,7 @@ import java.awt.RadialGradientPaint;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFramePainter;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -80,7 +81,7 @@ public class GlossyMetalRoundFramePainter extends RoundFramePainter
                 0.0f, 0.23f, 0.36f, 0.59f, 0.76f, 1.0f
             }, new Color[]
             {
-                new Color(0.9764705882f, 0.9764705882f, 0.9764705882f, 1f), new Color(0.7843137255f, 0.7647058824f, 0.7490196078f, 1f), Color.WHITE, new Color(0.1137254902f, 0.1137254902f, 0.1137254902f, 1f), new Color(0.7843137255f, 0.7607843137f, 0.7529411765f, 1f), new Color(0.8196078431f, 0.8196078431f, 0.8196078431f, 1f)
+                new Color(0.9764705882f, 0.9764705882f, 0.9764705882f, 1f), new Color(0.7843137255f, 0.7647058824f, 0.7490196078f, 1f), ColorPalette.WHITE, new Color(0.1137254902f, 0.1137254902f, 0.1137254902f, 1f), new Color(0.7843137255f, 0.7607843137f, 0.7529411765f, 1f), new Color(0.8196078431f, 0.8196078431f, 0.8196078431f, 1f)
             }));
         } else
         {
@@ -89,7 +90,7 @@ public class GlossyMetalRoundFramePainter extends RoundFramePainter
                 0.0f, 0.23f, 0.36f, 0.59f, 0.76f, 1.0f
             }, new Color[]
             {
-                new Color(0.9764705882f, 0.9764705882f, 0.9764705882f, 1f), new Color(0.7843137255f, 0.7647058824f, 0.7490196078f, 1f), Color.WHITE, new Color(0.1137254902f, 0.1137254902f, 0.1137254902f, 1f), new Color(0.7843137255f, 0.7607843137f, 0.7529411765f, 1f), new Color(0.8196078431f, 0.8196078431f, 0.8196078431f, 1f)
+                new Color(0.9764705882f, 0.9764705882f, 0.9764705882f, 1f), new Color(0.7843137255f, 0.7647058824f, 0.7490196078f, 1f), ColorPalette.WHITE, new Color(0.1137254902f, 0.1137254902f, 0.1137254902f, 1f), new Color(0.7843137255f, 0.7607843137f, 0.7529411765f, 1f), new Color(0.8196078431f, 0.8196078431f, 0.8196078431f, 1f)
             }));
         }
         graphics.fill(FRAME_MAIN_GLOSSY2);

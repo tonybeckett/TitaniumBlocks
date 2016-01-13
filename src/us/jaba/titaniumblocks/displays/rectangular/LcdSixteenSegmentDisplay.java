@@ -27,12 +27,12 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.LcdBackdropModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
 import us.jaba.titaniumblocks.core.lcd.SixteenSegmentDisplayImageFactory;
@@ -55,7 +55,7 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
 
     public LcdSixteenSegmentDisplay()
     {
-        super(Color.WHITE);
+        super(ColorPalette.WHITE);
         lcdBackgroundImage = new BackdropImageFactory(new LcdBackdropModel());
 
         this.valueTextImage = new NullTextImageFactory(new IntegerValueText());

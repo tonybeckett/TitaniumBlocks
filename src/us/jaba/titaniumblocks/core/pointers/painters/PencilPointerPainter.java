@@ -35,6 +35,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
@@ -48,7 +49,7 @@ public class PencilPointerPainter extends AbstractPointerPainter
     
     public PencilPointerPainter()
     {
-        labelColor = Color.BLACK;
+        labelColor = ColorPalette.BLACK;
     }
 
     public PencilPointerPainter(GradientPalette pointerColor, Color labelColor)

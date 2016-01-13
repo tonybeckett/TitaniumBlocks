@@ -88,7 +88,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
         for (int i = 0; i < len; i++)
         {
             JPanel panel = new JPanel();
-//            panel.setBorder(new LineBorder(Color.BLACK, 1));
+//            panel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
             panel.setLayout(new BorderLayout());
 
             Color c = (Color) al.get(i).get(i);

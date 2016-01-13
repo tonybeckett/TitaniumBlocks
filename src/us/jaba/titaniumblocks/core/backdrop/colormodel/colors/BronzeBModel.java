@@ -28,8 +28,8 @@
 package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import java.awt.Color;
-import static us.jaba.titaniumblocks.core.color.ColorPalette.Bronze;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import static us.jaba.titaniumblocks.core.color.ColorPalette.BRONZE;
 import us.jaba.titaniumblocks.core.color.HSLColor;
 
 /**
@@ -41,11 +41,11 @@ public class BronzeBModel extends BackdropColorModel
 
     public BronzeBModel()
     {
-        super(new HSLColor(Bronze).adjustLuminance((float) 60.0),
-                new HSLColor(Bronze).adjustLuminance((float) 70.0),
-                new HSLColor(Bronze).adjustLuminance((float) 80.0),
-                Color.BLACK,
-                new HSLColor(Bronze).adjustLuminance((float) 25.0));
+        super(new HSLColor(BRONZE).adjustLuminance((float) 60.0),
+                new HSLColor(BRONZE).adjustLuminance((float) 70.0),
+                new HSLColor(BRONZE).adjustLuminance((float) 80.0),
+                ColorPalette.BLACK,
+                new HSLColor(BRONZE).adjustLuminance((float) 25.0));
     }
 
 }

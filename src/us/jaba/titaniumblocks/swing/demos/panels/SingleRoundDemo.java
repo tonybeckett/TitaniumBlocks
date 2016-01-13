@@ -34,7 +34,7 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedModel;
@@ -61,7 +61,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
 
         panel = new SingleRoundPanel(cl);
 
-        panel.getGauge().getTextPainter().setColor(ColorPalette.Almond);
+        panel.getGauge().getTextPainter().setColor(ColorPalette.ALMOND);
         panel.getGauge().getBackdropPainter().setBackgroundColorModel(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
@@ -85,7 +85,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(RoundFrameModel linearFramePainter)
+    public void setRoundFramePainter(FrameModel linearFramePainter)
     {
         panel.setRoundFramePainter(linearFramePainter);
     }

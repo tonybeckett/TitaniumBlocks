@@ -28,7 +28,6 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -42,8 +41,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
-import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
 import us.jaba.titaniumblocks.core.frames.models.FramesCoreInfo;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
@@ -80,7 +80,7 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
         {
             Class<?> aLinearClass = linearClassList.get(i);
             Constructor cLinear = aLinearClass.getConstructor();
-            RoundFrameModel framePainter = (RoundFrameModel) cLinear.newInstance();
+            FrameModel framePainter = (FrameModel) cLinear.newInstance();
 
             RoundFrameImageFactory lfg = new RoundFrameImageFactory(framePainter);
 
@@ -89,7 +89,7 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
             gl = new GridLayout();
             gl.setColumns(elen);
             lpanel.setLayout(gl);
-            lpanel.setBorder(new LineBorder(Color.BLACK, 1));
+            lpanel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
             for (int j = 0; j < elen; j++)
             {
                 Class<?> eLinearClass = linearEffectClassList.get(j);
@@ -104,9 +104,9 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
                 jlabel.setText(aLinearClass.getSimpleName().replace("FramePainter", "").replace("Radial", "") + "-" + eLinearClass.getSimpleName().replace("Painter", "").replace("Radial", ""));
 
                 jlabel.setIcon(new ImageIcon(lfg.build(dim)));
-//            jlabel.setForeground(Color.BLACK);
-                jlabel.setBackground(Color.WHITE);
-                epanel.setBackground(Color.WHITE);
+//            jlabel.setForeground(ColorPalette.BLACK);
+                jlabel.setBackground(ColorPalette.WHITE);
+                epanel.setBackground(ColorPalette.WHITE);
                 epanel.add(jlabel, BorderLayout.CENTER);
 
                 lpanel.add(epanel);

@@ -34,6 +34,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
@@ -67,7 +68,7 @@ public class RoundIndicatorImageFactory
         backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdropPainter());
         symbolOnImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOffImageBuilder = new SymbolImageFactory(new Fuel());
-        symbolOnImageBuilder.getPainter().setPaintColor(Color.RED);
+        symbolOnImageBuilder.getPainter().setPaintColor(ColorPalette.RED);
 
         foregroundImageBuilder = new FrontcoverImageFactory(new TopHalfRadialForegroundPainter());
         disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());

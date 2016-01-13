@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.swing.demos.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -38,6 +37,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientCoreInfo;
 
@@ -68,15 +68,15 @@ public class LcdGradientColorViewer extends javax.swing.JFrame
             GridLayout gridLayout = new GridLayout();
             gridLayout.setColumns(6);
             panel.setLayout(gridLayout);
-//            panel.setBackground(Color.WHITE);
+//            panel.setBackground(ColorPalette.WHITE);
 
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
             LcdGradientPalette bcm = (LcdGradientPalette) c.newInstance();
             
             JLabel jlabel = new JLabel(aClass.getSimpleName().replace("BModel", ""));
-            jlabel.setForeground(Color.BLACK);
-//            jlabel.setBackground(Color.WHITE);
+            jlabel.setForeground(ColorPalette.BLACK);
+//            jlabel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel);
 
             

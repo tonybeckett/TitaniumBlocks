@@ -37,6 +37,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.sections.SSSection;
 
 /**
@@ -49,7 +50,7 @@ public class SectionGraph extends AbstractBargraph
     private int activeSegments = 20;
 
     private List<Shape> bargraph = new ArrayList();
-    private Color color = Color.BLACK;
+    private Color color = ColorPalette.BLACK;
     private double value = 0.0;
     private boolean plainBargraphSegments = false;
     private List<SSSection> sections = new ArrayList();

@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.text.TextFormatSupport;
 import us.jaba.titaniumblocks.core.text.formats.TextIntegerFormat;
 import us.jaba.titaniumblocks.core.text.painters.IntegerValueText;
@@ -46,8 +46,8 @@ public class TextIntegerFormatViewer extends BasicVerticalViewer
 
     public TextIntegerFormatViewer()
     {
-        backgroundColor = Color.GRAY;
-        foregroundColor = Color.BLACK;
+        backgroundColor = ColorPalette.GRAY;
+        foregroundColor = ColorPalette.BLACK;
 
         init(TextIntegerFormatViewer.class.getSimpleName(), new Dimension(400, 150), TextFormatSupport.getInstanceOfEach());
         

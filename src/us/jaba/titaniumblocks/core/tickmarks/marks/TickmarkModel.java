@@ -44,11 +44,11 @@ public class TickmarkModel extends CoreModel
     public static final float DEFAULT_MIN_VALUE = 0.0F;
     public static final float DEFAULT_MAX_VALUE = 100.0F;
 
-    protected static final Color DEFAULT_BASELINE_COLOR = ColorPalette.Black;
-    protected static final Color DEFAULT_MAJOR_COLOR = ColorPalette.Black;
-    protected static final Color DEFAULT_MEDIUM_COLOR = ColorPalette.Black;
-    protected static final Color DEFAULT_MINOR_COLOR = ColorPalette.Black;
-    protected static final Color DEFAULT_TEXT_COLOR = ColorPalette.Black;
+    protected static final Color DEFAULT_BASELINE_COLOR = ColorPalette.BLACK;
+    protected static final Color DEFAULT_MAJOR_COLOR = ColorPalette.BLACK;
+    protected static final Color DEFAULT_MEDIUM_COLOR = ColorPalette.BLACK;
+    protected static final Color DEFAULT_MINOR_COLOR = ColorPalette.BLACK;
+    protected static final Color DEFAULT_TEXT_COLOR = ColorPalette.BLACK;
 
     public static final BasicStroke DEFAULT_BASELINE_STROKE = new BasicStroke(1.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     public static final BasicStroke DEFAULT_MAJOR_STROKE = new BasicStroke(1.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);

@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.color.lcdgradients;
 
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 
 /**
@@ -45,7 +46,7 @@ public class Gray extends LcdGradientPalette
                 new Color(87, 87, 87),
                 new Color(65, 65, 65),
                 new Color(81, 81, 81),
-                Color.WHITE
+                ColorPalette.WHITE
         );
     }
 

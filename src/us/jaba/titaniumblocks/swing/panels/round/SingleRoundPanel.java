@@ -40,7 +40,7 @@ import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedModel;
@@ -165,7 +165,7 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(RoundFrameModel linearFramePainter)
+    public void setRoundFramePainter(FrameModel linearFramePainter)
     {
         singleGauge.setRoundFramePainter(linearFramePainter);
     }

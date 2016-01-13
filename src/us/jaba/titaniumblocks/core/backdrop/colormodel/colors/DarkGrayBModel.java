@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -38,7 +39,7 @@ public class DarkGrayBModel extends BackdropColorModel
 {
     public DarkGrayBModel()
     {
-        super(new Color(0, 0, 0, 255), new Color(51, 51, 51, 255), new Color(153, 153, 153, 255), Color.WHITE, new Color(180, 180, 180));
+        super(new Color(0, 0, 0, 255), new Color(51, 51, 51, 255), new Color(153, 153, 153, 255), ColorPalette.WHITE, new Color(180, 180, 180));
     }
 
 }

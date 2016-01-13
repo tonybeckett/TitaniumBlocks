@@ -28,7 +28,6 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -42,6 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
 import us.jaba.titaniumblocks.core.frames.RectangularFramePainter;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
@@ -91,7 +91,7 @@ public class RectangularFramePainterViewer extends javax.swing.JFrame
             gl = new GridLayout();
             gl.setColumns(elen);
             lpanel.setLayout(gl);
-            lpanel.setBorder(new LineBorder(Color.BLACK, 1));
+            lpanel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
             for (int j = 0; j < elen; j++)
             {
                 Class<?> eLinearClass = linearEffectClassList.get(j);
@@ -106,9 +106,9 @@ public class RectangularFramePainterViewer extends javax.swing.JFrame
                 jlabel.setText(aLinearClass.getSimpleName().replace("FramePainter", "").replace("Linear", "") + "-" + eLinearClass.getSimpleName().replace("Painter", "").replace("Linear", ""));
 
                 jlabel.setIcon(new ImageIcon(lfg.build(dim)));
-//            jlabel.setForeground(Color.BLACK);
-                jlabel.setBackground(Color.LIGHT_GRAY);
-                epanel.setBackground(Color.LIGHT_GRAY);
+//            jlabel.setForeground(ColorPalette.BLACK);
+                jlabel.setBackground(ColorPalette.GRAY.brighter());
+                epanel.setBackground(ColorPalette.GRAY.brighter());
                 epanel.add(jlabel, BorderLayout.CENTER);
 
                 lpanel.add(epanel);

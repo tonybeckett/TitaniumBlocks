@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.knobs;
 
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -38,23 +39,23 @@ public class KnobColors
 
     public static final Color[] WHITE =
     {
-        new Color(0xFFFFFF),
-        new Color(0xDDDDDD),
-        new Color(0xFFFFFF)
+        ColorPalette.WHITE,
+        ColorPalette.WHITE.darker().darker(),
+        ColorPalette.WHITE
     };
 
     public static final Color[] BLACK =
     {
-        new Color(0xBFBFBF),
-        new Color(0x2B2A2F),
-        new Color(0x7D7E80)
+        ColorPalette.BLACK,
+        ColorPalette.BLACK.brighter().brighter(),
+        ColorPalette.BLACK
     };
 
     public static final Color[] SILVER =
     {
-        new Color(0xD7D7D7),
-        new Color(0x747474),
-        new Color(0xD7D7D7)
+        ColorPalette.SILVER,
+        ColorPalette.SILVER.darker().darker(),
+        ColorPalette.SILVER
     };
 
     public static final Color[] NICKEL =
@@ -66,9 +67,9 @@ public class KnobColors
 
     public static final Color[] COPPER =
     {
-        new Color(0xEA763D).darker(),
-        new Color(0xC35E32).darker(),
-        new Color(0xEA763D).darker()
+        ColorPalette.COPPER.darker(),
+        ColorPalette.COPPER.darker().darker(),
+        ColorPalette.COPPER.darker()
     };
 
     public static final Color[] BRASS =

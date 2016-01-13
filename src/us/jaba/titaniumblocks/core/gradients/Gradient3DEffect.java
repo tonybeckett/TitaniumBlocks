@@ -43,13 +43,13 @@ public class Gradient3DEffect
      * Returns a radial gradient paint that will be used as overlay for the
      * track or section image to achieve some kind of a 3d effect.
      *
-     * @param WIDTH
+     * @param width
      * @param RADIUS_FACTOR : 0.38f for the standard radial gauge
      * @param expandedSectionsEnabled
      * @return a radial gradient paint that will be used as overlay for the
      * track or section image
      */
-    protected RadialGradientPaint createSection3DEffectGradient(final int WIDTH, final float RADIUS_FACTOR, boolean expandedSectionsEnabled)
+    protected RadialGradientPaint createSection3DEffectGradient(final int width, final float RADIUS_FACTOR, boolean expandedSectionsEnabled)
     {
         final float[] FRACTIONS;
         final Color[] COLORS;
@@ -91,8 +91,8 @@ public class Gradient3DEffect
             };
         }
 
-        final Point2D GRADIENT_CENTER = new Point2D.Double(WIDTH / 2.0, WIDTH / 2.0);
+        final Point2D GRADIENT_CENTER = new Point2D.Double(width / 2.0, width / 2.0);
 
-        return new RadialGradientPaint(GRADIENT_CENTER, WIDTH * RADIUS_FACTOR, FRACTIONS, COLORS);
+        return new RadialGradientPaint(GRADIENT_CENTER, width * RADIUS_FACTOR, FRACTIONS, COLORS);
     }
 }

@@ -36,6 +36,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlue;
 import us.jaba.titaniumblocks.core.threshold.indicators.ThresholdIndicatorModel;
@@ -90,7 +91,7 @@ public class VerticalThresholdIndicator extends ThresholdIndicatorModel
         graphics.setPaint(THRESHOLD_GRADIENT);
         graphics.fill(THRESHOLD);
 
-        graphics.setColor(Color.WHITE);
+        graphics.setColor(ColorPalette.WHITE);
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(THRESHOLD);
 

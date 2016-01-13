@@ -37,6 +37,7 @@ import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
@@ -46,7 +47,7 @@ import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.RoundFrameModel;
+import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.BasicRadialForegroundPainter;
 import us.jaba.titaniumblocks.core.frontcover.models.round.TopThirdRadialForegroundPainter;
@@ -134,7 +135,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public SingleRoundDisplay(CircularLayout circularLayout)
     {
-        this(circularLayout, Color.BLACK);
+        this(circularLayout, ColorPalette.BLACK);
     }
 
     public SingleRoundDisplay(CircularLayout circularLayout, Color c)
@@ -300,7 +301,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         return backdropImage.getPainter();
     }
 
-    public RoundFrameModel getFramePainter()
+    public FrameModel getFramePainter()
     {
         return frameImage.getPainter();
     }
@@ -320,7 +321,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         this.backdropImage = new BackdropImageFactory(painter);
     }
 
-    public void setRoundFramePainter(RoundFrameModel linearFramePainter)
+    public void setRoundFramePainter(FrameModel linearFramePainter)
     {
         this.frameImage = new RoundFrameImageFactory(linearFramePainter);
     }

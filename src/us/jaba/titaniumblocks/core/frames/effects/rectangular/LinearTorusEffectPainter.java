@@ -47,16 +47,16 @@ public class LinearTorusEffectPainter implements RectangularFrameEffectPainter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
-        final int WIDTH = (int) dimensions.getWidth();
-        final int HEIGHT = (int) dimensions.getHeight();
+        final int width = (int) dimensions.getWidth();
+        final int height = (int) dimensions.getHeight();
         float relFrameSize;
         // The smaller side is important for the contour gradient
-        if (WIDTH >= HEIGHT)
+        if (width >= height)
         {
-            relFrameSize = 32f / HEIGHT;
+            relFrameSize = 32f / height;
         } else
         {
-            relFrameSize = (32f / WIDTH);
+            relFrameSize = (32f / width);
         }
         EFFECT_FRACTIONS = new float[]
         {

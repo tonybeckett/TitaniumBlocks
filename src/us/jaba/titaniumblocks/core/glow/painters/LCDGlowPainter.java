@@ -50,27 +50,27 @@ public class LCDGlowPainter extends GlowPainter
      * you are not in front of the screen and so one could see the current state
      * more easy.
      *
-     * @param WIDTH
-     * @param HEIGHT
+     * @param width
+     * @param height
      * @param getGlowColor()
      * @param ON
      * @return an image that simulates a glowing ring
      */
-//    public BufferedImage createLcdGlow(final int WIDTH, final int HEIGHT, final Color getGlowColor(), final boolean ON)
+//    public BufferedImage createLcdGlow(final int width, final int height, final Color getGlowColor(), final boolean ON)
 //    {
-//        if (WIDTH <= 1 || HEIGHT <= 1)
+//        if (width <= 1 || height <= 1)
 //        {
 //            return UTIL.createImage(1, 1, Transparency.TRANSLUCENT);
 //        }
 //
 //        // Take image from cache instead of creating a new one if parameters are the same as last time
-//        if (lcdWidth == WIDTH && lcdHeight == HEIGHT && lcdGlowColor.equals(getGlowColor()) && lcdOn == ON)
+//        if (lcdWidth == width && lcdHeight == height && lcdGlowColor.equals(getGlowColor()) && lcdOn == ON)
 //        {
 //            return lcdGlowImage;
 //        }
 //
 //        lcdGlowImage.flush();
-//        lcdGlowImage = UTIL.createImage(WIDTH, HEIGHT, Transparency.TRANSLUCENT);
+//        lcdGlowImage = UTIL.createImage(width, height, Transparency.TRANSLUCENT);
 
     @Override
     public void paint(final Graphics2D graphics, final Dimension dimensions)
@@ -102,8 +102,8 @@ public class LCDGlowPainter extends GlowPainter
         graphics.dispose();
 
 //        // memoize parameters
-//        lcdWidth = WIDTH;
-//        lcdHeight = HEIGHT;
+//        lcdWidth = width;
+//        lcdHeight = height;
 //        lcdGlowColor = getGlowColor();
 //        lcdOn = ON;
 //

@@ -27,12 +27,12 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.bargraph.BargraphImage;
 import us.jaba.titaniumblocks.core.bargraph.models.linear.BargraphGradient20;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
 
 /**
@@ -46,10 +46,10 @@ public class SingleBargraphDisplay extends SingleDisplay
 
     public SingleBargraphDisplay()
     {
-        super(Color.WHITE);
+        super(ColorPalette.WHITE);
         BargraphGradient20 b = new BargraphGradient20();
         bargraphImage = new BargraphImage(b);
-        b.setColor(Color.RED);
+        b.setColor(ColorPalette.RED);
 
         setValue(43.0);
     }

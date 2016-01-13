@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import java.awt.Color;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -38,7 +39,7 @@ public class NoisyPlasticBModel extends BackdropColorModel
 {
     public NoisyPlasticBModel()
     {
-        super(new Color(50, 50, 54, 255), new Color(47, 47, 51, 255), new Color(69, 69, 74, 255), Color.WHITE, new Color(180, 180, 180));
+        super(new Color(50, 50, 54, 255), new Color(47, 47, 51, 255), new Color(69, 69, 74, 255), ColorPalette.WHITE, new Color(180, 180, 180));
     }
 
 }

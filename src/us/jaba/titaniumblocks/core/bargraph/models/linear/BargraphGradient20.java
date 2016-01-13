@@ -32,6 +32,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.RadialGradientPaint;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -71,7 +72,7 @@ public class BargraphGradient20 extends Bargraph20
             }
             else
             {
-                 graphics.setPaint(Color.GRAY.brighter());
+                 graphics.setPaint(ColorPalette.GRAY.brighter());
             }
             graphics.fill(bargraph.get(i));
         }

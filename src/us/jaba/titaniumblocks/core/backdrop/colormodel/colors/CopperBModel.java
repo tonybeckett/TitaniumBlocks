@@ -28,9 +28,9 @@
 package us.jaba.titaniumblocks.core.backdrop.colormodel.colors;
 
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import java.awt.Color;
-import static us.jaba.titaniumblocks.core.color.ColorPalette.Copper;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.HSLColor;
+import static us.jaba.titaniumblocks.core.color.ColorPalette.COPPER;
 
 /**
  *
@@ -41,11 +41,11 @@ public class CopperBModel extends BackdropColorModel
 
     public CopperBModel()
     {
-        super(Copper,
-                new HSLColor(Copper).adjustLuminance((float) 70.0),
-                new HSLColor(Copper).adjustLuminance((float) 80.0),
-                Color.BLACK,
-                new HSLColor(Copper).adjustLuminance((float) 25.0));
+        super(COPPER,
+                new HSLColor(COPPER).adjustLuminance((float) 70.0),
+                new HSLColor(COPPER).adjustLuminance((float) 80.0),
+                ColorPalette.BLACK,
+                new HSLColor(COPPER).adjustLuminance((float) 25.0));
     }
 
 }

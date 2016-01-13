@@ -130,7 +130,7 @@ public class LinearSection
                     FOREGROUND_COLOR = Color.BLACK;
                 }
             }
-//            sectionsBackground.add(create_LCD_Image(WIDTH, HEIGHT, BACKGROUND_COLORS));
+//            sectionsBackground.add(create_LCD_Image(width, height, BACKGROUND_COLORS));
             sectionsForeground.add(FOREGROUND_COLOR);
         }
 

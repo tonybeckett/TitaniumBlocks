@@ -28,10 +28,10 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.DisabledSupport;
@@ -45,8 +45,8 @@ public class DisabledViewer extends BasicVerticalViewer
 
     public DisabledViewer()
     {
-        backgroundColor = Color.WHITE;
-        foregroundColor = Color.BLACK;
+        backgroundColor = ColorPalette.WHITE;
+        foregroundColor = ColorPalette.BLACK;
         List i = DisabledSupport.getInstanceOfEach();
          
         init("DisabledViewer", new Dimension(250, 250), i);

@@ -42,7 +42,7 @@ public class MetalCopperPostPainter extends BaseMetalPostPainter
     {
         super(new Color[]
         {
-            ColorPalette.Copper,
+            ColorPalette.COPPER,
             new Color(0x7C5F3D)
         });
     }

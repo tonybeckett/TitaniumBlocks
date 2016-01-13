@@ -28,7 +28,6 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Constructor;
@@ -38,9 +37,9 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
-import us.jaba.titaniumblocks.core.posts.PositionedSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostCoreInfo;
 
 /**
@@ -52,8 +51,8 @@ public class PositionedPostViewer extends BasicVerticalViewer
 
     public PositionedPostViewer()
     {
-        backgroundColor = Color.WHITE;
-        foregroundColor = Color.BLACK;
+        backgroundColor = ColorPalette.WHITE;
+        foregroundColor = ColorPalette.BLACK;
 
         init("PositionedPostViewer", new Dimension(300, 300), PostCoreInfo.getAvailablePositioned());
     }
@@ -107,7 +106,7 @@ public class PositionedPostViewer extends BasicVerticalViewer
     protected JPanel buildPanel(Object o)
     {
         JPanel p = super.buildPanel(o); 
-        p.setBorder(new LineBorder(Color.BLACK, 1));
+        p.setBorder(new LineBorder(ColorPalette.BLACK, 1));
         return p;
     }
 

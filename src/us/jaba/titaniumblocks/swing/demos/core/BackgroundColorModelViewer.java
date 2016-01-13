@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.swing.demos.core;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.lang.reflect.Constructor;
@@ -40,7 +39,7 @@ import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.backdrop.BackdropCoreInfo;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import us.jaba.titaniumblocks.core.utils.ClassFinder;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -72,48 +71,48 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
             GridLayout gridLayout = new GridLayout();
             gridLayout.setColumns(6);
             panel.setLayout(gridLayout);
-//            panel.setBackground(Color.WHITE);
+//            panel.setBackground(ColorPalette.WHITE);
 
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
             BackdropColorModel bcm = (BackdropColorModel) c.newInstance();
             
             JLabel jlabel = new JLabel(aClass.getSimpleName().replace("BModel", ""));
-            jlabel.setForeground(Color.BLACK);
-//            jlabel.setBackground(Color.WHITE);
+            jlabel.setForeground(ColorPalette.BLACK);
+//            jlabel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel);
 
             
             jlabel = new JLabel("START");
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getGradientStartColor());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
             panel.add(jlabel);
 
             jlabel = new JLabel("CENTER");
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getGradientFractionColor());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
             panel.add(jlabel);
 
             jlabel = new JLabel("STOP");
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getGradientStopColor());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
             panel.add(jlabel);
 
             jlabel = new JLabel("LABEL");
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getLabelColor());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);
             panel.add(jlabel);
 
             jlabel = new JLabel("SYMBOL");
-            jlabel.setForeground(Color.GRAY);
+            jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getSymbolColor());
             jlabel.setOpaque(true);
             jlabel.setHorizontalAlignment(JLabel.CENTER);

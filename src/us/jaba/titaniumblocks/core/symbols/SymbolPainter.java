@@ -34,6 +34,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
 import us.jaba.titaniumblocks.core.shadows.DropShadowImageGenerator;
 import us.jaba.titaniumblocks.core.color.ColorTools;
@@ -51,7 +52,7 @@ public class SymbolPainter extends CoreModel
 
     public SymbolPainter()
     {
-        paintColor = Color.GRAY;
+        paintColor = ColorPalette.GRAY;
     }
 
     @Override

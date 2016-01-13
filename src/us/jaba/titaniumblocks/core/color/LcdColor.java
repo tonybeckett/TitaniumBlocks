@@ -80,14 +80,14 @@ public enum LcdColor {
         new Color(241, 246, 242),
         new Color(229, 239, 244),
         new Color(255, 255, 255),
-        Color.BLACK),
+        ColorPalette.BLACK),
     GRAY_LCD(
         new Color(65, 65, 65),
         new Color(117, 117, 117),
         new Color(87, 87, 87),
         new Color(65, 65, 65),
         new Color(81, 81, 81),
-        Color.WHITE),
+        ColorPalette.WHITE),
     BLACK_LCD(
         new Color(65, 65, 65),
         new Color(102, 102, 102),

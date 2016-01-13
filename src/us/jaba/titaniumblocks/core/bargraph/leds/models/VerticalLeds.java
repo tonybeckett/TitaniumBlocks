@@ -70,19 +70,19 @@ public class VerticalLeds extends LedModel
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int WIDTH = (int) dimensions.getWidth();
-        int HEIGHT = (int) dimensions.getHeight();
+        int width = (int) dimensions.getWidth();
+        int height = (int) dimensions.getHeight();
 
         // Vertical orientation
-        double TOP = HEIGHT * 0.12864077669902912; // position of max value
-        double BOTTOM = HEIGHT * 0.8567961165048543; // position of min value
+        double TOP = height * 0.12864077669902912; // position of max value
+        double BOTTOM = height * 0.8567961165048543; // position of min value
         double FULL_SIZE = BOTTOM - TOP;
 
-        Rectangle2D.Double led = new Rectangle2D.Double(WIDTH * 0.45, HEIGHT * 0.8519417476, WIDTH * 0.1214285714, HEIGHT * 0.0121359223);
+        Rectangle2D.Double led = new Rectangle2D.Double(width * 0.45, height * 0.8519417476, width * 0.1214285714, height * 0.0121359223);
         Point2D.Double ledCenter = new Point2D.Double(led.getCenterX(), led.getCenterY());
 
-        RadialGradientPaint ledGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * WIDTH), LED_FRACTIONS, getLedColors());
-        RadialGradientPaint ledInactiveGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * WIDTH), LED_FRACTIONS, LED_INACTIVE_COLORS);
+        RadialGradientPaint ledGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * width), LED_FRACTIONS, getLedColors());
+        RadialGradientPaint ledInactiveGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * width), LED_FRACTIONS, LED_INACTIVE_COLORS);
 
         // Vertical orientation
         // Draw the inactive leds

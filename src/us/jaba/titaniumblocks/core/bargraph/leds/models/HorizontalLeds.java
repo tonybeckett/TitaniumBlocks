@@ -64,21 +64,21 @@ public class HorizontalLeds extends LedModel
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        int WIDTH = (int) dimensions.getWidth();
-        int HEIGHT = (int) dimensions.getHeight();
+        int width = (int) dimensions.getWidth();
+        int height = (int) dimensions.getHeight();
 
         // Horizontal orientation
-        double TOP = WIDTH * 0.8567961165048543; // position of max value
-        double BOTTOM = WIDTH * 0.12864077669902912; // position of min value
+        double TOP = width * 0.8567961165048543; // position of max value
+        double BOTTOM = width * 0.12864077669902912; // position of min value
         double FULL_SIZE = TOP - BOTTOM;
 
-        Rectangle2D.Double led = new Rectangle2D.Double(WIDTH * 0.14285714285714285, HEIGHT * 0.45, WIDTH * 0.0121359223, HEIGHT * 0.1214285714);
+        Rectangle2D.Double led = new Rectangle2D.Double(width * 0.14285714285714285, height * 0.45, width * 0.0121359223, height * 0.1214285714);
         Point2D.Double ledCenter = new Point2D.Double(led.getCenterX(), led.getCenterY());
 
         
 
-        RadialGradientPaint ledGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * HEIGHT), LED_FRACTIONS, getLedColors());
-        RadialGradientPaint ledInactiveGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * HEIGHT), LED_FRACTIONS, LED_INACTIVE_COLORS);
+        RadialGradientPaint ledGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * height), LED_FRACTIONS, getLedColors());
+        RadialGradientPaint ledInactiveGradient = new RadialGradientPaint(ledCenter, (float) (0.030373831775700934 * height), LED_FRACTIONS, LED_INACTIVE_COLORS);
 ///////
         // Draw the inactive leds
         final AffineTransform OLD_TRANSFORM = graphics.getTransform();

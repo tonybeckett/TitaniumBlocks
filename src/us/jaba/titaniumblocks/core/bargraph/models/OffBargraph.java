@@ -33,6 +33,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -41,7 +42,7 @@ import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
 public class OffBargraph extends AbstractBargraph
 {
 
-    private Color color = Color.GRAY;
+    private Color color = ColorPalette.GRAY;
    
 
     public Color getColor()

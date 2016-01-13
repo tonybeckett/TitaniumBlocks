@@ -50,7 +50,7 @@ public abstract class AbstractRoundBackdropModel extends BackdropModel
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-//    public BufferedImage createRadialBackground(final int WIDTH, final BackgroundColor backgroundColorModel, final Paint CUSTOM_BACKGROUND, final Color TEXTURE_COLOR, final BufferedImage BACKGROUND_IMAGE)
+//    public BufferedImage createRadialBackground(final int width, final BackgroundColor backgroundColorModel, final Paint CUSTOM_BACKGROUND, final Color TEXTURE_COLOR, final BufferedImage BACKGROUND_IMAGE)
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 

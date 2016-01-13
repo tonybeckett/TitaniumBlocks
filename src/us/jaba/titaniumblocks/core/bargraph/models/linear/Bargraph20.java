@@ -35,6 +35,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Bargraph20 extends AbstractBargraph
 {
 
     protected final List<Shape> bargraph = new ArrayList();
-    protected Color color = Color.WHITE;
+    protected Color color = ColorPalette.WHITE;
     protected double value = 0.0;
     protected double max = 100.0;
 
@@ -201,7 +202,7 @@ public class Bargraph20 extends AbstractBargraph
                 graphics.setPaint(this.getColor());
             } else
             {
-                graphics.setPaint(Color.GRAY);
+                graphics.setPaint(ColorPalette.GRAY);
             }
             graphics.fill(bargraph.get(i));
         }

@@ -32,6 +32,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.sections.Section;
 
 /**
@@ -41,7 +42,7 @@ import us.jaba.titaniumblocks.core.sections.Section;
 public class BasicSection extends Section
 {
 
-    private Color color = Color.WHITE;
+    private Color color = ColorPalette.WHITE;
     private double value = 0.0;
     private double max = 100.0;
     private float opacity = 0.5f;

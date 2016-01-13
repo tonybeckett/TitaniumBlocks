@@ -31,10 +31,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Transparency;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.threshold.indicators.ThresholdIndicatorModel;
 
@@ -49,7 +47,7 @@ public class VerticalMeasuredIndicator extends ThresholdIndicatorModel
 
     public VerticalMeasuredIndicator()
     {
-        color = ColorPalette.Walnut;
+        color = ColorPalette.WALNUT;
     }
 
     public VerticalMeasuredIndicator(Color c)
