@@ -34,7 +34,7 @@ import java.util.List;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
-import us.jaba.titaniumblocks.core.disabled.DisabledSupport;
+import us.jaba.titaniumblocks.core.disabled.DisabledCoreInfo;
 
 /**
  *
@@ -47,7 +47,7 @@ public class DisabledViewer extends BasicVerticalViewer
     {
         backgroundColor = ColorPalette.WHITE;
         foregroundColor = ColorPalette.BLACK;
-        List i = DisabledSupport.getInstanceOfEach();
+        List i = DisabledCoreInfo.getInstanceOfEach();
          
         init("DisabledViewer", new Dimension(250, 250), i);
 
@@ -56,13 +56,9 @@ public class DisabledViewer extends BasicVerticalViewer
     @Override
     protected String getClassNameFromInstance(Object o)
     {
-        String s = null;
-        if (o instanceof DisabledPainter)
-        {
-            DisabledPainter pp = (DisabledPainter) o;
-            s = pp.getClass().getSimpleName().replace("", "");
-        }
-        return s;
+
+         DisabledPainter pp = (DisabledPainter) o;
+        return pp.getClass().getSimpleName().replace("ForegroundPainter", "");
     }
 
     @Override
@@ -73,6 +69,7 @@ public class DisabledViewer extends BasicVerticalViewer
         return new DisabledImageFactory(pp).build(dim);
     }
 
+    
     /**
      * @param args the command line arguments
      */
@@ -108,12 +105,7 @@ public class DisabledViewer extends BasicVerticalViewer
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+   
 
         //</editor-fold>
 
