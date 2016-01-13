@@ -30,14 +30,11 @@ package us.jaba.titaniumblocks.swing.demos.core;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -74,7 +71,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        List<Field>al = CoreInfoSupport.getStaticFields(ColorPalette.class);
+        List<Field> al = CoreInfoSupport.getStaticFields(ColorPalette.class);
 //        List<String> al = ColorPalette.getColorNamesByHue();
 //        Set keys = m.keySet();
 //        int len = keys.size();
@@ -84,7 +81,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
         GridLayout gl = new GridLayout();
         gl.setRows(len);
         list.setLayout(gl);
-        Dimension dim = new Dimension(20, 20);
+        Dimension dim = new Dimension(18, 18);
         for (int i = 0; i < len; i++)
         {
             JPanel panel = new JPanel();
@@ -93,12 +90,13 @@ public class ColorPaletteViewer extends javax.swing.JFrame
 
             Color c = (Color) al.get(i).get(i);
             JLabel jlabel = new JLabel();
-            jlabel.setText(al.get(i).getName()+" - "+c.toString());
+            jlabel.setText(String.format(" %-20s  %3d,%3d,%3d", al.get(i).getName(), c.getRed(), c.getGreen(), c.getBlue()));
             jlabel.setIcon(new ImageIcon(Images.titaniumblocks16x16));
-            jlabel.setForeground(c.darker().darker());
+            jlabel.setForeground(new Color(255 - c.getRed(), 255 - c.getGreen(), 255 - c.getBlue())); //c.darker().darker());
+            jlabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
             jlabel.setBackground(c);
             panel.setBackground(c);
-            panel.add(jlabel, BorderLayout.CENTER);
+            panel.add(jlabel, BorderLayout.WEST);
 //            System.out.println("     public static final Color "+alk.get(i).replace(" ", "")+" = new Color(" + String.format("%d,%d,%d",c.getRed(),c.getGreen(),c.getBlue() )+");");
             list.add(panel);
         }
@@ -109,7 +107,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
         jlabel.setText("  Thanks to Chirag Mehta.");
         add(jlabel, BorderLayout.SOUTH);
         this.setIconImage(Images.titaniumblocks16x16);
-        this.setSize(new Dimension(400, 800));
+        this.setSize(new Dimension(460, 800));
     }
 
     private void initComponents()
