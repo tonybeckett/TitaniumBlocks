@@ -36,7 +36,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.NoEffectPainter;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.NoEffect;
 import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -75,7 +75,7 @@ public class RectangularFrame extends FrameModel
     }
 
     public static final int DEFAULT_FRAME_THICKNESS = 16;
-    private RectangularFrameEffectPainter linearEffect = new NoEffectPainter();
+    private RectangularFrameEffectPainter linearEffect = new NoEffect();
 
     protected int frameThickness = DEFAULT_FRAME_THICKNESS;
     protected Dimension interiorDimension = new Dimension(1, 1);

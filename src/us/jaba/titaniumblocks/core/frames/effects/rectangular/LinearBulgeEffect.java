@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
  *
  * @author tbeckett
  */
-public class LinearBulgeEffectPainter implements RectangularFrameEffectPainter
+public class LinearBulgeEffect implements RectangularFrameEffectPainter
 {
 
     private float[] EFFECT_FRACTIONS;

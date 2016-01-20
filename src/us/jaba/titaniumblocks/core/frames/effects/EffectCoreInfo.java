@@ -30,15 +30,15 @@ package us.jaba.titaniumblocks.core.frames.effects;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearBulgeEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearConeEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearInnerEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearTorusEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.rectangular.NoEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.round.RadialBulgeEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.round.RadialConeEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.round.RadialInnerEffectPainter;
-import us.jaba.titaniumblocks.core.frames.effects.round.RadialTorusEffectPainter;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearBulgeEffect;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearConeEffect;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearInnerEffect;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.LinearTorusEffect;
+import us.jaba.titaniumblocks.core.frames.effects.rectangular.NoEffect;
+import us.jaba.titaniumblocks.core.frames.effects.round.RadialBulgeEffect;
+import us.jaba.titaniumblocks.core.frames.effects.round.RadialConeEffect;
+import us.jaba.titaniumblocks.core.frames.effects.round.RadialInnerEffect;
+import us.jaba.titaniumblocks.core.frames.effects.round.RadialTorusEffect;
 
 /**
  *
@@ -49,19 +49,19 @@ public class EffectCoreInfo
 
     public static final Class<?>[] RECTANGUALR_MODELS =
     {
-        LinearBulgeEffectPainter.class,
-        LinearConeEffectPainter.class,
-        LinearInnerEffectPainter.class,
-        LinearTorusEffectPainter.class,
-        NoEffectPainter.class
+        LinearBulgeEffect.class,
+        LinearConeEffect.class,
+        LinearInnerEffect.class,
+        LinearTorusEffect.class,
+        NoEffect.class
     };
 
     public static final Class<?>[] ROUND_MODELS =
     {
-        RadialBulgeEffectPainter.class,
-        RadialConeEffectPainter.class,
-        RadialInnerEffectPainter.class,
-        RadialTorusEffectPainter.class
+        RadialBulgeEffect.class,
+        RadialConeEffect.class,
+        RadialInnerEffect.class,
+        RadialTorusEffect.class
     };
 
     public static List<Class<?>> getRoundClasses()

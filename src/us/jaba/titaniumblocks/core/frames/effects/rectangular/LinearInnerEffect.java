@@ -30,15 +30,18 @@ package us.jaba.titaniumblocks.core.frames.effects.rectangular;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.geom.Area;
+import java.awt.geom.Point2D;
+import java.awt.geom.RoundRectangle2D;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
-import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class LinearTorusEffectPainter implements RectangularFrameEffectPainter
+public class LinearInnerEffect implements RectangularFrameEffectPainter
 {
 
     private float[] EFFECT_FRACTIONS;
@@ -47,36 +50,32 @@ public class LinearTorusEffectPainter implements RectangularFrameEffectPainter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
-        final int width = (int) dimensions.getWidth();
-        final int height = (int) dimensions.getHeight();
-        float relFrameSize;
-        // The smaller side is important for the contour gradient
-        if (width >= height)
-        {
-            relFrameSize = 32f / height;
-        } else
-        {
-            relFrameSize = (32f / width);
-        }
-        EFFECT_FRACTIONS = new float[]
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+
+        final RoundRectangle2D EFFECT_BIGINNERFRAME = new RoundRectangle2D.Double(10, 10, imageWidth - 20, imageHeight - 20, 10.0, 10.0);
+        final Point2D EFFECT_BIGINNERFRAME_START = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMinY());
+        final Point2D EFFECT_BIGINNERFRAME_STOP = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMaxY());
+        final float[] EFFECT_BIGINNERFRAME_FRACTIONS =
         {
             0.0f,
-            relFrameSize * 0.1f,
-            relFrameSize * 0.5f,
-            relFrameSize,
+            0.13f,
+            0.45f,
+            0.92f,
             1.0f
         };
-        EFFECT_COLORS = new Color[]
+        final Color[] EFFECT_BIGINNERFRAME_COLORS =
         {
-            new Color(0f, 0f, 0f, 0.3f),
-            new Color(0f, 0f, 0f, 0.3f),
-            new Color(1f, 1f, 1f, 0.5f),
-            new Color(0f, 0f, 0f, 0.2f),
-            new Color(0f, 0f, 0f, 0f)
+            new Color(0, 0, 0, 183),
+            new Color(0, 0, 0, 25),
+            new Color(0, 0, 0, 160),
+            new Color(0, 0, 0, 80),
+            new Color(255, 255, 255, 158)
         };
-        ContourGradientPaint EFFECT_GRADIENT = new ContourGradientPaint(outerFrame.getBounds2D(), EFFECT_FRACTIONS, EFFECT_COLORS);
-        graphics.setPaint(EFFECT_GRADIENT);
-        graphics.fill(outerFrame);
+        PointSupport.validateGradientPoints(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP);
+        final LinearGradientPaint EFFECT_BIGINNERFRAME_GRADIENT = new LinearGradientPaint(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP, EFFECT_BIGINNERFRAME_FRACTIONS, EFFECT_BIGINNERFRAME_COLORS);
+        graphics.setPaint(EFFECT_BIGINNERFRAME_GRADIENT);
+        graphics.fill(EFFECT_BIGINNERFRAME);
     }
 
 }

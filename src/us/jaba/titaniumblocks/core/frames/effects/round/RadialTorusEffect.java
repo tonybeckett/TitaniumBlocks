@@ -27,8 +27,10 @@
  */
 package us.jaba.titaniumblocks.core.frames.effects.round;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
@@ -37,13 +39,37 @@ import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
  *
  * @author tbeckett
  */
-public class NoEffectPainter implements RoundFrameEffectPainter
+public class RadialTorusEffect implements RoundFrameEffectPainter
 {
 
+    private float[] EFFECT_FRACTIONS;
+    private Color[] EFFECT_COLORS;
+
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions, Area outerFrame, Point2D center)
+    public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame, Point2D center)
     {
-        
+        final int width = (int) dimensions.getWidth();
+        final int height = (int) dimensions.getHeight();
+
+        EFFECT_FRACTIONS = new float[]
+        {
+            0.0f,
+            0.82f,
+            0.8201f,
+            0.92f,
+            1.0f
+        };
+        EFFECT_COLORS = new Color[]
+        {
+            new Color(0, 0, 0, 0),
+            new Color(0, 0, 0, 50),
+            new Color(13, 13, 13, 51),
+            new Color(255, 255, 255, 64),
+            new Color(0, 0, 0, 76)
+        };
+        RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (float) (0.5 * width), EFFECT_FRACTIONS, EFFECT_COLORS);
+        graphics.setPaint(EFFECT_GRADIENT);
+        graphics.fill(outerFrame);
     }
-    
+
 }

@@ -25,51 +25,56 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.frames.effects.round;
+package us.jaba.titaniumblocks.core.frames.effects.rectangular;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
 import java.awt.geom.Area;
-import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
+import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
 
 /**
  *
  * @author tbeckett
  */
-public class RadialBulgeEffectPainter implements RoundFrameEffectPainter
+public class LinearTorusEffect implements RectangularFrameEffectPainter
 {
 
     private float[] EFFECT_FRACTIONS;
     private Color[] EFFECT_COLORS;
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame, Point2D center)
+    public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
         final int width = (int) dimensions.getWidth();
         final int height = (int) dimensions.getHeight();
-
+        float relFrameSize;
+        // The smaller side is important for the contour gradient
+        if (width >= height)
+        {
+            relFrameSize = 32f / height;
+        } else
+        {
+            relFrameSize = (32f / width);
+        }
         EFFECT_FRACTIONS = new float[]
         {
             0.0f,
-            0.82f,
-            0.83f,
-            0.86f,
-            0.87f,
+            relFrameSize * 0.1f,
+            relFrameSize * 0.5f,
+            relFrameSize,
             1.0f
         };
         EFFECT_COLORS = new Color[]
         {
-            new Color(0, 0, 0, 0),
-            new Color(0, 0, 0, 76),
-            new Color(0, 0, 0, 95),
-            new Color(219, 219, 219, 153),
-            new Color(255, 255, 255, 151),
-            new Color(0, 0, 0, 102)
+            new Color(0f, 0f, 0f, 0.3f),
+            new Color(0f, 0f, 0f, 0.3f),
+            new Color(1f, 1f, 1f, 0.5f),
+            new Color(0f, 0f, 0f, 0.2f),
+            new Color(0f, 0f, 0f, 0f)
         };
-        RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (0.5f * width), EFFECT_FRACTIONS, EFFECT_COLORS);
+        ContourGradientPaint EFFECT_GRADIENT = new ContourGradientPaint(outerFrame.getBounds2D(), EFFECT_FRACTIONS, EFFECT_COLORS);
         graphics.setPaint(EFFECT_GRADIENT);
         graphics.fill(outerFrame);
     }

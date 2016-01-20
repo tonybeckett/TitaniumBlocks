@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
  *
  * @author tbeckett
  */
-public class RadialTorusEffectPainter implements RoundFrameEffectPainter
+public class RadialConeEffect implements RoundFrameEffectPainter
 {
 
     private float[] EFFECT_FRACTIONS;
@@ -56,15 +56,17 @@ public class RadialTorusEffectPainter implements RoundFrameEffectPainter
             0.0f,
             0.82f,
             0.8201f,
-            0.92f,
+            0.96f,
+            0.9601f,
             1.0f
         };
         EFFECT_COLORS = new Color[]
         {
             new Color(0, 0, 0, 0),
             new Color(0, 0, 0, 50),
-            new Color(13, 13, 13, 51),
-            new Color(255, 255, 255, 64),
+            new Color(9, 9, 9, 51),
+            new Color(255, 255, 255, 124),
+            new Color(223, 223, 223, 127),
             new Color(0, 0, 0, 76)
         };
         RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (float) (0.5 * width), EFFECT_FRACTIONS, EFFECT_COLORS);

@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class RadialInnerEffectPainter implements RoundFrameEffectPainter
+public class RadialInnerEffect implements RoundFrameEffectPainter
 {
 
     private float[] EFFECT_FRACTIONS;
