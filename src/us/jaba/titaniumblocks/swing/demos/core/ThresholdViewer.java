@@ -31,7 +31,7 @@ import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.posts.PostPainter;
+import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.threshold.ThresholdImageFactory;
 import us.jaba.titaniumblocks.core.threshold.ThresholdModel;
 import us.jaba.titaniumblocks.core.threshold.ThresholdCoreInfo;
@@ -56,7 +56,7 @@ public class ThresholdViewer extends BasicVerticalViewer
     protected String getClassNameFromInstance(Object o)
     {
         String s = null;
-        if (o instanceof PostPainter)
+        if (o instanceof Post)
         {
             ThresholdModel pp = (ThresholdModel) o;
            

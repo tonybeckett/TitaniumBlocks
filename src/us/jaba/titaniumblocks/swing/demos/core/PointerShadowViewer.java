@@ -41,7 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.pointers.PointerPainter;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.ShadowCoreInfo;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 
@@ -86,7 +86,7 @@ public class PointerShadowViewer extends javax.swing.JFrame
             panel.setLayout(new BorderLayout());
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
-            PointerPainter pp = (PointerPainter) c.newInstance();
+            Pointer pp = (Pointer) c.newInstance();
 
             
             JLabel jlabel = new JLabel();

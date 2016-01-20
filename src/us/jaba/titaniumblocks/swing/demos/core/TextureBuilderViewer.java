@@ -34,11 +34,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.CarbonTexturePainter;
+import us.jaba.titaniumblocks.core.textures.types.CarbonTexture;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.painters.LinenTexturePainter;
-import us.jaba.titaniumblocks.core.textures.painters.PunchedSheetTexturePainter;
-import us.jaba.titaniumblocks.core.textures.painters.StainlessSteelPlateTexturePainter;
+import us.jaba.titaniumblocks.core.textures.types.LinenTexture;
+import us.jaba.titaniumblocks.core.textures.types.PunchedSheetTexture;
+import us.jaba.titaniumblocks.core.textures.types.StainlessSteelPlateTexture;
 
 /**
  *
@@ -65,27 +65,27 @@ public class TextureBuilderViewer extends javax.swing.JFrame
         label.setIcon(new ImageIcon(im));
         panel.add(label);
 
-        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexturePainter());
+        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexture());
         im = ct.build(new Dimension(200, 200));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));
         panel.add(label);
 
-        ct = new TextureImageBuilder(new LinenTexturePainter());
-        im = ct.build(new Dimension(200, 200));
-        label = new JLabel();
-        label.setIcon(new ImageIcon(im));
-        panel.add(label);
-
-         
-        ct = new TextureImageBuilder(new PunchedSheetTexturePainter());
+        ct = new TextureImageBuilder(new LinenTexture());
         im = ct.build(new Dimension(200, 200));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));
         panel.add(label);
 
          
-        ct = new TextureImageBuilder(new StainlessSteelPlateTexturePainter());
+        ct = new TextureImageBuilder(new PunchedSheetTexture());
+        im = ct.build(new Dimension(200, 200));
+        label = new JLabel();
+        label.setIcon(new ImageIcon(im));
+        panel.add(label);
+
+         
+        ct = new TextureImageBuilder(new StainlessSteelPlateTexture());
         im = ct.build(new Dimension(200, 200));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));

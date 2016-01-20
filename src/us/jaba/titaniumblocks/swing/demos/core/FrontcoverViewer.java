@@ -30,7 +30,7 @@ package us.jaba.titaniumblocks.swing.demos.core;
 import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverCoreInfo;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 
@@ -51,14 +51,14 @@ public class FrontcoverViewer extends BasicVerticalViewer
     @Override
     protected String getClassNameFromInstance(Object o)
     {
-        FrontcoverModel pp = (FrontcoverModel) o;
+        Frontcover pp = (Frontcover) o;
         return pp.getClass().getSimpleName().replace("ForegroundPainter", "");
     }
 
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        FrontcoverModel pp = (FrontcoverModel) next;
+        Frontcover pp = (Frontcover) next;
         return new FrontcoverImageFactory(pp).build(dim);
     }
 

@@ -36,7 +36,7 @@ import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.SatinGrayBModel;
 import us.jaba.titaniumblocks.core.indicators.RectangularIndicatorImageFactory;
 import us.jaba.titaniumblocks.core.indicators.RoundIndicatorImageFactory;
-import us.jaba.titaniumblocks.core.indicators.models.RectangularIndicatorModel;
+import us.jaba.titaniumblocks.core.indicators.types.RectangularIndicator;
 
 /**
  *
@@ -56,7 +56,7 @@ public class IndicatorBuilderViewer extends javax.swing.JFrame
         gridLayout.setColumns(5);
         panel.setLayout(gridLayout);
         
-        RectangularIndicatorImageFactory lib = new RectangularIndicatorImageFactory(new RectangularIndicatorModel());
+        RectangularIndicatorImageFactory lib = new RectangularIndicatorImageFactory(new RectangularIndicator());
         
         BufferedImage im = lib.build(new Dimension(100, 100));
         JLabel label = new JLabel();
@@ -66,7 +66,7 @@ public class IndicatorBuilderViewer extends javax.swing.JFrame
 //        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexturePainter());
 //        im = ct.build(new Dimension(200, 200));
         lib.getPainter().setOn(true);
-        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColorModel(new SatinGrayBModel());
+        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColor(new SatinGrayBModel());
         im = lib.build(new Dimension(100, 100));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));

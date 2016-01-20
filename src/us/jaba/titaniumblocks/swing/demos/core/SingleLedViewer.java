@@ -33,7 +33,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.led.LedCoreInfo;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
-import us.jaba.titaniumblocks.core.led.LedModel;
+import us.jaba.titaniumblocks.core.led.Led;
 
 /**
  *
@@ -54,14 +54,14 @@ public class SingleLedViewer extends BasicVerticalViewer
     @Override
     protected String getClassNameFromInstance(Object o)
     {
-        LedModel pp = (LedModel) o;
+        Led pp = (Led) o;
         return pp.getClass().getSimpleName().replace("Model", "");
     }
 
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        LedModel pp = (LedModel) next;
+        Led pp = (Led) next;
 
         return new LedImageFactory(pp).build(dim);
     }

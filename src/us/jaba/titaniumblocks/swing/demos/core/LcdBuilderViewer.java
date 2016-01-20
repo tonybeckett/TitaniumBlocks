@@ -35,7 +35,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.SatinGrayBModel;
 import us.jaba.titaniumblocks.core.lcd.LinearLcdImageFactory;
-import us.jaba.titaniumblocks.core.lcd.painters.LinearLcdPainter;
+import us.jaba.titaniumblocks.core.lcd.types.LinearLcd;
 
 /**
  *
@@ -51,7 +51,7 @@ public class LcdBuilderViewer extends javax.swing.JFrame
         gridLayout.setColumns(3);
         panel.setLayout(gridLayout);
         
-        LinearLcdImageFactory lib = new LinearLcdImageFactory(new LinearLcdPainter());
+        LinearLcdImageFactory lib = new LinearLcdImageFactory(new LinearLcd());
        
         BufferedImage im = lib.build(new Dimension(200, 100));
         JLabel label = new JLabel();
@@ -61,7 +61,7 @@ public class LcdBuilderViewer extends javax.swing.JFrame
 //        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexturePainter());
 //        im = ct.build(new Dimension(200, 200));
         lib.getPainter().setDisabled(true);
-        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColorModel(new SatinGrayBModel());
+        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColor(new SatinGrayBModel());
         
         im = lib.build(new Dimension(250, 150));
         label = new JLabel();

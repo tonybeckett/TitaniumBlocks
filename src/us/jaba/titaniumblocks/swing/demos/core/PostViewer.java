@@ -32,7 +32,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
-import us.jaba.titaniumblocks.core.posts.PostPainter;
+import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.posts.PostCoreInfo;
 
 /**
@@ -55,9 +55,9 @@ public class PostViewer extends BasicVerticalViewer
     protected String getClassNameFromInstance(Object o)
     {
         String s = null;
-        if (o instanceof PostPainter)
+        if (o instanceof Post)
         {
-            PostPainter pp = (PostPainter) o;
+            Post pp = (Post) o;
            
             s = pp.getClass().getSimpleName().replace("Painter", "");
         }
@@ -67,7 +67,7 @@ public class PostViewer extends BasicVerticalViewer
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        PostPainter pp = (PostPainter) next;
+        Post pp = (Post) next;
        
         return new PostImageFactory(pp).build(dim);
     }

@@ -42,17 +42,17 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
+import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
-import us.jaba.titaniumblocks.core.frames.models.FramesCoreInfo;
-import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
+import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundFramePainterViewer extends javax.swing.JFrame
+public class RectangularFrameViewer extends javax.swing.JFrame
 {
 
     JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
@@ -61,13 +61,15 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
     /**
      * Creates new form AirCompassDemo
      */
-    public RoundFramePainterViewer() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+    public RectangularFrameViewer() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
         initComponents();
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        
-        List<Class<?>> linearClassList = FramesCoreInfo.getRoundClasses();
-        List<Class<?>> linearEffectClassList = EffectCoreInfo.getRoundClasses();
+
+        setLayout(new BorderLayout());
+
+        List<Class<?>> linearClassList = FramesCoreInfo.getRectangularClasses();
+        List<Class<?>> linearEffectClassList = EffectCoreInfo.getRectangularClasses();
 
         int llen = linearClassList.size();
         int elen = linearEffectClassList.size();
@@ -75,14 +77,14 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
         GridLayout gl = new GridLayout();
         gl.setRows(llen);
         list.setLayout(gl);
-        Dimension dim = new Dimension(150, 150);
+        Dimension dim = new Dimension(100, 100);
         for (int i = 0; i < llen; i++)
         {
             Class<?> aLinearClass = linearClassList.get(i);
             Constructor cLinear = aLinearClass.getConstructor();
-            FrameModel framePainter = (FrameModel) cLinear.newInstance();
+            RectangularFrame framePainter = (RectangularFrame) cLinear.newInstance();
 
-            RoundFrameImageFactory lfg = new RoundFrameImageFactory(framePainter);
+            RectangularFrameImageFactory lfg = new RectangularFrameImageFactory(framePainter);
 
             JPanel lpanel = new JPanel();
 
@@ -94,30 +96,29 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
             {
                 Class<?> eLinearClass = linearEffectClassList.get(j);
                 Constructor eLinear = eLinearClass.getConstructor();
-                RoundFrameEffectPainter effectPainter = (RoundFrameEffectPainter) eLinear.newInstance();
+                RectangularFrameEffectPainter effectPainter = (RectangularFrameEffectPainter) eLinear.newInstance();
 
-                framePainter.setEffect(effectPainter);
+                framePainter.setLinearEffect(effectPainter);
                 JPanel epanel = new JPanel();
 
                 epanel.setLayout(new BorderLayout());
                 JLabel jlabel = new JLabel();
-                jlabel.setText(aLinearClass.getSimpleName().replace("FramePainter", "").replace("Radial", "") + "-" + eLinearClass.getSimpleName().replace("Painter", "").replace("Radial", ""));
+                jlabel.setText(aLinearClass.getSimpleName().replace("FramePainter", "").replace("Linear", "") + "-" + eLinearClass.getSimpleName().replace("Painter", "").replace("Linear", ""));
 
                 jlabel.setIcon(new ImageIcon(lfg.build(dim)));
 //            jlabel.setForeground(ColorPalette.BLACK);
-                jlabel.setBackground(ColorPalette.WHITE);
-                epanel.setBackground(ColorPalette.WHITE);
+                jlabel.setBackground(ColorPalette.GRAY.brighter());
+                epanel.setBackground(ColorPalette.GRAY.brighter());
                 epanel.add(jlabel, BorderLayout.CENTER);
 
                 lpanel.add(epanel);
             }
             list.add(lpanel);
         }
-
         jScrollPane1.setViewportView(list);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
-         this.setIconImage(Images.titaniumblocks16x16);
+        this.setIconImage(Images.titaniumblocks16x16);
         this.setSize(new Dimension(800, 500));
     }
 
@@ -125,7 +126,7 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
     {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("TitaniumBlocks - RoundFramePainterViewer");
+        setTitle("TitaniumBlocks - RectangularFrameViewer");
         pack();
     }// 
 
@@ -151,17 +152,113 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(RoundFramePainterViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RectangularFrameViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(RoundFramePainterViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RectangularFrameViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(RoundFramePainterViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RectangularFrameViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(RoundFramePainterViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RectangularFrameViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -204,22 +301,22 @@ public class RoundFramePainterViewer extends javax.swing.JFrame
             {
                 try
                 {
-                    new RoundFramePainterViewer().setVisible(true);
+                    new RectangularFrameViewer().setVisible(true);
                 } catch (NoSuchMethodException ex)
                 {
-                    Logger.getLogger(RoundFramePainterViewer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RectangularFrameViewer.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InstantiationException ex)
                 {
-                    Logger.getLogger(RoundFramePainterViewer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RectangularFrameViewer.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalAccessException ex)
                 {
-                    Logger.getLogger(RoundFramePainterViewer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RectangularFrameViewer.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IllegalArgumentException ex)
                 {
-                    Logger.getLogger(RoundFramePainterViewer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RectangularFrameViewer.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvocationTargetException ex)
                 {
-                    Logger.getLogger(RoundFramePainterViewer.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RectangularFrameViewer.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

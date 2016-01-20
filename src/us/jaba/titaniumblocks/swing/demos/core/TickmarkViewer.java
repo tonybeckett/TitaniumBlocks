@@ -32,7 +32,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.TickmarkImageFactory;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarksCoreInfo;
 
 /**

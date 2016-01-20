@@ -34,7 +34,7 @@ import java.util.List;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.extension.symbols.SVGPainter;
 import us.jaba.titaniumblocks.core.symbols.SymbolImageFactory;
-import us.jaba.titaniumblocks.core.symbols.SymbolPainter;
+import us.jaba.titaniumblocks.core.symbols.Symbol;
 import us.jaba.titaniumblocks.core.symbols.SymbolCoreInfo;
 
 /**
@@ -62,9 +62,9 @@ public class SymbolViewer extends BasicVerticalViewer
         {
             SVGPainter pp = (SVGPainter) o;
             s = pp.getClass().getSimpleName();
-        } else if (o instanceof SymbolPainter)
+        } else if (o instanceof Symbol)
         {
-            SymbolPainter pp = (SymbolPainter) o;
+            Symbol pp = (Symbol) o;
             s = pp.getClass().getSimpleName().replace("", "");
         }
         return s;
@@ -73,14 +73,14 @@ public class SymbolViewer extends BasicVerticalViewer
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        SymbolPainter pp;
+        Symbol pp;
         if (next instanceof SVGPainter)
         {
             pp = (SVGPainter) next;
            
         } else
         {
-            pp = (SymbolPainter) next;
+            pp = (Symbol) next;
         }
         pp.setPaintColor(ColorPalette.RED);
         return new SymbolImageFactory(pp).build(dim);

@@ -32,7 +32,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.glow.GlowImageFactory;
-import us.jaba.titaniumblocks.core.glow.GlowPainter;
+import us.jaba.titaniumblocks.core.glow.Glow;
 import us.jaba.titaniumblocks.core.glow.GlowCoreInfo;
 
 /**
@@ -55,9 +55,9 @@ public class GlowViewer extends BasicVerticalViewer
     protected String getClassNameFromInstance(Object o)
     {
         String s = null;
-        if (o instanceof GlowPainter)
+        if (o instanceof Glow)
         {
-            GlowPainter pp = (GlowPainter) o;
+            Glow pp = (Glow) o;
             pp.setActive(true);
             s = pp.getClass().getSimpleName().replace("Painter", "");
         }
@@ -67,7 +67,7 @@ public class GlowViewer extends BasicVerticalViewer
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        GlowPainter pp = (GlowPainter) next;
+        Glow pp = (Glow) next;
        
         return new GlowImageFactory(pp).build(dim);
     }

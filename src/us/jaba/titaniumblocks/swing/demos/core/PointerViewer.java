@@ -41,7 +41,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.pointers.PointerCoreInfo;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 
@@ -86,7 +86,7 @@ public class PointerViewer extends javax.swing.JFrame
             panel.setLayout(new BorderLayout());
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
-            AbstractPointerPainter pp = (AbstractPointerPainter) c.newInstance();
+            AbstractPointer pp = (AbstractPointer) c.newInstance();
 
             
             JLabel jlabel = new JLabel();

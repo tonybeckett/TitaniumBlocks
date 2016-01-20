@@ -33,7 +33,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.text.TextFormatSupport;
 import us.jaba.titaniumblocks.core.text.formats.TextIntegerFormat;
-import us.jaba.titaniumblocks.core.text.painters.IntegerValueText;
+import us.jaba.titaniumblocks.core.text.types.IntegerValueText;
 import us.jaba.titaniumblocks.displays.LinearDisplayImageFactory;
 import us.jaba.titaniumblocks.displays.rectangular.SingleDisplay;
 
