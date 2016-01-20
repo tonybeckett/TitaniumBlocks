@@ -30,8 +30,8 @@ package us.jaba.titaniumblocks.core.disabled;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.disabled.painters.LinearDisabledPainter;
-import us.jaba.titaniumblocks.core.disabled.painters.RadialDisabledPainter;
+import us.jaba.titaniumblocks.core.disabled.types.LinearDisabled;
+import us.jaba.titaniumblocks.core.disabled.types.RadialDisabled;
 
 /**
  *
@@ -42,8 +42,8 @@ public class DisabledCoreInfo
 
     public static final Class<?>[] DISABLED_MODELS =
     {
-        LinearDisabledPainter.class,
-        RadialDisabledPainter.class
+        LinearDisabled.class,
+        RadialDisabled.class
 
     };
 

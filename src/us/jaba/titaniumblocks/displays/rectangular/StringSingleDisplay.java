@@ -29,7 +29,7 @@ package us.jaba.titaniumblocks.displays.rectangular;
 
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.painters.StringValueText;
+import us.jaba.titaniumblocks.core.text.types.StringValueText;
 
 /**
  *

@@ -31,7 +31,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.indicators.models.RectangularIndicatorModel;
+import us.jaba.titaniumblocks.core.indicators.types.RectangularIndicator;
 
 /**
  *
@@ -40,14 +40,14 @@ import us.jaba.titaniumblocks.core.indicators.models.RectangularIndicatorModel;
 public class RectangularIndicatorImageFactory extends CoreImageFactory
 {
 
-    public RectangularIndicatorImageFactory(RectangularIndicatorModel painter)
+    public RectangularIndicatorImageFactory(RectangularIndicator painter)
     {
         super(painter);
     }
 
-    public RectangularIndicatorModel getPainter()
+    public RectangularIndicator getPainter()
     {
-        return (RectangularIndicatorModel) super.getBasePainter();
+        return (RectangularIndicator) super.getBasePainter();
     }
 
     @Override

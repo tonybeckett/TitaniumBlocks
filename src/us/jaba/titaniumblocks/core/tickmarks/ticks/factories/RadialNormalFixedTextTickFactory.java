@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.ticks.factories;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rangemodels.RadialRangeModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rangemodels.RadialRangeModel;
 
 /**
  *

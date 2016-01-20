@@ -30,7 +30,7 @@ package us.jaba.titaniumblocks.core.backdrop;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
 
 /**
  *

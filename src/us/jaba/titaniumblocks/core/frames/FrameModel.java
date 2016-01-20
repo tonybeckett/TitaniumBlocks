@@ -30,6 +30,7 @@ package us.jaba.titaniumblocks.core.frames;
 import java.awt.Color;
 import java.awt.Paint;
 import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.effects.round.NoEffectPainter;
 
 /**
@@ -40,8 +41,8 @@ public class FrameModel extends CoreModel
 {
     private RoundFrameEffectPainter effect = new NoEffectPainter();
 
-    protected Paint outerFrameColor = new Color(0x848484);
-    protected Paint innerFrameColor = new Color(0.6f, 0.6f, 0.6f, 0.8f);
+    protected Paint outerFrameColor = ColorPalette.GRAY;
+    protected Paint innerFrameColor = ColorPalette.GRAY.brighter();
 
     public RoundFrameEffectPainter getEffect()
     {

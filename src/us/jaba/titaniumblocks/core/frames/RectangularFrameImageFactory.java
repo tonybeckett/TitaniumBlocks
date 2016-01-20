@@ -14,14 +14,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class RectangularFrameImageFactory extends CoreImageFactory
 {
 
-    public RectangularFrameImageFactory(RectangularFramePainter painter)
+    public RectangularFrameImageFactory(RectangularFrame painter)
     {
         super(painter);
     }
 
-    public RectangularFramePainter getPainter()
+    public RectangularFrame getPainter()
     {
-        return (RectangularFramePainter) super.getBasePainter();
+        return (RectangularFrame) super.getBasePainter();
     }
 
 }

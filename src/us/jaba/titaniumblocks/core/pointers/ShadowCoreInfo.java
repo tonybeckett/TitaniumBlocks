@@ -30,19 +30,19 @@ package us.jaba.titaniumblocks.core.pointers;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.CometShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedRoundedTailShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedRoundedShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.Pencil2ShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.PencilShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.ArrowHeadShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.LineShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.MonumentShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedThickShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.DualLinesShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedThickFlatShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.WideTaperedPointShadowPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.TaperedDualLineShadowPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.shadows.CometShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.TaperedRoundedTailShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.TaperedRoundedShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.Pencil2Shadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.PencilShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.ArrowHeadShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.MonumentShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.TaperedThickShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.DualLinesShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.TaperedThickFlatShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.WideTaperedPointShadow;
+import us.jaba.titaniumblocks.core.pointers.shadows.TaperedDualLineShadow;
 
 /**
  *
@@ -52,22 +52,22 @@ public class ShadowCoreInfo
 {
     public static final Class<?>[] SHADOW_MODELS =
     {
-        ArrowHeadShadowPointerPainter.class,
-        CometShadowPointerPainter.class,
-        DualLinesShadowPointerPainter.class,
-         LineShadowPointerPainter.class,
-        MonumentShadowPointerPainter.class,
-        PencilShadowPointerPainter.class,
-        Pencil2ShadowPointerPainter.class,
-        TaperedDualLineShadowPointerPainter.class,
-        TaperedRoundedShadowPointerPainter.class,
-        TaperedRoundedTailShadowPointerPainter.class,
-        TaperedThickFlatShadowPointerPainter.class,
-        TaperedThickShadowPointerPainter.class,
+        ArrowHeadShadow.class,
+        CometShadow.class,
+        DualLinesShadow.class,
+         LineShadow.class,
+        MonumentShadow.class,
+        PencilShadow.class,
+        Pencil2Shadow.class,
+        TaperedDualLineShadow.class,
+        TaperedRoundedShadow.class,
+        TaperedRoundedTailShadow.class,
+        TaperedThickFlatShadow.class,
+        TaperedThickShadow.class,
         
 //        Type1ShadowPointerPainter.class,
 //        Type2ShadowPointerPainter.class,  
-        WideTaperedPointShadowPointerPainter.class,
+        WideTaperedPointShadow.class,
         
         
         

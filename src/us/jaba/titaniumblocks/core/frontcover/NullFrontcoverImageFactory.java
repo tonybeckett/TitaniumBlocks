@@ -30,7 +30,7 @@ package us.jaba.titaniumblocks.core.frontcover;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 
 /**
  *
@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
 public class NullFrontcoverImageFactory extends CoreImageFactory
 {
 
-    public NullFrontcoverImageFactory(FrontcoverModel painter)
+    public NullFrontcoverImageFactory(Frontcover painter)
     {
         super(painter);
     }

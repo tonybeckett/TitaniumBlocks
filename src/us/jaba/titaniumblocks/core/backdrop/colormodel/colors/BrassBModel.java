@@ -41,11 +41,11 @@ public class BrassBModel extends BackdropColorModel
 
     public BrassBModel()
     {
-        super(new HSLColor(33, 46, 40).getRGB(),
-                new HSLColor(33, 46, 40).adjustLuminance((float) 70.0),
-                new HSLColor(33, 46, 40).adjustLuminance((float) 80.0),
+        super(new HSLColor(52, 64, 40).getRGB(),
+                new HSLColor(52, 64, 40).adjustLuminance((float) 70.0),
+                new HSLColor(52, 64, 40).adjustLuminance((float) 80.0),
                 ColorPalette.BLACK,
-                new HSLColor(33, 46, 40).adjustLuminance((float) 25.0));
+                new HSLColor(52, 64, 40).adjustLuminance((float) 25.0));
     }
 
 }

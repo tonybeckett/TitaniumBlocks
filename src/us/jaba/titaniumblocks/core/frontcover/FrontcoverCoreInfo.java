@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.frontcover;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.frontcover.models.rectangular.BasicLinearFrontcoverModel;
-import us.jaba.titaniumblocks.core.frontcover.models.rectangular.NullFrontcoverModel;
-import us.jaba.titaniumblocks.core.frontcover.models.round.BasicRadialForegroundPainter;
-import us.jaba.titaniumblocks.core.frontcover.models.round.NWThirdRadialForegroundPainter;
-import us.jaba.titaniumblocks.core.frontcover.models.round.TopHalfCurvedRadialForegroundPainter;
-import us.jaba.titaniumblocks.core.frontcover.models.round.TopHalfRadialForegroundPainter;
-import us.jaba.titaniumblocks.core.frontcover.models.round.TopThirdRadialForegroundPainter;
-import us.jaba.titaniumblocks.core.frontcover.models.round.WestReflectiveRadialForegroundPainter;
+import us.jaba.titaniumblocks.core.frontcover.types.rectangular.BasicLinearFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.rectangular.NullFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.NWThirdRadialFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.TopHalfCurvedRadialFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.TopHalfRadialFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.TopThirdRadialFrontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.round.WestReflectiveRadialFrontcover;
 
 /**
  *
@@ -48,18 +48,18 @@ public class FrontcoverCoreInfo
 
     public static final Class<?>[] ROUND_MODELS =
     {
-        BasicRadialForegroundPainter.class,
-        NWThirdRadialForegroundPainter.class,
-        TopHalfCurvedRadialForegroundPainter.class,
-        TopHalfRadialForegroundPainter.class,
-        TopThirdRadialForegroundPainter.class,
-        WestReflectiveRadialForegroundPainter.class
+        BasicRadialFrontcover.class,
+        NWThirdRadialFrontcover.class,
+        TopHalfCurvedRadialFrontcover.class,
+        TopHalfRadialFrontcover.class,
+        TopThirdRadialFrontcover.class,
+        WestReflectiveRadialFrontcover.class
     };
 
     public static final Class<?>[] RECT_MODELS =
     {
-        BasicLinearFrontcoverModel.class,
-        NullFrontcoverModel.class
+        BasicLinearFrontcover.class,
+        NullFrontcover.class
     };
 
     public static List<Class<?>> getRoundModelClasses()

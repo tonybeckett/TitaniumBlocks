@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.tickmarks.ticks;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.linear.HorizontalCircleTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.linear.HorizontalTriangleTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.linear.LineTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.linear.VerticalCircleTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.linear.VerticalTriangleTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.radial.RadialCircleTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.radial.RadialLineTickModel;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.models.radial.RadialTriangleTickModel;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.HorizontalCircleTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.HorizontalTriangleTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.LineTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.VerticalCircleTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.VerticalTriangleTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialCircleTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialLineTicks;
+import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialTriangleTicks;
 
 /**
  *
@@ -48,20 +48,20 @@ public class TickCoreInfo
 
     public static final Class<?>[] LINEAR_MODELS =
     {
-        HorizontalCircleTickModel.class,
-        HorizontalTriangleTickModel.class,
-        LineTickModel.class,
-        VerticalCircleTickModel.class,
-        VerticalTriangleTickModel.class
+        HorizontalCircleTicks.class,
+        HorizontalTriangleTicks.class,
+        LineTicks.class,
+        VerticalCircleTicks.class,
+        VerticalTriangleTicks.class
     };
     
     
     public static final Class<?>[] RADIAL_MODELS =
     {
 
-        RadialCircleTickModel.class,
-        RadialLineTickModel.class,
-        RadialTriangleTickModel.class
+        RadialCircleTicks.class,
+        RadialLineTicks.class,
+        RadialTriangleTicks.class
     };
 
     public static List<Class<?>> getAvailableClasses()

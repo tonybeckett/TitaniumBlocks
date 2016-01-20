@@ -34,8 +34,8 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import static us.jaba.titaniumblocks.core.font.BaseFont.DEFAULT_FONT;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.TextPainter;
-import us.jaba.titaniumblocks.core.text.painters.StringPreUnitsText;
+import us.jaba.titaniumblocks.core.text.Text;
+import us.jaba.titaniumblocks.core.text.types.StringPreUnitsText;
 
 /**
  *
@@ -69,13 +69,13 @@ public class SinglePreUnitDisplay extends SingleDisplay
         graphics.drawImage(image, offset, offset, null);
     }
 
-    public TextPainter getUnitTextPainter()
+    public Text getUnitTextPainter()
     {
         return unitTextImage.getPainter();
     }
 
     @Override
-    public void setValueTextPainter(TextPainter valueTextPainter)
+    public void setValueTextPainter(Text valueTextPainter)
     {
         super.setValueTextPainter(valueTextPainter); 
         valueTextPainter.setRightOffsetFactor(DEFAULT_RIGHT_OFFSET_SCALE);

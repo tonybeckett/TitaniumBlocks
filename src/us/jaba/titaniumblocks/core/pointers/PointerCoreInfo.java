@@ -30,19 +30,19 @@ package us.jaba.titaniumblocks.core.pointers;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.pointers.painters.CometPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.DualLinesPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.LinePointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.MonumentPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.Pencil2PointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.PencilPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.TaperedDualLinePointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.ArrowHeadPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.TaperedRoundedPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.TaperedRoundedTailPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.TaperedThickFlatPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.TaperedThickPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.painters.WideTaperedPointPointerPainter;
+import us.jaba.titaniumblocks.core.pointers.types.CometPointer;
+import us.jaba.titaniumblocks.core.pointers.types.DualLinesPointer;
+import us.jaba.titaniumblocks.core.pointers.types.LinePointer;
+import us.jaba.titaniumblocks.core.pointers.types.MonumentPointer;
+import us.jaba.titaniumblocks.core.pointers.types.Pencil2Pointer;
+import us.jaba.titaniumblocks.core.pointers.types.PencilPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedDualLinePointer;
+import us.jaba.titaniumblocks.core.pointers.types.ArrowHeadPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedTailPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedThickPointer;
+import us.jaba.titaniumblocks.core.pointers.types.WideTaperedPointPointer;
 
 /**
  *
@@ -53,19 +53,19 @@ public class PointerCoreInfo
 
     public static final Class<?>[] POINTER_MODELS =
     {
-        ArrowHeadPointerPainter.class,
-        CometPointerPainter.class,
-        DualLinesPointerPainter.class,
-        LinePointerPainter.class,
-        MonumentPointerPainter.class,
-        Pencil2PointerPainter.class,
-        PencilPointerPainter.class,
-        TaperedDualLinePointerPainter.class,
-        TaperedRoundedPointerPainter.class,
-        TaperedRoundedTailPointerPainter.class,
-        TaperedThickFlatPointerPainter.class,
-        TaperedThickPointerPainter.class,
-        WideTaperedPointPointerPainter.class
+        ArrowHeadPointer.class,
+        CometPointer.class,
+        DualLinesPointer.class,
+        LinePointer.class,
+        MonumentPointer.class,
+        Pencil2Pointer.class,
+        PencilPointer.class,
+        TaperedDualLinePointer.class,
+        TaperedRoundedPointer.class,
+        TaperedRoundedTailPointer.class,
+        TaperedThickFlatPointer.class,
+        TaperedThickPointer.class,
+        WideTaperedPointPointer.class
     };
 
     public static List<Class<?>> getAvailableClasses()

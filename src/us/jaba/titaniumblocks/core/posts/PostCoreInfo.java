@@ -30,17 +30,17 @@ package us.jaba.titaniumblocks.core.posts;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.posts.painters.BigBlackPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigBrassPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigChromePostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigCopperPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigGoldPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigSilverPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalBlackPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalBrassPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalCopperPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalGoldPostPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalSilverPostPainter;
+import us.jaba.titaniumblocks.core.posts.types.BigBlackPost;
+import us.jaba.titaniumblocks.core.posts.types.BigBrassPost;
+import us.jaba.titaniumblocks.core.posts.types.BigChromePost;
+import us.jaba.titaniumblocks.core.posts.types.BigCopperPost;
+import us.jaba.titaniumblocks.core.posts.types.BigGoldPost;
+import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
+import us.jaba.titaniumblocks.core.posts.types.MetalBlackPost;
+import us.jaba.titaniumblocks.core.posts.types.MetalBrassPost;
+import us.jaba.titaniumblocks.core.posts.types.MetalCopperPost;
+import us.jaba.titaniumblocks.core.posts.types.MetalGoldPost;
+import us.jaba.titaniumblocks.core.posts.types.MetalSilverPost;
 import us.jaba.titaniumblocks.core.posts.positioned.CenterPostFactory;
 import us.jaba.titaniumblocks.core.posts.positioned.EastPostFactory;
 
@@ -65,17 +65,17 @@ public class PostCoreInfo
 
     public static final Class<?>[] POST_MODELS =
     {
-        BigBlackPostPainter.class,
-        BigBrassPostPainter.class,
-        BigChromePostPainter.class,
-        BigCopperPostPainter.class,
-        BigGoldPostPainter.class,
-        BigSilverPostPainter.class,
-        MetalBlackPostPainter.class,
-        MetalBrassPostPainter.class,
-        MetalCopperPostPainter.class,
-        MetalGoldPostPainter.class,
-        MetalSilverPostPainter.class
+        BigBlackPost.class,
+        BigBrassPost.class,
+        BigChromePost.class,
+        BigCopperPost.class,
+        BigGoldPost.class,
+        BigSilverPost.class,
+        MetalBlackPost.class,
+        MetalBrassPost.class,
+        MetalCopperPost.class,
+        MetalGoldPost.class,
+        MetalSilverPost.class
     };
 
     public static final Class<?>[] POSITIONED_POST_MODELS =

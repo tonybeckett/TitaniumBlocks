@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.tickmarks.marks;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rectangular.HorizontalLinearTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rectangular.HorizontalLogTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rectangular.VerticalLinearTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rectangular.VerticalLogTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.round.RLogMajMedMinorTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.round.RLogMajMinorTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.round.RNormalMajMedMinorTickmarkModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.round.RNormalMajMinorTickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalLinearTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalLogTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLinearTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLogTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMedMinorTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMinorTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMinorTickmark;
 
 /**
  *
@@ -48,14 +48,14 @@ public class TickmarksCoreInfo
 
     public static final Class<?>[] TICKMARK_CLASSES =
     {
-        HorizontalLinearTickmarkModel.class,
-        HorizontalLogTickmarkModel.class,
-        VerticalLinearTickmarkModel.class,
-        VerticalLogTickmarkModel.class,
-        RLogMajMedMinorTickmarkModel.class,
-        RLogMajMinorTickmarkModel.class,
-        RNormalMajMedMinorTickmarkModel.class,
-        RNormalMajMinorTickmarkModel.class
+        HorizontalLinearTickmark.class,
+        HorizontalLogTickmark.class,
+        VerticalLinearTickmark.class,
+        VerticalLogTickmark.class,
+        RLogMajMedMinorTickmark.class,
+        RLogMajMinorTickmark.class,
+        RNormalMajMedMinorTickmark.class,
+        RNormalMajMinorTickmark.class
     };
 
     public static List<Class<?>> getAvailableClasses()

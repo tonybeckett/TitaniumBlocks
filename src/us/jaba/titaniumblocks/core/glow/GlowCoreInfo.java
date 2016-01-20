@@ -31,16 +31,16 @@ package us.jaba.titaniumblocks.core.glow;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.glow.painters.BasicGlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.LCDGlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.LinearGlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialGlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType1GlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType2GlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType3GlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType4GlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType5OtherGlowPainter;
-import us.jaba.titaniumblocks.core.glow.painters.RadialType5WestGlowPainter;
+import us.jaba.titaniumblocks.core.glow.types.BasicGlow;
+import us.jaba.titaniumblocks.core.glow.types.LCDGlow;
+import us.jaba.titaniumblocks.core.glow.types.LinearGlow;
+import us.jaba.titaniumblocks.core.glow.types.RadialGlow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType1Glow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType2Glow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType3Glow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType4Glow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType5OtherGlow;
+import us.jaba.titaniumblocks.core.glow.types.RadialType5WestGlow;
 
 /**
  *
@@ -51,16 +51,16 @@ public class GlowCoreInfo
 
     public static final Class<?>[] GLOW_MODELS =
     {
-        BasicGlowPainter.class,
-        LCDGlowPainter.class,
-        LinearGlowPainter.class,
-        RadialGlowPainter.class,
-        RadialType1GlowPainter.class,
-        RadialType2GlowPainter.class,
-        RadialType3GlowPainter.class,
-        RadialType4GlowPainter.class,
-        RadialType5OtherGlowPainter.class,
-        RadialType5WestGlowPainter.class
+        BasicGlow.class,
+        LCDGlow.class,
+        LinearGlow.class,
+        RadialGlow.class,
+        RadialType1Glow.class,
+        RadialType2Glow.class,
+        RadialType3Glow.class,
+        RadialType4Glow.class,
+        RadialType5OtherGlow.class,
+        RadialType5WestGlow.class
     };
 
     public static List<Class<?>> getAvailableClasses()

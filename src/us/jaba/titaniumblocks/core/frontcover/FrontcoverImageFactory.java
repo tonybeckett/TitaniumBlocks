@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.frontcover;
 
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 
 /**
  *
@@ -37,14 +37,14 @@ import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
 public class FrontcoverImageFactory extends CoreImageFactory
 {
 
-    public FrontcoverImageFactory(FrontcoverModel painter)
+    public FrontcoverImageFactory(Frontcover painter)
     {
         super(painter);
     }
 
-    public FrontcoverModel getPainter()
+    public Frontcover getPainter()
     {
-        return (FrontcoverModel) super.getBasePainter(); 
+        return (Frontcover) super.getBasePainter(); 
     }
 
 }

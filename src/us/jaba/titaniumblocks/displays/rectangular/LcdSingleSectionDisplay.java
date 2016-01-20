@@ -33,7 +33,7 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.sections.SectionImageFactory;
 import us.jaba.titaniumblocks.core.sections.painters.BasicSection;
-import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 
 /**
  *

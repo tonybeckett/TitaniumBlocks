@@ -13,15 +13,15 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
  */
 public class SymbolImageFactory extends CoreImageFactory
 {
-    public SymbolImageFactory(SymbolPainter painter)
+    public SymbolImageFactory(Symbol painter)
     {
         super(painter);
     }
 
     
-    public SymbolPainter getPainter()
+    public Symbol getPainter()
     {
-        return (SymbolPainter) getBasePainter(); 
+        return (Symbol) getBasePainter(); 
     }
     
     

@@ -30,7 +30,7 @@ package us.jaba.titaniumblocks.core.tickmarks.ticks.factories;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-import us.jaba.titaniumblocks.core.tickmarks.marks.models.rangemodels.LinearRangeModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.rangemodels.LinearRangeModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
 
 /**

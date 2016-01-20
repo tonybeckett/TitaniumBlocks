@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public final class NullPostImageFactory extends PostImageFactory
 {
 
-    public NullPostImageFactory(PostPainter postPainter)
+    public NullPostImageFactory(Post postPainter)
     {
         super(postPainter);
     }

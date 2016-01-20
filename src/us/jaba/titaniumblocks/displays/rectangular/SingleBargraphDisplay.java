@@ -31,9 +31,9 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.bargraph.BargraphImage;
-import us.jaba.titaniumblocks.core.bargraph.models.linear.BargraphGradient20;
+import us.jaba.titaniumblocks.core.bargraph.types.linear.BargraphGradient20;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 
 /**
  *

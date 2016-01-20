@@ -31,14 +31,14 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.LcdBackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.LcdBackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
 import us.jaba.titaniumblocks.core.lcd.SixteenSegmentDisplayImageFactory;
-import us.jaba.titaniumblocks.core.lcd.painters.SixteenSegmentDisplay;
+import us.jaba.titaniumblocks.core.lcd.types.SixteenSegmentDisplay;
 import us.jaba.titaniumblocks.core.text.NullTextImageFactory;
-import us.jaba.titaniumblocks.core.text.painters.IntegerValueText;
+import us.jaba.titaniumblocks.core.text.types.IntegerValueText;
 import us.jaba.titaniumblocks.displays.LinearDisplay;
 
 /**

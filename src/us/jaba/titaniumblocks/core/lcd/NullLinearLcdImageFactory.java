@@ -29,7 +29,7 @@ package us.jaba.titaniumblocks.core.lcd;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.lcd.painters.LinearLcdPainter;
+import us.jaba.titaniumblocks.core.lcd.types.LinearLcd;
 
 /**
  *
@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.lcd.painters.LinearLcdPainter;
 public final class NullLinearLcdImageFactory extends LinearLcdImageFactory
 {
 
-    public NullLinearLcdImageFactory(LinearLcdPainter painter)
+    public NullLinearLcdImageFactory(LinearLcd painter)
     {
         super(painter);
     }

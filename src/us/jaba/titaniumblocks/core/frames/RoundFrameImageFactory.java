@@ -14,14 +14,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class RoundFrameImageFactory extends CoreImageFactory
 {
 
-    public RoundFrameImageFactory(FrameModel painter)
+    public RoundFrameImageFactory(RoundFrame painter)
     {
         super(painter);
     }
 
-    public FrameModel getPainter()
+    public RoundFrame getPainter()
     {
-        return (FrameModel) super.getBasePainter();
+        return (RoundFrame) super.getBasePainter();
     }
 
 }

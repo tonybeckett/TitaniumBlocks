@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.backdrop;
 
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**

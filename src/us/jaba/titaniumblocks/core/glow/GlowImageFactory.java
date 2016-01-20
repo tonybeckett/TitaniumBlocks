@@ -14,15 +14,15 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class GlowImageFactory extends CoreImageFactory
 {
 
-    public GlowImageFactory(GlowPainter painter)
+    public GlowImageFactory(Glow painter)
     {
         super(painter);
     }
 
  
-    public GlowPainter getPainter()
+    public Glow getPainter()
     {
-        return (GlowPainter) super.getBasePainter(); 
+        return (Glow) super.getBasePainter(); 
     }
     
 }

@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public final class NullPointerImageFactory extends PointerImageFactory
 {
 
-    public NullPointerImageFactory(PointerPainter painter)
+    public NullPointerImageFactory(Pointer painter)
     {
         super(painter);
     }

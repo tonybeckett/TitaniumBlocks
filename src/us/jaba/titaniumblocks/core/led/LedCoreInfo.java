@@ -30,8 +30,8 @@ package us.jaba.titaniumblocks.core.led;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.led.models.SingleBargraphLedOff;
-import us.jaba.titaniumblocks.core.led.models.SingleBargraphLedOn;
+import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
+import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOn;
 
 /**
  *

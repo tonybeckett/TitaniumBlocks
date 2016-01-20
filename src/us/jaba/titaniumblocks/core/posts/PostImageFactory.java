@@ -36,14 +36,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class PostImageFactory extends CoreImageFactory
 {
 
-    public PostImageFactory(PostPainter pp)
+    public PostImageFactory(Post pp)
     {
         super(pp);
     }
 
-    public PostPainter getPainter()
+    public Post getPainter()
     {
-        return (PostPainter) super.getBasePainter();
+        return (Post) super.getBasePainter();
     }
 
 }

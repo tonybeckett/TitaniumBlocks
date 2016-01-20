@@ -24,17 +24,17 @@ public class ColorTools
      * @param ALPHA
      * @return Color with the given float transparency
      */
-    public static Color setAlpha(final Color COLOR, final float ALPHA)
+    public static Color setAlpha(final Color color, final float ALPHA)
     {
         if (ALPHA > 1)
         {
-            return setAlpha(COLOR, 255);
+            return setAlpha(color, 255);
         }
         if (ALPHA < 0)
         {
-            return setAlpha(COLOR, 0);
+            return setAlpha(color, 0);
         }
-        return setAlpha(COLOR, (int) (Math.ceil(255 * ALPHA)));
+        return setAlpha(color, (int) (Math.ceil(255 * ALPHA)));
     }
 
     /**
@@ -44,9 +44,9 @@ public class ColorTools
      * @param ALPHA
      * @return Color with given integer transparency
      */
-    public static Color setAlpha(final Color COLOR, final int ALPHA)
+    public static Color setAlpha(final Color color, final int ALPHA)
     {
-        return new Color(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), ALPHA);
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), ALPHA);
     }
 
     /**
@@ -100,19 +100,19 @@ public class ColorTools
      * @return the interpolated color between color1 and color2 calculated by
      * the given fraction and interpolation
      */
-    public static Color interpolateColor(final Color COLOR1, final Color COLOR2, final float FRACTION)
+    public static Color interpolateColor(final Color color1, final Color color2, final float FRACTION)
     {
         assert (Float.compare(FRACTION, 0f) >= 0 && Float.compare(FRACTION, 1f) <= 0);
 
-        final float RED1 = COLOR1.getRed() * INT_TO_FLOAT_CONST;
-        final float GREEN1 = COLOR1.getGreen() * INT_TO_FLOAT_CONST;
-        final float BLUE1 = COLOR1.getBlue() * INT_TO_FLOAT_CONST;
-        final float ALPHA1 = COLOR1.getAlpha() * INT_TO_FLOAT_CONST;
+        final float RED1 = color1.getRed() * INT_TO_FLOAT_CONST;
+        final float GREEN1 = color1.getGreen() * INT_TO_FLOAT_CONST;
+        final float BLUE1 = color1.getBlue() * INT_TO_FLOAT_CONST;
+        final float ALPHA1 = color1.getAlpha() * INT_TO_FLOAT_CONST;
 
-        final float RED2 = COLOR2.getRed() * INT_TO_FLOAT_CONST;
-        final float GREEN2 = COLOR2.getGreen() * INT_TO_FLOAT_CONST;
-        final float BLUE2 = COLOR2.getBlue() * INT_TO_FLOAT_CONST;
-        final float ALPHA2 = COLOR2.getAlpha() * INT_TO_FLOAT_CONST;
+        final float RED2 = color2.getRed() * INT_TO_FLOAT_CONST;
+        final float GREEN2 = color2.getGreen() * INT_TO_FLOAT_CONST;
+        final float BLUE2 = color2.getBlue() * INT_TO_FLOAT_CONST;
+        final float ALPHA2 = color2.getAlpha() * INT_TO_FLOAT_CONST;
 
         final float DELTA_RED = RED2 - RED1;
         final float DELTA_GREEN = GREEN2 - GREEN1;
@@ -167,9 +167,9 @@ public class ColorTools
      * @param HUE
      * @return Color with a given hue
      */
-    public static Color setHue(final Color COLOR, final float HUE)
+    public static Color setHue(final Color color, final float HUE)
     {
-        final float HSB_VALUES[] = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float HSB_VALUES[] = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return Color.getHSBColor(HUE, HSB_VALUES[1], HSB_VALUES[2]);
     }
 
@@ -182,9 +182,9 @@ public class ColorTools
      * @param SATURATION
      * @return Color with a given saturation
      */
-    public static Color setSaturation(final Color COLOR, final float SATURATION)
+    public static Color setSaturation(final Color color, final float SATURATION)
     {
-        final float HSB_VALUES[] = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float HSB_VALUES[] = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return Color.getHSBColor(HSB_VALUES[0], SATURATION, HSB_VALUES[2]);
     }
 
@@ -195,9 +195,9 @@ public class ColorTools
      * @param BRIGHTNESS
      * @return Color with the given brightness
      */
-    public static Color setBrightness(final Color COLOR, final float BRIGHTNESS)
+    public static Color setBrightness(final Color color, final float BRIGHTNESS)
     {
-        final float HSB_VALUES[] = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float HSB_VALUES[] = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return Color.getHSBColor(HSB_VALUES[0], HSB_VALUES[1], BRIGHTNESS);
     }
 
@@ -209,9 +209,9 @@ public class ColorTools
      * @param SATURATION
      * @return the given COLOR with the given HUE and SATURATION
      */
-    public static Color setHueSaturation(final Color COLOR, final float HUE, final float SATURATION)
+    public static Color setHueSaturation(final Color color, final float HUE, final float SATURATION)
     {
-        final float HSB_VALUES[] = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float HSB_VALUES[] = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return Color.getHSBColor(HUE, SATURATION, HSB_VALUES[2]);
     }
 
@@ -223,9 +223,9 @@ public class ColorTools
      * @param BRIGHTNESS
      * @return the given COLOR with the given SATURATION and BRIGHTNESS
      */
-    public static Color setSaturationBrightness(final Color COLOR, final float SATURATION, final float BRIGHTNESS)
+    public static Color setSaturationBrightness(final Color color, final float SATURATION, final float BRIGHTNESS)
     {
-        final float HSB_VALUES[] = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float HSB_VALUES[] = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         return Color.getHSBColor(HSB_VALUES[0], SATURATION, BRIGHTNESS);
     }
 
@@ -236,17 +236,17 @@ public class ColorTools
      * @param FRACTION
      * @return a darker version of the given color
      */
-    public static Color darker(final Color COLOR, final double FRACTION)
+    public static Color darker(final Color color, final double FRACTION)
     {
-        int red = (int) Math.round(COLOR.getRed() * (1.0 - FRACTION));
-        int green = (int) Math.round(COLOR.getGreen() * (1.0 - FRACTION));
-        int blue = (int) Math.round(COLOR.getBlue() * (1.0 - FRACTION));
+        int red = (int) Math.round(color.getRed() * (1.0 - FRACTION));
+        int green = (int) Math.round(color.getGreen() * (1.0 - FRACTION));
+        int blue = (int) Math.round(color.getBlue() * (1.0 - FRACTION));
 
         red = red < 0 ? 0 : (red > 255 ? 255 : red);
         green = green < 0 ? 0 : (green > 255 ? 255 : green);
         blue = blue < 0 ? 0 : (blue > 255 ? 255 : blue);
 
-        return new Color(red, green, blue, COLOR.getAlpha());
+        return new Color(red, green, blue, color.getAlpha());
     }
 
     /**
@@ -256,17 +256,17 @@ public class ColorTools
      * @param FRACTION
      * @return a brighter version of the given color
      */
-    public static Color lighter(final Color COLOR, final double FRACTION)
+    public static Color lighter(final Color color, final double FRACTION)
     {
-        int red = (int) Math.round(COLOR.getRed() * (1.0 + FRACTION));
-        int green = (int) Math.round(COLOR.getGreen() * (1.0 + FRACTION));
-        int blue = (int) Math.round(COLOR.getBlue() * (1.0 + FRACTION));
+        int red = (int) Math.round(color.getRed() * (1.0 + FRACTION));
+        int green = (int) Math.round(color.getGreen() * (1.0 + FRACTION));
+        int blue = (int) Math.round(color.getBlue() * (1.0 + FRACTION));
 
         red = red < 0 ? 0 : (red > 255 ? 255 : red);
         green = green < 0 ? 0 : (green > 255 ? 255 : green);
         blue = blue < 0 ? 0 : (blue > 255 ? 255 : blue);
 
-        return new Color(red, green, blue, COLOR.getAlpha());
+        return new Color(red, green, blue, color.getAlpha());
     }
 
     /**
@@ -277,12 +277,12 @@ public class ColorTools
      * @param COLOR2
      * @return Distance bwetween colors.
      */
-    public static double colorDistance(final Color COLOR1, final Color COLOR2)
+    public static double colorDistance(final Color color1, final Color color2)
     {
         final double FACTOR = 1.0 / 255.0;
-        final double DELTA_R = (COLOR2.getRed() - COLOR1.getRed()) * FACTOR;
-        final double DELTA_G = (COLOR2.getGreen() - COLOR1.getGreen()) * FACTOR;
-        final double DELTA_B = (COLOR2.getBlue() - COLOR1.getBlue()) * FACTOR;
+        final double DELTA_R = (color2.getRed() - color1.getRed()) * FACTOR;
+        final double DELTA_G = (color2.getGreen() - color1.getGreen()) * FACTOR;
+        final double DELTA_B = (color2.getBlue() - color1.getBlue()) * FACTOR;
 
         return Math.sqrt(DELTA_R * DELTA_R + DELTA_G * DELTA_G + DELTA_B * DELTA_B);
     }
@@ -295,10 +295,10 @@ public class ColorTools
      * @param COLOR
      * @return true if the given color is closer to black than white
      */
-    public static boolean isDark(final Color COLOR)
+    public static boolean isDark(final Color color)
     {
-        final double DISTANCE_TO_WHITE = colorDistance(COLOR, Color.WHITE);
-        final double DISTANCE_TO_BLACK = colorDistance(COLOR, Color.BLACK);
+        final double DISTANCE_TO_WHITE = colorDistance(color, Color.WHITE);
+        final double DISTANCE_TO_BLACK = colorDistance(color, Color.BLACK);
 
         return DISTANCE_TO_BLACK < DISTANCE_TO_WHITE;
     }
@@ -311,9 +311,9 @@ public class ColorTools
      * @return true if the red, green and blue value of the given color are
      * equal
      */
-    public static boolean isMonochrome(final Color COLOR)
+    public static boolean isMonochrome(final Color color)
     {
-        return ((COLOR.getRed() == COLOR.getGreen()) && (COLOR.getGreen() == COLOR.getBlue()));
+        return ((color.getRed() == color.getGreen()) && (color.getGreen() == color.getBlue()));
     }
 
     /**
@@ -327,20 +327,20 @@ public class ColorTools
      * @return a list of 9 shades of the given color, 4 darker, the original and
      * 4 brighter colors
      */
-    public LinkedList<Color> createShades(final float INTENSITY, final Color COLOR)
+    public LinkedList<Color> createShades(final float INTENSITY, final Color color)
     {
-        final float[] HSB = Color.RGBtoHSB(COLOR.getRed(), COLOR.getGreen(), COLOR.getBlue(), null);
+        final float[] HSB = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
         final float SATURATION_STEPSIZE = HSB[1] / INTENSITY;
         final float BRIGHTNESS_STEPSIZE = HSB[2] / INTENSITY;
         LinkedList<Color> colorShades = new LinkedList<Color>();
         for (int i = 4; i > 0; i--)
         {
-            colorShades.add(new HsbColor.Builder(COLOR).saturation(HSB[1] - i * SATURATION_STEPSIZE).build().getColor());
+            colorShades.add(new HsbColor.Builder(color).saturation(HSB[1] - i * SATURATION_STEPSIZE).build().getColor());
         }
-        colorShades.add(COLOR);
+        colorShades.add(color);
         for (int i = 4; i > 0; i--)
         {
-            colorShades.add(new HsbColor.Builder(COLOR).brightness(HSB[2] - i * BRIGHTNESS_STEPSIZE).build().getColor());
+            colorShades.add(new HsbColor.Builder(color).brightness(HSB[2] - i * BRIGHTNESS_STEPSIZE).build().getColor());
         }
         return colorShades;
     }

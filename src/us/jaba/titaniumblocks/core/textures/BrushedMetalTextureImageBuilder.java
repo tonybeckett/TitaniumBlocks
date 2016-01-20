@@ -28,7 +28,7 @@ public class BrushedMetalTextureImageBuilder extends TextureImageBuilder
 
     public BrushedMetalTextureImageBuilder(Color brushColor, float amount, float shine, boolean monochrome, int radius)
     {
-        super(new NullTexturePainter());
+        super(new NullTexture());
         this.brushColor = brushColor;
         this.amount = amount;
         this.monochrome = monochrome;

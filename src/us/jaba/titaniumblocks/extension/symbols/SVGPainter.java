@@ -32,13 +32,13 @@ import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.net.URL;
 import org.apache.batik.gvt.GraphicsNode;
-import us.jaba.titaniumblocks.core.symbols.SymbolPainter;
+import us.jaba.titaniumblocks.core.symbols.Symbol;
 
 /**
  *
  * @author tbeckett
  */
-public class SVGPainter extends SymbolPainter
+public class SVGPainter extends Symbol
 {
 
     private final GraphicsNode svg;

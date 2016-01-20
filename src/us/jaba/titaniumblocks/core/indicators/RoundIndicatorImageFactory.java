@@ -33,18 +33,18 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.round.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.types.round.NullBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.models.round.TopHalfRadialForegroundPainter;
+import us.jaba.titaniumblocks.core.frontcover.types.round.TopHalfRadialFrontcover;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.models.round.SilverRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
 import us.jaba.titaniumblocks.core.symbols.SymbolImageFactory;
-import us.jaba.titaniumblocks.core.symbols.painters.Fuel;
+import us.jaba.titaniumblocks.core.symbols.types.Fuel;
 
 /**
  *
@@ -64,13 +64,13 @@ public class RoundIndicatorImageFactory
 
     public RoundIndicatorImageFactory()
     {
-        radialFrameImageBuilder = new RoundFrameImageFactory(new SilverRoundFramePainter());
-        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdropPainter());
+        radialFrameImageBuilder = new RoundFrameImageFactory(new SilverRoundFrame());
+        backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdrop());
         symbolOnImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOffImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOnImageBuilder.getPainter().setPaintColor(ColorPalette.RED);
 
-        foregroundImageBuilder = new FrontcoverImageFactory(new TopHalfRadialForegroundPainter());
+        foregroundImageBuilder = new FrontcoverImageFactory(new TopHalfRadialFrontcover());
         disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());
         on = false;
     }

@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.lcd;
 
-import us.jaba.titaniumblocks.core.lcd.painters.SixteenSegmentCharacter;
+import us.jaba.titaniumblocks.core.lcd.types.SixteenSegmentCharacter;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**

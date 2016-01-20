@@ -36,14 +36,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class TextImageFactory extends CoreImageFactory
 {
 
-    public TextImageFactory(TextPainter painter)
+    public TextImageFactory(Text painter)
     {
         super(painter);
     }
 
-    public TextPainter getPainter()
+    public Text getPainter()
     {
-        return (TextPainter) super.getBasePainter();
+        return (Text) super.getBasePainter();
     }
 
     

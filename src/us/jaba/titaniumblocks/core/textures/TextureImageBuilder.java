@@ -15,7 +15,7 @@ public class TextureImageBuilder extends CoreImageFactory
 {
  
 
-    public TextureImageBuilder(TexturePainter painter)
+    public TextureImageBuilder(Texture painter)
     {
         super(painter);
     }

@@ -31,7 +31,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.lcd.painters.LinearLcdPainter;
+import us.jaba.titaniumblocks.core.lcd.types.LinearLcd;
 
 /**
  *
@@ -40,14 +40,14 @@ import us.jaba.titaniumblocks.core.lcd.painters.LinearLcdPainter;
 public class LinearLcdImageFactory extends CoreImageFactory
 {
 
-    public LinearLcdImageFactory(LinearLcdPainter painter)
+    public LinearLcdImageFactory(LinearLcd painter)
     {
         super(painter);
     }
 
-    public LinearLcdPainter getPainter()
+    public LinearLcd getPainter()
     {
-        return (LinearLcdPainter) super.getBasePainter();
+        return (LinearLcd) super.getBasePainter();
     }
 
     @Override

@@ -10,14 +10,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class PointerImageFactory extends CoreImageFactory
 {
 
-    public PointerImageFactory(PointerPainter painter)
+    public PointerImageFactory(Pointer painter)
     {
         super(painter);
     }
 
-    public PointerPainter getPainter()
+    public Pointer getPainter()
     {
-        return (PointerPainter) super.getBasePainter();
+        return (Pointer) super.getBasePainter();
     }
 
 }

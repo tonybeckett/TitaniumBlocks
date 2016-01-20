@@ -33,21 +33,21 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
-import us.jaba.titaniumblocks.core.backdrop.models.rectangular.NullBackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.rectangular.NullBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
-import us.jaba.titaniumblocks.core.disabled.painters.NullLinearDisabledPainter;
+import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.models.FrontcoverModel;
-import us.jaba.titaniumblocks.core.frontcover.models.rectangular.BasicLinearFrontcoverModel;
-import us.jaba.titaniumblocks.core.frames.RectangularFramePainter;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
+import us.jaba.titaniumblocks.core.frontcover.types.rectangular.BasicLinearFrontcover;
+import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.models.rectangular.ShinyMetalLinearFramePainter;
+import us.jaba.titaniumblocks.core.frames.types.rectangular.ShinyMetalLinearFrame;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.TextPainter;
-import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.Text;
+import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
 import us.jaba.titaniumblocks.displays.LinearDisplay;
 
@@ -76,14 +76,14 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
     public SingleDisplay(Color c)
     {
         super();
-        linearFrameImage = new RectangularFrameImageFactory(new ShinyMetalLinearFramePainter());
-        backgroundImage = new BackdropImageFactory(new NullBackdropPainter());
+        linearFrameImage = new RectangularFrameImageFactory(new ShinyMetalLinearFrame());
+        backgroundImage = new BackdropImageFactory(new NullBackdrop());
         doubleValueText = new DoubleValueText();
 
         valueTextImage = new TextImageFactory(doubleValueText);
 
-        foregroundImage = new FrontcoverImageFactory(new BasicLinearFrontcoverModel());
-        disabledImage = new DisabledImageFactory(new NullLinearDisabledPainter());
+        foregroundImage = new FrontcoverImageFactory(new BasicLinearFrontcover());
+        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
 
         setColor(c);
     }
@@ -138,17 +138,17 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         return backgroundImage.getPainter();
     }
 
-    public RectangularFramePainter getFramePainter()
+    public RectangularFrame getFramePainter()
     {
         return linearFrameImage.getPainter();
     }
 
-    public TextPainter getTextPainter()
+    public Text getTextPainter()
     {
         return valueTextImage.getPainter();
     }
 
-    public FrontcoverModel getPainter()
+    public Frontcover getPainter()
     {
         return foregroundImage.getPainter();
     }
@@ -158,12 +158,12 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         this.backgroundImage = new BackdropImageFactory(painter);
     }
 
-    public void setLinearFramePainter(RectangularFramePainter linearFramePainter)
+    public void setLinearFramePainter(RectangularFrame linearFramePainter)
     {
         this.linearFrameImage = new RectangularFrameImageFactory(linearFramePainter);
     }
 
-    public void setForegroundPainter(FrontcoverModel foregroundPainter)
+    public void setForegroundPainter(Frontcover foregroundPainter)
     {
         this.foregroundImage = new FrontcoverImageFactory(foregroundPainter);
     }
@@ -173,7 +173,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         this.disabledImage = new DisabledImageFactory(disabledPainter);
     }
 
-    public void setValueTextPainter(TextPainter valueTextPainter)
+    public void setValueTextPainter(Text valueTextPainter)
     {
         valueTextPainter.setColor(valueTextImage.getPainter().getColor());
         this.valueTextImage = new TextImageFactory(valueTextPainter);

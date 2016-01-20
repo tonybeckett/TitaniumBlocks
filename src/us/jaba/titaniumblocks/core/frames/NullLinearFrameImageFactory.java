@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public final class NullLinearFrameImageFactory extends RectangularFrameImageFactory
 {
 
-    public NullLinearFrameImageFactory(RectangularFramePainter painter)
+    public NullLinearFrameImageFactory(RectangularFrame painter)
     {
         super(painter);
     }

@@ -19,14 +19,14 @@ import us.jaba.titaniumblocks.core.image.ImageSupport;
 public class ShadowPointerImageFactory
 {
 
-    PointerPainter painter = null;
+    Pointer painter = null;
 
     public ShadowPointerImageFactory()
     {
 
     }
 
-    public ShadowPointerImageFactory(PointerPainter painter)
+    public ShadowPointerImageFactory(Pointer painter)
     {
         this.painter = painter;
     }

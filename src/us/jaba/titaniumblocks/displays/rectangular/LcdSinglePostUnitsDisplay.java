@@ -34,8 +34,8 @@ import java.awt.image.BufferedImage;
 import static us.jaba.titaniumblocks.core.font.BaseFont.DEFAULT_FONT;
 import us.jaba.titaniumblocks.core.font.DigitalFont;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.TextPainter;
-import us.jaba.titaniumblocks.core.text.painters.StringPostUnitsText;
+import us.jaba.titaniumblocks.core.text.Text;
+import us.jaba.titaniumblocks.core.text.types.StringPostUnitsText;
 
 /**
  *
@@ -72,19 +72,19 @@ public class LcdSinglePostUnitsDisplay extends LcdSingleDisplay
         graphics.drawImage(image, offset, offset, null);
     }
 
-    public TextPainter getUnitTextPainter()
+    public Text getUnitTextPainter()
     {
         return unitTextImage.getPainter();
     }
 
-    public void setUnitTextPainter(TextPainter unitTextPainter)
+    public void setUnitTextPainter(Text unitTextPainter)
     {
         unitTextImage = new TextImageFactory(unitTextPainter);
 
     }
 
     @Override
-    public void setValueTextPainter(TextPainter valueTextPainter)
+    public void setValueTextPainter(Text valueTextPainter)
     {
         super.setValueTextPainter(valueTextPainter);
         valueTextPainter.setRightOffsetFactor(0.25);

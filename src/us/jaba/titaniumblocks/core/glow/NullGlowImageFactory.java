@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 public class NullGlowImageFactory extends GlowImageFactory
 {
 
-    public NullGlowImageFactory(GlowPainter painter)
+    public NullGlowImageFactory(Glow painter)
     {
         super(painter);
     }

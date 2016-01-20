@@ -37,7 +37,7 @@ import java.awt.image.BufferedImage;
 public class NullTextImageFactory extends TextImageFactory
 {
 
-    public NullTextImageFactory(TextPainter painter)
+    public NullTextImageFactory(Text painter)
     {
         super(painter);
     }

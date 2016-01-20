@@ -13,14 +13,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
  */
 public class LedImageFactory extends CoreImageFactory
 {
-    public LedImageFactory(LedModel painter)
+    public LedImageFactory(Led painter)
     {
         super(painter);
     }
 
-    public LedModel getPainter()
+    public Led getPainter()
     {
-        return (LedModel) super.getBasePainter();  
+        return (Led) super.getBasePainter();  
     }
     
     
