@@ -36,7 +36,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -44,8 +43,16 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class DualLinesPointer extends AbstractPointer
+public class DualLinesPointer extends BasicPointer
 {
+
+    final static float[] gradientFractionArray = new float[]
+    {
+        0.0f,
+        0.25f,
+        0.75f,
+        1.0f
+    };
 
     public DualLinesPointer()
     {
@@ -54,6 +61,34 @@ public class DualLinesPointer extends AbstractPointer
     public DualLinesPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
+    }
+
+    @Override
+    protected GeneralPath getShape(Dimension dimensions)
+    {
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+        final GeneralPath pointerShape = new GeneralPath();
+        float magnitude = 1.0f - this.getRadiusPercent();
+
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(imageWidth * 0.481308, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.392523);
+        pointerShape.lineTo(imageWidth * 0.485981, imageHeight * 2.0 * magnitude);
+        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.514018, imageHeight * 2.0 * magnitude);
+        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.38785);
+        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.38785);
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 2.0 * magnitude);
+        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.392523);
+        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.485981);
+        pointerShape.closePath();
+
+        return pointerShape;
     }
 
     @Override
@@ -70,48 +105,49 @@ public class DualLinesPointer extends AbstractPointer
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath pointerShape;
+        final GeneralPath pointerShape = getShape(dimensions);
         final Point2D startPoint;
         final Point2D stopPoint;
-        final float[] gradientFractionArray;
+        
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-
-        pointerShape = new GeneralPath();
-        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
-        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.3925233644859813);
-        pointerShape.lineTo(imageWidth * 0.48598130841121495, imageHeight * 0.3177570093457944);
-        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271);
-        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
-        pointerShape.lineTo(imageWidth * 0.514018691588785, imageHeight * 0.3177570093457944);
-        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.3878504672897196);
-        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.48598130841121495);
-        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.48598130841121495);
-        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.3878504672897196);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.3177570093457944);
-        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.3925233644859813);
-        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.48598130841121495);
-        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
-        pointerShape.closePath();
+        float magnitude = 1.0f - this.getRadiusPercent();
+//
+//        pointerShape = new GeneralPath();
+//        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+//        pointerShape.moveTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
+//        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.3925233644859813);
+//        pointerShape.lineTo(imageWidth * 0.48598130841121495, imageHeight * 2.0 * magnitude);//0.3177570093457944);
+//        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * magnitude);//0.1308411214953271);
+//        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * magnitude);//0.1308411214953271);
+//        pointerShape.lineTo(imageWidth * 0.514018691588785, imageHeight * 2.0 * magnitude);//0.3177570093457944);
+//        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.3878504672897196);
+//        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.48598130841121495);
+//        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.48598130841121495);
+//        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.3878504672897196);
+//        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 2.0 * magnitude);//0.3177570093457944);
+//        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.3925233644859813);
+//        pointerShape.lineTo(imageWidth * 0.4953271028037383, imageHeight * 0.48598130841121495);
+//        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.48598130841121495);
+//        pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxY(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMinY(), 0);
-        gradientFractionArray = new float[]
+//        gradientFractionArray = new float[]
+//        {
+//            0.0f,
+//            0.25f,
+//            0.75f,
+//            1.0f
+//        };
+//
+        gradientColorArray = new Color[]
         {
-            0.0f,
-            0.25f,
-            0.75f,
-            1.0f
+            getPointerColor().getMediumLight(),
+            getPointerColor().getMediumDark(),
+            getPointerColor().getMediumDark(),
+            getPointerColor().getMediumLight()
         };
-       
-            gradientColorArray = new Color[]
-            {
-                getPointerColor().getMediumLight(),
-                getPointerColor().getMediumDark(),
-                getPointerColor().getMediumDark(),
-                getPointerColor().getMediumLight()
-            };
-        
+
         if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
@@ -119,9 +155,9 @@ public class DualLinesPointer extends AbstractPointer
         gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
-      
-            graphics.setColor(getPointerColor().getDark());
-        
+
+        graphics.setColor(getPointerColor().getDark());
+
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(pointerShape);
 

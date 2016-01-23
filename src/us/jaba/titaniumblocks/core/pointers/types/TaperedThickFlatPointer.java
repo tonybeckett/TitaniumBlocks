@@ -75,14 +75,15 @@ public class TaperedThickFlatPointer extends AbstractPointer
         final float[] gradientFractionArray;
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
+        float magnitude = 1.0f - this.getRadiusPercent();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
-        pointerShape.lineTo(imageWidth * 0.48130841121495327, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.5186915887850467, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.5046728971962616, imageHeight * 0.1308411214953271);
-        pointerShape.lineTo(imageWidth * 0.49065420560747663, imageHeight * 0.1308411214953271);
+        pointerShape.moveTo(imageWidth * 0.490654, imageHeight * magnitude); 
+        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.504672, imageHeight * magnitude); 
+        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * magnitude); 
         pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);

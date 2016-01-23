@@ -78,6 +78,7 @@ public class PencilPointer extends AbstractPointer
 //        final float[] gradientFractionArray;
 //        final Color[] gradientColorArray;
 //        final java.awt.Paint gradient;
+float radiusAdj = 1.0f - this.getRadiusPercent();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);

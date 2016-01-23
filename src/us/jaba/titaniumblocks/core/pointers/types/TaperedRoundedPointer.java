@@ -73,18 +73,18 @@ public class TaperedRoundedPointer extends AbstractPointer
 //        
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        float radiusAdj = 1.0f -this.getRadiusPercent();
+        float magnitude = 1.0f -this.getRadiusPercent();
         
-        pointerShape.moveTo(0.5 * imageWidth, radiusAdj * imageHeight); //0.125 * imageHeight);
-        pointerShape.lineTo((0.5-0.015) /*0.485*/ * imageWidth, 0.5 * imageHeight);
+        pointerShape.moveTo(0.5 * imageWidth, magnitude * imageHeight); 
+        pointerShape.lineTo((0.5-0.015)  * imageWidth, 0.5 * imageHeight);
         pointerShape.lineTo(0.5 * imageWidth, 0.5046 * imageHeight);
-        pointerShape.lineTo((0.5+0.015)/*0.509*/ * imageWidth, 0.5 * imageHeight);
+        pointerShape.lineTo((0.5+0.015) * imageWidth, 0.5 * imageHeight);
 
-        pointerShape.lineTo(0.5 * imageWidth,  radiusAdj * imageHeight); //0.125 * imageHeight);
+        pointerShape.lineTo(0.5 * imageWidth,  magnitude * imageHeight); 
         pointerShape.closePath();
 
         graphics.setPaint(new LinearGradientPaint(
-                new Point2D.Double(0.5 * imageWidth,  radiusAdj * imageHeight), //0.125 * imageHeight),
+                new Point2D.Double(0.5 * imageWidth,  magnitude * imageHeight), 
                 new Point2D.Double(0.5 * imageWidth, 0.5046 * imageHeight),
                 new float[]
                 {

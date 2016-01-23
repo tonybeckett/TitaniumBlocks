@@ -47,6 +47,14 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class WideTaperedPointPointer extends AbstractPointer
 {
 
+    final static float[] gradientFractionArray = new float[]
+    {
+        0.0f,
+        0.46f,
+        0.47f,
+        1.0f
+    };
+
     public WideTaperedPointPointer()
     {
     }
@@ -73,36 +81,37 @@ public class WideTaperedPointPointer extends AbstractPointer
         final GeneralPath pointerShape;
         final Point2D startPoint;
         final Point2D stopPoint;
-        final float[] gradientFractionArray;
+
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
+        float magnitude = 1.0f - this.getRadiusPercent();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
-        pointerShape.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
-        pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5, imageWidth * 0.5093457943925234, imageHeight * 0.45794392523364486, imageWidth * 0.5, imageHeight * 0.14953271028037382);
-        pointerShape.curveTo(imageWidth * 0.49065420560747663, imageHeight * 0.45794392523364486, imageWidth * 0.4672897196261682, imageHeight * 0.5, imageWidth * 0.4672897196261682, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.5327102803738317);
+        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.532710);
+        pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
+
+        pointerShape.curveTo(imageWidth * 0.532710, imageHeight * 0.5,
+                imageWidth * 0.509345, imageHeight * 0.457943,
+                imageWidth * 0.5, imageHeight * magnitude);
+
+        pointerShape.curveTo(imageWidth * 0.490654, imageHeight * 0.457943,
+                imageWidth * 0.467289, imageHeight * 0.5,
+                imageWidth * 0.467289, imageHeight * 0.5);
+
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.53271);
         pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
-        gradientFractionArray = new float[]
+
+        gradientColorArray = new Color[]
         {
-            0.0f,
-            0.46f,
-            0.47f,
-            1.0f
+            this.getPointerColor().getMediumLight(),
+            this.getPointerColor().getMediumLight(),
+            this.getPointerColor().getMediumDark(),
+            this.getPointerColor().getMediumDark()
         };
-        
-            gradientColorArray = new Color[]
-            {
-                this.getPointerColor().getMediumLight(),
-                this.getPointerColor().getMediumLight(),
-                this.getPointerColor().getMediumDark(),
-                this.getPointerColor().getMediumDark()
-            };
-        
+
         if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
@@ -110,9 +119,9 @@ public class WideTaperedPointPointer extends AbstractPointer
         gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
-        
-            graphics.setColor(this.getPointerColor().getDark());
-        
+
+        graphics.setColor(this.getPointerColor().getDark());
+
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(pointerShape);
 

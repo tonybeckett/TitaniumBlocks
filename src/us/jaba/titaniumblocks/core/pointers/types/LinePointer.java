@@ -51,28 +51,32 @@ public class LinePointer extends AbstractPointer
         super(pointerColor);
     }
 
+    protected GeneralPath getShape(Dimension dimensions)
+    {
+        final GeneralPath pointerShape;
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+
+        float magnitude = 1.0f - this.getRadiusPercent();
+
+        pointerShape = new GeneralPath(new Rectangle2D.Double(imageWidth * 0.495327, imageHeight * magnitude,
+                imageWidth * 0.009345, imageHeight * 0.373831));
+
+        return pointerShape;
+    }
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        
+
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-        
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        final GeneralPath pointerShape;
-       
-     
-
-        pointerShape = new GeneralPath(new Rectangle2D.Double(imageWidth * 0.4953271028037383, imageHeight * 0.1308411214953271, 
-                imageWidth * 0.009345794392523364, imageHeight * 0.37383177570093457));
 
         graphics.setColor(this.getPointerColor().getMediumLight());
 
-        graphics.fill(pointerShape);
+        graphics.fill(getShape(dimensions));
 
         graphics.dispose();
     }

@@ -43,12 +43,13 @@ public abstract class AbstractPointer extends Pointer
     public AbstractPointer(GradientPalette pointerColor)
     {
         this.pointerColor = pointerColor;
-        radiusPercent = 0.875f;
+        radiusPercent = 0.95f;
     }
 
     public AbstractPointer()
     {
         pointerColor = new SSBlack();
+        radiusPercent = 0.95f;
     }
 
     public GradientPalette getPointerColor()

@@ -71,45 +71,50 @@ public class TaperedRoundedTailPointer extends AbstractPointer
         final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath pointerShape;
-        final Point2D startPoint;
-        final Point2D stopPoint;
-        final float[] gradientFractionArray;
-        final Color[] gradientColorArray;
+        
         final java.awt.Paint gradient;
+        float magnitude = 1.0f - this.getRadiusPercent();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
-        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight);
-        pointerShape.curveTo(0.48598130841121495 * imageWidth, 0.5 * imageHeight, 0.48130841121495327 * imageWidth, 0.5841121495327103 * imageHeight, 0.5 * imageWidth, 0.5841121495327103 * imageHeight);
-        pointerShape.curveTo(0.514018691588785 * imageWidth, 0.5841121495327103 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight, 0.5093457943925234 * imageWidth, 0.5 * imageHeight);
-        pointerShape.lineTo(0.5 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.moveTo(0.5 * imageWidth, magnitude  * imageHeight);
+        pointerShape.lineTo(0.4859813  * imageWidth, 0.5 * imageHeight);
+        
+        pointerShape.curveTo(0.4859813 * imageWidth, 0.5 * imageHeight,
+                0.4813084  * imageWidth, 0.584112 * imageHeight,
+                0.5 * imageWidth, 0.584112 * imageHeight);
+        
+        pointerShape.curveTo(0.514018  * imageWidth, 0.584112  * imageHeight,
+                0.5093454 * imageWidth, 0.5 * imageHeight,
+                0.5093454 * imageWidth, 0.5 * imageHeight);
+        
+        pointerShape.lineTo(0.5 * imageWidth, magnitude  * imageHeight);
         pointerShape.closePath();
 
-            if (PointSupport.pointsEquals(0d, pointerShape.getBounds2D().getMinY(), 0d, pointerShape.getBounds2D().getMaxY()))
+        if (PointSupport.pointsEquals(0d, pointerShape.getBounds2D().getMinY(), 0d, pointerShape.getBounds2D().getMaxY()))
+        {
+            gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY() + 1), new float[]
             {
-                gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY() + 1), new float[]
-                {
-                    0.0f, 1.0f
-                }, new Color[]
-                {
-                    this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
-                });
-            } else
+                0.0f, 1.0f
+            }, new Color[]
             {
-                gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY()), new float[]
-                {
-                    0.0f, 1.0f
-                }, new Color[]
-                {
-                    this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
-                });
-            }
-            graphics.setPaint(gradient);
-            graphics.fill(pointerShape);
-            graphics.setColor(this.getPointerColor().getDarkest());
+                this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
+            });
+        } else
+        {
+            gradient = new LinearGradientPaint(new Point2D.Double(0, pointerShape.getBounds2D().getMinY()), new Point2D.Double(0, pointerShape.getBounds2D().getMaxY()), new float[]
+            {
+                0.0f, 1.0f
+            }, new Color[]
+            {
+                this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
+            });
+        }
+        graphics.setPaint(gradient);
+        graphics.fill(pointerShape);
+        graphics.setColor(this.getPointerColor().getDarkest());
 //        
-        graphics.setStroke(new BasicStroke(0.004672897196261682f * imageWidth, 0, 1));
+        graphics.setStroke(new BasicStroke(0.00467289f * imageWidth, 0, 1));
         graphics.draw(pointerShape);
 
         graphics.dispose();
