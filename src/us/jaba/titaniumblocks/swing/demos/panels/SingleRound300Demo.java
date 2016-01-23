@@ -27,10 +27,10 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gold;
-import us.jaba.titaniumblocks.core.frames.models.round.GenericRoundFramePainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import us.jaba.titaniumblocks.core.pointers.shadows.CometShadow;
+import us.jaba.titaniumblocks.core.pointers.types.CometPointer;
 
 /**
  *
@@ -45,10 +45,11 @@ public class SingleRound300Demo extends SingleRoundDemo
     public SingleRound300Demo()
     {
 
-        super(new CircularTwoPostLayout(240, 300, Direction.CLOCKWISE, 0.75f, 245, 295));
+        super(new CircularTwoPostLayout(240, 300, Direction.CLOCKWISE, 0.95f, 245, 295));
         setTitle("300");
-  //      this.setRoundFramePainter(new GenericRoundFramePainter(new Gold()));
-          this.setUnits("degrees");
+        //      this.setRoundFramePainter(new GenericRoundFrame(new Gold()));
+        this.setPointerPainter(new CometPointer(), new CometShadow());
+        this.setUnits("degrees");
     }
 
     /**

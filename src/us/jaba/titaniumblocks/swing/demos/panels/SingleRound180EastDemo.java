@@ -27,8 +27,14 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.frames.models.round.AnthraciteRoundFramePainter;
+import us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
+import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
+import us.jaba.titaniumblocks.core.knobs.painter.NullKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
+import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
 /**
@@ -43,10 +49,21 @@ public class SingleRound180EastDemo extends SingleRoundDemo
      */
     public SingleRound180EastDemo()
     {
-        super(new CircularTwoPostLayout(90, 270, Direction.CLOCKWISE, 0.75f, 85, 275));
+        super(new CircularTwoPostLayout(90, 270, Direction.CLOCKWISE, 0.95f, 85, 275));
         setTitle("180E");
+        LinenBackdrop lp = new LinenBackdrop();
+        lp.setColor(ColorPalette.WHITE);
+        this.setBackdropPainter(lp);
+        SilverRoundFrame pp = new SilverRoundFrame();
+        pp.setFrameThickness(36);
+   //     pp.setInnerFrameColor(Color.RED);
+        this.setRoundFramePainter(pp);
+        this.setLedPainter(new NullLed());
+        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
+        this.setPointerGradient(new PureRed());
+        this.setFrontCoverPainter(new NullFrontcover());
+ //       this.setColor(ColorPalette.WHITE);
 
-        this.setRoundFramePainter(new AnthraciteRoundFramePainter());
     }
 
     /**

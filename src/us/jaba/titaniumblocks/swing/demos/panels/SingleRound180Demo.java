@@ -27,16 +27,16 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.backdrop.models.round.PunchedSteelBackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.types.round.PunchedSteelBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureOrange;
-import us.jaba.titaniumblocks.core.frames.models.round.BrassRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.types.round.BrassRoundFrame;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.painters.MonumentPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.MonumentShadowPointerPainter;
-import us.jaba.titaniumblocks.core.posts.painters.BigBrassPostPainter;
+import us.jaba.titaniumblocks.core.pointers.types.MonumentPointer;
+import us.jaba.titaniumblocks.core.pointers.shadows.MonumentShadow;
+import us.jaba.titaniumblocks.core.posts.types.BigBrassPost;
 
 /**
  *
@@ -50,15 +50,15 @@ public class SingleRound180Demo extends SingleRoundDemo
      */
     public SingleRound180Demo()
     {
-        super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.75f, 185, 355));
+        super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.95f, 185, 355));
         setTitle("180");
 
-        this.setRoundFramePainter(new BrassRoundFramePainter());
-        this.setBackdropPainter(new PunchedSteelBackdropPainter());
-        this.setCenterPostPainter( new BigBrassPostPainter());
+        this.setRoundFramePainter(new BrassRoundFrame());
+        this.setBackdropPainter(new PunchedSteelBackdrop());
+        this.setCenterPostPainter(new BigBrassPost());
         this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
         this.setColor(ColorPalette.WHITE);
-        this.setPointerPainter(new MonumentPointerPainter(), new MonumentShadowPointerPainter());
+        this.setPointerPainter(new MonumentPointer(), new MonumentShadow());
         this.setPointerGradient( new PureOrange());
         this.setUnits("degrees");
     }

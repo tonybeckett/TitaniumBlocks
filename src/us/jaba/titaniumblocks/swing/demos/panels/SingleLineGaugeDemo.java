@@ -50,7 +50,7 @@ public class SingleLineGaugeDemo extends javax.swing.JFrame
         initComponents();
         final SingleLineDoubleLinearPanel panel = new SingleLineDoubleLinearPanel();
         panel.getGauge().getTextPainter().setColor(ColorPalette.DEEPSEAGREEN);
-        panel.getGauge().getBackgroundPainter().setBackgroundColorModel(new CopperBModel());
+        panel.getGauge().getBackgroundPainter().setBackgroundColor(new CopperBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(400, 200));

@@ -27,17 +27,17 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.backdrop.models.round.NoisyPlasticBackdropPainter;
+import us.jaba.titaniumblocks.core.backdrop.types.round.NoisyPlasticBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.frames.models.round.BlackMetalRoundFramePainter;
+import us.jaba.titaniumblocks.core.frames.types.round.BlackMetalRoundFrame;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallWhiteKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
-import us.jaba.titaniumblocks.core.led.models.NullLedModel;
+import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.painters.DualLinesPointerPainter;
-import us.jaba.titaniumblocks.core.pointers.shadowpainters.DualLinesShadowPointerPainter;
-import us.jaba.titaniumblocks.core.posts.painters.MetalBlackPostPainter;
+import us.jaba.titaniumblocks.core.pointers.types.DualLinesPointer;
+import us.jaba.titaniumblocks.core.pointers.shadows.DualLinesShadow;
+import us.jaba.titaniumblocks.core.posts.types.MetalBlackPost;
 
 /**
  *
@@ -52,20 +52,20 @@ public class SingleRound270Demo extends SingleRoundDemo
     public SingleRound270Demo()
     {
 
-        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.75f, 230, 310));
+        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.95f, 230, 310));
         setTitle("270");
         
-        this.setRoundFramePainter(new BlackMetalRoundFramePainter());
-        NoisyPlasticBackdropPainter bp = new NoisyPlasticBackdropPainter();
+        this.setRoundFramePainter(new BlackMetalRoundFrame());
+        NoisyPlasticBackdrop bp = new NoisyPlasticBackdrop();
         bp.setTextureColor(ColorPalette.QUILLGRAY);
         this.setBackdropPainter(bp);
-        this.setCenterPostPainter( new MetalBlackPostPainter());
+        this.setCenterPostPainter(new MetalBlackPost());
         this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());
         this.setColor(ColorPalette.DARKBLUE);
-        this.setPointerPainter(new DualLinesPointerPainter(), new DualLinesShadowPointerPainter());
+        this.setPointerPainter(new DualLinesPointer(), new DualLinesShadow());
         this.setPointerGradient( new PureRed());
         this.setUnits("degrees");
-        this.setLedPainter(new NullLedModel());
+        this.setLedPainter(new NullLed());
     }
 
     /**

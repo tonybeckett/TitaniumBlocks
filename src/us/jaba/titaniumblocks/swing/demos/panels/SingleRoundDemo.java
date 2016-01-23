@@ -31,15 +31,17 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.FrameModel;
+import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.led.LedModel;
-import us.jaba.titaniumblocks.core.pointers.PointerPainter;
-import us.jaba.titaniumblocks.core.posts.PostPainter;
+import us.jaba.titaniumblocks.core.led.Led;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
 
@@ -62,7 +64,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel = new SingleRoundPanel(cl);
 
         panel.getGauge().getTextPainter().setColor(ColorPalette.ALMOND);
-        panel.getGauge().getBackdropPainter().setBackgroundColorModel(new WhiteBModel());
+        panel.getGauge().getBackdropPainter().setBackgroundColor(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
@@ -85,7 +87,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(FrameModel linearFramePainter)
+    public void setRoundFramePainter(RoundFrame linearFramePainter)
     {
         panel.setRoundFramePainter(linearFramePainter);
     }
@@ -112,7 +114,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setUnits(units);
     }
 
-    public void setCenterPostPainter(PostPainter postPainter)
+    public void setCenterPostPainter(Post postPainter)
     {
         panel.setCenterPostPainter(postPainter);
     }
@@ -122,14 +124,19 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setSmallKnobsPainter(startPainter, endPainter);
     }
 
-    public void setPointerPainter(PointerPainter pointerPainter, PointerPainter shadowPainter)
+    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
     {
         panel.setPointerPainter(pointerPainter, shadowPainter);
     }
 
-    public void setLedPainter(LedModel ledPainter)
+    public void setLedPainter(Led ledPainter)
     {
         panel.setLedPainter(ledPainter);
+    }
+
+    public void setFrontCoverPainter(Frontcover foregroundPainter)
+    {
+        panel.setFrontCoverPainter(foregroundPainter);
     }
 
    

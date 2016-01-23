@@ -35,8 +35,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import javax.swing.JComponent;
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
-import us.jaba.titaniumblocks.core.text.painters.DoubleValueText;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 import us.jaba.titaniumblocks.displays.rectangular.SingleDisplay;
 
 /**

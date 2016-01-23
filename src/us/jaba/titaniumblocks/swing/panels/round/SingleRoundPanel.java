@@ -38,14 +38,16 @@ import java.awt.event.ComponentListener;
 import javax.swing.JComponent;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
-import us.jaba.titaniumblocks.core.backdrop.models.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.FrameModel;
+import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.led.LedModel;
-import us.jaba.titaniumblocks.core.pointers.PointerPainter;
-import us.jaba.titaniumblocks.core.posts.PostPainter;
+import us.jaba.titaniumblocks.core.led.Led;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.displays.round.SingleRoundDisplay;
 
 /**
@@ -165,7 +167,7 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(FrameModel linearFramePainter)
+    public void setRoundFramePainter(RoundFrame linearFramePainter)
     {
         singleGauge.setRoundFramePainter(linearFramePainter);
     }
@@ -201,7 +203,7 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setUnits(units);
     }
 
-    public void setCenterPostPainter(PostPainter postPainter)
+    public void setCenterPostPainter(Post postPainter)
     {
         singleGauge.setCenterPostPainter(postPainter);
     }
@@ -211,14 +213,19 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setSmallKnobsPainter(startPainter, endPainter);
     }
 
-    public void setPointerPainter(PointerPainter pointerPainter, PointerPainter shadowPainter)
+    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
     {
         singleGauge.setPointerPainter(pointerPainter, shadowPainter);
     }
 
-    public void setLedPainter(LedModel ledPainter)
+    public void setLedPainter(Led ledPainter)
     {
         singleGauge.setLedPainter(ledPainter);
+    }
+
+    public void setFrontCoverPainter(Frontcover foregroundPainter)
+    {
+        singleGauge.setFrontCoverPainter(foregroundPainter);
     }
 
    
