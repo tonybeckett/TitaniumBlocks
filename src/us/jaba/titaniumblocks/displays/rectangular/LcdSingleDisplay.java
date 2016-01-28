@@ -31,7 +31,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.LcdBackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
@@ -65,7 +65,7 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
         graphics.drawImage(image, offset, offset, null);
     }
 
-    public BackdropModel getLCDBackgroundPainter()
+    public Backdrop getLCDBackgroundPainter()
     {
         return lcdBackgroundImage.getPainter();
     }

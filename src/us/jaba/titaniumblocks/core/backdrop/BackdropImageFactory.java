@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.backdrop;
 
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**
@@ -37,14 +37,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class BackdropImageFactory extends CoreImageFactory
 {
 
-    public BackdropImageFactory(BackdropModel painter)
+    public BackdropImageFactory(Backdrop painter)
     {
         super(painter);
     }
 
-    public BackdropModel getPainter()
+    public Backdrop getPainter()
     {
-        return (BackdropModel) super.getBasePainter();
+        return (Backdrop) super.getBasePainter();
     }
 
 }

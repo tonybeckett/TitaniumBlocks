@@ -25,31 +25,64 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.types;
+package us.jaba.titaniumblocks.core.backdrop.types.rectangular;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.LinearGradientPaint;
+import java.awt.Paint;
+import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
-import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.DarkGrayBModel;
-import us.jaba.titaniumblocks.core.Painter;
+import us.jaba.titaniumblocks.core.backdrop.types.AbstractRectangularBackdrop;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class BackdropModel extends CoreModel implements Painter
+public class BasicBackdrop extends AbstractRectangularBackdrop
 {
-    protected BackdropColorModel backgroundColorModel = new DarkGrayBModel();
 
-    public BackdropColorModel getBackgroundColor()
+    final float[] BACKGROUND_FRACTIONS =
     {
-        return backgroundColorModel;
+        0.0f,
+        0.4f,
+        1.0f
+    };
+
+    Color[] BACKGROUND_COLORS =
+    {
+        backgroundColorModel.getGradientStartColor(),
+        backgroundColorModel.getGradientFractionColor(),
+        backgroundColorModel.getGradientStopColor()
+    };
+
+    public BasicBackdrop()
+    {
+
     }
 
+    @Override
+    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
+    {
+        final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
+        final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
+        PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
+        Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, BACKGROUND_FRACTIONS, BACKGROUND_COLORS);
+
+        return p;
+    }
+
+    @Override
     public void setBackgroundColor(BackdropColorModel backgroundColorModel)
     {
-        this.backgroundColorModel = backgroundColorModel;
-        changed();
-    }
+        super.setBackgroundColor(backgroundColorModel);
 
+        BACKGROUND_COLORS[0] = backgroundColorModel.getGradientStartColor();
+        BACKGROUND_COLORS[1] = backgroundColorModel.getGradientFractionColor();
+        BACKGROUND_COLORS[2] = backgroundColorModel.getGradientStopColor();
+
+    }
     
 }

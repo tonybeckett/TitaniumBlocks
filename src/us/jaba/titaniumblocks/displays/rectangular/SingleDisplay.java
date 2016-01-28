@@ -33,7 +33,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.NullBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
@@ -133,7 +133,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         valueTextImage.getPainter().setColor(c);
     }
 
-    public BackdropModel getBackgroundPainter()
+    public Backdrop getBackgroundPainter()
     {
         return backgroundImage.getPainter();
     }
@@ -153,7 +153,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         return foregroundImage.getPainter();
     }
 
-    public void setBackgroundPainter(BackdropModel painter)
+    public void setBackgroundPainter(Backdrop painter)
     {
         this.backgroundImage = new BackdropImageFactory(painter);
     }

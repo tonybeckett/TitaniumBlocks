@@ -36,24 +36,28 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
+
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedRoundedTailPointer extends AbstractPointer
+public class TaperedRoundedTailPointer extends BasicPointer
 {
 
     public TaperedRoundedTailPointer()
     {
+        this( new Aluminum());
+        
     }
 
     public TaperedRoundedTailPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
+        tailScale = 0.3f;
     }
 
     @Override
@@ -73,20 +77,21 @@ public class TaperedRoundedTailPointer extends AbstractPointer
         final GeneralPath pointerShape;
         
         final java.awt.Paint gradient;
-        float magnitude = 1.0f - this.getRadiusPercent();
-
+        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
+        float tailOffset = (0.5f * tailScale);
+                
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(0.5 * imageWidth, magnitude  * imageHeight);
-        pointerShape.lineTo(0.4859813  * imageWidth, 0.5 * imageHeight);
+        pointerShape.lineTo(0.4859813  * imageWidth, imageHeight * (0.5 + tailOffset));
         
-        pointerShape.curveTo(0.4859813 * imageWidth, 0.5 * imageHeight,
-                0.4813084  * imageWidth, 0.584112 * imageHeight,
-                0.5 * imageWidth, 0.584112 * imageHeight);
+        pointerShape.curveTo(0.4859813 * imageWidth, imageHeight * (0.5 + tailOffset),
+                0.4813084  * imageWidth, imageHeight * (0.584112 + tailOffset),
+                0.5 * imageWidth, imageHeight * (0.584112 + tailOffset));
         
-        pointerShape.curveTo(0.514018  * imageWidth, 0.584112  * imageHeight,
-                0.5093454 * imageWidth, 0.5 * imageHeight,
-                0.5093454 * imageWidth, 0.5 * imageHeight);
+        pointerShape.curveTo(0.5  * imageWidth, imageHeight * (0.584112 + tailOffset),
+                0.5193454 * imageWidth, imageHeight * (0.584112 + tailOffset),
+                0.5153454 * imageWidth, imageHeight * (0.5 + tailOffset));
         
         pointerShape.lineTo(0.5 * imageWidth, magnitude  * imageHeight);
         pointerShape.closePath();
@@ -112,9 +117,9 @@ public class TaperedRoundedTailPointer extends AbstractPointer
         }
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
-        graphics.setColor(this.getPointerColor().getDarkest());
+        graphics.setColor(this.getPointerColor().getDark());
 //        
-        graphics.setStroke(new BasicStroke(0.00467289f * imageWidth, 0, 1));
+        graphics.setStroke(new BasicStroke(0.004672f * imageWidth, 0, 1));
         graphics.draw(pointerShape);
 
         graphics.dispose();

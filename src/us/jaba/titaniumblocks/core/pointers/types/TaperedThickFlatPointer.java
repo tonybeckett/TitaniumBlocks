@@ -32,27 +32,40 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedThickFlatPointer extends AbstractPointer
+public class TaperedThickFlatPointer extends BasicPointer
 {
+
+    final float[] fractionArray = new float[]
+    {
+        0.0f,
+        0.001f,
+        0.5f,
+        0.998f,
+        1.0f
+    };
 
     public TaperedThickFlatPointer()
     {
+        this(new Aluminum());
     }
 
     public TaperedThickFlatPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
+        tailScale = 0.3f;
     }
 
     @Override
@@ -72,41 +85,51 @@ public class TaperedThickFlatPointer extends AbstractPointer
         final GeneralPath pointerShape;
         final Point2D startPoint;
         final Point2D stopPoint;
-        final float[] gradientFractionArray;
+
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        float magnitude = 1.0f - this.getRadiusPercent();
+        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
+        float tailOffset = (0.5f * tailScale);
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.490654, imageHeight * magnitude); 
-        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.504672, imageHeight * magnitude); 
-        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * magnitude); 
+        pointerShape.moveTo(imageWidth * 0.490654, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * (0.5 + tailOffset));
+        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * (0.5 + tailOffset));
+        pointerShape.lineTo(imageWidth * 0.504672, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * magnitude);
         pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
-        gradientFractionArray = new float[]
+
+        gradientColorArray = new Color[]
         {
-            0.0f,
-            1.0f
+            this.getPointerColor().getMedium(),
+            this.getPointerColor().getMedium(),
+            this.getPointerColor().getMedium(),
+            this.getPointerColor().getMedium(),
+            this.getPointerColor().getMedium()
         };
-        
-            gradientColorArray = new Color[]
-            {
-                this.getPointerColor().getDark(),
-                this.getPointerColor().getMediumDark()
-            };
-        
+
         if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
-        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+        gradient = new LinearGradientPaint(startPoint, stopPoint, fractionArray, gradientColorArray);
         graphics.setPaint(gradient);
+        //       graphics.setColor(this.getPointerColor().getMedium());
         graphics.fill(pointerShape);
-        
+
+        int circleSize = (int) (imageWidth * 0.08);
+        Ellipse2D shape = new Ellipse2D.Double((imageWidth * 0.5) - (circleSize / 2), (imageHeight * 0.5) - (circleSize / 2), circleSize, circleSize);
+
+        graphics.fill(shape);
+
+        graphics.setColor(ColorPalette.STEELGRAY);
+        circleSize = (int) (imageWidth * 0.018);
+        shape = new Ellipse2D.Double((imageWidth * 0.5) - (circleSize / 2), (imageHeight * 0.5) - (circleSize / 2), circleSize, circleSize);
+
+        graphics.fill(shape);
 
         graphics.dispose();
     }

@@ -48,6 +48,9 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BasicPointer extends AbstractPointer
 {
 
+    protected float frontScale;
+    protected float tailScale;
+    
     final float[] gradientFractionArray = new float[]
     {
         0.0f,
@@ -58,19 +61,34 @@ public class BasicPointer extends AbstractPointer
 
     public BasicPointer()
     {
+        frontScale = 1.0f;
+        tailScale = 1.0f;
     }
 
     public BasicPointer(GradientPalette pointColor)
     {
         super(pointColor);
+        frontScale = 1.0f;
+        tailScale = 1.0f;
     }
 
-    
+    @Override
+    public void setFrontScale(float scale)
+    {
+        this.frontScale = scale;
+    }
+
     protected GeneralPath getShape(Dimension dimensions)
     {
         return new GeneralPath();
     }
-    
+
+    @Override
+    public void setTailScale(float scale)
+    {
+        this.tailScale = scale;
+    }
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

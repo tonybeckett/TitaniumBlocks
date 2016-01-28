@@ -35,7 +35,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -43,7 +42,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class MonumentPointer extends AbstractPointer
+public class MonumentPointer extends BasicPointer
 {
 
     final float[] gradientFractionArray = new float[]
@@ -83,18 +82,18 @@ public class MonumentPointer extends AbstractPointer
 
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        float radiusAdj = 1.0f -this.getRadiusPercent();
+        float magnitude = (1.0f -this.getRadiusPercent()) * frontScale;
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * radiusAdj);//0.1261682242990654);
-        pointerShape.lineTo(imageWidth * 0.514018691588785, imageHeight * (radiusAdj+0.01));//0.13551401869158877);
-        pointerShape.lineTo(imageWidth * 0.5327102803738317, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.5233644859813084, imageHeight * 0.602803738317757);
-        pointerShape.lineTo(imageWidth * 0.4766355140186916, imageHeight * 0.602803738317757);
-        pointerShape.lineTo(imageWidth * 0.4672897196261682, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.49065420560747663, imageHeight * (radiusAdj+0.01));// 0.13551401869158877);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * radiusAdj);//* 0.1261682242990654);
+        pointerShape.moveTo(imageWidth * 0.5, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.514018, imageHeight * (magnitude+0.01));
+        pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.523364, imageHeight * 0.602803);
+        pointerShape.lineTo(imageWidth * 0.476635, imageHeight * 0.602803);
+        pointerShape.lineTo(imageWidth * 0.467289, imageHeight * 0.5);
+        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * (magnitude+0.01));
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
         pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);

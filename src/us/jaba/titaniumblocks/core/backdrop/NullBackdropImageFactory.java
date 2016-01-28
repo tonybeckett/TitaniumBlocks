@@ -30,7 +30,7 @@ package us.jaba.titaniumblocks.core.backdrop;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 
 /**
  *
@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
 public final class NullBackdropImageFactory extends BackdropImageFactory
 {
 
-    public NullBackdropImageFactory(BackdropModel painter)
+    public NullBackdropImageFactory(Backdrop painter)
     {
         super(painter);
     }

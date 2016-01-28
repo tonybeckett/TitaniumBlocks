@@ -35,7 +35,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -43,7 +42,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class ArrowHeadPointer extends AbstractPointer
+public class ArrowHeadPointer extends BasicPointer
 {
 
     final float[] gradientFractionArray = new float[]

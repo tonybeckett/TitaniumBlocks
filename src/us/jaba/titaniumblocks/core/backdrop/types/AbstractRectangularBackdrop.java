@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
  *
  * @author hansolo
  */
-public abstract class AbstractRectangularBackdrop extends BackdropModel
+public abstract class AbstractRectangularBackdrop extends Backdrop
 {
 
 

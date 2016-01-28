@@ -35,14 +35,13 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class Pencil2Pointer extends AbstractPointer
+public class Pencil2Pointer extends BasicPointer
 {
 
     public Pencil2Pointer()

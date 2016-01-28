@@ -33,13 +33,13 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
+import us.jaba.titaniumblocks.core.pointers.types.BasicPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedThickShadow extends AbstractPointer
+public class TaperedThickShadow extends BasicPointer
 {
 
     @Override

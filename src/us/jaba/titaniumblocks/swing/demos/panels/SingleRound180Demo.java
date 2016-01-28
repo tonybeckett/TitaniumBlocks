@@ -53,7 +53,7 @@ public class SingleRound180Demo extends SingleRoundDemo
         super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.95f, 185, 355));
         setTitle("180");
 
-        this.setRoundFramePainter(new BrassRoundFrame());
+        this.setFramePainter(new BrassRoundFrame());
         this.setBackdropPainter(new PunchedSteelBackdrop());
         this.setCenterPostPainter(new BigBrassPost());
         this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());

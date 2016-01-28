@@ -32,7 +32,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropCoreInfo;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 
 /**
  *
@@ -51,14 +51,14 @@ public class BackdropViewer extends BasicVerticalViewer
     @Override
     protected String getClassNameFromInstance(Object o)
     {
-        BackdropModel pp = (BackdropModel) o;
+        Backdrop pp = (Backdrop) o;
         return pp.getClass().getSimpleName().replace("BackgroundPainter", "");
     }
 
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        BackdropModel pp = (BackdropModel) next;
+        Backdrop pp = (Backdrop) next;
         return new BackdropImageFactory(pp).build(dim);
     }
 

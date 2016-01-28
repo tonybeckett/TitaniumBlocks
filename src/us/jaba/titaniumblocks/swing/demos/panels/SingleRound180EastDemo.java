@@ -57,7 +57,7 @@ public class SingleRound180EastDemo extends SingleRoundDemo
         SilverRoundFrame pp = new SilverRoundFrame();
         pp.setFrameThickness(36);
    //     pp.setInnerFrameColor(Color.RED);
-        this.setRoundFramePainter(pp);
+        this.setFramePainter(pp);
         this.setLedPainter(new NullLed());
         this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
         this.setPointerGradient(new PureRed());

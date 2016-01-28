@@ -31,7 +31,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.FrameModel;
@@ -82,14 +82,14 @@ public class SingleRoundDemo extends javax.swing.JFrame
 
     }
 
-    public void setBackdropPainter(BackdropModel painter)
+    public void setBackdropPainter(Backdrop painter)
     {
         panel.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(RoundFrame linearFramePainter)
+    public void setFramePainter(RoundFrame linearFramePainter)
     {
-        panel.setRoundFramePainter(linearFramePainter);
+        panel.setFrame(linearFramePainter);
     }
 
     public void setColor(Color c)

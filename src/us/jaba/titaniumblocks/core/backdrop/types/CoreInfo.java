@@ -50,9 +50,9 @@ public class CoreInfo
 
     }
     
-    public static BackdropModel getInstance(Class<?> aClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
+    public static Backdrop getInstance(Class<?> aClass) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
         Constructor c = aClass.getConstructor();
-        return  (BackdropModel) c.newInstance();
+        return  (Backdrop) c.newInstance();
     }
 }

@@ -55,7 +55,7 @@ public class SingleRound270Demo extends SingleRoundDemo
         super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.95f, 230, 310));
         setTitle("270");
         
-        this.setRoundFramePainter(new BlackMetalRoundFrame());
+        this.setFramePainter(new BlackMetalRoundFrame());
         NoisyPlasticBackdrop bp = new NoisyPlasticBackdrop();
         bp.setTextureColor(ColorPalette.QUILLGRAY);
         this.setBackdropPainter(bp);

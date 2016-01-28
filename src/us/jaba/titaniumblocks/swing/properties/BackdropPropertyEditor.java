@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.swing.properties;
 
 import java.beans.*;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.BrushedMetalBackdrop;
 
 /**
@@ -54,7 +54,7 @@ public class BackdropPropertyEditor extends PropertyEditorSupport
     @Override
     public String getAsText()
     {
-        BackdropModel bp = (BackdropModel) getValue();
+        Backdrop bp = (Backdrop) getValue();
         return bp.getClass().getSimpleName();
     }
 

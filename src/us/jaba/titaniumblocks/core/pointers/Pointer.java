@@ -43,4 +43,8 @@ public abstract class Pointer extends CoreModel
     public abstract void paint(Graphics2D graphics, Dimension dimensions);
     
     public abstract void setPointerColor(GradientPalette pointerColor);
+    
+    public abstract void setFrontScale(float scale);
+    
+    public abstract void setTailScale(float scale);
 }

@@ -38,7 +38,7 @@ import java.awt.event.ComponentListener;
 import javax.swing.JComponent;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
-import us.jaba.titaniumblocks.core.backdrop.types.BackdropModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
@@ -157,19 +157,19 @@ public class SingleRoundPanel extends JComponent
         singleGauge.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
     }
 
-    public BackdropModel getBackdropPainter()
+    public Backdrop getBackdropPainter()
     {
         return singleGauge.getBackdropPainter();
     }
 
-    public void setBackdropPainter(BackdropModel painter)
+    public void setBackdropPainter(Backdrop painter)
     {
         singleGauge.setBackdropPainter(painter);
     }
 
-    public void setRoundFramePainter(RoundFrame linearFramePainter)
+    public void setFrame(RoundFrame linearFramePainter)
     {
-        singleGauge.setRoundFramePainter(linearFramePainter);
+        singleGauge.setFrame(linearFramePainter);
     }
 
     @Override

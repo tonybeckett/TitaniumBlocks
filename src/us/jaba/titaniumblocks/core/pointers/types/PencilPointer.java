@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
  *
  * @author tbeckett
  */
-public class PencilPointer extends AbstractPointer
+public class PencilPointer extends BasicPointer
 {
     private Color labelColor;
     

@@ -36,7 +36,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -44,7 +43,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class TaperedThickPointer extends AbstractPointer
+public class TaperedThickPointer extends BasicPointer
 {
 
     public TaperedThickPointer()
@@ -78,6 +77,7 @@ public class TaperedThickPointer extends AbstractPointer
         final java.awt.Paint gradient;
         float radiusAdj = 1.0f - this.getRadiusPercent();
 
+        
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.495327);

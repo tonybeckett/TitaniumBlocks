@@ -32,14 +32,13 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class LinePointer extends AbstractPointer
+public class LinePointer extends BasicPointer
 {
 
     public LinePointer()
