@@ -22,7 +22,7 @@ public class GlowImageFactory extends CoreImageFactory
  
     public Glow getPainter()
     {
-        return (Glow) super.getBasePainter(); 
+        return (Glow) super.getPainter(); 
     }
     
 }

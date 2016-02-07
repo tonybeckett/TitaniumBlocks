@@ -32,17 +32,19 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class MonumentPointer extends BasicPointer
+public class MonumentPointer extends GradientPointer
 {
 
     final float[] gradientFractionArray = new float[]
@@ -63,28 +65,13 @@ public class MonumentPointer extends BasicPointer
     }
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    protected Shape getShape(Dimension dimensions)
     {
-
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        //graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-        //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        final int imageWidth = (int) dimensions.getWidth();
+         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-
-        final GeneralPath pointerShape;
-        final Point2D startPoint;
-        final Point2D stopPoint;
-
-        final Color[] gradientColorArray;
-        final java.awt.Paint gradient;
+        
         float magnitude = (1.0f -this.getRadiusPercent()) * frontScale;
-
-        pointerShape = new GeneralPath();
+        GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * magnitude);
         pointerShape.lineTo(imageWidth * 0.514018, imageHeight * (magnitude+0.01));
@@ -95,25 +82,61 @@ public class MonumentPointer extends BasicPointer
         pointerShape.lineTo(imageWidth * 0.490654, imageHeight * (magnitude+0.01));
         pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
         pointerShape.closePath();
-        startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
-        stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
-
-        gradientColorArray = new Color[]
-        {
-            getPointerColor().getDark(),
-            getPointerColor().getDark(),
-            getPointerColor().getMediumLight(),
-            getPointerColor().getMediumLight()
-        };
-
-        if (PointSupport.pointsEqual(startPoint, stopPoint))
-        {
-            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
-        }
-        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
-        graphics.setPaint(gradient);
-        graphics.fill(pointerShape);
-
-        graphics.dispose();
+        return pointerShape; 
     }
+
+//    @Override
+//    public void paint(Graphics2D graphics, Dimension dimensions)
+//    {
+//
+//        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+//        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+//        //graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+//        //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+//        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+//        //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
+//
+//        final GeneralPath pointerShape;
+//        final Point2D startPoint;
+//        final Point2D stopPoint;
+//
+//        final Color[] gradientColorArray;
+//        final java.awt.Paint gradient;
+//        float magnitude = (1.0f -this.getRadiusPercent()) * frontScale;
+//
+//        pointerShape = new GeneralPath();
+//        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+//        pointerShape.moveTo(imageWidth * 0.5, imageHeight * magnitude);
+//        pointerShape.lineTo(imageWidth * 0.514018, imageHeight * (magnitude+0.01));
+//        pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
+//        pointerShape.lineTo(imageWidth * 0.523364, imageHeight * 0.602803);
+//        pointerShape.lineTo(imageWidth * 0.476635, imageHeight * 0.602803);
+//        pointerShape.lineTo(imageWidth * 0.467289, imageHeight * 0.5);
+//        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * (magnitude+0.01));
+//        pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
+//        pointerShape.closePath();
+//        startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
+//        stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
+//
+//        gradientColorArray = new Color[]
+//        {
+//            getPointerColor().getDark(),
+//            getPointerColor().getDark(),
+//            getPointerColor().getMediumLight(),
+//            getPointerColor().getMediumLight()
+//        };
+//
+//        if (PointSupport.pointsEqual(startPoint, stopPoint))
+//        {
+//            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
+//        }
+//        gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+//        graphics.setPaint(gradient);
+//        graphics.fill(pointerShape);
+//
+//        graphics.dispose();
+//    }
 }

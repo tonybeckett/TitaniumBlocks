@@ -27,7 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.posts.types;
 
-import us.jaba.titaniumblocks.core.posts.BaseMetalPost;
+import us.jaba.titaniumblocks.core.posts.BasicMetalPost;
 import java.awt.Color;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
@@ -35,7 +35,7 @@ import us.jaba.titaniumblocks.core.color.ColorPalette;
  *
  * @author tbeckett
  */
-public class MetalGoldPost extends BaseMetalPost
+public class MetalGoldPost extends BasicMetalPost
 {
 
     public MetalGoldPost()

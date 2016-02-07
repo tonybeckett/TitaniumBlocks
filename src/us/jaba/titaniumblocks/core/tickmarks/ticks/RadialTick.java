@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.tickmarks.ticks;
 
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 
 /**
  *
@@ -50,11 +51,9 @@ public class RadialTick
     // java coordinate system has positive x down so converting from polar needs to adjust.
     private void calc()
     {
-        double sinValue = Math.sin(Math.toRadians(angle));
-        double cosValue = Math.cos(Math.toRadians(angle));
-        innerPoint.setLocation(centerPoint.getX() + ((radius - tickLength) * cosValue), centerPoint.getY() - ((radius - tickLength) * sinValue));
-        outerPoint.setLocation(centerPoint.getX() + (radius * cosValue), centerPoint.getY() - (radius * sinValue));
-        textPoint.setLocation(centerPoint.getX() + (radius - textDistance) * cosValue, centerPoint.getY() - (radius - textDistance) * sinValue);
+        innerPoint.setLocation(CoordinateUtils.calcPosition(centerPoint, radius - tickLength, angle)); 
+        outerPoint.setLocation(CoordinateUtils.calcPosition(centerPoint, radius, angle)); 
+        textPoint.setLocation(CoordinateUtils.calcPosition(centerPoint, radius - textDistance, angle)); 
     }
 
     public Point2D getTextPoint()
@@ -150,7 +149,7 @@ public class RadialTick
     @Override
     public String toString()
     {
-        return "Tick{" + "textPoint=" + textPoint + ", innerPoint=" + innerPoint + ", outerPoint=" + outerPoint + ", centerPoint=" + centerPoint + ", angle=" + angle + ", radius=" + radius + ", tickLength=" + tickLength + ", textDistance=" + textDistance + '}';
+        return "RadialTick{" + "textPoint=" + textPoint + ", innerPoint=" + innerPoint + ", outerPoint=" + outerPoint + ", centerPoint=" + centerPoint + ", angle=" + angle + ", radius=" + radius + ", tickLength=" + tickLength + ", textDistance=" + textDistance + ", textAngle=" + textAngle + ", value=" + value + '}';
     }
 
 }

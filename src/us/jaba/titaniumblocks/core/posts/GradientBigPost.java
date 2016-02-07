@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class BaseBigPost extends Post
+public class GradientBigPost extends Post
 {
 
     final Color[] BIGCENTER_BACKGROUNDFRAME_COLORS;
@@ -49,7 +49,7 @@ public class BaseBigPost extends Post
     final Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
     final Color[] BIGCENTER_FOREGROUND_COLORS;
 
-    public BaseBigPost(GradientPalette gd)
+    public GradientBigPost(GradientPalette gd)
     {
         this(new Color[]
         {
@@ -74,7 +74,7 @@ public class BaseBigPost extends Post
         });
     }
 
-    public BaseBigPost(Color[] BIGCENTER_BACKGROUNDFRAME_COLORS, Color[] BIGCENTER_BACKGROUND_COLORS, Color[] BIGCENTER_FOREGROUNDFRAME_COLORS, Color[] BIGCENTER_FOREGROUND_COLORS)
+    public GradientBigPost(Color[] BIGCENTER_BACKGROUNDFRAME_COLORS, Color[] BIGCENTER_BACKGROUND_COLORS, Color[] BIGCENTER_FOREGROUNDFRAME_COLORS, Color[] BIGCENTER_FOREGROUND_COLORS)
     {
         this.BIGCENTER_BACKGROUNDFRAME_COLORS = BIGCENTER_BACKGROUNDFRAME_COLORS;
         this.BIGCENTER_BACKGROUND_COLORS = BIGCENTER_BACKGROUND_COLORS;

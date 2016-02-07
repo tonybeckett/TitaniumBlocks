@@ -43,7 +43,7 @@ public class ThresholdIndicatorImageFactory extends CoreImageFactory
 
     public ThresholdIndicatorModel getPainter()
     {
-        return (ThresholdIndicatorModel) super.getBasePainter();
+        return (ThresholdIndicatorModel) super.getPainter();
     }
 
 }

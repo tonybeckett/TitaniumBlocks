@@ -42,9 +42,10 @@ public class TickmarkImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public TickmarkModel getPainter()
     {
-        return (TickmarkModel) super.getBasePainter();
+        return (TickmarkModel) super.getPainter();
     }
 
 }

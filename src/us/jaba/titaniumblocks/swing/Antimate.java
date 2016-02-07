@@ -45,10 +45,10 @@ public class Antimate implements Runnable
     {
         this(scale, 2);
     }
-    public Antimate(double scale, int delaySeconds)
+    public Antimate(double scale, float delaySeconds)
     {
         this.scale = scale;
-        this.delay = delaySeconds*1000;
+        this.delay = (int) (delaySeconds*1000);
     }
 
     public void update(double d)

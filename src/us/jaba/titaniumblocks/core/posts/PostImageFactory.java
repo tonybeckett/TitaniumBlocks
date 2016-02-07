@@ -41,9 +41,15 @@ public class PostImageFactory extends CoreImageFactory
         super(pp);
     }
 
+    @Override
     public Post getPainter()
     {
-        return (Post) super.getBasePainter();
+        return (Post) super.getPainter();
+    }
+    
+    public void setPainter(Post p)
+    {
+        super.setPainter(p);
     }
 
 }

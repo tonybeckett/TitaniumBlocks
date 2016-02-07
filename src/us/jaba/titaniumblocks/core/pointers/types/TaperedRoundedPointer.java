@@ -37,12 +37,13 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedRoundedPointer extends BasicPointer
+public class TaperedRoundedPointer extends GradientPointer
 {
 
     public TaperedRoundedPointer()

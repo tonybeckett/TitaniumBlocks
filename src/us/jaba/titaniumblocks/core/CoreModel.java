@@ -58,6 +58,6 @@ public class CoreModel implements Painter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        changed = true;
+        changed = false;
     }
 }

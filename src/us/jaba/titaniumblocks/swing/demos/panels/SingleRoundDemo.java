@@ -34,7 +34,6 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
@@ -63,8 +62,8 @@ public class SingleRoundDemo extends javax.swing.JFrame
 
         panel = new SingleRoundPanel(cl);
 
-        panel.getGauge().getTextPainter().setColor(ColorPalette.ALMOND);
-        panel.getGauge().getBackdropPainter().setBackgroundColor(new WhiteBModel());
+        panel.getGauge().getValueText().setColor(ColorPalette.ALMOND);
+        panel.getGauge().getBackdrop().setBackgroundColor(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
@@ -102,11 +101,16 @@ public class SingleRoundDemo extends javax.swing.JFrame
         panel.setPointerGradient(cp);
     }
 
+    public void setPanelTitle(String string)
+    {
+        super.setTitle(string);
+    }
+    
     @Override
     public void setTitle(String string)
     {
-        super.setTitle(string);
         panel.setTitle(string);
+       
     }
 
     public void setUnits(String units)

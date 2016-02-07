@@ -28,55 +28,56 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.GeneralPath;
+import java.awt.Shape;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class LinePointer extends BasicPointer
+public class LinePointer extends GradientPointer
 {
 
     public LinePointer()
     {
+        this(new PureRed());
     }
 
     public LinePointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-    }
-
-    protected GeneralPath getShape(Dimension dimensions)
-    {
-        final GeneralPath pointerShape;
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        float magnitude = 1.0f - this.getRadiusPercent();
-
-        pointerShape = new GeneralPath(new Rectangle2D.Double(imageWidth * 0.495327, imageHeight * magnitude,
-                imageWidth * 0.009345, imageHeight * 0.373831));
-
-        return pointerShape;
+        this.tailScale = 0.03f;
     }
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    protected Shape getShape(Dimension dimensions)
     {
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
 
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
+        float magnitude = this.getRadiusPercent() * frontScale;
 
-        graphics.setColor(this.getPointerColor().getMediumLight());
+        Area pointerLine = new Area(new Rectangle2D.Double(imageWidth * 0.495327, centerY - (maxY * 0.94 * magnitude),
+                imageWidth * 0.009345, imageHeight * 0.48 + (maxY * tailScale)));
 
-        graphics.fill(getShape(dimensions));
+        if (centerPostVisible)
+        {
+            double radius = dimensions.width * centerScale;
+            Area pointerPost = new Area(new Ellipse2D.Double((imageWidth / 2) - radius, (imageHeight / 2) - radius, radius * 2, radius * 2));
+            pointerLine.add(pointerPost);
+        }
 
-        graphics.dispose();
+       
+       
+        return pointerLine;
     }
+
+//  
 }

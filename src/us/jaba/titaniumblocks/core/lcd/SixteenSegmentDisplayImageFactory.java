@@ -44,7 +44,7 @@ public class SixteenSegmentDisplayImageFactory extends CoreImageFactory
 
     public SixteenSegmentDisplay getPainter()
     {
-        return (SixteenSegmentDisplay) super.getBasePainter();  
+        return (SixteenSegmentDisplay) super.getPainter();  
     }
     
 }

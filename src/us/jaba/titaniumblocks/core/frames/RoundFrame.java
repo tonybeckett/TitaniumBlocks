@@ -80,6 +80,11 @@ public class RoundFrame extends FrameModel
         subtractMultiRect = new Rectangle2D.Double(DEFAULT_SUBTRACT_X_MULTIPLER, DEFAULT_SUBTRACT_Y_MULTIPLER, DEFAULT_SUBTRACT_WIDTH_MULTIPLIER, DEFAULT_SUBTRACT_HEIGHT_MULTIPLIER);
     }
 
+    public Dimension calcInterior(Dimension dimensions)
+    {
+        return new Dimension((int) ((double) dimensions.getWidth() - (2.0 * (double) frameThickness)), (int) ((double) dimensions.getHeight() - (2.0 * (double) frameThickness)));
+    }
+
     public Dimension getInteriorDimension()
     {
         return interiorDimension;
@@ -93,7 +98,7 @@ public class RoundFrame extends FrameModel
     public void setFrameThickness(int frameThickness)
     {
         this.frameThickness = frameThickness;
-       
+
         changed();
     }
 
@@ -109,7 +114,7 @@ public class RoundFrame extends FrameModel
 
         interiorDimension.setSize(dimensions.getWidth() - (2 * frameThickness), dimensions.getHeight() - (2 * frameThickness));
 
-        final Area innerArea = new Area(new Ellipse2D.Double(  frameThickness, //imageWidth * innerMultiRect.getX(),
+        final Area innerArea = new Area(new Ellipse2D.Double(frameThickness, //imageWidth * innerMultiRect.getX(),
                 frameThickness, //imageHeight * innerMultiRect.getY(),
                 imageWidth - (frameThickness * 2),// * innerMultiRect.getWidth(),
                 imageHeight - (frameThickness * 2) //* innerMultiRect.getHeight()
@@ -120,16 +125,16 @@ public class RoundFrame extends FrameModel
                 imageHeight * outerMultiRect.getHeight()
         ));
 
-        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * mainMultiRect.getX()+1,
-                imageHeight * outerMultiRect.getY()+1,
-                imageWidth * mainMultiRect.getWidth()-1,
-                imageHeight * mainMultiRect.getHeight()-1
+        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * mainMultiRect.getX() + 1,
+                imageHeight * outerMultiRect.getY() + 1,
+                imageWidth * mainMultiRect.getWidth() - 1,
+                imageHeight * mainMultiRect.getHeight() - 1
         ));
 
-        final Area subtractArea = new Area(new Ellipse2D.Double(frameThickness-1, //imageWidth * subtractMultiRect.getX(),
-               frameThickness-1, // imageHeight * subtractMultiRect.getY(),
-                imageWidth - (frameThickness * 2)+1, //* subtractMultiRect.getWidth(),
-                imageHeight - (frameThickness * 2)+1 //* subtractMultiRect.getHeight()
+        final Area subtractArea = new Area(new Ellipse2D.Double(frameThickness - 1, //imageWidth * subtractMultiRect.getX(),
+                frameThickness - 1, // imageHeight * subtractMultiRect.getY(),
+                imageWidth - (frameThickness * 2) + 1, //* subtractMultiRect.getWidth(),
+                imageHeight - (frameThickness * 2) + 1 //* subtractMultiRect.getHeight()
         ));
 
         paintFrame(graphics, dimensions, mainArea, outerArea, innerArea, subtractArea);

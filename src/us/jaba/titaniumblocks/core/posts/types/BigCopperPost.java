@@ -29,13 +29,13 @@ package us.jaba.titaniumblocks.core.posts.types;
 
 import java.awt.Color;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Copper;
-import us.jaba.titaniumblocks.core.posts.BaseBigPost;
+import us.jaba.titaniumblocks.core.posts.GradientBigPost;
 
 /**
  *
  * @author tbeckett
  */
-public class BigCopperPost extends BaseBigPost
+public class BigCopperPost extends GradientBigPost
 {
 
     public BigCopperPost()

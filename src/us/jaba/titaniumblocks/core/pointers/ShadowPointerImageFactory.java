@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.CoreImageFactory;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
 
 
@@ -16,7 +17,7 @@ import us.jaba.titaniumblocks.core.image.ImageSupport;
  *
  * @author tbeckett
  */
-public class ShadowPointerImageFactory
+public class ShadowPointerImageFactory extends CoreImageFactory
 {
 
     Pointer painter = null;
@@ -31,6 +32,7 @@ public class ShadowPointerImageFactory
         this.painter = painter;
     }
 
+    @Override
     protected void applyPaint(BufferedImage result, Dimension dimensions)
     {
         final Graphics2D graphics2D = result.createGraphics();
@@ -41,17 +43,18 @@ public class ShadowPointerImageFactory
         }
     }
 
+    @Override
     public BufferedImage build(Dimension dimensions)
     {
         if (!ImageSupport.isValidSize(dimensions.width, dimensions.height))
         {
             return ImageSupport.defaultSmallImage;
         }
-        final BufferedImage result = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
+        final BufferedImage res = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
 
-        applyPaint(result, dimensions);
+        applyPaint(res, dimensions);
 
-        return result;
+        return res;
     }
 //    private BufferedImage bufferedImage = ImageSupport.createImage(1, 1, Transparency.TRANSLUCENT);
 //

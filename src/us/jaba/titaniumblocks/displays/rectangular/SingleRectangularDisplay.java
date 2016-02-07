@@ -47,7 +47,6 @@ import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
@@ -91,18 +90,13 @@ import us.jaba.titaniumblocks.displays.RoundDisplay;
 public class SingleRectangularDisplay extends AbstractRoundDisplay implements RoundDisplay
 {
 
-    private PointerImageFactory pointerImage;
+   
     private final RNormalMajMedMinorTickmark tickmarkModel;
-    private final TextImageFactory titleTextImage;
-    private final TitleText titleValueText;
-    private UnitsText unitsText;
-    private final TextImageFactory unitsTextImage;
+    
     private final SingleBargraphLedOff led;
-    private LedImageFactory ledImageFactory;
-    private ShadowPointerImageFactory shadowImage;
+    
     private CircularLayout circularLayout;
-    private final TBText tbText;
-    private final TextImageFactory tbTextImage;
+    
 
     class MySWPostFactory extends PolarSmallPostFactory
     {
@@ -121,21 +115,13 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
             super(iFactory, new Polar(0.925, circularLayout.getEndPostAngle() * Math.PI / 180.0));
         }
     };
-    private static final float DEFAULT_FONT_SCALE_FACTOR = 0.67f;
-    private final DoubleValueText doubleValueText;
+   
     private MySEPostFactory endPostImage;
-    private float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-    private double normalizedValue = 0.39; // 0.0-1.0
-
-    protected BackdropImageFactory backdropImage;
-    protected RectangularFrameImageFactory frameImage;
-    protected FrontcoverImageFactory frontcoverImage;
-    protected DisabledImageFactory disabledImage;
+   RectangularFrameImageFactory rectFrameImage;
+    
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
-    protected TextImageFactory valueTextImage;
-    protected PostImageFactory centerPostImage;
-
+    
     public SingleRectangularDisplay(CircularLayout circularLayout)
     {
         this(circularLayout, ColorPalette.BLACK);
@@ -145,7 +131,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
     {
         super();
         this.circularLayout = circularLayout;
-        frameImage = new RectangularFrameImageFactory(new SilverLinearFrame());
+        rectFrameImage = new RectangularFrameImageFactory(new SilverLinearFrame());
 
         BasicBackdrop bmbp = new BasicBackdrop();
         bmbp.setBackgroundColor(new WhiteBModel());
@@ -215,10 +201,10 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = frameImage.getPainter().getFrameThickness();
+        int offset = rectFrameImage.getPainter().getFrameThickness();
 
-        BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().getInteriorDimension();
+        BufferedImage image = rectFrameImage.build(dimensions);
+        Dimension interiorDim = rectFrameImage.getPainter().getInteriorDimension();
         
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
         
@@ -271,16 +257,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         return normalizedValue;
     }
 
-    public void setNormalizedValue(double d)
-    {
-        normalizedValue = (double) d;
-    }
-
-    public void setTitle(String string)
-    {
-        titleValueText.setValue(string);
-
-    }
+  
 
     public Color getColor()
     {
@@ -301,15 +278,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         tickmarkModel.setTextColor(c);
     }
 
-    public Backdrop getBackdrop()
-    {
-        return backdropImage.getPainter();
-    }
 
-    public FrameModel getFrame()
-    {
-        return frameImage.getPainter();
-    }
 
     public Text getText()
     {
@@ -321,64 +290,21 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         return frontcoverImage.getPainter();
     }
 
-    public void setBackdrop(Backdrop painter)
-    {
-        this.backdropImage = new BackdropImageFactory(painter);
-    }
+   
 
     public void setFrame(RectangularFrame linearFramePainter)
     {
-        this.frameImage = new RectangularFrameImageFactory(linearFramePainter);
+        this.rectFrameImage = new RectangularFrameImageFactory(linearFramePainter);
     }
 
-    public void setFrontCover(Frontcover foregroundPainter)
-    {
-        this.frontcoverImage = new FrontcoverImageFactory(foregroundPainter);
-    }
-
-    public void setDisabled(DisabledPainter disabledPainter)
-    {
-        this.disabledImage = new DisabledImageFactory(disabledPainter);
-    }
-
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        this.pointerImage = new PointerImageFactory(pointerPainter);
-        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
-    }
-
-    public void setValueText(Text valueTextPainter)
-    {
-        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
-        this.valueTextImage = new TextImageFactory(valueTextPainter);
-    }
-
-    public void setCenterPost(Post postPainter)
-    {
-        this.centerPostImage = new PostImageFactory(postPainter);
-    }
-
+  
     public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
     {
         startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
         endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));
     }
 
-    public void setLed(Led ledPainter)
-    {
-        this.ledImageFactory = new LedImageFactory(ledPainter);
-    }
-
-    public float getFontScaleFactor()
-    {
-        return fontScaleFactor;
-    }
-
-    public void setFontScaleFactor(float fontScaleFactor)
-    {
-        this.fontScaleFactor = fontScaleFactor;
-    }
-
+ 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 
@@ -389,9 +315,5 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         pointerImage.getPainter().setPointerColor(cp);
     }
 
-    public void setUnits(String units)
-    {
-        unitsText.setValue(units);
-    }
 
 }

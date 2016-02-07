@@ -21,7 +21,7 @@ public class LinearTickImageFactory extends CoreImageFactory
 
     public LinearTickModel getPainter()
     {
-        return (LinearTickModel) super.getBasePainter();
+        return (LinearTickModel) super.getPainter();
     }
 
 }

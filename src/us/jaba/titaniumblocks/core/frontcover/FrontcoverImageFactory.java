@@ -44,7 +44,7 @@ public class FrontcoverImageFactory extends CoreImageFactory
 
     public Frontcover getPainter()
     {
-        return (Frontcover) super.getBasePainter(); 
+        return (Frontcover) super.getPainter(); 
     }
 
 }

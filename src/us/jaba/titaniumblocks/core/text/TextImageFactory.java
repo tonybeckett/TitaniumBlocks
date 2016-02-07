@@ -43,7 +43,7 @@ public class TextImageFactory extends CoreImageFactory
 
     public Text getPainter()
     {
-        return (Text) super.getBasePainter();
+        return (Text) super.getPainter();
     }
 
     

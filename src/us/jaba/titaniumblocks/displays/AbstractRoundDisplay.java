@@ -27,8 +27,32 @@
  */
 package us.jaba.titaniumblocks.displays;
 
+import java.util.ArrayList;
+import us.jaba.titaniumblocks.core.CoreImageFactory;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.Painter;
+import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
+import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
+import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
+import us.jaba.titaniumblocks.core.frames.FrameModel;
+import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
+import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
+import us.jaba.titaniumblocks.core.led.Led;
+import us.jaba.titaniumblocks.core.led.LedImageFactory;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
+import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
+import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.posts.PostImageFactory;
+import us.jaba.titaniumblocks.core.text.Text;
+import us.jaba.titaniumblocks.core.text.TextImageFactory;
+import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.types.TBText;
+import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.text.types.UnitsText;
 
 /**
  *
@@ -36,5 +60,157 @@ import us.jaba.titaniumblocks.core.Painter;
  */
 public class AbstractRoundDisplay extends CoreModel implements Painter
 {
-    
+
+    protected static final float DEFAULT_FONT_SCALE_FACTOR = 0.67F;
+    protected float fontScaleFactor;
+
+    private final ArrayList<CoreImageFactory> listOfImageFactories;
+
+    protected BackdropImageFactory backdropImage;
+    protected PostImageFactory centerPostImage;
+    protected DoubleValueText doubleValueText;
+    protected RoundFrameImageFactory frameImage;
+    protected FrontcoverImageFactory frontcoverImage;
+
+    protected double normalizedValue = 0.39;
+    protected TBText tbText;
+    protected TextImageFactory tbTextImage;
+    protected TextImageFactory titleTextImage;
+    protected TitleText titleValueText;
+    protected UnitsText unitsText;
+    protected TextImageFactory unitsTextImage;
+    protected TextImageFactory valueTextImage;
+    protected PointerImageFactory pointerImage;
+    protected DisabledImageFactory disabledImage;
+
+    protected LedImageFactory ledImageFactory;
+    protected ShadowPointerImageFactory shadowImage;
+
+    public AbstractRoundDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
+    {
+        this();
+        this.backdropImage = backdropImage;
+        add(backdropImage);
+        this.frameImage = frameImage;
+        add(frameImage);
+        this.centerPostImage = centerPostImage;
+        add(centerPostImage);
+
+        doubleValueText = new DoubleValueText();
+        valueTextImage = new TextImageFactory(doubleValueText);
+        add(valueTextImage);
+
+        titleValueText = new TitleText();
+        titleTextImage = new TextImageFactory(titleValueText);
+        add(titleTextImage);
+
+        unitsText = new UnitsText();
+        unitsTextImage = new TextImageFactory(unitsText);
+        add(unitsTextImage);
+
+        tbText = new TBText();
+        tbTextImage = new TextImageFactory(tbText);
+        add(tbTextImage);
+
+    }
+
+    public AbstractRoundDisplay()
+    {
+        listOfImageFactories = new ArrayList();
+    }
+
+    public final void add(CoreImageFactory imageFactory)
+    {
+        listOfImageFactories.add(imageFactory);
+    }
+
+    public Backdrop getBackdrop()
+    {
+        return backdropImage.getPainter();
+    }
+
+    public void setBackdrop(Backdrop painter)
+    {
+        this.backdropImage = new BackdropImageFactory(painter);
+    }
+
+    public void setCenterPost(Post postPainter)
+    {
+        centerPostImage.setPainter(postPainter);
+    }
+
+    public FrameModel getFrame()
+    {
+        return frameImage.getPainter();
+    }
+
+    public void setFrame(RoundFrame linearFramePainter)
+    {
+        this.frameImage.setPainter(linearFramePainter);
+    }
+
+    public void setFrontCover(Frontcover foregroundPainter)
+    {
+        this.frontcoverImage.setPainter(foregroundPainter);
+    }
+
+    public void setNormalizedValue(double d)
+    {
+        normalizedValue = (double) d;
+    }
+
+    public void setTitle(String string)
+    {
+        titleValueText.setValue(string);
+    }
+
+    public void setUnits(String units)
+    {
+        unitsText.setValue(units);
+    }
+
+    public void setValueText(Text valueTextPainter)
+    {
+        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
+        this.valueTextImage.setPainter(valueTextPainter);
+    }
+
+    public final void setChanged()
+    {
+        for (CoreImageFactory cif : listOfImageFactories)
+        {
+            cif.setChanged();
+        }
+
+    }
+
+    public float getFontScaleFactor()
+    {
+        return fontScaleFactor;
+    }
+
+    public void setFontScaleFactor(float fontScaleFactor)
+    {
+        this.fontScaleFactor = fontScaleFactor;
+    }
+
+    public void setDisabled(DisabledPainter disabledPainter)
+    {
+        this.disabledImage.setPainter(disabledPainter);
+
+    }
+
+    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
+    {
+        this.pointerImage.setPainter(pointerPainter);
+
+        this.shadowImage.setPainter(shadowPainter);
+
+    }
+
+    public void setLed(Led ledPainter)
+    {
+        this.ledImageFactory.setPainter(ledPainter);
+    }
+
 }

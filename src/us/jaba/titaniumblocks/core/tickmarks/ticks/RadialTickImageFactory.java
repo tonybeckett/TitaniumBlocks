@@ -19,9 +19,10 @@ public class RadialTickImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public RadialTickModel getPainter()
     {
-        return (RadialTickModel) super.getBasePainter();
+        return (RadialTickModel) super.getPainter();
     }
 
 }

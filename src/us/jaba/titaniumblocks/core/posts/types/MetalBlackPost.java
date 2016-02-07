@@ -27,14 +27,14 @@
  */
 package us.jaba.titaniumblocks.core.posts.types;
 
-import us.jaba.titaniumblocks.core.posts.BaseMetalPost;
+import us.jaba.titaniumblocks.core.posts.BasicMetalPost;
 import java.awt.Color;
 
 /**
  *
  * @author tbeckett
  */
-public class MetalBlackPost extends BaseMetalPost
+public class MetalBlackPost extends BasicMetalPost
 {
 
     public MetalBlackPost()

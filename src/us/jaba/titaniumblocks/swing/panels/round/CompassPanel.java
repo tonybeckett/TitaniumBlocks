@@ -174,6 +174,10 @@ public class CompassPanel extends JComponent
     @Override
     public void setPreferredSize(Dimension preferredSize)
     {
+        if (preferredSize != this.getPreferredSize())
+        {
+            singleGauge.setChanged();
+        }
         super.setPreferredSize(preferredSize);
         singleGauge.setSize(preferredSize);
         invalidate();

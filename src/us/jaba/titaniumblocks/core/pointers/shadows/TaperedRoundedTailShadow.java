@@ -33,13 +33,13 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import us.jaba.titaniumblocks.core.pointers.types.BasicPointer;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedRoundedTailShadow extends BasicPointer
+public class TaperedRoundedTailShadow extends GradientPointer
 {
 
     @Override

@@ -49,8 +49,9 @@ public class SingleRound180EastDemo extends SingleRoundDemo
      */
     public SingleRound180EastDemo()
     {
-        super(new CircularTwoPostLayout(90, 270, Direction.CLOCKWISE, 0.95f, 85, 275));
+        super(new CircularTwoPostLayout(0, 180, Direction.CLOCKWISE, 0.95f, 85, 275));
         setTitle("180E");
+        setPanelTitle("SingleRound180EastDemo");
         LinenBackdrop lp = new LinenBackdrop();
         lp.setColor(ColorPalette.WHITE);
         this.setBackdropPainter(lp);

@@ -46,8 +46,8 @@ public class CircularNoPostLayout implements CircularLayout
 
     public CircularNoPostLayout( Direction dir, float radius)
     {
-        this.startAngle = 359;
-        this.endAngle = 0;
+        this.startAngle = 0;
+        this.endAngle = 360;
         this.direction = dir;
         this.tickmarkRadius = radius;
         this.startPostAngle = 0;

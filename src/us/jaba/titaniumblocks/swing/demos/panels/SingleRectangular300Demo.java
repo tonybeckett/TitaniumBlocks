@@ -27,16 +27,18 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
+import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BlackBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.BasicBackdrop;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
-import us.jaba.titaniumblocks.core.posts.types.MetalSilverPost;
+import us.jaba.titaniumblocks.core.pointers.types.OutLinePointer;
+import us.jaba.titaniumblocks.core.posts.types.MetalBlackPost;
 
 /**
  *
@@ -51,16 +53,19 @@ public class SingleRectangular300Demo extends SingleRectangularDemo
     public SingleRectangular300Demo()
     {
 
-        super(new CircularTwoPostLayout(240, 300, Direction.CLOCKWISE, 0.95f, 245, 295));
+        super(new CircularTwoPostLayout(210, 150, Direction.CLOCKWISE, 0.95f, 245, 295));
         setTitle("Rect 300");
+        setPanelTitle("SingleRectangular300Demo");
         this.setFrame(new BlackMetalLinearFrame());
-        this.setPointer(new TaperedThickFlatPointer(), new LineShadow());
+        this.setPointer(new OutLinePointer(), new LineShadow());
         this.setUnits("degrees");
-        this.setCenterPost(new MetalSilverPost());//new NullPost());
+        this.setCenterPost(new MetalBlackPost());//new NullPost());
         this.setLed(new NullLed());
         this.setPointerGradient(new PureRed());
+        setColor(ColorPalette.WHITE);
         BasicBackdrop cb = new BasicBackdrop();
-        cb.setBackgroundColor(new WhiteBModel());
+        cb.setBackgroundColor(new BlackBModel());
+        this.setFrontCover(new NullFrontcover());
         this.setBackdrop( cb);
     }
 

@@ -44,7 +44,7 @@ public class BackdropImageFactory extends CoreImageFactory
 
     public Backdrop getPainter()
     {
-        return (Backdrop) super.getBasePainter();
+        return (Backdrop) super.getPainter();
     }
 
 }

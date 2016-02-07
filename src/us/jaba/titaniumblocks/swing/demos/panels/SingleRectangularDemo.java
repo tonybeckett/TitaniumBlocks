@@ -101,10 +101,13 @@ public class SingleRectangularDemo extends javax.swing.JFrame
         panel.setPointerGradient(cp);
     }
 
+    public void setPanelTitle(String string)
+    {
+        super.setTitle(string);
+    }
     @Override
     public void setTitle(String string)
     {
-        super.setTitle(string);
         panel.setTitle(string);
     }
 

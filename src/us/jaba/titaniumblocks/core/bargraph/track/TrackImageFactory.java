@@ -20,6 +20,6 @@ public class TrackImageFactory extends CoreImageFactory
     
      public TrackModel getPainter()
     {
-        return (TrackModel) super.getBasePainter();  
+        return (TrackModel) super.getPainter();  
     }
 }

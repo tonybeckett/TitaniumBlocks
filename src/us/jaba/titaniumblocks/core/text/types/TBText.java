@@ -32,10 +32,9 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.text.Text;
 
@@ -52,7 +51,7 @@ public class TBText extends Text
 
     public TBText()
     {
-        super(BaseFont.DEFAULT_FONT.deriveFont(Font.ITALIC), new Standard().getTextColor());
+        super(BaseFont.DEFAULT_FONT.deriveFont(Font.ITALIC), ColorPalette.BLACK);
         setFontSize(10);
     }
 
@@ -72,25 +71,14 @@ public class TBText extends Text
         boundary.setFrame(stringLayout.getBounds());
         graphics.drawString(value,
                 (int) ((imageWidth / 2.0) - (stringLayout.getBounds().getWidth() / 2)),
-                (int) ((imageHeight * 0.98) - stringLayout.getBounds().getHeight())
+                (int) ((imageHeight * 0.68) - stringLayout.getBounds().getHeight())
         );
 
         FontRenderContext frc = graphics.getFontRenderContext();
         graphics.translate((int) (imageWidth / 2.0), (int) (imageHeight * 3.0 / 4.0));
-        GlyphVector gv = font.createGlyphVector(frc, value);
 
-        int length = gv.getNumGlyphs();
 
-//        for (int i = 0; i < length; i++)
-//        {
-//            Point2D p = gv.getGlyphPosition(i);
-//            AffineTransform at = AffineTransform.getTranslateInstance(p.getX(), p.getY());
-//            at.rotate(Math.PI - ((double) i / (double) (length - 1) * Math.PI) / 2);
-//
-//            Shape glyph = gv.getGlyphOutline(i);
-//            Shape transformedGlyph = at.createTransformedShape(glyph);
-//            graphics.fill(transformedGlyph);
-//        }
+
     }
 
     public String getValue()

@@ -31,6 +31,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.rangemodels.RadialRange
 import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTick;
 
 /**
@@ -47,10 +48,10 @@ public class RadialNormalTickFactory
         this.tickmarkRadialRangeModel = tickmarkRadialRangeModel;
     }
 
-    public List<RadialTick> getTicks()
+    public List<RadialTick> generateTicks()
     {
         ArrayList<RadialTick> al = new ArrayList();
-        double angle = tickmarkRadialRangeModel.getAngleStart();
+        double angle = tickmarkRadialRangeModel.getAngleStart() ;
         double angleDelta = tickmarkRadialRangeModel.getAnglePerTick();
 
         double valueDelta = tickmarkRadialRangeModel.getValuePerTick();
@@ -59,7 +60,7 @@ public class RadialNormalTickFactory
              
         } else
         {
-            angleDelta = angleDelta * -1.0;
+            angleDelta = angleDelta ;//* -1.0;
         }
         double value = tickmarkRadialRangeModel.getStartValue();
 
@@ -73,11 +74,11 @@ public class RadialNormalTickFactory
             t.setTickLength(tickmarkRadialRangeModel.getTickLength());
             t.setTextDistance(tickmarkRadialRangeModel.getTextDistance());
             t.setTextAngle(Math.toRadians(calcAngle(angle)));
-            t.setAngle(angle);
+            t.setAngle(CoordinateUtils.normalizeDegrees(angle));
             t.setValue(value);
 
             al.add(t);
-
+           
             angle = angle + angleDelta;
             value = value + valueDelta;
         }

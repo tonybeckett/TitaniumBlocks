@@ -17,8 +17,9 @@ import java.awt.image.BufferedImage;
  */
 public class CoreImageFactory
 {
+
     protected static final BufferedImage DEFAULT_NULL_IMAGE = ImageSupport.defaultSmallImage;
-    private Painter painter = null;
+    private CoreModel painter = null;
     private BufferedImage backgroundImage = null;
     public BufferedImage result;
 
@@ -27,7 +28,7 @@ public class CoreImageFactory
 
     }
 
-    protected CoreImageFactory(Painter painter)
+    protected CoreImageFactory(CoreModel painter)
     {
         this.painter = painter;
         result = ImageSupport.defaultSmallImage;
@@ -66,9 +67,22 @@ public class CoreImageFactory
         return result;
     }
 
-    protected Painter getBasePainter()
+    public void setChanged()
+    {
+        if (this.painter != null)
+        {
+            this.painter.changed();
+        }
+    }
+
+    public Painter getPainter()
     {
         return painter;
+    }
+    
+    public void setPainter(CoreModel cm)
+    {
+        painter = cm;
     }
 
     public void setBackgroundImage(BufferedImage backgroundImage)

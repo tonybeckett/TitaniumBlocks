@@ -66,9 +66,9 @@ public class RNormalMajMedMinorTickmark extends RNormalMajMinorTickmark
 
         graphics.setStroke(mediumStroke);
         graphics.setColor(mediumColor);
-        for (RadialTick t : tickFactory.getTicks())
+        for (RadialTick t : tickFactory.generateTicks())
         {
-            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle());
+            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle()-90.0);
         }
 
     }

@@ -36,17 +36,18 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class PencilPointer extends BasicPointer
+public class PencilPointer extends GradientPointer
 {
+
     private Color labelColor;
-    
+
     public PencilPointer()
     {
         labelColor = ColorPalette.BLACK;
@@ -71,32 +72,28 @@ public class PencilPointer extends BasicPointer
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight/ 2;
+        float magnitude = this.getRadiusPercent() * frontScale;
         final GeneralPath pointerShape;
-//        final Point2D startPoint;
-//        final Point2D stopPoint;
-//        final float[] gradientFractionArray;
-//        final Color[] gradientColorArray;
-//        final java.awt.Paint gradient;
-float radiusAdj = 1.0f - this.getRadiusPercent();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
-        pointerShape.lineTo(0.5 * imageWidth, 0.1308411214953271 * imageHeight);
-        pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.moveTo(0.48598130841121495 * imageWidth, centerY - (maxY * 0.84 * magnitude));
+        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * 0.94 * magnitude));
+        pointerShape.lineTo(0.5093457943925234 * imageWidth, centerY - (maxY * 0.84 * magnitude));
         pointerShape.lineTo(0.5093457943925234 * imageWidth, 0.5093457943925234 * imageHeight);
         pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.5093457943925234 * imageHeight);
-        pointerShape.lineTo(0.48598130841121495 * imageWidth, 0.16822429906542055 * imageHeight);
+        pointerShape.lineTo(0.48598130841121495 * imageWidth, centerY - (maxY * 0.84 * magnitude));
         pointerShape.closePath();
-        
-            graphics.setPaint(new LinearGradientPaint(new Point2D.Double(0.5 * imageWidth, 0.5 * imageHeight), new Point2D.Double(0.5 * imageWidth, 0.1308411214953271 * imageHeight), new float[]
-            {
-                0.0f, 0.849999f, 0.85f, 1.0f
-            }, new Color[]
-            {
-                labelColor, labelColor, this.getPointerColor().getMediumDark(), getPointerColor().getMediumDark()
-            }));
+
+        graphics.setPaint(new LinearGradientPaint(new Point2D.Double(0.5 * imageWidth, 0.5 * imageHeight), new Point2D.Double(0.5 * imageWidth, 0.1308411214953271 * imageHeight), new float[]
+        {
+            0.0f, 0.849999f, 0.85f, 1.0f
+        }, new Color[]
+        {
+            labelColor, labelColor, this.getPointerColor().getMediumDark(), getPointerColor().getMediumDark()
+        }));
 //        
         graphics.fill(pointerShape);
 
@@ -112,5 +109,5 @@ float radiusAdj = 1.0f - this.getRadiusPercent();
     {
         this.labelColor = labelColor;
     }
-    
+
 }

@@ -43,7 +43,7 @@ public class BargraphImage extends CoreImageFactory
 
     public AbstractBargraph getPainter()
     {
-        return (AbstractBargraph) super.getBasePainter();
+        return (AbstractBargraph) super.getPainter();
     }
 
 }

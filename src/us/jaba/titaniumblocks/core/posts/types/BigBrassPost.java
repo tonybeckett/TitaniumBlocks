@@ -27,14 +27,14 @@
  */
 package us.jaba.titaniumblocks.core.posts.types;
 
-import us.jaba.titaniumblocks.core.posts.BaseBigPost;
+import us.jaba.titaniumblocks.core.posts.GradientBigPost;
 import java.awt.Color;
 
 /**
  *
  * @author tbeckett
  */
-public class BigBrassPost extends BaseBigPost
+public class BigBrassPost extends GradientBigPost
 {
 
     public BigBrassPost()

@@ -21,7 +21,7 @@ public class RectangularFrameImageFactory extends CoreImageFactory
 
     public RectangularFrame getPainter()
     {
-        return (RectangularFrame) super.getBasePainter();
+        return (RectangularFrame) super.getPainter();
     }
 
 }

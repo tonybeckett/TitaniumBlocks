@@ -21,7 +21,7 @@ public class RoundFrameImageFactory extends CoreImageFactory
 
     public RoundFrame getPainter()
     {
-        return (RoundFrame) super.getBasePainter();
+        return (RoundFrame) super.getPainter();
     }
 
 }

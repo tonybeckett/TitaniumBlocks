@@ -27,24 +27,20 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
-import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class CometPointer extends BasicPointer
+public class CometPointer extends GradientPointer
 {
 
     final float[] gradientFractionArray = new float[]
@@ -66,7 +62,7 @@ public class CometPointer extends BasicPointer
 
     
     @Override
-    protected GeneralPath getShape(Dimension dimensions)
+    protected Shape getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();

@@ -37,4 +37,6 @@ public class BaseFont
 {
 
     public static final Font DEFAULT_FONT = new Font("Verdana", 0, 24);
+    public static final Font SERIF_FONT = new Font("Serif", 0, 24);
+    public static final Font SANSSERIF_FONT = new Font("SansSerif", 0, 24);
 }

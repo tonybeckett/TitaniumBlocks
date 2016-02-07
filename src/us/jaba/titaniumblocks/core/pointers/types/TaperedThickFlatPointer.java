@@ -39,13 +39,14 @@ import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class TaperedThickFlatPointer extends BasicPointer
+public class TaperedThickFlatPointer extends GradientPointer
 {
 
     final float[] fractionArray = new float[]

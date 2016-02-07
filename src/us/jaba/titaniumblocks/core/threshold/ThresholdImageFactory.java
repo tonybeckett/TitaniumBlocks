@@ -43,7 +43,7 @@ public class ThresholdImageFactory extends CoreImageFactory
 
     public ThresholdModel getPainter()
     {
-        return (ThresholdModel) super.getBasePainter(); 
+        return (ThresholdModel) super.getPainter(); 
     }
     
 }

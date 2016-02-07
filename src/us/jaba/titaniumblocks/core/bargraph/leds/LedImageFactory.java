@@ -20,7 +20,7 @@ public class LedImageFactory extends CoreImageFactory
 
     public LedModel getPainter()
     {
-        return (LedModel) super.getBasePainter();  
+        return (LedModel) super.getPainter();  
     }
     
     

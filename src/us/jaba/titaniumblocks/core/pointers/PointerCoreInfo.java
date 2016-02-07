@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.pointers.types.PencilPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedDualLinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.ArrowHeadPointer;
 import us.jaba.titaniumblocks.core.pointers.types.CompassPointer;
-import us.jaba.titaniumblocks.core.pointers.types.OutLineWithTailPointer;
+import us.jaba.titaniumblocks.core.pointers.types.OutLinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedTailPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
@@ -61,7 +61,7 @@ public class PointerCoreInfo
         DualLinesPointer.class,
         LinePointer.class,
         MonumentPointer.class,
-        OutLineWithTailPointer.class,
+        OutLinePointer.class,
         Pencil2Pointer.class,
         PencilPointer.class,
         TaperedDualLinePointer.class,

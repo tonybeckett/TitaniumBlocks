@@ -32,13 +32,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
-import us.jaba.titaniumblocks.core.pointers.types.BasicPointer;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class LineShadow extends BasicPointer
+public class LineShadow extends GradientPointer
 {
 
     @Override

@@ -35,12 +35,16 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalL
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLinearTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLogTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.BasicClockTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.CompassTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.LevelTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMedMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
 
 /**
  *
@@ -52,16 +56,20 @@ public class TickmarksCoreInfo
     public static final Class<?>[] TICKMARK_CLASSES =
     {
         BasicClockTickmarks.class,
+        ClockTickmarks.class,
+        ClockNumbersTickmarks.class,
         CompassTickmarks.class,
         HorizontalLinearTickmark.class,
         HorizontalLogTickmark.class,
+        LevelTickmarks.class,
         VerticalLinearTickmark.class,
         VerticalLogTickmark.class,
         RLogMajMedMinorTickmark.class,
         RLogMajMinorTickmark.class,
         RNormalMajMedMinorTickmark.class,
         RNormalMajMinorTickmark.class,
-        StopwatchTickmarks.class
+        StopwatchTickmarks.class,
+        WindDirectionTickmarks.class
     };
 
     public static List<Class<?>> getAvailableClasses()

@@ -30,18 +30,20 @@ package us.jaba.titaniumblocks.core.pointers.types;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class LineCircleWithFanTailPointer extends BasicPointer
+public class LineCircleWithFanTailPointer extends GradientPointer
 {
 
     public LineCircleWithFanTailPointer()
@@ -87,10 +89,16 @@ public class LineCircleWithFanTailPointer extends BasicPointer
 
         int circleSize = (int) (imageWidth * 0.033);
         Ellipse2D shape = new Ellipse2D.Double(imageWidth * 0.5-(circleSize/2) , imageHeight *  magnitude +10, circleSize , circleSize  );
-        
-        
         graphics.fill(shape);
 
+        if ( this.centerPinVisible)
+        {
+            graphics.setColor(ColorPalette.ALUMINIUM);
+            int pinSize = (int) Math.min( (imageWidth * 0.0085), 2);
+            ShapeUtils.fillCircle(graphics, imageWidth/2, imageHeight/2, pinSize);
+         
+        }
+        
         graphics.dispose();
     }
 }

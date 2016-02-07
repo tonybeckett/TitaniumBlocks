@@ -35,48 +35,36 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.round.TopThirdRadialFrontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
 import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
-import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.INVERTED_TEXT;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
 import us.jaba.titaniumblocks.core.pointers.shadows.Type1Shadow;
 import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
-import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
-import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
-import us.jaba.titaniumblocks.core.text.types.TBText;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
-import us.jaba.titaniumblocks.core.text.types.UnitsText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
@@ -89,18 +77,12 @@ import us.jaba.titaniumblocks.displays.RoundDisplay;
 public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDisplay
 {
 
-    private PointerImageFactory pointerImage;
+//    private PointerImageFactory pointerImage;
     private final RNormalMajMedMinorTickmark tickmarkModel;
-    private final TextImageFactory titleTextImage;
-    private final TitleText titleValueText;
-    private UnitsText unitsText;
-    private final TextImageFactory unitsTextImage;
     private final SingleBargraphLedOff led;
-    private LedImageFactory ledImageFactory;
-    private ShadowPointerImageFactory shadowImage;
+//    private LedImageFactory ledImageFactory;
+//    private ShadowPointerImageFactory shadowImage;
     private CircularLayout circularLayout;
-    private final TBText tbText;
-    private final TextImageFactory tbTextImage;
 
     class MySWPostFactory extends PolarSmallPostFactory
     {
@@ -119,20 +101,12 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
             super(iFactory, new Polar(0.925, circularLayout.getEndPostAngle() * Math.PI / 180.0));
         }
     };
-    private static final float DEFAULT_FONT_SCALE_FACTOR = 0.67f;
-    private final DoubleValueText doubleValueText;
     private MySEPostFactory endPostImage;
-    private float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-    private double normalizedValue = 0.39; // 0.0-1.0
+    protected float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
 
-    protected BackdropImageFactory backdropImage;
-    protected RoundFrameImageFactory frameImage;
-    protected FrontcoverImageFactory frontcoverImage;
-    protected DisabledImageFactory disabledImage;
+    
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
-    protected TextImageFactory valueTextImage;
-    protected PostImageFactory centerPostImage;
 
     public SingleRoundDisplay(CircularLayout circularLayout)
     {
@@ -141,46 +115,42 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public SingleRoundDisplay(CircularLayout circularLayout, Color c)
     {
-        super();
+        super(new BackdropImageFactory(new BasicBackdrop()),
+                new RoundFrameImageFactory(new SilverRoundFrame()),
+                new PostImageFactory(new BigSilverPost()));
         this.circularLayout = circularLayout;
-        frameImage = new RoundFrameImageFactory(new SilverRoundFrame());
 
         BasicBackdrop bmbp = new BasicBackdrop();
         bmbp.setBackgroundColor(new WhiteBModel());
-        backdropImage = new BackdropImageFactory(bmbp);
+        this.setBackdrop(bmbp);
 
         doubleValueText = new DoubleValueText();
 
-        valueTextImage = new TextImageFactory(doubleValueText);
-
-        titleValueText = new TitleText();
-        titleTextImage = new TextImageFactory(titleValueText);
-
-        unitsText = new UnitsText();
-        unitsTextImage = new TextImageFactory(unitsText);
-
-        tbText = new TBText();
-        tbTextImage = new TextImageFactory(tbText);
-
-        frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
-        centerPostImage = new PostImageFactory(new BigSilverPost());
+        add(disabledImage);
 
         startPostImage = new MySWPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+        add(startPostImage);
+
         endPostImage = new MySEPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+        add(endPostImage);
 
         Type1Shadow t1spp = new Type1Shadow();
         shadowImage = new ShadowPointerImageFactory(t1spp);
+        add(shadowImage);
 
         TaperedRoundedPointer tpp = new TaperedRoundedPointer();
         tpp.setPointerColor(new PureBlack());
         tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
+        add(pointerImage);
 
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
+        add(frontcoverImage);
 
         led = new SingleBargraphLedOff();
         ledImageFactory = new LedImageFactory(led);
+        add(ledImageFactory);
 
         tickmarkModel = new RNormalMajMedMinorTickmark();
 
@@ -191,10 +161,10 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getTickmarkEndAngle());
         tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getTickmarkDirection());
 
-//        double ff = CoordinateUtils.calcExtent(circularLayout.getTickmarkStartAngle(), circularLayout.getTickmarkEndAngle(), tickmarkModel.getRadialRangeModel());
-//        tickmarkModel.getRadialRangeModel().setAngleExtent(ff);
         tickmarkModel.getRadialSizeModel().setRadiusAdj(circularLayout.getTickmarkRadius());
         tickmarkImage = new TickmarkImageFactory(tickmarkModel);
+        add(tickmarkImage);
+
         setColor(c);
     }
 
@@ -216,13 +186,11 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         int offset = frameImage.getPainter().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().getInteriorDimension();
-        
+        Dimension interiorDim = frameImage.getPainter().calcInterior(dimensions);
+
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
-        
+
         graphics.drawImage(image, 0, 0, null);
-        
-        
 
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
         valueTextImage.getPainter().setFontSize(fontSize);
@@ -247,7 +215,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         AffineTransform currentTransform = graphics.getTransform();
 
-        double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout);
+        double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout) ;
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
@@ -269,17 +237,6 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         return normalizedValue;
     }
 
-    public void setNormalizedValue(double d)
-    {
-        normalizedValue = (double) d;
-    }
-
-    public void setTitle(String string)
-    {
-        titleValueText.setValue(string);
-
-    }
-
     public Color getColor()
     {
         return valueTextImage.getPainter().getColor();
@@ -299,17 +256,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         tickmarkModel.setTextColor(c);
     }
 
-    public Backdrop getBackdropPainter()
-    {
-        return backdropImage.getPainter();
-    }
-
-    public FrameModel getFramePainter()
-    {
-        return frameImage.getPainter();
-    }
-
-    public Text getTextPainter()
+    public Text getValueText()
     {
         return valueTextImage.getPainter();
     }
@@ -319,63 +266,15 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         return frontcoverImage.getPainter();
     }
 
-    public void setBackdropPainter(Backdrop painter)
+    public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
     {
-        this.backdropImage = new BackdropImageFactory(painter);
+        startPostImage = new SingleRoundDisplay.MySWPostFactory(new KnobImageFactory(startPainter));
+        add(startPostImage);
+        endPostImage = new SingleRoundDisplay.MySEPostFactory(new KnobImageFactory(endPainter));
+        add(endPostImage); /// ??????????
     }
 
-    public void setFrame(RoundFrame linearFramePainter)
-    {
-        this.frameImage = new RoundFrameImageFactory(linearFramePainter);
-    }
-
-    public void setFrontCoverPainter(Frontcover foregroundPainter)
-    {
-        this.frontcoverImage = new FrontcoverImageFactory(foregroundPainter);
-    }
-
-    public void setDisabledPainter(DisabledPainter disabledPainter)
-    {
-        this.disabledImage = new DisabledImageFactory(disabledPainter);
-    }
-
-    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        this.pointerImage = new PointerImageFactory(pointerPainter);
-        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
-    }
-
-    public void setValueTextPainter(Text valueTextPainter)
-    {
-        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
-        this.valueTextImage = new TextImageFactory(valueTextPainter);
-    }
-
-    public void setCenterPostPainter(Post postPainter)
-    {
-        this.centerPostImage = new PostImageFactory(postPainter);
-    }
-
-    public void setSmallKnobsPainter(KnobPainter startPainter, KnobPainter endPainter)
-    {
-        startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
-        endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));
-    }
-
-    public void setLedPainter(Led ledPainter)
-    {
-        this.ledImageFactory = new LedImageFactory(ledPainter);
-    }
-
-    public float getFontScaleFactor()
-    {
-        return fontScaleFactor;
-    }
-
-    public void setFontScaleFactor(float fontScaleFactor)
-    {
-        this.fontScaleFactor = fontScaleFactor;
-    }
+    
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
@@ -387,9 +286,5 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         pointerImage.getPainter().setPointerColor(cp);
     }
 
-    public void setUnits(String units)
-    {
-        unitsText.setValue(units);
-    }
-
+    
 }

@@ -47,7 +47,7 @@ public class RadialLogTickFactory extends RadialNormalTickFactory
     }
 
     @Override
-    public List<RadialTick> getTicks()
+    public List<RadialTick> generateTicks()
     {
         
         

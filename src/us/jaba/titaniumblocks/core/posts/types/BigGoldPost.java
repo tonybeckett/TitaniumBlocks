@@ -28,14 +28,14 @@
 package us.jaba.titaniumblocks.core.posts.types;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.posts.BaseBigPost;
+import us.jaba.titaniumblocks.core.posts.GradientBigPost;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Gold;
 
 /**
  *
  * @author tbeckett
  */
-public class BigGoldPost extends BaseBigPost
+public class BigGoldPost extends GradientBigPost
 {
 
     public BigGoldPost()

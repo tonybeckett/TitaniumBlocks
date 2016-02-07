@@ -32,18 +32,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class CompassPointer extends BasicPointer
+public class CompassPointer extends GradientPointer
 {
 
     final float[] gradientFractionArray = new float[]
@@ -65,7 +67,7 @@ public class CompassPointer extends BasicPointer
     }
 
     @Override
-    protected GeneralPath getShape(Dimension dimensions)
+    protected Shape getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();

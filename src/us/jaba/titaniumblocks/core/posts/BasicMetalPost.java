@@ -43,12 +43,12 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class BaseMetalPost extends Post
+public class BasicMetalPost extends Post
 {
 
     final Color[] METALKNOB_MAIN_COLORS;
 
-    public BaseMetalPost()
+    public BasicMetalPost()
     {
         METALKNOB_MAIN_COLORS = new Color[]
         {
@@ -57,7 +57,7 @@ public class BaseMetalPost extends Post
         };
     }
 
-    public BaseMetalPost(Color[] METALKNOB_MAIN_COLORS)
+    public BasicMetalPost(Color[] METALKNOB_MAIN_COLORS)
     {
         this.METALKNOB_MAIN_COLORS = METALKNOB_MAIN_COLORS;
     }

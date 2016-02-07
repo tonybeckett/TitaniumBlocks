@@ -17,7 +17,7 @@ public class PointerImageFactory extends CoreImageFactory
 
     public Pointer getPainter()
     {
-        return (Pointer) super.getBasePainter();
+        return (Pointer) super.getPainter();
     }
 
 }

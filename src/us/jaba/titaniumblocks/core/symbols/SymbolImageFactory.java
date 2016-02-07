@@ -21,7 +21,7 @@ public class SymbolImageFactory extends CoreImageFactory
     
     public Symbol getPainter()
     {
-        return (Symbol) getBasePainter(); 
+        return (Symbol) super.getPainter(); 
     }
     
     

@@ -25,63 +25,51 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.pointers.types;
+package us.jaba.titaniumblocks.core.posts;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class OutLineWithTailPointer extends BasicPointer
+public class BasicPost extends Post
 {
 
-    public OutLineWithTailPointer()
+    private Color color;
+    private float radius;
+
+    public BasicPost()
     {
-        super(new Aluminum());
-        tailScale = 0.25f;
+        this(ColorPalette.BLACK);
     }
 
-    public OutLineWithTailPointer(GradientPalette pointerColor)
+    public BasicPost(Color color)
     {
-        super(pointerColor);
-        tailScale = 0.25f;
+        this(color, 0.05f);
+    }
+
+    public BasicPost(Color color, float radius)
+    {
+        this.color = color;
+        this.radius = radius;
     }
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        GeneralPath pointerShape;
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-        graphics.setColor(this.getPointerColor().getDarkest());
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
-
-        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532) - 2, (imageHeight * magnitude),
-                (imageWidth * 0.00934) + 5, imageHeight * (0.50 +(0.5 * tailScale))
-                        )
-        );
-        graphics.fill(pointerShape);
-
-        graphics.setColor(this.getPointerColor().getLightest().brighter());
-
-        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532), (imageHeight * magnitude) + 2,
-                (imageWidth * 0.00934) + 1, imageHeight * 0.37383));
-        graphics.fill(pointerShape);
+        graphics.setColor(color);
+        ShapeUtils.fillCircle(graphics, imageWidth / 2, imageHeight / 2, radius * imageHeight);
 
         graphics.dispose();
     }

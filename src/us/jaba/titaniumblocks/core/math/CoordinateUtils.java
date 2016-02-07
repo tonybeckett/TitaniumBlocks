@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.math;
 
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.layout.CircularNoPostLayout;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
@@ -38,6 +39,28 @@ import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
  */
 public class CoordinateUtils
 {
+
+    public static final double TWO_PI = 2.0 * Math.PI;
+
+    public static Point2D calcPosition(Point2D centerPoint, double radius, double angle)
+    {
+
+        double sinValue = Math.sin(Math.toRadians(angle + 90.0)); // 90.0 to adjust for Java origin 
+        double cosValue = Math.cos(Math.toRadians(angle + 90.0));
+        Point2D point = new Point2D.Double(centerPoint.getX() - (radius * cosValue), centerPoint.getY() - (radius * sinValue));
+
+        return point;
+    }
+
+    public static double toRadians(double degrees)
+    {
+        return degrees / 180.0 * Math.PI;
+    }
+
+    public static double toDegrees(double radians)
+    {
+        return radians * 180.0 / Math.PI;
+    }
 
     public static Point2D toPointUsing(double r, double theta)
     {
@@ -83,25 +106,56 @@ public class CoordinateUtils
         return new Point2D.Double(center.getX() - point.getX(), center.getY() - point.getY());
     }
 
+    public static double normalizeRadians(double angle)
+    {
+        double result;
+
+        result = angle;
+        while (result > TWO_PI)
+        {
+            result = result - TWO_PI;
+        }
+        while (result < 0)
+        {
+            result = result + TWO_PI;
+        }
+        return result;
+    }
+
+    public static double normalizeDegrees(double angle)
+    {
+        double result;
+
+        result = angle;
+        while (result > 360.0)
+        {
+            result = result - 360.0;
+        }
+        while (result < 0)
+        {
+            result = result + 360.0;
+        }
+        return result;
+    }
+
     public static double calcExtent(double startAngle, double endAngle, Direction direction)
     {
         double ext;
-        if (direction == CoordinateDefs.Direction.COUNTER)
+        if (direction == CoordinateDefs.Direction.CLOCKWISE)
         {
-            ext = endAngle - startAngle;
+            if (endAngle > startAngle)
+            {
+                ext = Math.abs(endAngle - startAngle);
+            } else
+            {
+                ext = (360.0 - startAngle) + endAngle;
+            }
         } else
         {
-            ext = startAngle - endAngle;
+            ext = startAngle + (360.0 - endAngle);
         }
-        if (ext > 360.0)
-        {
-            ext = ext - 360.0;
-        }
-        if (ext < 0)
-        {
-            ext = ext + 360.0;
-        }
-        return ext;
+
+        return normalizeDegrees(ext);
     }
 
     public static double calcGraphicsAngle(double normalizedValue, CircularLayout circularLayout)
@@ -114,17 +168,18 @@ public class CoordinateUtils
         switch (circularLayout.getTickmarkDirection())
         {
             case CLOCKWISE:
-                angleInDegrees = (circularLayout.getTickmarkStartAngle()) - (normalizedValue * ext);
+                angleInDegrees = (circularLayout.getTickmarkStartAngle()) + (normalizedValue * ext);
 
                 break;
 
             case COUNTER:
-                angleInDegrees = (normalizedValue * ext * Math.PI / 180.0) - (90.0 * Math.PI / 180.0) - (circularLayout.getTickmarkStartAngle() * Math.PI / 180.0);
+                angleInDegrees = circularLayout.getTickmarkStartAngle() - (normalizedValue * ext);
                 break;
         }
-        angleInDegrees = angleInDegrees - 90.0;
-//        System.out.println(String.format("%6.3f   %6.3f   %6.3f", normalizedValue, angleInDegrees, 360.0 - angleInDegrees));
-        return (360.0 - angleInDegrees) * Math.PI / 180.0;
+//        angleInDegrees = angleInDegrees - 90.0;
+//        angleInDegrees = normalizeDegrees(angleInDegrees);
+
+        return toRadians(angleInDegrees);
     }
 
     /**
@@ -164,18 +219,14 @@ public class CoordinateUtils
         angle = calcGraphicsAngle(n, circularLayout);
 //        System.out.println(String.format("%f %f", n, angle));
 
-        circularLayout = new CircularTwoPostLayout(270, 90, Direction.CLOCKWISE, 0.75f, 140, 40);
+        CircularNoPostLayout circularLayout2 = new CircularNoPostLayout(Direction.CLOCKWISE, 0.75f);
 
-        n = 0.01;
-        angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
+        for (int i = 10; i > -1; i--)
+        {
+            n = i / 10.0;
+            angle = calcGraphicsAngle(n, circularLayout2);
+            System.out.println(String.format("%f %f %f", n, angle, toDegrees(angle)));
+        }
 
-        n = 0.5;
-        angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
-
-        n = 0.99;
-        angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
     }
 }

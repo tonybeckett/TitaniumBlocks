@@ -43,7 +43,7 @@ public class SectionImageFactory extends CoreImageFactory
 
     public Section getPainter()
     {
-        return (Section) super.getBasePainter(); 
+        return (Section) super.getPainter(); 
     }
 
 }

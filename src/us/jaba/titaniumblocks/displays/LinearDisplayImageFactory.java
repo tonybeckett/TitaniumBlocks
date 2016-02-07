@@ -43,7 +43,7 @@ public class LinearDisplayImageFactory extends CoreImageFactory
 
     public AbstractLinearDisplay getPainter()
     {
-        return (AbstractLinearDisplay) super.getBasePainter();
+        return (AbstractLinearDisplay) super.getPainter();
     }
    
 }

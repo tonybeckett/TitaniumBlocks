@@ -37,19 +37,50 @@ import us.jaba.titaniumblocks.core.color.gradientdefinitions.SSBlack;
 public abstract class AbstractPointer extends Pointer
 {
 
+    protected boolean centerPostVisible;
+    protected float centerScale;
+    protected float frontScale;
+
     private GradientPalette pointerColor;
     private float radiusPercent;
+    protected float tailScale;
+    protected boolean centerPinVisible;
+    
+    public AbstractPointer()
+    {
+        this(new SSBlack());
+    }
 
     public AbstractPointer(GradientPalette pointerColor)
     {
         this.pointerColor = pointerColor;
         radiusPercent = 0.95f;
+        frontScale = 1.0f;
+        tailScale = 1.0f;
+        centerPostVisible = false;
+        centerScale = 0.03f;
+        centerPinVisible = false;
     }
 
-    public AbstractPointer()
+    public void setCenterPostEnable(boolean centerPost)
     {
-        pointerColor = new SSBlack();
-        radiusPercent = 0.95f;
+        this.centerPostVisible = centerPost;
+    }
+
+    public float getCenterScale()
+    {
+        return centerScale;
+    }
+
+    public void setCenterScale(float centerScale)
+    {
+        this.centerScale = centerScale;
+    }
+
+    @Override
+    public void setFrontScale(float scale)
+    {
+        this.frontScale = scale;
     }
 
     public GradientPalette getPointerColor()
@@ -74,5 +105,33 @@ public abstract class AbstractPointer extends Pointer
         this.radiusPercent = radiusPercent;
         changed();
     }
- 
+
+    @Override
+    public void setTailScale(float scale)
+    {
+        this.tailScale = scale;
+    }
+
+    
+
+    public boolean isCenterPostVisible()
+    {
+        return centerPostVisible;
+    }
+
+    public void setCenterPostVisible(boolean centerPostVisible)
+    {
+        this.centerPostVisible = centerPostVisible;
+    }
+
+    public boolean isCenterPinVisible()
+    {
+        return centerPinVisible;
+    }
+
+    public void setCenterPinVisible(boolean centerPinVisible)
+    {
+        this.centerPinVisible = centerPinVisible;
+    }
+
 }

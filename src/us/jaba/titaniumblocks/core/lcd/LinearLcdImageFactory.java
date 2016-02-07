@@ -45,9 +45,10 @@ public class LinearLcdImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public LinearLcd getPainter()
     {
-        return (LinearLcd) super.getBasePainter();
+        return (LinearLcd) super.getPainter();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class LinearLcdImageFactory extends CoreImageFactory
     {
         super.applyPaint(result, dimensions);
         final Graphics2D graphics = (Graphics2D) result.createGraphics();
-        this.getBasePainter().paint(graphics, dimensions);
+        this.getPainter().paint(graphics, dimensions);
     }
 
    

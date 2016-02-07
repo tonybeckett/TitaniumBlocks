@@ -25,7 +25,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.pointers.types;
+package us.jaba.titaniumblocks.core.pointers;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -33,11 +33,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.geom.GeneralPath;
-import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -45,12 +47,9 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class BasicPointer extends AbstractPointer
+public class GradientPointer extends AbstractPointer
 {
 
-    protected float frontScale;
-    protected float tailScale;
-    
     final float[] gradientFractionArray = new float[]
     {
         0.0f,
@@ -59,39 +58,29 @@ public class BasicPointer extends AbstractPointer
         1.0f
     };
 
-    public BasicPointer()
+    public GradientPointer()
     {
-        frontScale = 1.0f;
-        tailScale = 1.0f;
+        this(new PureBlack());
     }
 
-    public BasicPointer(GradientPalette pointColor)
+    public GradientPointer(GradientPalette pointColor)
     {
         super(pointColor);
-        frontScale = 1.0f;
-        tailScale = 1.0f;
+
     }
 
-    @Override
-    public void setFrontScale(float scale)
-    {
-        this.frontScale = scale;
-    }
-
-    protected GeneralPath getShape(Dimension dimensions)
+    protected Shape getShape(Dimension dimensions)
     {
         return new GeneralPath();
     }
 
     @Override
-    public void setTailScale(float scale)
-    {
-        this.tailScale = scale;
-    }
-
-    @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
+        super.paint(graphics, dimensions);
+
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -101,7 +90,7 @@ public class BasicPointer extends AbstractPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        final GeneralPath pointerShape;
+        final Shape pointerShape;
         final Point2D startPoint;
         final Point2D stopPoint;
 
@@ -109,7 +98,7 @@ public class BasicPointer extends AbstractPointer
         final java.awt.Paint gradient;
 
         pointerShape = getShape(dimensions);
-        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+
         float magnitude = 1.0f - this.getRadiusPercent();
 
         Point2D tip = new Point2D.Double(0.5, magnitude);//0.14953);
@@ -132,9 +121,18 @@ public class BasicPointer extends AbstractPointer
         gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
+
         graphics.setColor(this.getPointerColor().getMediumDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(pointerShape);
+
+        if (centerPinVisible)
+        {
+            double radius = Math.min(dimensions.width * 0.0089, 2.0);
+            graphics.setColor(ColorPalette.ALUMINIUM);
+            ShapeUtils.fillCircle(graphics, imageWidth / 2, imageHeight / 2, radius);
+
+        }
 
         graphics.dispose();
     }

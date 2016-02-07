@@ -25,42 +25,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.posts;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+package us.jaba.titaniumblocks.core.math;
 
 /**
  *
  * @author tbeckett
  */
-public class BaseSmallPost extends Post
+public class Angle
 {
+    // in degrees
+    private double value;
 
-    final Color[] CENTER_KNOB_MAIN_COLORS;
-
-    public BaseSmallPost()
+    /**
+     * Get the value of value
+     *
+     * @return the value of value
+     */
+    public double getValue()
     {
-        this(new Color[]
-        {
-            new Color(0xD7D7D7),
-            new Color(0x747474),
-            new Color(0xD7D7D7)
-        });
-
+        return value;
     }
 
-    public BaseSmallPost(Color[] CENTER_KNOB_MAIN_COLORS)
+    /**
+     * Set the value of value
+     *
+     * @param value new value of value
+     */
+    public void setValue(double value)
     {
-        this.CENTER_KNOB_MAIN_COLORS = CENTER_KNOB_MAIN_COLORS;
+        this.value = value;
     }
 
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
-    {
-        super.paint(graphics, dimensions);
-
-     
-    }
 }

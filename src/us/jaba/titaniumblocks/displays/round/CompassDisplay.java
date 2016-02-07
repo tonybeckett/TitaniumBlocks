@@ -81,22 +81,11 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     private ShadowPointerImageFactory shadowImage;
 
-    private final TBText tbText;
-    private final TextImageFactory tbTextImage;
-
-    private static final float DEFAULT_FONT_SCALE_FACTOR = 0.67f;
-
-    private float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-    private double normalizedValue = 0.39; // 0.0-1.0
-
-    protected BackdropImageFactory backdropImage;
-    protected RoundFrameImageFactory frameImage;
-    protected FrontcoverImageFactory frontcoverImage;
+   
     protected DisabledImageFactory disabledImage;
 
     protected CircularLayout circularLayout = new CircularNoPostLayout(CoordinateDefs.Direction.CLOCKWISE, 0.95f);
-    protected TextImageFactory valueTextImage;
-    protected PostImageFactory centerPostImage;
+  
     private final TickmarkImageFactory tickmarkImage;
 
     public CompassDisplay()
@@ -109,32 +98,44 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         super();
 
         frameImage = new RoundFrameImageFactory(new SilverRoundFrame());
-
+        add(frameImage);
+        
         CompassRoseBackdrop bmbp = new CompassRoseBackdrop();
         bmbp.setBackgroundColor(new BrushedMetalBModel());
         backdropImage = new BackdropImageFactory(bmbp);
-
+        add(backdropImage);
+        
         CompassTickmarks ct = new CompassTickmarks();
         ct.setTextColor(ColorPalette.WHITE);
         ct.setMajorColor(ColorPalette.WHITE);
         tickmarkImage = new TickmarkImageFactory(ct);
-
+        add(tickmarkImage);
+        
         tbText = new TBText();
         tbTextImage = new TextImageFactory(tbText);
-
+        add(tbTextImage);
+        
         frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
+        add(frontcoverImage);
+
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
+        add(disabledImage);
+
         centerPostImage = new PostImageFactory(new BigSilverPost());
+        add(centerPostImage);
 
         Type1Shadow t1spp = new Type1Shadow();
         shadowImage = new ShadowPointerImageFactory(t1spp);
+        add(shadowImage);
 
         CompassPointer tpp = new CompassPointer();
         //tpp.setPointerColor(new PureBlack());
 
         pointerImage = new PointerImageFactory(tpp);
+        add(pointerImage);
 
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
+        add(frontcoverImage);
 
         setColor(c);
     }
@@ -155,7 +156,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         int offset = frameImage.getPainter().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().getInteriorDimension();
+        Dimension interiorDim = frameImage.getPainter().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -181,7 +182,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         graphics.drawImage(centerPostImage.build(interiorDim), offset, offset, null);
 
- //       graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
+        //       graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
     public double getNormalizedValue()
@@ -189,11 +190,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         return normalizedValue;
     }
 
-    public void setNormalizedValue(double d)
-    {
-        normalizedValue = (double) d;
-    }
-
+  
     public Color getColor()
     {
         return valueTextImage.getPainter().getColor();
@@ -263,15 +260,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         this.centerPostImage = new PostImageFactory(postPainter);
     }
 
-    public float getFontScaleFactor()
-    {
-        return fontScaleFactor;
-    }
-
-    public void setFontScaleFactor(float fontScaleFactor)
-    {
-        this.fontScaleFactor = fontScaleFactor;
-    }
+  
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
