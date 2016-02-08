@@ -53,7 +53,7 @@ public class SingleRectangular300Demo extends SingleRectangularDemo
     public SingleRectangular300Demo()
     {
 
-        super(new CircularTwoPostLayout(210, 150, Direction.CLOCKWISE, 0.95f, 245, 295));
+        super(new CircularTwoPostLayout(210, 150, Direction.CLOCKWISE, 0.95f, 205, 155));
         setTitle("Rect 300");
         setPanelTitle("SingleRectangular300Demo");
         this.setFrame(new BlackMetalLinearFrame());

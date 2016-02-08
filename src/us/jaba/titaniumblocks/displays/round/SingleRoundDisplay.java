@@ -89,7 +89,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         public MySWPostFactory(KnobImageFactory iFactory)
         {
-            super(iFactory, new Polar(0.925, circularLayout.getStartPostAngle() / 180.0 * Math.PI));
+            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getStartPostAngle()))));
         }
     };
 
@@ -98,7 +98,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         public MySEPostFactory(KnobImageFactory iFactory)
         {
-            super(iFactory, new Polar(0.925, circularLayout.getEndPostAngle() * Math.PI / 180.0));
+            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
         }
     };
     private MySEPostFactory endPostImage;

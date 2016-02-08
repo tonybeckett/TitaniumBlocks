@@ -44,7 +44,7 @@ public class SingleRound150WestDemo extends SingleRoundDemo
      */
     public SingleRound150WestDemo()
     {
-        super(new CircularTwoPostLayout(210, 0, Direction.CLOCKWISE, 0.95f, 95, 295));
+        super(new CircularTwoPostLayout(210, 0, Direction.CLOCKWISE, 0.95f, 205, 5));
         setTitle("150West");
         this.setPointerPainter(new TaperedRoundedTailPointer(), new TaperedRoundedTailShadow());
 

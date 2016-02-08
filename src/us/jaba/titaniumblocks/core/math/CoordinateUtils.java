@@ -42,6 +42,11 @@ public class CoordinateUtils
 
     public static final double TWO_PI = 2.0 * Math.PI;
 
+    public static double adjustToNativeAngle(double angle)
+    {
+        return angle + 90.0;
+    }
+
     public static Point2D calcPosition(Point2D centerPoint, double radius, double angle)
     {
 

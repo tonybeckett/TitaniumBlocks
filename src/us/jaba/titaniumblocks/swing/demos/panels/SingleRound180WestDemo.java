@@ -42,7 +42,7 @@ public class SingleRound180WestDemo extends SingleRoundDemo
      */
     public SingleRound180WestDemo()
     {
-        super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.95f, 95, 265));
+        super(new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.95f, 175, 5));
            setTitle("180");
     }
 

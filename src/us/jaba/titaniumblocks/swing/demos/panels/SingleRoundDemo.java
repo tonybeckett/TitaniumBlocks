@@ -60,6 +60,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
     {
         initComponents();
 
+       
         panel = new SingleRoundPanel(cl);
 
         panel.getGauge().getValueText().setColor(ColorPalette.ALMOND);

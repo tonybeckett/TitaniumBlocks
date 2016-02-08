@@ -36,18 +36,15 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.SilverLinearFrame;
@@ -58,19 +55,16 @@ import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
-import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.INVERTED_TEXT;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
 import us.jaba.titaniumblocks.core.pointers.shadows.Type1Shadow;
 import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
-import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
@@ -103,7 +97,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
         public MySWPostFactory(KnobImageFactory iFactory)
         {
-            super(iFactory, new Polar(0.925, circularLayout.getStartPostAngle() / 180.0 * Math.PI));
+            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getStartPostAngle()))));
         }
     };
 
@@ -112,7 +106,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
         public MySEPostFactory(KnobImageFactory iFactory)
         {
-            super(iFactory, new Polar(0.925, circularLayout.getEndPostAngle() * Math.PI / 180.0));
+            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
         }
     };
    

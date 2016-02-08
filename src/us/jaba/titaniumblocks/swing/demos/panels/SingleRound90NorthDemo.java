@@ -42,7 +42,7 @@ public class SingleRound90NorthDemo extends SingleRoundDemo
      */
     public SingleRound90NorthDemo()
     {
-        super(new CircularTwoPostLayout(135, 45, Direction.CLOCKWISE, 0.75f, 140, 40));
+        super(new CircularTwoPostLayout(135, 45, Direction.CLOCKWISE, 0.95f, 130, 50));
            setTitle("180");
     }
 

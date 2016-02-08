@@ -19,6 +19,7 @@ public class RoundFrameImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public RoundFrame getPainter()
     {
         return (RoundFrame) super.getPainter();

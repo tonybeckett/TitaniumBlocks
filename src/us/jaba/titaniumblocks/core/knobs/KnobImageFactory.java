@@ -19,6 +19,7 @@ public class KnobImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public KnobPainter getPainter()
     {
         return (KnobPainter) super.getPainter();

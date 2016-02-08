@@ -44,14 +44,14 @@ public class CircularTwoPostLayout implements CircularLayout
     private int startPostAngle;
     private float tickmarkRadius;
 
-    public CircularTwoPostLayout(int startAngle, int endAngle, Direction dir, float radius, int sp, int ep)
+    public CircularTwoPostLayout(int startAngle, int endAngle, Direction dir, float radius, int startPostAngle, int endPostAngle)
     {
         this.startAngle = startAngle;
         this.endAngle = endAngle;
         this.direction = dir;
         this.tickmarkRadius = radius;
-        this.startPostAngle = sp;
-        this.endPostAngle = ep;
+        this.startPostAngle = startPostAngle;
+        this.endPostAngle = endPostAngle;
 
     }
 

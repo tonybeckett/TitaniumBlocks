@@ -49,7 +49,7 @@ public class SingleRound300Demo extends SingleRoundDemo
     public SingleRound300Demo()
     {
 
-        super(new CircularTwoPostLayout(210, 150, Direction.CLOCKWISE, 0.95f, 245, 295));
+        super(new CircularTwoPostLayout(210, 150, Direction.CLOCKWISE, 0.95f, 205, 155));
         setTitle("300");
         setPanelTitle("SingleRound300Demo");
         //      this.setFramePainter(new GenericRoundFrame(new Gold()));
