@@ -43,6 +43,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMedMinorTi
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMinorTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchSmallTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
 
@@ -69,6 +70,7 @@ public class TickmarksCoreInfo
         RNormalMajMedMinorTickmark.class,
         RNormalMajMinorTickmark.class,
         StopwatchTickmarks.class,
+        StopwatchSmallTickmarks.class,
         WindDirectionTickmarks.class
     };
 

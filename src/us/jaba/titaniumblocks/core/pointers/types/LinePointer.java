@@ -64,8 +64,8 @@ public class LinePointer extends GradientPointer
         final int maxY = imageHeight / 2;
         float magnitude = this.getRadiusPercent() * frontScale;
 
-        Area pointerLine = new Area(new Rectangle2D.Double(imageWidth * 0.495327, centerY - (maxY * 0.94 * magnitude),
-                imageWidth * 0.009345, imageHeight * 0.48 + (maxY * tailScale)));
+        Area pointerLine = new Area(new Rectangle2D.Double(imageWidth * 0.495327, centerY - (maxY * tailScale)/*- (maxY * 0.94 * magnitude)*/,
+                imageWidth * 0.009345, imageHeight * /* 0.599 */ magnitude ));
 
         if (centerPostVisible)
         {

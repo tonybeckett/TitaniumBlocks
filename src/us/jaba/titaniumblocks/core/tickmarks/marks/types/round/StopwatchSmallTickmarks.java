@@ -34,11 +34,11 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class StopwatchTickmarks extends AbstractRadialTickmark
+public class StopwatchSmallTickmarks extends AbstractRadialTickmark
 {
     private final double TEXT_SCALE = 0.095;
 
-    public StopwatchTickmarks()
+    public StopwatchSmallTickmarks()
     {
 
     }
@@ -48,27 +48,25 @@ public class StopwatchTickmarks extends AbstractRadialTickmark
     {
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth())));
-
         graphics.setColor(textColor);
-        graphics.setStroke(mediumStroke);
-        String[] text =
+        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth() / 3.0)));
+        String[] text2 =
         {
-            " ", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
+            "30", "5", "10", "15", "20", "25"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.775, 0.0, -30, text);
-
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.15, 0.0, -60, text2);
+        
+        Point2D offset = new Point2D.Double(centerPoint.getX(), centerPoint.getY());
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.945, radius * 0.995, 0.0, 2.0, 180);
+      //  ShapeUtils.drawRadialLines(graphics, offset, radius * 0.235, radius * 0.255, 0.0, 2.0, 180);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.925, radius * 0.995, 0.0, 6, 60);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.9, radius * 0.995, 0.0, 30.0, 12);
+        ShapeUtils.drawRadialLines(graphics, offset, radius * 0.215, radius * 0.255, 0.0, 6, 60);
+        ShapeUtils.drawRadialLines(graphics, offset, radius * 0.2, radius * 0.255, 0.0, 30.0, 12);
         
         
-     
         graphics.dispose();
 
     }
