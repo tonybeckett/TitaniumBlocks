@@ -40,24 +40,21 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class NullBackdrop extends AbstractRectangularBackdrop
 {
 
-    final float[] BACKGROUND_FRACTIONS =
+    private final float[] BACKGROUND_FRACTIONS =
     {
         0.0f,
         0.4f,
         1.0f
     };
 
-    Color[] BACKGROUND_COLORS =
+    private final Color[] BACKGROUND_COLORS =
     {
         backgroundColorModel.getGradientStartColor(),
         backgroundColorModel.getGradientFractionColor(),
         backgroundColorModel.getGradientStopColor()
     };
 
-    public NullBackdrop()
-    {
-
-    }
+   
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)

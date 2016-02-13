@@ -25,57 +25,38 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.pointers.types;
+package us.jaba.titaniumblocks.core.sections;
 
-import java.awt.Dimension;
-import java.awt.Shape;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.pointers.GradientPointer;
+import java.util.Arrays;
+import java.util.List;
+import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.sections.types.LinearSection;
 
 /**
  *
  * @author tbeckett
  */
-public class LinePointer extends GradientPointer
+public class SectionsCoreInfo
 {
 
-    public LinePointer()
+    public static final Class<?>[] SECTIONS =
     {
-        this(new PureRed());
+        LinearSection.class,
+         
+    };
+
+   
+
+    public static List<Class<?>> getAvailableClasses()
+    {
+        return Arrays.asList(SECTIONS);
     }
 
-    public LinePointer(GradientPalette pointerColor)
+    public static List getInstanceOfEach()
     {
-        super(pointerColor);
-        this.tailScale = 0.03f;
+        return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
+
     }
+ 
 
-    @Override
-    protected Shape getShape(Dimension dimensions)
-    {
-
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-        final int centerY = imageHeight / 2;
-        final int maxY = imageHeight / 2;
-        float magnitude = this.getRadiusPercent() * frontScale;
-
-        Area pointerLine = new Area(new Rectangle2D.Double(imageWidth * 0.495327, centerY - (maxY * tailScale)/*- (maxY * 0.94 * magnitude)*/,
-                imageWidth * 0.009345, imageHeight * /* 0.599 */ magnitude));
-
-        if (centerPostVisible)
-        {
-            double radius = dimensions.width * centerScale;
-            Area pointerPost = new Area(new Ellipse2D.Double((imageWidth / 2) - radius, (imageHeight / 2) - radius, radius * 2, radius * 2));
-            pointerLine.add(pointerPost);
-        }
-
-        return pointerLine;
-    }
-
-//  
 }

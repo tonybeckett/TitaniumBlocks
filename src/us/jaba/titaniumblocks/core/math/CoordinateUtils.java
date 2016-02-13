@@ -172,13 +172,13 @@ public class CoordinateUtils
 
         switch (circularLayout.getTickmarkDirection())
         {
-            case CLOCKWISE:
-                angleInDegrees = (circularLayout.getTickmarkStartAngle()) + (normalizedValue * ext);
-
-                break;
 
             case COUNTER:
                 angleInDegrees = circularLayout.getTickmarkStartAngle() - (normalizedValue * ext);
+                break;
+            case CLOCKWISE:
+            default:
+                angleInDegrees = (circularLayout.getTickmarkStartAngle()) + (normalizedValue * ext);
                 break;
         }
 //        angleInDegrees = angleInDegrees - 90.0;

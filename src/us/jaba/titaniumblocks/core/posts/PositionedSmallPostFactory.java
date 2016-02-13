@@ -69,7 +69,7 @@ public class PositionedSmallPostFactory extends CoreImageFactory
 
         Point2D targetPoint = new Point2D.Double((dimensions.width * copyPoint.getX()), (dimensions.height * copyPoint.getY()) );
         
-         Polar p = CoordinateUtils.toPolarWithCenter(targetPoint, new Point2D.Double(result.getWidth()/2.0, result.getHeight()/2.0));
+//         Polar p = CoordinateUtils.toPolarWithCenter(targetPoint, new Point2D.Double(result.getWidth()/2.0, result.getHeight()/2.0));
         
         graphics.drawImage(image, (int) (dimensions.width * copyPoint.getX()), (int) (dimensions.height * copyPoint.getY()), null);
     }
@@ -79,7 +79,7 @@ public class PositionedSmallPostFactory extends CoreImageFactory
     {
         if (!ImageSupport.isValidSize(dimensions.width, dimensions.height))
         {
-            return ImageSupport.defaultSmallImage;
+            return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
 
         BufferedImage mresult = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);

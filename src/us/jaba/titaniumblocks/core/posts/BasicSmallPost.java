@@ -38,7 +38,7 @@ import java.awt.Graphics2D;
 public class BasicSmallPost extends Post
 {
 
-    final Color[] CENTER_KNOB_MAIN_COLORS;
+    private  Color[] CENTER_KNOB_MAIN_COLORS;
 
     public BasicSmallPost()
     {

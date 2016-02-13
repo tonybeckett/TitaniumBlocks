@@ -43,12 +43,12 @@ public class DisabledPainter extends CoreModel
         disabledColor = new Color(102, 102, 102, 178);
     }
 
-    public Color getDISABLED_COLOR()
+    public Color getDisabledColor()
     {
         return disabledColor;
     }
 
-    public void setDISABLED_COLOR(Color disabledColor)
+    public void setDisabledColor(Color disabledColor)
     {
         this.disabledColor = disabledColor;
         changed();

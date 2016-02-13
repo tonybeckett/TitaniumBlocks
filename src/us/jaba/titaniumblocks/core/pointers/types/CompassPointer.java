@@ -48,12 +48,35 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CompassPointer extends GradientPointer
 {
 
-    final float[] gradientFractionArray = new float[]
+    private final float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.4999f,
         0.5f,
         1.0f
+    };
+
+    private final float[] NORTHPOINTER1_FRACTIONS =
+    {
+        0.0f,
+        0.4999f,
+        0.5f,
+        1.0f
+    };
+
+    private final float[] SOUTHPOINTER1_FRACTIONS =
+    {
+        0.0f,
+        0.4999f,
+        0.5f,
+        1.0f
+    };
+    private final Color[] SOUTHPOINTER1_COLORS =
+    {
+        new Color(227, 229, 232, 255),
+        new Color(227, 229, 232, 255),
+        new Color(171, 177, 184, 255),
+        new Color(171, 177, 184, 255)
     };
 
     public CompassPointer()
@@ -69,8 +92,8 @@ public class CompassPointer extends GradientPointer
     @Override
     protected Shape getShape(Dimension dimensions)
     {
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
         final GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
 
@@ -203,7 +226,7 @@ public class CompassPointer extends GradientPointer
 //
 //            case TYPE1:
 //            default:
-        float magnitude = 1.0f - this.getRadiusPercent();
+//        float magnitude = 1.0f - this.getRadiusPercent();
 
         final GeneralPath NORTHPOINTER1 = new GeneralPath();
         NORTHPOINTER1.setWindingRule(Path2D.WIND_EVEN_ODD);
@@ -216,13 +239,7 @@ public class CompassPointer extends GradientPointer
 
         final Point2D NORTHPOINTER1_START = new Point2D.Double(NORTHPOINTER1.getBounds2D().getMinX(), 0);
         final Point2D NORTHPOINTER1_STOP = new Point2D.Double(NORTHPOINTER1.getBounds2D().getMaxX(), 0);
-        final float[] NORTHPOINTER1_FRACTIONS =
-        {
-            0.0f,
-            0.4999f,
-            0.5f,
-            1.0f
-        };
+
         final Color[] NORTHPOINTER1_COLORS =
         {
             getPointerColor().getLight(),
@@ -248,20 +265,7 @@ public class CompassPointer extends GradientPointer
 
         final Point2D SOUTHPOINTER1_START = new Point2D.Double(SOUTHPOINTER1.getBounds2D().getMinX(), 0);
         final Point2D SOUTHPOINTER1_STOP = new Point2D.Double(SOUTHPOINTER1.getBounds2D().getMaxX(), 0);
-        final float[] SOUTHPOINTER1_FRACTIONS =
-        {
-            0.0f,
-            0.4999f,
-            0.5f,
-            1.0f
-        };
-        final Color[] SOUTHPOINTER1_COLORS =
-        {
-            new Color(227, 229, 232, 255),
-            new Color(227, 229, 232, 255),
-            new Color(171, 177, 184, 255),
-            new Color(171, 177, 184, 255)
-        };
+
         final java.awt.LinearGradientPaint SOUTHPOINTER1_GRADIENT = new java.awt.LinearGradientPaint(SOUTHPOINTER1_START, SOUTHPOINTER1_STOP, SOUTHPOINTER1_FRACTIONS, SOUTHPOINTER1_COLORS);
         graphics.setPaint(SOUTHPOINTER1_GRADIENT);
         graphics.fill(SOUTHPOINTER1);

@@ -44,8 +44,22 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class LinearInnerEffect implements RectangularFrameEffectPainter
 {
 
-    private float[] EFFECT_FRACTIONS;
-    private Color[] EFFECT_COLORS;
+    private final float[] EFFECT_BIGINNERFRAME_FRACTIONS =
+    {
+        0.0f,
+        0.13f,
+        0.45f,
+        0.92f,
+        1.0f
+    };
+    private final Color[] EFFECT_BIGINNERFRAME_COLORS =
+    {
+        new Color(0, 0, 0, 183),
+        new Color(0, 0, 0, 25),
+        new Color(0, 0, 0, 160),
+        new Color(0, 0, 0, 80),
+        new Color(255, 255, 255, 158)
+    };
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
@@ -56,22 +70,7 @@ public class LinearInnerEffect implements RectangularFrameEffectPainter
         final RoundRectangle2D EFFECT_BIGINNERFRAME = new RoundRectangle2D.Double(10, 10, imageWidth - 20, imageHeight - 20, 10.0, 10.0);
         final Point2D EFFECT_BIGINNERFRAME_START = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMinY());
         final Point2D EFFECT_BIGINNERFRAME_STOP = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMaxY());
-        final float[] EFFECT_BIGINNERFRAME_FRACTIONS =
-        {
-            0.0f,
-            0.13f,
-            0.45f,
-            0.92f,
-            1.0f
-        };
-        final Color[] EFFECT_BIGINNERFRAME_COLORS =
-        {
-            new Color(0, 0, 0, 183),
-            new Color(0, 0, 0, 25),
-            new Color(0, 0, 0, 160),
-            new Color(0, 0, 0, 80),
-            new Color(255, 255, 255, 158)
-        };
+
         PointSupport.validateGradientPoints(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP);
         final LinearGradientPaint EFFECT_BIGINNERFRAME_GRADIENT = new LinearGradientPaint(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP, EFFECT_BIGINNERFRAME_FRACTIONS, EFFECT_BIGINNERFRAME_COLORS);
         graphics.setPaint(EFFECT_BIGINNERFRAME_GRADIENT);

@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 public class ShinyMetalLinearFrame extends RectangularFrame
 {
 
-    private boolean baseColor_ENABLED;
+    private boolean baseColorEnabled;
     private Color baseColor;
 
    
@@ -53,9 +53,9 @@ public class ShinyMetalLinearFrame extends RectangularFrame
         super(NULL_FRACTION_ARRAY, NULL_COLOR_ARRAY);
     }
 
-    public void setbaseColor_ENABLED(boolean baseColor_ENABLED)
+    public void setBaseColorEnabled(boolean baseColor_ENABLED)
     {
-        this.baseColor_ENABLED = baseColor_ENABLED;
+        this.baseColorEnabled = baseColor_ENABLED;
     }
 
     public Color getbaseColor()
@@ -80,7 +80,7 @@ public class ShinyMetalLinearFrame extends RectangularFrame
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
         final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         // Paint outer frame after we subtracted the inner background shape
@@ -102,7 +102,7 @@ public class ShinyMetalLinearFrame extends RectangularFrame
             1.0f
         };
         Color[] frameMainColors3;
-        if (baseColor_ENABLED)
+        if (baseColorEnabled)
         {
             frameMainColors3 = new Color[]
             {

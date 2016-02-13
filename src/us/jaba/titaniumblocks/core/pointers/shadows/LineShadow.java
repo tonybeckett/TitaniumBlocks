@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.pointers.shadows;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -45,7 +44,7 @@ public class LineShadow extends GradientPointer
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
+//        final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -54,10 +53,10 @@ public class LineShadow extends GradientPointer
         //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        final GeneralPath pointerShape;
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
+//
+//        final GeneralPath pointerShape;
 
         graphics.dispose();
     }

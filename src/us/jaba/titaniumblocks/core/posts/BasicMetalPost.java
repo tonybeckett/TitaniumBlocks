@@ -46,7 +46,31 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BasicMetalPost extends Post
 {
 
-    final Color[] METALKNOB_MAIN_COLORS;
+    private final Color[] METALKNOB_MAIN_COLORS;
+
+    private final float[] METALKNOB_FRAME_FRACTIONS =
+    {
+        0.0f,
+        0.47f,
+        1.0f
+    };
+    private final Color[] METALKNOB_FRAME_COLORS =
+    {
+        new Color(92, 95, 101, 255),
+        new Color(46, 49, 53, 255),
+        new Color(22, 23, 26, 255)
+    };
+
+    private final float[] METALKNOB_LOWERHL_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    private final Color[] METALKNOB_LOWERHL_COLORS =
+    {
+        new Color(255, 255, 255, 153),
+        new Color(255, 255, 255, 0)
+    };
 
     public BasicMetalPost()
     {
@@ -56,6 +80,45 @@ public class BasicMetalPost extends Post
             new Color(87, 92, 98, 255)
         };
     }
+
+    private final float[] METALKNOB_MAIN_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+
+    private final float[] METALKNOB_UPPERHL_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    private final Color[] METALKNOB_UPPERHL_COLORS =
+    {
+        new Color(255, 255, 255, 191),
+        new Color(255, 255, 255, 0)
+    };
+
+    private final float[] METALKNOB_INNERFRAME_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    private final Color[] METALKNOB_INNERFRAME_COLORS =
+    {
+        new Color(0, 0, 0, 255),
+        new Color(204, 204, 204, 255)
+    };
+
+    private final float[] METALKNOB_INNERBACKGROUND_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    private final Color[] METALKNOB_INNERBACKGROUND_COLORS =
+    {
+        new Color(1, 6, 11, 255),
+        new Color(50, 52, 56, 255)
+    };
 
     public BasicMetalPost(Color[] METALKNOB_MAIN_COLORS)
     {
@@ -74,18 +137,7 @@ public class BasicMetalPost extends Post
         final Ellipse2D METALKNOB_FRAME = new Ellipse2D.Double(imageWidth * 0.4579439163208008, imageHeight * 0.4579439163208008, imageWidth * 0.08411216735839844, imageHeight * 0.08411216735839844);
         final Point2D METALKNOB_FRAME_START = new Point2D.Double(0, METALKNOB_FRAME.getBounds2D().getMinY());
         final Point2D METALKNOB_FRAME_STOP = new Point2D.Double(0, METALKNOB_FRAME.getBounds2D().getMaxY());
-        final float[] METALKNOB_FRAME_FRACTIONS =
-        {
-            0.0f,
-            0.47f,
-            1.0f
-        };
-        final Color[] METALKNOB_FRAME_COLORS =
-        {
-            new Color(92, 95, 101, 255),
-            new Color(46, 49, 53, 255),
-            new Color(22, 23, 26, 255)
-        };
+
         PointSupport.validateGradientPoints(METALKNOB_FRAME_START, METALKNOB_FRAME_STOP);
         final LinearGradientPaint METALKNOB_FRAME_GRADIENT = new LinearGradientPaint(METALKNOB_FRAME_START, METALKNOB_FRAME_STOP, METALKNOB_FRAME_FRACTIONS, METALKNOB_FRAME_COLORS);
         graphics.setPaint(METALKNOB_FRAME_GRADIENT);
@@ -94,12 +146,7 @@ public class BasicMetalPost extends Post
         final Ellipse2D METALKNOB_MAIN = new Ellipse2D.Double(imageWidth * 0.46261683106422424, imageHeight * 0.46261683106422424, imageWidth * 0.0747663676738739, imageHeight * 0.0747663676738739);
         final Point2D METALKNOB_MAIN_START = new Point2D.Double(0, METALKNOB_MAIN.getBounds2D().getMinY());
         final Point2D METALKNOB_MAIN_STOP = new Point2D.Double(0, METALKNOB_MAIN.getBounds2D().getMaxY());
-        final float[] METALKNOB_MAIN_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        
+
         PointSupport.validateGradientPoints(METALKNOB_MAIN_START, METALKNOB_MAIN_STOP);
         final LinearGradientPaint METALKNOB_MAIN_GRADIENT = new LinearGradientPaint(METALKNOB_MAIN_START, METALKNOB_MAIN_STOP, METALKNOB_MAIN_FRACTIONS, METALKNOB_MAIN_COLORS);
         graphics.setPaint(METALKNOB_MAIN_GRADIENT);
@@ -114,16 +161,7 @@ public class BasicMetalPost extends Post
         METALKNOB_LOWERHL.curveTo(imageWidth * 0.5046728971962616, imageHeight * 0.5373831775700935, imageWidth * 0.514018691588785, imageHeight * 0.5327102803738317, imageWidth * 0.5186915887850467, imageHeight * 0.5280373831775701);
         METALKNOB_LOWERHL.closePath();
         final Point2D METALKNOB_LOWERHL_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5373831775700935 * imageHeight));
-        final float[] METALKNOB_LOWERHL_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        final Color[] METALKNOB_LOWERHL_COLORS =
-        {
-            new Color(255, 255, 255, 153),
-            new Color(255, 255, 255, 0)
-        };
+
         final RadialGradientPaint METALKNOB_LOWERHL_GRADIENT = new RadialGradientPaint(METALKNOB_LOWERHL_CENTER, (float) (0.03271028037383177 * imageWidth), METALKNOB_LOWERHL_FRACTIONS, METALKNOB_LOWERHL_COLORS);
         graphics.setPaint(METALKNOB_LOWERHL_GRADIENT);
         graphics.fill(METALKNOB_LOWERHL);
@@ -137,16 +175,7 @@ public class BasicMetalPost extends Post
         METALKNOB_UPPERHL.curveTo(imageWidth * 0.514018691588785, imageHeight * 0.49065420560747663, imageWidth * 0.5280373831775701, imageHeight * 0.48598130841121495, imageWidth * 0.5327102803738317, imageHeight * 0.48130841121495327);
         METALKNOB_UPPERHL.closePath();
         final Point2D METALKNOB_UPPERHL_CENTER = new Point2D.Double((0.4953271028037383 * imageWidth), (0.45794392523364486 * imageHeight));
-        final float[] METALKNOB_UPPERHL_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        final Color[] METALKNOB_UPPERHL_COLORS =
-        {
-            new Color(255, 255, 255, 191),
-            new Color(255, 255, 255, 0)
-        };
+
         final RadialGradientPaint METALKNOB_UPPERHL_GRADIENT = new RadialGradientPaint(METALKNOB_UPPERHL_CENTER, (float) (0.04906542056074766 * imageWidth), METALKNOB_UPPERHL_FRACTIONS, METALKNOB_UPPERHL_COLORS);
         graphics.setPaint(METALKNOB_UPPERHL_GRADIENT);
         graphics.fill(METALKNOB_UPPERHL);
@@ -154,16 +183,7 @@ public class BasicMetalPost extends Post
         final Ellipse2D METALKNOB_INNERFRAME = new Ellipse2D.Double(imageWidth * 0.47663551568984985, imageHeight * 0.4813084006309509, imageWidth * 0.04205608367919922, imageHeight * 0.04205608367919922);
         final Point2D METALKNOB_INNERFRAME_START = new Point2D.Double(0, METALKNOB_INNERFRAME.getBounds2D().getMinY());
         final Point2D METALKNOB_INNERFRAME_STOP = new Point2D.Double(0, METALKNOB_INNERFRAME.getBounds2D().getMaxY());
-        final float[] METALKNOB_INNERFRAME_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        final Color[] METALKNOB_INNERFRAME_COLORS =
-        {
-            new Color(0, 0, 0, 255),
-            new Color(204, 204, 204, 255)
-        };
+
         PointSupport.validateGradientPoints(METALKNOB_INNERFRAME_START, METALKNOB_INNERFRAME_STOP);
         final LinearGradientPaint METALKNOB_INNERFRAME_GRADIENT = new LinearGradientPaint(METALKNOB_INNERFRAME_START, METALKNOB_INNERFRAME_STOP, METALKNOB_INNERFRAME_FRACTIONS, METALKNOB_INNERFRAME_COLORS);
         graphics.setPaint(METALKNOB_INNERFRAME_GRADIENT);
@@ -172,16 +192,7 @@ public class BasicMetalPost extends Post
         final Ellipse2D METALKNOB_INNERBACKGROUND = new Ellipse2D.Double(imageWidth * 0.4813084006309509, imageHeight * 0.4859813153743744, imageWidth * 0.03271031379699707, imageHeight * 0.03271028399467468);
         final Point2D METALKNOB_INNERBACKGROUND_START = new Point2D.Double(0, METALKNOB_INNERBACKGROUND.getBounds2D().getMinY());
         final Point2D METALKNOB_INNERBACKGROUND_STOP = new Point2D.Double(0, METALKNOB_INNERBACKGROUND.getBounds2D().getMaxY());
-        final float[] METALKNOB_INNERBACKGROUND_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        final Color[] METALKNOB_INNERBACKGROUND_COLORS =
-        {
-            new Color(1, 6, 11, 255),
-            new Color(50, 52, 56, 255)
-        };
+
         PointSupport.validateGradientPoints(METALKNOB_INNERBACKGROUND_START, METALKNOB_INNERBACKGROUND_STOP);
         final LinearGradientPaint METALKNOB_INNERBACKGROUND_GRADIENT = new LinearGradientPaint(METALKNOB_INNERBACKGROUND_START, METALKNOB_INNERBACKGROUND_STOP, METALKNOB_INNERBACKGROUND_FRACTIONS, METALKNOB_INNERBACKGROUND_COLORS);
         graphics.setPaint(METALKNOB_INNERBACKGROUND_GRADIENT);

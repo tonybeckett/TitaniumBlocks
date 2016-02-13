@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class AnthraciteRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions8 =
+    private float[] frameMainFractions8 =
     {
         0.0f,
         0.06f,
@@ -52,7 +52,7 @@ public class AnthraciteRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors8 =
+    private Color[] frameMainColors8 =
     {
         new Color(118, 117, 135, 255),
         new Color(74, 74, 82, 255),
@@ -66,7 +66,7 @@ public class AnthraciteRoundFrame extends RoundFrame
     @Override
     public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
- 
+
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
@@ -84,7 +84,7 @@ public class AnthraciteRoundFrame extends RoundFrame
         graphics.setPaint(frameMainPaint8);
         graphics.fill(mainArea);
 
-         innerArea.subtract(subtractArea);
+        innerArea.subtract(subtractArea);
 
         // Former white ring
         graphics.setPaint(innerFrameColor);

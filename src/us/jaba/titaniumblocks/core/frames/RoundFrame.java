@@ -173,7 +173,7 @@ public class RoundFrame extends FrameModel
 //    }
     protected void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
-
+// intentional
     }
 
 }

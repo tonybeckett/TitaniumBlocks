@@ -43,7 +43,7 @@ public class NoEffect implements RoundFrameEffectPainter
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, Area outerFrame, Point2D center)
     {
-        
+        // intentional
     }
     
 }

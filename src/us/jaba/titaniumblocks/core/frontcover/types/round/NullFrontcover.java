@@ -41,7 +41,7 @@ public class NullFrontcover extends AbstractRadialFrontcover
     @Override
     protected void apply(Graphics2D graphics, Dimension dimensions)
     {
-        
+        //intentional empty
     }
 
 }

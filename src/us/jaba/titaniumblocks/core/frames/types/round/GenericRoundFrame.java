@@ -45,7 +45,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GenericRoundFrame extends RoundFrame
 {
 
-    float[] fractionArray =
+   private float[] fractionArray =
     {
         0.0f,
         0.06f,
@@ -53,7 +53,7 @@ public class GenericRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] colorArray =
+ private   Color[] colorArray =
     {
         new Color(118, 117, 135, 255),
         new Color(74, 74, 82, 255),

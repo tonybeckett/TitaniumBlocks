@@ -40,8 +40,7 @@ import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 public class GoldLinearFrame extends RectangularFrame
 {
 
-
-    static Color[] COLOR_ARRAY =
+    private static Color[] COLOR_ARRAY =
     {
         new Color(255, 255, 207, 255),
         new Color(255, 237, 96, 255),

@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class SilverRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions =
+    private float[] frameMainFractions =
     {
         0.0f,
         0.07f,
@@ -52,7 +52,7 @@ public class SilverRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors =
+    private Color[] frameMainColors =
     {
         new Color(254, 254, 254, 255),
         new Color(210, 210, 210, 255),
@@ -74,7 +74,7 @@ public class SilverRoundFrame extends RoundFrame
         mainArea.subtract(subtractArea);
         final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
         final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+//        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
         Paint frameMainPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions, frameMainColors);

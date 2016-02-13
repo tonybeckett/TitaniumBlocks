@@ -27,6 +27,8 @@
  */
 package us.jaba.titaniumblocks.core.pointers;
 
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
@@ -36,12 +38,11 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
  */
 public abstract class Pointer extends CoreModel
 {
-
-   
-    
     public abstract void setPointerColor(GradientPalette pointerColor);
     
     public abstract void setFrontScale(float scale);
     
     public abstract void setTailScale(float scale);
+    
+    public abstract void paintShadow(Graphics2D graphics, Dimension dimensions);
 }

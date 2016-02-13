@@ -44,24 +44,19 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BasicBackdrop extends AbstractRectangularBackdrop
 {
 
-    final float[] BACKGROUND_FRACTIONS =
+    private final float[] BACKGROUND_FRACTIONS =
     {
         0.0f,
         0.4f,
         1.0f
     };
 
-    Color[] BACKGROUND_COLORS =
+    private Color[] BACKGROUND_COLORS =
     {
         backgroundColorModel.getGradientStartColor(),
         backgroundColorModel.getGradientFractionColor(),
         backgroundColorModel.getGradientStopColor()
     };
-
-    public BasicBackdrop()
-    {
-
-    }
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)
@@ -84,5 +79,5 @@ public class BasicBackdrop extends AbstractRectangularBackdrop
         BACKGROUND_COLORS[2] = backgroundColorModel.getGradientStopColor();
 
     }
-    
+
 }

@@ -63,7 +63,6 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
 public final class ContourGradientPaint implements Paint
 {
 
-   
     private final Rectangle2D BOUNDS;
     private final Float[] FRACTIONS;
     private final Color[] COLORS;
@@ -71,7 +70,8 @@ public final class ContourGradientPaint implements Paint
 
     /**
      * Enhanced constructor which takes the FRACTIONS in degress from 0.0f to
-     * 360.0f and also an GIVEN_OFFSET in degrees around the rotation centerPoint
+     * 360.0f and also an GIVEN_OFFSET in degrees around the rotation
+     * centerPoint
      *
      * @param GIVEN_BOUNDS
      * @param GIVEN_FRACTIONS
@@ -148,7 +148,7 @@ public final class ContourGradientPaint implements Paint
     }
 
     @Override
-    public java.awt.PaintContext createContext(final ColorModel COLOR_MODEL,
+    public PaintContext createContext(final ColorModel COLOR_MODEL,
             final Rectangle DEVICE_BOUNDS,
             final Rectangle2D USER_BOUNDS,
             final AffineTransform TRANSFORM,
@@ -168,10 +168,10 @@ public final class ContourGradientPaint implements Paint
 
         private final Point2D P1;
         private final Point2D P2;
-        final GeneralPath SECTOR_A = new GeneralPath();
-        final GeneralPath SECTOR_B = new GeneralPath();
-        final GeneralPath SECTOR_C = new GeneralPath();
-        final GeneralPath SECTOR_D = new GeneralPath();
+        private final GeneralPath SECTOR_A = new GeneralPath();
+        private final GeneralPath SECTOR_B = new GeneralPath();
+        private final GeneralPath SECTOR_C = new GeneralPath();
+        private final GeneralPath SECTOR_D = new GeneralPath();
 
         public ContourGradientPaintContext()
         {
@@ -218,6 +218,7 @@ public final class ContourGradientPaint implements Paint
         @Override
         public void dispose()
         {
+            //intentional
         }
 
         @Override
@@ -249,36 +250,25 @@ public final class ContourGradientPaint implements Paint
                 for (int tileX = 0; tileX < TILE_WIDTH; tileX++)
                 {
                     P.setLocation(X + tileX, Y + tileY);
-                    if (SECTOR_A.contains(P))
+
+                    if (SECTOR_A.contains(P) && (X + tileX - BOUNDS.getBounds().x < colorLookup.size()))
                     {
-                        if (X + tileX - BOUNDS.getBounds().x < colorLookup.size())
-                        {
-                            currentColor = colorLookup.get(X + tileX - BOUNDS.getBounds().x);
-                        }
+                        currentColor = colorLookup.get(X + tileX - BOUNDS.getBounds().x);
                     }
 
-                    if (SECTOR_B.contains(P))
+                    if (SECTOR_B.contains(P) && (Y + tileY - BOUNDS.getBounds().y < colorLookup.size()))
                     {
-                        if (Y + tileY - BOUNDS.getBounds().y < colorLookup.size())
-                        {
-                            currentColor = colorLookup.get(Y + tileY - BOUNDS.getBounds().y);
-                        }
+                        currentColor = colorLookup.get(Y + tileY - BOUNDS.getBounds().y);
                     }
 
-                    if (SECTOR_C.contains(P))
+                    if (SECTOR_C.contains(P) && (colorLookup.size() - (X + tileX - SECTOR_A.getBounds().width - BOUNDS.getBounds().x - ((int) P2.getX() - (int) P1.getX())) < colorLookup.size()))
                     {
-                        if (colorLookup.size() - (X + tileX - SECTOR_A.getBounds().width - BOUNDS.getBounds().x - ((int) P2.getX() - (int) P1.getX())) < colorLookup.size())
-                        {
-                            currentColor = colorLookup.get(colorLookup.size() - (X + tileX - SECTOR_A.getBounds().width - BOUNDS.getBounds().x - ((int) P2.getX() - (int) P1.getX())));
-                        }
+                        currentColor = colorLookup.get(colorLookup.size() - (X + tileX - SECTOR_A.getBounds().width - BOUNDS.getBounds().x - ((int) P2.getX() - (int) P1.getX())));
                     }
 
-                    if (SECTOR_D.contains(P))
+                    if (SECTOR_D.contains(P) && ((colorLookup.size() - (Y + tileY - SECTOR_B.getBounds().height - BOUNDS.getBounds().y - ((int) P2.getY() - (int) P1.getY()))) < colorLookup.size()))
                     {
-                        if ((colorLookup.size() - (Y + tileY - SECTOR_B.getBounds().height - BOUNDS.getBounds().y - ((int) P2.getY() - (int) P1.getY()))) < colorLookup.size())
-                        {
-                            currentColor = colorLookup.get(colorLookup.size() - (Y + tileY - SECTOR_B.getBounds().height - BOUNDS.getBounds().y - ((int) P2.getY() - (int) P1.getY())));
-                        }
+                        currentColor = colorLookup.get(colorLookup.size() - (Y + tileY - SECTOR_B.getBounds().height - BOUNDS.getBounds().y - ((int) P2.getY() - (int) P1.getY())));
                     }
 
                     // Split the current color in it's parts

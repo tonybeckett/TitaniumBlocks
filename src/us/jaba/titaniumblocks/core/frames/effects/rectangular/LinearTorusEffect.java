@@ -41,14 +41,12 @@ import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
 public class LinearTorusEffect implements RectangularFrameEffectPainter
 {
 
-    private float[] EFFECT_FRACTIONS;
-    private Color[] EFFECT_COLORS;
-
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
         final int width = (int) dimensions.getWidth();
         final int height = (int) dimensions.getHeight();
+
         float relFrameSize;
         // The smaller side is important for the contour gradient
         if (width >= height)
@@ -58,6 +56,9 @@ public class LinearTorusEffect implements RectangularFrameEffectPainter
         {
             relFrameSize = (32f / width);
         }
+        float[] EFFECT_FRACTIONS;
+        Color[] EFFECT_COLORS;
+
         EFFECT_FRACTIONS = new float[]
         {
             0.0f,

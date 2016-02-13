@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 public class BlackMetalRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions1 =
+   private final float[] frameMainFractions1 =
     {
         0.0f,
         45.0f,
@@ -54,7 +54,7 @@ public class BlackMetalRoundFrame extends RoundFrame
         360.0f
     };
 
-    Color[] frameMainColors1 =
+  private final  Color[] frameMainColors1 =
     {
         new Color(254, 254, 254, 255),
         new Color(0, 0, 0, 255),

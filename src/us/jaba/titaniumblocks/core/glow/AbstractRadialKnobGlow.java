@@ -38,15 +38,8 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.filters.SSOrientation;
-import static us.jaba.titaniumblocks.core.filters.SSOrientation.WEST;
 import us.jaba.titaniumblocks.core.knobs.GaugeType;
-import static us.jaba.titaniumblocks.core.knobs.GaugeType.TYPE1;
-import static us.jaba.titaniumblocks.core.knobs.GaugeType.TYPE2;
-import static us.jaba.titaniumblocks.core.knobs.GaugeType.TYPE3;
-import static us.jaba.titaniumblocks.core.knobs.GaugeType.TYPE4;
-import static us.jaba.titaniumblocks.core.knobs.GaugeType.TYPE5;
 import us.jaba.titaniumblocks.core.color.ColorTools;
 
 /**
@@ -57,8 +50,8 @@ public abstract class AbstractRadialKnobGlow extends Glow
 {
 
     public GaugeType GAUGE_TYPE;
-    boolean KNOBS;
-    SSOrientation ORIENTATION;
+    private boolean KNOBS;
+    private SSOrientation ORIENTATION;
 
     protected final float[] POST_GLOW_FRACTIONS =
     {
@@ -86,6 +79,48 @@ public abstract class AbstractRadialKnobGlow extends Glow
         ColorTools.setAlpha(getGlowColor(), 0.1f),
         ColorTools.setAlpha(getGlowColor(), 0.2f),
         ColorTools.setAlpha(getGlowColor(), 0.1f)
+    };
+
+    protected final float[] GLOWRING_ON_FRACTIONS =
+    {
+        0.0f,
+        0.8999999f,
+        0.9f,
+        0.95f,
+        1.0f
+    };
+
+    protected final float[] GLOWRING_OFF_FRACTIONS =
+    {
+        0.0f,
+        0.17f,
+        0.33f,
+        0.34f,
+        0.63f,
+        0.64f,
+        0.83f,
+        1.0f
+    };
+    protected final Color[] GLOWRING_OFF_COLORS =
+    {
+        new Color(204, 204, 204, 102),
+        new Color(153, 153, 153, 102),
+        new Color(252, 252, 252, 102),
+        new Color(255, 255, 255, 102),
+        new Color(204, 204, 204, 102),
+        new Color(203, 203, 203, 102),
+        new Color(153, 153, 153, 102),
+        new Color(255, 255, 255, 102)
+    };
+    protected final float[] GLOWRING_HL_LOWERRIGHT_FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    protected final Color[] GLOWRING_HL_LOWERRIGHT_COLORS =
+    {
+        new Color(255, 255, 255, 140),
+        new Color(255, 255, 255, 0)
     };
 
     /**
@@ -129,42 +164,14 @@ public abstract class AbstractRadialKnobGlow extends Glow
         {
             final Point2D GLOWRING_OFF_START = new Point2D.Double(0, GLOWRING.getBounds2D().getMinY());
             final Point2D GLOWRING_OFF_STOP = new Point2D.Double(0, GLOWRING.getBounds2D().getMaxY());
-            final float[] GLOWRING_OFF_FRACTIONS =
-            {
-                0.0f,
-                0.17f,
-                0.33f,
-                0.34f,
-                0.63f,
-                0.64f,
-                0.83f,
-                1.0f
-            };
-            final Color[] GLOWRING_OFF_COLORS =
-            {
-                new Color(204, 204, 204, 102),
-                new Color(153, 153, 153, 102),
-                new Color(252, 252, 252, 102),
-                new Color(255, 255, 255, 102),
-                new Color(204, 204, 204, 102),
-                new Color(203, 203, 203, 102),
-                new Color(153, 153, 153, 102),
-                new Color(255, 255, 255, 102)
-            };
+
             final LinearGradientPaint GLOWRING_OFF_GRADIENT = new LinearGradientPaint(GLOWRING_OFF_START, GLOWRING_OFF_STOP, GLOWRING_OFF_FRACTIONS, GLOWRING_OFF_COLORS);
             graphics.setPaint(GLOWRING_OFF_GRADIENT);
             graphics.fill(GLOWRING);
         } else
         {
             final Point2D GLOWRING_ON_CENTER = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-            final float[] GLOWRING_ON_FRACTIONS =
-            {
-                0.0f,
-                0.8999999f,
-                0.9f,
-                0.95f,
-                1.0f
-            };
+
             final Color[] GLOWRING_ON_COLORS =
             {
                 ColorTools.setAlpha(getGlowColor(), 0.6f),
@@ -176,16 +183,14 @@ public abstract class AbstractRadialKnobGlow extends Glow
             final Paint GLOWRING_ON_GRADIENT = new RadialGradientPaint(GLOWRING_ON_CENTER, (float) (0.4158878504672897 * imageWidth), GLOWRING_ON_FRACTIONS, GLOWRING_ON_COLORS);
             graphics.setPaint(GLOWRING_ON_GRADIENT);
 
-            final BufferedImage CLIP_IMAGE_GLOWRING_ON;
+//            final BufferedImage CLIP_IMAGE_GLOWRING_ON;
 //            CLIP_IMAGE_GLOWRING_ON = Shadow.INSTANCE.createSoftClipImage((Shape) GLOWRING, GLOWRING_ON_GRADIENT);
-
             graphics.translate(-16, -16);
 //            graphics.drawImage(Shadow.INSTANCE.createDropShadow(CLIP_IMAGE_GLOWRING_ON, 0, 1.0f, 15, 315, getGlowColor()), GLOWRING.getBounds().x + 1, GLOWRING.getBounds().y + 1, null);
             graphics.translate(16, 16);
 
             paintGlow(graphics, dimensions);
 
-           
         }
 
         // add a little highlight lower right
@@ -193,23 +198,13 @@ public abstract class AbstractRadialKnobGlow extends Glow
         GLOWRING_HL.subtract(TMP_RING);
 
         final Point2D GLOWRING_HL_LOWERRIGHT_CENTER = new Point2D.Double((0.7336448598130841 * imageWidth), (0.8364485981308412 * imageHeight));
-        final float[] GLOWRING_HL_LOWERRIGHT_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-        final Color[] GLOWRING_HL_LOWERRIGHT_COLORS =
-        {
-            new Color(255, 255, 255, 140),
-            new Color(255, 255, 255, 0)
-        };
+
         final Paint GLOWRING_HL_LOWERRIGHT_GRADIENT = new RadialGradientPaint(GLOWRING_HL_LOWERRIGHT_CENTER, (float) (0.23598130841121495 * imageWidth), GLOWRING_HL_LOWERRIGHT_FRACTIONS, GLOWRING_HL_LOWERRIGHT_COLORS);
         graphics.setPaint(GLOWRING_HL_LOWERRIGHT_GRADIENT);
         graphics.fill(GLOWRING_HL);
 
         graphics.dispose();
     }
-
 
     protected abstract void paintGlow(Graphics2D graphics, Dimension dimensions);
 

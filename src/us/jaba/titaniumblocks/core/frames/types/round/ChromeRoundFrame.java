@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 public class ChromeRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions6 =
+    private float[] frameMainFractions6 =
     {
         0.0f,
         0.09f,
@@ -64,7 +64,7 @@ public class ChromeRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors6 =
+    private Color[] frameMainColors6 =
     {
         new Color(255, 255, 255, 255),
         new Color(255, 255, 255, 255),
@@ -96,8 +96,8 @@ public class ChromeRoundFrame extends RoundFrame
         graphics.fill(outerArea);
 
         mainArea.subtract(subtractArea);
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+//        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
         final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         Paint frameMainPaint6 = new ConicalGradientPaint(false, mainCenterPoint, 0, frameMainFractions6, frameMainColors6);

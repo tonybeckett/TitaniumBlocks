@@ -75,11 +75,13 @@ public class LinearLcd extends CoreModel
         linearFrameImageBuilder = new RectangularFrameImageFactory(new ShinyMetalLinearFrame());
         backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdrop());
         textImageBuilder = new TextImageFactory(new DoubleValueText());
-        lcdBackgroundBuilder = new BackdropImageFactory(new LcdBackdropModel());
+        
+        LcdBackdropModel lbm = new LcdBackdropModel();
+        lcdBackgroundBuilder = new BackdropImageFactory(lbm);
 
         foregroundImageBuilder = new FrontcoverImageFactory(new BasicLinearFrontcover());
         disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());
-
+        c = c;
     }
 
     public BackdropImageFactory getBackgroundImageBuilder()

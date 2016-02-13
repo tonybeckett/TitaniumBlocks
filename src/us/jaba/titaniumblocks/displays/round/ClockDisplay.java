@@ -57,7 +57,6 @@ import us.jaba.titaniumblocks.core.math.CoordinateDefs;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
 import us.jaba.titaniumblocks.core.pointers.types.LinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.Pencil2Pointer;
 import us.jaba.titaniumblocks.core.posts.NullPost;
@@ -66,7 +65,7 @@ import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersOutTickmarks;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
 import us.jaba.titaniumblocks.displays.RoundDisplay;
 
@@ -78,6 +77,8 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 {
 
     private PointerImageFactory hourPointerImage;
+    private final ShadowPointerImageFactory hrShadowPointerImage;
+    private final ShadowPointerImageFactory minShadowPointerImage;
     private PointerImageFactory minutePointerImage;
     private PointerImageFactory secondsPointerImage;
 
@@ -106,7 +107,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         backdropImage = new BackdropImageFactory(bmbp);
         add(backdropImage);
 
-        ClockNumbersTickmarks ct = new ClockNumbersTickmarks();
+        ClockNumbersOutTickmarks ct = new ClockNumbersOutTickmarks();
         ct.setTextColor(ColorPalette.BLACK);
         ct.setMajorColor(ColorPalette.BLACK);
         ct.setFont(BaseFont.SERIF_FONT);
@@ -125,32 +126,35 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         centerPostImage = new PostImageFactory(new NullPost());
         add(centerPostImage);
 
-        LineShadow t1spp = new LineShadow();
-        shadowImage = new ShadowPointerImageFactory(t1spp);
-        add(shadowImage);
-
         Pencil2Pointer hourp = new Pencil2Pointer();
         hourp.setPointerColor(new PureBlack());
         hourp.setFrontScale(0.65f);
         hourPointerImage = new PointerImageFactory(hourp);
         add(hourPointerImage);
+        hrShadowPointerImage = new ShadowPointerImageFactory(hourp);
+        add(hrShadowPointerImage);
 
         Pencil2Pointer minp = new Pencil2Pointer();
         minp.setPointerColor(new PureBlack());
 
         minp.setCenterPostEnable(true);
-        minp.setCenterScale(0.06f);
+        minp.setCenterScale(0.04f);
         minutePointerImage = new PointerImageFactory(minp);
         add(minutePointerImage);
+        minShadowPointerImage = new ShadowPointerImageFactory(minp);
+        add(minShadowPointerImage);
 
         LinePointer secp = new LinePointer();
         secp.setPointerColor(new PureRed());
+        secp.setFrontScale(0.6f);
         secp.setTailScale(0.2f);
         secp.setCenterPostEnable(true);
         secp.setCenterPinVisible(true);
-        minp.setCenterScale(0.04f);
+
         secondsPointerImage = new PointerImageFactory(secp);
         add(secondsPointerImage);
+        secShadowPointerImage = new ShadowPointerImageFactory(secp);
+        add(secShadowPointerImage);
 
         frontcoverImage = new FrontcoverImageFactory(new NullFrontcover());
         add(frontcoverImage);
@@ -160,6 +164,25 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
     public void setSize(Dimension dimensions)
     {
 
+    }
+
+    private int adjustOffset(int offset, double graphicsAngle)
+    {
+        int answer = offset;
+        int a = (int) CoordinateUtils.toDegrees(graphicsAngle);
+       
+        if (a > 95 && a < 165) // nw
+        {
+            answer = offset + 2;
+        } else if (a >= 165 && a <= 195)
+        {
+
+        } else if (a > 195 && a < 265) // ne
+        {
+            answer = offset - 2;
+        }
+
+        return answer;
     }
 
     @Override
@@ -185,44 +208,33 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         AffineTransform currentTransform = graphics.getTransform();
 
-        double angleStep = CoordinateUtils.calcGraphicsAngle(firstPointerValue +(secondPointerValue/12), circularLayout);
-       
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        double graphicsAngle = CoordinateUtils.calcGraphicsAngle(firstPointerValue + (secondPointerValue / 12), circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(hrShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset + 1, null);
         graphics.setTransform(currentTransform);
-
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(hourPointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
-        angleStep = CoordinateUtils.calcGraphicsAngle(secondPointerValue +(thirdPointerValue/60), circularLayout);
-        
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphicsAngle = CoordinateUtils.calcGraphicsAngle(secondPointerValue + (thirdPointerValue / 60), circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(minShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset + 1, null);
         graphics.setTransform(currentTransform);
-
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(minutePointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
-        angleStep = CoordinateUtils.calcGraphicsAngle(thirdPointerValue, circularLayout);
-        
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphicsAngle = CoordinateUtils.calcGraphicsAngle(thirdPointerValue, circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+       
+        graphics.drawImage(secShadowPointerImage.build(interiorDim),  adjustOffset(offset, graphicsAngle), offset - 1, null);
         graphics.setTransform(currentTransform);
-
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(secondsPointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
         graphics.drawImage(centerPostImage.build(interiorDim), offset, offset, null);
-       graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
     public double getFirstPointerValue()
@@ -243,7 +255,6 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
     public void setSecondPointerValue(double secondPointerValue)
     {
         this.secondPointerValue = secondPointerValue;
-                
 
     }
 
@@ -291,7 +302,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
 //    {
 //        this.hourPointerImage = new PointerImageFactory(pointerPainter);
-//        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
+//        this.secShadowPointerImage = new ShadowPointerImageFactory(shadowPainter);
 //    }
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {

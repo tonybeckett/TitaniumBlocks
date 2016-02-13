@@ -47,12 +47,6 @@ import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
 public abstract class AbstractRectangularBackdrop extends Backdrop
 {
 
-
-    public AbstractRectangularBackdrop()
-    {
-      
-    }
-
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -108,7 +102,7 @@ public abstract class AbstractRectangularBackdrop extends Backdrop
 
         graphics.fill(GAUGE_BACKGROUND);
 
-        final BufferedImage IMAGE = SoftClipImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0, 0);
+//        final BufferedImage IMAGE = SoftClipImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0, 0);
         BufferedImage CLP = InnerShadowImageGenerator.create((java.awt.Shape) GAUGE_BACKGROUND, gaugeBackgroundGradient, 0, 0.65f, ColorPalette.BLACK, 20, 315);
 
         graphics.drawImage(CLP, GAUGE_BACKGROUND.getBounds().x, GAUGE_BACKGROUND.getBounds().y, null);
@@ -125,7 +119,7 @@ public abstract class AbstractRectangularBackdrop extends Backdrop
 
     protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
     {
-
+// intentional
     }
 
 

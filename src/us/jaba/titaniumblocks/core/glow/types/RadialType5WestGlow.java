@@ -54,7 +54,7 @@ public class RadialType5WestGlow extends AbstractRadialKnobGlow
         Paint postGlowGradient;
 
         final Ellipse2D centerGlowShape = new Ellipse2D.Double();
-        final Point2D centerGlowPoint = new Point2D.Double();
+//        final Point2D centerGlowPoint = new Point2D.Double();
 
         Paint centerGlowGradient;
 

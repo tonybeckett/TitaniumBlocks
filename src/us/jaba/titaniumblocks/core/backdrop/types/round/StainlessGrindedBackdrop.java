@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.textures.types.StainlessSteelPlateTexture;
 public class StainlessGrindedBackdrop extends AbstractRoundBackdrop
 {
 
-    TextureImageBuilder builder;
+   private TextureImageBuilder builder;
 
     public StainlessGrindedBackdrop()
     {

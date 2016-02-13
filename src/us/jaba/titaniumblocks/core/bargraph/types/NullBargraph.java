@@ -41,7 +41,7 @@ public class NullBargraph extends AbstractBargraph
     @Override
     protected void paintBargraph(Graphics2D graphics, Dimension dimensions)
     {
-       
+       // intentional
     }
     
 }

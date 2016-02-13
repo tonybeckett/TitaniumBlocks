@@ -36,11 +36,11 @@ import java.awt.Color;
 public class BackdropColorModel
 {
 
-    final Color gradientStart;
-    final Color gradientFraction;
-    final Color gradientStop;
-    final Color label;
-    final Color symbol;
+    private final Color gradientStart;
+    private final Color gradientFraction;
+    private final Color gradientStop;
+    private final Color label;
+    private final Color symbol;
 
     public BackdropColorModel(Color gradientStart, Color gradientFraction, Color gradientStop, Color label, Color symbol)
     {

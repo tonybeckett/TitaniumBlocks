@@ -71,22 +71,22 @@ public class NoisePainter
         graphics.setClip(OLD_CLIP);
     }
 
-    public Color getDARK_NOISE()
+    public Color getDarkNoise()
     {
         return DARK_NOISE;
     }
 
-    public void setDARK_NOISE(Color DARK_NOISE)
+    public void setDarkNoise(Color DARK_NOISE)
     {
         this.DARK_NOISE = DARK_NOISE;
     }
 
-    public Color getBRIGHT_NOISE()
+    public Color getBrightNoise()
     {
         return BRIGHT_NOISE;
     }
 
-    public void setBRIGHT_NOISE(Color BRIGHT_NOISE)
+    public void setBrightNoise(Color BRIGHT_NOISE)
     {
         this.BRIGHT_NOISE = BRIGHT_NOISE;
     }

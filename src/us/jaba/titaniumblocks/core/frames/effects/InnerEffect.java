@@ -22,7 +22,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class InnerEffect extends BasicEffect
 {
 
-    final float[] effectFractions = new float[]
+    private final float[] effectFractions = new float[]
     {
         0.0f,
         0.3f,
@@ -31,7 +31,7 @@ public class InnerEffect extends BasicEffect
         1.0f
     };
 
-    final Color[] effectColors = new Color[]
+    private final Color[] effectColors = new Color[]
     {
         new Color(0, 0, 0, 183),
         new Color(148, 148, 148, 25),
@@ -45,7 +45,7 @@ public class InnerEffect extends BasicEffect
         final Ellipse2D EFFECT_BIGINNERFRAME = new Ellipse2D.Double(imageDim.getWidth() * 0.0607476644217968, imageDim.getHeight() * 0.0607476644217968, imageDim.getWidth() * 0.8785046339035034, imageDim.getHeight() * 0.8785046339035034);
         final Point2D EFFECT_BIGINNERFRAME_START = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMinY());
         final Point2D EFFECT_BIGINNERFRAME_STOP = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMaxY());
-         
+
         PointSupport.validateGradientPoints(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP);
         final LinearGradientPaint EFFECT_BIGINNERFRAME_GRADIENT = new LinearGradientPaint(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP, effectFractions, effectColors);
         graphics2D.setPaint(EFFECT_BIGINNERFRAME_GRADIENT);

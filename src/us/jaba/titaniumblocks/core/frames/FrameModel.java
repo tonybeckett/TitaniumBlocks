@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.frames;
 
-import java.awt.Color;
 import java.awt.Paint;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;

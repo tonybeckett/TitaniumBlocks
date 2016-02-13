@@ -17,7 +17,7 @@ public class BasicEffect
 
     public void apply(Graphics2D graphics2D, Area area)
     {
-        
+        // intentional
     }
     
 }

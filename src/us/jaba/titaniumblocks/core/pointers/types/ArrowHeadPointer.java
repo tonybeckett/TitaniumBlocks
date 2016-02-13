@@ -46,7 +46,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class ArrowHeadPointer extends GradientPointer
 {
 
-    final float[] gradientFractionArray = new float[]
+    private final float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.5f,

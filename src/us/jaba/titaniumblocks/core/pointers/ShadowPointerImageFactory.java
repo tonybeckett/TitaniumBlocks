@@ -20,7 +20,7 @@ import us.jaba.titaniumblocks.core.image.ImageSupport;
 public class ShadowPointerImageFactory extends CoreImageFactory
 {
 
-    Pointer painter = null;
+    private Pointer painter = null;
 
     public ShadowPointerImageFactory()
     {
@@ -39,7 +39,7 @@ public class ShadowPointerImageFactory extends CoreImageFactory
 
         if (painter != null)
         {
-            painter.paint(graphics2D, dimensions);
+            painter.paintShadow(graphics2D, dimensions);
         }
     }
 
@@ -48,7 +48,7 @@ public class ShadowPointerImageFactory extends CoreImageFactory
     {
         if (!ImageSupport.isValidSize(dimensions.width, dimensions.height))
         {
-            return ImageSupport.defaultSmallImage;
+            return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
         final BufferedImage res = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
 
@@ -79,7 +79,7 @@ public class ShadowPointerImageFactory extends CoreImageFactory
 //    {
 //        if (!ImageSupport.isValidDim(dimension))
 //        {
-//            return ImageSupport.defaultSmallImage;
+//            return ImageSupport.DEFAULT_SMALL_IMAGE;
 //        }
 ////        if (hasNotChanged(dimension, getModel()))
 ////        {

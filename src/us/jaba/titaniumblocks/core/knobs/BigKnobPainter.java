@@ -42,31 +42,31 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BigKnobPainter extends KnobPainter
 {
 
-    Color[] BIGCENTER_BACKGROUNDFRAME_COLORS;
-    Color[] BIGCENTER_BACKGROUND_COLORS;
-    Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
-    Color[] BIGCENTER_FOREGROUND_COLORS;
+    protected Color[] bigCenterBackgroundFrameColors;
+    protected Color[] BIGCENTER_BACKGROUND_COLORS;
+    protected Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
+    protected Color[] BIGCENTER_FOREGROUND_COLORS;
 
-    final float[] BIGCENTER_BACKGROUNDFRAME_FRACTIONS =
+    protected final float[] BIGCENTER_BACKGROUNDFRAME_FRACTIONS =
     {
         0.0f,
         1.0f
     };
     
-    final float[] BIGCENTER_BACKGROUND_FRACTIONS =
+   protected final float[] BIGCENTER_BACKGROUND_FRACTIONS =
     {
         0.0f,
         1.0f
     };
 
-    final float[] BIGCENTER_FOREGROUNDFRAME_FRACTIONS =
+   protected final float[] BIGCENTER_FOREGROUNDFRAME_FRACTIONS =
     {
         0.0f,
         0.47f,
         1.0f
     };
     
-    final float[] BIGCENTER_FOREGROUND_FRACTIONS =
+   protected final float[] BIGCENTER_FOREGROUND_FRACTIONS =
     {
         0.0f,
         0.21f,
@@ -81,7 +81,7 @@ public class BigKnobPainter extends KnobPainter
 
     protected BigKnobPainter(Color[] backgroundFrameColors, Color[] backgroundColors, Color[] foregroundFrameColors, Color[] foregroundColors)
     {
-        this.BIGCENTER_BACKGROUNDFRAME_COLORS = backgroundFrameColors;
+        this.bigCenterBackgroundFrameColors = backgroundFrameColors;
         this.BIGCENTER_BACKGROUND_COLORS = backgroundColors;
         this.BIGCENTER_FOREGROUNDFRAME_COLORS = foregroundFrameColors;
         this.BIGCENTER_FOREGROUND_COLORS = foregroundColors;
@@ -98,7 +98,7 @@ public class BigKnobPainter extends KnobPainter
         final Point2D BIGCENTER_BACKGROUNDFRAME_STOP = new Point2D.Double(0, BIGCENTER_BACKGROUNDFRAME.getBounds2D().getMaxY());
 
         PointSupport.validateGradientPoints(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP);
-        final LinearGradientPaint BIGCENTER_BACKGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP, BIGCENTER_BACKGROUNDFRAME_FRACTIONS, BIGCENTER_BACKGROUNDFRAME_COLORS);
+        final LinearGradientPaint BIGCENTER_BACKGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP, BIGCENTER_BACKGROUNDFRAME_FRACTIONS, bigCenterBackgroundFrameColors);
         graphics.setPaint(BIGCENTER_BACKGROUNDFRAME_GRADIENT);
         graphics.fill(BIGCENTER_BACKGROUNDFRAME);
 
@@ -130,45 +130,45 @@ public class BigKnobPainter extends KnobPainter
         graphics.fill(BIGCENTER_FOREGROUND);
     }
 
-    public Color[] getBIGCENTER_BACKGROUNDFRAME_COLORS()
+    public Color[] getBigCenterBackgroundFrameColors()
     {
-        return BIGCENTER_BACKGROUNDFRAME_COLORS;
+        return bigCenterBackgroundFrameColors;
     }
 
-    public Color[] getBIGCENTER_BACKGROUND_COLORS()
+    public Color[] getBigCenterBackgroundColors()
     {
         return BIGCENTER_BACKGROUND_COLORS;
     }
 
-    public Color[] getBIGCENTER_FOREGROUNDFRAME_COLORS()
+    public Color[] getBigCenterForegroundFrameColors()
     {
         return BIGCENTER_FOREGROUNDFRAME_COLORS;
     }
 
-    public Color[] getBIGCENTER_FOREGROUND_COLORS()
+    public Color[] getBigCenterForegroundColors()
     {
         return BIGCENTER_FOREGROUND_COLORS;
     }
 
-    public void setBIGCENTER_BACKGROUNDFRAME_COLORS(Color[] BIGCENTER_BACKGROUNDFRAME_COLORS)
+    public void setBigCenterBackgroundFrameColors(Color[] BigCenterBackgroundFrameColors)
     {
-        this.BIGCENTER_BACKGROUNDFRAME_COLORS = BIGCENTER_BACKGROUNDFRAME_COLORS;
+        this.bigCenterBackgroundFrameColors = BigCenterBackgroundFrameColors;
         changed();
     }
 
-    public void setBIGCENTER_BACKGROUND_COLORS(Color[] BIGCENTER_BACKGROUND_COLORS)
+    public void setBigCenterBackgroundColors(Color[] BIGCENTER_BACKGROUND_COLORS)
     {
         this.BIGCENTER_BACKGROUND_COLORS = BIGCENTER_BACKGROUND_COLORS;
         changed();
     }
 
-    public void setBIGCENTER_FOREGROUNDFRAME_COLORS(Color[] BIGCENTER_FOREGROUNDFRAME_COLORS)
+    public void setBigCenterForegroundFrameColors(Color[] BIGCENTER_FOREGROUNDFRAME_COLORS)
     {
         this.BIGCENTER_FOREGROUNDFRAME_COLORS = BIGCENTER_FOREGROUNDFRAME_COLORS;
         changed();
     }
 
-    public void setBIGCENTER_FOREGROUND_COLORS(Color[] BIGCENTER_FOREGROUND_COLORS)
+    public void setBigCenterForegroundColors(Color[] BIGCENTER_FOREGROUND_COLORS)
     {
         this.BIGCENTER_FOREGROUND_COLORS = BIGCENTER_FOREGROUND_COLORS;
         changed();

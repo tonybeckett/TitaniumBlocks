@@ -47,7 +47,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class WideTaperedPointPointer extends GradientPointer
 {
 
-    final static float[] gradientFractionArray = new float[]
+  private  final static float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.46f,

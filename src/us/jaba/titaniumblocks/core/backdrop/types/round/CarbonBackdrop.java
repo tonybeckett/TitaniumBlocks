@@ -41,13 +41,13 @@ import us.jaba.titaniumblocks.core.textures.types.CarbonTexture;
 public class CarbonBackdrop extends AbstractRoundBackdrop
 {
 
-    CarbonTexture painter;
+    private CarbonTexture painter;
     private final Rectangle rectangle;
-    private final OverlayPainter overlayPainter;
+    private  OverlayPainter overlayPainter;
 
     public CarbonBackdrop()
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
+        rectangle = new Rectangle(0, 0, 12, 12);
         painter = new CarbonTexture();
         overlayPainter = new OverlayPainter();
 
@@ -72,11 +72,21 @@ public class CarbonBackdrop extends AbstractRoundBackdrop
         this.painter = painter;
     }
 
+    public void setOverlayPainter(OverlayPainter overlayPainter)
+    {
+        this.overlayPainter = overlayPainter;
+    }
+
+    public OverlayPainter getOverlayPainter()
+    {
+        return overlayPainter;
+    }
+
     @Override
     protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
     {
         //Todo
- //       overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
+        //       overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
     }
-        
+
 }

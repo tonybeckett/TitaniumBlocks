@@ -21,8 +21,9 @@ import us.jaba.titaniumblocks.core.image.ShapeImageGenerator;
  */
 public class DropShadowImageGenerator
 {
-    
-    public static BufferedImage create(final BufferedImage SRC_IMAGE, final int DISTANCE, final float ALPHA, final int SOFTNESS, final int ANGLE, final Color SHADOW_COLOR) {
+
+    public static BufferedImage create(final BufferedImage SRC_IMAGE, final int DISTANCE, final float ALPHA, final int SOFTNESS, final int ANGLE, final Color SHADOW_COLOR)
+    {
         final float TRANSLATE_X = (float) (DISTANCE * Math.cos(Math.toRadians(360 - ANGLE)));
         final float TRANSLATE_Y = (float) (DISTANCE * Math.sin(Math.toRadians(360 - ANGLE)));
 
@@ -42,7 +43,8 @@ public class DropShadowImageGenerator
         return RESULT;
     }
 
-    public static BufferedImage create(final Shape SHAPE, final Paint PAINT, final Color COLOR, final boolean FILLED, final Stroke STROKE, final Color STROKE_COLOR, final int DISTANCE, final float ALPHA, final int SOFTNESS, final int ANGLE, final Color SHADOW_COLOR) {
+    public static BufferedImage create(final Shape SHAPE, final Paint PAINT, final Color COLOR, final boolean FILLED, final Stroke STROKE, final Color STROKE_COLOR, final int DISTANCE, final float ALPHA, final int SOFTNESS, final int ANGLE, final Color SHADOW_COLOR)
+    {
         final float TRANSLATE_X = (float) (DISTANCE * Math.cos(Math.toRadians(360 - ANGLE)));
         final float TRANSLATE_Y = (float) (DISTANCE * Math.sin(Math.toRadians(360 - ANGLE)));
 
@@ -64,23 +66,25 @@ public class DropShadowImageGenerator
         return RESULT;
     }
 
-    
-    
     /**
-     * <p>Generates the shadow for a given picture and the current properties
-     * of the renderer.</p>
-     * <p>The generated image dimensions are computed as following</p>
+     * <p>
+     * Generates the shadow for a given picture and the current properties of
+     * the renderer.</p>
+     * <p>
+     * The generated image dimensions are computed as following</p>
      * <pre>
      * width  = imageWidth  + 2 * shadowSize
      * height = imageHeight + 2 * shadowSize
      * </pre>
+     *
      * @param IMAGE image the picture from which the shadow must be cast
      * @param SOFTNESS
      * @param ALPHA
      * @param SHADOW_COLOR
      * @return the picture containing the shadow of <code>image</code>
      */
-    public static BufferedImage renderDropShadow(final BufferedImage IMAGE, final int SOFTNESS, final float ALPHA, final Color SHADOW_COLOR) {
+    public static BufferedImage renderDropShadow(final BufferedImage IMAGE, final int SOFTNESS, final float ALPHA, final Color SHADOW_COLOR)
+    {
         // Written by Sesbastien Petrucci
         final int SHADOW_SIZE = SOFTNESS * 2;
 
@@ -117,13 +121,15 @@ public class DropShadowImageGenerator
         int[] hSumLookup = new int[256 * SHADOW_SIZE];
         max = hSumLookup.length;
 
-        for (int i = 0; i < max; i++) {
+        for (int i = 0; i < max; i++)
+        {
             hSumLookup[i] = (int) (i * H_SUM_DIVIDER);
         }
 
         int[] vSumLookup = new int[256 * SHADOW_SIZE];
         max = vSumLookup.length;
-        for (int i = 0; i < max; i++) {
+        for (int i = 0; i < max; i++)
+        {
             vSumLookup[i] = (int) (i * V_SUM_DIVIDER);
         }
 
@@ -131,9 +137,11 @@ public class DropShadowImageGenerator
 
         // horizontal pass  extract the alpha mask from the source picture and
         // blur it into the destination picture
-        for (int srcY = 0, dstOffset = LEFT * DST_WIDTH; srcY < SRC_HEIGHT; srcY++) {
+        for (int srcY = 0, dstOffset = LEFT * DST_WIDTH; srcY < SRC_HEIGHT; srcY++)
+        {
             // first pixels are empty
-            for (historyIdx = 0; historyIdx < SHADOW_SIZE;) {
+            for (historyIdx = 0; historyIdx < SHADOW_SIZE;)
+            {
                 aHistory[historyIdx++] = 0;
             }
 
@@ -142,7 +150,8 @@ public class DropShadowImageGenerator
             srcOffset = srcY * SRC_WIDTH;
 
             // compute the blur average with pixels from the source image
-            for (int srcX = 0; srcX < SRC_WIDTH; srcX++) {
+            for (int srcX = 0; srcX < SRC_WIDTH; srcX++)
+            {
                 int a = hSumLookup[aSum];
                 dstBuffer[dstOffset++] = a << 24; // store the alpha value only
                 // the shadow color will be added in the next pass
@@ -154,36 +163,43 @@ public class DropShadowImageGenerator
                 aHistory[historyIdx] = a; // ... and store its value into history
                 aSum += a; // ... and add its value to the sum
 
-                if (++historyIdx >= SHADOW_SIZE) {
+                if (++historyIdx >= SHADOW_SIZE)
+                {
                     historyIdx -= SHADOW_SIZE;
                 }
             }
 
             // blur the end of the row - no new pixels to grab
-            for (int i = 0; i < SHADOW_SIZE; i++) {
+            for (int i = 0; i < SHADOW_SIZE; i++)
+            {
                 final int A = hSumLookup[aSum];
                 dstBuffer[dstOffset++] = A << 24;
 
                 // substract the oldest pixel from the sum ... and nothing new to add !
                 aSum -= aHistory[historyIdx];
 
-                if (++historyIdx >= SHADOW_SIZE) {
+                if (++historyIdx >= SHADOW_SIZE)
+                {
                     historyIdx -= SHADOW_SIZE;
                 }
             }
         }
 
         // vertical pass
-        for (int x = 0, bufferOffset = 0; x < DST_WIDTH; x++, bufferOffset = x) {
+        int bufferOffset = 0;
+        for (int x = 0; x < DST_WIDTH; x++, bufferOffset = x)
+        {
             aSum = 0;
 
             // first pixels are empty
-            for (historyIdx = 0; historyIdx < LEFT;) {
+            for (historyIdx = 0; historyIdx < LEFT;)
+            {
                 aHistory[historyIdx++] = 0;
             }
 
             // and then they come from the dstBuffer
-            for (int y = 0; y < RIGHT; y++, bufferOffset += DST_WIDTH) {
+            for (int y = 0; y < RIGHT; y++, bufferOffset += DST_WIDTH)
+            {
                 final int A = dstBuffer[bufferOffset] >>> 24; // extract alpha
                 aHistory[historyIdx++] = A; // store into history
                 aSum += A; // and add to sum
@@ -193,7 +209,8 @@ public class DropShadowImageGenerator
             historyIdx = 0;
 
             // compute the blur avera`ge with pixels from the previous pass
-            for (int y = 0; y < Y_STOP; y++, bufferOffset += DST_WIDTH) {
+            for (int y = 0; y < Y_STOP; y++, bufferOffset += DST_WIDTH)
+            {
 
                 int a = vSumLookup[aSum];
                 dstBuffer[bufferOffset] = a << 24 | SHADOW_RGB; // store alpha value + shadow color
@@ -204,20 +221,23 @@ public class DropShadowImageGenerator
                 aHistory[historyIdx] = a; // ... and store its value into history
                 aSum += a; // ... and add its value to the sum
 
-                if (++historyIdx >= SHADOW_SIZE) {
+                if (++historyIdx >= SHADOW_SIZE)
+                {
                     historyIdx -= SHADOW_SIZE;
                 }
             }
 
             // blur the end of the column - no pixels to grab anymore
-            for (int y = Y_STOP; y < DST_HEIGHT; y++, bufferOffset += DST_WIDTH) {
+            for (int y = Y_STOP; y < DST_HEIGHT; y++, bufferOffset += DST_WIDTH)
+            {
 
                 final int A = vSumLookup[aSum];
                 dstBuffer[bufferOffset] = A << 24 | SHADOW_RGB;
 
                 aSum -= aHistory[historyIdx]; // substract the oldest pixel from the sum
 
-                if (++historyIdx >= SHADOW_SIZE) {
+                if (++historyIdx >= SHADOW_SIZE)
+                {
                     historyIdx -= SHADOW_SIZE;
                 }
             }

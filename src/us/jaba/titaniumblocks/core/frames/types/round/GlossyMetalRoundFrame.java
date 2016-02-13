@@ -58,9 +58,9 @@ public class GlossyMetalRoundFrame extends RoundFrame
         graphics.fill(outerArea);
 
         mainArea.subtract(subtractArea);
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+//        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+//        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         graphics.setPaint(new RadialGradientPaint(new Point2D.Double(0.5 * imageWidth, 0.5 * imageHeight), imageWidth * 0.5f, new float[]
         {

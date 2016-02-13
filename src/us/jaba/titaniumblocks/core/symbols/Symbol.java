@@ -65,7 +65,7 @@ public class Symbol extends CoreModel
         paintSymbol(symbol, dimensions);
 
         int imageWidth = (int) dimensions.getWidth();
-        int imageHeight = (int) dimensions.getHeight();
+//        int imageHeight = (int) dimensions.getHeight();
 
         Color FILL_COLOR = paintColor.brighter();
         Color STROKE_COLOR = ColorTools.setAlpha(paintColor.darker(), 0.5f);
@@ -114,7 +114,7 @@ public class Symbol extends CoreModel
 
     protected void paintSymbol(GeneralPath path, Dimension dimensions)
     {
-
+        // intentional
     }
 
 }

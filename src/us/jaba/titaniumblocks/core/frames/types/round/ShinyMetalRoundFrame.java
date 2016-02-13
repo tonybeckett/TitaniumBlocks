@@ -46,7 +46,7 @@ public class ShinyMetalRoundFrame extends RoundFrame
     private boolean baseColor_ENABLED;
     private Color baseColor;
 
-    float[] frameMainFractions3 =
+    private float[] frameMainFractions3 =
     {
         0.0f,
         45.0f,
@@ -108,7 +108,7 @@ public class ShinyMetalRoundFrame extends RoundFrame
         graphics.setPaint(gradPaint);
         graphics.fill(mainArea);
 
-       innerArea.subtract(subtractArea);
+        innerArea.subtract(subtractArea);
 
         // Former white ring
         graphics.setPaint(innerFrameColor);
@@ -119,7 +119,6 @@ public class ShinyMetalRoundFrame extends RoundFrame
 
         this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
         graphics.dispose();
-
 
     }
 

@@ -394,38 +394,39 @@ public class HSLColor
 
         float p = 2 * l - q;
 
-        float r = Math.max(0, HueToRGB(p, q, h + (1.0f / 3.0f)));
-        float g = Math.max(0, HueToRGB(p, q, h));
-        float b = Math.max(0, HueToRGB(p, q, h - (1.0f / 3.0f)));
+        float r = Math.max(0, hueToRGB(p, q, h + (1.0f / 3.0f)));
+        float g = Math.max(0, hueToRGB(p, q, h));
+        float b = Math.max(0, hueToRGB(p, q, h - (1.0f / 3.0f)));
 
         return new Color(r, g, b, alpha);
     }
 
-    private static float HueToRGB(float p, float q, float h)
+    private static float hueToRGB(float p, float q, float h)
     {
-        if (h < 0)
+        float hh = h;
+        if (hh < 0)
         {
-            h += 1;
+            hh += 1;
         }
 
-        if (h > 1)
+        if (hh > 1)
         {
-            h -= 1;
+            hh -= 1;
         }
 
-        if (6 * h < 1)
+        if (6 * hh < 1)
         {
-            return p + ((q - p) * 6 * h);
+            return p + ((q - p) * 6 * hh);
         }
 
-        if (2 * h < 1)
+        if (2 * hh < 1)
         {
             return q;
         }
 
-        if (3 * h < 2)
+        if (3 * hh < 2)
         {
-            return p + ((q - p) * 6 * ((2.0f / 3.0f) - h));
+            return p + ((q - p) * 6 * ((2.0f / 3.0f) - hh));
         }
 
         return p;

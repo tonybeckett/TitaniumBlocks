@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GoldRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions7 =
+   private float[] frameMainFractions7 =
     {
         0.0f,
         0.15f,
@@ -59,7 +59,7 @@ public class GoldRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors7 =
+    private  Color[] frameMainColors7 =
     {
         new Color(255, 255, 207, 255),
         new Color(255, 237, 96, 255),

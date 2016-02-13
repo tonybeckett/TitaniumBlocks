@@ -46,28 +46,28 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class RoundDialLed extends Led
 {
 
-    final float[] LED_FRACTIONS =
+    private final float[] LED_FRACTIONS =
     {
         0.0f,
         0.2f,
         1.0f
     };
 
-    final float[] LED_INNER_SHADOW_FRACTIONS =
+    private final float[] LED_INNER_SHADOW_FRACTIONS =
     {
         0.0f,
         0.8f,
         1.0f
     };
 
-    final Color[] LED_INNER_SHADOW_COLORS =
+    private final Color[] LED_INNER_SHADOW_COLORS =
     {
         new Color(0.0f, 0.0f, 0.0f, 0.0f),
         new Color(0.0f, 0.0f, 0.0f, 0.0f),
         new Color(0.0f, 0.0f, 0.0f, 0.4f),
     };
 
-    final float[] LED_ON_CORONA_FRACTIONS =
+    private final float[] LED_ON_CORONA_FRACTIONS =
     {
         0.0f,
         0.6f,
@@ -100,14 +100,14 @@ public class RoundDialLed extends Led
 
         LED_ON_COLORS = new Color[]
         {
-           getLedColor().getInner1On(),// LED_COLOR.INNER_COLOR1_ON,
-           getLedColor().getInner2On(),// LED_COLOR.INNER_COLOR2_ON,
-           getLedColor().getOuterOn()// LED_COLOR.OUTER_COLOR_ON
+            getLedColor().getInner1On(),// LED_COLOR.INNER_COLOR1_ON,
+            getLedColor().getInner2On(),// LED_COLOR.INNER_COLOR2_ON,
+            getLedColor().getOuterOn()// LED_COLOR.OUTER_COLOR_ON
         };
 
         LED_ON_CORONA_COLORS = new Color[]
         {
-            ColorTools.setAlpha(getLedColor().getCorona() , 0.0f),
+            ColorTools.setAlpha(getLedColor().getCorona(), 0.0f),
             ColorTools.setAlpha(getLedColor().getCorona(), 0.4f),
             ColorTools.setAlpha(getLedColor().getCorona(), 0.25f),
             ColorTools.setAlpha(getLedColor().getCorona(), 0.15f),
@@ -116,7 +116,6 @@ public class RoundDialLed extends Led
         };
 
         // Define gradients for the lower led
-      
         final RadialGradientPaint LED_ON_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.25f * width, LED_FRACTIONS, LED_ON_COLORS);
         final RadialGradientPaint LED_INNER_SHADOW_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.25f * width, LED_INNER_SHADOW_FRACTIONS, LED_INNER_SHADOW_COLORS);
         final RadialGradientPaint LED_ON_CORONA_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.5f * width, LED_ON_CORONA_FRACTIONS, LED_ON_CORONA_COLORS);

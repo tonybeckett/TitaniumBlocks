@@ -86,7 +86,7 @@ public abstract class AbstractRoundBackdrop extends Backdrop
         applyOverlay(graphics, dimensions, GAUGE_BACKGROUND);
 
 //        final Ellipse2D innerShadow = new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031);
-        final Ellipse2D innerShadow = new Ellipse2D.Double(0 , 0 , imageWidth , imageHeight );
+//        final Ellipse2D innerShadow = new Ellipse2D.Double(0 , 0 , imageWidth , imageHeight );
         final Point2D centerPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
         final float[] GAUGE_INNERSHADOW_FRACTIONS =
         {
@@ -124,7 +124,7 @@ public abstract class AbstractRoundBackdrop extends Backdrop
 
     protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Ellipse2D GAUGE_BACKGROUND)
     {
-
+// intentional
     }
 
 }

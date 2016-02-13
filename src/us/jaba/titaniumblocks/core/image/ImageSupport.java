@@ -26,9 +26,9 @@ import javax.imageio.ImageIO;
 public class ImageSupport
 {
 
-    final static GraphicsConfiguration defaultGraphicsConfig = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
+    public final static GraphicsConfiguration DEFAULT_GRAPHICS_CONFIG = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
 
-    public static final BufferedImage defaultSmallImage = defaultGraphicsConfig.createCompatibleImage(1, 1, Transparency.TRANSLUCENT);
+    public static final BufferedImage DEFAULT_SMALL_IMAGE = DEFAULT_GRAPHICS_CONFIG.createCompatibleImage(1, 1, Transparency.TRANSLUCENT);
 
     public static boolean isValidSize(final int height, final int width)
     {
@@ -270,7 +270,7 @@ public class ImageSupport
      * image of type different from <code>BufferedImage.TYPE_INT_ARGB</code> and
      * <code>BufferedImage.TYPE_INT_RGB</code> will unmanage the image.</p>
      *
-     * @param IMAGE the source image
+     * @param image the source image
      * @param X the x location at which to start grabbing pixels
      * @param Y the y location at which to start grabbing pixels
      * @param W the width of the rectangle of pixels to grab
@@ -281,30 +281,35 @@ public class ImageSupport
      * @throws IllegalArgumentException is <code>pixels</code> is non-null and
      * of length &lt; w*h
      */
-    public static int[] getPixels(final BufferedImage IMAGE, final int X, final int Y, final int W, final int H, int[] pixels)
+    public static int[] getPixels(final BufferedImage image, final int X, final int Y, final int W, final int H, int[] pixels)
     {
+        int[] newPixels = new int[0];
+
         if (W == 0 || H == 0)
         {
-            return new int[0];
-        }
-
-        if (pixels == null)
+            newPixels = new int[0];
+        } else if (pixels == null)
         {
-            pixels = new int[W * H];
+            newPixels = new int[W * H];
         } else if (pixels.length < W * H)
         {
             throw new IllegalArgumentException("pixels array must have a length " + " >= w*h");
-        }
-
-        int imageType = IMAGE.getType();
-        if (imageType == BufferedImage.TYPE_INT_ARGB || imageType == BufferedImage.TYPE_INT_RGB)
+        } else
         {
-            Raster raster = IMAGE.getRaster();
-            return (int[]) raster.getDataElements(X, Y, W, H, pixels);
+
+            int imageType = image.getType();
+            if (imageType == BufferedImage.TYPE_INT_ARGB || imageType == BufferedImage.TYPE_INT_RGB)
+            {
+                Raster raster = image.getRaster();
+                newPixels = (int[]) raster.getDataElements(X, Y, W, H, pixels);
+            } else
+            {
+                // Unmanages the image
+                newPixels = image.getRGB(X, Y, W, H, pixels, 0, W);
+            }
         }
 
-        // Unmanages the image
-        return IMAGE.getRGB(X, Y, W, H, pixels, 0, W);
+        return newPixels;
     }
 
     /**
@@ -314,7 +319,7 @@ public class ImageSupport
      * different from <code>BufferedImage.TYPE_INT_ARGB</code> and
      * <code>BufferedImage.TYPE_INT_RGB</code> will unmanage the image.</p>
      *
-     * @param IMAGE the destination image
+     * @param image the destination image
      * @param X the x location at which to start storing pixels
      * @param Y the y location at which to start storing pixels
      * @param W the width of the rectangle of pixels to store
@@ -323,8 +328,9 @@ public class ImageSupport
      * @throws IllegalArgumentException is <code>pixels</code> is non-null and
      * of length &lt; w*h
      */
-    public static void setPixels(final BufferedImage IMAGE, final int X, final int Y, final int W, final int H, int[] pixels)
+    public static void setPixels(final BufferedImage image, final int X, final int Y, final int W, final int H, int[] pixels)
     {
+          
         if (pixels == null || W == 0 || H == 0)
         {
             return;
@@ -333,15 +339,15 @@ public class ImageSupport
             throw new IllegalArgumentException("pixels array must have a length" + " >= w*h");
         }
 
-        int imageType = IMAGE.getType();
+        int imageType = image.getType();
         if (imageType == BufferedImage.TYPE_INT_ARGB || imageType == BufferedImage.TYPE_INT_RGB)
         {
-            WritableRaster raster = IMAGE.getRaster();
+            WritableRaster raster = image.getRaster();
             raster.setDataElements(X, Y, W, H, pixels);
         } else
         {
             // Unmanages the image
-            IMAGE.setRGB(X, Y, W, H, pixels, 0, W);
+            image.setRGB(X, Y, W, H, pixels, 0, W);
         }
     }
 

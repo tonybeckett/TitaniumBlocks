@@ -44,10 +44,10 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GradientBigPost extends Post
 {
 
-    final Color[] BIGCENTER_BACKGROUNDFRAME_COLORS;
-    final Color[] BIGCENTER_BACKGROUND_COLORS;
-    final Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
-    final Color[] BIGCENTER_FOREGROUND_COLORS;
+    private final Color[] BIGCENTER_BACKGROUNDFRAME_COLORS;
+    private final Color[] BIGCENTER_BACKGROUND_COLORS;
+    private final Color[] BIGCENTER_FOREGROUNDFRAME_COLORS;
+    private final Color[] BIGCENTER_FOREGROUND_COLORS;
 
     public GradientBigPost(GradientPalette gd)
     {

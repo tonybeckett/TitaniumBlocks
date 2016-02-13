@@ -46,11 +46,22 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  */
 public class RectangularFrame extends FrameModel
 {
-    protected static final float[] SEVEN_FRACTION_ARRAY = {0.0F, 0.05F, 0.1F, 0.5F, 0.9F, 0.95F, 1.0F};
 
-    protected static final float[] ELEVEN_FRACTION_ARRAY = {0.0F, 0.15F, 0.22F, 0.3F, 0.38F, 0.44F, 0.51F, 0.6F, 0.68F, 0.75F, 1.0F};
+    public static final int DEFAULT_FRAME_THICKNESS = 16;
+    protected static final float[] SEVEN_FRACTION_ARRAY =
+    {
+        0.0F, 0.05F, 0.1F, 0.5F, 0.9F, 0.95F, 1.0F
+    };
 
-    protected static final float[] NULL_FRACTION_ARRAY = {0.0F, 0.0F};
+    protected static final float[] ELEVEN_FRACTION_ARRAY =
+    {
+        0.0F, 0.15F, 0.22F, 0.3F, 0.38F, 0.44F, 0.51F, 0.6F, 0.68F, 0.75F, 1.0F
+    };
+
+    protected static final float[] NULL_FRACTION_ARRAY =
+    {
+        0.0F, 0.0F
+    };
 
     protected static final float[] FOUR_FRACTION_ARRAY =
     {
@@ -59,12 +70,21 @@ public class RectangularFrame extends FrameModel
         0.12f,
         1.0f
     };
-    
-    protected static Color[] NULL_COLOR_ARRAY = {new Color(254, 254, 254, 255), new Color(0, 0, 0, 255)};
 
+    protected static Color[] NULL_COLOR_ARRAY =
+    {
+        new Color(254, 254, 254, 255), new Color(0, 0, 0, 255)
+    };
 
-    protected static final float[] SEVENTEEN_FRACTION_ARRAY = {0.0F, 0.09F, 0.12F, 0.16F, 0.25F, 0.29F, 0.33F, 0.38F, 0.48F, 0.52F, 0.63F, 0.68F, 0.8F, 0.83F, 0.87F, 0.97F, 1.0F};
-    
+    protected static final float[] SEVENTEEN_FRACTION_ARRAY =
+    {
+        0.0F, 0.09F, 0.12F, 0.16F, 0.25F, 0.29F, 0.33F, 0.38F, 0.48F, 0.52F, 0.63F, 0.68F, 0.8F, 0.83F, 0.87F, 0.97F, 1.0F
+    };
+    private RectangularFrameEffectPainter linearEffect = new NoEffect();
+
+    protected int frameThickness = DEFAULT_FRAME_THICKNESS;
+    protected Dimension interiorDimension = new Dimension(1, 1);
+
     private float[] gradientFractions;
     private Color[] gradientColors;
 
@@ -73,12 +93,6 @@ public class RectangularFrame extends FrameModel
         gradientFractions = fractions;
         gradientColors = colors;
     }
-
-    public static final int DEFAULT_FRAME_THICKNESS = 16;
-    private RectangularFrameEffectPainter linearEffect = new NoEffect();
-
-    protected int frameThickness = DEFAULT_FRAME_THICKNESS;
-    protected Dimension interiorDimension = new Dimension(1, 1);
 
     public Dimension getInteriorDimension()
     {
@@ -141,7 +155,7 @@ public class RectangularFrame extends FrameModel
             innerAreaCornerRadius = imageWidth * 0.02857143;
         }
 
-        final Area innerArea = new Area(new java.awt.geom.RoundRectangle2D.Double(
+        final Area innerArea = new Area(new RoundRectangle2D.Double(
                 mainArea.getBounds2D().getX() + frameThickness,
                 mainArea.getBounds2D().getY() + frameThickness,
                 mainArea.getBounds2D().getWidth() - (frameThickness * 2),
@@ -201,7 +215,7 @@ public class RectangularFrame extends FrameModel
 //    }
     protected void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
-
+// intentional
     }
 
     protected void basicPaintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
@@ -233,7 +247,7 @@ public class RectangularFrame extends FrameModel
 
     protected void basicPaintConticalFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
-      final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         // Paint outer frame after we subtracted the inner background shape
         outerArea.subtract(subtractArea);
@@ -241,7 +255,7 @@ public class RectangularFrame extends FrameModel
 
         Paint gradient = new ConicalGradientPaint(false, mainCenterPoint, 0, gradientFractions, gradientColors);
         graphics.setPaint(gradient);
-        
+
         mainArea.subtract(subtractArea);
         graphics.fill(mainArea);
 //
@@ -254,6 +268,16 @@ public class RectangularFrame extends FrameModel
 
         graphics.dispose();
 
+    }
+
+    public void setGradientFractions(float[] gradientFractions)
+    {
+        this.gradientFractions = gradientFractions;
+    }
+
+    public void setGradientColors(Color[] gradientColors)
+    {
+        this.gradientColors = gradientColors;
     }
 
 }

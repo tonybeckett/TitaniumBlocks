@@ -48,7 +48,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class DualLinesPointer extends GradientPointer
 {
 
-    final static float[] gradientFractionArray = new float[]
+    private final static float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.25f,
@@ -104,8 +104,8 @@ public class DualLinesPointer extends GradientPointer
         //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
 
         final Shape pointerShape = getShape(dimensions);
         final Point2D startPoint;
@@ -113,7 +113,7 @@ public class DualLinesPointer extends GradientPointer
         
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        float magnitude = 1.0f - this.getRadiusPercent();
+//        float magnitude = 1.0f - this.getRadiusPercent();
 //
 //        pointerShape = new GeneralPath();
 //        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);

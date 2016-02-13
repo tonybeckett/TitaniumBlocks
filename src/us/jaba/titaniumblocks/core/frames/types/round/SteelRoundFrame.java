@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class SteelRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions5 =
+    private float[] frameMainFractions5 =
     {
         0.0f,
         0.05f,
@@ -55,7 +55,7 @@ public class SteelRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors5 =
+    private Color[] frameMainColors5 =
     {
         new Color(231, 237, 237, 255),
         new Color(189, 199, 198, 255),
@@ -80,7 +80,7 @@ public class SteelRoundFrame extends RoundFrame
         mainArea.subtract(subtractArea);
         final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
         final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+//        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
         Paint frameMainPaint5 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions5, frameMainColors5);
@@ -95,7 +95,6 @@ public class SteelRoundFrame extends RoundFrame
 
         // Frame effect overlay
         final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-        
 
         this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
         graphics.dispose();

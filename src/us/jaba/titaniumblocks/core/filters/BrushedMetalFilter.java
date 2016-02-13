@@ -27,11 +27,13 @@
  */
 package us.jaba.titaniumblocks.core.filters;
 
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
+import java.awt.image.ColorModel;
 
 
 /*
@@ -115,8 +117,9 @@ public class BrushedMetalFilter implements BufferedImageOp
         return destination;
     }
 
-    private int random(int x)
+    private int random(int seed)
     {
+        int x = seed;
         x += (int) (255 * (2 * randomNumbers.nextFloat() - 1) * amount);
         if (x < 0)
         {
@@ -152,21 +155,24 @@ public class BrushedMetalFilter implements BufferedImageOp
      */
     private static int mod(int a, final int B)
     {
-        final int N = a / B;
+        int result = a;
+        final int N = result / B;
 
-        a -= N * B;
-        if (a < 0)
+        result -= N * B;
+        if (result < 0)
         {
-            return a + B;
+            return result + B;
         }
-        return a;
+        return result;
     }
 
     public void blur(final int[] IN, final int[] OUT, final int width, final int RADIUS)
     {
         final int WIDTH_MINUS_1 = width - 1;
         final int R2 = 2 * RADIUS + 1;
-        int tr = 0, tg = 0, tb = 0;
+        int tr = 0;
+        int tg = 0;
+        int tb = 0;
 
         for (int i = -RADIUS; i <= RADIUS; i++)
         {
@@ -250,30 +256,31 @@ public class BrushedMetalFilter implements BufferedImageOp
     }
 
     @Override
-    public BufferedImage createCompatibleDestImage(final BufferedImage SOURCE, java.awt.image.ColorModel dstCM)
+    public BufferedImage createCompatibleDestImage(final BufferedImage SOURCE, ColorModel dstCM)
     {
-        if (dstCM == null)
-        {
-            dstCM = SOURCE.getColorModel();
-        }
+//        if (dstCM == null)
+//        {
+//            dstCM = SOURCE.getColorModel();
+//        }
         return new BufferedImage(dstCM, dstCM.createCompatibleWritableRaster(SOURCE.getWidth(), SOURCE.getHeight()), dstCM.isAlphaPremultiplied(), null);
     }
 
     @Override
     public Rectangle2D getBounds2D(final BufferedImage SOURCE)
     {
-        return new java.awt.Rectangle(0, 0, SOURCE.getWidth(), SOURCE.getHeight());
+        return new Rectangle(0, 0, SOURCE.getWidth(), SOURCE.getHeight());
     }
 
     @Override
     public Point2D getPoint2D(final Point2D SOURCE_POINT, Point2D dstPt)
     {
-        if (dstPt == null)
-        {
-            dstPt = new Point2D.Double();
-        }
-        dstPt.setLocation(SOURCE_POINT.getX(), SOURCE_POINT.getY());
-        return dstPt;
+        Point2D answer = dstPt;
+//        if (dstPt == null)
+//        {
+//            answer = new Point2D.Double();
+//        }
+        answer.setLocation(SOURCE_POINT.getX(), SOURCE_POINT.getY());
+        return answer;
     }
 
     @Override

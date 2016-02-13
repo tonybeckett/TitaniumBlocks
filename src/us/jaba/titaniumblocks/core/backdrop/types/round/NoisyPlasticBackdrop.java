@@ -45,16 +45,16 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
 {
 
-    TextureImageBuilder builder;
+    private TextureImageBuilder builder;
     private Color textureColor = ColorPalette.GRAY.darker();
     private final NoisePainter noisePainter;
 
-    final float[] FRACTIONS =
+    private final float[] FRACTIONS =
     {
         0.0f,
         1.0f
     };
-    Color[] COLORS =
+    private final Color[] COLORS =
     {
         ColorTools.lighter(textureColor, 0.15f),
         ColorTools.darker(textureColor, 0.15f)

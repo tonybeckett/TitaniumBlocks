@@ -135,18 +135,15 @@ public class SixteenSegmentCharacter extends CoreModel
 
     private void paintSegment(Graphics2D g, boolean active, Point... points)
     {
-        if (points != null)
+        if (points != null && active)
         {
-            if (active)
+            g.setColor(activeSegmentColor);
+            Polygon polygon = new Polygon();
+            for (Point point : points)
             {
-                g.setColor(activeSegmentColor);
-                Polygon polygon = new Polygon();
-                for (Point point : points)
-                {
-                    polygon.addPoint(point.x, point.y);
-                }
-                g.fillPolygon(polygon);
+                polygon.addPoint(point.x, point.y);
             }
+            g.fillPolygon(polygon);
         }
     }
 

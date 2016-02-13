@@ -46,8 +46,8 @@ public class PolarSmallPostFactory extends CoreImageFactory
 {
 
     public static final double DEFAULT_SIZE_ADJUST = 0.03738316893577576;
-    KnobImageFactory knobImageFactory;
-    Polar postPosition;
+    private KnobImageFactory knobImageFactory;
+    private Polar postPosition;
     private double sizeAdjust = DEFAULT_SIZE_ADJUST;
 
     public PolarSmallPostFactory(KnobImageFactory iFactory, Polar unityPosition)
@@ -69,10 +69,10 @@ public class PolarSmallPostFactory extends CoreImageFactory
         Graphics2D graphics = result.createGraphics();
 
         Point2D.Double resultCenterPoint = new Point2D.Double(result.getWidth() / 2.0, result.getHeight() / 2.0);
-      
+
         Point2D rcp = CoordinateUtils.toPoint2DFromCenter(resultCenterPoint, postPosition);
 
-        Polar p = CoordinateUtils.toPolar(rcp);
+//        Polar p = CoordinateUtils.toPolar(rcp);
         graphics.drawImage(image, (int) (rcp.getX() - (image.getWidth() / 2)), (int) (rcp.getY() - (image.getHeight() / 2)), null);
     }
 
@@ -81,7 +81,7 @@ public class PolarSmallPostFactory extends CoreImageFactory
     {
         if (!ImageSupport.isValidSize(dimensions.width, dimensions.height))
         {
-            return ImageSupport.defaultSmallImage;
+            return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
 
         BufferedImage mresult = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);

@@ -134,8 +134,8 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
         add(centerPostImage);
 
         LineShadow t1spp = new LineShadow();
-        shadowImage = new ShadowPointerImageFactory(t1spp);
-        add(shadowImage);
+        secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
+        add(secShadowPointerImage);
 
 //        Pencil2Pointer hourp = new Pencil2Pointer();
 //        hourp.setPointerColor(new PureBlack());
@@ -203,7 +203,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 //       
 //        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 //
-//        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+//        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2, null);
 //        graphics.setTransform(currentTransform);
 //        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 //
@@ -213,7 +213,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2 - (interiorDim.height / 4));
 
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2 - (interiorDim.height / 4), null);
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2 - (interiorDim.height / 4), null);
         graphics.setTransform(currentTransform);
 
         graphics.rotate(angleStep, dimensions.width / 2, (dimensions.height / 2) - (interiorDim.height / 4));
@@ -225,7 +225,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2, null);
         graphics.setTransform(currentTransform);
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
@@ -302,7 +302,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
 //    {
 //        this.hourPointerImage = new PointerImageFactory(pointerPainter);
-//        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
+//        this.secShadowPointerImage = new ShadowPointerImageFactory(shadowPainter);
 //    }
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {

@@ -43,38 +43,38 @@ import us.jaba.titaniumblocks.core.CoreModel;
 public class CenterKnobPainter extends CoreModel
 {
 
-    final float[] E_CENTER_KNOB_FRAME_FRACTIONS =
+    private final float[] E_CENTER_KNOB_FRAME_FRACTIONS =
     {
         0.0f,
         0.46f,
         1.0f
     };
-    final Color[] E_CENTER_KNOB_FRAME_COLORS =
+    private final Color[] E_CENTER_KNOB_FRAME_COLORS =
     {
         new Color(180, 180, 180, 255),
         new Color(63, 63, 63, 255),
         new Color(40, 40, 40, 255)
     };
 
-    final float[] E_CENTER_KNOB_MAIN_FRACTIONS =
+    private final float[] E_CENTER_KNOB_MAIN_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-    final Color[] E_CENTER_KNOB_MAIN_COLORS =
+    private final Color[] E_CENTER_KNOB_MAIN_COLORS =
     {
         new Color(217, 217, 217, 255),
         new Color(191, 191, 191, 255)
     };
 
-    final float[] E_CENTER_KNOB_INNERSHADOW_FRACTIONS =
+    private final float[] E_CENTER_KNOB_INNERSHADOW_FRACTIONS =
     {
         0.0f,
         0.75f,
         0.76f,
         1.0f
     };
-    final Color[] E_CENTER_KNOB_INNERSHADOW_COLORS =
+    private final Color[] E_CENTER_KNOB_INNERSHADOW_COLORS =
     {
         new Color(0, 0, 0, 0),
         new Color(0, 0, 0, 0),

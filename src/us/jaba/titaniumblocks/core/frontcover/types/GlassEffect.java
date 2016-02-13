@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.CoreModel;
 public class GlassEffect extends CoreModel
 {
 
-    final float[] GLASSEFFECT_FRACTIONS =
+    private final float[] GLASSEFFECT_FRACTIONS =
     {
         0.0f,
         0.06f,
@@ -60,7 +60,7 @@ public class GlassEffect extends CoreModel
         0.97f,
         1.0f
     };
-    final Color[] GLASSEFFECT_COLORS =
+    private final Color[] GLASSEFFECT_COLORS =
     {
         new Color(255, 255, 255, 0),
         new Color(255, 255, 255, 0),

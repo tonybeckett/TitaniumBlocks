@@ -68,7 +68,7 @@ public class InnerShadowImageGenerator
         G2.translate(TRANSLATE_X, -TRANSLATE_Y);
 
         // Draw the inner shadow
-        for (float strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
+        for (double strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
         {
             G2.setStroke(new BasicStroke((float) (MAX_STROKE_WIDTH * Math.pow(0.85, strokeWidth))));
             G2.draw(SHAPE);
@@ -124,7 +124,7 @@ public class InnerShadowImageGenerator
         G2.translate(TRANSLATE_X, -TRANSLATE_Y);
 
         // Draw the inner shadow
-        for (float strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
+        for (double strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
         {
             G2.setStroke(new BasicStroke((float) (MAX_STROKE_WIDTH * Math.pow(0.85, strokeWidth))));
             G2.draw(SHAPE);
@@ -180,7 +180,7 @@ public class InnerShadowImageGenerator
         G2.setClip(SHAPE);
 
         // Draw the inner shadow
-        for (float strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
+        for (double strokeWidth = SOFTNESS; strokeWidth >= 1; strokeWidth -= 1)
         {
             G2.setStroke(new BasicStroke((float) (MAX_STROKE_WIDTH * Math.pow(0.85, strokeWidth))));
             G2.draw(SHAPE);

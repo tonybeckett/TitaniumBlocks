@@ -81,7 +81,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     private final RNormalMajMedMinorTickmark tickmarkModel;
     private final SingleBargraphLedOff led;
 //    private LedImageFactory ledImageFactory;
-//    private ShadowPointerImageFactory shadowImage;
+//    private ShadowPointerImageFactory secShadowPointerImage;
     private CircularLayout circularLayout;
 
     class MySWPostFactory extends PolarSmallPostFactory
@@ -136,8 +136,8 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         add(endPostImage);
 
         Type1Shadow t1spp = new Type1Shadow();
-        shadowImage = new ShadowPointerImageFactory(t1spp);
-        add(shadowImage);
+        secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
+        add(secShadowPointerImage);
 
         TaperedRoundedPointer tpp = new TaperedRoundedPointer();
         tpp.setPointerColor(new PureBlack());
@@ -219,7 +219,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset + 1, offset, null);
         graphics.setTransform(currentTransform);
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);

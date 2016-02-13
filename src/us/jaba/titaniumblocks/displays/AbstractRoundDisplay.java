@@ -84,7 +84,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     protected DisabledImageFactory disabledImage;
 
     protected LedImageFactory ledImageFactory;
-    protected ShadowPointerImageFactory shadowImage;
+    protected ShadowPointerImageFactory secShadowPointerImage;
 
     public AbstractRoundDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
     {
@@ -204,7 +204,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     {
         this.pointerImage.setPainter(pointerPainter);
 
-        this.shadowImage.setPainter(shadowPainter);
+        this.secShadowPointerImage.setPainter(shadowPainter);
 
     }
 

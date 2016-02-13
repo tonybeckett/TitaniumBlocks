@@ -39,6 +39,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -102,7 +103,7 @@ public final class ConicalGradientPaint implements Paint
             throw new IllegalArgumentException("Fractions and colors must be equal in size");
         }
 
-        final java.util.List<Float> fractionList = new java.util.ArrayList<Float>(GIVEN_FRACTIONS.length);
+        final List<Float> fractionList = new ArrayList<Float>(GIVEN_FRACTIONS.length);
         final float OFFSET;
         if (USE_DEGREES)
         {
@@ -226,7 +227,7 @@ public final class ConicalGradientPaint implements Paint
      * @return Hashmap that contains the recalculated fractions and colors after
      * a given rotation
      */
-    private java.util.HashMap<Float, Color> recalculate(final List<Float> fractionList, final List<Color> colorList, final float OFFSET)
+    private HashMap<Float, Color> recalculate(final List<Float> fractionList, final List<Color> colorList, final float OFFSET)
     {
         // Recalculate the fractions and colors with the given offset
         final int MAX_FRACTIONS = fractionList.size();
@@ -376,10 +377,11 @@ public final class ConicalGradientPaint implements Paint
         @Override
         public void dispose()
         {
+            //intentional empty
         }
 
         @Override
-        public java.awt.image.ColorModel getColorModel()
+        public ColorModel getColorModel()
         {
             return ColorModel.getRGBdefault();
         }

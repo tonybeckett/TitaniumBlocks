@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CometPointer extends GradientPointer
 {
 
-    final float[] gradientFractionArray = new float[]
+    private final float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.4999f,
@@ -70,7 +70,7 @@ public class CometPointer extends GradientPointer
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         float radiusAdj = 1.0f - this.getRadiusPercent();
 
-        Point2D tip = new Point2D.Double(0.5, radiusAdj);//0.14953);
+//        Point2D tip = new Point2D.Double(0.5, radiusAdj);//0.14953);
 
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * radiusAdj);//0.14953271028037382);
 

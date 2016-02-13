@@ -21,7 +21,7 @@ import us.jaba.titaniumblocks.core.frames.BasicEffect;
 public class TorusEffect extends BasicEffect
 {
 
-    final float[] effectFractions = new float[]
+    private final float[] effectFractions = new float[]
     {
         0.0f,
         0.82f,
@@ -30,7 +30,7 @@ public class TorusEffect extends BasicEffect
         1.0f
     };
 
-    final Color[] effectColors = new Color[]
+    private final Color[] effectColors = new Color[]
     {
         new Color(0, 0, 0, 0),
         new Color(0, 0, 0, 50),

@@ -25,57 +25,58 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.types.rectangular;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
-import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.backdrop.types.AbstractRectangularBackdrop;
-import us.jaba.titaniumblocks.core.backdrop.types.OverlayPainter;
-import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.types.CarbonTexture;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
-public class CarbonBackdrop extends AbstractRectangularBackdrop
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
+
+public class ClockNumbersOutTickmarks extends AbstractRadialTickmark
 {
 
-    private CarbonTexture painter;
-    private final Rectangle rectangle;
-    private final OverlayPainter overlayPainter;
-
-    public CarbonBackdrop()
+    private double textScale = 0.145;
+    String[] arrayOfText =
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
-        painter = new CarbonTexture();
-        overlayPainter = new OverlayPainter();
+        "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
+    };
 
+    public ClockNumbersOutTickmarks()
+    {
+
+    }
+
+    public ClockNumbersOutTickmarks(String[] text, double textScaleFactor)
+    {
+        this.arrayOfText = text;
+        textScale = textScaleFactor;
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Rectangle bounds)
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-        TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), rectangle);
 
-        return p;
-    }
+        final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-    public CarbonTexture getPainter()
-    {
-        return painter;
-    }
+        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
 
-    public void setPainter(CarbonTexture painter)
-    {
-        this.painter = painter;
-    }
+        graphics.setColor(textColor);
+        graphics.setStroke(mediumStroke);
 
-    @Override
-    protected void applyOverlay(Graphics2D graphics, Dimension dimensions, Rectangle2D GAUGE_BACKGROUND)
-    {
-        overlayPainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 0.0, -30, arrayOfText);
+
+        graphics.setColor(minorColor);
+        graphics.setStroke(minorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.5, radius * 0.625, 0.0, 6.0, 60);
+
+        graphics.setColor(majorColor);
+        graphics.setStroke(majorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.5, radius * 0.685, 0.0, 30.0, 12);
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.5);
+        graphics.dispose();
+
     }
 
 }

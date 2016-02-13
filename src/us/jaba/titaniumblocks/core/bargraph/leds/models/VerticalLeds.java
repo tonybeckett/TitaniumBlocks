@@ -56,12 +56,7 @@ public class VerticalLeds extends LedModel
         new Color(50, 50, 50, 255)
     };
 
-    public VerticalLeds()
-    {
-        super();
-       
-    }
-
+    
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

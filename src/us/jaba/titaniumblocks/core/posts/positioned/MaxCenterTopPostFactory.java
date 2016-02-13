@@ -30,7 +30,6 @@ package us.jaba.titaniumblocks.core.posts.positioned;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
 import us.jaba.titaniumblocks.core.posts.PositionedSmallPostFactory;
-import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 
 /**
  *

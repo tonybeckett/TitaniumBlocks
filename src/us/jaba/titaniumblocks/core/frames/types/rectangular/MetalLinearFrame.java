@@ -40,7 +40,7 @@ import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 public class MetalLinearFrame extends RectangularFrame
 {
 
-    static Color[] COLOR_ARRAY =
+    private static final Color[] COLOR_ARRAY =
     {
         new Color(254, 254, 254, 255),
         new Color(210, 210, 210, 255),

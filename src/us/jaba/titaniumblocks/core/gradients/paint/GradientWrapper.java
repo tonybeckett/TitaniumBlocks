@@ -52,15 +52,17 @@ public class GradientWrapper implements Paint
 
     public GradientWrapper(float startX, float startY, float endX, float endY, float[] fractions, Color[] colors)
     {
-        endY += PointSupport.pointsEqual(startX, startY, endX, endY) ? 1 : 0;
-        GRADIENT = new LinearGradientPaint(new Point2D.Float(startX, startY), new Point2D.Float(endX, endY), fractions, colors, java.awt.MultipleGradientPaint.CycleMethod.NO_CYCLE);
+        float myEndY = endY;
+        myEndY += PointSupport.pointsEqual(startX, startY, endX, myEndY) ? 1 : 0;
+        GRADIENT = new LinearGradientPaint(new Point2D.Float(startX, startY), new Point2D.Float(endX, myEndY), fractions, colors, java.awt.MultipleGradientPaint.CycleMethod.NO_CYCLE);
         copyArrays(fractions, colors);
     }
 
     public GradientWrapper(float startX, float startY, float endX, float endY, float[] fractions, Color[] colors, MultipleGradientPaint.CycleMethod cycleMethod)
     {
-        endY += PointSupport.pointsEqual(startX, startY, endX, endY) ? 1 : 0;
-        GRADIENT = new LinearGradientPaint(new Point2D.Float(startX, startY), new Point2D.Float(endX, endY), fractions, colors, cycleMethod);
+        float myEndY = endY;
+        myEndY += PointSupport.pointsEqual(startX, startY, endX, myEndY) ? 1 : 0;
+        GRADIENT = new LinearGradientPaint(new Point2D.Float(startX, startY), new Point2D.Float(endX, myEndY), fractions, colors, cycleMethod);
         copyArrays(fractions, colors);
     }
 

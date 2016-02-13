@@ -18,7 +18,7 @@ import java.awt.image.BufferedImage;
 public class CoreImageFactory
 {
 
-    protected static final BufferedImage DEFAULT_NULL_IMAGE = ImageSupport.defaultSmallImage;
+    protected static final BufferedImage DEFAULT_NULL_IMAGE = ImageSupport.DEFAULT_SMALL_IMAGE;
     private CoreModel painter = null;
     private BufferedImage backgroundImage = null;
     public BufferedImage result;
@@ -31,7 +31,7 @@ public class CoreImageFactory
     protected CoreImageFactory(CoreModel painter)
     {
         this.painter = painter;
-        result = ImageSupport.defaultSmallImage;
+        result = ImageSupport.DEFAULT_SMALL_IMAGE;
     }
 
     protected void applyPaint(BufferedImage result, Dimension dimensions)
@@ -56,7 +56,7 @@ public class CoreImageFactory
     {
         if (!ImageSupport.isValidSize(dimensions.width, dimensions.height))
         {
-            return ImageSupport.defaultSmallImage;
+            return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
         if (painter != null && painter.hasChanged())
         {

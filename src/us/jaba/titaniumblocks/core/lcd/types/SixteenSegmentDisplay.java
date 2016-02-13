@@ -45,8 +45,8 @@ public class SixteenSegmentDisplay extends CoreModel
 {
 
     private final int numberOfCharacters;
-    private List<SixteenSegmentCharImageFactory> segments = new ArrayList();
-    private String value = "";
+    private final List<SixteenSegmentCharImageFactory> segments = new ArrayList();
+    
     
     public SixteenSegmentDisplay(int numOfChar)
     {
@@ -63,7 +63,7 @@ public class SixteenSegmentDisplay extends CoreModel
     public void setSegmentColor(Color textColor)
     {
          Iterator<SixteenSegmentCharImageFactory> i = segments.iterator();
-        int count = 0;
+//        int count = 0;
         while (i.hasNext())
         {
             SixteenSegmentCharImageFactory ssci = i.next();

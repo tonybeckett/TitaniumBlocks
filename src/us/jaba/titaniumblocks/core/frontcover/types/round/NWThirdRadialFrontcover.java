@@ -65,7 +65,7 @@ public class NWThirdRadialFrontcover extends AbstractRadialFrontcover
         HIGHLIGHT_STOP.setLocation(((0.3130841121495327 + 0.1824447802691637) * imageWidth), ((0.13551401869158877 + 0.3580680424308394) * imageHeight));
   
         PointSupport.validateGradientPoints(HIGHLIGHT_START, HIGHLIGHT_STOP);
-        LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, HIGHLIGHT_FRACTIONS, HIGHLIGHT_COLORS);
+        LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, highlightFractions, highlightColors);
         graphics.setPaint(HIGHLIGHT_GRADIENT);
         graphics.fill(HIGHLIGHT);
     }

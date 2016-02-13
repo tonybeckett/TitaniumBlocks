@@ -54,12 +54,7 @@ public class HorizontalLeds extends LedModel
         new Color(50, 50, 50, 255)
     };
 
-    public HorizontalLeds()
-    {
-        super();
-       
-    }
-
+   
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

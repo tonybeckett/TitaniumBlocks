@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 public class StainlessBackdrop extends AbstractRoundBackdrop
 {
 
-    float[] STAINLESS_FRACTIONS =
+    private float[] STAINLESS_FRACTIONS =
     {
         0f,
         0.03f,
@@ -58,7 +58,7 @@ public class StainlessBackdrop extends AbstractRoundBackdrop
     };
 
 // Define the colors of the conical gradient paint
-    Color[] STAINLESS_COLORS =
+    private Color[] STAINLESS_COLORS =
     {
         new Color(0xFDFDFD),
         new Color(0xFDFDFD),

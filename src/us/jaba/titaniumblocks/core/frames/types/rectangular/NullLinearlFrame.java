@@ -39,13 +39,13 @@ import java.awt.Graphics2D;
 public final class NullLinearlFrame extends RectangularFrame
 {
 
-    static float[] fractionArray =
+    private static float[] fractionArray =
     {
         0.0f,
         1.0f
     };
 
-    static Color[] colorArray =
+    private static Color[] colorArray =
     {
         new Color(254, 254, 254, 255),
         new Color(0, 0, 0, 255)
@@ -54,14 +54,13 @@ public final class NullLinearlFrame extends RectangularFrame
     public NullLinearlFrame()
     {
         super(fractionArray, colorArray);
-         this.frameThickness = 0;
+        this.frameThickness = 0;
     }
 
-   
     @Override
     public void setFrameThickness(int frameThickness)
     {
-
+// intentional
     }
 
     @Override

@@ -42,7 +42,7 @@ import us.jaba.titaniumblocks.core.textures.types.PunchedSheetTexture;
 public class PunchedSteelBackdrop extends AbstractRectangularBackdrop
 {
 
-    PunchedSheetTexture painter;
+    private PunchedSheetTexture painter;
     private final Rectangle rectangle;
     private final OverlayPainter overlayPainter;
     private final NoisePainter noisePainter;
@@ -73,6 +73,11 @@ public class PunchedSteelBackdrop extends AbstractRectangularBackdrop
     public void setPainter(PunchedSheetTexture painter)
     {
         this.painter = painter;
+    }
+
+    public OverlayPainter getOverlayPainter()
+    {
+        return overlayPainter;
     }
 
     @Override

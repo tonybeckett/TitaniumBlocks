@@ -94,4 +94,20 @@ public class ShapeUtils
             currentAngle = currentAngle + angleStep;
         }
     }
+    
+    public static void drawRadialCircles(Graphics2D graphics, Point2D center, double radius,  double startAngle, double angleStep, int number)
+    { 
+        double currentAngle = startAngle;
+       
+        for (int i = 0; i < number; i++)
+        {
+            double sinValue = Math.sin((currentAngle - 180.0) * Math.PI / 180.0);
+            double cosValue = Math.cos((currentAngle - 180.0) * Math.PI / 180.0);
+            Point2D.Double centerPoint = new Point2D.Double((double)center.getX() + (radius  * sinValue), (double)center.getY() + (radius  *cosValue));
+ 
+            fillCircle( graphics, centerPoint.x , centerPoint.y,  radius);
+            
+            currentAngle = currentAngle + angleStep;
+        }
+    }
 }

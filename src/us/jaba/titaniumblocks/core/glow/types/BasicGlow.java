@@ -98,7 +98,7 @@ public class BasicGlow extends CoreModel
         graphics.setColor(new Color(RED, GREEN, BLUE, ALPHA_STEP));
 
         // Draw the inner shadow
-        for (float strokeWidth = softness; strokeWidth >= 1; strokeWidth -= 1)
+        for (double strokeWidth = softness; strokeWidth >= 1; strokeWidth -= 1)
         {
             graphics.setStroke(new BasicStroke((float) (MAX_STROKE_WIDTH * Math.pow(0.85, strokeWidth))));
             graphics.draw(shape);

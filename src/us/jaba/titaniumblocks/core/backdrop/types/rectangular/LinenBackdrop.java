@@ -39,12 +39,13 @@ import us.jaba.titaniumblocks.core.textures.types.LinenTexture;
 public class LinenBackdrop extends AbstractRectangularBackdrop
 {
 
-    LinenTexture painter;
+    private LinenTexture painter;
 
-    Color color = new Color(0x686868);
+    private Color color;
 
     public LinenBackdrop()
     {
+        this.color = new Color(0x686868);
         painter = new LinenTexture();
         
     }

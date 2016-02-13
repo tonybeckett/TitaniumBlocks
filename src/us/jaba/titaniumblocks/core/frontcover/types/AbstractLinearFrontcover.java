@@ -74,12 +74,12 @@ public class AbstractLinearFrontcover extends Frontcover implements Painter
 
     }
 
-    public boolean isWITH_CENTER_KNOB()
+    public boolean isWithCenterKnob()
     {
         return WITH_CENTER_KNOB;
     }
 
-    public void setWITH_CENTER_KNOB(boolean WITH_CENTER_KNOB)
+    public void setWithCenterKnob(boolean WITH_CENTER_KNOB)
     {
         this.WITH_CENTER_KNOB = WITH_CENTER_KNOB;
         changed();

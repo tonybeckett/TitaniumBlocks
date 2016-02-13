@@ -42,33 +42,34 @@ import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
 public class RadialBulgeEffect implements RoundFrameEffectPainter
 {
 
-    private float[] EFFECT_FRACTIONS;
-    private Color[] EFFECT_COLORS;
+    private final float[] EFFECT_FRACTIONS = new float[]
+    {
+        0.0f,
+        0.82f,
+        0.83f,
+        0.86f,
+        0.87f,
+        1.0f
+    };
+    
+    private final Color[] EFFECT_COLORS = new Color[]
+    {
+        new Color(0, 0, 0, 0),
+        new Color(0, 0, 0, 76),
+        new Color(0, 0, 0, 95),
+        new Color(219, 219, 219, 153),
+        new Color(255, 255, 255, 151),
+        new Color(0, 0, 0, 102)
+    };
+
+    
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame, Point2D center)
     {
         final int width = (int) dimensions.getWidth();
-        final int height = (int) dimensions.getHeight();
+//        final int height = (int) dimensions.getHeight();
 
-        EFFECT_FRACTIONS = new float[]
-        {
-            0.0f,
-            0.82f,
-            0.83f,
-            0.86f,
-            0.87f,
-            1.0f
-        };
-        EFFECT_COLORS = new Color[]
-        {
-            new Color(0, 0, 0, 0),
-            new Color(0, 0, 0, 76),
-            new Color(0, 0, 0, 95),
-            new Color(219, 219, 219, 153),
-            new Color(255, 255, 255, 151),
-            new Color(0, 0, 0, 102)
-        };
         RadialGradientPaint EFFECT_GRADIENT = new RadialGradientPaint(center, (0.5f * width), EFFECT_FRACTIONS, EFFECT_COLORS);
         graphics.setPaint(EFFECT_GRADIENT);
         graphics.fill(outerFrame);

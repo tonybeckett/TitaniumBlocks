@@ -73,22 +73,22 @@ public class OverlayPainter
         graphics.fill(GAUGE_BACKGROUND);
     }
 
-    public float[] getSHADOW_OVERLAY_FRACTIONS()
+    public float[] getShadowOverlayFractions()
     {
         return SHADOW_OVERLAY_FRACTIONS;
     }
 
-    public void setSHADOW_OVERLAY_FRACTIONS(float[] SHADOW_OVERLAY_FRACTIONS)
+    public void setShadowOverlayFractions(float[] SHADOW_OVERLAY_FRACTIONS)
     {
         this.SHADOW_OVERLAY_FRACTIONS = SHADOW_OVERLAY_FRACTIONS;
     }
 
-    public Color[] getSHADOW_OVERLAY_COLORS()
+    public Color[] getShadowOverlayColors()
     {
         return SHADOW_OVERLAY_COLORS;
     }
 
-    public void setSHADOW_OVERLAY_COLORS(Color[] SHADOW_OVERLAY_COLORS)
+    public void setShadowOverlayColors(Color[] SHADOW_OVERLAY_COLORS)
     {
         this.SHADOW_OVERLAY_COLORS = SHADOW_OVERLAY_COLORS;
     }

@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class TiltedBlackRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions10 =
+   private float[] frameMainFractions10 =
     {
         0.0f,
         0.21f,
@@ -50,7 +50,7 @@ public class TiltedBlackRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors10 =
+  private  Color[] frameMainColors10 =
     {
         new Color(102, 102, 102, 255),
         new Color(0, 0, 0, 255),
@@ -73,7 +73,7 @@ public class TiltedBlackRoundFrame extends RoundFrame
         mainArea.subtract(subtractArea);
         final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
         final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+//        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
 
         mainStartPoint.setLocation((0.22897196261682243 * imageWidth), (0.0794392523364486 * imageHeight));
         mainStopPoint.setLocation(((0.22897196261682243 + 0.573576436351046) * imageWidth), ((0.0794392523364486 + 0.8191520442889918) * imageHeight));

@@ -38,7 +38,7 @@ import java.awt.Graphics2D;
 public class NullPost extends Post
 {
 
-    final Color[] CENTER_KNOB_MAIN_COLORS;
+    private final Color[] CENTER_KNOB_MAIN_COLORS;
 
     public NullPost()
     {
@@ -59,6 +59,6 @@ public class NullPost extends Post
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
- 
+        // intentional
     }
 }

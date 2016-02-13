@@ -47,7 +47,7 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
 public final class BiLinearGradientPaint implements Paint
 {
 
-    private final java.awt.Rectangle BOUNDS;
+    private final Rectangle BOUNDS;
     private final Color COLOR_00;
     private final Color COLOR_10;
     private final Color COLOR_01;
@@ -101,13 +101,11 @@ public final class BiLinearGradientPaint implements Paint
     private final class BiLinearGradientPaintContext implements PaintContext
     {
 
-        public BiLinearGradientPaintContext()
-        {
-        }
 
         @Override
         public void dispose()
         {
+            //intential empty
         }
 
         @Override

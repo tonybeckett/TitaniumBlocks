@@ -41,9 +41,6 @@ import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
 public class LinearBulgeEffect implements RectangularFrameEffectPainter
 {
 
-    private float[] EFFECT_FRACTIONS;
-    private Color[] EFFECT_COLORS;
-
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame)
     {
@@ -59,6 +56,9 @@ public class LinearBulgeEffect implements RectangularFrameEffectPainter
         {
             relFrameSize = (32f / width);
         }
+        float[] EFFECT_FRACTIONS;
+        Color[] EFFECT_COLORS;
+
         EFFECT_FRACTIONS = new float[]
         {
             0.0f,

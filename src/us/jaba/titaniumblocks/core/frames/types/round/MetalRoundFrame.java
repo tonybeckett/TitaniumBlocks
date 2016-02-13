@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class MetalRoundFrame extends RoundFrame
 {
 
-    float[] frameMainFractions2 =
+    private float[] frameMainFractions2 =
     {
         0.0f,
         0.07f,
@@ -52,7 +52,7 @@ public class MetalRoundFrame extends RoundFrame
         1.0f
     };
 
-    Color[] frameMainColors2 =
+    private Color[] frameMainColors2 =
     {
         new Color(254, 254, 254, 255),
         new Color(210, 210, 210, 255),
@@ -62,7 +62,7 @@ public class MetalRoundFrame extends RoundFrame
 
     @Override
     public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
-   {
+    {
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();

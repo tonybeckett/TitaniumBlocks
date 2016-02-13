@@ -27,18 +27,12 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
@@ -47,7 +41,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class MonumentPointer extends GradientPointer
 {
 
-    final float[] gradientFractionArray = new float[]
+    private final float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.51f,

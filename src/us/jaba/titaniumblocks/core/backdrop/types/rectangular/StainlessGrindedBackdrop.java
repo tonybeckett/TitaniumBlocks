@@ -38,14 +38,13 @@ import us.jaba.titaniumblocks.core.textures.types.StainlessSteelPlateTexture;
 public class StainlessGrindedBackdrop extends AbstractRectangularBackdrop
 {
 
-    TextureImageBuilder builder;
+    private TextureImageBuilder builder;
 
     public StainlessGrindedBackdrop()
     {
         StainlessSteelPlateTexture painter = new StainlessSteelPlateTexture();
         builder = new TextureImageBuilder(painter);
     }
-    
 
     @Override
     protected Paint getPaint(Dimension dimensions, Rectangle bounds)

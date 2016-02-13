@@ -46,21 +46,21 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class SingleBargraphLedOff extends Led
 {
 
-    final float[] LED_FRACTIONS =
+    private final float[] LED_FRACTIONS =
     {
         0.0f,
         0.2f,
         1.0f
     };
 
-    final float[] LED_INNER_SHADOW_FRACTIONS =
+    private final float[] LED_INNER_SHADOW_FRACTIONS =
     {
         0.0f,
         0.8f,
         1.0f
     };
 
-    final Color[] LED_INNER_SHADOW_COLORS =
+    private final Color[] LED_INNER_SHADOW_COLORS =
     {
         new Color(0.0f, 0.0f, 0.0f, 0.0f),
         new Color(0.0f, 0.0f, 0.0f, 0.0f),
@@ -81,13 +81,12 @@ public class SingleBargraphLedOff extends Led
 
         // Define led data
         final Ellipse2D LED = new Ellipse2D.Double(0.25 * width, 0.25 * height, 0.5 * width, 0.5 * height);
-        final Ellipse2D LED_CORONA = new Ellipse2D.Double(0, 0, width, height);
+//        final Ellipse2D LED_CORONA = new Ellipse2D.Double(0, 0, width, height);
 
         final Point2D LED_CENTER = new Point2D.Double(LED.getCenterX(), LED.getCenterY());
 
-
         final Color[] LED_OFF_COLORS;
-        
+
         final Color[] LED_OFF_CORONA_COLORS;
 
         LED_OFF_COLORS = new Color[]
@@ -144,8 +143,6 @@ public class SingleBargraphLedOff extends Led
         graphics.fill(LED);
         graphics.setPaint(LED_LIGHTREFLEX_GRADIENT);
         graphics.fill(LED_LIGHTREFLEX);
-
-     
 
     }
 

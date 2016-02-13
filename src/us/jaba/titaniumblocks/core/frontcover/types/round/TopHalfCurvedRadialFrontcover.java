@@ -65,7 +65,7 @@ public class TopHalfCurvedRadialFrontcover extends AbstractRadialFrontcover
         HIGHLIGHT_START.setLocation(0, HIGHLIGHT.getBounds2D().getMinY());
         HIGHLIGHT_STOP.setLocation(0, HIGHLIGHT.getBounds2D().getMaxY());
         PointSupport.validateGradientPoints(HIGHLIGHT_START, HIGHLIGHT_STOP);
-        LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, HIGHLIGHT_FRACTIONS, HIGHLIGHT_COLORS);
+        LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, highlightFractions, highlightColors);
         graphics.setPaint(HIGHLIGHT_GRADIENT);
         graphics.fill(HIGHLIGHT);
     }

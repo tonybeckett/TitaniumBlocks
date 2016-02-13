@@ -25,25 +25,30 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
-import java.awt.Dimension;
-import java.awt.Paint;
-import java.awt.TexturePaint;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
-import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
 
-public class BrushedMetalBackdrop extends AbstractRoundBackdrop
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
+
+public class ThermometerBaseTickmarks extends AbstractRadialTickmark
 {
 
-    @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
+    protected double textScale = 0.075;
+    protected String[] arrayOfFText =
     {
-        BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
-        Paint p = new TexturePaint(builder.build(dimensions), ellipse.getBounds());
+        "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "F"
+    };
+    protected String[] arrayOfCText =
+    {
+        "-20", "-10", "0", "10", "20", "30", "40", "50", "C"
+    };
 
-        return p;
+    public ThermometerBaseTickmarks(double textScaleFactor)
+    {
+        textScale = textScaleFactor;
     }
 
+   
+
+   
 }

@@ -49,12 +49,12 @@ public class NoisyPlasticBackdrop extends AbstractRectangularBackdrop
     private Color textureColor = new Color(0x686868);
     private final NoisePainter noisePainter;
 
-    final float[] FRACTIONS =
+    private final float[] FRACTIONS =
     {
         0.0f,
         1.0f
     };
-    final Color[] COLORS =
+    private final Color[] COLORS =
     {
         ColorTools.lighter(textureColor, 0.15f),
         ColorTools.darker(textureColor, 0.15f)
@@ -85,10 +85,6 @@ public class NoisyPlasticBackdrop extends AbstractRectangularBackdrop
         noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND);
     }
 
-   
-
-    
-
     public Color getTextureColor()
     {
         return textureColor;
@@ -99,6 +95,5 @@ public class NoisyPlasticBackdrop extends AbstractRectangularBackdrop
         this.textureColor = textureColor;
         changed();
     }
-    
-    
+
 }

@@ -78,7 +78,7 @@ public class EllipticGradientPaint implements Paint
     }
 
     @Override
-    public java.awt.PaintContext createContext(final ColorModel COLOR_MODEL,
+    public PaintContext createContext(final ColorModel COLOR_MODEL,
             final Rectangle DEVICE_BOUNDS,
             final Rectangle2D USER_BOUNDS,
             final AffineTransform TRANSFORM,
@@ -120,6 +120,7 @@ public class EllipticGradientPaint implements Paint
         @Override
         public void dispose()
         {
+            //intentional
         }
 
         @Override

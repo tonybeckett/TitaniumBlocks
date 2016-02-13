@@ -41,16 +41,13 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
 public class LinearSection
 {
 
-    private ArrayList<SSSection> sections;
-    private ArrayList<BufferedImage> sectionsBackground;
-    private ArrayList<Color> sectionsForeground;
     private LcdGradientPalette lcdColor;
 
     public LinearSection()
     {
-        sections = new ArrayList<SSSection>();
-        sectionsBackground = new ArrayList<BufferedImage>(3);
-        sectionsForeground = new ArrayList<Color>(3);
+        ArrayList<SSSection> sections = new ArrayList();
+        ArrayList<BufferedImage> sectionsBackground = new ArrayList(3);
+        ArrayList<Color> sectionsForeground = new ArrayList(3);
 
         sectionsBackground.clear();
         sectionsForeground.clear();
@@ -81,7 +78,7 @@ public class LinearSection
             final Color FOREGROUND_COLOR;
             final float[] HSB_SECTION = Color.RGBtoHSB(section.getColor().getRed(), section.getColor().getGreen(), section.getColor().getBlue(), null);
             final float HUE_SECTION = HSB_SECTION[0];
-            final float SATURATION_SECTION = HSB_SECTION[1];
+//            final float SATURATION_SECTION = HSB_SECTION[1];
             final float BRIGHTNESS_SECTION = HSB_SECTION[2];
             if (!ColorTools.isMonochrome(section.getColor()))
             {

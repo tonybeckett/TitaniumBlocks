@@ -44,8 +44,25 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class RadialInnerEffect implements RoundFrameEffectPainter
 {
 
-    private float[] EFFECT_FRACTIONS;
-    private Color[] EFFECT_COLORS;
+    private final float[] EFFECT_FRACTIONS = new float[]
+    {
+        0.0f,
+        0.3f,
+        0.5f,
+        0.71f,
+        1.0f
+    };
+    ;
+    private final Color[] EFFECT_COLORS = new Color[]
+    {
+        new Color(0, 0, 0, 183),
+        new Color(148, 148, 148, 25),
+        new Color(0, 0, 0, 159),
+        new Color(0, 0, 0, 81),
+        new Color(255, 255, 255, 158)
+    };
+
+    ;
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions, final Area outerFrame, Point2D center)
@@ -56,22 +73,7 @@ public class RadialInnerEffect implements RoundFrameEffectPainter
         final Ellipse2D EFFECT_BIGINNERFRAME = new Ellipse2D.Double(imageWidth * 0.0607476644217968, imageHeight * 0.0607476644217968, imageWidth * 0.8785046339035034, imageHeight * 0.8785046339035034);
         final Point2D EFFECT_BIGINNERFRAME_START = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMinY());
         final Point2D EFFECT_BIGINNERFRAME_STOP = new Point2D.Double(0, EFFECT_BIGINNERFRAME.getBounds2D().getMaxY());
-        EFFECT_FRACTIONS = new float[]
-        {
-            0.0f,
-            0.3f,
-            0.5f,
-            0.71f,
-            1.0f
-        };
-        EFFECT_COLORS = new Color[]
-        {
-            new Color(0, 0, 0, 183),
-            new Color(148, 148, 148, 25),
-            new Color(0, 0, 0, 159),
-            new Color(0, 0, 0, 81),
-            new Color(255, 255, 255, 158)
-        };
+
         PointSupport.validateGradientPoints(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP);
         final LinearGradientPaint EFFECT_BIGINNERFRAME_GRADIENT = new LinearGradientPaint(EFFECT_BIGINNERFRAME_START, EFFECT_BIGINNERFRAME_STOP, EFFECT_FRACTIONS, EFFECT_COLORS);
         graphics.setPaint(EFFECT_BIGINNERFRAME_GRADIENT);

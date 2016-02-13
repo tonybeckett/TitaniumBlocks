@@ -41,31 +41,28 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class NullBackdrop extends AbstractRoundBackdrop
 {
 
-    final float[] BACKGROUND_FRACTIONS =
+    private final float[] BACKGROUND_FRACTIONS =
     {
         0.0f,
         0.4f,
         1.0f
     };
 
-    Color[] BACKGROUND_COLORS =
+    private final Color[] BACKGROUND_COLORS =
     {
         backgroundColorModel.getGradientStartColor(),
         backgroundColorModel.getGradientFractionColor(),
         backgroundColorModel.getGradientStopColor()
     };
 
-    public NullBackdrop()
-    {
-
-    }
+    
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        
+// intentional
     }
-    
+
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {

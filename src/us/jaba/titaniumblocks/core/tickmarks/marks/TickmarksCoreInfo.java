@@ -35,6 +35,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalL
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLinearTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLogTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.BasicClockTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersOutTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.CompassTickmarks;
@@ -45,6 +46,8 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMino
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchSmallTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
 
 /**
@@ -59,6 +62,7 @@ public class TickmarksCoreInfo
         BasicClockTickmarks.class,
         ClockTickmarks.class,
         ClockNumbersTickmarks.class,
+        ClockNumbersOutTickmarks.class,
         CompassTickmarks.class,
         HorizontalLinearTickmark.class,
         HorizontalLogTickmark.class,
@@ -71,6 +75,8 @@ public class TickmarksCoreInfo
         RNormalMajMinorTickmark.class,
         StopwatchTickmarks.class,
         StopwatchSmallTickmarks.class,
+        ThermometerCfTickmarks.class,
+        ThermometerFcTickmarks.class,
         WindDirectionTickmarks.class
     };
 

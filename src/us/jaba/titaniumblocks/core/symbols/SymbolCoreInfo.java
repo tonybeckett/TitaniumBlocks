@@ -30,7 +30,6 @@ package us.jaba.titaniumblocks.core.symbols;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import static us.jaba.titaniumblocks.core.led.LedCoreInfo.LED_MODELS;
 import us.jaba.titaniumblocks.core.symbols.types.ABS;
 import us.jaba.titaniumblocks.core.symbols.types.AirConditioning;
 import us.jaba.titaniumblocks.core.symbols.types.Airbag;
@@ -59,7 +58,6 @@ import us.jaba.titaniumblocks.core.symbols.types.Slickness;
 import us.jaba.titaniumblocks.core.symbols.types.Temperature;
 import us.jaba.titaniumblocks.core.symbols.types.TurnLight;
 import us.jaba.titaniumblocks.core.symbols.types.Wiper;
-import us.jaba.titaniumblocks.core.utils.ClassFinder;
 
 /**
  *

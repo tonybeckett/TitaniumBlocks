@@ -30,10 +30,7 @@ package us.jaba.titaniumblocks.core.frontcover.types;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Paint;
 import java.awt.RenderingHints;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.Painter;
 
 /**
@@ -46,12 +43,12 @@ public class AbstractRadialFrontcover extends Frontcover implements Painter
     private final CenterKnobPainter centerKnobPainter;
     private boolean WITH_CENTER_KNOB = false;
 
-    protected float[] HIGHLIGHT_FRACTIONS =
+    protected float[] highlightFractions =
     {
         0.0f,
         1.0f
     };
-    protected Color[] HIGHLIGHT_COLORS =
+    protected Color[] highlightColors =
     {
         new Color(1.0f, 1.0f, 1.0f, 0.2f),
         new Color(1.0f, 1.0f, 1.0f, 0.05f)
@@ -69,8 +66,8 @@ public class AbstractRadialFrontcover extends Frontcover implements Painter
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
 
         if (WITH_CENTER_KNOB)
         {
@@ -79,11 +76,11 @@ public class AbstractRadialFrontcover extends Frontcover implements Painter
 
         }
 
-        final GeneralPath HIGHLIGHT = new GeneralPath();
-        final Point2D HIGHLIGHT_START = new Point2D.Double();
-        final Point2D HIGHLIGHT_STOP = new Point2D.Double();
+//        final GeneralPath HIGHLIGHT = new GeneralPath();
+//        final Point2D HIGHLIGHT_START = new Point2D.Double();
+//        final Point2D HIGHLIGHT_STOP = new Point2D.Double();
 
-        final Paint HIGHLIGHT_GRADIENT;
+//        final Paint HIGHLIGHT_GRADIENT;
 
         apply(graphics, dimensions);
          
@@ -96,42 +93,42 @@ public class AbstractRadialFrontcover extends Frontcover implements Painter
 //        }
     }
 
-    public boolean isWITH_CENTER_KNOB()
+    public boolean isWithCenterKnob()
     {
         return WITH_CENTER_KNOB;
     }
 
-    public void setWITH_CENTER_KNOB(boolean WITH_CENTER_KNOB)
+    public void setWithCenterKnob(boolean WITH_CENTER_KNOB)
     {
         this.WITH_CENTER_KNOB = WITH_CENTER_KNOB;
         changed();
     }
 
-    public float[] getHIGHLIGHT_FRACTIONS()
+    public float[] getHighlightFractions()
     {
-        return HIGHLIGHT_FRACTIONS;
+        return highlightFractions;
     }
 
-    public void setHIGHLIGHT_FRACTIONS(float[] HIGHLIGHT_FRACTIONS)
+    public void setHighlightFractions(float[] highlightFractions)
     {
-        this.HIGHLIGHT_FRACTIONS = HIGHLIGHT_FRACTIONS;
+        this.highlightFractions = highlightFractions;
         changed();
     }
 
-    public Color[] getHIGHLIGHT_COLORS()
+    public Color[] getHighlightColors()
     {
-        return HIGHLIGHT_COLORS;
+        return highlightColors;
     }
 
-    public void setHIGHLIGHT_COLORS(Color[] HIGHLIGHT_COLORS)
+    public void setHighlightColors(Color[] highlightColors)
     {
-        this.HIGHLIGHT_COLORS = HIGHLIGHT_COLORS;
+        this.highlightColors = highlightColors;
         changed();
     }
 
     protected void apply(Graphics2D graphics, Dimension dimensions)
     {
-         
+         // intentional
     }
 
 }

@@ -39,7 +39,8 @@ public class NullSection extends Section
 {
     @Override
     protected void paintSection(Graphics2D graphics, Dimension dimensions)
-    {       
+    {    
+        //intentional
     }
 
 }

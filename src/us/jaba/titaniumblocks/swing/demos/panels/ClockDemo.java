@@ -62,6 +62,7 @@ public class ClockDemo extends javax.swing.JFrame
         panel = new ClockPanel(ColorPalette.WHITE);
         panel.setBackground(ColorPalette.WHITE);
         panel.setRoundFrame(new NullRoundFrame());
+        
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); 

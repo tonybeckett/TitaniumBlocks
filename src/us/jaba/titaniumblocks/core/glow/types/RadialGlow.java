@@ -53,8 +53,8 @@ public class RadialGlow extends Glow
 
    
     public GaugeType GAUGE_TYPE;
-    boolean KNOBS;
-    SSOrientation ORIENTATION;
+    private boolean KNOBS;
+    private SSOrientation ORIENTATION;
     /**
      * Returns an image that simulates a glowing ring which could be used to
      * visualize a state of the gauge by a color. The LED might be too small if
@@ -78,6 +78,16 @@ public class RadialGlow extends Glow
 //        radGlowImage = UTIL.createImage(width, width, Transparency.TRANSLUCENT);
 
 //        final Graphics2D graphics = radGlowImage.createGraphics();
+
+    /**
+     * Returns an image that simulates a glowing ring which could be used to
+ visualize a state of the gauge by a color.The LED might be too small if
+ you are not in front of the screen and so one could see the current state
+ more easy.
+     * @param graphics
+     * @param dimensions
+     * @return an image that simulates a glowing ring
+     */
     @Override
     public void paint(final Graphics2D graphics, final Dimension dimensions)
     {
@@ -143,7 +153,7 @@ public class RadialGlow extends Glow
             final Paint GLOWRING_ON_GRADIENT = new RadialGradientPaint(GLOWRING_ON_CENTER, (float) (0.4158878504672897 * imageWidth), GLOWRING_ON_FRACTIONS, GLOWRING_ON_COLORS);
             graphics.setPaint(GLOWRING_ON_GRADIENT);
 
-            final BufferedImage CLIP_IMAGE_GLOWRING_ON;
+//            final BufferedImage CLIP_IMAGE_GLOWRING_ON;
 //            CLIP_IMAGE_GLOWRING_ON = Shadow.INSTANCE.createSoftClipImage((Shape) GLOWRING, GLOWRING_ON_GRADIENT);
 
             graphics.translate(-16, -16);

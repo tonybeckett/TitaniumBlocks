@@ -152,7 +152,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         endPostImage = new MySEPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
 
         Type1Shadow t1spp = new Type1Shadow();
-        shadowImage = new ShadowPointerImageFactory(t1spp);
+        secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
 
         TaperedRoundedPointer tpp = new TaperedRoundedPointer();
         tpp.setPointerColor(new PureBlack());
@@ -233,7 +233,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
-        graphics.drawImage(shadowImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2, null);
         graphics.setTransform(currentTransform);
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
