@@ -40,10 +40,6 @@ import java.awt.geom.Point2D;
 public abstract class AbstractRoundBackdrop extends Backdrop
 {
 
-    public AbstractRoundBackdrop()
-    {
-    }
-
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

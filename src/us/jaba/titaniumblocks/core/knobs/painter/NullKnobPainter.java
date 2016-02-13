@@ -58,7 +58,7 @@ public class NullKnobPainter extends SmallKnobPainter
     @Override
     public void paint(Graphics2D graphics2D, Dimension dimensions)
     {
-       
+       // intentional
     }
 
 }

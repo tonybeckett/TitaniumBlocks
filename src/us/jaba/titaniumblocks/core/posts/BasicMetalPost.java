@@ -46,8 +46,6 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class BasicMetalPost extends Post
 {
 
-    private final Color[] METALKNOB_MAIN_COLORS;
-
     private final float[] METALKNOB_FRAME_FRACTIONS =
     {
         0.0f,
@@ -71,15 +69,6 @@ public class BasicMetalPost extends Post
         new Color(255, 255, 255, 153),
         new Color(255, 255, 255, 0)
     };
-
-    public BasicMetalPost()
-    {
-        METALKNOB_MAIN_COLORS = new Color[]
-        {
-            new Color(204, 204, 204, 255),
-            new Color(87, 92, 98, 255)
-        };
-    }
 
     private final float[] METALKNOB_MAIN_FRACTIONS =
     {
@@ -119,6 +108,17 @@ public class BasicMetalPost extends Post
         new Color(1, 6, 11, 255),
         new Color(50, 52, 56, 255)
     };
+
+    private final Color[] METALKNOB_MAIN_COLORS;
+
+    public BasicMetalPost()
+    {
+        METALKNOB_MAIN_COLORS = new Color[]
+        {
+            new Color(204, 204, 204, 255),
+            new Color(87, 92, 98, 255)
+        };
+    }
 
     public BasicMetalPost(Color[] METALKNOB_MAIN_COLORS)
     {

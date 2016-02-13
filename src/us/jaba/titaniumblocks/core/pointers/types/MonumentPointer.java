@@ -41,13 +41,13 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class MonumentPointer extends GradientPointer
 {
 
-    private final float[] gradientFractionArray = new float[]
-    {
-        0.0f,
-        0.51f,
-        0.52f,
-        1.0f
-    };
+//    private final float[] gradientFractionArray = new float[]
+//    {
+//        0.0f,
+//        0.51f,
+//        0.52f,
+//        1.0f
+//    };
 
     public MonumentPointer()
     {

@@ -134,10 +134,10 @@ public class DropShadowImageGenerator
         }
 
         int srcOffset;
-
+        int dstOffset = LEFT * DST_WIDTH;
         // horizontal pass  extract the alpha mask from the source picture and
         // blur it into the destination picture
-        for (int srcY = 0, dstOffset = LEFT * DST_WIDTH; srcY < SRC_HEIGHT; srcY++)
+        for (int srcY = 0;  srcY < SRC_HEIGHT; srcY++)
         {
             // first pixels are empty
             for (historyIdx = 0; historyIdx < SHADOW_SIZE;)

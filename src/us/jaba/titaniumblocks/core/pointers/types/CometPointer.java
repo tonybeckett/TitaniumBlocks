@@ -31,7 +31,6 @@ import java.awt.Dimension;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
-import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
@@ -43,13 +42,13 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CometPointer extends GradientPointer
 {
 
-    private final float[] gradientFractionArray = new float[]
-    {
-        0.0f,
-        0.4999f,
-        0.5f,
-        1.0f
-    };
+//    private final float[] gradientFractionArray = new float[]
+//    {
+//        0.0f,
+//        0.4999f,
+//        0.5f,
+//        1.0f
+//    };
 
     public CometPointer()
     {

@@ -47,8 +47,72 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
  */
 public class LinearGlow extends Glow
 {
+
+    private final float[] GLOWRING_OFF_FRACTIONS =
+    {
+        0.0f,
+        0.17f,
+        0.33f,
+        0.34f,
+        0.63f,
+        0.64f,
+        0.83f,
+        1.0f
+    };
+    private final Color[] GLOWRING_OFF_COLORS =
+    {
+        new Color(204, 204, 204, 102),
+        new Color(153, 153, 153, 102),
+        new Color(252, 252, 252, 102),
+        new Color(255, 255, 255, 102),
+        new Color(204, 204, 204, 102),
+        new Color(203, 203, 203, 102),
+        new Color(153, 153, 153, 102),
+        new Color(255, 255, 255, 102)
+    };
+
+    private final float[] GLOWRING_HL_FRACTIONS =
+    {
+        0.0f,
+        0.1f,
+        0.2f,
+        0.2001f,
+        0.27f,
+        0.41f,
+        0.42f,
+        0.48f,
+        0.48009998f,
+        0.55f,
+        0.5501f,
+        0.92f,
+        0.93f,
+        0.97f,
+        0.99f,
+        1.0f
+    };
     
+    private final Color[] GLOWRING_HL_COLORS =
+    {
+        new Color(255, 255, 255, 140),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 50),
+        new Color(255, 255, 255, 60),
+        new Color(255, 255, 255, 45),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 80),
+        new Color(255, 255, 255, 95),
+        new Color(255, 255, 255, 24),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 0),
+        new Color(255, 255, 255, 124),
+        new Color(255, 255, 255, 164)
+    };
+
     public boolean ON;
+
     /**
      * Returns an image that simulates a glowing ring which could be used to
      * visualize a state of the gauge by a color. The LED might be too small if
@@ -73,7 +137,6 @@ public class LinearGlow extends Glow
 //
 //        linGlowImage.flush();
 //        linGlowImage = UTIL.createImage(width, height, Transparency.TRANSLUCENT);
-
 //        final Graphics2D graphics = linGlowImage.createGraphics();
     @Override
     public void paint(final Graphics2D graphics, final Dimension dimensions)
@@ -124,28 +187,7 @@ public class LinearGlow extends Glow
         {
             final Point2D GLOWRING_OFF_START = new Point2D.Double(0, GLOWRING.getBounds2D().getMinY());
             final Point2D GLOWRING_OFF_STOP = new Point2D.Double(0, GLOWRING.getBounds2D().getMaxY());
-            final float[] GLOWRING_OFF_FRACTIONS =
-            {
-                0.0f,
-                0.17f,
-                0.33f,
-                0.34f,
-                0.63f,
-                0.64f,
-                0.83f,
-                1.0f
-            };
-            final Color[] GLOWRING_OFF_COLORS =
-            {
-                new Color(204, 204, 204, 102),
-                new Color(153, 153, 153, 102),
-                new Color(252, 252, 252, 102),
-                new Color(255, 255, 255, 102),
-                new Color(204, 204, 204, 102),
-                new Color(203, 203, 203, 102),
-                new Color(153, 153, 153, 102),
-                new Color(255, 255, 255, 102)
-            };
+
             final Paint GLOWRING_OFF_GRADIENT = new LinearGradientPaint(GLOWRING_OFF_START, GLOWRING_OFF_STOP, GLOWRING_OFF_FRACTIONS, GLOWRING_OFF_COLORS);
             graphics.setPaint(GLOWRING_OFF_GRADIENT);
             graphics.fill(GLOWRING);
@@ -184,44 +226,7 @@ public class LinearGlow extends Glow
             // add a little highlight
             final Point2D GLOWRING_HL_START = new Point2D.Double(GLOWRING.getBounds2D().getCenterX(), GLOWRING.getBounds2D().getMinY());
             final Point2D GLOWRING_HL_STOP = new Point2D.Double(GLOWRING.getBounds2D().getCenterX(), GLOWRING.getBounds2D().getMaxY());
-            final float[] GLOWRING_HL_FRACTIONS =
-            {
-                0.0f,
-                0.1f,
-                0.2f,
-                0.2001f,
-                0.27f,
-                0.41f,
-                0.42f,
-                0.48f,
-                0.48009998f,
-                0.55f,
-                0.5501f,
-                0.92f,
-                0.93f,
-                0.97f,
-                0.99f,
-                1.0f
-            };
-            final Color[] GLOWRING_HL_COLORS =
-            {
-                new Color(255, 255, 255, 140),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 50),
-                new Color(255, 255, 255, 60),
-                new Color(255, 255, 255, 45),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 80),
-                new Color(255, 255, 255, 95),
-                new Color(255, 255, 255, 24),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 0),
-                new Color(255, 255, 255, 124),
-                new Color(255, 255, 255, 164)
-            };
+
             final LinearGradientPaint GLOWRING_HL_GRADIENT = new LinearGradientPaint(GLOWRING_HL_START, GLOWRING_HL_STOP, GLOWRING_HL_FRACTIONS, GLOWRING_HL_COLORS);
             graphics.setPaint(GLOWRING_HL_GRADIENT);
             graphics.fill(GLOWRING);

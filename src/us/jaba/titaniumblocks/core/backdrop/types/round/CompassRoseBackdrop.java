@@ -42,7 +42,6 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
-import us.jaba.titaniumblocks.core.text.TextSupport;
 
 public class CompassRoseBackdrop extends AbstractRoundBackdrop
 {

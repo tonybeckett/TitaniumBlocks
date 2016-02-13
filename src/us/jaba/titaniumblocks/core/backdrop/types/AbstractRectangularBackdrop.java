@@ -38,7 +38,6 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.shadows.InnerShadowImageGenerator;
-import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
 
 /**
  *

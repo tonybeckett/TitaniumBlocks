@@ -45,7 +45,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class NoisyPlasticBackdrop extends AbstractRectangularBackdrop
 {
 
-    TextureImageBuilder builder;
+    private final TextureImageBuilder builder;
     private Color textureColor = new Color(0x686868);
     private final NoisePainter noisePainter;
 

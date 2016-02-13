@@ -48,13 +48,13 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CompassPointer extends GradientPointer
 {
 
-    private final float[] gradientFractionArray = new float[]
-    {
-        0.0f,
-        0.4999f,
-        0.5f,
-        1.0f
-    };
+//    private final float[] gradientFractionArray = new float[]
+//    {
+//        0.0f,
+//        0.4999f,
+//        0.5f,
+//        1.0f
+//    };
 
     private final float[] NORTHPOINTER1_FRACTIONS =
     {

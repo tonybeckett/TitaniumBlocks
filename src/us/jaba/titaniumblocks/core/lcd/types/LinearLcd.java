@@ -80,8 +80,7 @@ public class LinearLcd extends CoreModel
         lcdBackgroundBuilder = new BackdropImageFactory(lbm);
 
         foregroundImageBuilder = new FrontcoverImageFactory(new BasicLinearFrontcover());
-        disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());
-        c = c;
+        disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());  
     }
 
     public BackdropImageFactory getBackgroundImageBuilder()

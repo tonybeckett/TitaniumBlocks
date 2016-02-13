@@ -38,10 +38,7 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.filters.SSOrientation;
 import us.jaba.titaniumblocks.core.glow.Glow;
-import us.jaba.titaniumblocks.core.knobs.GaugeType;
 import us.jaba.titaniumblocks.core.color.ColorTools;
 
 /**
@@ -52,9 +49,9 @@ public class RadialGlow extends Glow
 {
 
    
-    public GaugeType GAUGE_TYPE;
-    private boolean KNOBS;
-    private SSOrientation ORIENTATION;
+//    public GaugeType GAUGE_TYPE;
+//    private boolean KNOBS;
+//    private SSOrientation ORIENTATION;
     /**
      * Returns an image that simulates a glowing ring which could be used to
      * visualize a state of the gauge by a color. The LED might be too small if

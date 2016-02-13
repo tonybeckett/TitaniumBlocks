@@ -38,8 +38,7 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.filters.SSOrientation;
-import us.jaba.titaniumblocks.core.knobs.GaugeType;
+
 import us.jaba.titaniumblocks.core.color.ColorTools;
 
 /**
@@ -49,9 +48,9 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
 public abstract class AbstractRadialKnobGlow extends Glow
 {
 
-    public GaugeType GAUGE_TYPE;
-    private boolean KNOBS;
-    private SSOrientation ORIENTATION;
+//    public GaugeType GAUGE_TYPE;
+//    private boolean KNOBS;
+//    private SSOrientation ORIENTATION;
 
     protected final float[] POST_GLOW_FRACTIONS =
     {

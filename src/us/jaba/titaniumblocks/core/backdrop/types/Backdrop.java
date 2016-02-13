@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.backdrop.types;
 
-import java.util.Objects;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.DarkGrayBModel;

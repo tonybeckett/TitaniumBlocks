@@ -45,7 +45,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
 {
 
-    private TextureImageBuilder builder;
+    private final TextureImageBuilder builder;
     private Color textureColor = ColorPalette.GRAY.darker();
     private final NoisePainter noisePainter;
 
@@ -76,6 +76,11 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
         Paint p = new LinearGradientPaint(BACKGROUND_START, BACKGROUND_STOP, FRACTIONS, COLORS);
 
         return p;
+    }
+
+    public TextureImageBuilder getBuilder()
+    {
+        return builder;
     }
 
     @Override

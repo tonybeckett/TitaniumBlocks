@@ -49,7 +49,7 @@ public class PunchedSteelBackdrop extends AbstractRectangularBackdrop
 
     public PunchedSteelBackdrop()
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
+        rectangle = new Rectangle(0, 0, 12, 12);
         painter = new PunchedSheetTexture();
         overlayPainter = new OverlayPainter();
         noisePainter = new NoisePainter();

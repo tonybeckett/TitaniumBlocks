@@ -83,6 +83,11 @@ public class SixteenSegmentCharacter extends CoreModel
 
     }
 
+    public Color getInactiveSegmentColor()
+    {
+        return inactiveSegmentColor;
+    }
+
     private Color darken(Color c, double fragment)
     {
         Double newRed = fragment * c.getRed();

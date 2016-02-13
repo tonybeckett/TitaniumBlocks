@@ -142,19 +142,19 @@ public class LinenFilter implements BufferedImageOp
         return destination;
     }
 
-    private int random(int seed)
-    {
-        int x = seed;
-        x += (int) (255 * (2 * randomNumbers.nextFloat() - 1) * amount);
-        if (x < 0)
-        {
-            x = 0;
-        } else if (x > 0xff)
-        {
-            x = 0xff;
-        }
-        return x;
-    }
+//    private int random(int seed)
+//    {
+//        int x = seed;
+//        x += (int) (255 * (2 * randomNumbers.nextFloat() - 1) * amount);
+//        if (x < 0)
+//        {
+//            x = 0;
+//        } else if (x > 0xff)
+//        {
+//            x = 0xff;
+//        }
+//        return x;
+//    }
 
     private static int clamp(final int C)
     {
@@ -183,21 +183,24 @@ public class LinenFilter implements BufferedImageOp
      */
     private static int mod(int a, final int B)
     {
-        final int N = a / B;
+        int aa = a;
+        final int N = aa / B;
 
-        a -= N * B;
-        if (a < 0)
+        aa -= N * B;
+        if (aa < 0)
         {
-            return a + B;
+            return aa + B;
         }
-        return a;
+        return aa;
     }
 
     public void blurHorizontal(final int[] IN, final int[] OUT, final int width, final int RADIUS)
     {
         final int WIDTH_MINUS_1 = width - 1;
         final int R2 = 2 * RADIUS + 1;
-        int tr = 0, tg = 0, tb = 0;
+        int tr = 0;
+        int tg = 0;
+        int tb = 0;
 
         for (int i = -RADIUS; i <= RADIUS; i++)
         {
@@ -320,10 +323,10 @@ public class LinenFilter implements BufferedImageOp
     @Override
     public BufferedImage createCompatibleDestImage(final BufferedImage SOURCE, ColorModel dstCM)
     {
-        if (dstCM == null)
-        {
-            dstCM = SOURCE.getColorModel();
-        }
+////        if (dstCM == null)
+////        {
+////            dstCM = SOURCE.getColorModel();
+////        }
         return new BufferedImage(dstCM, dstCM.createCompatibleWritableRaster(SOURCE.getWidth(), SOURCE.getHeight()), dstCM.isAlphaPremultiplied(), null);
     }
 
@@ -336,10 +339,10 @@ public class LinenFilter implements BufferedImageOp
     @Override
     public Point2D getPoint2D(final Point2D SOURCE_POINT, Point2D dstPt)
     {
-        if (dstPt == null)
-        {
-            dstPt = new Point2D.Double();
-        }
+//        if (dstPt == null)
+//        {
+//            dstPt = new Point2D.Double();
+//        }
         dstPt.setLocation(SOURCE_POINT.getX(), SOURCE_POINT.getY());
         return dstPt;
     }

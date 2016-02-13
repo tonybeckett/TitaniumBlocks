@@ -40,6 +40,7 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -154,8 +155,8 @@ public final class ConicalGradientPaint implements Paint
         }
 
         // Adjust fractions and colors array in the case where startvalue != 0.0f and/or endvalue != 1.0f
-        final java.util.List<Color> colorList = new java.util.ArrayList<Color>(GIVEN_COLORS.length);
-        colorList.addAll(java.util.Arrays.asList(GIVEN_COLORS));
+        final List<Color> colorList = new ArrayList<Color>(GIVEN_COLORS.length);
+        colorList.addAll(Arrays.asList(GIVEN_COLORS));
 
         // Assure that fractions start with 0.0f
         if (fractionList.get(0) != 0.0f)
@@ -348,7 +349,7 @@ public final class ConicalGradientPaint implements Paint
     }
 
     @Override
-    public java.awt.PaintContext createContext(final ColorModel COLOR_MODEL,
+    public PaintContext createContext(final ColorModel COLOR_MODEL,
             final Rectangle DEVICE_BOUNDS,
             final Rectangle2D USER_BOUNDS,
             final AffineTransform TRANSFORM,

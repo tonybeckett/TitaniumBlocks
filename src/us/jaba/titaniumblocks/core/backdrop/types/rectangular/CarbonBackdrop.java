@@ -47,7 +47,7 @@ public class CarbonBackdrop extends AbstractRectangularBackdrop
 
     public CarbonBackdrop()
     {
-        rectangle = new java.awt.Rectangle(0, 0, 12, 12);
+        rectangle = new Rectangle(0, 0, 12, 12);
         painter = new CarbonTexture();
         overlayPainter = new OverlayPainter();
 

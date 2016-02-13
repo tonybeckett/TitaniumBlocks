@@ -38,24 +38,14 @@ import java.awt.Graphics2D;
 public class NullPost extends Post
 {
 
-    private final Color[] CENTER_KNOB_MAIN_COLORS;
-
+   
     public NullPost()
     {
-        this(new Color[]
-        {
-            new Color(0xD7D7D7),
-            new Color(0x747474),
-            new Color(0xD7D7D7)
-        });
+      
 
     }
 
-    public NullPost(Color[] CENTER_KNOB_MAIN_COLORS)
-    {
-        this.CENTER_KNOB_MAIN_COLORS = CENTER_KNOB_MAIN_COLORS;
-    }
-
+   
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

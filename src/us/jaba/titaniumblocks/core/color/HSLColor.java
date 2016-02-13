@@ -358,6 +358,10 @@ public class HSLColor
      */
     public static Color toRGB(float h, float s, float l, float alpha)
     {
+        float hh = h;
+        float ss = s; 
+        float ll = l;
+        
         if (s < 0.0f || s > 100.0f)
         {
             String message = "Color parameter outside of expected range - Saturation";
@@ -377,26 +381,26 @@ public class HSLColor
         }
 
 		//  Formula needs all values between 0 - 1.
-        h = h % 360.0f;
-        h /= 360f;
-        s /= 100f;
-        l /= 100f;
+        hh = hh % 360.0f;
+        hh /= 360f;
+        ss /= 100f;
+        ll /= 100f;
 
         float q = 0;
 
-        if (l < 0.5)
+        if (ll < 0.5)
         {
-            q = l * (1 + s);
+            q = ll * (1 + ss);
         } else
         {
-            q = (l + s) - (s * l);
+            q = (ll + ss) - (ss * ll);
         }
 
-        float p = 2 * l - q;
+        float p = 2 * ll - q;
 
-        float r = Math.max(0, hueToRGB(p, q, h + (1.0f / 3.0f)));
-        float g = Math.max(0, hueToRGB(p, q, h));
-        float b = Math.max(0, hueToRGB(p, q, h - (1.0f / 3.0f)));
+        float r = Math.max(0, hueToRGB(p, q, hh + (1.0f / 3.0f)));
+        float g = Math.max(0, hueToRGB(p, q, hh));
+        float b = Math.max(0, hueToRGB(p, q, hh - (1.0f / 3.0f)));
 
         return new Color(r, g, b, alpha);
     }

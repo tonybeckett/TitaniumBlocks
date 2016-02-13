@@ -41,7 +41,7 @@ public class BrassLinearFrame extends RectangularFrame
 {
 
 
-    static Color[] colorArray =
+    private static final Color[] COLOR_ARRAY =
     {
         new Color(249, 243, 155, 255),
         new Color(246, 226, 101, 255),
@@ -54,7 +54,7 @@ public class BrassLinearFrame extends RectangularFrame
 
     public BrassLinearFrame()
     {
-        super(SEVEN_FRACTION_ARRAY, colorArray);
+        super(SEVEN_FRACTION_ARRAY, COLOR_ARRAY);
     }
 
     @Override

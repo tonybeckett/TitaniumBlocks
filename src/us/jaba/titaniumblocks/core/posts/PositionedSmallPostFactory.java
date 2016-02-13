@@ -35,8 +35,6 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
-import us.jaba.titaniumblocks.core.math.CoordinateUtils;
-import us.jaba.titaniumblocks.core.math.Polar;
 
 /**
  *
@@ -44,16 +42,17 @@ import us.jaba.titaniumblocks.core.math.Polar;
  */
 public class PositionedSmallPostFactory extends CoreImageFactory
 {
+
     public static final double DEFAULT_SIZE_ADJUST = 0.03738316893577576;
-    KnobImageFactory knobImageFactory;
-    Point2D copyPoint;
+    private KnobImageFactory knobImageFactory;
+    private Point2D copyPoint;
     private double sizeAdjust = DEFAULT_SIZE_ADJUST;
-    
+
     public PositionedSmallPostFactory(KnobImageFactory iFactory, Point2D centerPoint)
     {
         knobImageFactory = iFactory;
         this.copyPoint = centerPoint;
-       
+
     }
 
     public void setSizeAdjust(double sizeAdjust)
@@ -67,10 +66,9 @@ public class PositionedSmallPostFactory extends CoreImageFactory
         BufferedImage image = knobImageFactory.build(new Dimension((int) (dimensions.width * sizeAdjust), (int) (dimensions.width * sizeAdjust)));
         Graphics2D graphics = result.createGraphics();
 
-        Point2D targetPoint = new Point2D.Double((dimensions.width * copyPoint.getX()), (dimensions.height * copyPoint.getY()) );
-        
+//        Point2D targetPoint = new Point2D.Double((dimensions.width * copyPoint.getX()), (dimensions.height * copyPoint.getY()));
+
 //         Polar p = CoordinateUtils.toPolarWithCenter(targetPoint, new Point2D.Double(result.getWidth()/2.0, result.getHeight()/2.0));
-        
         graphics.drawImage(image, (int) (dimensions.width * copyPoint.getX()), (int) (dimensions.height * copyPoint.getY()), null);
     }
 
