@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.posts;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 
@@ -37,13 +36,6 @@ import java.awt.Graphics2D;
  */
 public class NullPost extends Post
 {
-
-   
-    public NullPost()
-    {
-      
-
-    }
 
    
     @Override
