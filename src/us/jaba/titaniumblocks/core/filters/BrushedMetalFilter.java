@@ -68,10 +68,10 @@ public class BrushedMetalFilter implements BufferedImageOp
         final int width = SOURCE.getWidth();
         final int height = SOURCE.getHeight();
 
-        if (destination == null)
-        {
-            destination = createCompatibleDestImage(SOURCE, null);
-        }
+//        if (destination == null)
+//        {
+//            destination = createCompatibleDestImage(SOURCE, null);
+//        }
 
         final int[] IN_PIXELS = new int[width];
         final int[] OUT_PIXELS = new int[width];
