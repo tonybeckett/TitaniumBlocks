@@ -47,6 +47,14 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class TaperedThickPointer extends GradientPointer
 {
 
+    private final float[] gradientFractionArray = new float[]
+    {
+        0.0f,
+        0.4999f,
+        0.5f,
+        1.0f
+    };
+
     public TaperedThickPointer()
     {
     }
@@ -73,29 +81,23 @@ public class TaperedThickPointer extends GradientPointer
         final GeneralPath pointerShape;
         final Point2D startPoint;
         final Point2D stopPoint;
-        final float[] gradientFractionArray;
+
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        float radiusAdj = 1.0f - this.getRadiusPercent();
+        double magnitude = (1.0f - this.getRadiusPercent()) * frontScale.getValue();
+//        float tailOffset = (float) (0.5 * tailScale.getValue());
 
-        
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.495327);
         pointerShape.lineTo(imageWidth * 0.528037, imageHeight * 0.495327);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * radiusAdj); 
+        pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
         pointerShape.lineTo(imageWidth * 0.471962, imageHeight * 0.495327);
         pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.495327);
         pointerShape.closePath();
+        
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
-        gradientFractionArray = new float[]
-        {
-            0.0f,
-            0.4999f,
-            0.5f,
-            1.0f
-        };
 
         gradientColorArray = new Color[]
         {

@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -34,12 +35,24 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
 {
- 
+
+    protected String[] arrayOfFText =
+    {
+        "-10", " 0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "120"
+    };
+    protected String[] arrayOfCText =
+    {
+        "-20", "-10", "0", "10", "20", "30", "40", "50"
+    };
+
     public ThermometerFcTickmarks()
     {
         super(0.075);
+
+        mediumStroke = majorStroke;
+        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
-    
+
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
@@ -49,20 +62,33 @@ public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
         graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
 
         graphics.setColor(textColor);
+        
+
+        // 300 degrees
+        double angleStep = 300.0 / 14.0;
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 140.0, -1.0 * angleStep, arrayOfFText);
+
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 180.0, 0.0, unitsF);
+
+        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() * 0.75)));
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.45, 128.0, -39.0, arrayOfCText);
+
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.45, 180.0, 0.0, unitsC);
+
+        graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
+        
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.6);
+        
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.685, 140.0, -1.0 * angleStep / 5.0, 65);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 140.0, -20, arrayOfFText);
-
-        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() / 2.0)));
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.475, 144.0, -33.5, arrayOfCText);
-
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 128.0, -19.5, 15);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.685, 140.0, -20.0, 12);
-        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.6);
+        
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.7, 140.0, -1.0 * angleStep, 14);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 144.0, -33.5, 8);
         graphics.dispose();
 
     }

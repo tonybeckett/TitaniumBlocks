@@ -65,15 +65,15 @@ public class IndicatorBuilderViewer extends javax.swing.JFrame
 
 //        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexturePainter());
 //        im = ct.build(new Dimension(200, 200));
-        lib.getPainter().setOn(true);
-        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColor(new SatinGrayBModel());
+        lib.getTickmark().setOn(true);
+        lib.getTickmark().getBackgroundImageBuilder().getTickmark().setBackgroundColor(new SatinGrayBModel());
         im = lib.build(new Dimension(100, 100));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));
         panel.add(label);
         
-        lib.getPainter().getLinearFrameImageBuilder().getPainter().setFrameThickness(6);
-        lib.getPainter().getSymbolOnImageBuilder().getPainter().setGlowEnabled(true);
+        lib.getTickmark().getLinearFrameImageBuilder().getTickmark().setFrameThickness(6);
+        lib.getTickmark().getSymbolOnImageBuilder().getTickmark().setGlowEnabled(true);
         im = lib.build(new Dimension(100, 100));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));
@@ -92,7 +92,7 @@ public class IndicatorBuilderViewer extends javax.swing.JFrame
         label.setIcon(new ImageIcon(im));
         panel.add(label);
         
-        rlib.getSymbolOnImageBuilder().getPainter().setGlowEnabled(true);
+        rlib.getSymbolOnImageBuilder().getTickmark().setGlowEnabled(true);
         im = rlib.getImage(new Dimension(100, 100));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));

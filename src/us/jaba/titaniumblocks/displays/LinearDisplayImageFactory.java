@@ -41,9 +41,9 @@ public class LinearDisplayImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public AbstractLinearDisplay getPainter()
+    public AbstractLinearDisplay getTickmark()
     {
-        return (AbstractLinearDisplay) super.getPainter();
+        return (AbstractLinearDisplay) super.getTickmark();
     }
    
 }

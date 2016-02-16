@@ -46,13 +46,12 @@ import java.util.regex.Pattern;
 public class TextSupport
 {
 
+    
     private static final Pattern NUMBERS_ONLY = Pattern.compile("^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$");
     private static final Matcher MATCHES_NUMBERS = NUMBERS_ONLY.matcher("");
-    private static final Rectangle2D TEXT_BOUNDARY      = new Rectangle2D.Double(0, 0, 10, 10);
-    
-    
-    //********************************** UI related utils **************************************************************
+    private static final Rectangle2D TEXT_BOUNDARY = new Rectangle2D.Double(0, 0, 10, 10);
 
+    //********************************** UI related utils **************************************************************
     /**
      * It will take the font from the given Graphics2D object and returns a
      * shape of the given TEXT that is rotated by the ROTATION_ANGLE around it's

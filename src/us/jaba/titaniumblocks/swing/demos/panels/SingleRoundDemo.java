@@ -41,6 +41,7 @@ import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
 
@@ -105,6 +106,11 @@ public class SingleRoundDemo extends javax.swing.JFrame
     public void setPanelTitle(String string)
     {
         super.setTitle(string);
+    }
+
+    protected void setTickmarks(AbstractRadialTickmark tickmarks)
+    {
+        panel.setTickmarks(tickmarks);
     }
     
     @Override

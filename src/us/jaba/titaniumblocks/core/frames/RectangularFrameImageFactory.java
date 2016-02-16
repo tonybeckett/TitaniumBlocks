@@ -19,9 +19,9 @@ public class RectangularFrameImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public RectangularFrame getPainter()
+    public RectangularFrame getTickmark()
     {
-        return (RectangularFrame) super.getPainter();
+        return (RectangularFrame) super.getTickmark();
     }
 
 }

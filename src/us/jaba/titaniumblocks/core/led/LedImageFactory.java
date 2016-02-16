@@ -18,9 +18,9 @@ public class LedImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public Led getPainter()
+    public Led getTickmark()
     {
-        return (Led) super.getPainter();  
+        return (Led) super.getTickmark();  
     }
     
     

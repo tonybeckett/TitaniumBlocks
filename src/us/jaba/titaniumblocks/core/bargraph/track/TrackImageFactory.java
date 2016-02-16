@@ -18,8 +18,8 @@ public class TrackImageFactory extends CoreImageFactory
         super(painter);
     }
     
-     public TrackModel getPainter()
+     public TrackModel getTickmark()
     {
-        return (TrackModel) super.getPainter();  
+        return (TrackModel) super.getTickmark();  
     }
 }

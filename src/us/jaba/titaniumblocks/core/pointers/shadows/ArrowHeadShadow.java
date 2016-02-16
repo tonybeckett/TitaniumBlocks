@@ -47,7 +47,7 @@ public class ArrowHeadShadow extends GradientPointer
     {
 
        
-        final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
+        final Color shadowColor = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -71,7 +71,7 @@ public class ArrowHeadShadow extends GradientPointer
         pointerShape.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
         pointerShape.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
         pointerShape.closePath();
-        graphics.setColor(SHADOW_COLOR);
+        graphics.setColor(shadowColor);
         graphics.fill(pointerShape);
 
         graphics.dispose();

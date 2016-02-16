@@ -36,6 +36,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
@@ -58,7 +59,7 @@ public class TaperedRoundedTailPointer extends GradientPointer
     public TaperedRoundedTailPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-        tailScale = 0.3f;
+        tailScale = new Scale(0.3);
     }
 
     @Override
@@ -78,8 +79,8 @@ public class TaperedRoundedTailPointer extends GradientPointer
         final GeneralPath pointerShape;
         
         final java.awt.Paint gradient;
-        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
-        float tailOffset = (0.5f * tailScale);
+        double magnitude = (1.0f - this.getRadiusPercent()) * frontScale.getValue();
+        float tailOffset = (float) (0.5 * tailScale.getValue());
                 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);

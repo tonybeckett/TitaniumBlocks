@@ -67,7 +67,7 @@ public class SixteenSegmentDisplay extends CoreModel
         while (i.hasNext())
         {
             SixteenSegmentCharImageFactory ssci = i.next();
-            ssci.getPainter().setSegmentColor(textColor);
+            ssci.getTickmark().setSegmentColor(textColor);
         }
     }
 
@@ -102,7 +102,7 @@ public class SixteenSegmentDisplay extends CoreModel
         for( int i = 0; i < len; i++)
         {
             byte c = value.getBytes()[i];
-            segments.get(i).getPainter().setCharacter((char) c);
+            segments.get(i).getTickmark().setCharacter((char) c);
         }
     }
 

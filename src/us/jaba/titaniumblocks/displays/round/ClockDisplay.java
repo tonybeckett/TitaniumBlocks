@@ -33,6 +33,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
@@ -55,6 +57,7 @@ import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.layout.CircularNoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.types.LinePointer;
@@ -64,6 +67,7 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersOutTickmarks;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
@@ -128,7 +132,8 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         Pencil2Pointer hourp = new Pencil2Pointer();
         hourp.setPointerColor(new PureBlack());
-        hourp.setFrontScale(0.65f);
+        hourp.setFrontScale(new Scale(0.6));
+        hourp.setTailScale(new Scale(0.2));
         hourPointerImage = new PointerImageFactory(hourp);
         add(hourPointerImage);
         hrShadowPointerImage = new ShadowPointerImageFactory(hourp);
@@ -138,7 +143,9 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         minp.setPointerColor(new PureBlack());
 
         minp.setCenterPostEnable(true);
-        minp.setCenterScale(0.04f);
+        minp.setCenterScale(new Scale(0.04));
+        minp.setFrontScale(new Scale(0.85));
+        minp.setTailScale(new Scale(0.2));
         minutePointerImage = new PointerImageFactory(minp);
         add(minutePointerImage);
         minShadowPointerImage = new ShadowPointerImageFactory(minp);
@@ -146,8 +153,8 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         LinePointer secp = new LinePointer();
         secp.setPointerColor(new PureRed());
-        secp.setFrontScale(0.6f);
-        secp.setTailScale(0.2f);
+        secp.setFrontScale(new Scale(0.9));
+        secp.setTailScale(new Scale(0.2));
         secp.setCenterPostEnable(true);
         secp.setCenterPinVisible(true);
 
@@ -170,7 +177,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
     {
         int answer = offset;
         int a = (int) CoordinateUtils.toDegrees(graphicsAngle);
-       
+
         if (a > 95 && a < 165) // nw
         {
             answer = offset + 2;
@@ -193,10 +200,10 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = frameImage.getPainter().getFrameThickness();
+        int offset = (int) frameImage.getTickmark().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getTickmark().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -226,8 +233,8 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         graphicsAngle = CoordinateUtils.calcGraphicsAngle(thirdPointerValue, circularLayout);
         graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
-       
-        graphics.drawImage(secShadowPointerImage.build(interiorDim),  adjustOffset(offset, graphicsAngle), offset - 1, null);
+
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset - 1, null);
         graphics.setTransform(currentTransform);
         graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(secondsPointerImage.build(interiorDim), offset, offset, null);
@@ -270,33 +277,33 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Color getColor()
     {
-        return valueTextImage.getPainter().getColor();
+        return valueTextImage.getTickmark().getColor();
     }
 
     public void setColor(Color c)
     {
 
-        //  tbTextImage.getPainter().setColor(c);
+        //  tbTextImage.getTickmark().setColor(c);
     }
 
     public Backdrop getBackdropPainter()
     {
-        return backdropImage.getPainter();
+        return backdropImage.getTickmark();
     }
 
     public FrameModel getFramePainter()
     {
-        return frameImage.getPainter();
+        return frameImage.getTickmark();
     }
 
     public Text getTextPainter()
     {
-        return valueTextImage.getPainter();
+        return valueTextImage.getTickmark();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getPainter();
+        return frontcoverImage.getTickmark();
     }
 
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
@@ -311,7 +318,50 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setPointerGradient(GradientPalette cp)
     {
-        hourPointerImage.getPainter().setPointerColor(cp);
+        hourPointerImage.getTickmark().setPointerColor(cp);
+    }
+
+    public Pointer getHourPointer()
+    {
+        return hourPointerImage.getTickmark();
+    }
+
+    public void setHourPointer(Pointer hourPointer)
+    {
+        this.hourPointerImage.setPainter(hourPointer);
+        this.hrShadowPointerImage.setPainter(hourPointer);
+    }
+
+    public Pointer getMinutePointer()
+    {
+        return minutePointerImage.getTickmark();
+    }
+
+    public void setMinutePointer(Pointer minutePointer)
+    {
+        this.minutePointerImage.setPainter(minutePointer);
+        this.minShadowPointerImage.setPainter(minutePointer);
+    }
+
+    public Pointer getSecondsPointer()
+    {
+        return secondsPointerImage.getTickmark();
+    }
+
+    public void setSecondsPointer(Pointer secondsPointer)
+    {
+        this.secondsPointerImage.setPainter(secondsPointer);
+        this.secShadowPointerImage.setPainter(secondsPointer);
+    }
+
+    public TickmarkModel getTickmark()
+    {
+        return tickmarkImage.getTickmark();
+    }
+
+    public void setTickmark(TickmarkModel tm)
+    {
+        tickmarkImage.setPainter(tm);
     }
 
 }

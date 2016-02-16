@@ -75,7 +75,7 @@ public class CoreImageFactory
         }
     }
 
-    public Painter getPainter()
+    public Painter getTickmark()
     {
         return painter;
     }
@@ -83,6 +83,7 @@ public class CoreImageFactory
     public void setPainter(CoreModel cm)
     {
         painter = cm;
+        painter.changed();
     }
 
     public void setBackgroundImage(BufferedImage backgroundImage)

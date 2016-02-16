@@ -44,6 +44,7 @@ import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.displays.round.ClockDisplay;
 
 /**
@@ -98,7 +99,7 @@ public class ClockPanel extends JComponent
 
     public ClockPanel(Color color)
     {
-        
+
         singleGauge = new ClockDisplay(color);
         this.addComponentListener(componentListener);
     }
@@ -224,6 +225,46 @@ public class ClockPanel extends JComponent
     public void setFrontCover(Frontcover foregroundPainter)
     {
         singleGauge.setFrontCover(foregroundPainter);
+    }
+
+    public Pointer getHourPointer()
+    {
+        return singleGauge.getHourPointer();
+    }
+
+    public void setHourPointer(Pointer hourPointer)
+    {
+        singleGauge.setHourPointer(hourPointer);
+    }
+
+    public Pointer getMinutePointer()
+    {
+        return singleGauge.getMinutePointer();
+    }
+
+    public void setMinutePointer(Pointer minutePointer)
+    {
+        singleGauge.setMinutePointer(minutePointer);
+    }
+
+    public Pointer getSecondsPointer()
+    {
+        return singleGauge.getSecondsPointer();
+    }
+
+    public void setSecondsPointer(Pointer secondsPointer)
+    {
+        singleGauge.setSecondsPointer(secondsPointer);
+    }
+
+    public TickmarkModel getTickmark()
+    {
+        return singleGauge.getTickmark();
+    }
+
+    public void setTickmark(TickmarkModel tm)
+    {
+        singleGauge.setTickmark(tm);
     }
 
 }

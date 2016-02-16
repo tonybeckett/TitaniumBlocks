@@ -41,9 +41,9 @@ public class TextImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public Text getPainter()
+    public Text getTickmark()
     {
-        return (Text) super.getPainter();
+        return (Text) super.getTickmark();
     }
 
     

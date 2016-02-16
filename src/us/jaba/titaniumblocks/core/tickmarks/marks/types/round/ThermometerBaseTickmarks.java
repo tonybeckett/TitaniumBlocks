@@ -28,20 +28,16 @@
 package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
 
+import us.jaba.titaniumblocks.core.text.StringSupport;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class ThermometerBaseTickmarks extends AbstractRadialTickmark
 {
 
     protected double textScale = 0.075;
-    protected String[] arrayOfFText =
-    {
-        "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100", "110", "F"
-    };
-    protected String[] arrayOfCText =
-    {
-        "-20", "-10", "0", "10", "20", "30", "40", "50", "C"
-    };
+    
+    protected String[] unitsC = { StringSupport.DEGREE+"C" };
+    protected String[] unitsF = { StringSupport.DEGREE+"F" };
 
     public ThermometerBaseTickmarks(double textScaleFactor)
     {

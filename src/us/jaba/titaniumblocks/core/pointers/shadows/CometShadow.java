@@ -47,7 +47,7 @@ public class CometShadow extends GradientPointer
     {
 
         
-        final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.65f);
+        final Color shadowColor = new Color(0.0f, 0.0f, 0.0f, 0.65f);
 
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
@@ -69,7 +69,7 @@ public class CometShadow extends GradientPointer
         pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402, imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317, imageWidth * 0.5560747663551402, imageHeight * 0.5);
         pointerShape.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663, imageWidth * 0.5, imageHeight * 0.14953271028037382, imageWidth * 0.5, imageHeight * 0.14953271028037382);
         pointerShape.closePath();
-        graphics.setColor(SHADOW_COLOR);
+        graphics.setColor(shadowColor);
         graphics.fill(pointerShape);
 
         graphics.dispose();

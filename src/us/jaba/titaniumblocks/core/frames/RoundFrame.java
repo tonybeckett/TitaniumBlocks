@@ -33,6 +33,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.Scale;
 
 /**
  *
@@ -61,9 +62,8 @@ public class RoundFrame extends FrameModel
     private static final double DEFAULT_OUTER_X_MULTIPLER = 0.0;
     private static final double DEFAULT_OUTER_Y_MULTIPLER = 0.0;
 
-    public static final int DEFAULT_FRAME_THICKNESS = 40; // DEFAULT_SUBTRACT_X_MULTIPLER - DEFAULT_INNER_X_MULTIPLER * 100.0
-
-    protected int frameThickness = DEFAULT_FRAME_THICKNESS;
+    protected double frameThickness;
+    protected Scale scaleFactor = new Scale();
 
     protected Dimension interiorDimension = new Dimension(1, 1);
 
@@ -82,6 +82,8 @@ public class RoundFrame extends FrameModel
 
     public Dimension calcInterior(Dimension dimensions)
     {
+        frameThickness = ((dimensions.getWidth() * subtractMultiRect.getX()) - (dimensions.getWidth() * outerMultiRect.getX())) * scaleFactor.getValue();
+
         return new Dimension((int) ((double) dimensions.getWidth() - (2.0 * (double) frameThickness)), (int) ((double) dimensions.getHeight() - (2.0 * (double) frameThickness)));
     }
 
@@ -90,16 +92,19 @@ public class RoundFrame extends FrameModel
         return interiorDimension;
     }
 
-    public int getFrameThickness()
+    public double getFrameThickness()
     {
         return frameThickness;
     }
 
-    public void setFrameThickness(int frameThickness)
+    public Scale getScaleFactor()
     {
-        this.frameThickness = frameThickness;
+        return scaleFactor;
+    }
 
-        changed();
+    public void setScaleFactor(Scale scaleFactor)
+    {
+        this.scaleFactor = scaleFactor;
     }
 
     @Override
@@ -114,10 +119,10 @@ public class RoundFrame extends FrameModel
 
         interiorDimension.setSize(dimensions.getWidth() - (2 * frameThickness), dimensions.getHeight() - (2 * frameThickness));
 
-        final Area innerArea = new Area(new Ellipse2D.Double(frameThickness, //imageWidth * innerMultiRect.getX(),
-                frameThickness, //imageHeight * innerMultiRect.getY(),
-                imageWidth - (frameThickness * 2),// * innerMultiRect.getWidth(),
-                imageHeight - (frameThickness * 2) //* innerMultiRect.getHeight()
+        final Area innerArea = new Area(new Ellipse2D.Double(imageWidth * innerMultiRect.getX(),
+                imageHeight * innerMultiRect.getY(),
+                imageWidth * innerMultiRect.getWidth(),
+                imageHeight * innerMultiRect.getHeight()
         ));
 
         final Area outerArea = new Area(new Ellipse2D.Double(0.0, 0.0,
@@ -126,51 +131,20 @@ public class RoundFrame extends FrameModel
         ));
 
         final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * mainMultiRect.getX() + 1,
-                imageHeight * outerMultiRect.getY() + 1,
+                imageHeight * mainMultiRect.getY() + 1,
                 imageWidth * mainMultiRect.getWidth() - 1,
                 imageHeight * mainMultiRect.getHeight() - 1
         ));
 
-        final Area subtractArea = new Area(new Ellipse2D.Double(frameThickness - 1, //imageWidth * subtractMultiRect.getX(),
-                frameThickness - 1, // imageHeight * subtractMultiRect.getY(),
-                imageWidth - (frameThickness * 2) + 1, //* subtractMultiRect.getWidth(),
-                imageHeight - (frameThickness * 2) + 1 //* subtractMultiRect.getHeight()
+        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * subtractMultiRect.getX(),
+                imageHeight * subtractMultiRect.getY(),
+                imageWidth * subtractMultiRect.getWidth(),
+                imageHeight * subtractMultiRect.getHeight()
         ));
 
         paintFrame(graphics, dimensions, mainArea, outerArea, innerArea, subtractArea);
     }
 
-//    public RectangularFrameEffectPainter getLinearEffect()
-//    {
-//        return linearEffect;
-//    }
-//
-//    public void setLinearEffect(RectangularFrameEffectPainter linearEffect)
-//    {
-//        this.linearEffect = linearEffect;
-//        changed();
-//    }
-//    public Paint getInnerFrameColor()
-//    {
-//        return innerFrameColor;
-//    }
-//
-//    public Paint getOuterFrameColor()
-//    {
-//        return outerFrameColor;
-//    }
-//
-//    public void setInnerFrameColor(Paint innerFrameColor)
-//    {
-//        this.innerFrameColor = innerFrameColor;
-//        changed();
-//    }
-//
-//    public void setOuterFrameColor(Paint outerFrameColor)
-//    {
-//        this.outerFrameColor = outerFrameColor;
-//        changed();
-//    }
     protected void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
     {
 // intentional

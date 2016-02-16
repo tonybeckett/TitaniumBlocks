@@ -32,6 +32,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
+import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.GeneralPath;
@@ -71,6 +72,11 @@ public class GradientPointer extends AbstractPointer
 
     }
 
+    public GradientPointer(GradientPointer other)
+    {
+        super(other);
+    }
+
     protected Shape getShape(Dimension dimensions)
     {
         return new GeneralPath();
@@ -89,7 +95,7 @@ public class GradientPointer extends AbstractPointer
         {
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
-        final java.awt.Paint gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
+        final Paint gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
 
@@ -100,7 +106,7 @@ public class GradientPointer extends AbstractPointer
     @Override
     public void paintShadow(Graphics2D graphics, Dimension dimensions)
     {
- 
+        super.paintShadow(graphics, dimensions);
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
         graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);

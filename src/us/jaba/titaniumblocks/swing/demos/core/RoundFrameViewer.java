@@ -43,7 +43,6 @@ import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
 import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
@@ -82,7 +81,7 @@ public class RoundFrameViewer extends javax.swing.JFrame
             Class<?> aLinearClass = linearClassList.get(i);
             Constructor cLinear = aLinearClass.getConstructor();
             RoundFrame framePainter = (RoundFrame) cLinear.newInstance();
-            framePainter.setFrameThickness(20);
+//            framePainter.setFrameThickness(20);
             RoundFrameImageFactory lfg = new RoundFrameImageFactory(framePainter);
 
             JPanel lpanel = new JPanel();

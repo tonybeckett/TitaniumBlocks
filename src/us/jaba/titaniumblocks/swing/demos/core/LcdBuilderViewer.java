@@ -60,15 +60,15 @@ public class LcdBuilderViewer extends javax.swing.JFrame
 
 //        TextureImageBuilder ct = new TextureImageBuilder(new CarbonTexturePainter());
 //        im = ct.build(new Dimension(200, 200));
-        lib.getPainter().setDisabled(true);
-        lib.getPainter().getBackgroundImageBuilder().getPainter().setBackgroundColor(new SatinGrayBModel());
+        lib.getTickmark().setDisabled(true);
+        lib.getTickmark().getBackgroundImageBuilder().getTickmark().setBackgroundColor(new SatinGrayBModel());
         
         im = lib.build(new Dimension(250, 150));
         label = new JLabel();
         label.setIcon(new ImageIcon(im));
         panel.add(label);
         
-        lib.getPainter().getLinearFrameImageBuilder().getPainter().setFrameThickness(6);
+        lib.getTickmark().getLinearFrameImageBuilder().getTickmark().setFrameThickness(6);
         
         im = lib.build(new Dimension(250, 125));
         label = new JLabel();
@@ -88,7 +88,7 @@ public class LcdBuilderViewer extends javax.swing.JFrame
 //        label.setIcon(new ImageIcon(im));
 //        panel.add(label);
 //        
-//        rlib.getSymbolOnImageBuilder().getPainter().setGlowEnabled(true);
+//        rlib.getSymbolOnImageBuilder().getTickmark().setGlowEnabled(true);
 //        im = rlib.getImage(new Dimension(100, 100));
 //        label = new JLabel();
 //        label.setIcon(new ImageIcon(im));

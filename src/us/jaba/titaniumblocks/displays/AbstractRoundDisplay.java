@@ -126,7 +126,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
 
     public Backdrop getBackdrop()
     {
-        return backdropImage.getPainter();
+        return backdropImage.getTickmark();
     }
 
     public void setBackdrop(Backdrop painter)
@@ -141,7 +141,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
 
     public FrameModel getFrame()
     {
-        return frameImage.getPainter();
+        return frameImage.getTickmark();
     }
 
     public void setFrame(RoundFrame linearFramePainter)
@@ -171,7 +171,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
 
     public void setValueText(Text valueTextPainter)
     {
-        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
+        valueTextPainter.setColor(valueTextImage.getTickmark().getColor());
         this.valueTextImage.setPainter(valueTextPainter);
     }
 

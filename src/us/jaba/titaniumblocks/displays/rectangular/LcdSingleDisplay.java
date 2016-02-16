@@ -53,13 +53,13 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
         super(ColorPalette.WHITE);
         lcdBackgroundImage = new BackdropImageFactory(new LcdBackdropModel());
 
-        this.valueTextImage.getPainter().setColor(palette.textColor);
+        this.valueTextImage.getTickmark().setColor(palette.textColor);
     }
 
     @Override
     public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
     {
-        ((LcdBackdropModel) lcdBackgroundImage.getPainter()).setPalette(palette);
+        ((LcdBackdropModel) lcdBackgroundImage.getTickmark()).setPalette(palette);
 
         image = lcdBackgroundImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
@@ -67,7 +67,7 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
 
     public Backdrop getLCDBackgroundPainter()
     {
-        return lcdBackgroundImage.getPainter();
+        return lcdBackgroundImage.getTickmark();
     }
 
     
@@ -79,7 +79,7 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
     public void setPalette(LcdGradientPalette palette)
     {
         this.palette = palette;
-        this.valueTextImage.getPainter().setColor(palette.textColor);
+        this.valueTextImage.getTickmark().setColor(palette.textColor);
         changed();
     }
 

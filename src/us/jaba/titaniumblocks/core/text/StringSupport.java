@@ -11,6 +11,7 @@ package us.jaba.titaniumblocks.core.text;
  */
 public class StringSupport
 {
+    public static final String DEGREE = "\u00b0";
 
     public static String valueToScientificText(final String UNIT, final int PRECISION, final double VALUE)
     {

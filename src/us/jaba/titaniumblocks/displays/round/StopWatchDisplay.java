@@ -33,6 +33,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
@@ -145,22 +146,22 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
         LinePointer minp = new LinePointer();
         minp.setRadiusPercent(0.45f);
         minp.setPointerColor(new PureBlue());
-        minp.setFrontScale(0.375f);
-        minp.setTailScale(0.1f);
+        minp.setFrontScale(new Scale(0.5));
+        minp.setTailScale(new Scale(0.2));
         minp.setCenterPostEnable(true);
         minp.setCenterPinVisible(true);
-        minp.setCenterScale(0.015f);
+        minp.setCenterScale(new Scale(0.015));
         minutePointerImage = new PointerImageFactory(minp);
         add(minutePointerImage);
 
         LinePointer secp = new LinePointer();
         secp.setPointerColor(new PureRed());
         secp.setRadiusPercent(0.95f);
-        secp.setTailScale(0.2f);
-        secp.setFrontScale(0.6f);
+        secp.setTailScale(new Scale(0.2));
+        secp.setFrontScale(new Scale(0.975));
         secp.setCenterPostEnable(true);
         secp.setCenterPinVisible(true);
-        secp.setCenterScale(0.04f);
+        secp.setCenterScale(new Scale(0.04));
         secondsPointerImage = new PointerImageFactory(secp);
         add(secondsPointerImage);
 
@@ -182,10 +183,10 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = frameImage.getPainter().getFrameThickness();
+        int offset = (int) frameImage.getTickmark().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getTickmark().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -270,33 +271,33 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public Color getColor()
     {
-        return valueTextImage.getPainter().getColor();
+        return valueTextImage.getTickmark().getColor();
     }
 
     public void setColor(Color c)
     {
 
-        //  tbTextImage.getPainter().setColor(c);
+        //  tbTextImage.getTickmark().setColor(c);
     }
 
     public Backdrop getBackdropPainter()
     {
-        return backdropImage.getPainter();
+        return backdropImage.getTickmark();
     }
 
     public FrameModel getFramePainter()
     {
-        return frameImage.getPainter();
+        return frameImage.getTickmark();
     }
 
     public Text getTextPainter()
     {
-        return valueTextImage.getPainter();
+        return valueTextImage.getTickmark();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getPainter();
+        return frontcoverImage.getTickmark();
     }
 
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
@@ -311,7 +312,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public void setPointerGradient(GradientPalette cp)
     {
-        hourPointerImage.getPainter().setPointerColor(cp);
+        hourPointerImage.getTickmark().setPointerColor(cp);
     }
 
 }

@@ -55,14 +55,14 @@ public class SinglePostUnitDisplay extends SingleDisplay
         dvt.setFont(unitFont);
         dvt.setRightOffsetFactor(0.05);
         unitTextImage = new TextImageFactory(dvt);
-        valueTextImage.getPainter().setRightOffsetFactor(0.25);
+        valueTextImage.getTickmark().setRightOffsetFactor(0.25);
     }
 
     @Override
     public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
     {
-        unitTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
-        unitTextImage.getPainter().setColor(this.getColor());
+        unitTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
+        unitTextImage.getTickmark().setColor(this.getColor());
 
         image = unitTextImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
@@ -70,7 +70,7 @@ public class SinglePostUnitDisplay extends SingleDisplay
 
     public Text getUnitTextPainter()
     {
-        return unitTextImage.getPainter();
+        return unitTextImage.getTickmark();
     }
 
     public void setUnitTextPainter(Text unitTextPainter)

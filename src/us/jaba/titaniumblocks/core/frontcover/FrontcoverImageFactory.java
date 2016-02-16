@@ -42,9 +42,9 @@ public class FrontcoverImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public Frontcover getPainter()
+    public Frontcover getTickmark()
     {
-        return (Frontcover) super.getPainter(); 
+        return (Frontcover) super.getTickmark(); 
     }
 
 }

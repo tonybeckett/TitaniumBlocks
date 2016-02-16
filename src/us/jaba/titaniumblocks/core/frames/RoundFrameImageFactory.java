@@ -20,9 +20,9 @@ public class RoundFrameImageFactory extends CoreImageFactory
     }
 
     @Override
-    public RoundFrame getPainter()
+    public RoundFrame getTickmark()
     {
-        return (RoundFrame) super.getPainter();
+        return (RoundFrame) super.getTickmark();
     }
 
 }

@@ -48,7 +48,6 @@ public class MonumentPointer extends GradientPointer
 //        0.52f,
 //        1.0f
 //    };
-
     public MonumentPointer()
     {
     }
@@ -58,25 +57,33 @@ public class MonumentPointer extends GradientPointer
         super(pointerColor);
     }
 
+    public MonumentPointer(GradientPointer other)
+    {
+        super(other);
+    }
+
     @Override
     protected Shape getShape(Dimension dimensions)
     {
-         final int imageWidth = (int) dimensions.getWidth();
+        final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-        
-        float magnitude = (1.0f -this.getRadiusPercent()) * frontScale;
+
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
+
+        double magnitude = (this.getRadiusPercent() * frontScale.getValue());
         GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * magnitude);
-        pointerShape.lineTo(imageWidth * 0.514018, imageHeight * (magnitude+0.01));
+        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * magnitude));
+        pointerShape.lineTo(imageWidth * 0.514018, centerY - (maxY * magnitude + 0.01));
         pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
         pointerShape.lineTo(imageWidth * 0.523364, imageHeight * 0.602803);
         pointerShape.lineTo(imageWidth * 0.476635, imageHeight * 0.602803);
         pointerShape.lineTo(imageWidth * 0.467289, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.490654, imageHeight * (magnitude+0.01));
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * magnitude + 0.01));
+        pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * magnitude));
         pointerShape.closePath();
-        return pointerShape; 
+        return pointerShape;
     }
 
 //    @Override

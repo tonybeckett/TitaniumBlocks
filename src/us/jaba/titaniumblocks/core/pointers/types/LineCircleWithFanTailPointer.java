@@ -33,6 +33,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -49,13 +50,13 @@ public class LineCircleWithFanTailPointer extends GradientPointer
     public LineCircleWithFanTailPointer()
     {
         super(new Aluminum());
-        tailScale = 0.3f;
+        tailScale = new Scale(0.3);
     }
 
     public LineCircleWithFanTailPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-        tailScale = 0.3f;
+        tailScale = new Scale(0.3);
     }
 
     @Override
@@ -73,15 +74,15 @@ public class LineCircleWithFanTailPointer extends GradientPointer
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
+        double magnitude = (1.0f - this.getRadiusPercent()) * frontScale.getValue();
         int fanOffset = (int) (imageWidth * 0.02066);
         
         pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532), (imageHeight * magnitude),
                 (imageWidth * 0.00934), imageHeight * 0.525)
         );
         pointerShape.moveTo(imageWidth * 0.5 + 1, imageHeight * 0.525);
-        pointerShape.lineTo((imageWidth * 0.5) + fanOffset, imageHeight * (0.525 + (0.5 * tailScale)));
-        pointerShape.lineTo((imageWidth * 0.5) - fanOffset, imageHeight * (0.525 + (0.5 * tailScale)));
+        pointerShape.lineTo((imageWidth * 0.5) + fanOffset, imageHeight * (0.525 + (0.5 * tailScale.getValue())));
+        pointerShape.lineTo((imageWidth * 0.5) - fanOffset, imageHeight * (0.525 + (0.5 * tailScale.getValue())));
         pointerShape.lineTo((imageWidth * 0.5 - 1), imageHeight * 0.525);
 
         pointerShape.closePath();

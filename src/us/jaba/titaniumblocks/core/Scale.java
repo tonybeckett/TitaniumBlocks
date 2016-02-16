@@ -25,26 +25,49 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.lcd;
-
-import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.lcd.types.SixteenSegmentDisplay;
+package us.jaba.titaniumblocks.core;
 
 /**
  *
  * @author tbeckett
  */
-public class SixteenSegmentDisplayImageFactory extends CoreImageFactory
+public class Scale
 {
+    private double value = 1.0;
 
-    public SixteenSegmentDisplayImageFactory(SixteenSegmentDisplay painter)
+    public Scale()
     {
-        super(painter);
     }
 
-    public SixteenSegmentDisplay getTickmark()
+    public Scale(double v)
     {
-        return (SixteenSegmentDisplay) super.getTickmark();  
+        value = v;
     }
-    
+
+    /**
+     * Get the value of value
+     *
+     * @return the value of value
+     */
+    public double getValue()
+    {
+        return value;
+    }
+
+    /**
+     * Set the value of value
+     *
+     * @param value new value of value
+     */
+    public void setValue(double value)
+    {
+        this.value = value;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Scale{" + "value=" + value + '}';
+    }
+
 }

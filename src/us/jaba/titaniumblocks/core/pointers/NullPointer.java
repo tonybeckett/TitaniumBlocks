@@ -25,26 +25,55 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.lcd;
+package us.jaba.titaniumblocks.core.pointers;
 
-import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.lcd.types.SixteenSegmentDisplay;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.Paint;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
+
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class SixteenSegmentDisplayImageFactory extends CoreImageFactory
+public class NullPointer extends AbstractPointer
 {
-
-    public SixteenSegmentDisplayImageFactory(SixteenSegmentDisplay painter)
+    public NullPointer()
     {
-        super(painter);
+        this(new PureBlack());
     }
 
-    public SixteenSegmentDisplay getTickmark()
+    public NullPointer(GradientPalette pointColor)
     {
-        return (SixteenSegmentDisplay) super.getTickmark();  
+        super(pointColor);
     }
-    
+
+    public NullPointer(NullPointer other)
+    {
+        super(other);
+    }
+
+    @Override
+    public void paintShadow(Graphics2D graphics, Dimension dimensions)
+    {
+        super.paintShadow(graphics, dimensions);   
+    }
+
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        super.paint(graphics, dimensions);
+    }
 }

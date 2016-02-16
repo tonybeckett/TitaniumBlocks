@@ -54,6 +54,11 @@ public class Pencil2Pointer extends GradientPointer
         super(pointerColor);
     }
 
+    public Pencil2Pointer(GradientPointer other)
+    {
+        super(other);
+    }
+
     @Override
     protected Shape getShape(Dimension dimensions)
     {
@@ -62,7 +67,7 @@ public class Pencil2Pointer extends GradientPointer
         final int imageHeight = (int) dimensions.getHeight();
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight / 2;
-        float magnitude = this.getRadiusPercent() * frontScale;
+        double magnitude = this.getRadiusPercent() * frontScale.getValue();
         
         GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
@@ -76,7 +81,7 @@ public class Pencil2Pointer extends GradientPointer
 
         Area pointerLine = new Area(pointerShape);
 
-        double radius = dimensions.width * centerScale;
+        double radius = dimensions.width * centerScale.getValue();
         Area pointerPost = new Area(new Ellipse2D.Double((imageWidth / 2) - radius, (imageHeight / 2) - radius, radius * 2, radius * 2));
         pointerLine.add(pointerPost);
         // pointerLine.setWindingRule(Path2D.WIND_EVEN_ODD);

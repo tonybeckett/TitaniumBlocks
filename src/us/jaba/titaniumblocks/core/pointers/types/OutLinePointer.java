@@ -30,8 +30,12 @@ package us.jaba.titaniumblocks.core.pointers.types;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
@@ -46,13 +50,18 @@ public class OutLinePointer extends GradientPointer
     public OutLinePointer()
     {
         super(new Aluminum());
-        tailScale = 0.25f;
+        tailScale = new Scale(0.25);
     }
 
     public OutLinePointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-        tailScale = 0.25f;
+        tailScale = new Scale(0.25);
+    }
+
+    public OutLinePointer(GradientPointer other)
+    {
+        super(other);
     }
 
     @Override
@@ -68,20 +77,23 @@ public class OutLinePointer extends GradientPointer
         graphics.setColor(this.getPointerColor().getDarkest());
 
         final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageHeight = (int) dimensions.getHeight();
 
-        float magnitude = (1.0f - this.getRadiusPercent()) * frontScale;
+        final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
-        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532) - 2, (imageHeight * magnitude),
-                (imageWidth * 0.00934) + 5, imageHeight * (0.50 +(0.5 * tailScale))
-                        )
+        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532) - 2, centerY - (maxY * frontM),
+                (imageWidth * 0.00934) + 5, (maxY * frontM) + (maxY * tailM)
+        )
         );
         graphics.fill(pointerShape);
 
         graphics.setColor(this.getPointerColor().getLightest().brighter());
 
-        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532), (imageHeight * magnitude) + 2,
-                (imageWidth * 0.00934) + 1, imageHeight * 0.37383));
+        pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532), centerY - (maxY * frontM) + 2,
+                (imageWidth * 0.00934) + 1, (maxY * frontM))); //imageHeight * 0.37383));
         graphics.fill(pointerShape);
 
         graphics.dispose();

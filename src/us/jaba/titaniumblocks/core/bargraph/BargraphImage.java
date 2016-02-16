@@ -41,9 +41,9 @@ public class BargraphImage extends CoreImageFactory
         super(bargraph);
     }
 
-    public AbstractBargraph getPainter()
+    public AbstractBargraph getTickmark()
     {
-        return (AbstractBargraph) super.getPainter();
+        return (AbstractBargraph) super.getTickmark();
     }
 
 }

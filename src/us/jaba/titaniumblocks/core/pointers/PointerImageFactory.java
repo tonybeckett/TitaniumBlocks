@@ -15,9 +15,10 @@ public class PointerImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public Pointer getPainter()
+    @Override
+    public Pointer getTickmark()
     {
-        return (Pointer) super.getPainter();
+        return (Pointer) super.getTickmark();
     }
 
 }

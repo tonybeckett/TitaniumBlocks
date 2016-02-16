@@ -42,13 +42,6 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CometPointer extends GradientPointer
 {
 
-//    private final float[] gradientFractionArray = new float[]
-//    {
-//        0.0f,
-//        0.4999f,
-//        0.5f,
-//        1.0f
-//    };
 
     public CometPointer()
     {
@@ -59,21 +52,31 @@ public class CometPointer extends GradientPointer
         super(pointColor);
     }
 
+    public CometPointer(GradientPointer other)
+    {
+        super(other);
+    }
+
     
     @Override
     protected Shape getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
+        
         final GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        float radiusAdj = 1.0f - this.getRadiusPercent();
+ 
+        
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
 
-//        Point2D tip = new Point2D.Double(0.5, radiusAdj);//0.14953);
+        double magnitude = (this.getRadiusPercent() * frontScale.getValue());
 
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * radiusAdj);//0.14953271028037382);
 
-        pointerShape.curveTo(imageWidth * 0.5, imageHeight * radiusAdj,//0.14953271028037382,
+        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * magnitude)); 
+
+        pointerShape.curveTo(imageWidth * 0.5, centerY - (maxY * magnitude), 
                 imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663,
                 imageWidth * 0.4439252336448598, imageHeight * 0.5);
 
@@ -86,8 +89,8 @@ public class CometPointer extends GradientPointer
                 imageWidth * 0.5560747663551402, imageHeight * 0.5);
 
         pointerShape.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663,
-                imageWidth * 0.5, imageHeight * radiusAdj,//0.14953271028037382,
-                imageWidth * 0.5, imageHeight * radiusAdj);//0.14953271028037382);
+                imageWidth * 0.5, centerY - (maxY * magnitude), 
+                imageWidth * 0.5, centerY - (maxY * magnitude)); 
 
         pointerShape.closePath();
         

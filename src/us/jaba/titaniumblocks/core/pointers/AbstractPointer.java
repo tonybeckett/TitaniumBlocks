@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.pointers;
 
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.SSBlack;
 
@@ -38,12 +39,12 @@ public abstract class AbstractPointer extends Pointer
 {
 
     protected boolean centerPostVisible;
-    protected float centerScale;
-    protected float frontScale;
+    protected Scale centerScale;
+    protected Scale frontScale;
 
     private GradientPalette pointerColor;
     private float radiusPercent;
-    protected float tailScale;
+    protected Scale tailScale;
     protected boolean centerPinVisible;
     
     public AbstractPointer()
@@ -55,11 +56,22 @@ public abstract class AbstractPointer extends Pointer
     {
         this.pointerColor = pointerColor;
         radiusPercent = 0.95f;
-        frontScale = 1.0f;
-        tailScale = 1.0f;
+        frontScale = new Scale(1.0);
+        tailScale = new Scale(1.0);
         centerPostVisible = false;
-        centerScale = 0.03f;
+        centerScale = new Scale(0.03);
         centerPinVisible = false;
+    }
+
+    public AbstractPointer(AbstractPointer other)
+    {
+        this.centerPostVisible = other.centerPostVisible;
+        this.centerScale = other.centerScale;
+        this.frontScale = other.frontScale;
+        this.pointerColor = other.pointerColor;
+        this.radiusPercent = other.radiusPercent;
+        this.tailScale = other.tailScale;
+        this.centerPinVisible = other.centerPinVisible;
     }
 
     public void setCenterPostEnable(boolean centerPost)
@@ -67,18 +79,18 @@ public abstract class AbstractPointer extends Pointer
         this.centerPostVisible = centerPost;
     }
 
-    public float getCenterScale()
+    public Scale getCenterScale()
     {
         return centerScale;
     }
 
-    public void setCenterScale(float centerScale)
+    public void setCenterScale(Scale centerScale)
     {
         this.centerScale = centerScale;
     }
 
     @Override
-    public void setFrontScale(float scale)
+    public void setFrontScale(Scale scale)
     {
         this.frontScale = scale;
     }
@@ -107,7 +119,7 @@ public abstract class AbstractPointer extends Pointer
     }
 
     @Override
-    public void setTailScale(float scale)
+    public void setTailScale(us.jaba.titaniumblocks.core.Scale scale)
     {
         this.tailScale = scale;
     }
@@ -132,6 +144,12 @@ public abstract class AbstractPointer extends Pointer
     public void setCenterPinVisible(boolean centerPinVisible)
     {
         this.centerPinVisible = centerPinVisible;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "AbstractPointer{" + "centerPostVisible=" + centerPostVisible + ", centerScale=" + centerScale + ", frontScale=" + frontScale + ", pointerColor=" + pointerColor + ", radiusPercent=" + radiusPercent + ", tailScale=" + tailScale + ", centerPinVisible=" + centerPinVisible + '}';
     }
 
 }

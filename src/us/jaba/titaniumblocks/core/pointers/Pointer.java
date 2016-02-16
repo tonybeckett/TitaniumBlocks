@@ -38,11 +38,38 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
  */
 public abstract class Pointer extends CoreModel
 {
+
+    private boolean shadowChanged = true;
+
     public abstract void setPointerColor(GradientPalette pointerColor);
+
+    public abstract void setFrontScale(us.jaba.titaniumblocks.core.Scale scale);
+
+    public abstract void setTailScale(us.jaba.titaniumblocks.core.Scale scale);
+
+    public void paintShadow(Graphics2D graphics, Dimension dimensions)
+    {
+        shadowChanged = false;
+    }
+
+    public boolean hasShadowChanged()
+    {
+        return shadowChanged;
+    }
+
+    @Override
+    protected void setChanged(boolean state)
+    {
+        super.setChanged(state); 
+        shadowChanged = state;
+    }
+
+    @Override
+    protected void changed()
+    {
+        super.setChanged(true);
+        shadowChanged = true;
+    }
     
-    public abstract void setFrontScale(float scale);
     
-    public abstract void setTailScale(float scale);
-    
-    public abstract void paintShadow(Graphics2D graphics, Dimension dimensions);
 }

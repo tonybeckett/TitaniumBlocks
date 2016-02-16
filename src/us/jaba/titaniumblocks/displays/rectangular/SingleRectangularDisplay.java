@@ -195,10 +195,10 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = rectFrameImage.getPainter().getFrameThickness();
+        int offset = rectFrameImage.getTickmark().getFrameThickness();
 
         BufferedImage image = rectFrameImage.build(dimensions);
-        Dimension interiorDim = rectFrameImage.getPainter().getInteriorDimension();
+        Dimension interiorDim = rectFrameImage.getTickmark().getInteriorDimension();
         
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
         
@@ -207,7 +207,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         
 
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
-        valueTextImage.getPainter().setFontSize(fontSize);
+        valueTextImage.getTickmark().setFontSize(fontSize);
 
         paintPreText(graphics, image, interiorDim, offset);
 
@@ -255,15 +255,15 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
     public Color getColor()
     {
-        return valueTextImage.getPainter().getColor();
+        return valueTextImage.getTickmark().getColor();
     }
 
     public void setColor(Color c)
     {
         doubleValueText.setColor(c);
-        titleTextImage.getPainter().setColor(c);
-        unitsTextImage.getPainter().setColor(c);
-        tbTextImage.getPainter().setColor(c);
+        titleTextImage.getTickmark().setColor(c);
+        unitsTextImage.getTickmark().setColor(c);
+        tbTextImage.getTickmark().setColor(c);
 
         tickmarkModel.setMajorColor(c);
         tickmarkModel.setMediumColor(c);
@@ -276,12 +276,12 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
     public Text getText()
     {
-        return valueTextImage.getPainter();
+        return valueTextImage.getTickmark();
     }
 
     public Frontcover getFrontCover()
     {
-        return frontcoverImage.getPainter();
+        return frontcoverImage.getTickmark();
     }
 
    
@@ -306,7 +306,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getPainter().setPointerColor(cp);
+        pointerImage.getTickmark().setPointerColor(cp);
     }
 
 

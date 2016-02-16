@@ -65,6 +65,7 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
@@ -104,7 +105,6 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     private MySEPostFactory endPostImage;
     protected float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
 
-    
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
 
@@ -183,17 +183,17 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = frameImage.getPainter().getFrameThickness();
+        int offset = (int) frameImage.getTickmark().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getPainter().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getTickmark().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(image, 0, 0, null);
 
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
-        valueTextImage.getPainter().setFontSize(fontSize);
+        valueTextImage.getTickmark().setFontSize(fontSize);
 
         paintPreText(graphics, image, interiorDim, offset);
 
@@ -215,7 +215,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         AffineTransform currentTransform = graphics.getTransform();
 
-        double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout) ;
+        double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout);
 
         graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
 
@@ -239,15 +239,15 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public Color getColor()
     {
-        return valueTextImage.getPainter().getColor();
+        return valueTextImage.getTickmark().getColor();
     }
 
     public void setColor(Color c)
     {
         doubleValueText.setColor(c);
-        titleTextImage.getPainter().setColor(c);
-        unitsTextImage.getPainter().setColor(c);
-        tbTextImage.getPainter().setColor(c);
+        titleTextImage.getTickmark().setColor(c);
+        unitsTextImage.getTickmark().setColor(c);
+        tbTextImage.getTickmark().setColor(c);
 
         tickmarkModel.setMajorColor(c);
         tickmarkModel.setMediumColor(c);
@@ -258,12 +258,12 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public Text getValueText()
     {
-        return valueTextImage.getPainter();
+        return valueTextImage.getTickmark();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getPainter();
+        return frontcoverImage.getTickmark();
     }
 
     public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
@@ -274,7 +274,10 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         add(endPostImage); /// ??????????
     }
 
-    
+    public void setTickmarks(AbstractRadialTickmark tickmarks)
+    {
+        tickmarkImage.setPainter(tickmarks);
+    }
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
@@ -283,8 +286,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getPainter().setPointerColor(cp);
+        pointerImage.getTickmark().setPointerColor(cp);
     }
 
-    
 }

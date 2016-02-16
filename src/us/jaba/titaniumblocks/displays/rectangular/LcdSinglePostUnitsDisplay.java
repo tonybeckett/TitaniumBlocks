@@ -49,24 +49,24 @@ public class LcdSinglePostUnitsDisplay extends LcdSingleDisplay
     public LcdSinglePostUnitsDisplay()
     {
         super();
-        valueTextImage.getPainter().setFont(DigitalFont.getInstance());
+        valueTextImage.getTickmark().setFont(DigitalFont.getInstance());
 
         Font unitFont = DEFAULT_FONT.deriveFont((float) (DEFAULT_FONT.getSize2D() / 2.0));
         StringPostUnitsText dvt = new StringPostUnitsText();
         dvt.setFont(unitFont);
         dvt.setRightOffsetFactor(0.05);
         unitTextImage = new TextImageFactory(dvt);
-        valueTextImage.getPainter().setRightOffsetFactor(0.25);
-        unitTextImage.getPainter().setFont(DigitalFont.getInstance());
+        valueTextImage.getTickmark().setRightOffsetFactor(0.25);
+        unitTextImage.getTickmark().setFont(DigitalFont.getInstance());
     }
 
     @Override
     public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
     {
         super.paintPreText(graphics, image, interiorDim, offset);
-        valueTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() * 0.67f));
-        unitTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
-        unitTextImage.getPainter().setColor(this.getColor());
+        valueTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() * 0.67f));
+        unitTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
+        unitTextImage.getTickmark().setColor(this.getColor());
 
         image = unitTextImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
@@ -74,7 +74,7 @@ public class LcdSinglePostUnitsDisplay extends LcdSingleDisplay
 
     public Text getUnitTextPainter()
     {
-        return unitTextImage.getPainter();
+        return unitTextImage.getTickmark();
     }
 
     public void setUnitTextPainter(Text unitTextPainter)

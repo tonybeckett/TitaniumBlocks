@@ -30,6 +30,7 @@ package us.jaba.titaniumblocks.core.frames.types.round;
 import us.jaba.titaniumblocks.core.frames.*;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.Scale;
  
 
 /**
@@ -41,22 +42,16 @@ public final class NullRoundFrame extends RoundFrame
 
     public NullRoundFrame()
     {
-        this.setFrameThickness(0);
+        this.setScaleFactor( new Scale(0.0001));
     }
 
-//    @Override
-//    public void setFrameThickness(int frameThickness)
-//    {
-//        
-//    }
+
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
         super.paint(graphics, dimensions); 
         
-//        interiorDimension.setSize(dimensions);
-
     }
    
 }

@@ -27,45 +27,52 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
+import us.jaba.titaniumblocks.core.frames.types.round.BlackMetalRoundFrame;
 import us.jaba.titaniumblocks.core.knobs.painter.NullKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
+import us.jaba.titaniumblocks.core.posts.NullPost;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
 
 /**
  *
  * @author tbeckett
  */
-public class SingleRound180EastDemo extends SingleRoundDemo
+public class ThermometerDemo extends SingleRoundDemo
 {
 
     /**
      * Creates new form DisplaySingleDemo
      */
-    public SingleRound180EastDemo()
+    public ThermometerDemo()
     {
-        super(new CircularTwoPostLayout(0, 180, Direction.CLOCKWISE, 0.95f, 355, 185));
-        setTitle("180E");
-        setPanelTitle("SingleRound180EastDemo");
-        LinenBackdrop lp = new LinenBackdrop();
-        lp.setColor(ColorPalette.WHITE);
-        this.setBackdropPainter(lp);
-        SilverRoundFrame pp = new SilverRoundFrame();
-        
-   //     pp.setInnerFrameColor(Color.RED);
-        this.setFramePainter(pp);
-        this.setLedPainter(new NullLed());
-        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
-        this.setPointerGradient(new PureRed());
-        this.setFrontCoverPainter(new NullFrontcover());
- //       this.setColor(ColorPalette.WHITE);
 
+        super(new CircularTwoPostLayout(215, 90, Direction.CLOCKWISE, 0.95f, 205, 155));
+        setTitle(" ");
+        setPanelTitle("ThermometerDemo");
+        BlackMetalRoundFrame fr = new BlackMetalRoundFrame();
+        this.setFramePainter(fr);
+        TaperedThickFlatPointer tp = new TaperedThickFlatPointer();
+        tp.setCenterPostVisible(false);
+        tp.setCenterPostVisible(false);
+        tp.setFrontScale(new Scale(0.8));
+        tp.setTailScale(new Scale(0.3));
+        tp.setPointerColor(new PureRed());
+        this.setPointerPainter(tp, new LineShadow());
+        this.setUnits(" ");
+        
+        this.setCenterPostPainter(new NullPost());//new NullPost());
+        this.setTickmarks(new ThermometerCfTickmarks());
+        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
+ 
+        this.setLedPainter(new NullLed());
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,19 +111,31 @@ public class SingleRound180EastDemo extends SingleRoundDemo
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThermometerDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThermometerDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThermometerDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThermometerDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -125,7 +144,7 @@ public class SingleRound180EastDemo extends SingleRoundDemo
         {
             public void run()
             {
-                new SingleRound180EastDemo().setVisible(true);
+                new ThermometerDemo().setVisible(true);
             }
         });
     }

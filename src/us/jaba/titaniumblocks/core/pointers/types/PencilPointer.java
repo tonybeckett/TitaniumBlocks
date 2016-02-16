@@ -74,7 +74,7 @@ public class PencilPointer extends GradientPointer
         final int imageHeight = (int) dimensions.getHeight();
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight/ 2;
-        float magnitude = this.getRadiusPercent() * frontScale;
+        double magnitude = this.getRadiusPercent() * frontScale.getValue();
         final GeneralPath pointerShape;
 
         pointerShape = new GeneralPath();

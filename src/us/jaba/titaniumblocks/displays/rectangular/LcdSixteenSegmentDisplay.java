@@ -70,7 +70,7 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
     @Override
     public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
     {
-        ((LcdBackdropModel) lcdBackgroundImage.getPainter()).setPalette(palette);
+        ((LcdBackdropModel) lcdBackgroundImage.getTickmark()).setPalette(palette);
 
         image = lcdBackgroundImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
@@ -84,7 +84,7 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
 
     public SixteenSegmentDisplay getSixteenSegmentPainter()
     {
-        return sixteenSegmentDisplayImage.getPainter();
+        return sixteenSegmentDisplayImage.getTickmark();
     }
 
     public void setSixteenSegmentPainter(SixteenSegmentDisplay sixteenSegmentDisplay)
@@ -100,7 +100,7 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
     public void setPalette(LcdGradientPalette palette)
     {
         this.palette = palette;
-        this.valueTextImage.getPainter().setColor(palette.textColor);
+        this.valueTextImage.getTickmark().setColor(palette.textColor);
         changed();
     }
 

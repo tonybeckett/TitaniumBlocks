@@ -82,7 +82,7 @@ public class RectangularIndicator extends CoreModel
         on = false;
         this.symbolOnImageBuilder = new SymbolImageFactory(symbolPainter);
         this.symbolOffImageBuilder = new SymbolImageFactory(symbolPainter);
-        symbolOnImageBuilder.getPainter().setPaintColor(c);
+        symbolOnImageBuilder.getTickmark().setPaintColor(c);
     }
 
     public NullBackdropImageFactory getBackgroundImageBuilder()
@@ -131,15 +131,15 @@ public class RectangularIndicator extends CoreModel
 
         if (on)
         {
-            image = symbolOnImageBuilder.build(linearFrameImageBuilder.getPainter().getInteriorDimension());
+            image = symbolOnImageBuilder.build(linearFrameImageBuilder.getTickmark().getInteriorDimension());
         } else
         {
-            image = symbolOffImageBuilder.build(linearFrameImageBuilder.getPainter().getInteriorDimension());
+            image = symbolOffImageBuilder.build(linearFrameImageBuilder.getTickmark().getInteriorDimension());
         }
-        int offset = linearFrameImageBuilder.getPainter().getFrameThickness();
+        int offset = linearFrameImageBuilder.getTickmark().getFrameThickness();
         graphics.drawImage(image, offset, offset, null);
 
-        image = foregroundImageBuilder.build(linearFrameImageBuilder.getPainter().getInteriorDimension());
+        image = foregroundImageBuilder.build(linearFrameImageBuilder.getTickmark().getInteriorDimension());
         graphics.drawImage(image, offset, offset, null);
 
     }

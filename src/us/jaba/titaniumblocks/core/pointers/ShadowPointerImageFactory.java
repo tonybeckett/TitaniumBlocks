@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package us.jaba.titaniumblocks.core.pointers;
 
 import java.awt.Dimension;
@@ -10,8 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
+import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
-
 
 /**
  *
@@ -20,27 +16,28 @@ import us.jaba.titaniumblocks.core.image.ImageSupport;
 public class ShadowPointerImageFactory extends CoreImageFactory
 {
 
-    private Pointer painter = null;
-
-    public ShadowPointerImageFactory()
+    public ShadowPointerImageFactory(CoreModel painter)
     {
-
+        super(painter);
     }
 
-    public ShadowPointerImageFactory(Pointer painter)
-    {
-        this.painter = painter;
-    }
+  
 
-    @Override
-    protected void applyPaint(BufferedImage result, Dimension dimensions)
+    protected void applyShadow(BufferedImage result, Dimension dimensions)
     {
         final Graphics2D graphics2D = result.createGraphics();
 
-        if (painter != null)
+        if (this.getTickmark() != null)
         {
-            painter.paintShadow(graphics2D, dimensions);
+            this.getTickmark().paintShadow(graphics2D, dimensions);
+            graphics2D.dispose();
         }
+    }
+
+    @Override
+    public Pointer getTickmark()
+    {
+        return (Pointer) super.getTickmark();  
     }
 
     @Override
@@ -50,67 +47,15 @@ public class ShadowPointerImageFactory extends CoreImageFactory
         {
             return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
-        final BufferedImage res = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
 
-        applyPaint(res, dimensions);
+        if (this.getTickmark() != null && this.getTickmark().hasShadowChanged())
+        {
+            result = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
 
-        return res;
+            applyShadow(result, dimensions);
+        }
+
+        return result;
     }
-//    private BufferedImage bufferedImage = ImageSupport.createImage(1, 1, Transparency.TRANSLUCENT);
-//
-//    private Dimension savedDimension = null;
-//
-//    public BufferedImage getBufferedImage()
-//    {
-//        return bufferedImage;
-//    }
-//
-//    public void setBufferedImage(BufferedImage bufferedImage)
-//    {
-//        this.bufferedImage = bufferedImage;
-//    }
-//
-//    protected void createKnob(final BufferedImage image, final Dimension dimension)
-//    {
-//
-//    }
-//
-//    public BufferedImage create(final Dimension dimension)
-//    {
-//        if (!ImageSupport.isValidDim(dimension))
-//        {
-//            return ImageSupport.DEFAULT_SMALL_IMAGE;
-//        }
-////        if (hasNotChanged(dimension, getModel()))
-////        {
-////            return getBufferedImage();
-////        }
-//
-//        getBufferedImage().flush();
-//        setBufferedImage(ImageSupport.createImage(SIZE, SIZE, Transparency.TRANSLUCENT));
-//        createKnob(getBufferedImage(), dimension);
-//        //        // Buffer current values
-//        //        sizeBuffer = SIZE;
-//        //        knobStyleBuffer = KNOB_STYLE;
-//
-//        return getBufferedImage();
-//    }
 
-//
-//    private boolean hasNotChanged(Dimension dimension, BasicKnobModel model)
-//    {
-//        boolean answer = false;
-//
-//        if (dimension.equals(savedDimension) && model.equals(savedModel))
-//        {
-//            answer = true;
-//        }
-//        return answer;
-//    }
-//
-//    protected void cacheSave(Dimension dimension, BasicKnobModel model)
-//    {
-//        this.savedModel = model;
-//        this.savedDimension = dimension;
-//    }
 }

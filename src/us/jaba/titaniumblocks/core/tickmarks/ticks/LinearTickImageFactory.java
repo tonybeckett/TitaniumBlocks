@@ -19,9 +19,9 @@ public class LinearTickImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public LinearTickModel getPainter()
+    public LinearTickModel getTickmark()
     {
-        return (LinearTickModel) super.getPainter();
+        return (LinearTickModel) super.getTickmark();
     }
 
 }

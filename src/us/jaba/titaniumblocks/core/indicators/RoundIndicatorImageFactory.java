@@ -68,7 +68,7 @@ public class RoundIndicatorImageFactory
         backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdrop());
         symbolOnImageBuilder = new SymbolImageFactory(new Fuel());
         symbolOffImageBuilder = new SymbolImageFactory(new Fuel());
-        symbolOnImageBuilder.getPainter().setPaintColor(ColorPalette.RED);
+        symbolOnImageBuilder.getTickmark().setPaintColor(ColorPalette.RED);
 
         foregroundImageBuilder = new FrontcoverImageFactory(new TopHalfRadialFrontcover());
         disabledImageBuilder = new DisabledImageFactory(new DisabledPainter());

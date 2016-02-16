@@ -47,6 +47,7 @@ import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.displays.round.SingleRoundDisplay;
 
 /**
@@ -108,6 +109,11 @@ public class SingleRoundPanel extends JComponent
     public SingleRoundDisplay getGauge()
     {
         return singleGauge;
+    }
+
+    public void setTickmarks(AbstractRadialTickmark tickmarks)
+    {
+        singleGauge.setTickmarks(tickmarks);
     }
 
     public void setTitle(String string)
