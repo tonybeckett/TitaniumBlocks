@@ -72,14 +72,14 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
     {
         ((LcdBackdropModel) lcdBackgroundImage.getTickmark()).setPalette(palette);
 
-        image = lcdBackgroundImage.build(interiorDim);
-        graphics.drawImage(image, offset, offset, null);
+       BufferedImage image2 = lcdBackgroundImage.build(interiorDim);
+        graphics.drawImage(image2, offset, offset, null);
 
         Dimension dim = new Dimension((int) (interiorDim.getWidth() * .8), (int) (interiorDim.getHeight() * .65));
         int wdelta = (int) (interiorDim.getWidth() * .2 / 2.0);
         int hdelta = (int) (interiorDim.getHeight() * .35 / 2.0);
-        image = sixteenSegmentDisplayImage.build(dim);
-        graphics.drawImage(image, offset + wdelta, offset + hdelta, null);
+        BufferedImage image3 = sixteenSegmentDisplayImage.build(dim);
+        graphics.drawImage(image3, offset + wdelta, offset + hdelta, null);
     }
 
     public SixteenSegmentDisplay getSixteenSegmentPainter()

@@ -27,20 +27,14 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Aluminum;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;

@@ -84,6 +84,11 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 //    private LedImageFactory ledImageFactory;
 //    private ShadowPointerImageFactory secShadowPointerImage;
     private CircularLayout circularLayout;
+    private MySEPostFactory endPostImage;
+    protected float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
+
+    private MySWPostFactory startPostImage;
+    private final TickmarkImageFactory tickmarkImage;
 
     class MySWPostFactory extends PolarSmallPostFactory
     {
@@ -102,11 +107,6 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
             super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
         }
     };
-    private MySEPostFactory endPostImage;
-    protected float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-
-    private MySWPostFactory startPostImage;
-    private final TickmarkImageFactory tickmarkImage;
 
     public SingleRoundDisplay(CircularLayout circularLayout)
     {
@@ -281,7 +281,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+// intentional
     }
 
     public void setPointerGradient(GradientPalette cp)

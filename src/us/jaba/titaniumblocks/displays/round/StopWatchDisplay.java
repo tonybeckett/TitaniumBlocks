@@ -307,7 +307,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 //    }
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+//intentional
     }
 
     public void setPointerGradient(GradientPalette cp)

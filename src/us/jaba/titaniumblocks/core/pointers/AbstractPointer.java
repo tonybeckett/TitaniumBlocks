@@ -119,7 +119,7 @@ public abstract class AbstractPointer extends Pointer
     }
 
     @Override
-    public void setTailScale(us.jaba.titaniumblocks.core.Scale scale)
+    public void setTailScale(Scale scale)
     {
         this.tailScale = scale;
     }

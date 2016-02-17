@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.displays.rectangular;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -84,13 +83,17 @@ import us.jaba.titaniumblocks.displays.RoundDisplay;
 public class SingleRectangularDisplay extends AbstractRoundDisplay implements RoundDisplay
 {
 
-   
+    private MySEPostFactory endPostImage;
+    private RectangularFrameImageFactory rectFrameImage;
+
+    private MySWPostFactory startPostImage;
+    private final TickmarkImageFactory tickmarkImage;
+
     private final RNormalMajMedMinorTickmark tickmarkModel;
-    
+
     private final SingleBargraphLedOff led;
-    
+
     private CircularLayout circularLayout;
-    
 
     class MySWPostFactory extends PolarSmallPostFactory
     {
@@ -109,13 +112,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
             super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
         }
     };
-   
-    private MySEPostFactory endPostImage;
-   RectangularFrameImageFactory rectFrameImage;
-    
-    private MySWPostFactory startPostImage;
-    private final TickmarkImageFactory tickmarkImage;
-    
+
     public SingleRectangularDisplay(CircularLayout circularLayout)
     {
         this(circularLayout, ColorPalette.BLACK);
@@ -199,12 +196,10 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
         BufferedImage image = rectFrameImage.build(dimensions);
         Dimension interiorDim = rectFrameImage.getTickmark().getInteriorDimension();
-        
+
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
-        
+
         graphics.drawImage(image, 0, 0, null);
-        
-        
 
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
         valueTextImage.getTickmark().setFontSize(fontSize);
@@ -251,8 +246,6 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         return normalizedValue;
     }
 
-  
-
     public Color getColor()
     {
         return valueTextImage.getTickmark().getColor();
@@ -272,8 +265,6 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         tickmarkModel.setTextColor(c);
     }
 
-
-
     public Text getText()
     {
         return valueTextImage.getTickmark();
@@ -284,21 +275,17 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         return frontcoverImage.getTickmark();
     }
 
-   
-
     public void setFrame(RectangularFrame linearFramePainter)
     {
         this.rectFrameImage = new RectangularFrameImageFactory(linearFramePainter);
     }
 
-  
     public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
     {
         startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
         endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));
     }
 
- 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 
@@ -308,6 +295,5 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
     {
         pointerImage.getTickmark().setPointerColor(cp);
     }
-
 
 }

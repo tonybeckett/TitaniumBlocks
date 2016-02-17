@@ -61,8 +61,8 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
     {
         ((LcdBackdropModel) lcdBackgroundImage.getTickmark()).setPalette(palette);
 
-        image = lcdBackgroundImage.build(interiorDim);
-        graphics.drawImage(image, offset, offset, null);
+        BufferedImage image2 = lcdBackgroundImage.build(interiorDim);
+        graphics.drawImage(image2, offset, offset, null);
     }
 
     public Backdrop getLCDBackgroundPainter()

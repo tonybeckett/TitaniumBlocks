@@ -64,8 +64,8 @@ public class SinglePostUnitDisplay extends SingleDisplay
         unitTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
         unitTextImage.getTickmark().setColor(this.getColor());
 
-        image = unitTextImage.build(interiorDim);
-        graphics.drawImage(image, offset, offset, null);
+        BufferedImage image2 = unitTextImage.build(interiorDim);
+        graphics.drawImage(image2, offset, offset, null);
     }
 
     public Text getUnitTextPainter()

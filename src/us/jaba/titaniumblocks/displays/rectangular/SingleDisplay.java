@@ -191,7 +191,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+// intentional
     }
 
 }

@@ -264,7 +264,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+// intentional
     }
 
     public void setPointerGradient(GradientPalette cp)

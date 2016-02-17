@@ -32,7 +32,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
-import us.jaba.titaniumblocks.core.text.StringSupport;
 
 public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
 {

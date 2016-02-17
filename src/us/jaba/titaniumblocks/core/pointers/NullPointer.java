@@ -27,22 +27,11 @@
  */
 package us.jaba.titaniumblocks.core.pointers;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
-import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.shape.ShapeUtils;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *

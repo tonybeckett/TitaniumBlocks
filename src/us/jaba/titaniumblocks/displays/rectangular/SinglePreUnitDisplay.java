@@ -65,8 +65,8 @@ public class SinglePreUnitDisplay extends SingleDisplay
         unitTextImage.getTickmark().setFontSize(valueTextImage.getTickmark().getFont().getSize());
         unitTextImage.getTickmark().setColor(this.getColor());
 
-        image = unitTextImage.build(interiorDim);
-        graphics.drawImage(image, offset, offset, null);
+        BufferedImage image2 = unitTextImage.build(interiorDim);
+        graphics.drawImage(image2, offset, offset, null);
     }
 
     public Text getUnitTextPainter()
