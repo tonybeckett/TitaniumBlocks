@@ -65,7 +65,7 @@ public class ClockNumbersOutTickmarks extends AbstractRadialTickmark
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 0.0, -30, arrayOfText);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 0.0, 30, arrayOfText);
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);

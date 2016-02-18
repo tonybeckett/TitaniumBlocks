@@ -37,7 +37,7 @@ import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
 import us.jaba.titaniumblocks.core.posts.NullPost;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
 
 /**
  *
@@ -67,7 +67,7 @@ public class ThermometerDemo extends SingleRoundDemo
         this.setUnits(" ");
         
         this.setCenterPostPainter(new NullPost());//new NullPost());
-        this.setTickmarks(new ThermometerCfTickmarks());
+        this.setTickmarks(new ThermometerFcTickmarks());
         this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
  
         this.setLedPainter(new NullLed());

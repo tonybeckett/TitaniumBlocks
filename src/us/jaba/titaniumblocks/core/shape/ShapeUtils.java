@@ -33,6 +33,7 @@ import java.awt.font.TextLayout;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 
 /**
  *
@@ -54,7 +55,12 @@ public class ShapeUtils
         graphics.fill(circle);
     }
 
-    public static void placeTextOnRadius(Graphics2D graphics, double x, double y, double radius, double startAngle, double angleStep, String[] text)
+    private static double adjust(double a)
+    {
+        return CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(a)));
+    }
+
+    public static void placeTextOnRadius(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
     {
         int len = text.length;
         double currentAngle = startAngle;
@@ -62,51 +68,55 @@ public class ShapeUtils
 
         for (int i = 0; i < len; i++)
         {
-            double sinValue = Math.sin((currentAngle - 180.0) * Math.PI / 180.0);
-            double cosValue = Math.cos((currentAngle - 180.0) * Math.PI / 180.0);
-            Point2D.Double textPoint = new Point2D.Double(x + (radius  * sinValue), y + (radius  *cosValue));
- 
+            double gAngle = adjust(currentAngle-270);
+            Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
+
             TextLayout textLayout = new TextLayout(text[i], graphics.getFont(), fontRenderContext);
             Rectangle2D boundary = textLayout.getBounds();
 
-            graphics.drawString(text[i], 
-                    (int) (textPoint.getX()- (boundary.getWidth() / 2.0)), 
-                    (int) (textPoint.getY()+ (boundary.getHeight() / 2.0) )
+            graphics.drawString(text[i],
+                    (int) (textPoint.getX() - (boundary.getWidth() / 2.0)),
+                    (int) (textPoint.getY() + (boundary.getHeight() / 2.0))
             );
             currentAngle = currentAngle + angleStep;
         }
 
     }
-    
+
     public static void drawRadialLines(Graphics2D graphics, Point2D center, double radiusInner, double radiusOuter, double startAngle, double angleStep, int number)
-    { 
+    {
+        
         double currentAngle = startAngle;
-       
+
         for (int i = 0; i < number; i++)
         {
-            double sinValue = Math.sin((currentAngle - 180.0) * Math.PI / 180.0);
-            double cosValue = Math.cos((currentAngle - 180.0) * Math.PI / 180.0);
-            Point2D.Double innerPoint = new Point2D.Double((double)center.getX() + (radiusInner  * sinValue), (double)center.getY() + (radiusInner  *cosValue));
-            Point2D.Double outerPoint = new Point2D.Double((double)center.getX() + (radiusOuter  * sinValue), (double)center.getY() + (radiusOuter  *cosValue));
- 
-            graphics.drawLine((int)innerPoint.x, (int)innerPoint.y, (int)outerPoint.x, (int)outerPoint.y);
+            double gAngle = adjust(currentAngle-270);
+            Point2D.Double innerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusInner, gAngle);
+            Point2D.Double outerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusOuter, gAngle);
             
-            currentAngle = currentAngle + angleStep;
+            graphics.drawLine((int) innerPoint.x, (int) innerPoint.y, (int) outerPoint.x, (int) outerPoint.y);
+
+            currentAngle = CoordinateUtils.normalizeDegrees(currentAngle + angleStep);
         }
     }
-    
-    public static void drawRadialCircles(Graphics2D graphics, Point2D center, double radius,  double startAngle, double angleStep, int number)
-    { 
+
+    public static void drawRadialCircles(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, boolean fill, int number)
+    {
         double currentAngle = startAngle;
-       
+
         for (int i = 0; i < number; i++)
         {
             double sinValue = Math.sin((currentAngle - 180.0) * Math.PI / 180.0);
             double cosValue = Math.cos((currentAngle - 180.0) * Math.PI / 180.0);
-            Point2D.Double centerPoint = new Point2D.Double((double)center.getX() + (radius  * sinValue), (double)center.getY() + (radius  *cosValue));
- 
-            fillCircle( graphics, centerPoint.x , centerPoint.y,  radius);
-            
+            Point2D.Double centerPoint = new Point2D.Double((double) center.getX() + (radius * sinValue), (double) center.getY() + (radius * cosValue));
+
+            if (fill)
+            {
+                fillCircle(graphics, centerPoint.x, centerPoint.y, radius);
+            } else
+            {
+                drawCircle(graphics, centerPoint.x, centerPoint.y, radius);
+            }
             currentAngle = currentAngle + angleStep;
         }
     }

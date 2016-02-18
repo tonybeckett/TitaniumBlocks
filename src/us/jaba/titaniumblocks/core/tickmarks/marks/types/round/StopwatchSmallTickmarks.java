@@ -54,7 +54,7 @@ public class StopwatchSmallTickmarks extends AbstractRadialTickmark
         {
             "30", "5", "10", "15", "20", "25"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.15, 0.0, -60, text2);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.15, 0.0, 60, text2);
         
         Point2D offset = new Point2D.Double(centerPoint.getX(), centerPoint.getY());
         graphics.setColor(minorColor);

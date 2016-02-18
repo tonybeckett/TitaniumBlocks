@@ -56,7 +56,7 @@ public class StopwatchTickmarks extends AbstractRadialTickmark
         {
             " ", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.775, 0.0, -30, text);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.775, 0.0, 30, text);
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);

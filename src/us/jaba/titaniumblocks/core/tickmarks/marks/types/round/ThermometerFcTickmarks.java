@@ -66,28 +66,28 @@ public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
 
         // 300 degrees
         double angleStep = 300.0 / 14.0;
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 140.0, -1.0 * angleStep, arrayOfFText);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 220.0,  angleStep, arrayOfFText);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.85, 180.0, 0.0, unitsF);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 180.0, 0.0, unitsF);
 
         graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() * 0.75)));
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.45, 128.0, -39.0, arrayOfCText);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.45, 232.0, 38.8, arrayOfCText);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.45, 180.0, 0.0, unitsC);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.45, 180.0, 0.0, unitsC);
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
         
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.6);
         
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.685, 140.0, -1.0 * angleStep / 5.0, 65);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.685, 220.0, angleStep / 5.0, 65);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 128.0, -19.5, 15);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 232.0, 38.8/2.0, 15);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
         
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.7, 140.0, -1.0 * angleStep, 14);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.6, radius * 0.7, 220.0,  angleStep, 14);
 
         graphics.dispose();
 

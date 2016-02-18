@@ -234,4 +234,14 @@ public class CoordinateUtils
         }
 
     }
+
+    public static Point2D.Double convertToGraphics2dPoint(Point2D center, double radius, double angle)
+    {
+        double sinValue = Math.sin(angle);
+        double cosValue = Math.cos(angle);
+        Point2D.Double point = new Point2D.Double(center.getX() - (radius * sinValue), center.getY() + (radius * cosValue));
+
+        return point;
+    }
+
 }
