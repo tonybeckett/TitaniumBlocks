@@ -68,7 +68,7 @@ import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersOutTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
 import us.jaba.titaniumblocks.displays.RoundDisplay;
 
@@ -110,7 +110,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         backdropImage = new BackdropImageFactory(bmbp);
         add(backdropImage);
 
-        ClockNumbersOutTickmarks ct = new ClockNumbersOutTickmarks();
+        NumbersOut ct = new NumbersOut();
         ct.setTextColor(ColorPalette.BLACK);
         ct.setMajorColor(ColorPalette.BLACK);
         ct.setFont(BaseFont.SERIF_FONT);

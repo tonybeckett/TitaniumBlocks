@@ -25,33 +25,36 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class ClockNumbersOutTickmarks extends AbstractRadialTickmark
+public class DashAndCircles extends AbstractRadialTickmark
 {
 
-    private double textScale = 0.145;
+    private double textScale = 0.04;
     String[] arrayOfText =
     {
-        "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
+        "00", "03", "06", "09"
     };
 
-    public ClockNumbersOutTickmarks()
+    public DashAndCircles()
     {
-
+        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(5.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
-    public ClockNumbersOutTickmarks(String[] text, double textScaleFactor)
+    public DashAndCircles(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
+        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(5.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
     @Override
@@ -60,21 +63,16 @@ public class ClockNumbersOutTickmarks extends AbstractRadialTickmark
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
-
-        graphics.setColor(textColor);
+        graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 0.0, 30, arrayOfText);
-
-        graphics.setColor(minorColor);
-        graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.5, radius * 0.625, 0.0, 6.0, 60);
-
+        for (int i = 0; i < 12; i++)
+        {
+            ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.930, radius * 0.015, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, false, 4);
+        }
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.5, radius * 0.685, 0.0, 30.0, 12);
-        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.5);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.95, 0, 30.0, 12);
+
         graphics.dispose();
 
     }

@@ -34,10 +34,10 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalL
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalLogTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLinearTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLogTickmark;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.BasicClockTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersOutTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockNumbersTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ClockTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.BasicClock;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumbersTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.CompassTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.LevelTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMedMinorTickmark;
@@ -59,10 +59,6 @@ public class TickmarksCoreInfo
 
     public static final Class<?>[] TICKMARK_CLASSES =
     {
-        BasicClockTickmarks.class,
-        ClockTickmarks.class,
-        ClockNumbersTickmarks.class,
-        ClockNumbersOutTickmarks.class,
         CompassTickmarks.class,
         HorizontalLinearTickmark.class,
         HorizontalLogTickmark.class,

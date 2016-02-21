@@ -25,23 +25,32 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class BasicClockTickmarks extends AbstractRadialTickmark
+public class Numbers extends AbstractRadialTickmark
 {
 
-    public BasicClockTickmarks()
+    private double textScale = 0.095;
+    String[] arrayOfText =
     {
-        majorStroke = new BasicStroke(15.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-        mediumStroke = new BasicStroke(10.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-        minorStroke = new BasicStroke(5.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
+    };
+
+    public Numbers()
+    {
+
+    }
+
+    public Numbers(String[] text, double textScaleFactor)
+    {
+        this.arrayOfText = text;
+        textScale = textScaleFactor;
     }
 
     @Override
@@ -49,14 +58,12 @@ public class BasicClockTickmarks extends AbstractRadialTickmark
     {
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setColor(minorColor);
-        graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.88, radius * 0.995, 0.0, 30.0, 12);
+        graphics.setFont(font.deriveFont((float) (textScale * dimensions.getWidth())));
 
-        graphics.setColor(majorColor);
-        graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.88, radius * 0.995, 0.0, 90.0, 4);
+        graphics.setColor(textColor);
+        graphics.setStroke(mediumStroke);
 
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.81, 0.0, 30, arrayOfText);
         graphics.dispose();
 
     }

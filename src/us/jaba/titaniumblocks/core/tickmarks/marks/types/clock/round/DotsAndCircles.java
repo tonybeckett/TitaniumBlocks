@@ -25,23 +25,52 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumbersTickmarks;
+import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class WindDirectionTickmarks extends ClockNumbersTickmarks
+public class DotsAndCircles extends AbstractRadialTickmark
 {
 
-    static final String[] arrayOfText =
+    private double textScale = 0.04;
+    String[] arrayOfText =
     {
-        "0", "30", "60", "90", "120", "150", "180", "150", "120", "90", "60", "30"
+        "00", "03", "06", "09"
     };
 
-    public WindDirectionTickmarks()
+    public DotsAndCircles()
     {
-        super(arrayOfText, 0.04);
+        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
+    public DotsAndCircles(String[] text, double textScaleFactor)
+    {
+        this.arrayOfText = text;
+        textScale = textScaleFactor;
+        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+    }
+
+    @Override
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
+    {
+
+        final float radius = (float) (dimensions.getWidth() * 0.485f);
+
+        graphics.setColor(majorColor);
+        graphics.setStroke(majorStroke);
+        for (int i = 0; i < 12; i++)
+        {
+            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, (30.0*i)+(30.0 / 5.0), 30.0 / 5.0, 4);
+        }
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.930, radius * 0.0125, 0.0, 30.0, true, 12);
+
+        graphics.dispose();
+
+    }
 
 }

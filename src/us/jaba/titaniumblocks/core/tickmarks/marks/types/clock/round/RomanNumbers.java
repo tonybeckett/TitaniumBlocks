@@ -25,23 +25,49 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumbersTickmarks;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class WindDirectionTickmarks extends ClockNumbersTickmarks
+public class RomanNumbers extends AbstractRadialTickmark
 {
 
-    static final String[] arrayOfText =
+    private double textScale = 0.12;
+    String[] arrayOfText =
     {
-        "0", "30", "60", "90", "120", "150", "180", "150", "120", "90", "60", "30"
+        "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
     };
 
-    public WindDirectionTickmarks()
+    public RomanNumbers()
     {
-        super(arrayOfText, 0.04);
+
     }
 
+    public RomanNumbers(String[] text, double textScaleFactor)
+    {
+        this.arrayOfText = text;
+        textScale = textScaleFactor;
+    }
+
+    @Override
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
+    {
+
+        final float radius = (float) (dimensions.getWidth() * 0.485f);
+
+        graphics.setFont(font.deriveFont(Font.PLAIN, (float) (textScale * dimensions.getWidth())));
+
+        graphics.setColor(textColor);
+        graphics.setStroke(mediumStroke);
+
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.9, 0.0, 30, arrayOfText);
+        graphics.dispose();
+
+    }
 
 }

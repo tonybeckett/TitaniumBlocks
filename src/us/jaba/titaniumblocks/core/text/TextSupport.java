@@ -46,58 +46,57 @@ import java.util.regex.Pattern;
 public class TextSupport
 {
 
-    
     private static final Pattern NUMBERS_ONLY = Pattern.compile("^[-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?$");
-    private static final Matcher MATCHES_NUMBERS = NUMBERS_ONLY.matcher("");
-    private static final Rectangle2D TEXT_BOUNDARY = new Rectangle2D.Double(0, 0, 10, 10);
+    private static final Matcher matchesNumbers = NUMBERS_ONLY.matcher("");
+    private static final Rectangle2D textBoundary = new Rectangle2D.Double(0, 0, 10, 10);
 
     //********************************** UI related utils **************************************************************
     /**
      * It will take the font from the given Graphics2D object and returns a
-     * shape of the given TEXT that is rotated by the ROTATION_ANGLE around it's
-     * center which is defined by TEXT_POSITION_X and TEXT_POSITION_Y. It will
-     * take the font's descent into account so that the rotated text will be
-     * centered correctly even if it doesn't contain characters with descent.
+     * shape of the given text that is rotated by the rotationAngle around it's
+     * center which is defined by textPositionX and textPositionY. It will take
+     * the font's descent into account so that the rotated text will be centered
+     * correctly even if it doesn't contain characters with descent.
      *
      * @param graphics2D
-     * @param TEXT
-     * @param TEXT_POSITION_X
-     * @param TEXT_POSITION_Y
-     * @param ROTATION_ANGLE
+     * @param text
+     * @param textPositionX
+     * @param textPositionY
+     * @param rotationAngle
      * @return Glyph that is a shape of the given string rotated around it's
      * center.
      */
-    public static Shape rotateTextAroundCenter(final Graphics2D graphics2D, final String TEXT, final int TEXT_POSITION_X, final int TEXT_POSITION_Y, final double ROTATION_ANGLE)
+    public static Shape rotateTextAroundCenter(final Graphics2D graphics2D, final String text, final double textPositionX, final double textPositionY, final double rotationAngle)
     {
-        final FontRenderContext RENDER_CONTEXT = new FontRenderContext(null, true, true);
-        final TextLayout TEXT_LAYOUT = new TextLayout(TEXT, graphics2D.getFont(), RENDER_CONTEXT);
+        final FontRenderContext renderContext = new FontRenderContext(null, true, true);
+        final TextLayout textLayout = new TextLayout(text, graphics2D.getFont(), renderContext);
 
         // Check if need to take the fonts descent into account
-        final float DESCENT;
-        MATCHES_NUMBERS.reset(TEXT);
-        if (MATCHES_NUMBERS.matches())
-        {
-            DESCENT = TEXT_LAYOUT.getDescent();
-        } else
-        {
-            DESCENT = 0;
-        }
-        final Rectangle2D TEXT_BOUNDS = TEXT_LAYOUT.getBounds();
-        TEXT_BOUNDARY.setRect(TEXT_BOUNDS.getMinX(), TEXT_BOUNDS.getMinY(), TEXT_BOUNDS.getWidth(), TEXT_BOUNDS.getHeight() + DESCENT / 2);
+        final float decent = 0.0f;
+        matchesNumbers.reset(text);
+//        if (matchesNumbers.matches())
+//        {
+//            decent = textLayout.getDescent();
+//        } else
+//        {
+//            decent = 0;
+//        }
+        final Rectangle2D textBounds = textLayout.getBounds();
+        textBoundary.setRect(textBounds.getMinX(), textBounds.getMinY(), textBounds.getWidth(), textBounds.getHeight() + decent / 2);
 
-        final GlyphVector GLYPH_VECTOR = graphics2D.getFont().createGlyphVector(RENDER_CONTEXT, TEXT);
+        final GlyphVector glyphVector = graphics2D.getFont().createGlyphVector(renderContext, text);
 
-        final java.awt.Shape GLYPH = GLYPH_VECTOR.getOutline((int) -TEXT_BOUNDARY.getCenterX(), 2 * (int) TEXT_BOUNDARY.getCenterY());
+        final java.awt.Shape glyph = glyphVector.getOutline((int) -textBoundary.getCenterX(), (int) textBoundary.getCenterY());
 
-        final AffineTransform OLD_TRANSFORM = graphics2D.getTransform();
-        graphics2D.translate(TEXT_POSITION_X, TEXT_POSITION_Y + TEXT_BOUNDARY.getHeight());
+        final AffineTransform oldTransform = graphics2D.getTransform();
+        graphics2D.translate(textPositionX, textPositionY + textBoundary.getHeight());
 
-        graphics2D.rotate(ROTATION_ANGLE, -TEXT_BOUNDARY.getCenterX() + TEXT_BOUNDARY.getWidth() / 2, TEXT_BOUNDARY.getCenterY() - (TEXT_BOUNDARY.getHeight() + DESCENT) / 2);
-        graphics2D.fill(GLYPH);
+        graphics2D.rotate(rotationAngle, -textBoundary.getCenterX() + textBoundary.getWidth() / 2, textBoundary.getCenterY() - (textBoundary.getHeight() + decent) / 2);
+        graphics2D.fill(glyph);
 
-        graphics2D.setTransform(OLD_TRANSFORM);
+        graphics2D.setTransform(oldTransform);
 
-        return GLYPH;
+        return glyph;
     }
 
     /**
@@ -106,14 +105,14 @@ public class TextSupport
      * text on buttons or other components.
      *
      * @param G2
-     * @param BOUNDARY
-     * @param TEXT
+     * @param boundary
+     * @param text
      * @return a point2d that defines the position of the given text centered in
      * the given rectangle
      */
-    public static Point2D getCenteredTextPosition(final Graphics2D G2, final Rectangle2D BOUNDARY, final String TEXT)
+    public static Point2D getCenteredTextPosition(final Graphics2D G2, final Rectangle2D boundary, final String text)
     {
-        return getCenteredTextPosition(G2, BOUNDARY, G2.getFont(), TEXT);
+        return getCenteredTextPosition(G2, boundary, G2.getFont(), text);
     }
 
     /**
@@ -122,26 +121,26 @@ public class TextSupport
      * useful when centering text on buttons or other components.
      *
      * @param G2
-     * @param BOUNDARY
-     * @param FONT
-     * @param TEXT
+     * @param boundary
+     * @param font
+     * @param text
      * @return a point2d that defines the position of the given text centered in
      * the given rectangle
      */
-    public static Point2D getCenteredTextPosition(final Graphics2D G2, final Rectangle2D BOUNDARY, final Font FONT, final String TEXT)
+    public static Point2D getCenteredTextPosition(final Graphics2D G2, final Rectangle2D boundary, final Font font, final String text)
     {
         // Get the visual center of the component.
-        final double CENTER_X = BOUNDARY.getWidth() / 2.0;
-        final double CENTER_Y = BOUNDARY.getHeight() / 2.0;
+        final double CENTER_X = boundary.getWidth() / 2.0;
+        final double CENTER_Y = boundary.getHeight() / 2.0;
 
         // Get the text boundary
-        final FontRenderContext RENDER_CONTEXT = G2.getFontRenderContext();
-        final TextLayout LAYOUT = new TextLayout(TEXT, FONT, RENDER_CONTEXT);
-        final Rectangle2D TEXT_BOUNDS = LAYOUT.getBounds();
+        final FontRenderContext renderContext = G2.getFontRenderContext();
+        final TextLayout LAYOUT = new TextLayout(text, font, renderContext);
+        final Rectangle2D textBounds = LAYOUT.getBounds();
 
         // Calculate the text position
-        final double TEXT_X = CENTER_X - TEXT_BOUNDS.getWidth() / 2.0;
-        final double TEXT_Y = CENTER_Y - TEXT_BOUNDS.getHeight() / 2.0 + TEXT_BOUNDS.getHeight();
+        final double TEXT_X = CENTER_X - textBounds.getWidth() / 2.0;
+        final double TEXT_Y = CENTER_Y - textBounds.getHeight() / 2.0 + textBounds.getHeight();
 
         return new Point2D.Double(TEXT_X, TEXT_Y);
     }

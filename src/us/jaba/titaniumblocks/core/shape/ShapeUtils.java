@@ -29,11 +29,10 @@ package us.jaba.titaniumblocks.core.shape;
 
 import java.awt.Graphics2D;
 import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
+import us.jaba.titaniumblocks.core.text.TextSupport;
 
 /**
  *
@@ -60,24 +59,52 @@ public class ShapeUtils
         return CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(a)));
     }
 
+    
+
     public static void placeTextOnRadius(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
     {
         int len = text.length;
         double currentAngle = startAngle;
-        final FontRenderContext fontRenderContext = new FontRenderContext(null, true, true);
 
         for (int i = 0; i < len; i++)
         {
-            double gAngle = adjust(currentAngle-270);
+            double gAngle = adjust(currentAngle - 270);
             Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
 
-            TextLayout textLayout = new TextLayout(text[i], graphics.getFont(), fontRenderContext);
-            Rectangle2D boundary = textLayout.getBounds();
+            TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), 0.0);
 
-            graphics.drawString(text[i],
-                    (int) (textPoint.getX() - (boundary.getWidth() / 2.0)),
-                    (int) (textPoint.getY() + (boundary.getHeight() / 2.0))
-            );
+            currentAngle = currentAngle + angleStep;
+        }
+
+    }
+
+    public static void placeTextOnRadiusRotateOut(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
+    {
+        int len = text.length;
+        double currentAngle = startAngle;
+
+        for (int i = 0; i < len; i++)
+        {
+            double gAngle = adjust(currentAngle - 270);
+            Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
+
+            TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), gAngle);
+            currentAngle = currentAngle + angleStep;
+        }
+
+    }
+    
+    public static void placeTextOnRadiusRotateIn(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
+    {
+        int len = text.length;
+        double currentAngle = startAngle;
+
+        for (int i = 0; i < len; i++)
+        {
+            double gAngle = adjust(currentAngle - 270);
+            Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
+
+            TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), CoordinateUtils.normalizeRadians(gAngle + Math.PI));
             currentAngle = currentAngle + angleStep;
         }
 
@@ -85,22 +112,22 @@ public class ShapeUtils
 
     public static void drawRadialLines(Graphics2D graphics, Point2D center, double radiusInner, double radiusOuter, double startAngle, double angleStep, int number)
     {
-        
+
         double currentAngle = startAngle;
 
         for (int i = 0; i < number; i++)
         {
-            double gAngle = adjust(currentAngle-270);
+            double gAngle = adjust(currentAngle - 270);
             Point2D.Double innerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusInner, gAngle);
             Point2D.Double outerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusOuter, gAngle);
-            
+
             graphics.drawLine((int) innerPoint.x, (int) innerPoint.y, (int) outerPoint.x, (int) outerPoint.y);
 
             currentAngle = CoordinateUtils.normalizeDegrees(currentAngle + angleStep);
         }
     }
 
-    public static void drawRadialCircles(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, boolean fill, int number)
+    public static void placeCircleOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double startAngle, double angleStep, boolean fill, int number)
     {
         double currentAngle = startAngle;
 
@@ -112,10 +139,10 @@ public class ShapeUtils
 
             if (fill)
             {
-                fillCircle(graphics, centerPoint.x, centerPoint.y, radius);
+                fillCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
             } else
             {
-                drawCircle(graphics, centerPoint.x, centerPoint.y, radius);
+                drawCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
             }
             currentAngle = currentAngle + angleStep;
         }

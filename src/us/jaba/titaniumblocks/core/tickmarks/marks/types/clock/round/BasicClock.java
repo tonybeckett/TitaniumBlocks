@@ -25,23 +25,40 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumbersTickmarks;
+import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class WindDirectionTickmarks extends ClockNumbersTickmarks
+public class BasicClock extends AbstractRadialTickmark
 {
 
-    static final String[] arrayOfText =
+    public BasicClock()
     {
-        "0", "30", "60", "90", "120", "150", "180", "150", "120", "90", "60", "30"
-    };
-
-    public WindDirectionTickmarks()
-    {
-        super(arrayOfText, 0.04);
+        majorStroke = new BasicStroke(15.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        mediumStroke = new BasicStroke(10.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        minorStroke = new BasicStroke(5.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
     }
 
+    @Override
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
+    {
+        final float radius = (float) (dimensions.getWidth() * 0.485f);
+
+        graphics.setColor(minorColor);
+        graphics.setStroke(minorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.88, radius * 0.995, 0.0, 30.0, 12);
+
+        graphics.setColor(majorColor);
+        graphics.setStroke(majorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.88, radius * 0.995, 0.0, 90.0, 4);
+
+        graphics.dispose();
+
+    }
 
 }

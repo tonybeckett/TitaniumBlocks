@@ -41,6 +41,7 @@ public class CoordinateUtils
 {
 
     public static final double TWO_PI = 2.0 * Math.PI;
+    public static final double HALF_PI = Math.PI / 2.0;
 
     public static double adjustToNativeAngle(double angle)
     {
