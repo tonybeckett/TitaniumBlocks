@@ -157,4 +157,9 @@ public class BackdropCoreInfo
         l.addAll(CoreInfoSupport.getInstanceOfEach(getRectangularModelClasses()));
         return l;
     }
+
+    public static List getInstanceOfRound()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getRoundModelClasses());
+    }
 }

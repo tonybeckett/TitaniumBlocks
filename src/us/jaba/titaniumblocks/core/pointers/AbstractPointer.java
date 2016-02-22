@@ -46,7 +46,7 @@ public abstract class AbstractPointer extends Pointer
     private float radiusPercent;
     protected Scale tailScale;
     protected boolean centerPinVisible;
-    
+
     public AbstractPointer()
     {
         this(new SSBlack());
@@ -72,6 +72,19 @@ public abstract class AbstractPointer extends Pointer
         this.radiusPercent = other.radiusPercent;
         this.tailScale = other.tailScale;
         this.centerPinVisible = other.centerPinVisible;
+    }
+
+    public void copy(AbstractPointer other)
+    {
+        super.copy(other);
+
+        this.centerPostVisible = other.centerPostVisible;
+        this.centerScale = other.centerScale;
+        this.frontScale = other.frontScale;
+        this.pointerColor = other.pointerColor;
+        this.radiusPercent = other.radiusPercent;
+        this.tailScale = other.tailScale;
+        this.centerPinVisible = other.centerPinVisible;        
     }
 
     public void setCenterPostEnable(boolean centerPost)
@@ -123,8 +136,6 @@ public abstract class AbstractPointer extends Pointer
     {
         this.tailScale = scale;
     }
-
-    
 
     public boolean isCenterPostVisible()
     {

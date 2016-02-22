@@ -73,18 +73,21 @@ public class TaperedRoundedPointer extends GradientPointer
 //        
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        float magnitude = 1.0f -this.getRadiusPercent();
+         final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
         
-        pointerShape.moveTo(0.5 * imageWidth, magnitude * imageHeight); 
+        pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
         pointerShape.lineTo((0.5-0.015)  * imageWidth, 0.5 * imageHeight);
         pointerShape.lineTo(0.5 * imageWidth, 0.5046 * imageHeight);
         pointerShape.lineTo((0.5+0.015) * imageWidth, 0.5 * imageHeight);
 
-        pointerShape.lineTo(0.5 * imageWidth,  magnitude * imageHeight); 
+        pointerShape.lineTo(0.5 * imageWidth,  centerY - (maxY * frontM));
         pointerShape.closePath();
 
         graphics.setPaint(new LinearGradientPaint(
-                new Point2D.Double(0.5 * imageWidth,  magnitude * imageHeight), 
+                new Point2D.Double(0.5 * imageWidth,  centerY - (maxY * frontM)),
                 new Point2D.Double(0.5 * imageWidth, 0.5046 * imageHeight),
                 new float[]
                 {

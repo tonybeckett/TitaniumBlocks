@@ -41,6 +41,11 @@ public abstract class Pointer extends CoreModel
 
     private boolean shadowChanged = true;
 
+    public void copy(Pointer hourPointer)
+    {
+    }
+
+  
     public abstract void setPointerColor(GradientPalette pointerColor);
 
     public abstract void setFrontScale(us.jaba.titaniumblocks.core.Scale scale);

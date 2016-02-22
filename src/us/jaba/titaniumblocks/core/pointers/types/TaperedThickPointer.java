@@ -84,14 +84,17 @@ public class TaperedThickPointer extends GradientPointer
 
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        double magnitude = (1.0f - this.getRadiusPercent()) * frontScale.getValue();
-//        float tailOffset = (float) (0.5 * tailScale.getValue());
+        final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
+
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.495327);
         pointerShape.lineTo(imageWidth * 0.528037, imageHeight * 0.495327);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * magnitude);
+        pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.471962, imageHeight * 0.495327);
         pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.495327);
         pointerShape.closePath();

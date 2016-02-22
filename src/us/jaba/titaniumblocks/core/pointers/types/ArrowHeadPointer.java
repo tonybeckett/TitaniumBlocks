@@ -82,16 +82,20 @@ public class ArrowHeadPointer extends GradientPointer
 
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
+        final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(0.48 * imageWidth, 0.505 * imageHeight);
-        pointerShape.lineTo(0.48 * imageWidth, 0.275 * imageHeight);
-        pointerShape.lineTo(0.46 * imageWidth, 0.275 * imageHeight);
-        pointerShape.lineTo(0.495 * imageWidth, 0.15 * imageHeight);
-        pointerShape.lineTo(0.53 * imageWidth, 0.275 * imageHeight);
-        pointerShape.lineTo(0.515 * imageWidth, 0.275 * imageHeight);
-        pointerShape.lineTo(0.515 * imageWidth, 0.505 * imageHeight);
+        pointerShape.moveTo(0.48 * imageWidth, centerY );
+        pointerShape.lineTo(0.48 * imageWidth,   centerY - (0.725  * maxY * frontM));
+        pointerShape.lineTo(0.46 * imageWidth,   centerY - (0.725  * maxY * frontM));
+        pointerShape.lineTo(0.495 * imageWidth,  centerY - (0.85  * maxY * frontM));
+        pointerShape.lineTo(0.53 * imageWidth,   centerY - (0.725  * maxY * frontM));
+        pointerShape.lineTo(0.515 * imageWidth,   centerY - (0.725  * maxY * frontM));
+        pointerShape.lineTo(0.515 * imageWidth,  centerY );
         pointerShape.closePath();
         startPoint = new Point2D.Double(0.46 * imageWidth, 0.26 * imageHeight);
         stopPoint = new Point2D.Double(0.53 * imageWidth, 0.26 * imageHeight);

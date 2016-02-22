@@ -52,8 +52,8 @@ public class TaperedRoundedTailPointer extends GradientPointer
 
     public TaperedRoundedTailPointer()
     {
-        this( new Aluminum());
-        
+        this(new Aluminum());
+
     }
 
     public TaperedRoundedTailPointer(GradientPalette pointerColor)
@@ -77,25 +77,28 @@ public class TaperedRoundedTailPointer extends GradientPointer
         final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath pointerShape;
-        
+
         final java.awt.Paint gradient;
-        double magnitude = (1.0f - this.getRadiusPercent()) * frontScale.getValue();
-        float tailOffset = (float) (0.5 * tailScale.getValue());
-                
+        final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
+        double tailOffset = 0.0;
+
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(0.5 * imageWidth, magnitude  * imageHeight);
-        pointerShape.lineTo(0.4859813  * imageWidth, imageHeight * (0.5 + tailOffset));
-        
-        pointerShape.curveTo(0.4859813 * imageWidth, imageHeight * (0.5 + tailOffset),
-                0.4813084  * imageWidth, imageHeight * (0.584112 + tailOffset),
+        pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
+        pointerShape.lineTo(0.4859813 * imageWidth, centerY + (maxY * tailM));
+
+        pointerShape.curveTo(0.4859813 * imageWidth, centerY + (maxY * tailM),
+                0.4813084 * imageWidth, imageHeight * (0.584112 + tailOffset),
                 0.5 * imageWidth, imageHeight * (0.584112 + tailOffset));
-        
-        pointerShape.curveTo(0.5  * imageWidth, imageHeight * (0.584112 + tailOffset),
+
+        pointerShape.curveTo(0.5 * imageWidth, imageHeight * (0.584112 + tailOffset),
                 0.5193454 * imageWidth, imageHeight * (0.584112 + tailOffset),
-                0.5153454 * imageWidth, imageHeight * (0.5 + tailOffset));
-        
-        pointerShape.lineTo(0.5 * imageWidth, magnitude  * imageHeight);
+                0.5153454 * imageWidth, centerY + (maxY * tailM));
+
+        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * frontM));
         pointerShape.closePath();
 
         if (PointSupport.pointsEquals(0d, pointerShape.getBounds2D().getMinY(), 0d, pointerShape.getBounds2D().getMaxY()))

@@ -55,7 +55,6 @@ public class CompassPointer extends GradientPointer
 //        0.5f,
 //        1.0f
 //    };
-
     private final float[] NORTHPOINTER1_FRACTIONS =
     {
         0.0f,
@@ -226,13 +225,17 @@ public class CompassPointer extends GradientPointer
 //
 //            case TYPE1:
 //            default:
-//        float magnitude = 1.0f - this.getRadiusPercent();
+
+        final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
         final GeneralPath NORTHPOINTER1 = new GeneralPath();
         NORTHPOINTER1.setWindingRule(Path2D.WIND_EVEN_ODD);
         NORTHPOINTER1.moveTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
         NORTHPOINTER1.lineTo(imageWidth * 0.5280373831775701, imageHeight * 0.4953271028037383);
-        NORTHPOINTER1.lineTo(imageWidth * 0.5, imageHeight * 0.03 * getRadiusPercent());
+        NORTHPOINTER1.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
         NORTHPOINTER1.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.4953271028037383);
         NORTHPOINTER1.lineTo(imageWidth * 0.5, imageHeight * 0.4953271028037383);
         NORTHPOINTER1.closePath();
@@ -258,7 +261,7 @@ public class CompassPointer extends GradientPointer
         SOUTHPOINTER1.setWindingRule(Path2D.WIND_EVEN_ODD);
         SOUTHPOINTER1.moveTo(imageWidth * 0.5, imageHeight * 0.5046728971962616);
         SOUTHPOINTER1.lineTo(imageWidth * 0.4719626168224299, imageHeight * 0.5046728971962616);
-        SOUTHPOINTER1.lineTo(imageWidth * 0.5, imageHeight * (1.0 - (0.03 * getRadiusPercent())));
+        SOUTHPOINTER1.lineTo(imageWidth * 0.5, centerY + (maxY * tailM));
         SOUTHPOINTER1.lineTo(imageWidth * 0.5280373831775701, imageHeight * 0.5046728971962616);
         SOUTHPOINTER1.lineTo(imageWidth * 0.5, imageHeight * 0.5046728971962616);
         SOUTHPOINTER1.closePath();

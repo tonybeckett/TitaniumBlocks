@@ -84,8 +84,12 @@ public class WideTaperedPointPointer extends GradientPointer
 
         final Color[] gradientColorArray;
         final java.awt.Paint gradient;
-        float magnitude = 1.0f - this.getRadiusPercent();
+       final double centerY = dimensions.getHeight() / 2.0;
+        final double maxY = dimensions.getHeight() / 2.0;
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
+        
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.532710);
@@ -93,7 +97,7 @@ public class WideTaperedPointPointer extends GradientPointer
 
         pointerShape.curveTo(imageWidth * 0.532710, imageHeight * 0.5,
                 imageWidth * 0.509345, imageHeight * 0.457943,
-                imageWidth * 0.5, imageHeight * magnitude);
+                imageWidth * 0.5, centerY - (maxY * frontM));
 
         pointerShape.curveTo(imageWidth * 0.490654, imageHeight * 0.457943,
                 imageWidth * 0.467289, imageHeight * 0.5,
