@@ -46,19 +46,20 @@ public class FourNumbersTicks extends AbstractRadialTickmark
 
     public FourNumbersTicks()
     {
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+  
     }
 
     public FourNumbersTicks(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+ 
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 

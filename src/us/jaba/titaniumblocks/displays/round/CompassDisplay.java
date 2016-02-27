@@ -34,9 +34,9 @@ import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BrushedMetalBModel;
+import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BlackBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.backdrop.types.round.CompassRoseBackdrop;
+import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
@@ -66,7 +66,8 @@ import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.CompassTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.round.Compass3Tickmarks;
+
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
 import us.jaba.titaniumblocks.displays.RoundDisplay;
 
@@ -100,12 +101,12 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         frameImage = new RoundFrameImageFactory(new SilverRoundFrame());
         add(frameImage);
         
-        CompassRoseBackdrop bmbp = new CompassRoseBackdrop();
-        bmbp.setBackgroundColor(new BrushedMetalBModel());
+        BasicBackdrop bmbp = new BasicBackdrop();
+        bmbp.setBackgroundColor(new BlackBModel());
         backdropImage = new BackdropImageFactory(bmbp);
         add(backdropImage);
         
-        CompassTickmarks ct = new CompassTickmarks();
+        Compass3Tickmarks ct = new Compass3Tickmarks();
         ct.setTextColor(ColorPalette.WHITE);
         ct.setMajorColor(ColorPalette.WHITE);
         tickmarkImage = new TickmarkImageFactory(ct);

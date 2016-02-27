@@ -45,21 +45,19 @@ public class DashAndCircles extends AbstractRadialTickmark
 
     public DashAndCircles()
     {
-        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        majorStroke = new BasicStroke(5.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+     }
 
     public DashAndCircles(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        majorStroke = new BasicStroke(5.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 

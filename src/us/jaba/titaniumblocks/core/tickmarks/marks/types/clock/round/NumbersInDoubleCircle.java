@@ -46,21 +46,19 @@ public class NumbersInDoubleCircle extends AbstractRadialTickmark
 
     public NumbersInDoubleCircle()
     {
-        majorStroke = new BasicStroke(4.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+     }
 
     public NumbersInDoubleCircle(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-        majorStroke = new BasicStroke(4.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+      }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 4.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 

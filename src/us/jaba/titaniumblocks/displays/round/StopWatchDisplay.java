@@ -33,6 +33,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
@@ -65,9 +66,10 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchSmallTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSubsecondTickmarks;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
 import us.jaba.titaniumblocks.displays.RoundDisplay;
 
@@ -108,14 +110,14 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
         backdropImage = new BackdropImageFactory(bmbp);
         add(backdropImage);
 
-        StopwatchTickmarks ct = new StopwatchTickmarks();
+        StopwatchSubsecondTickmarks ct = new StopwatchSubsecondTickmarks();
         ct.setTextColor(ColorPalette.BLACK);
         ct.setMajorColor(ColorPalette.BLACK);
         ct.setFont(BaseFont.SERIF_FONT);
         tickmarkImage = new TickmarkImageFactory(ct);
         add(tickmarkImage);
 
-        StopwatchSmallTickmarks sct = new StopwatchSmallTickmarks();
+        SmallTickmarks sct = new SmallTickmarks();
         sct.setTextColor(ColorPalette.BLACK);
         sct.setMajorColor(ColorPalette.BLACK);
         sct.setFont(BaseFont.SERIF_FONT);
@@ -313,6 +315,16 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
     public void setPointerGradient(GradientPalette cp)
     {
         hourPointerImage.getTickmark().setPointerColor(cp);
+    }
+
+    public void setTickmarks(TickmarkModel cm)
+    {
+        tickmarkImage.setPainter(cm);
+    }
+
+    public void setSmallTickmarks(TickmarkModel cm)
+    {
+        tickmarkSmallImage.setPainter(cm);
     }
 
 }

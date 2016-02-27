@@ -40,13 +40,13 @@ public class OnlyTicksOn30 extends AbstractRadialTickmark
 
     public OnlyTicksOn30()
     {
-        minorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        majorStroke = new BasicStroke(4.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 4.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
         graphics.setColor(minorColor);

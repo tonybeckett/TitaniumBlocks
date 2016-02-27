@@ -46,19 +46,18 @@ public class FourNumbersCircleTicks extends AbstractRadialTickmark
 
     public FourNumbersCircleTicks()
     {
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
     public FourNumbersCircleTicks(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
@@ -74,9 +73,9 @@ public class FourNumbersCircleTicks extends AbstractRadialTickmark
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, 359.0, 90.0, 4);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, 1.0, 90.0, 4);
         ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 30.0, 30.0, true, 2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 120.0, 30.0,true, 2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 210.0, 30.0, true,2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 300.0, 30.0, true,2);
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 120.0, 30.0, true, 2);
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 210.0, 30.0, true, 2);
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.90, radius * 0.025, 300.0, 30.0, true, 2);
         graphics.dispose();
 
     }

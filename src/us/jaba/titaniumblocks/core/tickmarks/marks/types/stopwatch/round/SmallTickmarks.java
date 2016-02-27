@@ -25,7 +25,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -34,11 +34,11 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class StopwatchSmallTickmarks extends AbstractRadialTickmark
+public class SmallTickmarks extends AbstractRadialTickmark
 {
     private final double TEXT_SCALE = 0.095;
 
-    public StopwatchSmallTickmarks()
+    public SmallTickmarks()
     {
 
     }

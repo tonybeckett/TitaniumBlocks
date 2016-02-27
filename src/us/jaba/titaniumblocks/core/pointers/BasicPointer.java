@@ -48,31 +48,23 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class GradientPointer extends AbstractPointer
+public class BasicPointer extends AbstractPointer
 {
-
-   protected final float[] gradientFractionArray = new float[]
-    {
-        0.0f,
-        0.4999f,
-        0.5f,
-        1.0f
-    };
-
+ 
    private final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.35f);
 
-    public GradientPointer()
+    public BasicPointer()
     {
         this(new PureBlack());
     }
 
-    public GradientPointer(GradientPalette pointColor)
+    public BasicPointer(GradientPalette pointColor)
     {
         super(pointColor);
 
     }
 
-    public GradientPointer(GradientPointer other)
+    public BasicPointer(BasicPointer other)
     {
         super(other);
     }
@@ -82,21 +74,10 @@ public class GradientPointer extends AbstractPointer
         return new GeneralPath();
     }
 
-    protected void paintShape(Graphics2D graphics, Dimension dimensions, Color[] gradientColorArray)
+    protected void paintShape(Graphics2D graphics, Dimension dimensions)
     {
         final Shape pointerShape = getShape(dimensions);
 
-//        float magnitude = 1.0f - this.getRadiusPercent();
-//        Point2D tip = new Point2D.Double(0.5, magnitude);//0.14953);
-        final Point2D startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
-        final Point2D stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
-
-        if (PointSupport.pointsEqual(startPoint, stopPoint))
-        {
-            stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
-        }
-        final Paint gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
-        graphics.setPaint(gradient);
         graphics.fill(pointerShape);
 
         graphics.draw(pointerShape);
@@ -115,15 +96,9 @@ public class GradientPointer extends AbstractPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        final Color[] gradientColorArray = new Color[]
-        {
-            SHADOW_COLOR,
-            SHADOW_COLOR,
-            SHADOW_COLOR,
-            SHADOW_COLOR,
-        };
+       
         graphics.setColor(SHADOW_COLOR);
-        paintShape(graphics, dimensions, gradientColorArray);
+        paintShape(graphics, dimensions);
     }
 
     @Override
@@ -139,17 +114,11 @@ public class GradientPointer extends AbstractPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        final Color[] gradientColorArray = new Color[]
-        {
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumDark(),
-            this.getPointerColor().getMediumDark()
-        };
+   
         graphics.setColor(this.getPointerColor().getMediumDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
 
-        paintShape(graphics, dimensions, gradientColorArray);
+        paintShape(graphics, dimensions);
 
         if (centerPinVisible)
         {

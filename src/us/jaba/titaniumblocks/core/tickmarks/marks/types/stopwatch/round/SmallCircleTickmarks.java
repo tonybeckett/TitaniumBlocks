@@ -25,66 +25,50 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class SixNumbersTicks extends AbstractRadialTickmark
+public class SmallCircleTickmarks extends AbstractRadialTickmark
 {
+    private final double TEXT_SCALE = 0.095;
 
-    private double textScale = 0.09;
-    String[] arrayOfText =
+    public SmallCircleTickmarks()
     {
-        "10", "12", "2", 
-    };
-    String[] arrayOfText2 =
-    {
-       "4", "6", "8"
-    };
 
-    public SixNumbersTicks()
-    {
-     }
-
-    public SixNumbersTicks(String[] text, double textScaleFactor)
-    {
-        this.arrayOfText = text;
-        textScale = textScaleFactor;
-     }
+    }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 6.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setFont(font.deriveFont(Font.PLAIN, (float) (textScale * dimensions.getWidth())));
-
         graphics.setColor(textColor);
+        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth() / 3.0)));
+        String[] text2 =
+        {
+            "30", "5", "10", "15", "20", "25"
+        };
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.15, 0.0, 60, text2);
         
-
-        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * 0.75, 300.0, 60, arrayOfText);
-        ShapeUtils.placeTextOnRadiusRotateOut(graphics, centerPoint, radius * 0.75, 120.0, 60, arrayOfText2);
+        Point2D offset = new Point2D.Double(centerPoint.getX(), centerPoint.getY());
+        graphics.setColor(minorColor);
+        graphics.setStroke(minorStroke);
+      //  ShapeUtils.drawRadialLines(graphics, offset, radius * 0.235, radius * 0.255, 0.0, 2.0, 180);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.75, radius * 0.85, 30.0, 60.0, 6);
+        ShapeUtils.drawRadialLines(graphics, offset, radius * 0.215, radius * 0.255, 0.0, 6, 60);
+        ShapeUtils.drawRadialLines(graphics, offset, radius * 0.2, radius * 0.255, 0.0, 30.0, 12);
+        
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.2);
 
-        graphics.setColor(mediumColor);
-        graphics.setStroke(mediumStroke);
-        for (int i = 0; i < 12; i++)
-        {
-            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, 4);
-        }
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.930, radius * 0.0125, 0.0, 30.0, true, 12);
-
+        
         graphics.dispose();
 
     }

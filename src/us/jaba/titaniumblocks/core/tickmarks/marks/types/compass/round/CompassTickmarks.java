@@ -25,58 +25,67 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.round;
 
 import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class DashCirclesTicks extends AbstractRadialTickmark
+public class CompassTickmarks extends AbstractRadialTickmark
 {
 
-    private double textScale = 0.04;
+    private double textScale = 0.06;
     String[] arrayOfText =
     {
-        "00", "03", "06", "09"
+        "N", "NE", "E", "SE", "S", "SW", "W", "NW"
     };
 
-    public DashCirclesTicks()
+    public CompassTickmarks()
     {
- 
-    }
 
-    public DashCirclesTicks(String[] text, double textScaleFactor)
-    {
-        this.arrayOfText = text;
-        textScale = textScaleFactor;
- 
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        int imageWidth = (int) dimensions.getWidth();
+//        int imageHeight = (int) dimensions.getHeight();
+ 
         mediumStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 3.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+
+
+        final Point2D centerPoint = new Point2D.Double(imageWidth / 2.0f, imageWidth / 2.0f);
+
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setColor(mediumColor);
-        graphics.setStroke(mediumStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.9, radius * 0.95, 0.0, 6.0, 60);
-        
-          graphics.setColor(majorColor);
-        graphics.setStroke(majorStroke);
-        for (int i = 0; i < 4; i++)
-        {
-            ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.750, radius * 0.075, (90.0 * i) + 30.0, 30.0, false, 2);
-        }
-      
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.85, 0, 90.0, 4);
+        graphics.setFont(font.deriveFont((float) (textScale * dimensions.getWidth())));
 
-        graphics.dispose();
+        graphics.setColor(textColor);
+
+        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * 0.85, 0.0, 45, arrayOfText);
+
+        graphics.setStroke(mediumStroke);
+//        graphics.setColor(mediumColor);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.965, radius * 0.995, 0.0, 5, 72);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.945, radius * 0.995, 0.0, 45.0, 8);
+
+        graphics.setStroke(majorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.925, radius * 0.995, 0.0, 90.0, 4);
+
 
     }
 

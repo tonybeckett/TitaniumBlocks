@@ -147,6 +147,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     public void setFrame(RoundFrame linearFramePainter)
     {
         this.frameImage.setPainter(linearFramePainter);
+        setChanged();
     }
 
     public void setFrontCover(Frontcover foregroundPainter)

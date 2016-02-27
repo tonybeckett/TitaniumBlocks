@@ -40,6 +40,23 @@ import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 public class CoordinateUtils
 {
 
+    // covert angle from tb coordinates
+//        |0  
+//        |
+//270-----------90 
+//        |
+//        |180
+//   to java
+//     
+//        |90  
+//        |
+//180-----------0 
+//        |
+//        |270
+ //   
+//    use (450 - angle) % 360
+           
+    
     public static final double TWO_PI = 2.0 * Math.PI;
     public static final double HALF_PI = Math.PI / 2.0;
 

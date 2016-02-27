@@ -39,14 +39,16 @@ public class BasicClock extends AbstractRadialTickmark
 
     public BasicClock()
     {
-        majorStroke = new BasicStroke(15.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-        mediumStroke = new BasicStroke(10.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-        minorStroke = new BasicStroke(5.0F, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        minorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 5.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 10.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 15.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
         graphics.setColor(minorColor);

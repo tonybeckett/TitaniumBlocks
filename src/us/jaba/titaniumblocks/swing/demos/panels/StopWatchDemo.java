@@ -31,7 +31,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Calendar;
-import java.util.Date;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -40,6 +39,8 @@ import us.jaba.titaniumblocks.core.frames.types.round.NullRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SecondsDualCircleTriangleTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallSecondsDualCircleTickmarks;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.round.StopwatchPanel;
 
@@ -62,19 +63,22 @@ public class StopWatchDemo extends javax.swing.JFrame
         panel = new StopwatchPanel(ColorPalette.WHITE);
         panel.setBackground(ColorPalette.WHITE);
         panel.setRoundFrame(new NullRoundFrame());
+        panel.setTickmarks(new SecondsDualCircleTriangleTickmarks());
+        panel.setSmallTickmarks(new SmallSecondsDualCircleTickmarks());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500 + 22)); 
+        this.setSize(new Dimension(500, 500 + 22));
         this.setTitle("StopWatchDemo");
         Antimate antimate = new Antimate(100.0, 0.1f)
         {
             @Override
             public void update(double d)
             {
-               Calendar cal = Calendar.getInstance();
-                Date t = new Date();
-                 
-                panel.setValueAnimated(t.getHours(),t.getMinutes(),t.getSeconds());
+                Calendar cal = Calendar.getInstance();
+
+                double seconds = cal.get(Calendar.SECOND);
+                seconds = seconds + (cal.get(Calendar.MILLISECOND)  / 1000.0);
+                panel.setValueAnimated(cal.get(Calendar.HOUR) , cal.get(Calendar.MINUTE) , seconds);
             }
         };
 
@@ -102,29 +106,21 @@ public class StopWatchDemo extends javax.swing.JFrame
         panel.setPointerGradient(cp);
     }
 
-   
-
-     
     public void setCenterPost(Post postPainter)
     {
         panel.setCenterPost(postPainter);
     }
-
-   
 
     public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
     {
         panel.setPointer(pointerPainter, shadowPainter);
     }
 
-     
-
     public void setFrontCover(Frontcover foregroundPainter)
     {
         panel.setFrontCover(foregroundPainter);
     }
 
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -144,8 +140,7 @@ public class StopWatchDemo extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-/**
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[])
@@ -182,7 +177,7 @@ public class StopWatchDemo extends javax.swing.JFrame
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {

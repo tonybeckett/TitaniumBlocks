@@ -27,28 +27,27 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.marks;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.ClockCoreInfo;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.CompassCoreInfo;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalLinearTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.HorizontalLogTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLinearTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.rectangular.VerticalLogTickmark;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.BasicClock;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumbersTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.CompassTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.LevelTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMedMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RLogMajMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMinorTickmark;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchSmallTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.StopwatchTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSubsecondTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchCoreInfo;
 
 /**
  *
@@ -59,7 +58,6 @@ public class TickmarksCoreInfo
 
     public static final Class<?>[] TICKMARK_CLASSES =
     {
-        CompassTickmarks.class,
         HorizontalLinearTickmark.class,
         HorizontalLogTickmark.class,
         LevelTickmarks.class,
@@ -69,8 +67,8 @@ public class TickmarksCoreInfo
         RLogMajMinorTickmark.class,
         RNormalMajMedMinorTickmark.class,
         RNormalMajMinorTickmark.class,
-        StopwatchTickmarks.class,
-        StopwatchSmallTickmarks.class,
+        StopwatchSubsecondTickmarks.class,
+        SmallTickmarks.class,
         ThermometerCfTickmarks.class,
         ThermometerFcTickmarks.class,
         WindDirectionTickmarks.class
@@ -78,7 +76,13 @@ public class TickmarksCoreInfo
 
     public static List<Class<?>> getAvailableClasses()
     {
-        return Arrays.asList(TICKMARK_CLASSES);
+        ArrayList<Class<?>> al = new ArrayList();
+        al.addAll(ClockCoreInfo.getAvailableClasses());
+        al.addAll(CompassCoreInfo.getAvailableClasses());
+        al.addAll(StopwatchCoreInfo.getAvailableClasses());
+        al.addAll(Arrays.asList(TICKMARK_CLASSES));
+        
+        return al;
     }
 
     public static List getInstanceOfEach()

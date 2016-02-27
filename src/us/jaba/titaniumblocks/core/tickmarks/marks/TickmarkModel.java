@@ -58,6 +58,7 @@ public class TickmarkModel extends CoreModel
     public static final int DEFAULT_MINOR_TICK_SPACING = 1;
     public static final int DEFAULT_MEDIUM_TICK_SPACING = 5;
     public static final int DEFAULT_MAJOR_TICK_SPACING = 10;
+    protected static final float TARGET_WINDOW_SIZE = 500.0F;
 
     protected Color baselineColor = DEFAULT_BASELINE_COLOR;
 

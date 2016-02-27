@@ -45,19 +45,20 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
 
     public NumbersCirclesDash()
     {
-majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    }
+     }
 
     public NumbersCirclesDash(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+  
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
         graphics.setFont(font.deriveFont((float) (textScale * dimensions.getWidth())));
@@ -71,10 +72,10 @@ majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVE
         graphics.setStroke(majorStroke);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.25, radius * 0.55, 0.0, 90.0, 4);
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.935);
-        
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.650, radius * 0.008, 0.0, 30.0/5.0, true, 60);
+
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.650, radius * 0.008, 0.0, 30.0 / 5.0, true, 60);
         ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.650, radius * 0.015, 0.0, 30.0, true, 12);
-        
+
         graphics.dispose();
 
     }

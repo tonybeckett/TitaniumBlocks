@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.displays.round.ClockDisplay;
+import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 import us.jaba.titaniumblocks.displays.round.StopWatchDisplay;
 
 /**
@@ -222,6 +222,16 @@ public class StopwatchPanel extends JComponent
     public void setFrontCover(Frontcover foregroundPainter)
     {
         singleGauge.setFrontCover(foregroundPainter);
+    }
+
+    public void setTickmarks(TickmarkModel cm)
+    {
+        singleGauge.setTickmarks(cm);
+    }
+
+    public void setSmallTickmarks(TickmarkModel cm)
+    {
+        singleGauge.setSmallTickmarks(cm);
     }
 
 }

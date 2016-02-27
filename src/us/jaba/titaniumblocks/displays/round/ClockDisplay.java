@@ -159,6 +159,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
         secondsPointerImage = new PointerImageFactory(secp);
         add(secondsPointerImage);
+        
         secShadowPointerImage = new ShadowPointerImageFactory(secp);
         add(secShadowPointerImage);
 

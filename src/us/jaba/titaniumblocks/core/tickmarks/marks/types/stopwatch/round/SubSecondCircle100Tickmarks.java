@@ -25,20 +25,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class StopwatchTickmarks extends AbstractRadialTickmark
+public class SubSecondCircle100Tickmarks extends AbstractRadialTickmark
 {
-    private final double TEXT_SCALE = 0.095;
 
-    public StopwatchTickmarks()
+    private final double TEXT_SCALE = 0.045;
+
+    public SubSecondCircle100Tickmarks()
     {
 
     }
@@ -46,6 +47,9 @@ public class StopwatchTickmarks extends AbstractRadialTickmark
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 1.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 3.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
         graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth())));
@@ -54,21 +58,35 @@ public class StopwatchTickmarks extends AbstractRadialTickmark
         graphics.setStroke(mediumStroke);
         String[] text =
         {
-            " ", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
+            "60", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.775, 0.0, 30, text);
 
-        graphics.setColor(minorColor);
-        graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.945, radius * 0.995, 0.0, 2.0, 180);
+        String[] text2 =
+        {
+            " ", "10", "20", "30", "40", "50", "60", "70", "80", "90"
+        };
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.97, 0.0, 30, text);
+        
+       graphics.setFont(font.deriveFont((float) (0.065 * dimensions.getWidth())));
+
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.65, 0.0, 36, text2);
+
+        graphics.setColor(mediumColor);
+        graphics.setStroke(mediumStroke);
+        
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.85, radius * 0.875, 0.0, 2, 180);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.775, radius * 0.825, 0.0, 3.6, 100);
+
+//            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.75, radius * 0.825, 0.0+(i*30), 1, 30);
+//            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.75, radius * 0.825, 5.0+(i*30), 6, 4);
+        graphics.setStroke(majorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.765, radius * 0.825, 0.0, 18, 20);
+        
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.825);
 
         graphics.setColor(majorColor);
-        graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.925, radius * 0.995, 0.0, 6, 60);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.9, radius * 0.995, 0.0, 30.0, 12);
-        
-        
-     
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.85, radius * 0.9, 0.0, 10.0, 36);
+
         graphics.dispose();
 
     }

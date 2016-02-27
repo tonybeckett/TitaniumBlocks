@@ -98,7 +98,6 @@ public class FramesCoreInfo
         TiltedGrayLinearFrame.class
     };
 
-    
     public static List<Class<?>> getRoundClasses()
     {
         return Arrays.asList(ROUND_MODELS);
@@ -106,7 +105,7 @@ public class FramesCoreInfo
 
     public static List<Class<?>> getRectangularClasses()
     {
-         return Arrays.asList(RECTANGUALR_MODELS);
+        return Arrays.asList(RECTANGUALR_MODELS);
     }
 
     public static List<Class<?>> getAvailableClasses()
@@ -122,4 +121,15 @@ public class FramesCoreInfo
         return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
 
     }
+
+    public static List getInstanceOfEachRound()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getRoundClasses());
+    }
+    
+    public static List getInstanceOfEachRectangular()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getRectangularClasses());
+    }
+
 }
