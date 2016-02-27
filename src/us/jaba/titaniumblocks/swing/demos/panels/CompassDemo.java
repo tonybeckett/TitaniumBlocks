@@ -64,7 +64,8 @@ public class CompassDemo extends javax.swing.JFrame
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
-
+        this.setTitle("CompassDemo");
+        
         Antimate antimate = new Antimate(100.0)
         {
             @Override
