@@ -28,8 +28,12 @@
 package us.jaba.titaniumblocks.swing.demos.core;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -39,6 +43,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.pointers.AbstractPointer;
@@ -88,14 +93,17 @@ public class PointerViewer extends javax.swing.JFrame
             Constructor c = aClass.getConstructor();
             AbstractPointer pp = (AbstractPointer) c.newInstance();
 
-            
             JLabel jlabel = new JLabel();
             jlabel.setText(aClass.getSimpleName().replace("PointerPainter", ""));
-            jlabel.setIcon(new ImageIcon(new PointerImageFactory(pp).build(dim)));
-//            jlabel.setForeground(ColorPalette.BLACK);
+            ImageIcon ii = new ImageIcon(new PointerImageFactory(pp).build(dim));
+            jlabel.setIcon(rotateIcon(ii, 90.0));
+            jlabel.setVerticalTextPosition(JLabel.BOTTOM);
+            jlabel.setHorizontalTextPosition(JLabel.CENTER);
+
             jlabel.setBackground(ColorPalette.WHITE);
             panel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel, BorderLayout.CENTER);
+            panel.setBorder(new LineBorder(Color.BLACK));
 
             list.add(panel);
         }
@@ -113,6 +121,25 @@ public class PointerViewer extends javax.swing.JFrame
         setTitle("TitaniumBlocks - PointerViewer");
         pack();
     }// 
+
+    private ImageIcon rotateIcon(ImageIcon icon, double angle)
+    {
+        int w = icon.getIconWidth();
+        int h = icon.getIconHeight();
+       
+        int type = BufferedImage.TYPE_INT_ARGB;  // other options, see api
+        BufferedImage image = new BufferedImage(h, w, type);
+        Graphics2D g2 = image.createGraphics();
+        double x = (h - w) / 2.0;
+        double y = (w - h) / 2.0;
+        AffineTransform at = AffineTransform.getTranslateInstance(x, y);
+        at.rotate(Math.toRadians(angle), w / 2.0, h / 2.0);
+        g2.setBackground(Color.LIGHT_GRAY);
+        g2.setColor(Color.LIGHT_GRAY);
+        g2.drawImage(icon.getImage(), at, null);
+        g2.dispose();
+        return new ImageIcon(image);
+    }
 
     /**
      * @param args the command line arguments
@@ -148,7 +175,7 @@ public class PointerViewer extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(PointerViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-  
+
         //</editor-fold>
 
         /* Create and display the form */

@@ -72,7 +72,7 @@ public class FrontcoverCoreInfo
         return Arrays.asList( RECT_MODELS);
     }
 
-    public static List getInstanceOfModels()
+    public static List getInstanceOfEach()
     {
         List l = CoreInfoSupport.getInstanceOfEach(getRoundModelClasses());
         l.addAll(CoreInfoSupport.getInstanceOfEach(getRectangularModelClasses()));

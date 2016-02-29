@@ -75,7 +75,8 @@ public class PostCoreInfo
         MetalBrassPost.class,
         MetalCopperPost.class,
         MetalGoldPost.class,
-        MetalSilverPost.class
+        MetalSilverPost.class,
+        NullPost.class
     };
 
     public static final Class<?>[] POSITIONED_POST_MODELS =

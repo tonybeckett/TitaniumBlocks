@@ -47,7 +47,7 @@ public class TickmarkViewer extends BasicVerticalViewer
 
         this.backgroundColor = ColorPalette.GRAY;
         this.foregroundColor = ColorPalette.BLACK;
-        init("TickmarkViewer", new Dimension(500, 500), TickmarksCoreInfo.getInstanceOfEach());
+        init("TickmarkViewer", new Dimension(400, 400), TickmarksCoreInfo.getInstanceOfEach());
 
     }
 
@@ -55,7 +55,7 @@ public class TickmarkViewer extends BasicVerticalViewer
     protected String getClassNameFromInstance(Object o)
     {
         TickmarkModel pp = (TickmarkModel) o;
-        return pp.getClass().getSimpleName().replace("Model", "");
+        return pp.getClass().getSimpleName().replace("Tickmarks", "");
     }
 
     @Override

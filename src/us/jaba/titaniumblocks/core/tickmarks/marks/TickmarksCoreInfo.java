@@ -47,6 +47,8 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.Stopwat
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindSpeedMPHKnotsTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindSpeedMPHTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchCoreInfo;
 
 /**
@@ -71,7 +73,9 @@ public class TickmarksCoreInfo
         SmallTickmarks.class,
         ThermometerCfTickmarks.class,
         ThermometerFcTickmarks.class,
-        WindDirectionTickmarks.class
+        WindDirectionTickmarks.class,
+        WindSpeedMPHTickmarks.class,
+        WindSpeedMPHKnotsTickmarks.class
     };
 
     public static List<Class<?>> getAvailableClasses()

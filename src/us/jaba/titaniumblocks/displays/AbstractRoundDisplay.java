@@ -139,9 +139,9 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         centerPostImage.setPainter(postPainter);
     }
 
-    public FrameModel getFrame()
+    public RoundFrame getFrame()
     {
-        return frameImage.getTickmark();
+        return frameImage.getRoundFrame();
     }
 
     public void setFrame(RoundFrame linearFramePainter)
@@ -153,6 +153,16 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     public void setFrontCover(Frontcover foregroundPainter)
     {
         this.frontcoverImage.setPainter(foregroundPainter);
+    }
+
+    public Post getCenterPost()
+    {
+        return centerPostImage.getTickmark();
+    }
+
+    public Frontcover getFrontcover()
+    {
+        return frontcoverImage.getTickmark();
     }
 
     public void setNormalizedValue(double d)

@@ -38,7 +38,8 @@ import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.sections.SSSection;
+import us.jaba.titaniumblocks.core.sections.ColorSection;
+import us.jaba.titaniumblocks.core.sections.types.LinearSection;
 
 /**
  *
@@ -53,7 +54,7 @@ public class SectionGraph extends AbstractBargraph
     private Color color = ColorPalette.BLACK;
     private double value = 0.0;
     private boolean plainBargraphSegments = false;
-    private List<SSSection> sections = new ArrayList();
+    private List<LinearSection> sections = new ArrayList();
 
     public int getActiveSegments()
     {
@@ -105,12 +106,12 @@ public class SectionGraph extends AbstractBargraph
         this.plainBargraphSegments = plainBargraphSegments;
     }
 
-    public List<SSSection> getSections()
+    public List<LinearSection> getSections()
     {
         return sections;
     }
 
-    public void setSections(List<SSSection> sections)
+    public void setSections(List<LinearSection> sections)
     {
         this.sections = sections;
     }

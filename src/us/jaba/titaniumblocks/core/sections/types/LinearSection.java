@@ -31,21 +31,44 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
-import us.jaba.titaniumblocks.core.sections.SSSection;
+import us.jaba.titaniumblocks.core.sections.ColorSection;
 import us.jaba.titaniumblocks.core.color.ColorTools;
 
 /**
  *
  * @author tbeckett
  */
-public class LinearSection
+public class LinearSection extends ColorSection
 {
 
     private LcdGradientPalette lcdColor;
+    private double start;
+    private double stop;
 
+    public double getStart()
+    {
+        return start;
+    }
+
+    public void setStart(double start)
+    {
+        this.start = start;
+    }
+
+    public double getStop()
+    {
+        return stop;
+    }
+
+    public void setStop(double stop)
+    {
+        this.stop = stop;
+    }
+    
     public LinearSection()
     {
-        ArrayList<SSSection> sections = new ArrayList();
+        super(Color.GRAY);
+        ArrayList<ColorSection> sections = new ArrayList();
         ArrayList<BufferedImage> sectionsBackground = new ArrayList(3);
         ArrayList<Color> sectionsForeground = new ArrayList(3);
 
@@ -72,7 +95,7 @@ public class LinearSection
         final float BRIGHTNESS_FRACTION3 = HSB_FRACTION3[2];
         final float BRIGHTNESS_STOP = HSB_STOP[2];
 
-        for (SSSection section : sections)
+        for (ColorSection section : sections)
         {
             final Color[] BACKGROUND_COLORS;
             final Color FOREGROUND_COLOR;
@@ -82,7 +105,7 @@ public class LinearSection
             final float BRIGHTNESS_SECTION = HSB_SECTION[2];
             if (!ColorTools.isMonochrome(section.getColor()))
             {
-//                // SSSection color is not monochrome
+//                // ColorSection color is not monochrome
 //                if (lcdColor == LcdColor.SECTIONS_LCD)
 //                {
 //                    BACKGROUND_COLORS = new Color[]
@@ -108,7 +131,7 @@ public class LinearSection
                 FOREGROUND_COLOR = ColorTools.setSaturationBrightness(section.getColor(), 0.57f, 0.83f);
             } else
             {
-                // SSSection color is monochrome
+                // ColorSection color is monochrome
                 final float BRIGHTNESS_DIFF = BRIGHTNESS_SECTION - BRIGHTNESS_FRACTION1;
 
                 BACKGROUND_COLORS = new Color[]

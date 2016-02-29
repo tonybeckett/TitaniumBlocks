@@ -114,7 +114,6 @@ public class BackdropCoreInfo
     {
         us.jaba.titaniumblocks.core.backdrop.types.round.BrushedMetalBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.CarbonBackdrop.class,
-        us.jaba.titaniumblocks.core.backdrop.types.round.CompassRoseBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.NoisyPlasticBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.NullBackdrop.class,

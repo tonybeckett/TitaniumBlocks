@@ -44,7 +44,7 @@ public class FrontcoverViewer extends BasicVerticalViewer
     public FrontcoverViewer()
     {
 
-        init("FrontcoverViewer", new Dimension(200, 200), FrontcoverCoreInfo.getInstanceOfModels());
+        init("FrontcoverViewer", new Dimension(200, 200), FrontcoverCoreInfo.getInstanceOfEach());
 
     }
 

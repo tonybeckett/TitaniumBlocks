@@ -154,10 +154,10 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = (int) frameImage.getTickmark().getFrameThickness();
+        int offset = (int) frameImage.getRoundFrame().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getTickmark().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getRoundFrame().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -211,7 +211,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public FrameModel getFramePainter()
     {
-        return frameImage.getTickmark();
+        return frameImage.getRoundFrame();
     }
 
     public Text getTextPainter()

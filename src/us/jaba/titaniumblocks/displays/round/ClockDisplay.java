@@ -200,10 +200,10 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = (int) frameImage.getTickmark().getFrameThickness();
+        int offset = (int) frameImage.getRoundFrame().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getTickmark().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getRoundFrame().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -291,20 +291,13 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         return backdropImage.getTickmark();
     }
 
-    public FrameModel getFramePainter()
-    {
-        return frameImage.getTickmark();
-    }
-
+    
     public Text getTextPainter()
     {
         return valueTextImage.getTickmark();
     }
 
-    public Frontcover getPainter()
-    {
-        return frontcoverImage.getTickmark();
-    }
+   
 
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
 //    {
