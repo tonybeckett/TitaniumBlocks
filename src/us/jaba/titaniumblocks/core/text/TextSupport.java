@@ -86,7 +86,7 @@ public class TextSupport
 
         final GlyphVector glyphVector = graphics2D.getFont().createGlyphVector(renderContext, text);
 
-        final java.awt.Shape glyph = glyphVector.getOutline((int) -textBoundary.getCenterX(), (int) textBoundary.getCenterY());
+        final Shape glyph = glyphVector.getOutline((int) -textBoundary.getCenterX(), (int) textBoundary.getCenterY());
 
         final AffineTransform oldTransform = graphics2D.getTransform();
         graphics2D.translate(textPositionX, textPositionY + textBoundary.getHeight());

@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.bargraph.AbstractBargraph;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.sections.ColorSection;
 import us.jaba.titaniumblocks.core.sections.types.LinearSection;
 
 /**

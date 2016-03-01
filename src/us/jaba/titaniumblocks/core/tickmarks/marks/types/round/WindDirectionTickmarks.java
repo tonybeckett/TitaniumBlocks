@@ -33,7 +33,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.ClockNumber
 public class WindDirectionTickmarks extends ClockNumbersTickmarks
 {
 
-    static final String[] arrayOfText =
+    private static final String[] arrayOfText =
     {
         "0", "30", "60", "90", "120", "150", "180", "150", "120", "90", "60", "30"
     };

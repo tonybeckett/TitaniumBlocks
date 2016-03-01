@@ -42,7 +42,7 @@ import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 public class SingleBargraphDisplay extends SingleDisplay
 {
 
-    BargraphImage bargraphImage = new BargraphImage(new BargraphGradient20());
+    private BargraphImage bargraphImage = new BargraphImage(new BargraphGradient20());
 
     public SingleBargraphDisplay()
     {
