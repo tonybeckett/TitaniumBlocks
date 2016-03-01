@@ -58,7 +58,7 @@ public class StopwatchPanel extends JComponent
     private Rectangle currentSize = DEFAULT_SIZE;
     private Timeline timeline = new Timeline(this);
     private final Spline EASE = new Spline(0.5f);
-    private double hourValue;
+//    private double hourValue;
     private double minuteValue;
     private double secondValue;
 

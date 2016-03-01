@@ -38,7 +38,7 @@ public class RomanNumbersOut extends AbstractRadialTickmark
 {
 
     private double textScale = 0.12;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
     };

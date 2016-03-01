@@ -46,12 +46,17 @@ public class WindSpeedMPHKnotsTickmarks extends AbstractRadialTickmark
         "0", "10", "20", "30", "40", "50", "60", "70", "80", "90"
     };
 
-     protected String[] mph = { "WindSpeed" };
-    protected String[] knots = { "MPH / Knots" };
-    
+    protected String[] mph =
+    {
+        "WindSpeed"
+    };
+    protected String[] knots =
+    {
+        "MPH / Knots"
+    };
+
     public WindSpeedMPHKnotsTickmarks()
     {
-        
 
         mediumStroke = majorStroke;
         majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
@@ -66,35 +71,31 @@ public class WindSpeedMPHKnotsTickmarks extends AbstractRadialTickmark
         graphics.setFont(font.deriveFont(Font.PLAIN, (float) (0.05 * dimensions.getWidth())));
 
         graphics.setColor(textColor);
-        
 
-        
         double mphAngleStep = 285.0 / 11.0;
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 230.0,  mphAngleStep, arrayOfTextMPH);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 230.0, mphAngleStep, arrayOfTextMPH);
 
         ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.75, 180.0, 0.0, mph);
 
-        
         graphics.setFont(font.deriveFont(Font.PLAIN, (float) (0.05 * dimensions.getWidth() * 0.75)));
-        
+
         double knotsAngleStep = 298.0 / 10.0;
         ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.45, 230.0, knotsAngleStep, arrayOfCTextKnots);
 
         ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.45, 180.0, 0.0, knots);
 
-        
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-        
+
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.725, 230.0, mphAngleStep / 5.0, 50);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 230.0, knotsAngleStep/5.0, 45);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.55, radius * 0.6, 230.0, knotsAngleStep / 5.0, 45);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.75, 230.0,  mphAngleStep, 11);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.525, radius * 0.6, 230.0,  knotsAngleStep, 10);
+
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.75, 230.0, mphAngleStep, 11);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.525, radius * 0.6, 230.0, knotsAngleStep, 10);
 
         graphics.dispose();
 

@@ -39,14 +39,11 @@ public class FourNumbersCircleTicks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.04;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "00", "03", "06", "09"
     };
-
-    public FourNumbersCircleTicks()
-    {
-    }
+ 
 
     public FourNumbersCircleTicks(String[] text, double textScaleFactor)
     {

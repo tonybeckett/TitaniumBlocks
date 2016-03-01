@@ -38,6 +38,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
 import us.jaba.titaniumblocks.core.Images;
@@ -49,18 +50,16 @@ import us.jaba.titaniumblocks.core.color.ColorPalette;
  */
 public class BasicVerticalViewer extends javax.swing.JFrame
 {
-
     protected Color backgroundColor = ColorPalette.BLACK;
     protected Color foregroundColor = ColorPalette.WHITE;
-    JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
-    JPanel list = new JPanel();
-    GridLayout gl = new GridLayout();
+    protected JScrollPane jScrollPane1 = new JScrollPane();
+    protected JPanel list = new JPanel();
+    protected GridLayout gl = new GridLayout();
 
-    Dimension imageDim;
+    protected Dimension imageDim;
 
     public BasicVerticalViewer()
     {
-
         imageDim = new Dimension(200, 200);
     }
 
@@ -107,9 +106,9 @@ public class BasicVerticalViewer extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(CoreInfoSupport.TITANIUM_BLOCKS + " - " + title);
         list.setLayout(gl);
-        this.setLayout(new java.awt.BorderLayout());
+        this.setLayout(new BorderLayout());
 
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         int len = instances.size();
 
@@ -126,7 +125,7 @@ public class BasicVerticalViewer extends javax.swing.JFrame
 
         jScrollPane1.setViewportView(list);
 
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        add(jScrollPane1, BorderLayout.CENTER);
 
         this.setSize(
                 new Dimension(400, 800));

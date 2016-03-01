@@ -29,7 +29,6 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
 import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
@@ -37,11 +36,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class OnlyTicksOn30 extends AbstractRadialTickmark
 {
-
-    public OnlyTicksOn30()
-    {
-     }
-
+ 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {

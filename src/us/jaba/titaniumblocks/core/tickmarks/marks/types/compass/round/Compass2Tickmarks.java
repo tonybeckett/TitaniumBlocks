@@ -41,7 +41,7 @@ public class Compass2Tickmarks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.06;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "N", "NE", "E", "SE", "S", "SW", "W", "NW"
     };

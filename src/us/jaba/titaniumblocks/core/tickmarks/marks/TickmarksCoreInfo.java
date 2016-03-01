@@ -49,7 +49,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTick
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindDirectionTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindSpeedMPHKnotsTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.WindSpeedMPHTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchCoreInfo;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.StopwatchCoreInfo;
 
 /**
  *

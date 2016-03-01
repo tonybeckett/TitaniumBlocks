@@ -36,21 +36,17 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class DotsAndCircles extends AbstractRadialTickmark
 {
-
-    private double textScale = 0.04;
-    String[] arrayOfText =
+ 
+    private String[] arrayOfText =
     {
         "00", "03", "06", "09"
     };
 
-    public DotsAndCircles()
-    {
-     }
-
+   
     public DotsAndCircles(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
-        textScale = textScaleFactor;
+         
      }
 
     @Override

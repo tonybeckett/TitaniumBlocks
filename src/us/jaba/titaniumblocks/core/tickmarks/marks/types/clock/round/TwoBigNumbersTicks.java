@@ -39,17 +39,17 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.115;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "12", "6"
     };
 
-    String[] arrayOfText2 =
+    private String[] arrayOfText2 =
     {
         "1", "2", "3", "4", "5"
     };
 
-    String[] arrayOfText3 =
+    private String[] arrayOfText3 =
     {
         "7", "8", "9", "10", "11"
     };

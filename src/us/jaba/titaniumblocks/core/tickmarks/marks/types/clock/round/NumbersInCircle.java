@@ -38,7 +38,7 @@ public class NumbersInCircle extends AbstractRadialTickmark
 {
 
     private double textScale = 0.09;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
          "12", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
     };

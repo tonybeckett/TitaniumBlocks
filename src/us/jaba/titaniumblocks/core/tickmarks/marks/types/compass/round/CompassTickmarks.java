@@ -40,16 +40,12 @@ public class CompassTickmarks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.06;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "N", "NE", "E", "SE", "S", "SW", "W", "NW"
     };
 
-    public CompassTickmarks()
-    {
-
-    }
-
+  
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {

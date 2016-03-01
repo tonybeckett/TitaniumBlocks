@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 public class LcdSingleBargraphDisplay extends LcdSingleDisplay
 {
 
-    BargraphImage bargraphImage = new BargraphImage(new Bargraph20());
+    private BargraphImage bargraphImage = new BargraphImage(new Bargraph20());
 
     public LcdSingleBargraphDisplay()
     {

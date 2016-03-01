@@ -37,12 +37,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 public class SmallTickmarks extends AbstractRadialTickmark
 {
     private final double TEXT_SCALE = 0.095;
-
-    public SmallTickmarks()
-    {
-
-    }
-
+ 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {

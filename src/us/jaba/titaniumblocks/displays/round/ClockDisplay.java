@@ -46,9 +46,7 @@ import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
 import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
@@ -170,7 +168,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setSize(Dimension dimensions)
     {
-
+// intentional
     }
 
     private int adjustOffset(int offset, double graphicsAngle)
@@ -306,7 +304,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 //    }
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+// intentional
     }
 
     public void setPointerGradient(GradientPalette cp)

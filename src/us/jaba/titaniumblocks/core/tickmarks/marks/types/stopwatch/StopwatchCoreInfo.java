@@ -25,11 +25,19 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch;
 
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SecondsDualCircleTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SecondsDualCircleTriangleTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallCircleTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallSecondsDualCircleTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSecondsTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSubsecondTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SubSecondCircle100Tickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SubSecondCircleTickmarks;
 
 /**
  *
@@ -38,7 +46,7 @@ import us.jaba.titaniumblocks.core.CoreInfoSupport;
 public class StopwatchCoreInfo
 {
 
-    public static final Class<?>[] COMPASSMARK_CLASSES =
+    public static final Class<?>[] STOPWATCH_CLASSES =
     {
         SecondsDualCircleTickmarks.class,
         SecondsDualCircleTriangleTickmarks.class,
@@ -52,7 +60,7 @@ public class StopwatchCoreInfo
 
     public static List<Class<?>> getAvailableClasses()
     {
-        return Arrays.asList(COMPASSMARK_CLASSES);
+        return Arrays.asList(STOPWATCH_CLASSES);
     }
 
     public static List getInstanceOfEach()

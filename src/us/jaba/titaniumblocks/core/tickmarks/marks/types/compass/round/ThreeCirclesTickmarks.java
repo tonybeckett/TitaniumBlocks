@@ -41,11 +41,11 @@ public class ThreeCirclesTickmarks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.04;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "N", "n-e", "E", "s-e", "S", "s-w", "W", "n-w"
     };
-    String[] arrayOfDegrees = new String[18];
+    private String[] arrayOfDegrees = new String[18];
 
     public ThreeCirclesTickmarks()
     {

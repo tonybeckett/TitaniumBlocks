@@ -47,14 +47,14 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class TaperedThickFlatPointer extends GradientPointer
 {
 
-    private final float[] fractionArray = new float[]
-    {
-        0.0f,
-        0.001f,
-        0.5f,
-        0.998f,
-        1.0f
-    };
+//    private final float[] fractionArray = new float[]
+//    {
+//        0.0f,
+//        0.001f,
+//        0.5f,
+//        0.998f,
+//        1.0f
+//    };
 
     public TaperedThickFlatPointer()
     {

@@ -39,15 +39,11 @@ public class FourNumbersTicks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.135;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "12", "3", "6", "9"
     };
-
-    public FourNumbersTicks()
-    {
-  
-    }
+ 
 
     public FourNumbersTicks(String[] text, double textScaleFactor)
     {

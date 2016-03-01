@@ -39,10 +39,7 @@ public class SecondsDualCircleTriangleTickmarks extends AbstractRadialTickmark
 
     private final double TEXT_SCALE = 0.095;
 
-    public SecondsDualCircleTriangleTickmarks()
-    {
-
-    }
+   
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

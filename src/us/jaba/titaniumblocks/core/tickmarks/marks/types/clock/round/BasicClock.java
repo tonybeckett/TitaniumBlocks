@@ -36,12 +36,6 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class BasicClock extends AbstractRadialTickmark
 {
-
-    public BasicClock()
-    {
-
-    }
-
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
@@ -60,7 +54,6 @@ public class BasicClock extends AbstractRadialTickmark
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.88, radius * 0.995, 0.0, 90.0, 4);
 
         graphics.dispose();
-
     }
 
 }

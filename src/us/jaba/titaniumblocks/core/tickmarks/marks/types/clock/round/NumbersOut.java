@@ -38,16 +38,15 @@ public class NumbersOut extends AbstractRadialTickmark
 {
 
     private double textScale = 0.135;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
     };
 
     public NumbersOut()
     {
-
     }
-
+ 
     public NumbersOut(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;

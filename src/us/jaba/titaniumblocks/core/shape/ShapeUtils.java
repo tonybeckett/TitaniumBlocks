@@ -178,6 +178,17 @@ public class ShapeUtils
         }
     }
 
+    public static void placeLineArcOnRadius(Graphics2D graphics, Point2D center, double radius, double startAngle, double endAngle)
+    {
+        Point2D.Double pointStart = new Point2D.Double((double) center.getX() - radius, (double) center.getY() - radius);
+
+        int extent = (int) (endAngle + (360 - startAngle));
+
+        int width = (int) (radius * 2.0);
+        int height = (int) (radius * 2.0);
+        graphics.drawArc((int)pointStart.x, (int)pointStart.y, width, height, (int) ((510 - startAngle) % 360), extent);
+    }
+
     public static void placeArcOnRadius(Graphics2D graphics, Point2D center, double innerRadius, double outerRadius, double startAngle, double endAngle, double angleStep, int number)
     {
         double currentAngle = startAngle;

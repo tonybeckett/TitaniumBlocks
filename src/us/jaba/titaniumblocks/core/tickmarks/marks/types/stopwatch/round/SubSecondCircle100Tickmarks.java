@@ -39,10 +39,7 @@ public class SubSecondCircle100Tickmarks extends AbstractRadialTickmark
 
     private final double TEXT_SCALE = 0.045;
 
-    public SubSecondCircle100Tickmarks()
-    {
-
-    }
+  
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

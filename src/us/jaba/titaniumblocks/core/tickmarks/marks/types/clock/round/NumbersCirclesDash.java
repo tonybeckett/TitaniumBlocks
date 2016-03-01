@@ -38,20 +38,20 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
 {
 
     private double textScale = 0.085;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
     };
 
     public NumbersCirclesDash()
     {
-     }
+    }
 
     public NumbersCirclesDash(String[] text, double textScaleFactor)
     {
         this.arrayOfText = text;
         textScale = textScaleFactor;
-  
+
     }
 
     @Override

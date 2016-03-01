@@ -39,18 +39,15 @@ public class SixNumbersTicks extends AbstractRadialTickmark
 {
 
     private double textScale = 0.09;
-    String[] arrayOfText =
+    private String[] arrayOfText =
     {
         "10", "12", "2", 
     };
-    String[] arrayOfText2 =
+   private String[] arrayOfText2 =
     {
        "4", "6", "8"
     };
-
-    public SixNumbersTicks()
-    {
-     }
+ 
 
     public SixNumbersTicks(String[] text, double textScaleFactor)
     {

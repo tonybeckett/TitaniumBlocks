@@ -37,10 +37,7 @@ public class StopwatchSubsecondTickmarks extends AbstractRadialTickmark
 {
     private final double TEXT_SCALE = 0.095;
 
-    public StopwatchSubsecondTickmarks()
-    {
-
-    }
+    
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

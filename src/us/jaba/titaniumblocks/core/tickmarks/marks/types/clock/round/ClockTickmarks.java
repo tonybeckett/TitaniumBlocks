@@ -37,9 +37,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 public class ClockTickmarks extends AbstractRadialTickmark
 {
 
-    public ClockTickmarks()
-    {
-     }
+    
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

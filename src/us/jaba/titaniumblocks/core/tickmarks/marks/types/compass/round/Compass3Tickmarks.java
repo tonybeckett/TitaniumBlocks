@@ -41,15 +41,15 @@ public class Compass3Tickmarks extends AbstractRadialTickmark
 {
 
     private final double textScale = 0.05;
-    String[] arrayOfTextA =
+    private String[] arrayOfTextA =
     {
         "N", "E", "S", "W"
     };
-    String[] arrayOfTextB =
+    private String[] arrayOfTextB =
     {
         "ne", "se", "sw", "nw"
     };
-    String[] arrayOfDegrees = new String[18];
+    private String[] arrayOfDegrees = new String[18];
 
     public Compass3Tickmarks()
     {

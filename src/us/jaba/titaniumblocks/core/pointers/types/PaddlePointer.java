@@ -43,10 +43,7 @@ import us.jaba.titaniumblocks.core.pointers.BasicPointer;
  */
 public class PaddlePointer extends BasicPointer
 {
-
-    private BasicStroke stroke;
-    private BasicStroke strokeBig;
-
+ 
     public PaddlePointer()
     {
         this(new PureRed());
@@ -56,7 +53,7 @@ public class PaddlePointer extends BasicPointer
     {
         super(pointerColor);
         this.tailScale = new Scale(0.03);
-  
+
     }
 
     public PaddlePointer(BasicPointer other)
@@ -70,8 +67,8 @@ public class PaddlePointer extends BasicPointer
 
         super.paintShape(graphics, dimensions);
 
-        stroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        strokeBig = new BasicStroke(((float) dimensions.width / 500.0f * 12.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        BasicStroke stroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        BasicStroke strokeBig = new BasicStroke(((float) dimensions.width / 500.0f * 12.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
 //        final int imageWidth = (int) dimensions.getWidth();
 //        final int imageHeight = (int) dimensions.getHeight();
