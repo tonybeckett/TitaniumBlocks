@@ -41,7 +41,7 @@ public class SectionImageFactory extends CoreImageFactory
         super(pp);
     }
 
-    public Section getTickmark()
+    public Section getSections()
     {
         return (Section) super.getTickmark(); 
     }

@@ -237,6 +237,11 @@ public class SingleRoundPanel extends JComponent
         singleGauge.setFrontCover(foregroundPainter);
     }
 
+    protected CircularLayout getCircularLayout()
+    {
+        return circularLayout;
+    }
+
    
      
 

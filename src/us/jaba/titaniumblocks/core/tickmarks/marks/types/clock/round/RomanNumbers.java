@@ -42,6 +42,11 @@ public class RomanNumbers extends AbstractRadialTickmark
     {
         "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
     };
+
+    public RomanNumbers()
+    {
+          //intentional
+    }
  
 
     public RomanNumbers(String[] text, double textScaleFactor)

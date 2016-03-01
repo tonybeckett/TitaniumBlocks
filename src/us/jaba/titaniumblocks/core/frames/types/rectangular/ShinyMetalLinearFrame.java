@@ -69,7 +69,7 @@ public class ShinyMetalLinearFrame extends RectangularFrame
     }
 
     @Override
-    public void setInnerFrameColor(Paint innerFrameColor)
+    public void setInnerFrameColor(Color innerFrameColor)
     {
         this.innerFrameColor = innerFrameColor;
     }

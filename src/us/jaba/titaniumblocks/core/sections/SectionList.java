@@ -25,55 +25,65 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.frames;
+package us.jaba.titaniumblocks.core.sections;
 
-import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Iterator;
 import us.jaba.titaniumblocks.core.CoreModel;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.frames.effects.round.NoEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class FrameModel extends CoreModel
+public class SectionList extends CoreModel
 {
-    private RoundFrameEffectPainter effect = new NoEffect();
 
-    protected Color outerFrameColor = ColorPalette.GRAY;
-    protected Color innerFrameColor = ColorPalette.GRAY.brighter();
+    private final ArrayList<Section> sections = new ArrayList();
+    protected int offset = 0;
 
-    public RoundFrameEffectPainter getEffect()
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        return effect;
+        super.paint(graphics, dimensions);
+
+        paintSection(graphics, dimensions);
     }
 
-    public void setEffect(RoundFrameEffectPainter effect)
+    protected void paintSection(Graphics2D graphics, Dimension dimensions)
     {
-        this.effect = effect;
-        changed();
+        Iterator it = sections.iterator();
+        while( it.hasNext())
+        {
+            Section s = (Section) it.next();
+            s.paintSection(graphics, dimensions);
+        }
     }
 
-    public Color getInnerFrameColor()
+    public int size()
     {
-        return innerFrameColor;
+        return sections.size();
     }
 
-    public Color getOuterFrameColor()
+    public Section get(int index)
     {
-        return outerFrameColor;
+        return sections.get(index);
     }
 
-    public void setInnerFrameColor(Color innerFrameColor)
+    public boolean add(Section e)
     {
-        this.innerFrameColor = innerFrameColor;
-        changed();
+        return sections.add(e);
     }
 
-    public void setOuterFrameColor(Color outerFrameColor)
+    public void clear()
     {
-        this.outerFrameColor = outerFrameColor;
-        changed();
+        sections.clear();
+    }
+
+    public Iterator<Section> iterator()
+    {
+        return sections.iterator();
     }
 
 }

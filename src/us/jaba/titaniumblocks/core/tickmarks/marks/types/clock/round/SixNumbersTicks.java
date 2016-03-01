@@ -47,6 +47,11 @@ public class SixNumbersTicks extends AbstractRadialTickmark
     {
        "4", "6", "8"
     };
+
+    public SixNumbersTicks()
+    {
+          //intentional
+    }
  
 
     public SixNumbersTicks(String[] text, double textScaleFactor)

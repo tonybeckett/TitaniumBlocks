@@ -45,7 +45,7 @@ public class RomanNumbersOutTicks extends AbstractRadialTickmark
 
     public RomanNumbersOutTicks()
     {
-
+  //intentional
     }
 
     public RomanNumbersOutTicks(String[] text, double textScaleFactor)

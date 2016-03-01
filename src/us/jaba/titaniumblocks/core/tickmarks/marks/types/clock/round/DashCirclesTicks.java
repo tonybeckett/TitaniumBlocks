@@ -36,14 +36,10 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class DashCirclesTicks extends AbstractRadialTickmark
 {
-    String[] arrayOfText =
-    {
-        "00", "03", "06", "09"
-    };
 
-    public DashCirclesTicks(String[] text, double textScaleFactor)
+    public DashCirclesTicks()
     {
-        this.arrayOfText = text;
+        //intentional
     }
 
     @Override
@@ -57,14 +53,14 @@ public class DashCirclesTicks extends AbstractRadialTickmark
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.9, radius * 0.95, 0.0, 6.0, 60);
-        
-          graphics.setColor(majorColor);
+
+        graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
         for (int i = 0; i < 4; i++)
         {
             ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.750, radius * 0.075, (90.0 * i) + 30.0, 30.0, false, 2);
         }
-      
+
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.85, 0, 90.0, 4);
 
         graphics.dispose();

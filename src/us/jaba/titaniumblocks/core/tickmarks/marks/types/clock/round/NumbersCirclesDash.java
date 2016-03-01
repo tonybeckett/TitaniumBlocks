@@ -45,6 +45,7 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
 
     public NumbersCirclesDash()
     {
+          //intentional
     }
 
     public NumbersCirclesDash(String[] text, double textScaleFactor)

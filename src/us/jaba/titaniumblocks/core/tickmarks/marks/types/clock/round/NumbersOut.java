@@ -45,6 +45,7 @@ public class NumbersOut extends AbstractRadialTickmark
 
     public NumbersOut()
     {
+          //intentional
     }
  
     public NumbersOut(String[] text, double textScaleFactor)

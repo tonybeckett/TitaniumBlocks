@@ -43,6 +43,11 @@ public class FourNumbersTicks extends AbstractRadialTickmark
     {
         "12", "3", "6", "9"
     };
+
+    public FourNumbersTicks()
+    {
+          //intentional
+    }
  
 
     public FourNumbersTicks(String[] text, double textScaleFactor)

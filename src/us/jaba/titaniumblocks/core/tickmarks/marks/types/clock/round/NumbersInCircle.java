@@ -45,7 +45,7 @@ public class NumbersInCircle extends AbstractRadialTickmark
 
     public NumbersInCircle()
     {
-
+  //intentional
     }
 
     public NumbersInCircle(String[] text, double textScaleFactor)

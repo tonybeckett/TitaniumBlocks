@@ -40,14 +40,6 @@ public abstract class Section extends CoreModel
 
     protected int offset = 0;
 
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
-    {
-        super.paint(graphics, dimensions);
-
-        paintSection(graphics, dimensions);
-    }
-
     protected abstract void paintSection(Graphics2D graphics, Dimension dimensions);
 
     public int getOffset()

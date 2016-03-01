@@ -36,18 +36,11 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class DotsAndCircles extends AbstractRadialTickmark
 {
- 
-    private String[] arrayOfText =
-    {
-        "00", "03", "06", "09"
-    };
 
-   
-    public DotsAndCircles(String[] text, double textScaleFactor)
+    public DotsAndCircles()
     {
-        this.arrayOfText = text;
-         
-     }
+
+    }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
@@ -60,7 +53,7 @@ public class DotsAndCircles extends AbstractRadialTickmark
         graphics.setStroke(majorStroke);
         for (int i = 0; i < 12; i++)
         {
-            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, (30.0*i)+(30.0 / 5.0), 30.0 / 5.0, 4);
+            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.90, radius * 0.95, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, 4);
         }
         ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.930, radius * 0.0125, 0.0, 30.0, true, 12);
 

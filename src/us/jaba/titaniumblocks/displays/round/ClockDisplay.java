@@ -181,7 +181,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
             answer = offset + 2;
         } else if (a >= 165 && a <= 195)
         {
-
+            answer = offset;
         } else if (a > 195 && a < 265) // ne
         {
             answer = offset - 2;

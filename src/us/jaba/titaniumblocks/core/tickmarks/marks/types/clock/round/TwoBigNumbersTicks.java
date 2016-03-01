@@ -56,6 +56,7 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
 
     public TwoBigNumbersTicks()
     {
+          //intentional
     }
 
     public TwoBigNumbersTicks(String[] text, double textScaleFactor)

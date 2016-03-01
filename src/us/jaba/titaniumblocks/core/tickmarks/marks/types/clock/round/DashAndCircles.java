@@ -37,21 +37,13 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 public class DashAndCircles extends AbstractRadialTickmark
 {
 
-    private double textScale = 0.04;
-    private String[] arrayOfText =
-    {
-        "00", "03", "06", "09"
-    };
 
     public DashAndCircles()
     {
-     }
+        //intentional
+    }
 
-    public DashAndCircles(String[] text, double textScaleFactor)
-    {
-        this.arrayOfText = text;
-        textScale = textScaleFactor;
-     }
+ 
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

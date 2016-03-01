@@ -40,7 +40,7 @@ public class SmallCircleTickmarks extends AbstractRadialTickmark
 
     public SmallCircleTickmarks()
     {
-
+// intentional
     }
 
     @Override
