@@ -32,6 +32,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -44,7 +45,7 @@ import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.displays.round.ClockDisplay;
 
 /**
@@ -56,6 +57,7 @@ public class ClockPanel extends JComponent
 
     private final Rectangle DEFAULT_SIZE = new Rectangle(0, 0, 128, 48);
     private Rectangle currentSize = DEFAULT_SIZE;
+    private double storedValue;
     private Timeline timeline = new Timeline(this);
     private final Spline EASE = new Spline(0.5f);
     private double hourValue;
@@ -129,10 +131,16 @@ public class ClockPanel extends JComponent
         timeline.setEase(EASE);
         timeline.setDuration(50);
         timeline.play();
+
         hourValue = hour;
         minuteValue = minute;
         secondValue = second;
 
+    }
+
+    public void setTitle(String string)
+    {
+        singleGauge.setTitle(string);
     }
 
     public void setHour(double value)
@@ -148,7 +156,11 @@ public class ClockPanel extends JComponent
 
     public void setSecond(double value)
     {
-
+        if (storedValue > 58.0 && value < 59.0)
+        {
+            value = 0.0;
+        }
+        storedValue = value;
         singleGauge.setThirdPointerValue(value / 60.0);
         invalidate();
         repaint();
@@ -162,7 +174,10 @@ public class ClockPanel extends JComponent
     @Override
     public void paint(Graphics g)
     {
+        Graphics2D g2d = (Graphics2D) g.create();
         super.paint(g);
+
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         singleGauge.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
     }
 
@@ -249,20 +264,23 @@ public class ClockPanel extends JComponent
 
     public Pointer getSecondsPointer()
     {
-        return singleGauge.getSecondsPointer();
+        Pointer secondsPointer = singleGauge.getSecondsPointer();
+        System.out.println("get " + secondsPointer.toString());
+        return secondsPointer;
     }
 
     public void setSecondsPointer(Pointer secondsPointer)
     {
         singleGauge.setSecondsPointer(secondsPointer);
+        System.out.println("set " + secondsPointer.toString());
     }
 
-    public TickmarkModel getTickmark()
+    public Tickmark getTickmark()
     {
         return singleGauge.getTickmark();
     }
 
-    public void setTickmark(TickmarkModel tm)
+    public void setTickmark(Tickmark tm)
     {
         singleGauge.setTickmark(tm);
     }
