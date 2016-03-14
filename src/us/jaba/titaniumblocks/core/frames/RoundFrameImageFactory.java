@@ -30,8 +30,7 @@ public class RoundFrameImageFactory extends CoreImageFactory
     @Override
     protected void applyPaint(BufferedImage result, Dimension dimensions)
     {
-         System.out.println(dimensions.toString());
-        super.applyPaint(result, dimensions); //To change body of generated methods, choose Tools | Templates.
+        super.applyPaint(result, dimensions); 
     }
 
     
