@@ -53,10 +53,8 @@ public class CoordinateUtils
 //180-----------0 
 //        |
 //        |270
- //   
+    //   
 //    use (450 - angle) % 360
-           
-    
     public static final double TWO_PI = 2.0 * Math.PI;
     public static final double HALF_PI = Math.PI / 2.0;
 
@@ -205,6 +203,15 @@ public class CoordinateUtils
         return toRadians(angleInDegrees);
     }
 
+    public static Point2D.Double convertToGraphics2dPoint(Point2D center, double radius, double angle)
+    {
+        double sinValue = Math.sin(angle);
+        double cosValue = Math.cos(angle);
+        Point2D.Double point = new Point2D.Double(center.getX() - (radius * sinValue), center.getY() + (radius * cosValue));
+
+        return point;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -228,37 +235,28 @@ public class CoordinateUtils
 
         System.out.println(np.toString());
 
-        CircularTwoPostLayout circularLayout = new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.75f, 140, 40);
+//        CircularTwoPostLayout circularLayout = new CircularTwoPostLayout(180, 0, Direction.CLOCKWISE, 0.75f, 140, 40);
 
-        double n = 0.01;
-        double angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
-
-        n = 0.5;
-        angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
-
-        n = 0.99;
-        angle = calcGraphicsAngle(n, circularLayout);
-//        System.out.println(String.format("%f %f", n, angle));
-
-        CircularNoPostLayout circularLayout2 = new CircularNoPostLayout(Direction.CLOCKWISE, 0.75f);
-
-        for (int i = 10; i > -1; i--)
-        {
-            n = i / 10.0;
-            angle = calcGraphicsAngle(n, circularLayout2);
-        }
-
-    }
-
-    public static Point2D.Double convertToGraphics2dPoint(Point2D center, double radius, double angle)
-    {
-        double sinValue = Math.sin(angle);
-        double cosValue = Math.cos(angle);
-        Point2D.Double point = new Point2D.Double(center.getX() - (radius * sinValue), center.getY() + (radius * cosValue));
-
-        return point;
+//        double n = 0.01;
+////        double angle = calcGraphicsAngle(n, circularLayout);
+////        System.out.println(String.format("%f %f", n, angle));
+//
+//        n = 0.5;
+//        double angle = calcGraphicsAngle(n, circularLayout);
+////        System.out.println(String.format("%f %f", n, angle));
+//
+//        n = 0.99;
+//        angle = calcGraphicsAngle(n, circularLayout);
+////        System.out.println(String.format("%f %f", n, angle));
+//
+//        CircularNoPostLayout circularLayout2 = new CircularNoPostLayout(Direction.CLOCKWISE, 0.75f);
+//
+//        for (int i = 10; i > -1; i--)
+//        {
+//            n = i / 10.0;
+//            angle = calcGraphicsAngle(n, circularLayout2);
+//        }
+//
     }
 
 }

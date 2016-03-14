@@ -41,13 +41,13 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class DualLinesPointer extends GradientPointer
 {
 
-    private final static float[] gradientFractionArray = new float[]
-    {
-        0.0f,
-        0.25f,
-        0.75f,
-        1.0f
-    };
+//    private final static float[] gradientFractionArray = new float[]
+//    {
+//        0.0f,
+//        0.25f,
+//        0.75f,
+//        1.0f
+//    };
 
     public DualLinesPointer()
     {

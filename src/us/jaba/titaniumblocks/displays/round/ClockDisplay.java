@@ -226,8 +226,6 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
        
         graphics.drawImage(titleTextImage.build(interiorDim), offset, offset, null);
        
-        BackdropColorModel bcm = backdropImage.getTickmark().getBackgroundColor();
-       // tbText.setColor(ColorTools.invert(bcm.getGradientStartColor()));
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 
         AffineTransform currentTransform = graphics.getTransform();

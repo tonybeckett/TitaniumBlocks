@@ -62,11 +62,7 @@ public class GenericRoundFrame extends RoundFrame
         new Color(97, 97, 108, 255)
     };
 
-    public GenericRoundFrame(GradientPalette gp)
-    {
-        setPrimaryColor(new Color(118, 117, 135, 255));
-    }
-
+  
     @Override
     public void setPrimaryColor(Color primaryColor)
     {

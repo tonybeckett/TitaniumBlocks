@@ -74,7 +74,7 @@ public class TaperedRoundedTailPointer extends GradientPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath pointerShape;
 

@@ -65,12 +65,9 @@ public class LinearLcd extends CoreModel
 
     private boolean disabled = false;
 
-    public LinearLcd()
-    {
-        this(ColorPalette.YELLOW);
-    }
+   
 
-    public LinearLcd(Color c)
+    public LinearLcd()
     {
         linearFrameImageBuilder = new RectangularFrameImageFactory(new ShinyMetalLinearFrame());
         backgroundImageBuilder = new NullBackdropImageFactory(new NullBackdrop());
