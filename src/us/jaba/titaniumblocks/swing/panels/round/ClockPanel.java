@@ -158,10 +158,12 @@ public class ClockPanel extends JComponent
     {
         if (storedValue > 58.0 && value < 59.0)
         {
-            value = 0.0;
+            storedValue = 0.0;
+        } else
+        {
+            storedValue = value;
         }
-        storedValue = value;
-        singleGauge.setThirdPointerValue(value / 60.0);
+        singleGauge.setThirdPointerValue(storedValue / 60.0);
         invalidate();
         repaint();
     }

@@ -28,14 +28,8 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
-import us.jaba.titaniumblocks.core.Scale;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *

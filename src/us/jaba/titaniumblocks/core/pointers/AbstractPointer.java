@@ -29,7 +29,6 @@ package us.jaba.titaniumblocks.core.pointers;
 
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.SSBlack;
 
 /**

@@ -43,12 +43,12 @@ public class PunchedSheetTexture extends Texture
         this.brushColor = brushColor;
     }
 
-    static final float[] FRACTIONS =
+    private static final float[] FRACTIONS =
     {
         0.0f,
         1.0f
     };
-    static final Color[] COLORS =
+    private static final Color[] COLORS =
     {
         new Color(0, 0, 0, 255),
         new Color(68, 68, 68, 255)
