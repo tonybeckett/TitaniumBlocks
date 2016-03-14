@@ -58,7 +58,7 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedPointer;
 import us.jaba.titaniumblocks.core.pointers.shadows.Type1Shadow;
 import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
@@ -86,7 +86,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
     private CircularLayout circularLayout;
     private MySEPostFactory endPostImage;
     protected float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-
+    private int currentOffset = -1;
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
 
@@ -139,8 +139,8 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
         add(secShadowPointerImage);
 
-        TaperedRoundedPointer tpp = new TaperedRoundedPointer();
-        tpp.setPointerColor(new PureBlack());
+        TaperedPointer tpp = new TaperedPointer();
+        tpp.setPrimaryColor(new PureBlack());
         tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
         add(pointerImage);
@@ -184,6 +184,11 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         int offset = (int) frameImage.getRoundFrame().getFrameThickness();
+        if ( offset != currentOffset)
+        {
+            setChanged();
+            currentOffset = offset;
+        }
 
         BufferedImage image = frameImage.build(dimensions);
         Dimension interiorDim = frameImage.getRoundFrame().calcInterior(dimensions);
@@ -286,7 +291,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getTickmark().setPointerColor(cp);
+        pointerImage.getTickmark().setPrimaryColor(cp);
     }
 
 }

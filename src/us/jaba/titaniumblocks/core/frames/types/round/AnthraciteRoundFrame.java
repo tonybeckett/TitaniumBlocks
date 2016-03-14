@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.HSLColor;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -52,13 +53,31 @@ public class AnthraciteRoundFrame extends RoundFrame
         1.0f
     };
 
-    private Color[] frameMainColors8 =
+    private Color[] primaryColorArray =
     {
         new Color(118, 117, 135, 255),
         new Color(74, 74, 82, 255),
         new Color(50, 50, 54, 255),
         new Color(97, 97, 108, 255)
     };
+
+    public AnthraciteRoundFrame()
+    {
+        this.setPrimaryColor(new Color(118, 117, 135, 255));
+    }
+
+    @Override
+    public void setPrimaryColor(Color primaryColor)
+    {
+        super.setPrimaryColor(primaryColor);
+
+        HSLColor hsl = new HSLColor(primaryColor);
+        primaryColorArray[0] = primaryColor;
+        primaryColorArray[1] = hsl.adjustLuminance(80.0f);
+        primaryColorArray[2] = hsl.adjustLuminance(60.0f);
+        primaryColorArray[3] = hsl.adjustLuminance(90.0f);
+
+    }
 
     /**
      *
@@ -80,7 +99,7 @@ public class AnthraciteRoundFrame extends RoundFrame
         mainArea.subtract(subtractArea);
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint frameMainPaint8 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions8, frameMainColors8);
+        Paint frameMainPaint8 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions8, primaryColorArray);
         graphics.setPaint(frameMainPaint8);
         graphics.fill(mainArea);
 

@@ -119,7 +119,7 @@ public class LcdGradientColorViewer extends javax.swing.JFrame
         }
 
         add(list);
-         this.setIconImage(Images.titaniumblocks16x16);
+         this.setIconImage(Images.titaniumblocks16);
         this.setSize(new Dimension(400, 800));
     }
 

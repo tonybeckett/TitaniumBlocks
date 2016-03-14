@@ -36,7 +36,7 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.NORTH;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.SOUTH_WEST;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.sizemodels.RadialSizeModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTickModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialLineTicks;
@@ -45,7 +45,7 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialLineTicks;
  *
  * @author tbeckett
  */
-public class AbstractRadialTickmark extends TickmarkModel
+public class AbstractRadialTickmark extends Tickmark
 {
     private Point2D centerOffset = new Point2D.Double(0.0, 0.0);
     protected Point2D centerPoint = new Point2D.Double(10, 10);

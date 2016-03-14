@@ -58,6 +58,7 @@ public class EffectCoreInfo
 
     public static final Class<?>[] ROUND_MODELS =
     {
+        us.jaba.titaniumblocks.core.frames.effects.round.NoEffect.class,
         RadialBulgeEffect.class,
         RadialConeEffect.class,
         RadialInnerEffect.class,

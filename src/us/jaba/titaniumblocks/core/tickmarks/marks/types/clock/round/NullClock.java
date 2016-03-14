@@ -25,58 +25,29 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.backdrop.types.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
 import java.awt.Dimension;
-import java.awt.Paint;
-import java.awt.TexturePaint;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
-import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
-import us.jaba.titaniumblocks.core.textures.types.LinenTexture;
+import java.awt.Graphics2D;
 
-public class LinenBackdrop extends AbstractRoundBackdrop
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
+
+public class NullClock extends AbstractRadialTickmark
 {
 
-    private LinenTexture painter;
-
-//    private Color color = ColorPalette.GRAY.darker();//(0x686868);
-
-    public LinenBackdrop()
+    public NullClock()
     {
-        painter = new LinenTexture();
+        //intentional
+    }
+
+    public NullClock(String[] text, double textScaleFactor)
+    {
+        //intentional
     }
 
     @Override
-    protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-        painter.setBrushColor(backgroundColorModel.getGradientStartColor());
-        TextureImageBuilder builder = new TextureImageBuilder(painter);
-        Paint p = new TexturePaint(builder.build(dimensions), bounds.getBounds());
-
-        return p;
+        //intentional    
     }
-
-    public LinenTexture getPainter()
-    {
-        return painter;
-    }
-
-    public void setPainter(LinenTexture painter)
-    {
-        this.painter = painter;
-        changed();
-    }
-
-//    public Color getColor()
-//    {
-//        return color;
-//    }
-//
-//    public void setColor(Color color)
-//    {
-//        this.color = color;
-//        changed();
-//    }
-
 }

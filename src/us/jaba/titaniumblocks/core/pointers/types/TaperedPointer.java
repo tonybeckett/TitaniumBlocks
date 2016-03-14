@@ -43,14 +43,14 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
  *
  * @author tbeckett
  */
-public class TaperedRoundedPointer extends GradientPointer
+public class TaperedPointer extends GradientPointer
 {
 
-    public TaperedRoundedPointer()
+    public TaperedPointer()
     {
     }
 
-    public TaperedRoundedPointer(GradientPalette pointerColor)
+    public TaperedPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
     }
@@ -76,12 +76,12 @@ public class TaperedRoundedPointer extends GradientPointer
          final double centerY = dimensions.getHeight() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
-//        double tailM = this.getRadiusPercent() * tailScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
         
         pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
-        pointerShape.lineTo((0.5-0.015)  * imageWidth, 0.5 * imageHeight);
-        pointerShape.lineTo(0.5 * imageWidth, 0.5046 * imageHeight);
-        pointerShape.lineTo((0.5+0.015) * imageWidth, 0.5 * imageHeight);
+        pointerShape.lineTo((0.5-0.015)  * imageWidth, centerY + (maxY * tailM));
+        pointerShape.lineTo(0.5 * imageWidth,  centerY + (maxY * tailM) * 1.05);
+        pointerShape.lineTo((0.5+0.015) * imageWidth,  centerY + (maxY * tailM));
 
         pointerShape.lineTo(0.5 * imageWidth,  centerY - (maxY * frontM));
         pointerShape.closePath();
@@ -95,10 +95,10 @@ public class TaperedRoundedPointer extends GradientPointer
                 },
                 new Color[]
                 {
-                    this.getPointerColor().getMedium(), this.getPointerColor().getMediumDark()
+                    this.getPrimaryColor().getMedium(), this.getPrimaryColor().getMediumDark()
                 }));
         graphics.fill(pointerShape);
-        graphics.setColor(this.getPointerColor().getMediumDark());
+        graphics.setColor(this.getPrimaryColor().getMediumDark());
 
         graphics.setStroke(new BasicStroke((0.004672897196261682f * imageWidth), 0, 1));
         graphics.draw(pointerShape);

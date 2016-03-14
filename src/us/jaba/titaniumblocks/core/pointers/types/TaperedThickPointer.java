@@ -76,7 +76,7 @@ public class TaperedThickPointer extends GradientPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+//        final int imageHeight = (int) dimensions.getHeight();
 
         final GeneralPath pointerShape;
         final Point2D startPoint;
@@ -87,16 +87,16 @@ public class TaperedThickPointer extends GradientPointer
         final double centerY = dimensions.getHeight() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
-//        double tailM = this.getRadiusPercent() * tailScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.495327);
-        pointerShape.lineTo(imageWidth * 0.528037, imageHeight * 0.495327);
+        pointerShape.moveTo(imageWidth * 0.5, centerY + (maxY * tailM) );
+        pointerShape.lineTo(imageWidth * 0.528037, centerY + (maxY * tailM));
         pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
-        pointerShape.lineTo(imageWidth * 0.471962, imageHeight * 0.495327);
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.495327);
+        pointerShape.lineTo(imageWidth * 0.471962, centerY + (maxY * tailM));
+        pointerShape.lineTo(imageWidth * 0.5, centerY + (maxY * tailM));
         pointerShape.closePath();
         
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
@@ -104,10 +104,10 @@ public class TaperedThickPointer extends GradientPointer
 
         gradientColorArray = new Color[]
         {
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumDark(),
-            this.getPointerColor().getMediumDark()
+            this.getPrimaryColor().getMediumLight(),
+            this.getPrimaryColor().getMediumLight(),
+            this.getPrimaryColor().getMediumDark(),
+            this.getPrimaryColor().getMediumDark()
         };
 
         if (PointSupport.pointsEqual(startPoint, stopPoint))
@@ -118,7 +118,7 @@ public class TaperedThickPointer extends GradientPointer
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
 
-        graphics.setColor(this.getPointerColor().getDark());
+        graphics.setColor(this.getPrimaryColor().getDark());
 
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(pointerShape);

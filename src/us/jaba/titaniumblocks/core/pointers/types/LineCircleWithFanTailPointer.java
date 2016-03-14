@@ -69,7 +69,7 @@ public class LineCircleWithFanTailPointer extends GradientPointer
 
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
-        graphics.setColor(this.getPointerColor().getDarkest());
+        graphics.setColor(this.getPrimaryColor().getDarkest());
 
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();

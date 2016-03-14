@@ -65,7 +65,7 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSubsecondTickmarks;
@@ -146,7 +146,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 //        add(hourPointerImage);
         LinePointer minp = new LinePointer();
         minp.setRadiusPercent(0.45f);
-        minp.setPointerColor(new PureBlue());
+        minp.setPrimaryColor(new PureBlue());
         minp.setFrontScale(new Scale(0.5));
         minp.setTailScale(new Scale(0.2));
         minp.setCenterPostEnable(true);
@@ -156,7 +156,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
         add(minutePointerImage);
 
         LinePointer secp = new LinePointer();
-        secp.setPointerColor(new PureRed());
+        secp.setPrimaryColor(new PureRed());
         secp.setRadiusPercent(0.95f);
         secp.setTailScale(new Scale(0.2));
         secp.setFrontScale(new Scale(0.975));
@@ -313,15 +313,15 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public void setPointerGradient(GradientPalette cp)
     {
-        hourPointerImage.getTickmark().setPointerColor(cp);
+        hourPointerImage.getTickmark().setPrimaryColor(cp);
     }
 
-    public void setTickmarks(TickmarkModel cm)
+    public void setTickmarks(Tickmark cm)
     {
         tickmarkImage.setPainter(cm);
     }
 
-    public void setSmallTickmarks(TickmarkModel cm)
+    public void setSmallTickmarks(Tickmark cm)
     {
         tickmarkSmallImage.setPainter(cm);
     }

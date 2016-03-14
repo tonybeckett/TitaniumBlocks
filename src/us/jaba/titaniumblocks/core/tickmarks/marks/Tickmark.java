@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.font.BaseFont;
  *
  * @author tbeckett
  */
-public class TickmarkModel extends CoreModel
+public class Tickmark extends CoreModel
 {
 
     public static final float DEFAULT_MIN_VALUE = 0.0F;
@@ -54,7 +54,7 @@ public class TickmarkModel extends CoreModel
     public static final BasicStroke DEFAULT_MAJOR_STROKE = new BasicStroke(1.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     public static final BasicStroke DEFAULT_MEDIUM_STROKE = new BasicStroke(0.5F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     public static final BasicStroke DEFAULT_MINOR_STROKE = new BasicStroke(0.3F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-    
+
     public static final int DEFAULT_MINOR_TICK_SPACING = 1;
     public static final int DEFAULT_MEDIUM_TICK_SPACING = 5;
     public static final int DEFAULT_MAJOR_TICK_SPACING = 10;
@@ -71,12 +71,29 @@ public class TickmarkModel extends CoreModel
     protected Color mediumColor = DEFAULT_MEDIUM_COLOR;
     protected Color minorColor = DEFAULT_MINOR_COLOR;
     protected Color textColor = DEFAULT_TEXT_COLOR;
-    
+
     protected int minorTickSpacing = DEFAULT_MINOR_TICK_SPACING;
     protected int mediumTickSpacing = DEFAULT_MEDIUM_TICK_SPACING;
     protected int majorTickSpacing = DEFAULT_MAJOR_TICK_SPACING;
 
     protected Font font = BaseFont.DEFAULT_FONT.deriveFont(10.0F);
+
+    public Tickmark()
+    {
+    }
+
+    public Tickmark(Tickmark other)
+    {
+        copy(other);
+    }
+
+    public void copy(Tickmark other)
+    {
+        this.majorColor = other.majorColor;
+        this.mediumColor = other.mediumColor;
+        this.minorColor = other.minorColor;
+        this.textColor = other.textColor;
+    }
 
     public Color getBaselineColor()
     {
@@ -185,6 +202,8 @@ public class TickmarkModel extends CoreModel
     public void setTextColor(Color textColor)
     {
         this.textColor = textColor;
+        changed();
+
     }
 
 }

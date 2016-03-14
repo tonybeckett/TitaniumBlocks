@@ -37,7 +37,14 @@ import java.awt.Toolkit;
 public class Images
 {
 
-    public static final String TITANIUMBLOCKS_16x16_FILENAME = "/us/jaba/titaniumblocks/core/resources/titaniumblocks16x16.jpg";
+    public static final String TITANIUMBLOCKS_16x16_FILENAME = "/us/jaba/titaniumblocks/core/resources/titaniumblocks-16.png";
+    public static final String TITANIUMBLOCKS_32_FILENAME = "/us/jaba/titaniumblocks/core/resources/titaniumblocks-32.png";
+    public static final String TITANIUMBLOCKS_64_FILENAME = "/us/jaba/titaniumblocks/core/resources/titaniumblocks-64.png";
+    public static final String TITANIUMBLOCKS_128_FILENAME = "/us/jaba/titaniumblocks/core/resources/titaniumblocks-128.png";
 
-    public static final Image titaniumblocks16x16 = Toolkit.getDefaultToolkit().getImage(Images.class.getResource(TITANIUMBLOCKS_16x16_FILENAME));
+    public static final Image titaniumblocks16 = Toolkit.getDefaultToolkit().getImage(Images.class.getResource(TITANIUMBLOCKS_16x16_FILENAME));
+    public static final Image titaniumblocks32 = Toolkit.getDefaultToolkit().getImage(Images.class.getResource(TITANIUMBLOCKS_32_FILENAME));
+    public static final Image titaniumblocks64 = Toolkit.getDefaultToolkit().getImage(Images.class.getResource(TITANIUMBLOCKS_64_FILENAME));
+    public static final Image titaniumblocks128 = Toolkit.getDefaultToolkit().getImage(Images.class.getResource(TITANIUMBLOCKS_128_FILENAME));
+
 }

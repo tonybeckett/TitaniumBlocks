@@ -35,9 +35,9 @@ import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.sizemodels.LinearSizeModel;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
-import static us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel.DEFAULT_MAX_VALUE;
-import static us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel.DEFAULT_MIN_VALUE;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import static us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark.DEFAULT_MAX_VALUE;
+import static us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark.DEFAULT_MIN_VALUE;
 import us.jaba.titaniumblocks.core.tickmarks.ticklabels.orientation.TickLabelModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticklabels.orientation.models.NormalTickLabelModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTickModel;
@@ -47,7 +47,7 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.types.linear.LineTicks;
  *
  * @author tbeckett
  */
-public abstract class AbstractLinearTickmark extends TickmarkModel
+public abstract class AbstractLinearTickmark extends Tickmark
 {
 
     public static final float DEFAULT_HORIZ_OFFSET_ADJUST = 0.12864f;

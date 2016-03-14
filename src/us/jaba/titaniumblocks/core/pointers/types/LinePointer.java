@@ -28,9 +28,7 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Shape;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -61,7 +59,7 @@ public class LinePointer extends GradientPointer
     }
 
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
 
         final int imageWidth = (int) dimensions.getWidth();
@@ -74,12 +72,12 @@ public class LinePointer extends GradientPointer
         Area pointerLine = new Area(new Rectangle2D.Double(imageWidth * 0.495327, centerY - (maxY * frontM),
                 imageWidth * 0.009345, (maxY * frontM) + (maxY * tailM)));
 
-        if (centerPostVisible)
-        {
-            double radius = dimensions.width * centerScale.getValue();
-            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-            pointerLine.add(pointerPost);
-        }
+//        if (centerPostVisible)
+//        {
+//            double radius = dimensions.width * centerScale.getValue();
+//            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
+//            pointerLine.add(pointerPost);
+//        }
 
         return pointerLine;
     }

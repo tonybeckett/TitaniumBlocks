@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.pointers;
 
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.SSBlack;
 
 /**
@@ -42,25 +43,32 @@ public abstract class AbstractPointer extends Pointer
     protected Scale centerScale;
     protected Scale frontScale;
 
-    private GradientPalette pointerColor;
+    private GradientPalette primaryColor;
     private float radiusPercent;
     protected Scale tailScale;
     protected boolean centerPinVisible;
+    private GradientPalette secondaryColor;
 
     public AbstractPointer()
     {
         this(new SSBlack());
     }
 
-    public AbstractPointer(GradientPalette pointerColor)
+    public AbstractPointer(GradientPalette primaryColor)
     {
-        this.pointerColor = pointerColor;
+        this(primaryColor, primaryColor);
+    }
+
+    public AbstractPointer(GradientPalette primaryColor, GradientPalette secondaryColor)
+    {
+        this.primaryColor = primaryColor;
         radiusPercent = 0.95f;
         frontScale = new Scale(1.0);
         tailScale = new Scale(1.0);
         centerPostVisible = false;
         centerScale = new Scale(0.03);
         centerPinVisible = false;
+        this.secondaryColor = secondaryColor;
     }
 
     public AbstractPointer(AbstractPointer other)
@@ -68,10 +76,11 @@ public abstract class AbstractPointer extends Pointer
         this.centerPostVisible = other.centerPostVisible;
         this.centerScale = other.centerScale;
         this.frontScale = other.frontScale;
-        this.pointerColor = other.pointerColor;
+        this.primaryColor = other.primaryColor;
         this.radiusPercent = other.radiusPercent;
         this.tailScale = other.tailScale;
         this.centerPinVisible = other.centerPinVisible;
+        this.secondaryColor = other.secondaryColor;
     }
 
     public void copy(AbstractPointer other)
@@ -81,10 +90,11 @@ public abstract class AbstractPointer extends Pointer
         this.centerPostVisible = other.centerPostVisible;
         this.centerScale = other.centerScale;
         this.frontScale = other.frontScale;
-        this.pointerColor = other.pointerColor;
+        this.primaryColor = other.primaryColor;
         this.radiusPercent = other.radiusPercent;
         this.tailScale = other.tailScale;
-        this.centerPinVisible = other.centerPinVisible;        
+        this.centerPinVisible = other.centerPinVisible;
+        this.secondaryColor = other.secondaryColor;
     }
 
     public void setCenterPostEnable(boolean centerPost)
@@ -108,15 +118,15 @@ public abstract class AbstractPointer extends Pointer
         this.frontScale = scale;
     }
 
-    public GradientPalette getPointerColor()
+    public GradientPalette getPrimaryColor()
     {
-        return pointerColor;
+        return primaryColor;
     }
 
     @Override
-    public void setPointerColor(GradientPalette pointerColor)
+    public void setPrimaryColor(GradientPalette pointerColor)
     {
-        this.pointerColor = pointerColor;
+        this.primaryColor = pointerColor;
         changed();
     }
 
@@ -135,6 +145,7 @@ public abstract class AbstractPointer extends Pointer
     public void setTailScale(Scale scale)
     {
         this.tailScale = scale;
+        changed();
     }
 
     public boolean isCenterPostVisible()
@@ -145,6 +156,7 @@ public abstract class AbstractPointer extends Pointer
     public void setCenterPostVisible(boolean centerPostVisible)
     {
         this.centerPostVisible = centerPostVisible;
+        changed();
     }
 
     public boolean isCenterPinVisible()
@@ -155,12 +167,34 @@ public abstract class AbstractPointer extends Pointer
     public void setCenterPinVisible(boolean centerPinVisible)
     {
         this.centerPinVisible = centerPinVisible;
+        changed();
+    }
+
+    public Scale getFrontScale()
+    {
+        return frontScale;
+    }
+
+    public Scale getTailScale()
+    {
+        return tailScale;
+    }
+
+    public GradientPalette getSecondaryColor()
+    {
+        return secondaryColor;
+    }
+
+    public void setSecondaryColor(GradientPalette secondaryColor)
+    {
+        this.secondaryColor = secondaryColor;
+        changed();
     }
 
     @Override
     public String toString()
     {
-        return "AbstractPointer{" + "centerPostVisible=" + centerPostVisible + ", centerScale=" + centerScale + ", frontScale=" + frontScale + ", pointerColor=" + pointerColor + ", radiusPercent=" + radiusPercent + ", tailScale=" + tailScale + ", centerPinVisible=" + centerPinVisible + '}';
+        return "AbstractPointer{" + "centerPostVisible=" + centerPostVisible + ", centerScale=" + centerScale + ", frontScale=" + frontScale + ", pointerColor=" + primaryColor + ", radiusPercent=" + radiusPercent + ", tailScale=" + tailScale + ", centerPinVisible=" + centerPinVisible + '}';
     }
 
 }

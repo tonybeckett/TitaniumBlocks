@@ -31,7 +31,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Calendar;
-import java.util.Date;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -67,15 +66,20 @@ public class ClockDemo extends javax.swing.JFrame
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); 
         this.setTitle("ClockDemo");
+//       this.setIconImage(Images.titaniumblocks128);
         Antimate antimate = new Antimate(100.0, 0.1f)
         {
             @Override
             public void update(double d)
             {
                Calendar cal = Calendar.getInstance();
-                Date t = new Date();
+//                Date t = new Date();
                  
-                panel.setValueAnimated(t.getHours(),t.getMinutes(),t.getSeconds());
+//                panel.setValueAnimated(t.getHours(),t.getMinutes(),t.getSeconds());
+  
+
+                 
+                panel.setValueAnimated(cal.get(Calendar.HOUR) , cal.get(Calendar.MINUTE) , cal.get(Calendar.SECOND));
             }
         };
 

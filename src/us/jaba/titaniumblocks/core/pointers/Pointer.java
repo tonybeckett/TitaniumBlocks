@@ -46,7 +46,7 @@ public abstract class Pointer extends CoreModel
     }
 
   
-    public abstract void setPointerColor(GradientPalette pointerColor);
+    public abstract void setPrimaryColor(GradientPalette pointerColor);
 
     public abstract void setFrontScale(us.jaba.titaniumblocks.core.Scale scale);
 

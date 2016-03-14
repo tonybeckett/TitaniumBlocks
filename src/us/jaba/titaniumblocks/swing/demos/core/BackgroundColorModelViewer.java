@@ -58,7 +58,6 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
         initComponents();
 
         List<Class<?>> classes = BackdropCoreInfo.getColorClasses();//ClassFinder.find("us.jaba.titaniumblocks.core.backdrop.colormodel.colors");
-      
 
         int len = classes.size();
         GridLayout gl = new GridLayout();
@@ -76,13 +75,12 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
             BackdropColorModel bcm = (BackdropColorModel) c.newInstance();
-            
+
             JLabel jlabel = new JLabel(aClass.getSimpleName().replace("BModel", ""));
             jlabel.setForeground(ColorPalette.BLACK);
 //            jlabel.setBackground(ColorPalette.WHITE);
             panel.add(jlabel);
 
-            
             jlabel = new JLabel("START");
             jlabel.setForeground(ColorPalette.GRAY);
             jlabel.setBackground(bcm.getGradientStartColor());
@@ -122,7 +120,7 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
         }
 
         add(list);
-         this.setIconImage(Images.titaniumblocks16x16);
+        this.setIconImage(Images.titaniumblocks16);
         this.setSize(new Dimension(400, 800));
     }
 
@@ -169,7 +167,7 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */

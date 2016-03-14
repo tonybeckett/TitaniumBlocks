@@ -72,9 +72,9 @@ public class PunchedSheetTexture extends Texture
 
         GradientSupport.fillLinearYAxis(graphics2D,
                 resultWidth * 0.0,
-                resultHeight * 0.06666667014360428,
-                resultWidth * 0.4000000059604645,
-                resultHeight * 0.4000000059604645,
+                resultHeight * 0.06666667,
+                resultWidth * 0.40000,
+                resultHeight * 0.4000,
                 FRACTIONS,
                 COLORS
         );
@@ -87,16 +87,16 @@ public class PunchedSheetTexture extends Texture
 
         final Ellipse2D ULF = new Ellipse2D.Double(resultWidth * 0.0,
                 resultHeight * 0.0,
-                resultWidth * 0.4000000059604645,
-                resultHeight * 0.4000000059604645);
+                resultWidth * 0.40000,
+                resultHeight * 0.4000);
         graphics2D.setColor(darkColor);
         graphics2D.fill(ULF);
 
         GradientSupport.fillLinearYAxis(graphics2D,
-                resultWidth * 0.46666666865348816,
-                resultHeight * 0.5333333611488342,
-                resultWidth * 0.4000000059604645,
-                resultHeight * 0.3999999761581421,
+                resultWidth * 0.466666,
+                resultHeight * 0.53333,
+                resultWidth * 0.400000,
+                resultHeight * 0.39999,
                 FRACTIONS,
                 COLORS
         );

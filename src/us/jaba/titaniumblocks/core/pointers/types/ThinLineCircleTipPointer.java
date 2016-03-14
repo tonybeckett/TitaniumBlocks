@@ -31,7 +31,6 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
@@ -69,7 +68,7 @@ public class ThinLineCircleTipPointer extends GradientPointer
     }
 
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
 
         final double centerX = dimensions.getWidth() / 2.0;
@@ -82,18 +81,18 @@ public class ThinLineCircleTipPointer extends GradientPointer
         Area pointerLine = new Area(new Rectangle2D.Double(centerX - (maxX * 0.0045), centerY - (maxY * frontM),
                 2.0 * (maxX * 0.0045), (maxY * frontM) + (maxY * tailM)));
 
-        if (centerPostVisible)
-        {
-            double radius = dimensions.width * centerScale.getValue();
-            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-            pointerLine.add(pointerPost);
-        }
+//        if (centerPostVisible)
+//        {
+//            double radius = dimensions.width * centerScale.getValue();
+//            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
+//            pointerLine.add(pointerPost);
+//        }
 
         return pointerLine;
     }
 
     @Override
-    protected void paintShape(Graphics2D graphics, Dimension dimensions, Color[] gradientColorArray)
+    protected void paintShape(Graphics2D graphics, Dimension dimensions, Area shape, Color[] gradientColorArray)
     {
         final double centerX = dimensions.getWidth() / 2.0;
         final double centerY = dimensions.getHeight() / 2.0;
@@ -101,7 +100,7 @@ public class ThinLineCircleTipPointer extends GradientPointer
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
 
-        super.paintShape(graphics, dimensions, gradientColorArray);
+        super.paintShape(graphics, dimensions, shape, gradientColorArray);
 
         graphics.setStroke(stroke);
         ShapeUtils.drawCircle(graphics, centerX, centerY - (maxY * frontM) - (maxX * 0.025), maxX * 0.025);

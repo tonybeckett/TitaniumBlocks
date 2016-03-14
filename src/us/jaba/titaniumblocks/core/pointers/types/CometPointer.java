@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Shape;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -59,7 +59,7 @@ public class CometPointer extends GradientPointer
 
     
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
@@ -94,7 +94,7 @@ public class CometPointer extends GradientPointer
 
         pointerShape.closePath();
         
-        return pointerShape;
+        return new Area(pointerShape);
     }
     
 //    @Override

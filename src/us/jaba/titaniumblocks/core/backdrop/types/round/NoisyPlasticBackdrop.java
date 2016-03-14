@@ -36,7 +36,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.NoisePainter;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
 import us.jaba.titaniumblocks.core.textures.types.StainlessSteelPlateTexture;
 import us.jaba.titaniumblocks.core.color.ColorTools;
@@ -44,9 +43,8 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
 {
-
     private final TextureImageBuilder builder;
-    private Color textureColor = ColorPalette.GRAY.darker();
+   
     private final NoisePainter noisePainter;
 
     private final float[] FRACTIONS =
@@ -56,8 +54,8 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
     };
     private final Color[] COLORS =
     {
-        ColorTools.lighter(textureColor, 0.15f),
-        ColorTools.darker(textureColor, 0.15f)
+        ColorTools.lighter(backgroundColorModel.getGradientStartColor(), 0.15f),
+        ColorTools.darker(backgroundColorModel.getGradientStopColor(), 0.15f)
     };
 
     public NoisyPlasticBackdrop()
@@ -70,6 +68,8 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
     {
+        COLORS[0] = ColorTools.lighter(backgroundColorModel.getGradientStartColor(), 0.15f);
+        COLORS[1] = ColorTools.darker(backgroundColorModel.getGradientStopColor(), 0.15f);
         final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
         final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
         PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
@@ -89,18 +89,18 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
         noisePainter.paint(graphics, dimensions, GAUGE_BACKGROUND.getBounds());
     }
 
-    public Color getTextureColor()
-    {
-        return textureColor;
-    }
-
-    public void setTextureColor(Color textureColor)
-    {
-        this.textureColor = textureColor;
-        COLORS[0] = ColorTools.lighter(textureColor, 0.15f);
-        COLORS[1] = ColorTools.darker(textureColor, 0.15f);
-        changed();
-    }
+//    public Color getTextureColor()
+//    {
+//        return textureColor;
+//    }
+//
+//    public void setTextureColor(Color textureColor)
+//    {
+//        this.textureColor = textureColor;
+//        COLORS[0] = ColorTools.lighter(textureColor, 0.15f);
+//        COLORS[1] = ColorTools.darker(textureColor, 0.15f);
+//        changed();
+//    }
 //        // add noise if NOISY_PLASTIC
 //        if (backgroundColorModel == BackgroundColor.NOISY_PLASTIC)
 //        {

@@ -270,7 +270,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getTickmark().setPointerColor(cp);
+        pointerImage.getTickmark().setPrimaryColor(cp);
     }
 
 }

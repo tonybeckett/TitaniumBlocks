@@ -32,7 +32,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Shape;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
@@ -89,7 +89,7 @@ public class CompassPointer extends GradientPointer
     }
 
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
 //        final int imageWidth = (int) dimensions.getWidth();
 //        final int imageHeight = (int) dimensions.getHeight();
@@ -98,7 +98,7 @@ public class CompassPointer extends GradientPointer
 
         pointerShape.closePath();
 
-        return pointerShape;
+        return new Area(pointerShape);
     }
 
     @Override
@@ -245,15 +245,15 @@ public class CompassPointer extends GradientPointer
 
         final Color[] NORTHPOINTER1_COLORS =
         {
-            getPointerColor().getLight(),
-            getPointerColor().getLight(),
-            getPointerColor().getMedium(),
-            getPointerColor().getMedium()
+            getPrimaryColor().getLight(),
+            getPrimaryColor().getLight(),
+            getPrimaryColor().getMedium(),
+            getPrimaryColor().getMedium()
         };
         final java.awt.LinearGradientPaint NORTHPOINTER1_GRADIENT = new java.awt.LinearGradientPaint(NORTHPOINTER1_START, NORTHPOINTER1_STOP, NORTHPOINTER1_FRACTIONS, NORTHPOINTER1_COLORS);
         graphics.setPaint(NORTHPOINTER1_GRADIENT);
         graphics.fill(NORTHPOINTER1);
-        graphics.setColor(getPointerColor().getDark());
+        graphics.setColor(getPrimaryColor().getDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(NORTHPOINTER1);
 

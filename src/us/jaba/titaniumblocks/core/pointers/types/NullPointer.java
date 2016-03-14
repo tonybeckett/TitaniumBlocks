@@ -27,64 +27,40 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Shape;
+import java.awt.Graphics2D;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.pointers.GradientPointer;
+import us.jaba.titaniumblocks.core.pointers.BasicPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class ThinLinePointer extends GradientPointer
+public class NullPointer extends BasicPointer
 {
-
-    public ThinLinePointer()
+    public NullPointer()
     {
         this(new PureRed());
     }
 
-    public ThinLinePointer(GradientPalette pointerColor)
+    public NullPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-        this.tailScale = new Scale(0.3);
     }
 
-    public ThinLinePointer(GradientPointer other)
+    public NullPointer(BasicPointer other)
     {
         super(other);
     }
 
     @Override
-    protected Area getShape(Dimension dimensions)
+    protected void paintShape(Graphics2D graphics, Dimension dimensions)
     {
-
-//        final int imageWidth = (int) dimensions.getWidth();
-//        final int imageHeight = (int) dimensions.getHeight();
-        final double centerX = dimensions.getWidth() / 2.0;
-        final double centerY = dimensions.getHeight() / 2.0;
-        final double maxX = dimensions.getWidth() / 2.0;
-        final double maxY = dimensions.getHeight() / 2.0;
-        double frontM = this.getRadiusPercent() * frontScale.getValue();
-        double tailM = this.getRadiusPercent() * tailScale.getValue();
-
-        Area pointerLine = new Area(new Rectangle2D.Double(centerX - (maxX * 0.0045), centerY - (maxY * frontM),
-                2.0 * (maxX * 0.0045), (maxY * frontM) + (maxY * tailM)));
-
-//        if (centerPostVisible)
-//        {
-//            double radius = dimensions.width * centerScale.getValue();
-//            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-//            pointerLine.add(pointerPost);
-//        }
-
-        return pointerLine;
+        super.paintShape(graphics, dimensions);  
     }
-
-//  
 }

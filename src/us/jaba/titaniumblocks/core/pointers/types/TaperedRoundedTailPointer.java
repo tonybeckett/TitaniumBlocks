@@ -83,19 +83,25 @@ public class TaperedRoundedTailPointer extends GradientPointer
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
         double tailM = this.getRadiusPercent() * tailScale.getValue();
-        double tailOffset = 0.0;
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
         pointerShape.lineTo(0.4859813 * imageWidth, centerY + (maxY * tailM));
 
+//        pointerShape.curveTo(0.4859813 * imageWidth, centerY + (maxY * tailM),
+//                0.4813084 * imageWidth, imageHeight * (0.584112 ) ,
+//                0.5 * imageWidth, imageHeight * (0.584112 ));
+//
+//        pointerShape.curveTo(0.5 * imageWidth, imageHeight * (0.584112 ),
+//                0.5193454 * imageWidth, imageHeight * (0.584112 ),
+//                0.5153454 * imageWidth, centerY + (maxY * tailM));
         pointerShape.curveTo(0.4859813 * imageWidth, centerY + (maxY * tailM),
-                0.4813084 * imageWidth, imageHeight * (0.584112 + tailOffset),
-                0.5 * imageWidth, imageHeight * (0.584112 + tailOffset));
+                0.4813084 * imageWidth, centerY + (maxY * tailM) * 1.125,
+                0.5 * imageWidth, centerY + (maxY * tailM) * 1.15);
 
-        pointerShape.curveTo(0.5 * imageWidth, imageHeight * (0.584112 + tailOffset),
-                0.5193454 * imageWidth, imageHeight * (0.584112 + tailOffset),
+        pointerShape.curveTo(0.5 * imageWidth, centerY + (maxY * tailM) * 1.15,
+                0.5193454 * imageWidth, centerY + (maxY * tailM) * 1.125,
                 0.5153454 * imageWidth, centerY + (maxY * tailM));
 
         pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * frontM));
@@ -108,7 +114,7 @@ public class TaperedRoundedTailPointer extends GradientPointer
                 0.0f, 1.0f
             }, new Color[]
             {
-                this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
+                this.getPrimaryColor().getMediumDark(), this.getPrimaryColor().getDark()
             });
         } else
         {
@@ -117,12 +123,12 @@ public class TaperedRoundedTailPointer extends GradientPointer
                 0.0f, 1.0f
             }, new Color[]
             {
-                this.getPointerColor().getMediumDark(), this.getPointerColor().getDark()
+                this.getPrimaryColor().getMediumDark(), this.getPrimaryColor().getDark()
             });
         }
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
-        graphics.setColor(this.getPointerColor().getDark());
+        graphics.setColor(this.getPrimaryColor().getDark());
 //        
         graphics.setStroke(new BasicStroke(0.004672f * imageWidth, 0, 1));
         graphics.draw(pointerShape);

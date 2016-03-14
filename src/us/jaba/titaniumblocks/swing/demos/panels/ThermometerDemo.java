@@ -62,7 +62,7 @@ public class ThermometerDemo extends SingleRoundDemo
         tp.setCenterPostVisible(false);
         tp.setFrontScale(new Scale(0.8));
         tp.setTailScale(new Scale(0.3));
-        tp.setPointerColor(new PureRed());
+        tp.setPrimaryColor(new PureRed());
         this.setPointerPainter(tp, new LineShadow());
         this.setUnits(" ");
         

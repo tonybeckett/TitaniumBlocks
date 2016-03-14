@@ -103,9 +103,9 @@ public class ArrowHeadPointer extends GradientPointer
 //       
         gradientColorArray = new Color[]
         {
-            this.getPointerColor().getDarkest(),
-            this.getPointerColor().getMediumDark(),
-            this.getPointerColor().getDarkest()
+            this.getPrimaryColor().getDarkest(),
+            this.getPrimaryColor().getMediumDark(),
+            this.getPrimaryColor().getDarkest()
         };
 
         if (PointSupport.pointsEqual(startPoint, stopPoint))

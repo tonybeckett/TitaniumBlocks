@@ -27,6 +27,7 @@
 // */
 package us.jaba.titaniumblocks.core.frames;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -63,6 +64,7 @@ public class RoundFrame extends FrameModel
     private static final double DEFAULT_OUTER_Y_MULTIPLER = 0.0;
 
     protected double frameThickness;
+    protected Color primaryColor;
     protected Scale scaleFactor = new Scale();
 
     protected Dimension interiorDimension = new Dimension(1, 1);
@@ -70,6 +72,7 @@ public class RoundFrame extends FrameModel
     protected Rectangle2D innerMultiRect;
     protected Rectangle2D mainMultiRect;
     protected Rectangle2D outerMultiRect;
+    protected Color secondaryColor;
     protected Rectangle2D subtractMultiRect;
 
     public RoundFrame()
@@ -97,6 +100,17 @@ public class RoundFrame extends FrameModel
         return frameThickness;
     }
 
+    public Color getPrimaryColor()
+    {
+        return primaryColor;
+    }
+
+    public void setPrimaryColor(Color primaryColor)
+    {
+        this.primaryColor = primaryColor;
+        changed();
+    }
+
     public Scale getScaleFactor()
     {
         return scaleFactor;
@@ -105,8 +119,24 @@ public class RoundFrame extends FrameModel
     public void setScaleFactor(Scale scaleFactor)
     {
         this.scaleFactor = scaleFactor;
+        this.changed();
     }
 
+    private double adjustUsingScale(double value)
+    {
+      return  1.0 -  ((1.0 - value) * scaleFactor.getValue());
+    }
+
+    public Color getSecondaryColor()
+    {
+        return secondaryColor;
+    }
+
+    public void setSecondaryColor(Color secondaryColor)
+    {
+        this.secondaryColor = secondaryColor;
+    }
+    
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -130,16 +160,16 @@ public class RoundFrame extends FrameModel
                 imageHeight * outerMultiRect.getHeight()
         ));
 
-        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * mainMultiRect.getX() + 1,
-                imageHeight * mainMultiRect.getY() + 1,
-                imageWidth * mainMultiRect.getWidth() - 1,
-                imageHeight * mainMultiRect.getHeight() - 1
+        final Area mainArea = new Area(new Ellipse2D.Double(imageWidth * mainMultiRect.getX()  * scaleFactor.getValue() + 1,
+                imageHeight * mainMultiRect.getY() * scaleFactor.getValue() + 1,
+                imageWidth * adjustUsingScale(mainMultiRect.getWidth()) - 1,
+                imageHeight * adjustUsingScale(mainMultiRect.getHeight()) - 1
         ));
 
-        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * subtractMultiRect.getX(),
-                imageHeight * subtractMultiRect.getY(),
-                imageWidth * subtractMultiRect.getWidth(),
-                imageHeight * subtractMultiRect.getHeight()
+        final Area subtractArea = new Area(new Ellipse2D.Double(imageWidth * subtractMultiRect.getX() * scaleFactor.getValue(),
+                imageHeight * subtractMultiRect.getY()  * scaleFactor.getValue(),
+                imageWidth * adjustUsingScale(subtractMultiRect.getWidth()),
+                imageHeight * adjustUsingScale(subtractMultiRect.getHeight())
         ));
 
         paintFrame(graphics, dimensions, mainArea, outerArea, innerArea, subtractArea);

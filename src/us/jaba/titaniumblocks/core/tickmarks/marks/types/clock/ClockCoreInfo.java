@@ -39,6 +39,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.DashCircles
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.DotsAndCircles;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.FourNumbersCircleTicks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.FourNumbersTicks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NullClock;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.Numbers;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersCirclesDash;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersInCircle;
@@ -68,6 +69,7 @@ public class ClockCoreInfo
         DashCirclesTicks.class,
         FourNumbersCircleTicks.class,
         FourNumbersTicks.class,
+        NullClock.class,
         Numbers.class,
         NumbersCirclesDash.class,
         NumbersOut.class,

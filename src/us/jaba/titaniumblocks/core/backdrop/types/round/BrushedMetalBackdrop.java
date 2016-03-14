@@ -35,15 +35,14 @@ import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
 import us.jaba.titaniumblocks.core.textures.BrushedMetalTextureImageBuilder;
 
 public class BrushedMetalBackdrop extends AbstractRoundBackdrop
-{
-
+{    
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {
         BrushedMetalTextureImageBuilder builder = new BrushedMetalTextureImageBuilder();
+        builder.setBrushColor(this.getBackgroundColor().getGradientStartColor());
         Paint p = new TexturePaint(builder.build(dimensions), ellipse.getBounds());
 
         return p;
     }
-
 }

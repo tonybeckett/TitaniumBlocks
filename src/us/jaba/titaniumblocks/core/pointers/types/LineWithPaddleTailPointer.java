@@ -41,47 +41,30 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
  *
  * @author tbeckett
  */
-public class ThinLinePointer extends GradientPointer
+public class LineWithPaddleTailPointer extends LinePointer
 {
 
-    public ThinLinePointer()
-    {
-        this(new PureRed());
-    }
-
-    public ThinLinePointer(GradientPalette pointerColor)
-    {
-        super(pointerColor);
-        this.tailScale = new Scale(0.3);
-    }
-
-    public ThinLinePointer(GradientPointer other)
-    {
-        super(other);
-    }
+    
 
     @Override
     protected Area getShape(Dimension dimensions)
     {
+        Area pointerLine = super.getShape(dimensions);
+        
+        final int imageWidth = (int) dimensions.getWidth();
 
-//        final int imageWidth = (int) dimensions.getWidth();
-//        final int imageHeight = (int) dimensions.getHeight();
         final double centerX = dimensions.getWidth() / 2.0;
         final double centerY = dimensions.getHeight() / 2.0;
-        final double maxX = dimensions.getWidth() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
-        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double frontM = this.getRadiusPercent() * frontScale.getValue();
         double tailM = this.getRadiusPercent() * tailScale.getValue();
 
-        Area pointerLine = new Area(new Rectangle2D.Double(centerX - (maxX * 0.0045), centerY - (maxY * frontM),
-                2.0 * (maxX * 0.0045), (maxY * frontM) + (maxY * tailM)));
-
-//        if (centerPostVisible)
-//        {
-//            double radius = dimensions.width * centerScale.getValue();
-//            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-//            pointerLine.add(pointerPost);
-//        }
+        double lineWidthScale = 0.009345;
+        
+        lineWidthScale = 0.009345 * 4.0;
+        Area paddle = new Area(new Ellipse2D.Double(centerX - imageWidth * (lineWidthScale / 2.0), centerY + maxY * (tailM / 3),
+                imageWidth * lineWidthScale,  maxY * tailM));
+        pointerLine.add(paddle);
 
         return pointerLine;
     }

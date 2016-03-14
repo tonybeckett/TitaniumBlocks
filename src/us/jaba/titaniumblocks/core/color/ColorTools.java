@@ -17,6 +17,11 @@ public class ColorTools
 
     private static final float INT_TO_FLOAT_CONST = 1f / 255f;
 
+    public static Color invert(Color gradientStartColor)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Returns the given COLOR with the given ALPHA transparency
      *

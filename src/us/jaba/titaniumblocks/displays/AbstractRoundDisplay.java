@@ -87,13 +87,24 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
 
     public AbstractRoundDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
     {
-        this();
+        listOfImageFactories = new ArrayList();
+        init();
         this.backdropImage = backdropImage;
         add(backdropImage);
         this.frameImage = frameImage;
         add(frameImage);
         this.centerPostImage = centerPostImage;
         add(centerPostImage);
+    }
+
+    public AbstractRoundDisplay()
+    {
+        listOfImageFactories = new ArrayList();
+        init();
+    }
+
+    private void init()
+    {
 
         doubleValueText = new DoubleValueText();
         valueTextImage = new TextImageFactory(doubleValueText);
@@ -111,11 +122,6 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         tbTextImage = new TextImageFactory(tbText);
         add(tbTextImage);
 
-    }
-
-    public AbstractRoundDisplay()
-    {
-        listOfImageFactories = new ArrayList();
     }
 
     public final void add(CoreImageFactory imageFactory)
@@ -221,6 +227,16 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     public void setLed(Led ledPainter)
     {
         this.ledImageFactory.setPainter(ledPainter);
+    }
+
+    public TitleText getTitleText()
+    {
+        return titleValueText;
+    }
+
+    public void setTitleText(TitleText titleText)
+    {
+        this.titleValueText = titleText;
     }
 
 }

@@ -78,6 +78,8 @@ public class PaddlePointer extends BasicPointer
         double frontM = this.getRadiusPercent() * frontScale.getValue();
         double tailM = this.getRadiusPercent() * tailScale.getValue();
 
+        graphics.setColor(getPrimaryColor().getMedium());
+        
         graphics.setStroke(stroke);
         graphics.drawLine((int) centerX, (int) (centerY + (maxY * tailM)), (int) centerX, (int) (centerY - (maxY * frontM)));
         graphics.setStroke(strokeBig);

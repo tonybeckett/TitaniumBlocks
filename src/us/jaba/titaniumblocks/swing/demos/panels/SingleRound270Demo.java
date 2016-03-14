@@ -58,7 +58,7 @@ public class SingleRound270Demo extends SingleRoundDemo
         setPanelTitle("SingleRound270Demo");
         this.setFramePainter(new BlackMetalRoundFrame());
         NoisyPlasticBackdrop bp = new NoisyPlasticBackdrop();
-        bp.setTextureColor(ColorPalette.QUILLGRAY);
+      
         this.setBackdropPainter(bp);
         this.setCenterPostPainter(new MetalBlackPost());
         this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());

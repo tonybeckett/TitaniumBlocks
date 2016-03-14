@@ -110,10 +110,10 @@ public class WideTaperedPointPointer extends GradientPointer
 
         gradientColorArray = new Color[]
         {
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumDark(),
-            this.getPointerColor().getMediumDark()
+            this.getPrimaryColor().getMediumLight(),
+            this.getPrimaryColor().getMediumLight(),
+            this.getPrimaryColor().getMediumDark(),
+            this.getPrimaryColor().getMediumDark()
         };
 
         if (PointSupport.pointsEqual(startPoint, stopPoint))
@@ -124,7 +124,7 @@ public class WideTaperedPointPointer extends GradientPointer
         graphics.setPaint(gradient);
         graphics.fill(pointerShape);
 
-        graphics.setColor(this.getPointerColor().getDark());
+        graphics.setColor(this.getPrimaryColor().getDark());
 
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
         graphics.draw(pointerShape);

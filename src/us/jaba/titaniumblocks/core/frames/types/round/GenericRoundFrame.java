@@ -35,6 +35,7 @@ import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.HSLColor;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -45,7 +46,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GenericRoundFrame extends RoundFrame
 {
 
-   private float[] fractionArray =
+    private float[] fractionArray =
     {
         0.0f,
         0.06f,
@@ -53,7 +54,7 @@ public class GenericRoundFrame extends RoundFrame
         1.0f
     };
 
- private   Color[] colorArray =
+    private Color[] primaryColorArray =
     {
         new Color(118, 117, 135, 255),
         new Color(74, 74, 82, 255),
@@ -63,10 +64,20 @@ public class GenericRoundFrame extends RoundFrame
 
     public GenericRoundFrame(GradientPalette gp)
     {
-        colorArray[0] = gp.getLight();
-        colorArray[1] = gp.getMediumLight();
-        colorArray[2] = gp.getMedium();
-        colorArray[3] = gp.getLight();
+        setPrimaryColor(new Color(118, 117, 135, 255));
+    }
+
+    @Override
+    public void setPrimaryColor(Color primaryColor)
+    {
+        super.setPrimaryColor(primaryColor);
+
+        HSLColor hsl = new HSLColor(primaryColor);
+        primaryColorArray[0] = primaryColor;
+        primaryColorArray[1] = hsl.adjustLuminance(70.0f);
+        primaryColorArray[2] = hsl.adjustLuminance(50.0f);
+        primaryColorArray[3] = hsl.adjustLuminance(90.0f);
+
     }
 
     /**
@@ -89,7 +100,7 @@ public class GenericRoundFrame extends RoundFrame
         mainArea.subtract(subtractArea);
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint gPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, colorArray);
+        Paint gPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, primaryColorArray);
         graphics.setPaint(gPaint);
         graphics.fill(mainArea);
 

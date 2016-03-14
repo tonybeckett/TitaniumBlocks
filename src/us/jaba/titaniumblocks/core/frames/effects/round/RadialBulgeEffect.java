@@ -33,13 +33,13 @@ import java.awt.Graphics2D;
 import java.awt.RadialGradientPaint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
+import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class RadialBulgeEffect implements RoundFrameEffectPainter
+public class RadialBulgeEffect implements RoundFrameEffect
 {
 
     private final float[] EFFECT_FRACTIONS = new float[]

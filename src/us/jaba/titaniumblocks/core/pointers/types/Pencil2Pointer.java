@@ -60,7 +60,7 @@ public class Pencil2Pointer extends GradientPointer
     }
 
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
 
         final int imageWidth = (int) dimensions.getWidth();
@@ -81,11 +81,11 @@ public class Pencil2Pointer extends GradientPointer
 
         Area pointerLine = new Area(pointerShape);
 
-        double radius = dimensions.width * centerScale.getValue();
-        Area pointerPost = new Area(new Ellipse2D.Double((imageWidth / 2) - radius, (imageHeight / 2) - radius, radius * 2, radius * 2));
-        pointerLine.add(pointerPost);
+//        double radius = dimensions.width * centerScale.getValue();
+//        Area pointerPost = new Area(new Ellipse2D.Double((imageWidth / 2) - radius, (imageHeight / 2) - radius, radius * 2, radius * 2));
+//        pointerLine.add(pointerPost);
         // pointerLine.setWindingRule(Path2D.WIND_EVEN_ODD);
-        return pointerLine;
+        return new Area(pointerLine);
 
     }
 

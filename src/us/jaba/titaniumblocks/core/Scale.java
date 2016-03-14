@@ -33,6 +33,12 @@ package us.jaba.titaniumblocks.core;
  */
 public class Scale
 {
+
+    public static Object valueOf(String valueOf)
+    {
+        return new Scale(Double.parseDouble(valueOf));
+    }
+
     private double value = 1.0;
 
     public Scale()

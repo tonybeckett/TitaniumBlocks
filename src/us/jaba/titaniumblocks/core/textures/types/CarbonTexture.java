@@ -108,6 +108,11 @@ public class CarbonTexture extends Texture
         new Color(45, 45, 45, 255)
     };
 
+    public void setColor(Color gradientStartColor)
+    {
+        
+    }
+
     @Override
     public void paint(Graphics2D graphics2D, Dimension dimensions)
     {

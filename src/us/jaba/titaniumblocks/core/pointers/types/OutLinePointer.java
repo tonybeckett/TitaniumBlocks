@@ -71,7 +71,7 @@ public class OutLinePointer extends GradientPointer
 
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
-        graphics.setColor(this.getPointerColor().getDarkest());
+        graphics.setColor(this.getPrimaryColor().getDarkest());
 
         final int imageWidth = (int) dimensions.getWidth();
 //        final int imageHeight = (int) dimensions.getHeight();
@@ -87,7 +87,7 @@ public class OutLinePointer extends GradientPointer
         );
         graphics.fill(pointerShape);
 
-        graphics.setColor(this.getPointerColor().getLightest().brighter());
+        graphics.setColor(this.getSecondaryColor().getMedium());
 
         pointerShape = new GeneralPath(new Rectangle2D.Double((imageWidth * 0.49532), centerY - (maxY * frontM) + 2,
                 (imageWidth * 0.00934) + 1, (maxY * frontM))); //imageHeight * 0.37383));

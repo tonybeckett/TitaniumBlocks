@@ -31,13 +31,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
+import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class NoEffect implements RoundFrameEffectPainter
+public class NoEffect implements RoundFrameEffect
 {
 
     @Override

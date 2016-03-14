@@ -111,7 +111,7 @@ public class BasicPointer extends AbstractPointer
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
    
-        graphics.setColor(this.getPointerColor().getMediumDark());
+        graphics.setColor(this.getPrimaryColor().getMediumDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
 
         paintShape(graphics, dimensions);

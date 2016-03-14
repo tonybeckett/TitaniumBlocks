@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.HSLColor;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -52,13 +53,30 @@ public class MetalRoundFrame extends RoundFrame
         1.0f
     };
 
-    private Color[] frameMainColors2 =
+    private Color[] primaryColorArray =
     {
         new Color(254, 254, 254, 255),
         new Color(210, 210, 210, 255),
         new Color(179, 179, 179, 255),
         new Color(213, 213, 213, 255)
     };
+
+    public MetalRoundFrame()
+    {
+        setPrimaryColor(new Color(254, 254, 254, 255));
+    }
+
+    @Override
+    public void setPrimaryColor(Color primaryColor)
+    {
+        super.setPrimaryColor(primaryColor);
+
+        HSLColor hsl = new HSLColor(primaryColor);
+        primaryColorArray[0] = primaryColor;
+        primaryColorArray[1] = hsl.adjustLuminance(80.0f);
+        primaryColorArray[2] = hsl.adjustLuminance(60.0f);
+        primaryColorArray[3] = hsl.adjustLuminance(90.0f);
+    }
 
     @Override
     public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
@@ -76,7 +94,7 @@ public class MetalRoundFrame extends RoundFrame
         final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
 
         PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint frameMainPaint2 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions2, frameMainColors2);
+        Paint frameMainPaint2 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions2, primaryColorArray);
         graphics.setPaint(frameMainPaint2);
         graphics.fill(mainArea);
 

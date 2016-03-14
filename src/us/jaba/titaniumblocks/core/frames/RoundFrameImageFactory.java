@@ -5,6 +5,8 @@
  */
 package us.jaba.titaniumblocks.core.frames;
 
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**
@@ -24,5 +26,14 @@ public class RoundFrameImageFactory extends CoreImageFactory
     {
         return (RoundFrame) super.getTickmark();
     }
+
+    @Override
+    protected void applyPaint(BufferedImage result, Dimension dimensions)
+    {
+         System.out.println(dimensions.toString());
+        super.applyPaint(result, dimensions); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 
 }

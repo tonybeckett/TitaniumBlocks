@@ -28,7 +28,6 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
@@ -75,7 +74,7 @@ public class TaperedThickFlatPointer extends GradientPointer
     
     
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
 
         final int imageWidth = (int) dimensions.getWidth();
@@ -111,12 +110,12 @@ public class TaperedThickFlatPointer extends GradientPointer
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
       
-         if (centerPostVisible)
-        {
-            double radius = dimensions.width * centerScale.getValue();
-            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-            area.add(pointerPost);
-        }
+//         if (centerPostVisible)
+//        {
+//            double radius = dimensions.width * centerScale.getValue();
+//            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
+//            area.add(pointerPost);
+//        }
         
        
         return area;

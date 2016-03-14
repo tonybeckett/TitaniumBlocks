@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.pointers.types;
 
 import java.awt.Dimension;
-import java.awt.Shape;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -63,7 +63,7 @@ public class MonumentPointer extends GradientPointer
     }
 
     @Override
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
@@ -83,7 +83,7 @@ public class MonumentPointer extends GradientPointer
         pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * magnitude + 0.01));
         pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * magnitude));
         pointerShape.closePath();
-        return pointerShape;
+        return new Area(pointerShape);
     }
 
 //    @Override

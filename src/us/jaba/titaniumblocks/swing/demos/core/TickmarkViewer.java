@@ -31,7 +31,7 @@ import us.jaba.titaniumblocks.swing.BasicVerticalViewer;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarksCoreInfo;
 
@@ -54,14 +54,14 @@ public class TickmarkViewer extends BasicVerticalViewer
     @Override
     protected String getClassNameFromInstance(Object o)
     {
-        TickmarkModel pp = (TickmarkModel) o;
+        Tickmark pp = (Tickmark) o;
         return pp.getClass().getSimpleName().replace("Tickmarks", "");
     }
 
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        TickmarkModel pp = (TickmarkModel) next;
+        Tickmark pp = (Tickmark) next;
         
         return new TickmarkImageFactory(pp).build(dim);
     }

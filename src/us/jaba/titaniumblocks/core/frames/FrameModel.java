@@ -38,17 +38,17 @@ import us.jaba.titaniumblocks.core.frames.effects.round.NoEffect;
  */
 public class FrameModel extends CoreModel
 {
-    private RoundFrameEffectPainter effect = new NoEffect();
+    private RoundFrameEffect effect = new NoEffect();
 
     protected Color outerFrameColor = ColorPalette.GRAY;
     protected Color innerFrameColor = ColorPalette.GRAY.brighter();
 
-    public RoundFrameEffectPainter getEffect()
+    public RoundFrameEffect getEffect()
     {
         return effect;
     }
 
-    public void setEffect(RoundFrameEffectPainter effect)
+    public void setEffect(RoundFrameEffect effect)
     {
         this.effect = effect;
         changed();

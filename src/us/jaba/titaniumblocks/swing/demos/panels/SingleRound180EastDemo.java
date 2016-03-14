@@ -53,7 +53,7 @@ public class SingleRound180EastDemo extends SingleRoundDemo
         setTitle("180E");
         setPanelTitle("SingleRound180EastDemo");
         LinenBackdrop lp = new LinenBackdrop();
-        lp.setColor(ColorPalette.WHITE);
+       
         this.setBackdropPainter(lp);
         SilverRoundFrame pp = new SilverRoundFrame();
         

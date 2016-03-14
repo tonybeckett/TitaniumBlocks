@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.tickmarks.marks.types;
 
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
  *
@@ -37,15 +37,15 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.TickmarkModel;
 public class TickmarkImageFactory extends CoreImageFactory
 {
 
-    public TickmarkImageFactory(TickmarkModel painter)
+    public TickmarkImageFactory(Tickmark painter)
     {
         super(painter);
     }
 
     @Override
-    public TickmarkModel getTickmark()
+    public Tickmark getTickmark()
     {
-        return (TickmarkModel) super.getTickmark();
+        return (Tickmark) super.getTickmark();
     }
 
 }

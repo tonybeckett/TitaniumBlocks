@@ -102,7 +102,7 @@ public class PointerShadowViewer extends javax.swing.JFrame
         jScrollPane1.setViewportView(list);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        this.setIconImage(Images.titaniumblocks16x16);
+        this.setIconImage(Images.titaniumblocks16);
         this.setSize(new Dimension(400, 800));
     }
 

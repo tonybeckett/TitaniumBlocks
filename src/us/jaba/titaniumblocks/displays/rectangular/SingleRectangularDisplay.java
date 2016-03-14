@@ -60,7 +60,7 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedPointer;
 import us.jaba.titaniumblocks.core.pointers.shadows.Type1Shadow;
 import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
@@ -151,8 +151,8 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         Type1Shadow t1spp = new Type1Shadow();
         secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
 
-        TaperedRoundedPointer tpp = new TaperedRoundedPointer();
-        tpp.setPointerColor(new PureBlack());
+        TaperedPointer tpp = new TaperedPointer();
+        tpp.setPrimaryColor(new PureBlack());
         tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
 
@@ -293,7 +293,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getTickmark().setPointerColor(cp);
+        pointerImage.getTickmark().setPrimaryColor(cp);
     }
 
 }

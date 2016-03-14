@@ -38,14 +38,14 @@ import us.jaba.titaniumblocks.core.textures.types.StainlessSteelPlateTexture;
 public class StainlessGrindedBackdrop extends AbstractRoundBackdrop
 {
 
-   private TextureImageBuilder builder;
+    private TextureImageBuilder builder;
 
     public StainlessGrindedBackdrop()
     {
         StainlessSteelPlateTexture painter = new StainlessSteelPlateTexture();
         builder = new TextureImageBuilder(painter);
     }
-    
+
     /**
      *
      * @param dimensions
@@ -55,10 +55,8 @@ public class StainlessGrindedBackdrop extends AbstractRoundBackdrop
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D ellipse)
     {
-
-        Paint p = new TexturePaint(builder.build(dimensions),  new java.awt.Rectangle(0, 0, 100, 100));
+        Paint p = new TexturePaint(builder.build(dimensions), new java.awt.Rectangle(0, 0, 100, 100));
 
         return p;
     }
-
 }

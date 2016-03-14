@@ -34,14 +34,14 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrameEffectPainter;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class RadialInnerEffect implements RoundFrameEffectPainter
+public class RadialInnerEffect implements RoundFrameEffect
 {
 
     private final float[] EFFECT_FRACTIONS = new float[]

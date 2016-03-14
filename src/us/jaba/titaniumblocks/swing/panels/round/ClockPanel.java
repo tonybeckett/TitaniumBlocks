@@ -265,14 +265,12 @@ public class ClockPanel extends JComponent
     public Pointer getSecondsPointer()
     {
         Pointer secondsPointer = singleGauge.getSecondsPointer();
-        System.out.println("get " + secondsPointer.toString());
         return secondsPointer;
     }
 
     public void setSecondsPointer(Pointer secondsPointer)
     {
         singleGauge.setSecondsPointer(secondsPointer);
-        System.out.println("set " + secondsPointer.toString());
     }
 
     public Tickmark getTickmark()

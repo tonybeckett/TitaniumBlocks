@@ -94,7 +94,6 @@ public class GoldRoundFrame extends RoundFrame
         graphics.fill(mainArea);
 
         innerArea.subtract(subtractArea);
-
         // Former white ring
         graphics.setPaint(innerFrameColor);
         graphics.fill(innerArea);

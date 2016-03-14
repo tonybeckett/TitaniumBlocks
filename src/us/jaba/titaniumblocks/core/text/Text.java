@@ -44,8 +44,10 @@ public class Text extends CoreModel
 
     public static final double DEFAULT_RIGHT_OFFSET_FACTOR = 0.09; // offset = % width from right
     public static final double DEFAULT_BASELINE_SCALE_FACTOR = 0.76; // offset = % width from right
+    
     protected double rightOffsetFactor = DEFAULT_RIGHT_OFFSET_FACTOR;
     protected double baselineScaleFactor = DEFAULT_BASELINE_SCALE_FACTOR;
+    
     protected Font font = BaseFont.DEFAULT_FONT;
     protected Color color = ColorPalette.BLACK;
 

@@ -35,6 +35,8 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
@@ -51,7 +53,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class GradientPointer extends AbstractPointer
 {
 
-   protected final float[] gradientFractionArray = new float[]
+    protected final float[] gradientFractionArray = new float[]
     {
         0.0f,
         0.4999f,
@@ -59,7 +61,23 @@ public class GradientPointer extends AbstractPointer
         1.0f
     };
 
-   private final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.35f);
+    protected Color[] primaryGradientColors = new Color[]
+    {
+        this.getPrimaryColor().getMediumLight(),
+        this.getPrimaryColor().getMediumLight(),
+        this.getPrimaryColor().getMediumDark(),
+        this.getPrimaryColor().getMediumDark()
+    };
+
+    protected Color[] secondaryGradientColors = new Color[]
+    {
+        this.getSecondaryColor().getMediumLight(),
+        this.getSecondaryColor().getMediumLight(),
+        this.getSecondaryColor().getMediumDark(),
+        this.getSecondaryColor().getMediumDark()
+    };
+
+    private final Color SHADOW_COLOR = new Color(0.0f, 0.0f, 0.0f, 0.35f);
 
     public GradientPointer()
     {
@@ -77,19 +95,46 @@ public class GradientPointer extends AbstractPointer
         super(other);
     }
 
-    protected Shape getShape(Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
-        return new GeneralPath();
+        return new Area();
     }
 
-    protected void paintShape(Graphics2D graphics, Dimension dimensions, Color[] gradientColorArray)
+    protected Area getSecondShape(Dimension dimensions)
     {
-        final Shape pointerShape = getShape(dimensions);
+        return new Area();
+    }
+
+    @Override
+    public void setPrimaryColor(GradientPalette primaryColor)
+    {
+        super.setPrimaryColor(primaryColor);
+
+        primaryGradientColors[0] = primaryColor.getMediumLight();
+        primaryGradientColors[1] = primaryColor.getMediumLight();
+        primaryGradientColors[2] = primaryColor.getMediumDark();
+        primaryGradientColors[3] = primaryColor.getMediumDark();
+    }
+
+    @Override
+    public void setSecondaryColor(GradientPalette secondaryColor)
+    {
+        super.setSecondaryColor(secondaryColor);
+
+        secondaryGradientColors[0] = secondaryColor.getMediumLight();
+        secondaryGradientColors[1] = secondaryColor.getMediumLight();
+        secondaryGradientColors[2] = secondaryColor.getMediumDark();
+        secondaryGradientColors[3] = secondaryColor.getMediumDark();
+    }
+
+    protected void paintShape(Graphics2D graphics, Dimension dimensions, Area shape, Color[] gradientColorArray)
+    {
+//        final Area pointerShape = getShape(dimensions);
 
 //        float magnitude = 1.0f - this.getRadiusPercent();
 //        Point2D tip = new Point2D.Double(0.5, magnitude);//0.14953);
-        final Point2D startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
-        final Point2D stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);
+        final Point2D startPoint = new Point2D.Double(shape.getBounds2D().getMinX(), 0);
+        final Point2D stopPoint = new Point2D.Double(shape.getBounds2D().getMaxX(), 0);
 
         if (PointSupport.pointsEqual(startPoint, stopPoint))
         {
@@ -97,9 +142,9 @@ public class GradientPointer extends AbstractPointer
         }
         final Paint gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
         graphics.setPaint(gradient);
-        graphics.fill(pointerShape);
+        graphics.fill(shape);
 
-        graphics.draw(pointerShape);
+        graphics.draw(shape);
 
     }
 
@@ -115,7 +160,7 @@ public class GradientPointer extends AbstractPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        final Color[] gradientColorArray = new Color[]
+        final Color[] shadowGradientColorArray = new Color[]
         {
             SHADOW_COLOR,
             SHADOW_COLOR,
@@ -123,7 +168,7 @@ public class GradientPointer extends AbstractPointer
             SHADOW_COLOR,
         };
         graphics.setColor(SHADOW_COLOR);
-        paintShape(graphics, dimensions, gradientColorArray);
+        paintShape(graphics, dimensions, getShape(dimensions), shadowGradientColorArray);
     }
 
     @Override
@@ -139,17 +184,21 @@ public class GradientPointer extends AbstractPointer
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        final Color[] gradientColorArray = new Color[]
-        {
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumLight(),
-            this.getPointerColor().getMediumDark(),
-            this.getPointerColor().getMediumDark()
-        };
-        graphics.setColor(this.getPointerColor().getMediumDark());
+        graphics.setColor(this.getPrimaryColor().getMediumDark());
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
 
-        paintShape(graphics, dimensions, gradientColorArray);
+        Area shape = getShape(dimensions);
+        
+        if (centerPostVisible)
+        {
+            double radius = dimensions.width * centerScale.getValue();
+            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
+            shape.add(pointerPost);
+        }
+        
+        paintShape(graphics, dimensions, shape, primaryGradientColors);
+
+        paintShape(graphics, dimensions, getSecondShape(dimensions), secondaryGradientColors);
 
         if (centerPinVisible)
         {

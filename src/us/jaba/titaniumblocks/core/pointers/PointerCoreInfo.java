@@ -39,10 +39,11 @@ import us.jaba.titaniumblocks.core.pointers.types.PencilPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedDualLinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.ArrowHeadPointer;
 import us.jaba.titaniumblocks.core.pointers.types.CompassPointer;
+import us.jaba.titaniumblocks.core.pointers.types.LineWithPaddleTailPointer;
 import us.jaba.titaniumblocks.core.pointers.types.OutLinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.PaddlePointer;
 import us.jaba.titaniumblocks.core.pointers.types.RoundedDashPointer;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedPointer;
+import us.jaba.titaniumblocks.core.pointers.types.TaperedPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedTailPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedThickPointer;
@@ -64,14 +65,16 @@ public class PointerCoreInfo
         CompassPointer.class,
         DualLinesPointer.class,
         LinePointer.class,
+        LineWithPaddleTailPointer.class,
         MonumentPointer.class,
+        NullPointer.class,
         OutLinePointer.class,
         PaddlePointer.class,
         Pencil2Pointer.class,
         PencilPointer.class,
         RoundedDashPointer.class,
         TaperedDualLinePointer.class,
-        TaperedRoundedPointer.class,
+        TaperedPointer.class,
         TaperedRoundedTailPointer.class,
         TaperedThickFlatPointer.class,
         TaperedThickPointer.class,

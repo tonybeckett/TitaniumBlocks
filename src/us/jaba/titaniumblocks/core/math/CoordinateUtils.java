@@ -248,7 +248,6 @@ public class CoordinateUtils
         {
             n = i / 10.0;
             angle = calcGraphicsAngle(n, circularLayout2);
-            System.out.println(String.format("%f %f %f", n, angle, toDegrees(angle)));
         }
 
     }

@@ -36,7 +36,7 @@ import java.awt.geom.Point2D;
  *
  * @author tbeckett
  */
-public interface RoundFrameEffectPainter
+public interface RoundFrameEffect
 {
 
     public void paint(final Graphics2D graphics, final Dimension dimensions, final Area outerFrame, Point2D center);

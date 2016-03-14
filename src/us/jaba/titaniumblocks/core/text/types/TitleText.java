@@ -33,6 +33,7 @@ import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.text.Text;
@@ -47,11 +48,12 @@ public class TitleText extends Text
     private final FontRenderContext RENDER_CONTEXT = new FontRenderContext(null, true, true);
 
     private String value = "Title";
-
+    private Scale scale;
+    
     public TitleText()
     {
         super(BaseFont.DEFAULT_FONT, new Standard().getTextColor());
-
+        scale = new Scale(0.45);
     }
 
     @Override
@@ -59,7 +61,10 @@ public class TitleText extends Text
     {
         final double imageWidth = dimensions.getWidth();
         final double imageHeight = dimensions.getHeight();
-
+        final int centerY = (int) (imageHeight / 2.0);
+        final double maxY = (int) (imageHeight / 2.0);
+        final int yPos = (int) (this.scale.getValue() * maxY);
+        
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         graphics.setColor(getColor());
@@ -70,7 +75,7 @@ public class TitleText extends Text
         boundary.setFrame(stringLayout.getBounds());
         graphics.drawString(value,
                 (int) ((imageWidth / 2.0) - (stringLayout.getBounds().getWidth()/2)),
-                (int) (imageHeight / 3.25)
+                centerY - yPos //(int) (imageHeight / 3.25)
         );
 
     }
@@ -83,6 +88,17 @@ public class TitleText extends Text
     public void setValue(String value)
     {
         this.value = value;
+        changed();
+    }
+
+    public Scale getScale()
+    {
+        return scale;
+    }
+
+    public void setScale(Scale scale)
+    {
+        this.scale = scale;
         changed();
     }
 

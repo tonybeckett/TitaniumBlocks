@@ -33,6 +33,7 @@ import java.awt.Paint;
 import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.geom.Ellipse2D;
+import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.OverlayPainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
@@ -80,6 +81,15 @@ public class CarbonBackdrop extends AbstractRoundBackdrop
     public OverlayPainter getOverlayPainter()
     {
         return overlayPainter;
+    }
+    
+    @Override
+    public void setBackgroundColor(BackdropColorModel backgroundColorModel)
+    {
+        super.setBackgroundColor(backgroundColorModel); 
+        
+        painter.setColor(backgroundColorModel.getGradientStartColor());
+         
     }
 
     @Override
