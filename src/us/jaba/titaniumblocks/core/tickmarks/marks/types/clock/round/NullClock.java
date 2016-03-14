@@ -40,10 +40,7 @@ public class NullClock extends AbstractRadialTickmark
         //intentional
     }
 
-    public NullClock(String[] text, double textScaleFactor)
-    {
-        //intentional
-    }
+   
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)

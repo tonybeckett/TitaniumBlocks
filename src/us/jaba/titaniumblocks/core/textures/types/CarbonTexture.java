@@ -110,7 +110,7 @@ public class CarbonTexture extends Texture
 
     public void setColor(Color gradientStartColor)
     {
-        
+        //intentional
     }
 
     @Override

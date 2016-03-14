@@ -27,12 +27,8 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.pointers.BasicPointer;
