@@ -43,9 +43,9 @@ public class TickmarkImageFactory extends CoreImageFactory
     }
 
     @Override
-    public Tickmark getTickmark()
+    public Tickmark getPainter()
     {
-        return (Tickmark) super.getTickmark();
+        return (Tickmark) super.getPainter();
     }
 
 }

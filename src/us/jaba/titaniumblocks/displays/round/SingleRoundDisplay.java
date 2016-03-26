@@ -198,7 +198,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         graphics.drawImage(image, 0, 0, null);
 
         float fontSize = (float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor);
-        valueTextImage.getTickmark().setFontSize(fontSize);
+        valueTextImage.getPainter().setFontSize(fontSize);
 
         paintPreText(graphics, image, interiorDim, offset);
 
@@ -244,15 +244,15 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public Color getColor()
     {
-        return valueTextImage.getTickmark().getColor();
+        return valueTextImage.getPainter().getColor();
     }
 
     public void setColor(Color c)
     {
         doubleValueText.setColor(c);
-        titleTextImage.getTickmark().setColor(c);
-        unitsTextImage.getTickmark().setColor(c);
-        tbTextImage.getTickmark().setColor(c);
+        titleTextImage.getPainter().setColor(c);
+        unitsTextImage.getPainter().setColor(c);
+        tbTextImage.getPainter().setColor(c);
 
         tickmarkModel.setMajorColor(c);
         tickmarkModel.setMediumColor(c);
@@ -263,12 +263,12 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public Text getValueText()
     {
-        return valueTextImage.getTickmark();
+        return valueTextImage.getPainter();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getTickmark();
+        return frontcoverImage.getPainter();
     }
 
     public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
@@ -291,7 +291,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getTickmark().setPrimaryColor(cp);
+        pointerImage.getPainter().setPrimaryColor(cp);
     }
 
 }

@@ -75,7 +75,7 @@ public class CoreImageFactory
         }
     }
 
-    public Painter getTickmark()
+    public Painter getPainter()
     {
         return painter;
     }

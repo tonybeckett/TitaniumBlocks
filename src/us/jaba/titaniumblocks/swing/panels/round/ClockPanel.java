@@ -46,6 +46,7 @@ import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.displays.round.ClockDisplay;
 
 /**
@@ -280,7 +281,7 @@ public class ClockPanel extends JComponent
         return singleGauge.getTickmark();
     }
 
-    public void setTickmark(Tickmark tm)
+    public void setTickmark(AbstractRadialTickmark tm)
     {
         singleGauge.setTickmark(tm);
     }

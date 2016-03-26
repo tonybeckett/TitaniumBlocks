@@ -29,15 +29,18 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
 import java.awt.BasicStroke;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.font.FontSupport;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class NumbersCirclesDash extends AbstractRadialTickmark
 {
-
-    private double textScale = 0.085;
+ private static final double DEFAULT_TEXT_POSITION = 0.79;
+    private static final double DEFAULT_TEXT_SCALE = 0.085;
     private String[] arrayOfText =
     {
         "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
@@ -45,13 +48,16 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
 
     public NumbersCirclesDash()
     {
-          //intentional
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(DEFAULT_TEXT_SCALE));
     }
 
     public NumbersCirclesDash(String[] text, double textScaleFactor)
     {
+         super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
+
         this.arrayOfText = text;
-        textScale = textScaleFactor;
+         
+       this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
 
     }
 
@@ -61,21 +67,22 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
         majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
-        graphics.setFont(font.deriveFont((float) (textScale * dimensions.getWidth())));
+        graphics.setFont(getFont().deriveFont( (float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.79, 0.0, 30, arrayOfText);
+        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.25, radius * 0.55, 0.0, 90.0, 4);
-        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.935);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.25, tickRadius * 0.55, 0.0, 90.0, 4);
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), tickRadius * 0.935);
 
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.650, radius * 0.008, 0.0, 30.0 / 5.0, true, 60);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.650, radius * 0.015, 0.0, 30.0, true, 12);
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.008, 0.0, 30.0 / 5.0, true, 60);
+        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.015, 0.0, 30.0, true, 12);
 
         graphics.dispose();
 

@@ -30,20 +30,16 @@ package us.jaba.titaniumblocks.core.frames.types.round;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.HSLColor;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class GenericRoundFrame extends RoundFrame
+public class BasicRoundFrame extends RoundFrame
 {
 
     private float[] fractionArray =
@@ -86,8 +82,8 @@ public class GenericRoundFrame extends RoundFrame
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+//        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
 
         outerArea.subtract(subtractArea);
         graphics.setPaint(outerFrameColor);
@@ -95,9 +91,9 @@ public class GenericRoundFrame extends RoundFrame
 
         mainArea.subtract(subtractArea);
 
-        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint gPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, primaryColorArray);
-        graphics.setPaint(gPaint);
+//        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+//        Paint gPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, primaryColorArray);
+        graphics.setPaint(this.getPrimaryColor());
         graphics.fill(mainArea);
 
         innerArea.subtract(subtractArea);

@@ -49,7 +49,7 @@ public class LcdSinglePreUnitsDisplay extends LcdSingleDisplay
     public LcdSinglePreUnitsDisplay()
     {
         super();
-        valueTextImage.getTickmark().setFont(DigitalFont.getInstance());
+        valueTextImage.getPainter().setFont(DigitalFont.getInstance());
 
         Font unitFont = DEFAULT_FONT;
         StringPreUnitsText dvt = new StringPreUnitsText("$");
@@ -57,7 +57,7 @@ public class LcdSinglePreUnitsDisplay extends LcdSingleDisplay
         dvt.setRightOffsetFactor(0.05);
         unitTextImage = new TextImageFactory(dvt);
 //        valueTextImage.getTickmark().setRightOffsetFactor(0.25);
-        unitTextImage.getTickmark().setFont(DigitalFont.getInstance());
+        unitTextImage.getPainter().setFont(DigitalFont.getInstance());
     }
 
     @Override
@@ -65,8 +65,8 @@ public class LcdSinglePreUnitsDisplay extends LcdSingleDisplay
     {
         super.paintPreText(graphics, image, interiorDim, offset);
 //        valueTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() * 0.67f));
-        unitTextImage.getTickmark().setFontSize(valueTextImage.getTickmark().getFont().getSize());
-        unitTextImage.getTickmark().setColor(this.getColor());
+        unitTextImage.getPainter().setFontSize(valueTextImage.getPainter().getFont().getSize());
+        unitTextImage.getPainter().setColor(this.getColor());
 
         BufferedImage image2 = unitTextImage.build(interiorDim);
         graphics.drawImage(image2, offset, offset, null);
@@ -74,7 +74,7 @@ public class LcdSinglePreUnitsDisplay extends LcdSingleDisplay
 
     public Text getUnitTextPainter()
     {
-        return unitTextImage.getTickmark();
+        return unitTextImage.getPainter();
     }
 
     public void setUnitTextPainter(Text unitTextPainter)

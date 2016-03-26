@@ -41,6 +41,7 @@ public abstract class AbstractPointer extends Pointer
     protected boolean centerPostVisible;
     protected Scale centerScale;
     protected Scale frontScale;
+    protected boolean threeD = true;
 
     private GradientPalette primaryColor;
     private float radiusPercent;
@@ -65,9 +66,11 @@ public abstract class AbstractPointer extends Pointer
         frontScale = new Scale(1.0);
         tailScale = new Scale(1.0);
         centerPostVisible = false;
-        centerScale = new Scale(0.03);
+        centerScale = new Scale(0.08);
         centerPinVisible = false;
         this.secondaryColor = secondaryColor;
+        this.shadowActive = true;
+
     }
 
     public AbstractPointer(AbstractPointer other)
@@ -80,6 +83,7 @@ public abstract class AbstractPointer extends Pointer
         this.tailScale = other.tailScale;
         this.centerPinVisible = other.centerPinVisible;
         this.secondaryColor = other.secondaryColor;
+        this.shadowActive = other.shadowActive;
     }
 
     public void copy(AbstractPointer other)
@@ -94,11 +98,13 @@ public abstract class AbstractPointer extends Pointer
         this.tailScale = other.tailScale;
         this.centerPinVisible = other.centerPinVisible;
         this.secondaryColor = other.secondaryColor;
+        this.shadowActive = other.shadowActive;
     }
 
     public void setCenterPostEnable(boolean centerPost)
     {
         this.centerPostVisible = centerPost;
+        changed();
     }
 
     public Scale getCenterScale()
@@ -109,12 +115,14 @@ public abstract class AbstractPointer extends Pointer
     public void setCenterScale(Scale centerScale)
     {
         this.centerScale = centerScale;
+        changed();
     }
 
     @Override
     public void setFrontScale(Scale scale)
     {
         this.frontScale = scale;
+        changed();
     }
 
     public GradientPalette getPrimaryColor()
@@ -190,10 +198,26 @@ public abstract class AbstractPointer extends Pointer
         changed();
     }
 
+    public boolean isThreeD()
+    {
+        return threeD;
+    }
+
+    public void setThreeD(boolean threeD)
+    {
+        this.threeD = threeD;
+        changed();
+    }
+
+
     @Override
     public String toString()
     {
-        return "AbstractPointer{" + "centerPostVisible=" + centerPostVisible + ", centerScale=" + centerScale + ", frontScale=" + frontScale + ", pointerColor=" + primaryColor + ", radiusPercent=" + radiusPercent + ", tailScale=" + tailScale + ", centerPinVisible=" + centerPinVisible + '}';
+        return "AbstractPointer{" + "centerPostVisible=" + centerPostVisible + ", centerScale=" + centerScale + ", frontScale=" + frontScale + ", threeD=" + threeD + ", primaryColor=" + primaryColor + ", radiusPercent=" + radiusPercent + ", tailScale=" + tailScale + ", centerPinVisible=" + centerPinVisible + ", secondaryColor=" + secondaryColor + ", shadowActive=" + shadowActive + '}';
     }
+
+   
+
+   
 
 }

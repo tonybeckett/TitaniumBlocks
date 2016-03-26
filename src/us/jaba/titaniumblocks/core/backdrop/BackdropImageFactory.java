@@ -42,9 +42,9 @@ public class BackdropImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public Backdrop getTickmark()
+    public Backdrop getPainter()
     {
-        return (Backdrop) super.getTickmark();
+        return (Backdrop) super.getPainter();
     }
 
 }

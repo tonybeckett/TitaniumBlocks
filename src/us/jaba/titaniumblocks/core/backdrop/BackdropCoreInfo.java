@@ -58,6 +58,8 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.StainlessGrindedBM
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.TransparentBModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.YellowBModel;
+import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
+import us.jaba.titaniumblocks.core.backdrop.types.round.BrushedMetalBackdrop;
 
 /**
  *
@@ -112,7 +114,8 @@ public class BackdropCoreInfo
 
     public static final Class<?>[] ROUND_BACKDROP_MODELS =
     {
-        us.jaba.titaniumblocks.core.backdrop.types.round.BrushedMetalBackdrop.class,
+        BasicBackdrop.class,
+        BrushedMetalBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.CarbonBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.NoisyPlasticBackdrop.class,

@@ -42,9 +42,9 @@ public class SixteenSegmentDisplayImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public SixteenSegmentDisplay getTickmark()
+    public SixteenSegmentDisplay getPainter()
     {
-        return (SixteenSegmentDisplay) super.getTickmark();  
+        return (SixteenSegmentDisplay) super.getPainter();  
     }
     
 }

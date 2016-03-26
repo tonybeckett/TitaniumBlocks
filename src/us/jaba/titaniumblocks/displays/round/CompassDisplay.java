@@ -194,19 +194,19 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
   
     public Color getColor()
     {
-        return valueTextImage.getTickmark().getColor();
+        return valueTextImage.getPainter().getColor();
     }
 
     public void setColor(Color c)
     {
 
-        tbTextImage.getTickmark().setColor(c);
+        tbTextImage.getPainter().setColor(c);
 
     }
 
     public Backdrop getBackdropPainter()
     {
-        return backdropImage.getTickmark();
+        return backdropImage.getPainter();
     }
 
     public FrameModel getFramePainter()
@@ -216,12 +216,12 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Text getTextPainter()
     {
-        return valueTextImage.getTickmark();
+        return valueTextImage.getPainter();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getTickmark();
+        return frontcoverImage.getPainter();
     }
 
     public void setBackdropPainter(Backdrop painter)
@@ -252,7 +252,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setValueTextPainter(Text valueTextPainter)
     {
-        valueTextPainter.setColor(valueTextImage.getTickmark().getColor());
+        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
         this.valueTextImage = new TextImageFactory(valueTextPainter);
     }
 
@@ -270,7 +270,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setPointerGradient(GradientPalette cp)
     {
-        pointerImage.getTickmark().setPrimaryColor(cp);
+        pointerImage.getPainter().setPrimaryColor(cp);
     }
 
 }

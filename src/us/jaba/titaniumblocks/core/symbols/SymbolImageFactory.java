@@ -19,9 +19,9 @@ public class SymbolImageFactory extends CoreImageFactory
     }
 
     
-    public Symbol getTickmark()
+    public Symbol getPainter()
     {
-        return (Symbol) super.getTickmark(); 
+        return (Symbol) super.getPainter(); 
     }
     
     

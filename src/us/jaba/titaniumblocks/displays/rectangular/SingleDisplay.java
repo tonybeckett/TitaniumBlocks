@@ -101,11 +101,11 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
         image = linearFrameImage.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = linearFrameImage.getTickmark().getFrameThickness();
-        Dimension interiorDim = linearFrameImage.getTickmark().getInteriorDimension();
+        int offset = linearFrameImage.getPainter().getFrameThickness();
+        Dimension interiorDim = linearFrameImage.getPainter().getInteriorDimension();
 
 //        valueTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() * fontScaleFactor));
-        valueTextImage.getTickmark().setFontSize((float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor));
+        valueTextImage.getPainter().setFontSize((float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor));
 
         paintPreText(graphics, image, interiorDim, offset);
 
@@ -125,32 +125,32 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
     public Color getColor()
     {
-        return valueTextImage.getTickmark().getColor();
+        return valueTextImage.getPainter().getColor();
     }
 
     public void setColor(Color c)
     {
-        valueTextImage.getTickmark().setColor(c);
+        valueTextImage.getPainter().setColor(c);
     }
 
     public Backdrop getBackgroundPainter()
     {
-        return backgroundImage.getTickmark();
+        return backgroundImage.getPainter();
     }
 
     public RectangularFrame getFramePainter()
     {
-        return linearFrameImage.getTickmark();
+        return linearFrameImage.getPainter();
     }
 
     public Text getTextPainter()
     {
-        return valueTextImage.getTickmark();
+        return valueTextImage.getPainter();
     }
 
     public Frontcover getPainter()
     {
-        return foregroundImage.getTickmark();
+        return foregroundImage.getPainter();
     }
 
     public void setBackgroundPainter(Backdrop painter)
@@ -175,7 +175,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
     public void setValueTextPainter(Text valueTextPainter)
     {
-        valueTextPainter.setColor(valueTextImage.getTickmark().getColor());
+        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
         this.valueTextImage = new TextImageFactory(valueTextPainter);
     }
 

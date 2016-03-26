@@ -43,7 +43,7 @@ public class BasicClock extends AbstractRadialTickmark
         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 10.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 15.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float radius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);

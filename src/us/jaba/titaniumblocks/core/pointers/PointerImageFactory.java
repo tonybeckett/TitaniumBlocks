@@ -16,9 +16,9 @@ public class PointerImageFactory extends CoreImageFactory
     }
 
     @Override
-    public Pointer getTickmark()
+    public Pointer getPainter()
     {
-        return (Pointer) super.getTickmark();
+        return (Pointer) super.getPainter();
     }
 
 }

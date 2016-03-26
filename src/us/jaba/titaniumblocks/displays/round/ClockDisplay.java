@@ -66,6 +66,7 @@ import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
 import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
@@ -294,7 +295,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Color getColor()
     {
-        return valueTextImage.getTickmark().getColor();
+        return valueTextImage.getPainter().getColor();
     }
 
     public void setColor(Color c)
@@ -305,13 +306,13 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Backdrop getBackdropPainter()
     {
-        return backdropImage.getTickmark();
+        return backdropImage.getPainter();
     }
 
     
     public Text getTextPainter()
     {
-        return valueTextImage.getTickmark();
+        return valueTextImage.getPainter();
     }
 
    
@@ -328,12 +329,12 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setPointerGradient(GradientPalette cp)
     {
-        hourPointerImage.getTickmark().setPrimaryColor(cp);
+        hourPointerImage.getPainter().setPrimaryColor(cp);
     }
 
     public Pointer getHourPointer()
     {
-        return hourPointerImage.getTickmark();
+        return hourPointerImage.getPainter();
     }
 
     public void setHourPointer(Pointer hourPointer)
@@ -344,7 +345,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Pointer getMinutePointer()
     {
-        return minutePointerImage.getTickmark();
+        return minutePointerImage.getPainter();
     }
 
     public void setMinutePointer(Pointer minutePointer)
@@ -355,7 +356,7 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public Pointer getSecondsPointer()
     {
-        return secondsPointerImage.getTickmark();
+        return secondsPointerImage.getPainter();
     }
 
     public void setSecondsPointer(Pointer secondsPointer)
@@ -364,12 +365,12 @@ public class ClockDisplay extends AbstractRoundDisplay implements RoundDisplay
         this.secShadowPointerImage.setPainter(secondsPointer);
     }
 
-    public Tickmark getTickmark()
+    public AbstractRadialTickmark getTickmark()
     {
-        return tickmarkImage.getTickmark();
+        return (AbstractRadialTickmark) tickmarkImage.getPainter();
     }
 
-    public void setTickmark(Tickmark tm)
+    public void setTickmark(AbstractRadialTickmark tm)
     {
         tickmarkImage.setPainter(tm);
     }

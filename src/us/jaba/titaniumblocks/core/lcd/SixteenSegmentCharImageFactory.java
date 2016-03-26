@@ -42,9 +42,9 @@ public class SixteenSegmentCharImageFactory extends CoreImageFactory
         super(painter);
     }
 
-    public SixteenSegmentCharacter getTickmark()
+    public SixteenSegmentCharacter getPainter()
     {
-        return (SixteenSegmentCharacter) super.getTickmark();  
+        return (SixteenSegmentCharacter) super.getPainter();  
     }
     
 }

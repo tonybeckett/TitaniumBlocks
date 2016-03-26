@@ -46,9 +46,9 @@ public class RectangularIndicatorImageFactory extends CoreImageFactory
     }
 
     @Override
-    public RectangularIndicator getTickmark()
+    public RectangularIndicator getPainter()
     {
-        return (RectangularIndicator) super.getTickmark();
+        return (RectangularIndicator) super.getPainter();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class RectangularIndicatorImageFactory extends CoreImageFactory
     {
         super.applyPaint(result, dimensions);
         final Graphics2D graphics = (Graphics2D) result.createGraphics();
-        this.getTickmark().paint(graphics, dimensions);
+        this.getPainter().paint(graphics, dimensions);
     }
 
    

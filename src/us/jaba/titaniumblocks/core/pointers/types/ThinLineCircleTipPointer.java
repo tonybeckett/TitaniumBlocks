@@ -35,7 +35,6 @@ import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
@@ -46,11 +45,11 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 public class ThinLineCircleTipPointer extends GradientPointer
 {
 
-    private BasicStroke stroke;
+    private BasicStroke stroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);;
 
     public ThinLineCircleTipPointer()
     {
-        this(new PureRed());
+       
     }
 
     public ThinLineCircleTipPointer(GradientPalette pointerColor)
@@ -64,6 +63,7 @@ public class ThinLineCircleTipPointer extends GradientPointer
     public ThinLineCircleTipPointer(GradientPointer other)
     {
         super(other);
+        
     }
 
     @Override

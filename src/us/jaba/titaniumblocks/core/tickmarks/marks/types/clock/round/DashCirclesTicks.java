@@ -36,7 +36,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class DashCirclesTicks extends AbstractRadialTickmark
 {
-
+ private static final double DEFAULT_TEXT_POSITION = 0.85;
     public DashCirclesTicks()
     {
         //intentional
@@ -48,20 +48,20 @@ public class DashCirclesTicks extends AbstractRadialTickmark
         mediumStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.9, radius * 0.95, 0.0, 6.0, 60);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.9, tickRadius * 0.95, 0.0, 6.0, 60);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
         for (int i = 0; i < 4; i++)
         {
-            ShapeUtils.placeCircleOnRadius(graphics, centerPoint, radius * 0.750, radius * 0.075, (90.0 * i) + 30.0, 30.0, false, 2);
+            ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.750, tickRadius * 0.075, (90.0 * i) + 30.0, 30.0, false, 2);
         }
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.85, 0, 90.0, 4);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.65, tickRadius * 0.85, 0, 90.0, 4);
 
         graphics.dispose();
 

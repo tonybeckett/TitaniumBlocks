@@ -39,6 +39,8 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
 public abstract class Pointer extends CoreModel
 {
 
+    protected boolean shadowActive;
+
     private boolean shadowChanged = true;
 
     public void copy(Pointer hourPointer)
@@ -51,6 +53,17 @@ public abstract class Pointer extends CoreModel
     public abstract void setFrontScale(us.jaba.titaniumblocks.core.Scale scale);
 
     public abstract void setTailScale(us.jaba.titaniumblocks.core.Scale scale);
+
+    public boolean isShadowActive()
+    {
+        return shadowActive;
+    }
+
+    public void setShadowActive(boolean shadowActive)
+    {
+        this.shadowActive = shadowActive;
+        changed();
+    }
 
     public void paintShadow(Graphics2D graphics, Dimension dimensions)
     {

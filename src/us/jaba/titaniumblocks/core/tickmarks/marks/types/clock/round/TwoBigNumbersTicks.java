@@ -31,6 +31,8 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.font.FontSupport;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
@@ -38,7 +40,9 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 public class TwoBigNumbersTicks extends AbstractRadialTickmark
 {
 
-    private double textScale = 0.115;
+    private static final double DEFAULT_TEXT_POSITION = 0.775;
+
+    private static final double DEFAULT_TEXT_SCALE = 0.115;
     private String[] arrayOfText =
     {
         "12", "6"
@@ -56,13 +60,16 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
 
     public TwoBigNumbersTicks()
     {
-          //intentional
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(DEFAULT_TEXT_SCALE));
     }
 
     public TwoBigNumbersTicks(String[] text, double textScaleFactor)
     {
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
+
         this.arrayOfText = text;
-        textScale = textScaleFactor;
+        
+        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
     }
 
     @Override
@@ -71,8 +78,9 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
         majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
-        graphics.setFont(font.deriveFont(Font.PLAIN, (float) (textScale * dimensions.getWidth())));
+        graphics.setFont(getFont().deriveFont((float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
@@ -81,14 +89,15 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.875, radius * 0.95, 30.0, 30.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.875, radius * 0.95, 120.0, 30.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.875, radius * 0.95, 210.0, 30.0, 5);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.875, tickRadius * 0.95, 30.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.875, tickRadius * 0.95, 120.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.875, tickRadius * 0.95, 210.0, 30.0, 5);
 
-        graphics.setFont(font.deriveFont(Font.PLAIN, (float) (textScale * dimensions.getWidth() * 0.45)));
-        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * 0.775, 30.0, 30.0, arrayOfText2);
+         graphics.setFont(getFont().deriveFont((float) ( 0.45 *this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
-        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * 0.775, 210.0, 30, arrayOfText3);
+        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * textPositionScale.getValue(), 30.0, 30.0, arrayOfText2);
+
+        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * textPositionScale.getValue(), 210.0, 30, arrayOfText3);
 
         graphics.dispose();
 

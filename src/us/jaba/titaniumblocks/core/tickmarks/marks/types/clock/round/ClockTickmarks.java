@@ -45,19 +45,19 @@ public class ClockTickmarks extends AbstractRadialTickmark
         minorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 5.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 10.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 15.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.92, radius * 0.995, 0.0, 6.0, 60);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.92, tickRadius * 0.995, 0.0, 6.0, 60);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.84, radius * 0.995, 0.0, 30.0, 12);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.84, tickRadius * 0.995, 0.0, 30.0, 12);
 
         graphics.dispose();
 
     }
-
 
 }

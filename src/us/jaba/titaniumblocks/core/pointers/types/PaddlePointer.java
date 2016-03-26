@@ -53,7 +53,6 @@ public class PaddlePointer extends BasicPointer
     {
         super(pointerColor);
         this.tailScale = new Scale(0.03);
-
     }
 
     public PaddlePointer(BasicPointer other)

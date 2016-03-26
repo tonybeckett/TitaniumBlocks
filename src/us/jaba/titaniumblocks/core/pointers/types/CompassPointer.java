@@ -96,7 +96,7 @@ public class CompassPointer extends GradientPointer
         final GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
 
-        pointerShape.closePath();
+//        pointerShape.closePath();
 
         return new Area(pointerShape);
     }

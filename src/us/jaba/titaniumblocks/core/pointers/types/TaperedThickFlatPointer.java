@@ -56,7 +56,6 @@ public class TaperedThickFlatPointer extends GradientPointer
 
     public TaperedThickFlatPointer()
     {
-        this(new Aluminum());
     }
 
     public TaperedThickFlatPointer(GradientPalette pointerColor)

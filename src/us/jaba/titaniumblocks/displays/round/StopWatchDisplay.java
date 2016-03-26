@@ -272,7 +272,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public Color getColor()
     {
-        return valueTextImage.getTickmark().getColor();
+        return valueTextImage.getPainter().getColor();
     }
 
     public void setColor(Color c)
@@ -283,7 +283,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public Backdrop getBackdropPainter()
     {
-        return backdropImage.getTickmark();
+        return backdropImage.getPainter();
     }
 
     public FrameModel getFramePainter()
@@ -293,12 +293,12 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public Text getTextPainter()
     {
-        return valueTextImage.getTickmark();
+        return valueTextImage.getPainter();
     }
 
     public Frontcover getPainter()
     {
-        return frontcoverImage.getTickmark();
+        return frontcoverImage.getPainter();
     }
 
 //    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
@@ -313,7 +313,7 @@ public class StopWatchDisplay extends AbstractRoundDisplay implements RoundDispl
 
     public void setPointerGradient(GradientPalette cp)
     {
-        hourPointerImage.getTickmark().setPrimaryColor(cp);
+        hourPointerImage.getPainter().setPrimaryColor(cp);
     }
 
     public void setTickmarks(Tickmark cm)

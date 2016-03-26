@@ -44,6 +44,7 @@ import us.jaba.titaniumblocks.core.frames.types.rectangular.SteelLinearFrame;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.TiltedBlackLinearFrame;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.TiltedGrayLinearFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.AnthraciteRoundFrame;
+import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.BlackMetalRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.BrassRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.ChromeRoundFrame;
@@ -67,6 +68,7 @@ public class FramesCoreInfo
     public static final Class<?>[] ROUND_MODELS =
     {
         AnthraciteRoundFrame.class,
+        BasicRoundFrame.class,
         BlackMetalRoundFrame.class,
         BrassRoundFrame.class,
         ChromeRoundFrame.class,

@@ -30,6 +30,8 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.font.FontSupport;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
@@ -37,7 +39,8 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 public class RomanNumbersOut extends AbstractRadialTickmark
 {
 
-    private double textScale = 0.12;
+    private static final double DEFAULT_TEXT_POSITION = 0.915;
+    private static final double DEFAULT_TEXT_SCALE = 0.12;
     private String[] arrayOfText =
     {
         "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
@@ -45,13 +48,17 @@ public class RomanNumbersOut extends AbstractRadialTickmark
 
     public RomanNumbersOut()
     {
-  //intentional
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(DEFAULT_TEXT_SCALE));
     }
 
     public RomanNumbersOut(String[] text, double textScaleFactor)
     {
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
+
         this.arrayOfText = text;
-        textScale = textScaleFactor;
+     
+        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
+
     }
 
     @Override
@@ -60,12 +67,12 @@ public class RomanNumbersOut extends AbstractRadialTickmark
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
 
-        graphics.setFont(font.deriveFont(Font.PLAIN, (float) (textScale * dimensions.getWidth())));
+        graphics.setFont(getFont().deriveFont((float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * 0.915, 0.0, 30, arrayOfText);
+        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
 
         graphics.dispose();
 

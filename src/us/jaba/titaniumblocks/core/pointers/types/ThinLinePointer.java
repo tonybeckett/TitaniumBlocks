@@ -44,7 +44,7 @@ public class ThinLinePointer extends GradientPointer
 
     public ThinLinePointer()
     {
-        this(new PureRed());
+      
     }
 
     public ThinLinePointer(GradientPalette pointerColor)

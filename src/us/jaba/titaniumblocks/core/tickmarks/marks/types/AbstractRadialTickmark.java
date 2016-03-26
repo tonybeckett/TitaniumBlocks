@@ -34,6 +34,7 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.Scale;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.NORTH;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.SOUTH_WEST;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
@@ -47,15 +48,25 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.types.radial.RadialLineTicks;
  */
 public class AbstractRadialTickmark extends Tickmark
 {
+
     private Point2D centerOffset = new Point2D.Double(0.0, 0.0);
     protected Point2D centerPoint = new Point2D.Double(10, 10);
-
+    protected Scale textPositionScale = new Scale(1.0);
+    protected Scale textSizeScale = new Scale(1.0);
+    protected Scale ticksPositionScale = new Scale(1.0);
     protected RadialRangeModel rangeModel;
     protected RadialSizeModel sizeModel = new RadialSizeModel();
     protected RadialTickModel radialTickModel = new RadialLineTicks();
 
     public AbstractRadialTickmark()
     {
+        this(new Scale(1.0), new Scale(1.0));
+    }
+
+    public AbstractRadialTickmark(Scale textPos, Scale sizeScale)
+    {
+        textPositionScale = textPos;
+        textSizeScale = sizeScale;
         rangeModel = new RadialRangeModel(centerPoint, sizeModel.getRadius(), SOUTH_WEST, NORTH);
         rangeModel.setStartValue(DEFAULT_MIN_VALUE);
         rangeModel.setEndValue(DEFAULT_MAX_VALUE);
@@ -64,6 +75,14 @@ public class AbstractRadialTickmark extends Tickmark
     public AbstractRadialTickmark(RadialRangeModel radialRangeModel)
     {
         this.rangeModel = radialRangeModel;
+    }
+       
+     
+    public void copy(AbstractRadialTickmark other)
+    {
+        super.copy(other); 
+ //       this.textPositionScale = other.textPositionScale;  Position is design dependent
+        this.textSizeScale = other.textSizeScale;
     }
 
     @Override
@@ -83,7 +102,6 @@ public class AbstractRadialTickmark extends Tickmark
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-    
         GeneralPath baselinePath = new GeneralPath();
         baselinePath.setWindingRule(Path2D.WIND_EVEN_ODD);
 
@@ -151,5 +169,37 @@ public class AbstractRadialTickmark extends Tickmark
         changed();
     }
 
+    public Scale getTextPositionScale()
+    {
+        return textPositionScale;
+    }
+
+    public void setTextPositionScale(Scale textPositionScale)
+    {
+        this.textPositionScale = textPositionScale;
+        changed();
+    }
+
+    public Scale getTextSizeScale()
+    {
+        return textSizeScale;
+    }
+
+    public void setTextSizeScale(Scale textSizeScale)
+    {
+        this.textSizeScale = textSizeScale;
+        changed();
+    }
+
+    public Scale getTicksPositionScale()
+    {
+        return ticksPositionScale;
+    }
+
+    public void setTicksPositionScale(Scale ticksPositionScale)
+    {
+        this.ticksPositionScale = ticksPositionScale;
+        changed();
+    }
 
 }

@@ -43,20 +43,21 @@ public class OnlyTicksOn30 extends AbstractRadialTickmark
         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 4.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
         final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 30.0, 30.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 120.0, 30.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 210.0, 30.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 300.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 30.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 120.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 210.0, 30.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 300.0, 30.0, 2);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 0.0, 358.0, 1);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 0.0, 2.0, 1);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.975, 90.0, 180.0, 2);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.8, radius * 0.9, 180.0, 0.0, 1);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 0.0, 358.0, 1);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 0.0, 2.0, 1);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.975, 90.0, 180.0, 2);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.8, tickRadius * 0.9, 180.0, 0.0, 1);
 
         graphics.dispose();
 

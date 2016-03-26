@@ -41,9 +41,9 @@ public class ThresholdImageFactory extends CoreImageFactory
         super(pp);
     }
 
-    public ThresholdModel getTickmark()
+    public ThresholdModel getPainter()
     {
-        return (ThresholdModel) super.getTickmark(); 
+        return (ThresholdModel) super.getPainter(); 
     }
     
 }

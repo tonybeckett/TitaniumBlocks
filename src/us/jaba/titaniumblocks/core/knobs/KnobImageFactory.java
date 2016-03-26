@@ -20,9 +20,9 @@ public class KnobImageFactory extends CoreImageFactory
     }
 
     @Override
-    public KnobPainter getTickmark()
+    public KnobPainter getPainter()
     {
-        return (KnobPainter) super.getTickmark();
+        return (KnobPainter) super.getPainter();
     }
 
 }

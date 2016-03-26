@@ -42,9 +42,9 @@ public class PostImageFactory extends CoreImageFactory
     }
 
     @Override
-    public Post getTickmark()
+    public Post getPainter()
     {
-        return (Post) super.getTickmark();
+        return (Post) super.getPainter();
     }
     
     public void setPainter(Post p)

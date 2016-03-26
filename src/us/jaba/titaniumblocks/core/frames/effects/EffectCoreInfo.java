@@ -88,4 +88,10 @@ public class EffectCoreInfo
         return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
 
     }
+    
+    public static List getInstanceOfEachRound()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getRoundClasses());
+
+    }
 }

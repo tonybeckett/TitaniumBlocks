@@ -93,6 +93,9 @@ public class Tickmark extends CoreModel
         this.mediumColor = other.mediumColor;
         this.minorColor = other.minorColor;
         this.textColor = other.textColor;
+        this.font = other.font;
+        
+        
     }
 
     public Color getBaselineColor()

@@ -27,17 +27,17 @@ public class ShadowPointerImageFactory extends CoreImageFactory
     {
         final Graphics2D graphics2D = result.createGraphics();
 
-        if (this.getTickmark() != null)
+        if (this.getPainter() != null && this.getPainter().isShadowActive())
         {
-            this.getTickmark().paintShadow(graphics2D, dimensions);
+            this.getPainter().paintShadow(graphics2D, dimensions);
             graphics2D.dispose();
         }
     }
 
     @Override
-    public Pointer getTickmark()
+    public Pointer getPainter()
     {
-        return (Pointer) super.getTickmark();  
+        return (Pointer) super.getPainter();  
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ShadowPointerImageFactory extends CoreImageFactory
             return ImageSupport.DEFAULT_SMALL_IMAGE;
         }
 
-        if (this.getTickmark() != null && this.getTickmark().hasShadowChanged())
+        if (this.getPainter() != null && this.getPainter().hasShadowChanged())
         {
             result = ImageSupport.createImage(dimensions, Transparency.TRANSLUCENT);
 

@@ -20,9 +20,9 @@ public class GlowImageFactory extends CoreImageFactory
     }
 
  
-    public Glow getTickmark()
+    public Glow getPainter()
     {
-        return (Glow) super.getTickmark(); 
+        return (Glow) super.getPainter(); 
     }
     
 }

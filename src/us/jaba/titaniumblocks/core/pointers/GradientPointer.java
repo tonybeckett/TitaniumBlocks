@@ -127,10 +127,7 @@ public class GradientPointer extends AbstractPointer
 
     protected void paintShape(Graphics2D graphics, Dimension dimensions, Area shape, Color[] gradientColorArray)
     {
-//        final Area pointerShape = getShape(dimensions);
 
-//        float magnitude = 1.0f - this.getRadiusPercent();
-//        Point2D tip = new Point2D.Double(0.5, magnitude);//0.14953);
         final Point2D startPoint = new Point2D.Double(shape.getBounds2D().getMinX(), 0);
         final Point2D stopPoint = new Point2D.Double(shape.getBounds2D().getMaxX(), 0);
 
@@ -139,7 +136,13 @@ public class GradientPointer extends AbstractPointer
             stopPoint.setLocation(stopPoint.getX(), stopPoint.getY() + 1);
         }
         final Paint gradient = new LinearGradientPaint(startPoint, stopPoint, gradientFractionArray, gradientColorArray);
-        graphics.setPaint(gradient);
+        if (this.isThreeD())
+        {
+            graphics.setPaint(gradient);
+        } else
+        {
+            graphics.setPaint(gradientColorArray[0]);
+        }
         graphics.fill(shape);
 
         graphics.draw(shape);
@@ -186,14 +189,14 @@ public class GradientPointer extends AbstractPointer
         graphics.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER));
 
         Area shape = getShape(dimensions);
-        
+
         if (centerPostVisible)
         {
-            double radius = dimensions.width * centerScale.getValue();
+            double radius = dimensions.width / 4.0 * centerScale.getValue();
             Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
             shape.add(pointerPost);
         }
-        
+
         paintShape(graphics, dimensions, shape, primaryGradientColors);
 
         paintShape(graphics, dimensions, getSecondShape(dimensions), secondaryGradientColors);

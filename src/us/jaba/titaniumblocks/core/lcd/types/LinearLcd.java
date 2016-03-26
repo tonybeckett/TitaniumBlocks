@@ -113,20 +113,20 @@ public class LinearLcd extends CoreModel
 
         image = linearFrameImageBuilder.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = linearFrameImageBuilder.getTickmark().getFrameThickness();
-        Dimension interiorDim = linearFrameImageBuilder.getTickmark().getInteriorDimension();
+        int offset = linearFrameImageBuilder.getPainter().getFrameThickness();
+        Dimension interiorDim = linearFrameImageBuilder.getPainter().getInteriorDimension();
 
-        LcdBackdropModel p = (LcdBackdropModel) lcdBackgroundBuilder.getTickmark();
+        LcdBackdropModel p = (LcdBackdropModel) lcdBackgroundBuilder.getPainter();
 
         p.setPalette(new StandardGreenLcdPalette());
         image = lcdBackgroundBuilder.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
 
-        textImageBuilder.getTickmark().setColor(p.getPalette().getTextColor());
+        textImageBuilder.getPainter().setColor(p.getPalette().getTextColor());
 
         
-        textImageBuilder.getTickmark().setFont(DigitalFont.getInstance());
-        textImageBuilder.getTickmark().setFontSize((float) (interiorDim.getHeight() * 0.8f));
+        textImageBuilder.getPainter().setFont(DigitalFont.getInstance());
+        textImageBuilder.getPainter().setFontSize((float) (interiorDim.getHeight() * 0.8f));
         image = textImageBuilder.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
 
