@@ -120,7 +120,7 @@ public class BackgroundColorModelViewer extends javax.swing.JFrame
         }
 
         add(list);
-        this.setIconImage(Images.titaniumblocks16);
+ //       this.setIconImage(Images.titaniumblocks32);
         this.setSize(new Dimension(400, 800));
     }
 

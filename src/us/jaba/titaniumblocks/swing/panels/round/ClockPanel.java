@@ -105,6 +105,7 @@ public class ClockPanel extends JComponent
 
         singleGauge = new ClockDisplay(color);
         this.addComponentListener(componentListener);
+        this.setBackground(new Color(0,0,0,18));
     }
 
     public ClockDisplay getGauge()

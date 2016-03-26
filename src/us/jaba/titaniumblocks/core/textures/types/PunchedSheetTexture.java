@@ -1,7 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (c) 2015, Tony Beckett
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * The names of its contributors may not be used to endorse or promote
+ * products derived from this software without specific prior written
+ * permission.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
  */
 package us.jaba.titaniumblocks.core.textures.types;
 
@@ -31,6 +53,7 @@ public class PunchedSheetTexture extends Texture
     public void setBrushColor(Color brushColor)
     {
         this.brushColor = brushColor;
+        changed();
     }
 
     public PunchedSheetTexture()
@@ -41,6 +64,7 @@ public class PunchedSheetTexture extends Texture
     public PunchedSheetTexture(Color brushColor)
     {
         this.brushColor = brushColor;
+        changed();
     }
 
     private static final float[] FRACTIONS =
@@ -78,12 +102,6 @@ public class PunchedSheetTexture extends Texture
                 FRACTIONS,
                 COLORS
         );
-//        final Ellipse2D ULB = new Ellipse2D.Double(imageWidth * 0.0, imageHeight * 0.06666667014360428, imageWidth * 0.4000000059604645, imageHeight * 0.4000000059604645);
-//        final Point2D ULB_START = new Point2D.Double(0, ULB.getBounds2D().getMinY());
-//        final Point2D ULB_STOP = new Point2D.Double(0, ULB.getBounds2D().getMaxY());
-//        final LinearGradientPaint ULB_GRADIENT = new LinearGradientPaint(ULB_START, ULB_STOP, FRACTIONS, COLORS);
-//        graphics2D.setPaint(ULB_GRADIENT);
-//        graphics2D.fill(ULB);
 
         final Ellipse2D ULF = new Ellipse2D.Double(resultWidth * 0.0,
                 resultHeight * 0.0,
@@ -100,17 +118,9 @@ public class PunchedSheetTexture extends Texture
                 FRACTIONS,
                 COLORS
         );
-//        final Ellipse2D LRB = new Ellipse2D.Double(resultWidth * 0.46666666865348816, resultHeight * 0.5333333611488342, resultWidth * 0.4000000059604645, resultHeight * 0.3999999761581421);
-//        final Point2D LRB_START = new Point2D.Double(0, LRB.getBounds2D().getMinY());
-//        final Point2D LRB_STOP = new Point2D.Double(0, LRB.getBounds2D().getMaxY());
-//        final LinearGradientPaint LRB_GRADIENT = new LinearGradientPaint(LRB_START, LRB_STOP, FRACTIONS, COLORS);
-//        graphics2D.setPaint(LRB_GRADIENT);
-//        graphics2D.fill(LRB);
 
-        final Ellipse2D LRF = new Ellipse2D.Double(resultWidth * 0.46666666865348816,
-                resultHeight * 0.46666666865348816,
-                resultWidth * 0.4000000059604645,
-                resultHeight * 0.4000000059604645);
+        final Ellipse2D LRF = new Ellipse2D.Double(resultWidth * 0.46666, resultHeight * 0.46666,
+                resultWidth * 0.40, resultHeight * 0.40);
         graphics2D.setColor(darkColor);
         graphics2D.fill(LRF);
 

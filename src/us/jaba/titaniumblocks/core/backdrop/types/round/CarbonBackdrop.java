@@ -71,11 +71,13 @@ public class CarbonBackdrop extends AbstractRoundBackdrop
     public void setPainter(CarbonTexture painter)
     {
         this.painter = painter;
+        changed();
     }
 
     public void setOverlayPainter(OverlayPainter overlayPainter)
     {
         this.overlayPainter = overlayPainter;
+         changed();
     }
 
     public OverlayPainter getOverlayPainter()

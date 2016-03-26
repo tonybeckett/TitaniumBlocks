@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.types.AbstractRoundBackdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.NoisePainter;
 import us.jaba.titaniumblocks.core.textures.TextureImageBuilder;
@@ -65,11 +66,20 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
         builder = new TextureImageBuilder(painter);
     }
 
+      @Override
+    public void setBackgroundColor(BackdropColorModel colorModel)
+    {
+        super.setBackgroundColor( colorModel); 
+        noisePainter.setDarkNoise(colorModel.getGradientStartColor().darker());
+        noisePainter.setBrightNoise(colorModel.getGradientStopColor().brighter());
+    }
+
+    
     @Override
     protected Paint getPaint(Dimension dimensions, Ellipse2D bounds)
     {
-        COLORS[0] = ColorTools.lighter(backgroundColorModel.getGradientStartColor(), 0.15f);
-        COLORS[1] = ColorTools.darker(backgroundColorModel.getGradientStopColor(), 0.15f);
+        COLORS[0] = ColorTools.darker(backgroundColorModel.getGradientStartColor(), 0.15f);
+        COLORS[1] = ColorTools.lighter(backgroundColorModel.getGradientStopColor(), 0.15f);
         final Point2D BACKGROUND_START = new Point2D.Double(0, bounds.getBounds2D().getMinY());
         final Point2D BACKGROUND_STOP = new Point2D.Double(0, bounds.getBounds2D().getMaxY());
         PointSupport.validateGradientPoints(BACKGROUND_START, BACKGROUND_STOP);
@@ -129,4 +139,5 @@ public class NoisyPlasticBackdrop extends AbstractRoundBackdrop
 //            graphics.setClip(OLD_CLIP);
 //        }
 
+  
 }

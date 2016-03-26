@@ -74,6 +74,7 @@ public class PunchedSteelBackdrop extends AbstractRoundBackdrop
     public void setPainter(PunchedSheetTexture painter)
     {
         this.painter = painter;
+         changed();
     }
 
     public OverlayPainter getOverlayPainter()
