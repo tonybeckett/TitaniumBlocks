@@ -42,7 +42,6 @@ import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 public class CometPointer extends GradientPointer
 {
 
-
     public CometPointer()
     {
     }
@@ -57,46 +56,59 @@ public class CometPointer extends GradientPointer
         super(other);
     }
 
-    
     @Override
     protected Area getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
-        
+
         final GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
- 
-        
+
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight / 2;
 
-        double magnitude = (this.getRadiusPercent() * frontScale.getValue());
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
+        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * frontM));
 
-        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * magnitude)); 
+//        pointerShape.curveTo(imageWidth * 0.5, centerY - (maxY * frontM), 
+//                imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663,
+//                imageWidth * 0.4439252336448598, imageHeight * 0.5);
+//
+//        pointerShape.curveTo(imageWidth * 0.4439252336448598, imageHeight * 0.5327102803738317,
+//                imageWidth * 0.4672897196261682, imageHeight * 0.5560747663551402,
+//                imageWidth * 0.5, imageHeight * 0.5560747663551402);
+//
+//        pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402,
+//                imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317,
+//                imageWidth * 0.5560747663551402, imageHeight * 0.5);
+//
+//        pointerShape.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663,
+//                imageWidth * 0.5, centerY - (maxY * frontM), 
+//                imageWidth * 0.5, centerY - (maxY * frontM)); 
+        pointerShape.curveTo(imageWidth * 0.5, centerY - (maxY * frontM),
+                imageWidth * 0.44392, centerY + (maxY * tailM * 0.99),
+                imageWidth * 0.44392, centerY + (maxY * tailM));
 
-        pointerShape.curveTo(imageWidth * 0.5, centerY - (maxY * magnitude), 
-                imageWidth * 0.4439252336448598, imageHeight * 0.49065420560747663,
-                imageWidth * 0.4439252336448598, imageHeight * 0.5);
+        pointerShape.curveTo(imageWidth * 0.44392, centerY + (maxY * tailM * 1.06),
+                imageWidth * 0.46728, centerY + (maxY * tailM * 1.1),
+                imageWidth * 0.5, centerY + (maxY * tailM * 1.1));
 
-        pointerShape.curveTo(imageWidth * 0.4439252336448598, imageHeight * 0.5327102803738317,
-                imageWidth * 0.4672897196261682, imageHeight * 0.5560747663551402,
-                imageWidth * 0.5, imageHeight * 0.5560747663551402);
+        pointerShape.curveTo(imageWidth * 0.53271, centerY + (maxY * tailM * 1.1),
+                imageWidth * 0.55607, centerY + (maxY * tailM * 1.06),
+                imageWidth * 0.55607, centerY + (maxY * tailM));
 
-        pointerShape.curveTo(imageWidth * 0.5327102803738317, imageHeight * 0.5560747663551402,
-                imageWidth * 0.5560747663551402, imageHeight * 0.5327102803738317,
-                imageWidth * 0.5560747663551402, imageHeight * 0.5);
-
-        pointerShape.curveTo(imageWidth * 0.5560747663551402, imageHeight * 0.49065420560747663,
-                imageWidth * 0.5, centerY - (maxY * magnitude), 
-                imageWidth * 0.5, centerY - (maxY * magnitude)); 
+        pointerShape.curveTo(imageWidth * 0.55607, centerY + (maxY * tailM * 0.99),
+                imageWidth * 0.5, centerY - (maxY * frontM),
+                imageWidth * 0.5, centerY - (maxY * frontM));
 
         pointerShape.closePath();
-        
+
         return new Area(pointerShape);
     }
-    
+
 //    @Override
 //    public void paint(Graphics2D graphics, Dimension dimensions)
 //    {

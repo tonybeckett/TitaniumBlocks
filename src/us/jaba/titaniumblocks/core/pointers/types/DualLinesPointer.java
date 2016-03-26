@@ -48,7 +48,6 @@ public class DualLinesPointer extends GradientPointer
 //        0.75f,
 //        1.0f
 //    };
-
     public DualLinesPointer()
     {
     }
@@ -58,34 +57,54 @@ public class DualLinesPointer extends GradientPointer
         super(pointerColor);
     }
 
+    public DualLinesPointer(GradientPointer other)
+    {
+        super(other);
+    }
+
     @Override
     protected Area getShape(Dimension dimensions)
     {
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
         final GeneralPath pointerShape = new GeneralPath();
-        
 
         final double centerY = dimensions.getHeight() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
-//        double tailM = this.getRadiusPercent() * tailScale.getValue();
-        
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
+
+//        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+//        pointerShape.moveTo(imageWidth * 0.481308, imageHeight * 0.485981);
+//        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.392523);
+//        pointerShape.lineTo(imageWidth * 0.485981, centerY - (maxY * frontM));
+//        pointerShape.lineTo(imageWidth * 0.495327, centerY - (maxY * frontM));
+//        pointerShape.lineTo(imageWidth * 0.50467, centerY - (maxY * frontM));
+//        pointerShape.lineTo(imageWidth * 0.514018, centerY - (maxY * frontM));
+//        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.38785);
+//        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.485981);
+//        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.485981);
+//        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.38785);
+//        pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
+//        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.392523);
+//        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.485981);
+//        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.485981);
+//        pointerShape.closePath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.481308, imageHeight * 0.485981);
+        pointerShape.moveTo(imageWidth * 0.481308, centerY + (tailM * maxY));
         pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.392523);
         pointerShape.lineTo(imageWidth * 0.485981, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.495327, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.50467, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.514018, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.38785);
-        pointerShape.lineTo(imageWidth * 0.518691, imageHeight * 0.485981);
-        pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.518691, centerY + (tailM * maxY));
+        pointerShape.lineTo(imageWidth * 0.50467, centerY + (tailM * maxY));
         pointerShape.lineTo(imageWidth * 0.50467, imageHeight * 0.38785);
         pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
         pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.392523);
-        pointerShape.lineTo(imageWidth * 0.495327, imageHeight * 0.485981);
-        pointerShape.lineTo(imageWidth * 0.481308, imageHeight * 0.485981);
+        pointerShape.lineTo(imageWidth * 0.495327, centerY + (tailM * maxY));
+        pointerShape.lineTo(imageWidth * 0.481308, centerY + (tailM * maxY));
         pointerShape.closePath();
 
         return new Area(pointerShape);

@@ -71,17 +71,19 @@ public class MonumentPointer extends GradientPointer
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight / 2;
 
-        double magnitude = (this.getRadiusPercent() * frontScale.getValue());
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
+
         GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * magnitude));
-        pointerShape.lineTo(imageWidth * 0.514018, centerY - (maxY * magnitude + 0.01));
-        pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.523364, imageHeight * 0.602803);
-        pointerShape.lineTo(imageWidth * 0.476635, imageHeight * 0.602803);
-        pointerShape.lineTo(imageWidth * 0.467289, imageHeight * 0.5);
-        pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * magnitude + 0.01));
-        pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * magnitude));
+        pointerShape.moveTo(imageWidth * 0.5, centerY - (maxY * frontM));
+        pointerShape.lineTo(imageWidth * 0.514018, centerY - (maxY * frontM + 0.01));
+        pointerShape.lineTo(imageWidth * 0.532710, centerY + (maxY * tailM));
+        pointerShape.lineTo(imageWidth * 0.523364, centerY + (maxY * tailM * 1.1)/*imageHeight * 0.602803*/);
+        pointerShape.lineTo(imageWidth * 0.476635, centerY + (maxY * tailM * 1.1));
+        pointerShape.lineTo(imageWidth * 0.467289, centerY + (maxY * tailM));
+        pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * frontM + 0.01));
+        pointerShape.lineTo(imageWidth * 0.5, centerY - (maxY * frontM));
         pointerShape.closePath();
         return new Area(pointerShape);
     }

@@ -65,16 +65,17 @@ public class Pencil2Pointer extends GradientPointer
         final int imageHeight = (int) dimensions.getHeight();
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight / 2;
-        double magnitude = this.getRadiusPercent() * frontScale.getValue();
-        
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
+
         GeneralPath pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(0.4859 * imageWidth, centerY - (maxY * 0.86 * magnitude));
-        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * 0.92 * magnitude));
-        pointerShape.lineTo(0.5141 * imageWidth, centerY - (maxY * 0.86 * magnitude));
-        pointerShape.lineTo(0.5141 * imageWidth, 0.509 * imageHeight);
-        pointerShape.lineTo(0.4859 * imageWidth, 0.509 * imageHeight);
-        pointerShape.lineTo(0.4859 * imageWidth, centerY - (maxY * 0.86 * magnitude));
+        pointerShape.moveTo(0.4859 * imageWidth, centerY - (maxY * 0.86 * frontM));
+        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * 0.92 * frontM));
+        pointerShape.lineTo(0.5141 * imageWidth, centerY - (maxY * 0.86 * frontM));
+        pointerShape.lineTo(0.5141 * imageWidth,  centerY + (maxY * tailM));
+        pointerShape.lineTo(0.4859 * imageWidth, centerY + (maxY * tailM));
+        pointerShape.lineTo(0.4859 * imageWidth, centerY - (maxY * 0.86 * frontM));
         pointerShape.closePath();
 
         Area pointerLine = new Area(pointerShape);

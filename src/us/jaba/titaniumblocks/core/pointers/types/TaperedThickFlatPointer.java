@@ -86,15 +86,16 @@ public class TaperedThickFlatPointer extends GradientPointer
         final int centerY = imageHeight / 2;
         final int maxY = imageHeight / 2;
 
-        double magnitude = (this.getRadiusPercent() * frontScale.getValue());
+        double frontM = this.getRadiusPercent() * frontScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.490654, centerY - (maxY * magnitude));
-        pointerShape.lineTo(imageWidth * 0.481308, centerY + (maxY * tailScale.getValue()));
-        pointerShape.lineTo(imageWidth * 0.518691, centerY + (maxY * tailScale.getValue()));
-        pointerShape.lineTo(imageWidth * 0.504672, centerY - (maxY * magnitude));
-        pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * magnitude));
+        pointerShape.moveTo(imageWidth * 0.490654, centerY - (maxY * frontM));
+        pointerShape.lineTo(imageWidth * 0.481308, centerY + (maxY * tailM));
+        pointerShape.lineTo(imageWidth * 0.518691, centerY + (maxY * tailM));
+        pointerShape.lineTo(imageWidth * 0.504672, centerY - (maxY * frontM));
+        pointerShape.lineTo(imageWidth * 0.490654, centerY - (maxY * frontM));
         pointerShape.closePath();
         
         Area area = new Area(pointerShape);

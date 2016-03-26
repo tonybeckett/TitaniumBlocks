@@ -87,23 +87,23 @@ public class WideTaperedPointPointer extends GradientPointer
        final double centerY = dimensions.getHeight() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
-//        double tailM = this.getRadiusPercent() * tailScale.getValue();
+        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
         
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-        pointerShape.moveTo(imageWidth * 0.5, imageHeight * 0.532710);
-        pointerShape.lineTo(imageWidth * 0.532710, imageHeight * 0.5);
+        pointerShape.moveTo(imageWidth * 0.5, centerY + (tailM * maxY* 1.032));
+        pointerShape.lineTo(imageWidth * 0.532710, centerY + (tailM * maxY));
 
-        pointerShape.curveTo(imageWidth * 0.532710, imageHeight * 0.5,
+        pointerShape.curveTo(imageWidth * 0.532710, centerY + (tailM * maxY),
                 imageWidth * 0.509345, imageHeight * 0.457943,
                 imageWidth * 0.5, centerY - (maxY * frontM));
 
         pointerShape.curveTo(imageWidth * 0.490654, imageHeight * 0.457943,
-                imageWidth * 0.467289, imageHeight * 0.5,
-                imageWidth * 0.467289, imageHeight * 0.5);
+                imageWidth * 0.467289, centerY + (tailM * maxY),
+                imageWidth * 0.467289, centerY + (tailM * maxY));
 
-        pointerShape.lineTo(imageWidth * 0.5, imageHeight * 0.53271);
+        pointerShape.lineTo(imageWidth * 0.5, centerY + (tailM * maxY* 1.032));
         pointerShape.closePath();
         startPoint = new Point2D.Double(pointerShape.getBounds2D().getMinX(), 0);
         stopPoint = new Point2D.Double(pointerShape.getBounds2D().getMaxX(), 0);

@@ -81,7 +81,7 @@ public class RoundedDashPointer extends BasicPointer
 
         if (centerPostVisible)
         {
-            double radius = dimensions.width * centerScale.getValue();
+            double radius = dimensions.width / 4.0 * centerScale.getValue();
             Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
             graphics.fill(pointerPost);
         }
