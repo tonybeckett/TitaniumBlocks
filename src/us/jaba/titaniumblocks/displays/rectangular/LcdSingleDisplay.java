@@ -46,7 +46,7 @@ public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
 {
 
     protected BackdropImageFactory lcdBackgroundImage;
-    LcdGradientPalette palette = new Standard();
+    protected LcdGradientPalette palette = new Standard();
 
     public LcdSingleDisplay()
     {

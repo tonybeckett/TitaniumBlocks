@@ -20,34 +20,34 @@ import us.jaba.titaniumblocks.core.textures.Texture;
 public class CarbonTexture extends Texture
 {
 
-   private final float[] RULB_FRACTIONS =
+    private final float[] RULB_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-   private final Color[] RULB_COLORS =
+    private final Color[] RULB_COLORS =
     {
         new Color(35, 35, 35, 255),
         new Color(23, 23, 23, 255)
     };
 
-   private final float[] RULF_FRACTIONS =
+    private final float[] RULF_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-   private final Color[] RULF_COLORS =
+    private final Color[] RULF_COLORS =
     {
         new Color(38, 38, 38, 255),
         new Color(30, 30, 30, 255)
     };
 
-   private final float[] RLRB_FRACTIONS =
+    private final float[] RLRB_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-   private final Color[] RLRB_COLORS =
+    private final Color[] RLRB_COLORS =
     {
         new Color(35, 35, 35, 255),
         new Color(23, 23, 23, 255)
@@ -58,51 +58,51 @@ public class CarbonTexture extends Texture
         0.0f,
         1.0f
     };
-   private final Color[] RLRF_COLORS =
+    private final Color[] RLRF_COLORS =
     {
         new Color(38, 38, 38, 255),
         new Color(30, 30, 30, 255)
     };
 
-    final float[] RURB_FRACTIONS =
+    private final float[] RURB_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-   private final Color[] RURB_COLORS =
+    private final Color[] RURB_COLORS =
     {
         new Color(48, 48, 48, 255),
         new Color(40, 40, 40, 255)
     };
 
-   private final float[] RURF_FRACTIONS =
+    private final float[] RURF_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-    final Color[] RURF_COLORS =
+    private final Color[] RURF_COLORS =
     {
         new Color(53, 53, 53, 255),
         new Color(45, 45, 45, 255)
     };
 
-  private  final float[] RLLB_FRACTIONS =
+    private final float[] RLLB_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-  private  final Color[] RLLB_COLORS =
+    private final Color[] RLLB_COLORS =
     {
         new Color(48, 48, 48, 255),
         new Color(40, 40, 40, 255)
     };
 
-   private final float[] RLLF_FRACTIONS =
+    private final float[] RLLF_FRACTIONS =
     {
         0.0f,
         1.0f
     };
-   private final Color[] RLLF_COLORS =
+    private final Color[] RLLF_COLORS =
     {
         new Color(53, 53, 53, 255),
         new Color(45, 45, 45, 255)

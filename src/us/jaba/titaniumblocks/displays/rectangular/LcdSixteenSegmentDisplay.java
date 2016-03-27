@@ -49,7 +49,7 @@ public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDis
 {
 
     protected BackdropImageFactory lcdBackgroundImage;
-    LcdGradientPalette palette = new Standard();
+    protected LcdGradientPalette palette = new Standard();
     private SixteenSegmentDisplay sixteenSegmentDisplay;
     private SixteenSegmentDisplayImageFactory sixteenSegmentDisplayImage;
 

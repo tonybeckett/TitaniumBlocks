@@ -32,7 +32,6 @@ import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**

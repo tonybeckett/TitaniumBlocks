@@ -28,14 +28,7 @@
 package us.jaba.titaniumblocks.core.frames.types.round;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
-import java.awt.geom.Area;
-import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.color.HSLColor;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *

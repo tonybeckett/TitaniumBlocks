@@ -29,8 +29,6 @@ package us.jaba.titaniumblocks.core.math;
 
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.layout.CircularNoPostLayout;
-import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 
 /**

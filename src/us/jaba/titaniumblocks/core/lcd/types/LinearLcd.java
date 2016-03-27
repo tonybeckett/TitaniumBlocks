@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.core.lcd.types;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -37,7 +36,6 @@ import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.types.LcdBackdropModel;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.NullBackdrop;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.lcdgradients.StandardGreenLcdPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
