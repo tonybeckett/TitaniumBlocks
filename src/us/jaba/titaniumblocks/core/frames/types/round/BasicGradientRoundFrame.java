@@ -34,6 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureGray;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
@@ -41,66 +42,59 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class SilverRoundFrame extends BasicGradientRoundFrame
+public class BasicGradientRoundFrame extends RoundFrame
 {
 
-    private final float[] fractionArray =
+    private float[] gradientFractions =
     {
         0.0f,
-        0.07f,
-        0.12f,
         1.0f
     };
 
-    private Color[] colorArray =
+    private Color[] gradientColors =
     {
-        new Color(254, 254, 254, 255),
-        new Color(210, 210, 210, 255),
-        new Color(179, 179, 179, 255),
-        new Color(213, 213, 213, 255)
+        new PureGray().getLight(),
+        new PureGray().getMedium(),
     };
 
-    public SilverRoundFrame()
+    protected void init(float[] fractionArray, Color[] colorArray)
     {
-        init(fractionArray, colorArray);
+        gradientFractions = fractionArray;
+        gradientColors = colorArray;
     }
 
-    
-    
-//    @Override
-//    public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
-//    {
-//
-//        final int imageWidth = (int) dimensions.getWidth();
-//        final int imageHeight = (int) dimensions.getHeight();
-//
-//        outerArea.subtract(subtractArea);
-//        graphics.setPaint(outerFrameColor);
-//        graphics.fill(outerArea);
-//
-//        mainArea.subtract(subtractArea);
-//        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-////        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
-//
-//        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-//        Paint frameMainPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, fractionArray, colorArray);
-//        graphics.setPaint(frameMainPaint);
-//        graphics.fill(mainArea);
-//
-//        innerArea.subtract(subtractArea);
-//
-//        // Former white ring
-//        graphics.setPaint(innerFrameColor);
-//        graphics.fill(innerArea);
-//
-//        // Frame effect overlay
-//        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-//
-//        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
-//        graphics.dispose();
-//
-//    }
+    @Override
+    public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
+    {
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
 
-    
+        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+
+        outerArea.subtract(subtractArea);
+        graphics.setPaint(outerFrameColor);
+        graphics.fill(outerArea);
+
+        mainArea.subtract(subtractArea);
+
+        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+        Paint gradientPaint = new LinearGradientPaint(mainStartPoint, mainStopPoint, gradientFractions, gradientColors);
+        graphics.setPaint(gradientPaint);
+        graphics.fill(mainArea);
+
+        innerArea.subtract(subtractArea);
+
+        // Former white ring
+        graphics.setPaint(innerFrameColor);
+        graphics.fill(innerArea);
+
+        // Frame effect overlay
+        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
+
+        graphics.dispose();
+
+    }
+
 }

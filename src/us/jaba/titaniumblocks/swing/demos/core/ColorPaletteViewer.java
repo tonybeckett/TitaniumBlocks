@@ -91,7 +91,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
             Color c = (Color) al.get(i).get(i);
             JLabel jlabel = new JLabel();
             jlabel.setText(String.format(" %-20s  %3d,%3d,%3d", al.get(i).getName(), c.getRed(), c.getGreen(), c.getBlue()));
-            jlabel.setIcon(new ImageIcon(Images.titaniumblocks16));
+ //           jlabel.setIcon(new ImageIcon(Images.titaniumblocks16));
             jlabel.setForeground(new Color(255 - c.getRed(), 255 - c.getGreen(), 255 - c.getBlue())); //c.darker().darker());
             jlabel.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
             jlabel.setBackground(c);
@@ -106,7 +106,7 @@ public class ColorPaletteViewer extends javax.swing.JFrame
         JLabel jlabel = new JLabel();
         jlabel.setText("  Thanks to Chirag Mehta.");
         add(jlabel, BorderLayout.SOUTH);
-        this.setIconImage(Images.titaniumblocks16);
+//        this.setIconImage(Images.titaniumblocks16);
         this.setSize(new Dimension(460, 800));
     }
 

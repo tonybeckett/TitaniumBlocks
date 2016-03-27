@@ -1334,12 +1334,13 @@ public class ColorPalette
     public static final Color SPRINGWOOD = new Color(248, 246, 241);
     public static final Color SPROUT = new Color(193, 215, 176);
     public static final Color SPUNPEARL = new Color(170, 171, 183);
-    public static final Color SQUIRREL = new Color(143, 129, 118);
+    public static final Color SQUIRREL = new Color(143, 129, 118);    
     public static final Color STTROPAZ = new Color(45, 86, 155);
     public static final Color STACK = new Color(138, 143, 138);
     public static final Color STARDUST = new Color(159, 159, 156);
     public static final Color STARKWHITE = new Color(229, 215, 189);
     public static final Color STARSHIP = new Color(236, 242, 69);
+    public static final Color STEEL  = new Color(125, 133, 135, 255);
     public static final Color STEELBLUE = new Color(70, 130, 180);
     public static final Color STEELGRAY = new Color(38, 35, 53);
     public static final Color STILETTO = new Color(156, 51, 54);

@@ -28,23 +28,17 @@
 package us.jaba.titaniumblocks.core.frames.types.round;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
-import java.awt.geom.Area;
-import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.color.HSLColor;
 
 /**
  *
  * @author tbeckett
  */
-public class SteelRoundFrame extends RoundFrame
+public class SteelRoundFrame extends BasicGradientRoundFrame
 {
 
-    private float[] frameMainFractions5 =
+    private final float[] fractionsArray =
     {
         0.0f,
         0.05f,
@@ -55,7 +49,7 @@ public class SteelRoundFrame extends RoundFrame
         1.0f
     };
 
-    private Color[] frameMainColors5 =
+    private Color[] primaryColorArray =
     {
         new Color(231, 237, 237, 255),
         new Color(189, 199, 198, 255),
@@ -66,39 +60,60 @@ public class SteelRoundFrame extends RoundFrame
         new Color(189, 201, 199, 255)
     };
 
-    @Override
-    public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
+    public SteelRoundFrame()
     {
-
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        outerArea.subtract(subtractArea);
-        graphics.setPaint(outerFrameColor);
-        graphics.fill(outerArea);
-
-        mainArea.subtract(subtractArea);
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-//        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
-
-        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint frameMainPaint5 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions5, frameMainColors5);
-        graphics.setPaint(frameMainPaint5);
-        graphics.fill(mainArea);
-
-        innerArea.subtract(subtractArea);
-
-        // Former white ring
-        graphics.setPaint(innerFrameColor);
-        graphics.fill(innerArea);
-
-        // Frame effect overlay
-        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-
-        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
-        graphics.dispose();
-
+        init(fractionsArray, primaryColorArray);
+//        this.setPrimaryColor(new Color(118, 117, 135, 255));
+        this.setPrimaryColor(ColorPalette.STEEL);
     }
 
+    @Override
+    public void setPrimaryColor(Color primaryColor)
+    {
+        super.setPrimaryColor(primaryColor);
+
+        HSLColor hsl = new HSLColor(primaryColor);
+        primaryColorArray[0] = hsl.adjustLuminance(100.0f);
+        primaryColorArray[1] = hsl.adjustLuminance(80.0f);
+        primaryColorArray[2] = hsl.adjustLuminance(90.0f);
+        primaryColorArray[3] = hsl.adjustLuminance(25.0f);
+        primaryColorArray[4] = hsl.adjustLuminance(100.0f);
+        primaryColorArray[5] = hsl.adjustLuminance(95.0f);
+        primaryColorArray[6] = hsl.adjustLuminance(89.0f);
+    }
+
+//    @Override
+//    public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
+//    {
+//
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
+//
+//        outerArea.subtract(subtractArea);
+//        graphics.setPaint(outerFrameColor);
+//        graphics.fill(outerArea);
+//
+//        mainArea.subtract(subtractArea);
+//        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
+//        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
+////        final Point2D mainCenterPoint = new Point2D.Double(mainArea.getBounds2D().getCenterX(), mainArea.getBounds2D().getCenterY());
+//
+//        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
+//        Paint frameMainPaint5 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions5, frameMainColors5);
+//        graphics.setPaint(frameMainPaint5);
+//        graphics.fill(mainArea);
+//
+//        innerArea.subtract(subtractArea);
+//
+//        // Former white ring
+//        graphics.setPaint(innerFrameColor);
+//        graphics.fill(innerArea);
+//
+//        // Frame effect overlay
+//        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
+//
+//        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
+//        graphics.dispose();
+//
+//    }
 }

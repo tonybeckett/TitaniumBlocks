@@ -28,50 +28,71 @@
 package us.jaba.titaniumblocks.core.frames.types.round;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.color.HSLColor;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.Paint;
+import java.awt.geom.Area;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureGray;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class AnthraciteRoundFrame extends BasicGradientRoundFrame
+public class Gradient7RoundFrame extends BasicGradientRoundFrame
 {
 
-    private final float[] fractionsArray =
+    private final float[] gradientFractions =
     {
         0.0f,
-        0.06f,
-        0.12f,
+        0.05f,
+        0.10f,
+        0.50f,
+        0.90f,
+        0.95f,
         1.0f
     };
 
-    private Color[] primaryColorArray =
+    private Color[] gradientColors =
     {
-        new Color(118, 117, 135, 255),
-        new Color(74, 74, 82, 255),
-        new Color(50, 50, 54, 255),
-        new Color(97, 97, 108, 255)
+        new PureGray().getLight(),
+        new PureGray().getMediumLight(),
+        new PureGray().getMedium(),
+        new PureGray().getDark(),
+        new PureGray().getLight(),
+        new PureGray().getMediumLight(),
+        new PureGray().getMedium(),
     };
+ 
 
-    public AnthraciteRoundFrame()
+    public Gradient7RoundFrame(Color[] colors)
     {
-        init(fractionsArray, primaryColorArray);
-        this.setPrimaryColor(new Color(118, 117, 135, 255));
+        super();
+        init(gradientFractions, gradientColors);
+        super.setPrimaryColor(colors[0]);
+        for( int i = 0; i < 7; i++)
+        {
+            gradientColors[i] = colors[i];
+        }
     }
 
     @Override
     public void setPrimaryColor(Color primaryColor)
     {
         super.setPrimaryColor(primaryColor);
+        GradientPalette gp = new GradientPalette(primaryColor);
 
-        HSLColor hsl = new HSLColor(primaryColor);
-        primaryColorArray[0] = primaryColor;
-        primaryColorArray[1] = hsl.adjustLuminance(80.0f);
-        primaryColorArray[2] = hsl.adjustLuminance(60.0f);
-        primaryColorArray[3] = hsl.adjustLuminance(90.0f);
-
+        gradientColors[0] = gp.getLight();
+        gradientColors[1] = gp.getMediumLight();
+        gradientColors[2] = gp.getMedium();
+        gradientColors[3] = gp.getDark();
+        gradientColors[4] = gp.getLight();
+        gradientColors[5] = gp.getMediumLight();
+        gradientColors[6] = gp.getMedium();
     }
 
    
-
 }

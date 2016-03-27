@@ -28,76 +28,31 @@
 package us.jaba.titaniumblocks.core.frames.types.round;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Paint;
-import java.awt.geom.Area;
-import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.Brass;
 
 /**
  *
  * @author tbeckett
  */
-public class BrassRoundFrame extends RoundFrame
+public class BrassRoundFrame extends Gradient7RoundFrame
 {
 
-    private float[] frameMainFractions4 =
+    private static final Color[] BRASS_COLORS =
     {
-        0.0f,
-        0.05f,
-        0.10f,
-        0.50f,
-        0.90f,
-        0.95f,
-        1.0f
+        new Brass().getLight(),
+        new Brass().getMediumLight(),
+        new Brass().getMedium(),
+        new Brass().getDark(),
+        new Brass().getLight(),
+        new Brass().getMediumLight(),
+        new Brass().getMedium(),
     };
 
-    private Color[] frameMainColors4 =
+    public BrassRoundFrame()
     {
-        new Color(249, 243, 155, 255),
-        new Color(246, 226, 101, 255),
-        new Color(240, 225, 132, 255),
-        new Color(90, 57, 22, 255),
-        new Color(249, 237, 139, 255),
-        new Color(243, 226, 108, 255),
-        new Color(202, 182, 113, 255)
-    };
-
-    @Override
-    public void paintFrame(Graphics2D graphics, Dimension dimensions, Area mainArea, Area outerArea, Area innerArea, Area subtractArea)
-    {
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
-        final Point2D mainStartPoint = new Point2D.Double(0, mainArea.getBounds2D().getMinY());
-        final Point2D mainStopPoint = new Point2D.Double(0, mainArea.getBounds2D().getMaxY());
-    
-        outerArea.subtract(subtractArea);
-        graphics.setPaint(outerFrameColor);
-        graphics.fill(outerArea);
-
-        mainArea.subtract(subtractArea);
-
-        PointSupport.validateGradientPoints(mainStartPoint, mainStopPoint);
-        Paint frameMainPaint4 = new LinearGradientPaint(mainStartPoint, mainStopPoint, frameMainFractions4, frameMainColors4);
-        graphics.setPaint(frameMainPaint4);
-        graphics.fill(mainArea);
-
-        innerArea.subtract(subtractArea);
-
-        // Former white ring
-        graphics.setPaint(innerFrameColor);
-        graphics.fill(innerArea);
-
-        // Frame effect overlay
-        final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
-        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
-
-        graphics.dispose();
-
+        super(BRASS_COLORS);
     }
+
+  
 
 }
