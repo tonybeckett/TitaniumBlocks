@@ -121,6 +121,11 @@ public class BigChromePost extends Post
         new Color(148, 161, 161, 255)
     };
 
+    public BigChromePost()
+    {
+        this.setColor(new Color(148, 161, 161, 255));
+    }
+
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {

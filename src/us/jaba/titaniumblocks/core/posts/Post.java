@@ -27,7 +27,16 @@
  */
 package us.jaba.titaniumblocks.core.posts;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
@@ -35,5 +44,53 @@ import us.jaba.titaniumblocks.core.CoreModel;
  */
 public class Post extends CoreModel
 {
-    
+
+    protected Scale size = new Scale(0.5f);
+    protected Color color;
+
+    /**
+     * Get the value of size
+     *
+     * @return the value of size
+     */
+    public Scale getSize()
+    {
+        return size;
+    }
+
+    /**
+     * Set the value of size
+     *
+     * @param size new value of size
+     */
+    public void setSize(Scale size)
+    {
+        this.size = size;
+        changed();
+    }
+
+    public Color getColor()
+    {
+        return color;
+    }
+
+    public void setColor(Color color)
+    {
+        this.color = color;
+        changed();
+    }
+
+    protected void paintCircle(Graphics2D graphics, Dimension dimensions, double radius, float[] fractions, Color[] colors)
+    {
+        final double centerX = dimensions.getWidth() / 2.0;
+        final double centerY = dimensions.getHeight() / 2.0;
+        final Ellipse2D circle = (Ellipse2D) ShapeUtils.getCircle(centerX, centerY, radius);
+        final Point2D start = new Point2D.Double(0, circle.getBounds2D().getMinY());
+        final Point2D stop = new Point2D.Double(0, circle.getBounds2D().getMaxY());
+        PointSupport.validateGradientPoints(start, stop);
+        final LinearGradientPaint gradient = new LinearGradientPaint(start, stop, fractions, colors);
+        graphics.setPaint(gradient);
+        graphics.fill(circle);
+    }
+
 }
