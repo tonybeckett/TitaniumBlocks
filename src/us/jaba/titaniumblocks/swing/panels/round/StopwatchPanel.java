@@ -216,7 +216,7 @@ public class StopwatchPanel extends JComponent
 
     public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
     {
-        singleGauge.setPointer(pointerPainter, shadowPainter);
+        singleGauge.setPointer(pointerPainter);
     }
 
     public void setFrontCover(Frontcover foregroundPainter)

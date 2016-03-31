@@ -5,19 +5,13 @@
  */
 package us.jaba.titaniumblocks.core.frames;
 
-import java.awt.Graphics2D;
-import java.awt.geom.Area;
-
 /**
  *
  * @author tbeckett
  */
-public class BasicEffect
+public interface BasicEffect
 {
 
-    public void apply(Graphics2D graphics2D, Area area)
-    {
-        // intentional
-    }
+  
     
 }

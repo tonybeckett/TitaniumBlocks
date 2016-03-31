@@ -42,6 +42,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.frames.BasicEffect;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
 import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
@@ -96,7 +97,7 @@ public class RoundFrameViewer extends javax.swing.JFrame
                 Constructor eLinear = eLinearClass.getConstructor();
                 RoundFrameEffect effectPainter = (RoundFrameEffect) eLinear.newInstance();
 
-                framePainter.setEffect(effectPainter);
+                framePainter.setEffect((BasicEffect) effectPainter);
                 JPanel epanel = new JPanel();
 
                 epanel.setLayout(new BorderLayout());

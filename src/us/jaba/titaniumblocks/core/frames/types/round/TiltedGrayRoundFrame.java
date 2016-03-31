@@ -35,6 +35,7 @@ import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
@@ -44,7 +45,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class TiltedGrayRoundFrame extends RoundFrame
 {
 
-   private float[] frameMainFractions9 =
+    private float[] frameMainFractions9 =
     {
         0.0f,
         0.07f,
@@ -55,7 +56,7 @@ public class TiltedGrayRoundFrame extends RoundFrame
         1.0f
     };
 
-  private  Color[] frameMainColors9 =
+    private Color[] frameMainColors9 =
     {
         new Color(255, 255, 255, 255),
         new Color(210, 210, 210, 255),
@@ -99,7 +100,7 @@ public class TiltedGrayRoundFrame extends RoundFrame
         // Frame effect overlay
         final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
 
-        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
+        ((RoundFrameEffect) this.getEffect()).paint(graphics, dimensions, outerArea, effectCenterPoint);
         graphics.dispose();
 
     }

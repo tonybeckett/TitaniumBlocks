@@ -34,14 +34,14 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
-import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class LinearInnerEffect implements RectangularFrameEffectPainter
+public class LinearInnerEffect implements RectangularFrameEffect
 {
 
     private final float[] EFFECT_BIGINNERFRAME_FRACTIONS =

@@ -224,7 +224,7 @@ public class SingleRoundPanel extends JComponent
 
     public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
     {
-        singleGauge.setPointer(pointerPainter, shadowPainter);
+        singleGauge.setPointer(pointerPainter);
     }
 
     public void setLedPainter(Led ledPainter)

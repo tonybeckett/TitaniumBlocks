@@ -18,7 +18,7 @@ import us.jaba.titaniumblocks.core.frames.BasicEffect;
  *
  * @author tbeckett
  */
-public class TorusEffect extends BasicEffect
+public class TorusEffect implements BasicEffect
 {
 
     private final float[] effectFractions = new float[]

@@ -18,7 +18,7 @@ import us.jaba.titaniumblocks.core.frames.BasicEffect;
  *
  * @author tbeckett
  */
-public class BulgeEffect extends BasicEffect
+public class BulgeEffect implements BasicEffect
 {
 
     private final float[] effectFractions = new float[]

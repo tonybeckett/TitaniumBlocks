@@ -136,7 +136,7 @@ public class RectangularIndicator extends CoreModel
         {
             image = symbolOffImageBuilder.build(linearFrameImageBuilder.getPainter().getInteriorDimension());
         }
-        int offset = linearFrameImageBuilder.getPainter().getFrameThickness();
+        int offset = (int) linearFrameImageBuilder.getPainter().getFrameThickness();
         graphics.drawImage(image, offset, offset, null);
 
         image = foregroundImageBuilder.build(linearFrameImageBuilder.getPainter().getInteriorDimension());

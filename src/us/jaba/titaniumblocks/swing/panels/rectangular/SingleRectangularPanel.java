@@ -213,9 +213,9 @@ public class SingleRectangularPanel extends JComponent
         singleGauge.setSmallKnobs(startPainter, endPainter);
     }
 
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
+    public void setPointer(Pointer pointerPainter)
     {
-        singleGauge.setPointer(pointerPainter, shadowPainter);
+        singleGauge.setPointer(pointerPainter);
     }
 
     public void setLed(Led ledPainter)

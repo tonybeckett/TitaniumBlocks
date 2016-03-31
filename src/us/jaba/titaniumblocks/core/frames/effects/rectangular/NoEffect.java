@@ -30,13 +30,13 @@ package us.jaba.titaniumblocks.core.frames.effects.rectangular;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Area;
-import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class NoEffect implements RectangularFrameEffectPainter
+public class NoEffect implements RectangularFrameEffect
 {
 
     @Override

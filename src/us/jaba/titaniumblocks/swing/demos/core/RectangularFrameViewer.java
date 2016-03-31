@@ -42,11 +42,11 @@ import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
 import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
 import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffect;
 
 /**
  *
@@ -96,7 +96,7 @@ public class RectangularFrameViewer extends javax.swing.JFrame
             {
                 Class<?> eLinearClass = linearEffectClassList.get(j);
                 Constructor eLinear = eLinearClass.getConstructor();
-                RectangularFrameEffectPainter effectPainter = (RectangularFrameEffectPainter) eLinear.newInstance();
+                RectangularFrameEffect effectPainter = (RectangularFrameEffect) eLinear.newInstance();
 
                 framePainter.setLinearEffect(effectPainter);
                 JPanel epanel = new JPanel();

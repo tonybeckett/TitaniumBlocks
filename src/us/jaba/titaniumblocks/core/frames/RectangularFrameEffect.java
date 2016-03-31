@@ -35,7 +35,7 @@ import java.awt.geom.Area;
  *
  * @author tbeckett
  */
-public interface RectangularFrameEffectPainter
+public interface RectangularFrameEffect extends BasicEffect
 {
 
     public void paint(final Graphics2D graphics, final Dimension dimensions, final Area outerFrame);

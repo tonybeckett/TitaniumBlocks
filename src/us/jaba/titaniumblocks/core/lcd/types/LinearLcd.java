@@ -111,7 +111,7 @@ public class LinearLcd extends CoreModel
 
         image = linearFrameImageBuilder.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = linearFrameImageBuilder.getPainter().getFrameThickness();
+        int offset = (int) linearFrameImageBuilder.getPainter().getFrameThickness();
         Dimension interiorDim = linearFrameImageBuilder.getPainter().getInteriorDimension();
 
         LcdBackdropModel p = (LcdBackdropModel) lcdBackgroundBuilder.getPainter();

@@ -25,18 +25,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.frames;
+package us.jaba.titaniumblocks.displays;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.geom.Area;
-import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.displays.round.ClockProperties;
+import us.jaba.titaniumblocks.displays.round.ClockValues;
 
 /**
  *
  * @author tbeckett
  */
-public interface RoundFrameEffect extends BasicEffect
+public interface ClockDisplay extends ClockProperties, ClockValues
 {
-    public void paint(final Graphics2D graphics, final Dimension dimensions, final Area outerFrame, Point2D center);
+
+    public void setSize(Dimension d);
+
+    public void paint(Graphics2D graphics2D, Dimension dimension);
+
+    public void setChanged();
+    
 }

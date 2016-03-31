@@ -30,16 +30,11 @@ package us.jaba.titaniumblocks.core.posts;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
 import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.Scale;
-import us.jaba.titaniumblocks.core.shape.ShapeUtils;
-import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *

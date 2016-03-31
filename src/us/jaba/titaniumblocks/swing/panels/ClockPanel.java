@@ -25,7 +25,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.swing.panels.round;
+package us.jaba.titaniumblocks.swing.panels;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -41,13 +41,14 @@ import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
-import us.jaba.titaniumblocks.displays.round.ClockDisplay;
+import us.jaba.titaniumblocks.displays.ClockDisplay;
+import us.jaba.titaniumblocks.displays.round.RoundClockDisplay;
 
 /**
  *
@@ -98,19 +99,29 @@ public class ClockPanel extends JComponent
         }
 
     };
-    private final ClockDisplay singleGauge;
+    private ClockDisplay clockDisplay;
 
-    public ClockPanel(Color color)
+    public ClockPanel()
     {
-
-        singleGauge = new ClockDisplay(color);
-        this.addComponentListener(componentListener);
-        this.setBackground(new Color(0,0,0,18));
+        this(new RoundClockDisplay(new Color(128, 128, 128)));
     }
 
-    public ClockDisplay getGauge()
+    public ClockPanel(ClockDisplay clock)
     {
-        return singleGauge;
+
+        clockDisplay = clock;
+        this.addComponentListener(componentListener);
+
+    }
+
+    public ClockDisplay getClockDisplay()
+    {
+        return clockDisplay;
+    }
+
+    public void setClockDisplay(ClockDisplay clock)
+    {
+        clockDisplay = clock;
     }
 
     public void init(int width, int height)
@@ -142,18 +153,18 @@ public class ClockPanel extends JComponent
 
     public void setTitle(String string)
     {
-        singleGauge.setTitle(string);
+        clockDisplay.setTitle(string);
     }
 
     public void setHour(double value)
     {
-        singleGauge.setFirstPointerValue(value / 12.0);
+        clockDisplay.setHoursValue(value / 12.0);
     }
 
     public void setMinute(double value)
     {
 
-        singleGauge.setSecondPointerValue(value / 60.0);
+        clockDisplay.setMinutesValue(value / 60.0);
     }
 
     public void setSecond(double value)
@@ -165,7 +176,7 @@ public class ClockPanel extends JComponent
         {
             storedValue = value;
         }
-        singleGauge.setThirdPointerValue(storedValue / 60.0);
+        clockDisplay.setSecondsValue(storedValue / 60.0);
         invalidate();
         repaint();
     }
@@ -182,22 +193,22 @@ public class ClockPanel extends JComponent
         super.paint(g);
 
         g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        singleGauge.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
+        clockDisplay.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
     }
 
     public Backdrop getBackdrop()
     {
-        return singleGauge.getBackdropPainter();
+        return clockDisplay.getBackdrop();
     }
 
     public void setBackdrop(Backdrop painter)
     {
-        singleGauge.setBackdrop(painter);
+        clockDisplay.setBackdrop(painter);
     }
 
-    public void setRoundFrame(RoundFrame linearFramePainter)
+    public void setFrame(BasicFrame frame)
     {
-        singleGauge.setFrame(linearFramePainter);
+        clockDisplay.setFrame(frame);
     }
 
     @Override
@@ -205,7 +216,7 @@ public class ClockPanel extends JComponent
     {
         super.setSize(d);
 
-        singleGauge.setSize(d);
+        clockDisplay.setSize(d);
     }
 
     @Override
@@ -213,78 +224,63 @@ public class ClockPanel extends JComponent
     {
         if (preferredSize != this.getPreferredSize())
         {
-            singleGauge.setChanged();
+            clockDisplay.setChanged();
         }
         super.setPreferredSize(preferredSize);
-        singleGauge.setSize(preferredSize);
+        clockDisplay.setSize(preferredSize);
         invalidate();
         repaint();
     }
 
-    public void setColor(Color c)
-    {
-        singleGauge.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        singleGauge.setPointerGradient(cp);
-    }
-
     public void setCenterPost(Post postPainter)
     {
-        singleGauge.setCenterPost(postPainter);
-    }
-
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        singleGauge.setPointer(pointerPainter, shadowPainter);
+        clockDisplay.setCenterPost(postPainter);
     }
 
     public void setFrontCover(Frontcover foregroundPainter)
     {
-        singleGauge.setFrontCover(foregroundPainter);
+        clockDisplay.setFrontCover(foregroundPainter);
     }
 
-    public Pointer getHourPointer()
+    public Pointer getHoursPointer()
     {
-        return singleGauge.getHourPointer();
+        return clockDisplay.getHoursPointer();
     }
 
-    public void setHourPointer(Pointer hourPointer)
+    public void setHoursPointer(Pointer hourPointer)
     {
-        singleGauge.setHourPointer(hourPointer);
+        clockDisplay.setHoursPointer(hourPointer);
     }
 
-    public Pointer getMinutePointer()
+    public Pointer getMinutesPointer()
     {
-        return singleGauge.getMinutePointer();
+        return clockDisplay.getMinutesPointer();
     }
 
-    public void setMinutePointer(Pointer minutePointer)
+    public void setMinutesPointer(Pointer minutePointer)
     {
-        singleGauge.setMinutePointer(minutePointer);
+        clockDisplay.setMinutesPointer(minutePointer);
     }
 
     public Pointer getSecondsPointer()
     {
-        Pointer secondsPointer = singleGauge.getSecondsPointer();
+        Pointer secondsPointer = clockDisplay.getSecondsPointer();
         return secondsPointer;
     }
 
     public void setSecondsPointer(Pointer secondsPointer)
     {
-        singleGauge.setSecondsPointer(secondsPointer);
+        clockDisplay.setSecondsPointer(secondsPointer);
     }
 
     public Tickmark getTickmark()
     {
-        return singleGauge.getTickmark();
+        return clockDisplay.getTickmark();
     }
 
     public void setTickmark(AbstractRadialTickmark tm)
     {
-        singleGauge.setTickmark(tm);
+        clockDisplay.setTickmark(tm);
     }
 
 }

@@ -19,7 +19,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class InnerEffect extends BasicEffect
+public class InnerEffect implements BasicEffect
 {
 
     private final float[] effectFractions = new float[]

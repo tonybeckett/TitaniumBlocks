@@ -42,9 +42,10 @@ import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.SilverLinearFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
@@ -192,7 +193,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = rectFrameImage.getPainter().getFrameThickness();
+        int offset = (int) rectFrameImage.getPainter().getFrameThickness();
 
         BufferedImage image = rectFrameImage.build(dimensions);
         Dimension interiorDim = rectFrameImage.getPainter().getInteriorDimension();
@@ -275,9 +276,10 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         return frontcoverImage.getPainter();
     }
 
-    public void setFrame(RectangularFrame linearFramePainter)
+    @Override
+    public void setFrame(BasicFrame linearFramePainter)
     {
-        this.rectFrameImage = new RectangularFrameImageFactory(linearFramePainter);
+        this.rectFrameImage = new RectangularFrameImageFactory((RectangularFrame) linearFramePainter);
     }
 
     public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)

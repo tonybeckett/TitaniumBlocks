@@ -57,7 +57,7 @@ public class SingleRectangular300Demo extends SingleRectangularDemo
         setTitle("Rect 300");
         setPanelTitle("SingleRectangular300Demo");
         this.setFrame(new BlackMetalLinearFrame());
-        this.setPointer(new OutLinePointer(), new LineShadow());
+        this.setPointer(new OutLinePointer());
         this.setUnits("degrees");
         this.setCenterPost(new MetalBlackPost());//new NullPost());
         this.setLed(new NullLed());

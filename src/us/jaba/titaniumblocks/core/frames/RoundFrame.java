@@ -36,12 +36,13 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.frames.effects.round.NoEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundFrame extends FrameModel
+public class RoundFrame extends BasicFrame
 {
 
     private static final double DEFAULT_MAIN_WIDTH_MULTIPLIER = 0.99065;
@@ -64,11 +65,8 @@ public class RoundFrame extends FrameModel
     private static final double DEFAULT_OUTER_X_MULTIPLER = 0.0;
     private static final double DEFAULT_OUTER_Y_MULTIPLER = 0.0;
 
-    protected double frameThickness;
     protected Color primaryColor = ColorPalette.GRAY;
     protected Scale scaleFactor = new Scale();
-
-    protected Dimension interiorDimension = new Dimension(1, 1);
 
     protected Rectangle2D innerMultiRect;
     protected Rectangle2D mainMultiRect;
@@ -82,20 +80,30 @@ public class RoundFrame extends FrameModel
         mainMultiRect = new Rectangle2D.Double(DEFAULT_MAIN_X_MULTIPLER, DEFAULT_MAIN_Y_MULTIPLER, DEFAULT_MAIN_WIDTH_MULTIPLIER, DEFAULT_MAIN_HEIGHT_MULTIPLIER);
         outerMultiRect = new Rectangle2D.Double(DEFAULT_OUTER_X_MULTIPLER, DEFAULT_OUTER_Y_MULTIPLER, DEFAULT_OUTER_WIDTH_MULTIPLIER, DEFAULT_OUTER_HEIGHT_MULTIPLIER);
         subtractMultiRect = new Rectangle2D.Double(DEFAULT_SUBTRACT_X_MULTIPLER, DEFAULT_SUBTRACT_Y_MULTIPLER, DEFAULT_SUBTRACT_WIDTH_MULTIPLIER, DEFAULT_SUBTRACT_HEIGHT_MULTIPLIER);
+
+        effect = new NoEffect();
+        
+        interiorCalc = new FrameInteriorCalc()
+        {
+            @Override
+            public Dimension calculate(Dimension dimensions)
+            {
+                frameThickness = ((dimensions.getWidth() * subtractMultiRect.getX()) - (dimensions.getWidth() * outerMultiRect.getX())) * scaleFactor.getValue();
+
+                return new Dimension((int) ((double) dimensions.getWidth() - (2.0 * (double) frameThickness)), (int) ((double) dimensions.getHeight() - (2.0 * (double) frameThickness)));
+            }
+
+        };
+
     }
 
-    public Dimension calcInterior(Dimension dimensions)
-    {
-        frameThickness = ((dimensions.getWidth() * subtractMultiRect.getX()) - (dimensions.getWidth() * outerMultiRect.getX())) * scaleFactor.getValue();
-
-        return new Dimension((int) ((double) dimensions.getWidth() - (2.0 * (double) frameThickness)), (int) ((double) dimensions.getHeight() - (2.0 * (double) frameThickness)));
-    }
-
+    @Override
     public Dimension getInteriorDimension()
     {
         return interiorDimension;
     }
 
+    @Override
     public double getFrameThickness()
     {
         return frameThickness;

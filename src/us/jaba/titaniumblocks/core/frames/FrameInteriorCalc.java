@@ -27,53 +27,13 @@
  */
 package us.jaba.titaniumblocks.core.frames;
 
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.CoreModel;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.frames.effects.round.NoEffect;
+import java.awt.Dimension;
 
 /**
  *
  * @author tbeckett
  */
-public class FrameModel extends CoreModel
+public abstract class FrameInteriorCalc
 {
-    private RoundFrameEffect effect = new NoEffect();
-
-    protected Color outerFrameColor = ColorPalette.GRAY;
-    protected Color innerFrameColor = ColorPalette.GRAY.brighter();
-
-    public RoundFrameEffect getEffect()
-    {
-        return effect;
-    }
-
-    public void setEffect(RoundFrameEffect effect)
-    {
-        this.effect = effect;
-        changed();
-    }
-
-    public Color getInnerFrameColor()
-    {
-        return innerFrameColor;
-    }
-
-    public Color getOuterFrameColor()
-    {
-        return outerFrameColor;
-    }
-
-    public void setInnerFrameColor(Color innerFrameColor)
-    {
-        this.innerFrameColor = innerFrameColor;
-        changed();
-    }
-
-    public void setOuterFrameColor(Color outerFrameColor)
-    {
-        this.outerFrameColor = outerFrameColor;
-        changed();
-    }
-
+    public abstract Dimension calculate(Dimension dimensions);
 }

@@ -18,7 +18,7 @@ import us.jaba.titaniumblocks.core.frames.BasicEffect;
  *
  * @author tbeckett
  */
-public class ConeEffect extends BasicEffect
+public class ConeEffect implements BasicEffect
 {
 
     private final float[] effectFractions = new float[]

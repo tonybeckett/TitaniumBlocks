@@ -31,15 +31,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Area;
-import us.jaba.titaniumblocks.core.frames.RectangularFrameEffectPainter;
 
 import us.jaba.titaniumblocks.core.gradients.paint.ContourGradientPaint;
+import us.jaba.titaniumblocks.core.frames.RectangularFrameEffect;
 
 /**
  *
  * @author tbeckett
  */
-public class LinearConeEffect implements RectangularFrameEffectPainter
+public class LinearConeEffect implements RectangularFrameEffect
 {
 
     @Override

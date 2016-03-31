@@ -101,7 +101,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
         image = linearFrameImage.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = linearFrameImage.getPainter().getFrameThickness();
+        int offset = (int) linearFrameImage.getPainter().getFrameThickness();
         Dimension interiorDim = linearFrameImage.getPainter().getInteriorDimension();
 
 //        valueTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() * fontScaleFactor));

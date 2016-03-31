@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class RectangularFrame extends FrameModel
+public class RectangularFrame extends BasicFrame
 {
 
     public static final int DEFAULT_FRAME_THICKNESS = 16;
@@ -80,10 +80,7 @@ public class RectangularFrame extends FrameModel
     {
         0.0F, 0.09F, 0.12F, 0.16F, 0.25F, 0.29F, 0.33F, 0.38F, 0.48F, 0.52F, 0.63F, 0.68F, 0.8F, 0.83F, 0.87F, 0.97F, 1.0F
     };
-    private RectangularFrameEffectPainter linearEffect = new NoEffect();
-
-    protected int frameThickness = DEFAULT_FRAME_THICKNESS;
-    protected Dimension interiorDimension = new Dimension(1, 1);
+    private RectangularFrameEffect linearEffect = new NoEffect();
 
     private float[] gradientFractions;
     private Color[] gradientColors;
@@ -94,21 +91,13 @@ public class RectangularFrame extends FrameModel
         gradientColors = colors;
     }
 
-    public Dimension getInteriorDimension()
-    {
-        return interiorDimension;
-    }
-
-    public int getFrameThickness()
-    {
-        return frameThickness;
-    }
-
     public void setFrameThickness(int frameThickness)
     {
         this.frameThickness = frameThickness;
         changed();
     }
+
+     
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
@@ -181,12 +170,12 @@ public class RectangularFrame extends FrameModel
         paintFrame(graphics, dimensions, mainArea, outerArea, innerArea, subtractArea);
     }
 
-    public RectangularFrameEffectPainter getLinearEffect()
+    public RectangularFrameEffect getLinearEffect()
     {
         return linearEffect;
     }
 
-    public void setLinearEffect(RectangularFrameEffectPainter linearEffect)
+    public void setLinearEffect(RectangularFrameEffect linearEffect)
     {
         this.linearEffect = linearEffect;
         changed();

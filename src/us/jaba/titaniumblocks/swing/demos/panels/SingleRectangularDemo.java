@@ -126,9 +126,9 @@ public class SingleRectangularDemo extends javax.swing.JFrame
         panel.setSmallKnobs(startPainter, endPainter);
     }
 
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
+    public void setPointer(Pointer pointerPainter)
     {
-        panel.setPointer(pointerPainter, shadowPainter);
+        panel.setPointer(pointerPainter);
     }
 
     public void setLed(Led ledPainter)

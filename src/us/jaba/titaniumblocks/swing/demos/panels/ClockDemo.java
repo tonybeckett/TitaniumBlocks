@@ -40,7 +40,7 @@ import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.round.ClockPanel;
+import us.jaba.titaniumblocks.swing.panels.ClockPanel;
 
 /**
  *
@@ -58,9 +58,9 @@ public class ClockDemo extends javax.swing.JFrame
     {
         initComponents();
 
-        panel = new ClockPanel(ColorPalette.WHITE);
+        panel = new ClockPanel();
         panel.setBackground(ColorPalette.WHITE);
-        panel.setRoundFrame(new NullRoundFrame());
+        panel.setFrame(new NullRoundFrame());
         
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
@@ -94,18 +94,10 @@ public class ClockDemo extends javax.swing.JFrame
 
     public void setRoundFrame(RoundFrame linearFramePainter)
     {
-        panel.setRoundFrame(linearFramePainter);
+        panel.setFrame(linearFramePainter);
     }
 
-    public void setColor(Color c)
-    {
-        panel.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        panel.setPointerGradient(cp);
-    }
+  
 
    
 
@@ -116,11 +108,6 @@ public class ClockDemo extends javax.swing.JFrame
     }
 
    
-
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        panel.setPointer(pointerPainter, shadowPainter);
-    }
 
      
 

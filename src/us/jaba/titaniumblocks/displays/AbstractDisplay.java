@@ -58,7 +58,7 @@ import us.jaba.titaniumblocks.core.text.types.UnitsText;
  *
  * @author tbeckett
  */
-public class AbstractRoundDisplay extends CoreModel implements Painter
+public class AbstractDisplay extends CoreModel implements Painter
 {
 
     protected static final float DEFAULT_FONT_SCALE_FACTOR = 0.67F;
@@ -69,7 +69,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     protected BackdropImageFactory backdropImage;
     protected PostImageFactory centerPostImage;
     protected DoubleValueText doubleValueText;
-    protected RoundFrameImageFactory frameImage;
+    protected CoreImageFactory frameImage;
     protected FrontcoverImageFactory frontcoverImage;
 
     protected double normalizedValue = 0.39;
@@ -86,7 +86,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     protected LedImageFactory ledImageFactory;
     protected ShadowPointerImageFactory secShadowPointerImage;
 
-    public AbstractRoundDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
+    public AbstractDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
     {
         listOfImageFactories = new ArrayList();
         init();
@@ -98,7 +98,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         add(centerPostImage);
     }
 
-    public AbstractRoundDisplay()
+    public AbstractDisplay()
     {
         listOfImageFactories = new ArrayList();
         init();
@@ -151,7 +151,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
      
     public BasicFrame getFrame()
     {
-        return (BasicFrame)frameImage.getRoundFrame();
+        return (BasicFrame)frameImage.getPainter();
     }
 
     

@@ -53,7 +53,7 @@ public class AbstractRadialTickmark extends Tickmark
     protected Point2D centerPoint = new Point2D.Double(10, 10);
     protected Scale textPositionScale = new Scale(1.0);
     protected Scale textSizeScale = new Scale(1.0);
-    protected Scale ticksPositionScale = new Scale(1.0);
+    protected Scale ticksPositionScale = new Scale(1.0);  // 0.0 - 2.0
     protected RadialRangeModel rangeModel;
     protected RadialSizeModel sizeModel = new RadialSizeModel();
     protected RadialTickModel radialTickModel = new RadialLineTicks();

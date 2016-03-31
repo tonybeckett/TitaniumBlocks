@@ -45,7 +45,7 @@ import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.FrameModel;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
@@ -209,7 +209,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         return backdropImage.getPainter();
     }
 
-    public FrameModel getFramePainter()
+    public BasicFrame getFramePainter()
     {
         return frameImage.getRoundFrame();
     }

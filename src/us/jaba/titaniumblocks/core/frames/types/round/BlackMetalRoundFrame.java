@@ -34,6 +34,7 @@ import java.awt.Paint;
 import java.awt.geom.Area;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
 import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 
 /**
@@ -91,7 +92,7 @@ public class BlackMetalRoundFrame extends RoundFrame
         // Frame effect overlay
         final Point2D effectCenterPoint = new Point2D.Double((0.5 * imageWidth), (0.5 * imageHeight));
 
-        this.getEffect().paint(graphics, dimensions, outerArea, effectCenterPoint);
+        ((RoundFrameEffect) this.getEffect()).paint(graphics, dimensions, outerArea, effectCenterPoint);
         graphics.dispose();
 
     }
