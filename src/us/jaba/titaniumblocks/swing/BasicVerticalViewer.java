@@ -130,7 +130,7 @@ public class BasicVerticalViewer extends javax.swing.JFrame
         this.setSize(
                 new Dimension(400, 800));
 
-        this.setIconImage(Images.titaniumblocks16);
+   //     this.setIconImage(Images.titaniumblocks16);
     }
 
 }

@@ -38,6 +38,7 @@ import us.jaba.titaniumblocks.core.pointers.types.Pencil2Pointer;
 import us.jaba.titaniumblocks.core.pointers.types.PencilPointer;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedDualLinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.ArrowHeadPointer;
+import us.jaba.titaniumblocks.core.pointers.types.CircleOrbitPointer;
 import us.jaba.titaniumblocks.core.pointers.types.CompassPointer;
 import us.jaba.titaniumblocks.core.pointers.types.DiamondPointer;
 import us.jaba.titaniumblocks.core.pointers.types.LineWithPaddleTailPointer;
@@ -65,6 +66,7 @@ public class PointerCoreInfo
     public static final Class<?>[] POINTER_MODELS =
     {
         ArrowHeadPointer.class,
+        CircleOrbitPointer.class,
         CometPointer.class,
         CompassPointer.class,
         DiamondPointer.class,
