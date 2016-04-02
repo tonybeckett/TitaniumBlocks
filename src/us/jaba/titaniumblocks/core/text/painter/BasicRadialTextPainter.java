@@ -25,57 +25,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
+package us.jaba.titaniumblocks.core.text.painter;
 
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
-import us.jaba.titaniumblocks.core.Scale;
-import us.jaba.titaniumblocks.core.font.FontSupport;
-import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
+import us.jaba.titaniumblocks.core.text.TextSupport;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
-
-public class RomanNumbers extends AbstractRadialTickmark
+/**
+ *
+ * @author tbeckett
+ */
+public class BasicRadialTextPainter
 {
-
-    private static final double DEFAULT_TEXT_POSITION = 0.9;
-
-    private static final double DEFAULT_TEXT_SCALE = 0.12;
-    private String[] arrayOfText =
+    
+    protected double adjustAngle(double angle)
     {
-        "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
-    };
-
-    public RomanNumbers()
+        return angle;
+    }
+    
+    protected double adjustToRadians(double a)
     {
-        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(DEFAULT_TEXT_SCALE));
+        return CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(a)));
     }
 
-    public RomanNumbers(String[] text, double textScaleFactor)
+    public void paint(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
     {
-        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
-
-        this.arrayOfText = text;
-         
-        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
-
-    }
-
-    @Override
-    public void subPaint(Graphics2D graphics, Dimension dimensions)
-    {
-
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
-
-        graphics.setFont(getFont().deriveFont( (float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
-
-        graphics.setColor(textColor);
-        graphics.setStroke(mediumStroke);
-
-        textPainter.paint(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
-        graphics.dispose();
-
+       int len = text.length;
+        double currentAngle = startAngle;
+        for (int i = 0; i < len; i++)
+        {
+            double gAngle = adjustToRadians(currentAngle - 270);
+            Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
+            TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), adjustAngle(gAngle));
+            currentAngle = currentAngle + angleStep;
+        }  
     }
 
 }

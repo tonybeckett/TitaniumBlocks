@@ -27,53 +27,70 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.font.FontSupport;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import us.jaba.titaniumblocks.core.text.painter.FacingIn;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
-public class RomanNumbersOut extends AbstractRadialTickmark
+public class RomanNumbersDoubleCircle extends AbstractRadialTickmark
 {
 
-    private static final double DEFAULT_TEXT_POSITION = 0.915;
+    private static final double DEFAULT_TEXT_POSITION = 0.75;
     private static final double DEFAULT_TEXT_SCALE = 0.12;
     private String[] arrayOfText =
     {
         "XII", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X", "XI"
     };
 
-    public RomanNumbersOut()
+    public RomanNumbersDoubleCircle()
     {
         super(new Scale(DEFAULT_TEXT_POSITION), new Scale(DEFAULT_TEXT_SCALE));
     }
 
-    public RomanNumbersOut(String[] text, double textScaleFactor)
+    public RomanNumbersDoubleCircle(String[] text, double textScaleFactor)
     {
         super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
 
         this.arrayOfText = text;
-     
-        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
 
+        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
+        textPainter = new FacingIn();
     }
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 4.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
         final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
         graphics.setFont(getFont().deriveFont((float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadiusRotateIn(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
+        textPainter.paint(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
 
+        graphics.setColor(minorColor);
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), tickRadius * 0.6);
+
+        graphics.setColor(mediumColor);
+        graphics.setStroke(mediumStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.915, tickRadius * 0.95, 0.0, 6.0, 60);
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), tickRadius * 0.915);
+        ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), tickRadius * 0.95);
+
+        graphics.setColor(majorColor);
+        graphics.setStroke(majorStroke);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.915, tickRadius * 0.95, 0.0, 30.0, 12);
         graphics.dispose();
 
     }

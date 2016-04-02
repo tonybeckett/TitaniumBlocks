@@ -46,8 +46,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersInCi
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersInDoubleCircle;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.OnlyTicksOn30;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.RomanNumbers;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.RomanNumbersOut;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.RomanNumbersOutTicks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.RomanNumbersDoubleCircle;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.RomanNumbersTicks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.SixNumbersTicks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.TwoBigNumbersTicks;
@@ -77,11 +76,10 @@ public class ClockCoreInfo
         NumbersInDoubleCircle.class,
         OnlyTicksOn30.class,
         RomanNumbers.class,
-        RomanNumbersOut.class,
-        RomanNumbersOutTicks.class,
         RomanNumbersTicks.class,
         SixNumbersTicks.class,
         TwoBigNumbersTicks.class,
+        RomanNumbersDoubleCircle.class
         
     };
 

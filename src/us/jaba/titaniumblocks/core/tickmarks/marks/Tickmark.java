@@ -33,6 +33,8 @@ import java.awt.Font;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.BaseFont;
+import us.jaba.titaniumblocks.core.text.painter.BasicRadialTextPainter;
+import us.jaba.titaniumblocks.core.text.painter.FacingDown;
 
 /**
  *
@@ -77,7 +79,8 @@ public class Tickmark extends CoreModel
     protected int majorTickSpacing = DEFAULT_MAJOR_TICK_SPACING;
 
     protected Font font = BaseFont.DEFAULT_FONT.deriveFont(10.0F);
-
+    protected BasicRadialTextPainter textPainter = new FacingDown();
+    
     public Tickmark()
     {
     }
@@ -207,6 +210,17 @@ public class Tickmark extends CoreModel
         this.textColor = textColor;
         changed();
 
+    }
+
+    public BasicRadialTextPainter getTextPainter()
+    {
+        return textPainter;
+    }
+
+    public void setTextPainter(BasicRadialTextPainter textPainter)
+    {
+        this.textPainter = textPainter;
+        changed();
     }
 
 }

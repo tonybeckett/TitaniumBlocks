@@ -27,66 +27,60 @@
  */
 package us.jaba.titaniumblocks.core.pointers.types;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Graphics2D;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import us.jaba.titaniumblocks.core.Scale;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Path2D;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.pointers.BasicPointer;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
+import us.jaba.titaniumblocks.core.pointers.GradientPointer;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundedDashPointer extends BasicPointer
+public class DiamondPointer extends GradientPointer
 {
 
-    private BasicStroke stroke;
-
-    public RoundedDashPointer()
+    public DiamondPointer()
     {
-        this(new PureRed());
+        this(new PureBlack());
     }
 
-    public RoundedDashPointer(GradientPalette pointerColor)
+    public DiamondPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
-        this.tailScale = new Scale(0.2);
-        stroke = new BasicStroke(9.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
-    public RoundedDashPointer(BasicPointer other)
+    public DiamondPointer(GradientPointer other)
     {
         super(other);
     }
 
     @Override
-    protected void paintShape(Graphics2D graphics, Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
-        super.paintShape(graphics, dimensions);
 
-//        final int imageWidth = (int) dimensions.getWidth();
-//        final int imageHeight = (int) dimensions.getHeight();
-        final double centerX = dimensions.getWidth() / 2.0;
-        final double centerY = dimensions.getHeight() / 2.0;
-        final double maxY = dimensions.getHeight() / 2.0;
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
-        double tailM = this.getRadiusPercent() * tailScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
 
-        graphics.setStroke(stroke);
-        graphics.drawLine((int) centerX, (int) (centerY + (maxY * tailM)), (int) centerX, (int) (centerY - (maxY * frontM)));
+        GeneralPath pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo((0.5 - 0.0041) * imageWidth, centerY - (maxY * 0.001 * frontM));
+        pointerShape.lineTo((0.5 - 0.0141) * imageWidth, centerY - (maxY * 0.6 * frontM));
+        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * 0.92 * frontM));
+        pointerShape.lineTo((0.5 + 0.0141) * imageWidth, centerY - (maxY * 0.6 * frontM));
+        pointerShape.lineTo((0.5 + 0.0041) * imageWidth, centerY - (maxY * 0.001 * frontM));
+        pointerShape.closePath();
 
-        if (centerPostVisible)
-        {
-            double radius = dimensions.width / 4.0 * centerScale.getValue();
-            Area pointerPost = new Area(new Ellipse2D.Double((dimensions.getWidth() / 2.0) - radius, (dimensions.getHeight() / 2.0) - radius, radius * 2, radius * 2));
-            graphics.fill(pointerPost);
-        }
+        Area pointerLine = new Area(pointerShape);
+
+        return new Area(pointerLine);
 
     }
 
-//  
 }

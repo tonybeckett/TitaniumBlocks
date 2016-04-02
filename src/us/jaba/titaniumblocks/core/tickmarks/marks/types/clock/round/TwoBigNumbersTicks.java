@@ -85,7 +85,7 @@ public class TwoBigNumbersTicks extends AbstractRadialTickmark
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.85, 0.0, 180, arrayOfText);
+        textPainter.paint(graphics, centerPoint, radius * 0.85, 0.0, 180, arrayOfText);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);

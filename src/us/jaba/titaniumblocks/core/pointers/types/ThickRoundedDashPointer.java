@@ -41,24 +41,24 @@ import us.jaba.titaniumblocks.core.pointers.BasicPointer;
  *
  * @author tbeckett
  */
-public class RoundedDashPointer extends BasicPointer
+public class ThickRoundedDashPointer extends BasicPointer
 {
 
     private BasicStroke stroke;
 
-    public RoundedDashPointer()
+    public ThickRoundedDashPointer()
     {
         this(new PureRed());
     }
 
-    public RoundedDashPointer(GradientPalette pointerColor)
+    public ThickRoundedDashPointer(GradientPalette pointerColor)
     {
         super(pointerColor);
         this.tailScale = new Scale(0.2);
-        stroke = new BasicStroke(9.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        stroke = new BasicStroke(18.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
     }
 
-    public RoundedDashPointer(BasicPointer other)
+    public ThickRoundedDashPointer(BasicPointer other)
     {
         super(other);
     }

@@ -72,7 +72,7 @@ public class ClockNumbersTickmarks extends AbstractRadialTickmark
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
+        textPainter.paint(graphics, centerPoint, radius * textPositionScale.getValue(), 0.0, 30, arrayOfText);
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);
