@@ -42,6 +42,8 @@ import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
+import us.jaba.titaniumblocks.core.led.types.NullLed;
+import us.jaba.titaniumblocks.core.pointers.NullPointer;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
@@ -96,6 +98,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         add(frameImage);
         this.centerPostImage = centerPostImage;
         add(centerPostImage);
+        
     }
 
     public AbstractRoundDisplay()
@@ -106,7 +109,9 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
 
     private void init()
     {
-
+        pointerImage = new PointerImageFactory(new NullPointer());
+        add(pointerImage);
+        
         doubleValueText = new DoubleValueText();
         valueTextImage = new TextImageFactory(doubleValueText);
         add(valueTextImage);
@@ -122,7 +127,9 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         tbText = new TBText();
         tbTextImage = new TextImageFactory(tbText);
         add(tbTextImage);
-
+        
+        ledImageFactory = new LedImageFactory(new NullLed());
+        add(ledImageFactory);
     }
 
     public final void add(CoreImageFactory imageFactory)
@@ -174,7 +181,7 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
     }
 
      
-    public Frontcover getFrontcover()
+    public Frontcover getFrontCover()
     {
         return frontcoverImage.getPainter();
     }
@@ -241,22 +248,35 @@ public class AbstractRoundDisplay extends CoreModel implements Painter
         return pointerImage.getPainter();
     }
     
-    
-
-    public void setLed(Led ledPainter)
-    {
-        this.ledImageFactory.setPainter(ledPainter);
-    }
-
      
     public TitleText getTitleText()
     {
         return titleValueText;
     }
 
-    public void setTitleText(TitleText titleText)
+    public void setLed(Led ledPainter)
     {
-        this.titleValueText = titleText;
+        this.ledImageFactory.setPainter(ledPainter);
+    }
+
+    public DoubleValueText getDoubleValueText()
+    {
+        return doubleValueText;
+    }
+
+    public double getNormalizedValue()
+    {
+        return normalizedValue;
+    }
+
+    public TitleText getTitleValueText()
+    {
+        return titleValueText;
+    }
+
+    public UnitsText getUnitsText()
+    {
+        return unitsText;
     }
 
 }

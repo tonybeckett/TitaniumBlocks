@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.displays;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import us.jaba.titaniumblocks.displays.round.ClockProperties;
 import us.jaba.titaniumblocks.displays.round.ClockValues;
 
@@ -36,7 +37,7 @@ import us.jaba.titaniumblocks.displays.round.ClockValues;
  *
  * @author tbeckett
  */
-public interface ClockDisplay extends ClockProperties, ClockValues
+public interface ClockDisplay extends ClockProperties, ClockValues, Serializable
 {
 
     public void setSize(Dimension d);

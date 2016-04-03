@@ -100,9 +100,7 @@ public class GenericClockDisplay extends AbstractDisplay implements RoundDisplay
     private void init(CoreImageFactory frameImageFactory)
     {
         frameImage = frameImageFactory;//new RoundFrameImageFactory(new SilverRoundFrame())
-        {
-
-        };
+       
         add(frameImage);
 
         BasicBackdrop bmbp = new BasicBackdrop();

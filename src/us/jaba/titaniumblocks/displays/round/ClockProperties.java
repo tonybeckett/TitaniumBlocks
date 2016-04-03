@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.displays.round;
 
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
@@ -39,7 +40,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
  *
  * @author tbeckett
  */
-public interface ClockProperties
+public interface ClockProperties extends Serializable
 {
 
     Pointer getHoursPointer();
@@ -72,7 +73,7 @@ public interface ClockProperties
 
     void setFrontCover(Frontcover frontcover);
 
-    Frontcover getFrontcover();
+    Frontcover getFrontCover();
 
     void setTitle(String title);
 

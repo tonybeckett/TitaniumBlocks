@@ -149,8 +149,8 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
         add(frontcoverImage);
 
         led = new SingleBargraphLedOff();
-        ledImageFactory = new LedImageFactory(led);
-        add(ledImageFactory);
+//        ledImageFactory = new LedImageFactory(led);
+//        add(ledImageFactory);
 
         tickmarkModel = new RNormalMajMedMinorTickmark();
 
@@ -216,7 +216,7 @@ public class SingleRoundDisplay extends AbstractRoundDisplay implements RoundDis
 
         graphics.drawImage(tickmarkImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(ledImageFactory.build(interiorDim), dimensions.width * 10 / 16, dimensions.height * 13 / 32, null);
+//        graphics.drawImage(ledImageFactory.build(interiorDim), dimensions.width * 10 / 16, dimensions.height * 13 / 32, null);
 
         AffineTransform currentTransform = graphics.getTransform();
 

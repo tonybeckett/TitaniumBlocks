@@ -90,7 +90,7 @@ public class Text extends CoreModel
 
     protected void paintText(Graphics2D graphics, Dimension dimensions)
     {
-
+// intentional
     }
 
     public Font getFont()

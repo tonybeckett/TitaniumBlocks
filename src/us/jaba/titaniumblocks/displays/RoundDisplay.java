@@ -27,11 +27,13 @@
  */
 package us.jaba.titaniumblocks.displays;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tbeckett
  */
-public interface RoundDisplay  
+public interface RoundDisplay  extends Serializable
 {
      
 }

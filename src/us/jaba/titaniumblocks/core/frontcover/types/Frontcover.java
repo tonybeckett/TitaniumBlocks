@@ -27,6 +27,7 @@
  */
 package us.jaba.titaniumblocks.core.frontcover.types;
 
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.Painter;
 
@@ -34,7 +35,7 @@ import us.jaba.titaniumblocks.core.Painter;
  *
  * @author tbeckett
  */
-public abstract class Frontcover extends CoreModel implements Painter
+public class Frontcover extends CoreModel implements Painter, Serializable
 {
     
 }

@@ -27,11 +27,13 @@
  */
 package us.jaba.titaniumblocks.displays.round;
 
+import java.io.Serializable;
+
 /**
  *
  * @author tbeckett
  */
-public interface ClockValues
+public interface ClockValues extends Serializable
 {
     public double getHoursValue();
 

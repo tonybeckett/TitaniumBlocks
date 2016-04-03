@@ -29,6 +29,7 @@ package us.jaba.titaniumblocks.core.pointers;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.CoreModel;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
@@ -36,15 +37,16 @@ import us.jaba.titaniumblocks.core.color.GradientPalette;
  *
  * @author tbeckett
  */
-public abstract class Pointer extends CoreModel
+public abstract class Pointer extends CoreModel implements Serializable
 {
 
     protected boolean shadowActive;
 
     private boolean shadowChanged = true;
 
-    public void copy(Pointer hourPointer)
+    public void copy(Pointer p)
     {
+        //intentional
     }
 
   

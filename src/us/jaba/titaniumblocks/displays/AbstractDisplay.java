@@ -174,7 +174,7 @@ public class AbstractDisplay extends CoreModel implements Painter
     }
 
      
-    public Frontcover getFrontcover()
+    public Frontcover getFrontCover()
     {
         return frontcoverImage.getPainter();
     }

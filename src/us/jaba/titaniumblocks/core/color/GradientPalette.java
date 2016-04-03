@@ -28,12 +28,13 @@
 package us.jaba.titaniumblocks.core.color;
 
 import java.awt.Color;
+import java.io.Serializable;
 
 /**
  *
  * @author tbeckett
  */
-public class GradientPalette
+public class GradientPalette implements Serializable
 {
 
     private Color mediumColor;

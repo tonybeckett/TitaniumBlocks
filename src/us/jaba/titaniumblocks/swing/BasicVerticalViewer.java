@@ -41,7 +41,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**

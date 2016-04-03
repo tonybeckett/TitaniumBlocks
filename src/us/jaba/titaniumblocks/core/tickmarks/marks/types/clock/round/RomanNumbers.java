@@ -32,7 +32,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.font.FontSupport;
-import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 

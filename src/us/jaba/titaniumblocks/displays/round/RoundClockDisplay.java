@@ -33,10 +33,10 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
@@ -64,6 +64,7 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
+import us.jaba.titaniumblocks.core.text.types.TitleText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
@@ -75,7 +76,7 @@ import us.jaba.titaniumblocks.displays.RoundDisplay;
  *
  * @author tbeckett
  */
-public class RoundClockDisplay extends AbstractRoundDisplay implements RoundDisplay, ClockDisplay
+public class RoundClockDisplay extends AbstractRoundDisplay implements RoundDisplay, ClockDisplay, Serializable
 {
 
     private int currentOffset = -1;
@@ -96,15 +97,15 @@ public class RoundClockDisplay extends AbstractRoundDisplay implements RoundDisp
 
     public RoundClockDisplay()
     {
-        this(ColorPalette.BLACK);
-    }
-
-    public RoundClockDisplay(Color c)
-    {
-        super();
         init();
     }
 
+    @Override
+    public void setTitleText(TitleText titleText)
+    {
+    }
+
+    
     private void init()
     {
         frameImage = new RoundFrameImageFactory(new SilverRoundFrame())
@@ -298,22 +299,18 @@ public class RoundClockDisplay extends AbstractRoundDisplay implements RoundDisp
         this.thirdPointerValue = thirdPointerValue;
     }
 
-    public Color getColor()
-    {
-        return valueTextImage.getPainter().getColor();
-    }
+//    public Color getColor()
+//    {
+//        return valueTextImage.getPainter().getColor();
+//    }
+//
+//    public void setColor(Color c)
+//    {
+//
+//        //  tbTextImage.getTickmark().setColor(c);
+//    }
 
-    public void setColor(Color c)
-    {
-
-        //  tbTextImage.getTickmark().setColor(c);
-    }
-
-    public Backdrop getBackdropPainter()
-    {
-        return backdropImage.getPainter();
-    }
-
+    
     public Text getTextPainter()
     {
         return valueTextImage.getPainter();

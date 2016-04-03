@@ -43,6 +43,17 @@ import us.jaba.titaniumblocks.core.textures.Texture;
 public class PunchedSheetTexture extends Texture
 {
 
+    private static final float[] FRACTIONS =
+    {
+        0.0f,
+        1.0f
+    };
+    private static final Color[] COLORS =
+    {
+        new Color(0, 0, 0, 255),
+        new Color(68, 68, 68, 255)
+    };
+
     private Color brushColor;
 
     public Color getBrushColor()
@@ -66,17 +77,6 @@ public class PunchedSheetTexture extends Texture
         this.brushColor = brushColor;
         changed();
     }
-
-    private static final float[] FRACTIONS =
-    {
-        0.0f,
-        1.0f
-    };
-    private static final Color[] COLORS =
-    {
-        new Color(0, 0, 0, 255),
-        new Color(68, 68, 68, 255)
-    };
 
     @Override
     public void paint(Graphics2D graphics2D, Dimension dimensions)

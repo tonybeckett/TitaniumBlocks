@@ -143,7 +143,7 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
 
     public void setSize(Dimension dimensions)
     {
-
+// intentional
     }
 
     @Override

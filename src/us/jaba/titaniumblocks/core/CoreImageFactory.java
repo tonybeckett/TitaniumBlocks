@@ -20,12 +20,12 @@ public class CoreImageFactory
 
     protected static final BufferedImage DEFAULT_NULL_IMAGE = ImageSupport.DEFAULT_SMALL_IMAGE;
     private CoreModel painter = null;
-    private BufferedImage backgroundImage = null;
+    private BufferedImage backgroundImage = DEFAULT_NULL_IMAGE;
     public BufferedImage result;
 
     public CoreImageFactory()
     {
-
+        this(new CoreModel());
     }
 
     protected CoreImageFactory(CoreModel painter)

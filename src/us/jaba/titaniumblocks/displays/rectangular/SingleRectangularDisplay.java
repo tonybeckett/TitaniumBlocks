@@ -290,7 +290,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-
+// intentional
     }
 
     public void setPointerGradient(GradientPalette cp)

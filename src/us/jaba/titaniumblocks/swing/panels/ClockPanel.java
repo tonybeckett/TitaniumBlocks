@@ -27,7 +27,6 @@
  */
 package us.jaba.titaniumblocks.swing.panels;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -40,7 +39,6 @@ import javax.swing.JComponent;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
@@ -103,7 +101,7 @@ public class ClockPanel extends JComponent
 
     public ClockPanel()
     {
-        this(new RoundClockDisplay(new Color(128, 128, 128)));
+        this(new RoundClockDisplay());
     }
 
     public ClockPanel(ClockDisplay clock)
