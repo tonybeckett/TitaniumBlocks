@@ -28,6 +28,7 @@
 package us.jaba.titaniumblocks.core.text.types;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
@@ -49,7 +50,7 @@ public class TitleText extends Text
 
     private String value = "Title";
     private Scale scale;
-    
+
     public TitleText()
     {
         super(BaseFont.DEFAULT_FONT, new Standard().getTextColor());
@@ -64,17 +65,19 @@ public class TitleText extends Text
         final int centerY = (int) (imageHeight / 2.0);
         final double maxY = (int) (imageHeight / 2.0);
         final int yPos = (int) (this.scale.getValue() * maxY);
-        
+
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         graphics.setColor(getColor());
-        graphics.setFont(getFont());
+
+        Font f = getFont().deriveFont(getFont().getStyle(), (int) (dimensions.width / 500.0 * getFont().getSize()));
+        graphics.setFont(f);
         TextLayout stringLayout = new TextLayout(value, graphics.getFont(), RENDER_CONTEXT);
         Rectangle2D boundary = new Rectangle2D.Double();
 
         boundary.setFrame(stringLayout.getBounds());
         graphics.drawString(value,
-                (int) ((imageWidth / 2.0) - (stringLayout.getBounds().getWidth()/2)),
+                (int) ((imageWidth / 2.0) - (stringLayout.getBounds().getWidth() / 2)),
                 centerY - yPos //(int) (imageHeight / 3.25)
         );
 
@@ -91,12 +94,12 @@ public class TitleText extends Text
         changed();
     }
 
-    public Scale getScale()
+    public Scale getYPositionScale()
     {
         return scale;
     }
 
-    public void setScale(Scale scale)
+    public void setYPositionScale(Scale scale)
     {
         this.scale = scale;
         changed();

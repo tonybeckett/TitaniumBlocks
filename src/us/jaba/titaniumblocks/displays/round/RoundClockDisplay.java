@@ -177,9 +177,10 @@ public class RoundClockDisplay extends AbstractRoundDisplay implements RoundDisp
 
     }
 
+    @Override
     public void setSize(Dimension dimensions)
     {
-        titleValueText.setFontSize((float) (dimensions.width / 500.0) * BaseFont.DEFAULT_FONT.getSize());
+//        titleValueText.setFontSize((float) (dimensions.width / 500.0) * BaseFont.DEFAULT_FONT.getSize());
     }
 
     private int adjustOffset(int offset, double graphicsAngle)
