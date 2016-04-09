@@ -44,7 +44,7 @@ import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.knobs.KnobCoreInfo;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
-import us.jaba.titaniumblocks.core.knobs.KnobPainter;
+import us.jaba.titaniumblocks.core.knobs.Knob;
 
 /**
  *
@@ -78,7 +78,7 @@ public class KnobViewer extends javax.swing.JFrame
             panel.setLayout(new BorderLayout());
             Class<?> aClass = classes.get(i);
             Constructor c = aClass.getConstructor();
-            KnobPainter bcm = (KnobPainter) c.newInstance();
+            Knob bcm = (Knob) c.newInstance();
 
             JLabel jlabel = new JLabel();
             jlabel.setText(aClass.getSimpleName().replace("Knob", "").replace("Painter", ""));

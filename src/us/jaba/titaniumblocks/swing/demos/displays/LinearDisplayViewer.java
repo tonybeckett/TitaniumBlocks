@@ -32,8 +32,8 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
-import us.jaba.titaniumblocks.displays.LinearDisplayImageFactory;
+import us.jaba.titaniumblocks.displays.AbstractDisplay;
+import us.jaba.titaniumblocks.displays.DisplayImageFactory;
 import us.jaba.titaniumblocks.displays.CoreInfo;
 
 /**
@@ -63,9 +63,9 @@ public class LinearDisplayViewer extends BasicVerticalViewer
     protected String getClassNameFromInstance(Object o)
     {
         String s = null;
-        if (o instanceof AbstractLinearDisplay)
+        if (o instanceof AbstractDisplay)
         {
-            AbstractLinearDisplay pp = (AbstractLinearDisplay) o;
+            AbstractDisplay pp = (AbstractDisplay) o;
 
             s = pp.getClass().getSimpleName().replace("", "");
         }
@@ -75,9 +75,9 @@ public class LinearDisplayViewer extends BasicVerticalViewer
     @Override
     protected BufferedImage getImageFromInstance(Object next, Dimension dim)
     {
-        AbstractLinearDisplay pp = (AbstractLinearDisplay) next;
+        AbstractDisplay pp = (AbstractDisplay) next;
 
-        return new LinearDisplayImageFactory((AbstractLinearDisplay) pp).build(dim);
+        return new DisplayImageFactory((AbstractDisplay) pp).build(dim);
     }
 
     /**

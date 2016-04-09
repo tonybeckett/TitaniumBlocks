@@ -29,8 +29,6 @@ package us.jaba.titaniumblocks.swing.demos.panels;
 
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.shadows.TaperedRoundedTailShadow;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedRoundedTailPointer;
 
 /**
  *
@@ -46,7 +44,7 @@ public class SingleRound150WestDemo extends SingleRoundDemo
     {
         super(new CircularTwoPostLayout(210, 0, Direction.CLOCKWISE, 0.95f, 205, 5));
         setTitle("150West");
-        this.setPointerPainter(new TaperedRoundedTailPointer(), new TaperedRoundedTailShadow());
+//        this.setPointerPainter(new TaperedRoundedTailPointer(), new TaperedRoundedTailShadow());
 
     }
 

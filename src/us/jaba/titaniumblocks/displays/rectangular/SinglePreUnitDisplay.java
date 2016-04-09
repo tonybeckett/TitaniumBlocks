@@ -63,7 +63,7 @@ public class SinglePreUnitDisplay extends SingleDisplay
     public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
     {
         unitTextImage.getPainter().setFontSize(valueTextImage.getPainter().getFont().getSize());
-        unitTextImage.getPainter().setColor(this.getColor());
+//        unitTextImage.getPainter().setColor(this.getColor());
 
         BufferedImage image2 = unitTextImage.build(interiorDim);
         graphics.drawImage(image2, offset, offset, null);
@@ -74,10 +74,11 @@ public class SinglePreUnitDisplay extends SingleDisplay
         return unitTextImage.getPainter();
     }
 
+    
     @Override
-    public void setValueTextPainter(Text valueTextPainter)
+    public void setValueText(Text valueTextPainter)
     {
-        super.setValueTextPainter(valueTextPainter); 
+        super.setValueText(valueTextPainter); 
         valueTextPainter.setRightOffsetFactor(DEFAULT_RIGHT_OFFSET_SCALE);
     }
 

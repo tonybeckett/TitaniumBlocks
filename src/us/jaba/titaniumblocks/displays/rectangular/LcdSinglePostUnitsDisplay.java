@@ -66,7 +66,7 @@ public class LcdSinglePostUnitsDisplay extends LcdSingleDisplay
         super.paintPreText(graphics, image, interiorDim, offset);
         valueTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() * 0.67f));
         unitTextImage.getPainter().setFontSize((float) (interiorDim.getHeight() / 3.0 * this.getFontScaleFactor()));
-        unitTextImage.getPainter().setColor(this.getColor());
+//        unitTextImage.getPainter().setColor(this.getColor());
 
         BufferedImage image2 = unitTextImage.build(interiorDim);
         graphics.drawImage(image2, offset, offset, null);
@@ -84,9 +84,9 @@ public class LcdSinglePostUnitsDisplay extends LcdSingleDisplay
     }
 
     @Override
-    public void setValueTextPainter(Text valueTextPainter)
+    public void setValueText(Text valueTextPainter)
     {
-        super.setValueTextPainter(valueTextPainter);
+        super.setValueText(valueTextPainter);
         valueTextPainter.setRightOffsetFactor(0.25);
     }
 

@@ -25,25 +25,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays;
+package us.jaba.titaniumblocks.displays.rectangular;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.io.Serializable;
-import us.jaba.titaniumblocks.displays.round.ClockProperties;
-import us.jaba.titaniumblocks.displays.round.ClockValues;
+import us.jaba.titaniumblocks.core.frames.RectangularFrame;
+import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
+import us.jaba.titaniumblocks.displays.AbstractClockDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public interface ClockDisplay extends ClockProperties, ClockValues, Serializable
+public class SquareClockDisplay extends AbstractClockDisplay
 {
 
-    public void setSize(Dimension d);
+    public SquareClockDisplay()
+    {
+        super(new BlackMetalLinearFrame());
+    }
 
-    public void paint(Graphics2D graphics2D, Dimension dimension);
+    public SquareClockDisplay(RectangularFrame frame)
+    {
+        super(frame);
+    }
 
-    public void setChanged();
-    
 }

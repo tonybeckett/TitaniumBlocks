@@ -66,7 +66,7 @@ public class SingleSectionDisplay extends SingleDisplay
 
     public void setValue(double value)
     {
-        ((DoubleValueText) super.getTextPainter()).setValue(value);
+        ((DoubleValueText) super.getValueText()).setValue(value);
         basicSection.setValue(value);
     }
 

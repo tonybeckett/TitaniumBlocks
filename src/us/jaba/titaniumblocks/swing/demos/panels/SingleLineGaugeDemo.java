@@ -30,8 +30,6 @@ package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.CopperBModel;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.rectangular.SingleLineDoubleLinearPanel;
 
@@ -49,8 +47,8 @@ public class SingleLineGaugeDemo extends javax.swing.JFrame
     {
         initComponents();
         final SingleLineDoubleLinearPanel panel = new SingleLineDoubleLinearPanel();
-        panel.getGauge().getTextPainter().setColor(ColorPalette.DEEPSEAGREEN);
-        panel.getGauge().getBackgroundPainter().setBackgroundColor(new CopperBModel());
+//        panel.getComponent().getTitleText().setColor(ColorPalette.DEEPSEAGREEN);
+//        panel.getComponent().getBackdrop().setBackgroundColor(new CopperBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(400, 200));

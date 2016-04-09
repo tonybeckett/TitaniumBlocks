@@ -27,14 +27,14 @@
  */
 package us.jaba.titaniumblocks.core.led;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.led.colors.LedColorRed;
 
 /**
  *
  * @author tbeckett
  */
-public class Led extends CoreModel
+public class Led extends CoreBean
 {
 
     private LedColor ledColor;

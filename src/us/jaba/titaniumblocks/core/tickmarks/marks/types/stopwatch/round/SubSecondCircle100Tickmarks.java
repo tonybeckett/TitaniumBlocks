@@ -39,17 +39,16 @@ public class SubSecondCircle100Tickmarks extends AbstractRadialTickmark
 
     private final double TEXT_SCALE = 0.045;
 
-  
-
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 1.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 3.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float radius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
 
-        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth())));
+        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
@@ -62,15 +61,15 @@ public class SubSecondCircle100Tickmarks extends AbstractRadialTickmark
         {
             " ", "10", "20", "30", "40", "50", "60", "70", "80", "90"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.97, 0.0, 30, text);
-        
-       graphics.setFont(font.deriveFont((float) (0.065 * dimensions.getWidth())));
+        textPainter.paint(graphics, centerPoint, textRadius * 0.97, 0.0, 30, text);
 
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.65, 0.0, 36, text2);
+        graphics.setFont(font.deriveFont((float) (0.065 * dimensions.getWidth())));
+
+        textPainter.paint(graphics, centerPoint, textRadius * 0.65, 0.0, 36, text2);
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-        
+
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.85, radius * 0.875, 0.0, 2, 180);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.775, radius * 0.825, 0.0, 3.6, 100);
 
@@ -78,7 +77,7 @@ public class SubSecondCircle100Tickmarks extends AbstractRadialTickmark
 //            ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.75, radius * 0.825, 5.0+(i*30), 6, 4);
         graphics.setStroke(majorStroke);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.765, radius * 0.825, 0.0, 18, 20);
-        
+
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.825);
 
         graphics.setColor(majorColor);

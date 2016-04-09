@@ -25,15 +25,22 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs;
+package us.jaba.titaniumblocks.displays.round;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
+import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public class KnobPainter extends CoreModel
+public class RoundSingleDisplay extends AbstractSingleDisplay
 {
+    
+    public RoundSingleDisplay(CircularLayout circularLayout)
+    {
+        super(circularLayout, new SilverRoundFrame());
+    }
     
 }

@@ -28,15 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import us.jaba.titaniumblocks.core.backdrop.types.round.NoisyPlasticBackdrop;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.frames.types.round.BlackMetalRoundFrame;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallWhiteKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
-import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.types.DualLinesPointer;
-import us.jaba.titaniumblocks.core.pointers.shadows.DualLinesShadow;
 import us.jaba.titaniumblocks.core.posts.types.MetalBlackPost;
 
 /**
@@ -56,17 +50,17 @@ public class SingleRound270Demo extends SingleRoundDemo
 //        super(new CircularTwoPostLayout(225, 315, Direction.CLOCKWISE, 0.95f, 230, 310));
         setTitle("270");
         setPanelTitle("SingleRound270Demo");
-        this.setFramePainter(new BlackMetalRoundFrame());
+        this.setFrame(new BlackMetalRoundFrame());
         NoisyPlasticBackdrop bp = new NoisyPlasticBackdrop();
       
-        this.setBackdropPainter(bp);
-        this.setCenterPostPainter(new MetalBlackPost());
-        this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());
-        this.setColor(ColorPalette.DARKBLUE);
-        this.setPointerPainter(new DualLinesPointer(), new DualLinesShadow());
-        this.setPointerGradient( new PureRed());
+        this.setBackdrop(bp);
+        this.setCenterPost(new MetalBlackPost());
+//        this.setSmallKnobsPainter( new SmallWhiteKnobPainter(), new SmallWhiteKnobPainter());
+//        this.setColor(ColorPalette.DARKBLUE);
+//        this.setPointerPainter(new DualLinesPointer(), new DualLinesShadow());
+//        this.setPointerGradient( new PureRed());
         this.setUnits("degrees");
-        this.setLedPainter(new NullLed());
+//        this.setLedPainter(new NullLed());
     }
 
     /**

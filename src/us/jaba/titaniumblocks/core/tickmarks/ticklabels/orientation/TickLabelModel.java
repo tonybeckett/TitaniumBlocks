@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.tickmarks.ticklabels.orientation;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.Painter;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class TickLabelModel extends CoreModel implements Painter
+public abstract class TickLabelModel extends CoreBean implements Painter
 {
 
     public void paint(Graphics2D graphics, Dimension dimensions, Point2D textPoint, double value, double alpha)

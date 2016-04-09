@@ -25,43 +25,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.swing.properties;
+package us.jaba.titaniumblocks.core.knobs;
 
-import java.beans.*;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class NewPropertyEditor extends PropertyEditorSupport
+public class Knob extends CoreBean
 {
-    
-    public NewPropertyEditor()
-    {
-    }
-
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException
-    {
-        super.setAsText(text); 
-    }
-
-    @Override
-    public String getAsText()
-    {
-        return super.getAsText(); 
-    }
-
-    @Override
-    public Object getValue()
-    {
-        return super.getValue(); 
-    }
-
-    @Override
-    public void setValue(Object value)
-    {
-        super.setValue(value); 
-    }
     
 }

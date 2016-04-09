@@ -36,13 +36,12 @@ import us.jaba.titaniumblocks.core.backdrop.types.LcdBackdropModel;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.LcdGradientPalette;
 import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
-import us.jaba.titaniumblocks.displays.LinearDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public class LcdSingleDisplay extends SingleDisplay implements LinearDisplay
+public class LcdSingleDisplay extends SingleDisplay 
 {
 
     protected BackdropImageFactory lcdBackgroundImage;

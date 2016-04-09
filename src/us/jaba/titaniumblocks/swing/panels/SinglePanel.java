@@ -25,39 +25,56 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core;
+package us.jaba.titaniumblocks.swing.panels;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+import org.pushingpixels.trident.Timeline;
+import org.pushingpixels.trident.ease.Spline;
+import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
+import us.jaba.titaniumblocks.displays.TBComponent;
 
 /**
  *
  * @author tbeckett
  */
-public class CoreModel implements Painter
+public class SinglePanel extends BasicPanel
 {
 
-    private boolean changed = true;
+    private Timeline timeline = new Timeline(this);
+    private final Spline EASE = new Spline(0.5f);
+    double value;
 
-    @Override
-    public boolean hasChanged()
+    public SinglePanel(TBComponent component)
     {
-        return changed;
+        super(component);
+        this.addComponentListener(componentListener);
     }
 
-    protected void setChanged(boolean state)
+    public void setValueAnimated(double newValue)
     {
-        changed = state;
+
+        if (timeline.getState() == Timeline.TimelineState.PLAYING_FORWARD || timeline.getState() == Timeline.TimelineState.PLAYING_REVERSE)
+        {
+            timeline.abort();
+        }
+        timeline = new Timeline(this);
+        timeline.addPropertyToInterpolate("value", value, newValue);
+        timeline.setEase(EASE);
+        timeline.setDuration(450);
+        timeline.play();
+        value = newValue;
+
     }
 
-    protected void changed()
+    public void setValue(double value)
     {
-        changed = true;
+        ((AbstractSingleDisplay) tbComponent).setNormalizedValue(value / 100.0);
+        invalidate();
+        repaint();
     }
 
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    public void setUnits(String value)
     {
-        changed = false;
+        ((AbstractSingleDisplay) tbComponent).setUnits(value);
     }
+
 }

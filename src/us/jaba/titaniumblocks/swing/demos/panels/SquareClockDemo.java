@@ -27,39 +27,51 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop;
-import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
-import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
-import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.util.Calendar;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
+import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
+import us.jaba.titaniumblocks.displays.rectangular.SquareClockDisplay;
+import us.jaba.titaniumblocks.swing.Antimate;
+import us.jaba.titaniumblocks.swing.panels.ClockPanel;
 
 /**
  *
  * @author tbeckett
  */
-public class SingleRound180EastDemo extends SingleRoundDemo
+public class SquareClockDemo extends javax.swing.JFrame
 {
+    final ClockPanel panel;
 
-    /**
-     * Creates new form DisplaySingleDemo
-     */
-    public SingleRound180EastDemo()
+    public SquareClockDemo()
     {
-        super(new CircularTwoPostLayout(0, 180, Direction.CLOCKWISE, 0.95f, 355, 185));
-        setTitle("180E");
-        setPanelTitle("SingleRound180EastDemo");
-        LinenBackdrop lp = new LinenBackdrop();
+        initComponents();
+
+        panel = new ClockPanel(new SquareClockDisplay());
+        panel.setBackground(ColorPalette.WHITE);
+        BlackMetalLinearFrame frame = new BlackMetalLinearFrame();
+        frame.setFrameThickness(12);
+        panel.setFrame(frame);
+        //panel.setFrame(new NullRoundFrame());
+
+        panel.init(100, 100);
+        add(panel, BorderLayout.CENTER);
+        this.setSize(new Dimension(500, 500 + 22));
+        this.setTitle("ClockDemo");
        
-        this.setBackdrop(lp);
-        SilverRoundFrame pp = new SilverRoundFrame();
-        
-   //     pp.setInnerFrameColor(Color.RED);
-        this.setFrame(pp);
-//        this.setLedPainter(new NullLed());
-//        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
-//        this.setPointerGradient(new PureRed());
-        this.setFrontCover(new NullFrontcover());
- //       this.setColor(ColorPalette.WHITE);
+//       this.setIconImage(Images.titaniumblocks128);
+        Antimate antimate = new Antimate(100.0, 0.1f)
+        {
+            @Override
+            public void update(double d)
+            {
+                Calendar cal = Calendar.getInstance();
+                panel.setValueAnimated(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+            }
+        };
+
+        new Thread(antimate).start();
 
     }
 
@@ -74,10 +86,14 @@ public class SingleRound180EastDemo extends SingleRoundDemo
     {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
     /**
      * @param args the command line arguments
      */
@@ -100,19 +116,19 @@ public class SingleRound180EastDemo extends SingleRoundDemo
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(SingleRound180EastDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -121,11 +137,8 @@ public class SingleRound180EastDemo extends SingleRoundDemo
         {
             public void run()
             {
-                new SingleRound180EastDemo().setVisible(true);
+                new SquareClockDemo().setVisible(true);
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
 }

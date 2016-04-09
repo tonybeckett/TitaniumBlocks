@@ -44,8 +44,8 @@ import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
@@ -68,37 +68,26 @@ import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.round.Compass3Tickmarks;
 
-import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
-import us.jaba.titaniumblocks.displays.RoundDisplay;
+import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
+
 
 /**
  *
  * @author tbeckett
  */
-public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
+public class CompassDisplay extends AbstractSingleDisplay 
 {
-
-    private PointerImageFactory pointerImage;
-
     private ShadowPointerImageFactory shadowImage;
 
    
-    protected DisabledImageFactory disabledImage;
-
-    protected CircularLayout circularLayout = new CircularNoPostLayout(CoordinateDefs.Direction.CLOCKWISE, 0.95f);
-  
-    private final TickmarkImageFactory tickmarkImage;
+ 
 
     public CompassDisplay()
     {
-        this(ColorPalette.BLACK);
-    }
+    
+        super( new CircularNoPostLayout(CoordinateDefs.Direction.CLOCKWISE, 0.95f), new SilverRoundFrame());
 
-    public CompassDisplay(Color c)
-    {
-        super();
-
-        frameImage = new RoundFrameImageFactory(new SilverRoundFrame());
+        frameImage = new FrameImageFactory(new SilverRoundFrame());
         add(frameImage);
         
         BasicBackdrop bmbp = new BasicBackdrop();
@@ -138,14 +127,10 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
         add(frontcoverImage);
 
-        setColor(c);
+        
     }
 
-    public void setSize(Dimension dimensions)
-    {
-// intentional
-    }
-
+    
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
     {
@@ -154,10 +139,10 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
-        int offset = (int) frameImage.getRoundFrame().getFrameThickness();
+        int offset = (int) frameImage.getFrame().getFrameThickness();
 
         BufferedImage image = frameImage.build(dimensions);
-        Dimension interiorDim = frameImage.getRoundFrame().calcInterior(dimensions);
+        Dimension interiorDim = frameImage.getFrame().calcInterior(dimensions);
 
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
@@ -186,91 +171,10 @@ public class CompassDisplay extends AbstractRoundDisplay implements RoundDisplay
         //       graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
-    public double getNormalizedValue()
-    {
-        return normalizedValue;
-    }
-
+    
+    
   
-    public Color getColor()
-    {
-        return valueTextImage.getPainter().getColor();
-    }
-
-    public void setColor(Color c)
-    {
-
-        tbTextImage.getPainter().setColor(c);
-
-    }
-
-    public Backdrop getBackdropPainter()
-    {
-        return backdropImage.getPainter();
-    }
-
-    public BasicFrame getFramePainter()
-    {
-        return frameImage.getRoundFrame();
-    }
-
-    public Text getTextPainter()
-    {
-        return valueTextImage.getPainter();
-    }
-
-    public Frontcover getPainter()
-    {
-        return frontcoverImage.getPainter();
-    }
-
-    public void setBackdropPainter(Backdrop painter)
-    {
-        this.backdropImage = new BackdropImageFactory(painter);
-    }
-
-    public void setRoundFramePainter(RoundFrame linearFramePainter)
-    {
-        this.frameImage = new RoundFrameImageFactory(linearFramePainter);
-    }
-
-    public void setFrontCoverPainter(Frontcover foregroundPainter)
-    {
-        this.frontcoverImage = new FrontcoverImageFactory(foregroundPainter);
-    }
-
-    public void setDisabledPainter(DisabledPainter disabledPainter)
-    {
-        this.disabledImage = new DisabledImageFactory(disabledPainter);
-    }
-
-    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        this.pointerImage = new PointerImageFactory(pointerPainter);
-        this.shadowImage = new ShadowPointerImageFactory(shadowPainter);
-    }
-
-    public void setValueTextPainter(Text valueTextPainter)
-    {
-        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
-        this.valueTextImage = new TextImageFactory(valueTextPainter);
-    }
-
-    public void setCenterPostPainter(Post postPainter)
-    {
-        this.centerPostImage = new PostImageFactory(postPainter);
-    }
-
-  
-
-    protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
-    {
-// intentional
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        pointerImage.getPainter().setPrimaryColor(cp);
-    }
+ 
+   
 
 }

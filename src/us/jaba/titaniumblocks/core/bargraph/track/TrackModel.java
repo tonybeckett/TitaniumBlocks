@@ -27,13 +27,13 @@
  */
 package us.jaba.titaniumblocks.core.bargraph.track;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class TrackModel extends CoreModel
+public class TrackModel extends CoreBean
 {
     
 }

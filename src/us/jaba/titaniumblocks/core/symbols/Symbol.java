@@ -33,7 +33,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.image.SoftClipImageGenerator;
 import us.jaba.titaniumblocks.core.shadows.DropShadowImageGenerator;
@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.color.ColorTools;
  *
  * @author tbeckett
  */
-public class Symbol extends CoreModel
+public class Symbol extends CoreBean
 {
 
     private boolean glowEnabled = false;

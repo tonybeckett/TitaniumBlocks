@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.pointers;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class Pointer extends CoreModel implements Serializable
+public abstract class Pointer extends CoreBean implements Serializable
 {
 
     protected boolean shadowActive;

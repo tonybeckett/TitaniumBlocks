@@ -27,13 +27,13 @@
  */
 package us.jaba.titaniumblocks.core.threshold;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class ThresholdModel extends CoreModel
+public class ThresholdModel extends CoreBean
 {
     
 }

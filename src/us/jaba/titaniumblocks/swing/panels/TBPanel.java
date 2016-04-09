@@ -25,37 +25,52 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.swing.properties;
+package us.jaba.titaniumblocks.swing.panels;
 
-import java.beans.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.backdrop.types.rectangular.BrushedMetalBackdrop;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
  *
  * @author tbeckett
  */
-public class BackdropPropertyEditor extends PropertyEditorSupport
+public interface TBPanel extends Serializable
 {
 
-    public BackdropPropertyEditor()
-    {
-    }
+    Pointer getPointer();
+    void setPointer(Pointer pointer);
 
-    @Override
-    public void setAsText(String text) throws IllegalArgumentException
-    {
-        if (text.equals("BrushedMetalBackgroundPainter"))
-        {
-            setValue(new BrushedMetalBackdrop());
-        }
-    }
+    Tickmark getTickmarks();
+    void setTickmarks(Tickmark tm);
 
-    @Override
-    public String getAsText()
-    {
-        Backdrop bp = (Backdrop) getValue();
-        return bp.getClass().getSimpleName();
-    }
+    Backdrop getBackdrop();
+    void setBackdrop(Backdrop backdrop);
+
+    Post getCenterPost();
+    void setCenterPost(Post post);
+
+    BasicFrame getFrame();
+    void setFrame(BasicFrame Frame);
+
+    void setFrontCover(Frontcover frontcover);
+    Frontcover getFrontCover();
+
+    public TitleText getTitleText();
+    public void setTitleText(TitleText titleText);
+
+    public void setSize(Dimension d);
+    public Dimension getSize();
+    
+    public void paint(Graphics2D graphics2D);
+
+    public void setChanged();
 
 }

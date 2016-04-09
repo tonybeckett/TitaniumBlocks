@@ -28,17 +28,11 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Calendar;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.NullRoundFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
-import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.displays.round.RoundClockDisplay;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.ClockPanel;
 
@@ -46,25 +40,21 @@ import us.jaba.titaniumblocks.swing.panels.ClockPanel;
  *
  * @author tbeckett
  */
-public class ClockDemo extends javax.swing.JFrame
+public class RoundClockDemo extends javax.swing.JFrame
 {
-
     final ClockPanel panel;
 
-    /**
-     * Creates new form DisplaySingleDemo
-     */
-    public ClockDemo()
+    public RoundClockDemo()
     {
         initComponents();
 
-        panel = new ClockPanel();
+        panel = new ClockPanel(new RoundClockDisplay());
         panel.setBackground(ColorPalette.WHITE);
         panel.setFrame(new NullRoundFrame());
-        
+
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500 + 22)); 
+        this.setSize(new Dimension(500, 500 + 22));
         this.setTitle("ClockDemo");
 //       this.setIconImage(Images.titaniumblocks128);
         Antimate antimate = new Antimate(100.0, 0.1f)
@@ -72,14 +62,8 @@ public class ClockDemo extends javax.swing.JFrame
             @Override
             public void update(double d)
             {
-               Calendar cal = Calendar.getInstance();
-//                Date t = new Date();
-                 
-//                panel.setValueAnimated(t.getHours(),t.getMinutes(),t.getSeconds());
-  
-
-                 
-                panel.setValueAnimated(cal.get(Calendar.HOUR) , cal.get(Calendar.MINUTE) , cal.get(Calendar.SECOND));
+                Calendar cal = Calendar.getInstance();
+                panel.setValueAnimated(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
             }
         };
 
@@ -87,36 +71,6 @@ public class ClockDemo extends javax.swing.JFrame
 
     }
 
-    public void setBackdrop(Backdrop painter)
-    {
-        panel.setBackdrop(painter);
-    }
-
-    public void setRoundFrame(RoundFrame linearFramePainter)
-    {
-        panel.setFrame(linearFramePainter);
-    }
-
-  
-
-   
-
-     
-    public void setCenterPost(Post postPainter)
-    {
-        panel.setCenterPost(postPainter);
-    }
-
-   
-
-     
-
-    public void setFrontCover(Frontcover foregroundPainter)
-    {
-        panel.setFrontCover(foregroundPainter);
-    }
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,8 +90,7 @@ public class ClockDemo extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-/**
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[])
@@ -174,13 +127,13 @@ public class ClockDemo extends javax.swing.JFrame
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
             {
-                new ClockDemo().setVisible(true);
+                new RoundClockDemo().setVisible(true);
             }
         });
     }

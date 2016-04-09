@@ -51,7 +51,7 @@ import us.jaba.titaniumblocks.core.frames.types.rectangular.SilverLinearFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.round.TopThirdRadialFrontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
-import us.jaba.titaniumblocks.core.knobs.KnobPainter;
+import us.jaba.titaniumblocks.core.knobs.Knob;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
@@ -74,14 +74,14 @@ import us.jaba.titaniumblocks.core.text.types.TitleText;
 import us.jaba.titaniumblocks.core.text.types.UnitsText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
-import us.jaba.titaniumblocks.displays.AbstractRoundDisplay;
-import us.jaba.titaniumblocks.displays.RoundDisplay;
+import us.jaba.titaniumblocks.displays.AbstractDisplay;
+
 
 /**
  *
  * @author tbeckett
  */
-public class SingleRectangularDisplay extends AbstractRoundDisplay implements RoundDisplay
+public class SingleRectangularDisplay extends AbstractDisplay 
 {
 
     private MySEPostFactory endPostImage;
@@ -282,7 +282,7 @@ public class SingleRectangularDisplay extends AbstractRoundDisplay implements Ro
         this.rectFrameImage = new RectangularFrameImageFactory((RectangularFrame) linearFramePainter);
     }
 
-    public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
+    public void setSmallKnobs(Knob startPainter, Knob endPainter)
     {
         startPostImage = new MySWPostFactory(new KnobImageFactory(startPainter));
         endPostImage = new MySEPostFactory(new KnobImageFactory(endPainter));

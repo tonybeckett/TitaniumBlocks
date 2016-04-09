@@ -25,22 +25,16 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.round;
+package us.jaba.titaniumblocks.displays;
 
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.frames.BasicFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
-import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
-import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
  *
  * @author tbeckett
  */
-public interface ClockProperties extends Serializable
+public interface TBClockComponent extends TBComponent, Serializable
 {
 
     Pointer getHoursPointer();
@@ -55,30 +49,16 @@ public interface ClockProperties extends Serializable
 
     void setSecondsPointer(Pointer secondsPointer);
 
-    Tickmark getTickmark();
+    public double getHoursValue();
 
-    void setTickmark(Tickmark tm);
+    public void setHoursValue(double firstPointerValue);
 
-     Backdrop getBackdrop();
+    public double getMinutesValue();
 
-    void setBackdrop(Backdrop painter);
+    public void setMinutesValue(double secondPointerValue);
 
-    Post getCenterPost();
+    public double getSecondsValue();
 
-    void setCenterPost(Post postPainter);
+    public void setSecondsValue(double thirdPointerValue);
 
-    BasicFrame getFrame();
-
-    void setFrame(BasicFrame Frame);
-
-    void setFrontCover(Frontcover frontcover);
-
-    Frontcover getFrontCover();
-
-    void setTitle(String title);
-
-     public TitleText getTitleText();
-
-    public void setTitleText(TitleText titleText);
-    
 }

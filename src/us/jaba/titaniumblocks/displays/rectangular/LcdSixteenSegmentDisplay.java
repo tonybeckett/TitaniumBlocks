@@ -39,13 +39,12 @@ import us.jaba.titaniumblocks.core.lcd.SixteenSegmentDisplayImageFactory;
 import us.jaba.titaniumblocks.core.lcd.types.SixteenSegmentDisplay;
 import us.jaba.titaniumblocks.core.text.NullTextImageFactory;
 import us.jaba.titaniumblocks.core.text.types.IntegerValueText;
-import us.jaba.titaniumblocks.displays.LinearDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public class LcdSixteenSegmentDisplay extends SingleDisplay implements LinearDisplay
+public class LcdSixteenSegmentDisplay extends SingleDisplay 
 {
 
     protected BackdropImageFactory lcdBackgroundImage;

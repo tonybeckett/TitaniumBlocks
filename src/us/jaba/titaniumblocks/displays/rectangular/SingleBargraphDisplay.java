@@ -64,7 +64,7 @@ public class SingleBargraphDisplay extends SingleDisplay
    
     public void setValue(double value)
     {
-        ((DoubleValueText)super.getTextPainter()).setValue(value);
+        ((DoubleValueText)super.getValueText()).setValue(value);
         BargraphGradient20 bg = (BargraphGradient20) bargraphImage.getPainter();
         bg.setValue(value);
     }

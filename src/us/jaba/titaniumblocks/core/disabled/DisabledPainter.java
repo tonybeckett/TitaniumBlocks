@@ -28,13 +28,13 @@
 package us.jaba.titaniumblocks.core.disabled;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class DisabledPainter extends CoreModel
+public class DisabledPainter extends CoreBean
 {
     protected Color disabledColor;
 

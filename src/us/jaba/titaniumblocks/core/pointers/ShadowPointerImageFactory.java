@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.image.ImageSupport;
 
 /**
@@ -16,7 +16,7 @@ import us.jaba.titaniumblocks.core.image.ImageSupport;
 public class ShadowPointerImageFactory extends CoreImageFactory
 {
 
-    public ShadowPointerImageFactory(CoreModel painter)
+    public ShadowPointerImageFactory(CoreBean painter)
     {
         super(painter);
     }

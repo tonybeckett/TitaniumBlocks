@@ -28,36 +28,29 @@
 package us.jaba.titaniumblocks.swing.panels;
 
 import java.awt.Graphics2D;
-import java.io.Serializable;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
-import us.jaba.titaniumblocks.displays.TBClockComponent;
-import us.jaba.titaniumblocks.displays.round.RoundClockDisplay;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.displays.TBStopwatchComponent;
 
 /**
  *
  * @author tbeckett
  */
-public class ClockPanel extends BasicPanel implements Serializable
+public class StopwatchPanel extends BasicPanel
 {
 
-    private double storedValue;
+   
     private Timeline timeline = new Timeline(this);
     private final Spline EASE = new Spline(0.5f);
-    private double hourValue;
+//    private double hourValue;
     private double minuteValue;
     private double secondValue;
 
-    public ClockPanel()
+    public StopwatchPanel(TBStopwatchComponent stopwatch)
     {
-        super(new RoundClockDisplay());
-    }
-
-
-    public ClockPanel(TBClockComponent clock)
-    {
-        super(clock);
+        super(stopwatch);
         this.addComponentListener(componentListener);
 
     }
@@ -65,7 +58,7 @@ public class ClockPanel extends BasicPanel implements Serializable
     @Override
     public void paint(Graphics2D graphics2D)
     {
-     
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setValueAnimated(double hour, double minute, double second)
@@ -76,73 +69,59 @@ public class ClockPanel extends BasicPanel implements Serializable
             timeline.abort();
         }
         timeline = new Timeline(this);
-        timeline.addPropertyToInterpolate("hour", hourValue, hour);
+
         timeline.addPropertyToInterpolate("minute", minuteValue, minute);
         timeline.addPropertyToInterpolate("second", secondValue, second);
         timeline.setEase(EASE);
         timeline.setDuration(50);
         timeline.play();
 
-        hourValue = hour;
         minuteValue = minute;
         secondValue = second;
 
     }
 
-    public void setHour(double value)
-    {
-        ((TBClockComponent) tbComponent).setHoursValue(value / 12.0);
-    }
-
     public void setMinute(double value)
     {
 
-        ((TBClockComponent) tbComponent).setMinutesValue(value / 60.0);
+        ((TBStopwatchComponent) tbComponent).setMinutesValue(value / 60.0);
     }
 
     public void setSecond(double value)
     {
-        if (storedValue > 58.0 && value < 59.0)
-        {
-            storedValue = 0.0;
-        } else
-        {
-            storedValue = value;
-        }
-        ((TBClockComponent) tbComponent).setSecondsValue(storedValue / 60.0);
+        ((TBStopwatchComponent) tbComponent).setSecondsValue(value / 60.0);
         invalidate();
         repaint();
     }
 
-    public Pointer getHoursPointer()
+    public void setSmallTickmarks(Tickmark cm)
     {
-        return ((TBClockComponent) tbComponent).getHoursPointer();
+        ((TBStopwatchComponent) tbComponent).setSmallTickmarks(cm);
     }
 
-    public void setHoursPointer(Pointer hourPointer)
+    public Tickmark getSmallTickmarks()
     {
-        ((TBClockComponent) tbComponent).setHoursPointer(hourPointer);
+        return ((TBStopwatchComponent) tbComponent).getSmallTickmarks();
     }
 
     public Pointer getMinutesPointer()
     {
-        return ((TBClockComponent) tbComponent).getMinutesPointer();
+        return ((TBStopwatchComponent) tbComponent).getMinutesPointer();
     }
 
-    public void setMinutesPointer(Pointer minutePointer)
+    public void setMinutesPointer(Pointer pointer)
     {
-        ((TBClockComponent) tbComponent).setMinutesPointer(minutePointer);
+        ((TBStopwatchComponent) tbComponent).setMinutesPointer(pointer);
     }
 
     public Pointer getSecondsPointer()
     {
-        Pointer secondsPointer = ((TBClockComponent) tbComponent).getSecondsPointer();
-        return secondsPointer;
+        return ((TBStopwatchComponent) tbComponent).getSecondsPointer();
     }
 
-    public void setSecondsPointer(Pointer secondsPointer)
+    public void setSecondsPointer(Pointer pointer)
     {
-        ((TBClockComponent) tbComponent).setSecondsPointer(secondsPointer);
+        ((TBStopwatchComponent) tbComponent).setSecondsPointer(pointer);
     }
 
 }

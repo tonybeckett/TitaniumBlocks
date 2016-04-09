@@ -37,6 +37,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import us.jaba.titaniumblocks.displays.AbstractClockDisplay;
 import us.jaba.titaniumblocks.displays.round.RoundClockDisplay;
 import us.jaba.titaniumblocks.swing.demos.core.ColorPaletteViewer;
 
@@ -132,7 +133,7 @@ public class BeanIO<T>
                 try
                 {
                     RoundClockDisplay cd = new RoundClockDisplay();
-                    BeanIO<RoundClockDisplay> rcdio = new BeanIO();
+                    BeanIO<AbstractClockDisplay> rcdio = new BeanIO();
                     rcdio.storeToFile(cd, "C:/Temp/round.xml");
                 } catch (IllegalArgumentException ex)
                 {

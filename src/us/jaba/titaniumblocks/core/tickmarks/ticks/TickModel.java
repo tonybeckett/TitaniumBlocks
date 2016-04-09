@@ -28,14 +28,14 @@
 package us.jaba.titaniumblocks.core.tickmarks.ticks;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class TickModel extends CoreModel
+public class TickModel extends CoreBean
 {
     private Color color;
 

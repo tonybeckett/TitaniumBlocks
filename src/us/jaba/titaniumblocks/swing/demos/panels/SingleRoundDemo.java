@@ -28,22 +28,24 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
+import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
+import us.jaba.titaniumblocks.swing.panels.SinglePanel;
 
 /**
  *
@@ -52,20 +54,19 @@ import us.jaba.titaniumblocks.swing.panels.round.SingleRoundPanel;
 public class SingleRoundDemo extends javax.swing.JFrame
 {
 
-    final SingleRoundPanel panel;
+    public final SinglePanel panel;
 
-    /**
-     * Creates new form DisplaySingleDemo
-     */
     public SingleRoundDemo(CircularLayout cl)
     {
         initComponents();
 
-       
-        panel = new SingleRoundPanel(cl);
+        panel = new SinglePanel(new AbstractSingleDisplay(cl, new BasicRoundFrame()));
 
-        panel.getGauge().getValueText().setColor(ColorPalette.ALMOND);
-        panel.getGauge().getBackdrop().setBackgroundColor(new WhiteBModel());
+        panel.getTBComponent().getTitleText().setColor(ColorPalette.ALMOND);
+        panel.getTBComponent().getBackdrop().setBackgroundColor(new WhiteBModel());
+        panel.getTBComponent().getPointer().setTailScale(new Scale(0.2));
+        panel.getTBComponent().getPointer().setFrontScale(new Scale(0.8));
+        panel.getTBComponent().getTickmarks();
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
@@ -83,74 +84,81 @@ public class SingleRoundDemo extends javax.swing.JFrame
 
     }
 
-    public void setBackdropPainter(Backdrop painter)
-    {
-        panel.setBackdropPainter(painter);
-    }
-
-    public void setFramePainter(RoundFrame linearFramePainter)
-    {
-        panel.setFrame(linearFramePainter);
-    }
-
-    public void setColor(Color c)
-    {
-        panel.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        panel.setPointerGradient(cp);
-    }
-
     public void setPanelTitle(String string)
     {
         super.setTitle(string);
     }
 
-    protected void setTickmarks(AbstractRadialTickmark tickmarks)
+    public Backdrop getBackdrop()
     {
-        panel.setTickmarks(tickmarks);
-    }
-    
-    @Override
-    public void setTitle(String string)
-    {
-        panel.setTitle(string);
-       
+        return panel.getBackdrop();
     }
 
-    public void setUnits(String units)
+    public Tickmark getTickmarks()
     {
-        panel.setUnits(units);
+        return panel.getTickmarks();
     }
 
-    public void setCenterPostPainter(Post postPainter)
+    public TitleText getTitleText()
     {
-        panel.setCenterPostPainter(postPainter);
+        return panel.getTitleText();
     }
 
-    public void setSmallKnobsPainter(KnobPainter startPainter, KnobPainter endPainter)
+    public Post getCenterPost()
     {
-        panel.setSmallKnobsPainter(startPainter, endPainter);
+        return panel.getCenterPost();
     }
 
-    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
+    public BasicFrame getFrame()
     {
-        panel.setPointerPainter(pointerPainter, shadowPainter);
+        return panel.getFrame();
     }
 
-    public void setLedPainter(Led ledPainter)
+    public Frontcover getFrontCover()
     {
-        panel.setLedPainter(ledPainter);
+        return panel.getFrontCover();
     }
 
-    public void setFrontCoverPainter(Frontcover foregroundPainter)
+    public Pointer getPointer()
     {
-        panel.setFrontCoverPainter(foregroundPainter);
+        return panel.getPointer();
     }
 
-   
+    public void setBackdrop(Backdrop painter)
+    {
+        panel.setBackdrop(painter);
+    }
+
+    public void setFrame(BasicFrame frame)
+    {
+        panel.setFrame(frame);
+    }
+
+    public void setFrontCover(Frontcover foregroundPainter)
+    {
+        panel.setFrontCover(foregroundPainter);
+    }
+
+    public void setTickmarks(Tickmark tm)
+    {
+        panel.setTickmarks(tm);
+    }
+
+    public void setCenterPost(Post postPainter)
+    {
+        panel.setCenterPost(postPainter);
+    }
+
+    public void setPointer(Pointer pointer)
+    {
+        panel.setPointer(pointer);
+    }
+
+    public void setUnits(String value)
+    {
+        panel.setUnits(value);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

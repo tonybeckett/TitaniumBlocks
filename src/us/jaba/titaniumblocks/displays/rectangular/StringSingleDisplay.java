@@ -44,12 +44,12 @@ public class StringSingleDisplay extends SingleDisplay
         valueTextImage = new TextImageFactory(new StringValueText());
         setValue("Default");
         
-        ((StringValueText) super.getTextPainter()).setColor(ColorPalette.ALPINE);
+        ((StringValueText) super.getValueText()).setColor(ColorPalette.ALPINE);
     }
 
     public void setValue(String value)
     {
-        ((StringValueText) super.getTextPainter()).setValue(value);
+        ((StringValueText) super.getValueText()).setValue(value);
     }
 
 }

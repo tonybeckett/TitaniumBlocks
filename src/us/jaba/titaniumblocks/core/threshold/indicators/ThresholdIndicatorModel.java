@@ -27,13 +27,13 @@
  */
 package us.jaba.titaniumblocks.core.threshold.indicators;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class ThresholdIndicatorModel  extends CoreModel
+public class ThresholdIndicatorModel  extends CoreBean
 {
     
 }

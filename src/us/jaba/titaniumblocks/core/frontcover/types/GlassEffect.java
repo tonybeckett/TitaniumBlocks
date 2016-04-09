@@ -34,13 +34,13 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class GlassEffect extends CoreModel
+public class GlassEffect extends CoreBean
 {
 
     private final float[] GLASSEFFECT_FRACTIONS =

@@ -30,11 +30,8 @@ package us.jaba.titaniumblocks.swing.demos.panels;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.frames.types.round.BlackMetalRoundFrame;
-import us.jaba.titaniumblocks.core.knobs.painter.NullKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
-import us.jaba.titaniumblocks.core.led.types.NullLed;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
 import us.jaba.titaniumblocks.core.posts.NullPost;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
@@ -54,23 +51,23 @@ public class ThermometerDemo extends SingleRoundDemo
 
         super(new CircularTwoPostLayout(215, 90, Direction.CLOCKWISE, 0.95f, 205, 155));
         setTitle(" ");
-        setPanelTitle("ThermometerDemo");
+        //("ThermometerDemo");
         BlackMetalRoundFrame fr = new BlackMetalRoundFrame();
-        this.setFramePainter(fr);
+        this.setFrame(fr);
         TaperedThickFlatPointer tp = new TaperedThickFlatPointer();
         tp.setCenterPostVisible(false);
         tp.setCenterPostVisible(false);
         tp.setFrontScale(new Scale(0.8));
         tp.setTailScale(new Scale(0.3));
         tp.setPrimaryColor(new PureRed());
-        this.setPointerPainter(tp, new LineShadow());
+//        this.setPointerPainter(tp, new LineShadow());
         this.setUnits(" ");
         
-        this.setCenterPostPainter(new NullPost());//new NullPost());
+        this.setCenterPost(new NullPost());//new NullPost());
         this.setTickmarks(new ThermometerFcTickmarks());
-        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
+//        this.setSmallKnobsPainter(new NullKnobPainter(), new NullKnobPainter());
  
-        this.setLedPainter(new NullLed());
+//        this.setLedPainter(new NullLed());
     }
 
 

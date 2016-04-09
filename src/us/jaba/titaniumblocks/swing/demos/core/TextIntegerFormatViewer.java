@@ -34,7 +34,7 @@ import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.text.TextFormatSupport;
 import us.jaba.titaniumblocks.core.text.formats.TextIntegerFormat;
 import us.jaba.titaniumblocks.core.text.types.IntegerValueText;
-import us.jaba.titaniumblocks.displays.LinearDisplayImageFactory;
+import us.jaba.titaniumblocks.displays.DisplayImageFactory;
 import us.jaba.titaniumblocks.displays.rectangular.SingleDisplay;
 
 /**
@@ -73,10 +73,10 @@ public class TextIntegerFormatViewer extends BasicVerticalViewer
     {
         IntegerValueText ivt = new IntegerValueText((TextIntegerFormat) next);
         SingleDisplay sg = new SingleDisplay();
-        sg.setValueTextPainter(ivt);
+        sg.setValueText(ivt);
          
 //        sg.setPalette(new BlueLcdPalette());
-        LinearDisplayImageFactory lgi = new LinearDisplayImageFactory(sg);
+        DisplayImageFactory lgi = new DisplayImageFactory(sg);
         ivt.setValue(1234);
         return lgi.build(dim);
     }

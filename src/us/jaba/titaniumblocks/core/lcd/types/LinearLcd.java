@@ -31,7 +31,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.NullBackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.types.LcdBackdropModel;
@@ -51,7 +51,7 @@ import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
  *
  * @author tbeckett
  */
-public class LinearLcd extends CoreModel
+public class LinearLcd extends CoreBean
 {
 
     private BackdropImageFactory backgroundImageBuilder;

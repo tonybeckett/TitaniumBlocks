@@ -25,27 +25,39 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays;
+package us.jaba.titaniumblocks.core;
 
-import us.jaba.titaniumblocks.core.CoreModel;
-import us.jaba.titaniumblocks.core.Painter;
-import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.types.TBText;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 
 /**
  *
  * @author tbeckett
  */
-public class AbstractLinearDisplay extends CoreModel implements Painter
+public class CoreBean implements Painter
 {
 
-    private final TBText tbText;
-    protected final TextImageFactory tbTextImage;
+    private boolean changed = true;
 
-    public AbstractLinearDisplay()
+    @Override
+    public boolean hasChanged()
     {
-        tbText = new TBText();
-        tbTextImage = new TextImageFactory(tbText);
+        return changed;
     }
 
+    protected void setChanged(boolean state)
+    {
+        changed = state;
+    }
+
+    protected void changed()
+    {
+        changed = true;
+    }
+
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        changed = false;
+    }
 }

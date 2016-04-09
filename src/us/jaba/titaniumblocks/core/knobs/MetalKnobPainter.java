@@ -42,7 +42,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class MetalKnobPainter extends KnobPainter
+public class MetalKnobPainter extends Knob
 {
 
     private final Color[] METALKNOB_MAIN_COLORS;

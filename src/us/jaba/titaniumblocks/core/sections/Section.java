@@ -29,13 +29,13 @@ package us.jaba.titaniumblocks.core.sections;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class Section extends CoreModel
+public abstract class Section extends CoreBean
 {
 
     protected int offset = 0;

@@ -27,17 +27,17 @@
  */
 package us.jaba.titaniumblocks.displays;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.Painter;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
-import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
+import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.led.Led;
@@ -53,23 +53,25 @@ import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.text.types.TitleText;
 import us.jaba.titaniumblocks.core.text.types.UnitsText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 
 /**
  *
  * @author tbeckett
  */
-public class AbstractDisplay extends CoreModel implements Painter
+public class AbstractDisplay extends CoreBean implements TBComponent, Painter
 {
 
     protected static final float DEFAULT_FONT_SCALE_FACTOR = 0.67F;
     protected float fontScaleFactor;
 
-    private final ArrayList<CoreImageFactory> listOfImageFactories;
+    private final ArrayList<CoreImageFactory> listOfImageFactories = new ArrayList();;
 
     protected BackdropImageFactory backdropImage;
     protected PostImageFactory centerPostImage;
     protected DoubleValueText doubleValueText;
-    protected CoreImageFactory frameImage;
+    protected FrameImageFactory frameImage;
     protected FrontcoverImageFactory frontcoverImage;
 
     protected double normalizedValue = 0.39;
@@ -82,13 +84,12 @@ public class AbstractDisplay extends CoreModel implements Painter
     protected TextImageFactory valueTextImage;
     protected PointerImageFactory pointerImage;
     protected DisabledImageFactory disabledImage;
-
+    protected TickmarkImageFactory tickmarkImage;
     protected LedImageFactory ledImageFactory;
     protected ShadowPointerImageFactory secShadowPointerImage;
 
-    public AbstractDisplay(BackdropImageFactory backdropImage, RoundFrameImageFactory frameImage, PostImageFactory centerPostImage)
+    public AbstractDisplay(BackdropImageFactory backdropImage, FrameImageFactory frameImage, PostImageFactory centerPostImage)
     {
-        listOfImageFactories = new ArrayList();
         init();
         this.backdropImage = backdropImage;
         add(backdropImage);
@@ -100,13 +101,11 @@ public class AbstractDisplay extends CoreModel implements Painter
 
     public AbstractDisplay()
     {
-        listOfImageFactories = new ArrayList();
-        init();
+        init();  
     }
 
     private void init()
     {
-
         doubleValueText = new DoubleValueText();
         valueTextImage = new TextImageFactory(doubleValueText);
         add(valueTextImage);
@@ -130,50 +129,50 @@ public class AbstractDisplay extends CoreModel implements Painter
         listOfImageFactories.add(imageFactory);
     }
 
-    
+    @Override
     public Backdrop getBackdrop()
     {
         return backdropImage.getPainter();
     }
 
-     
+    @Override
     public void setBackdrop(Backdrop painter)
     {
         this.backdropImage = new BackdropImageFactory(painter);
     }
 
-    
+    @Override
     public void setCenterPost(Post postPainter)
     {
         centerPostImage.setPainter(postPainter);
     }
 
-     
+    @Override
     public BasicFrame getFrame()
     {
-        return (BasicFrame)frameImage.getPainter();
+        return (BasicFrame) frameImage.getPainter();
     }
 
-    
+    @Override
     public void setFrame(BasicFrame linearFramePainter)
     {
-        this.frameImage.setPainter((RoundFrame)linearFramePainter);
+        this.frameImage.setPainter( linearFramePainter);
         setChanged();
     }
 
-     
+    @Override
     public void setFrontCover(Frontcover foregroundPainter)
     {
         this.frontcoverImage.setPainter(foregroundPainter);
     }
 
-     
+    @Override
     public Post getCenterPost()
     {
         return centerPostImage.getPainter();
     }
 
-     
+    @Override
     public Frontcover getFrontCover()
     {
         return frontcoverImage.getPainter();
@@ -184,7 +183,6 @@ public class AbstractDisplay extends CoreModel implements Painter
         normalizedValue = (double) d;
     }
 
-     
     public void setTitle(String string)
     {
         titleValueText.setValue(string);
@@ -201,6 +199,7 @@ public class AbstractDisplay extends CoreModel implements Painter
         this.valueTextImage.setPainter(valueTextPainter);
     }
 
+    @Override
     public final void setChanged()
     {
         for (CoreImageFactory cif : listOfImageFactories)
@@ -226,7 +225,7 @@ public class AbstractDisplay extends CoreModel implements Painter
 
     }
 
-     
+    @Override
     public void setPointer(Pointer pointerPainter)
     {
         this.pointerImage.setPainter(pointerPainter);
@@ -235,28 +234,71 @@ public class AbstractDisplay extends CoreModel implements Painter
 
     }
 
-     
+    @Override
     public Pointer getPointer()
     {
         return pointerImage.getPainter();
     }
-    
-    
 
     public void setLed(Led ledPainter)
     {
         this.ledImageFactory.setPainter(ledPainter);
     }
 
-     
+    @Override
     public TitleText getTitleText()
     {
         return titleValueText;
     }
 
+    @Override
     public void setTitleText(TitleText titleText)
     {
         this.titleValueText = titleText;
+    }
+
+    @Override
+    public Dimension getSize()
+    {
+        return new Dimension(0, 0);
+    }
+
+    @Override
+    public void setSize(Dimension d)
+    {
+
+    }
+
+    @Override
+    public Tickmark getTickmarks()
+    {
+        return  tickmarkImage.getPainter();
+    }
+
+    @Override
+    public void setTickmarks(Tickmark tm)
+    {
+        tickmarkImage.setPainter(tm);
+    }
+
+    public DoubleValueText getDoubleValueText()
+    {
+        return doubleValueText;
+    }
+
+    public double getNormalizedValue()
+    {
+        return normalizedValue;
+    }
+
+    public TitleText getTitleValueText()
+    {
+        return titleValueText;
+    }
+
+    public UnitsText getUnitsText()
+    {
+        return unitsText;
     }
 
 }

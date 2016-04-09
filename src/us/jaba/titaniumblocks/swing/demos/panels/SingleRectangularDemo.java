@@ -28,20 +28,15 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.knobs.KnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.led.Led;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.rectangular.SingleRectangularPanel;
 
 /**
@@ -62,22 +57,22 @@ public class SingleRectangularDemo extends javax.swing.JFrame
 
         panel = new SingleRectangularPanel(cl);
 
-        panel.getGauge().getText().setColor(ColorPalette.ALMOND);
-        panel.getGauge().getBackdrop().setBackgroundColor(new WhiteBModel());
+        panel.getTBComponent().getTitleText().setColor(ColorPalette.ALMOND);
+        panel.getTBComponent().getBackdrop().setBackgroundColor(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
 
-        Antimate antimate = new Antimate(100.0)
-        {
-            @Override
-            public void update(double d)
-            {
-                panel.setValueAnimated(d);
-            }
-        };
-
-        new Thread(antimate).start();
+//        Antimate antimate = new Antimate(100.0)
+//        {
+//            @Override
+//            public void update(double d)
+//            {
+//                panel.setValueAnimated(d);
+//            }
+//        };
+//
+//        new Thread(antimate).start();
 
     }
 
@@ -91,50 +86,50 @@ public class SingleRectangularDemo extends javax.swing.JFrame
         panel.setFrame(linearFramePainter);
     }
 
-    public void setColor(Color c)
-    {
-        panel.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        panel.setPointerGradient(cp);
-    }
+//    public void setColor(Color c)
+//    {
+//        panel.setColor(c);
+//    }
+//
+//    public void setPointerGradient(GradientPalette cp)
+//    {
+//        panel.setPointerGradient(cp);
+//    }
 
     public void setPanelTitle(String string)
     {
         super.setTitle(string);
     }
-    @Override
-    public void setTitle(String string)
-    {
-        panel.setTitle(string);
-    }
+//    @Override
+//    public void setTitle(String string)
+//    {
+//        panel.setTitle(string);
+//    }
 
-    public void setUnits(String units)
-    {
-        panel.setUnits(units);
-    }
+//    public void setUnits(String units)
+//    {
+//        panel.setUnits(units);
+//    }
 
     public void setCenterPost(Post postPainter)
     {
         panel.setCenterPost(postPainter);
     }
 
-    public void setSmallKnobs(KnobPainter startPainter, KnobPainter endPainter)
-    {
-        panel.setSmallKnobs(startPainter, endPainter);
-    }
+//    public void setSmallKnobs(Knob startPainter, Knob endPainter)
+//    {
+//        panel.setSmallKnobs(startPainter, endPainter);
+//    }
 
     public void setPointer(Pointer pointerPainter)
     {
         panel.setPointer(pointerPainter);
     }
 
-    public void setLed(Led ledPainter)
-    {
-        panel.setLed(ledPainter);
-    }
+//    public void setLed(Led ledPainter)
+//    {
+//        panel.setLed(ledPainter);
+//    }
 
     public void setFrontCover(Frontcover foregroundPainter)
     {

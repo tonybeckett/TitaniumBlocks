@@ -27,13 +27,24 @@
  */
 package us.jaba.titaniumblocks.displays;
 
-import java.io.Serializable;
+import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**
  *
  * @author tbeckett
  */
-public interface RoundDisplay  extends Serializable
+public class DisplayImageFactory extends CoreImageFactory
 {
-     
+
+    public DisplayImageFactory(AbstractDisplay painter)
+    {
+        super(painter);
+    }
+
+    @Override
+    public AbstractDisplay getPainter()
+    {
+        return (AbstractDisplay) super.getPainter();
+    }
+
 }

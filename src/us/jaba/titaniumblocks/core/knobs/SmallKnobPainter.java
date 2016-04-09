@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.gradients.LinearGradientPainter;
  *
  * @author tbeckett
  */
-public class SmallKnobPainter extends KnobPainter
+public class SmallKnobPainter extends Knob
 {
 
     private GradientModel frame;

@@ -42,9 +42,10 @@ public class StopwatchSubsecondTickmarks extends AbstractRadialTickmark
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float radius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
 
-        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth())));
+        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
@@ -52,7 +53,7 @@ public class StopwatchSubsecondTickmarks extends AbstractRadialTickmark
         {
             " ", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.775, 0.0, 30, text);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.775, 0.0, 30, text);
 
         graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);

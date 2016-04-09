@@ -25,25 +25,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays;
+package us.jaba.titaniumblocks.displays.rectangular;
 
-import us.jaba.titaniumblocks.core.CoreImageFactory;
+import us.jaba.titaniumblocks.core.frames.RectangularFrame;
+import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public class LinearDisplayImageFactory extends CoreImageFactory
+public class SquareStopwatchDisplay extends AbstractStopwatchDisplay
 {
 
-    public LinearDisplayImageFactory(AbstractLinearDisplay painter)
+    public SquareStopwatchDisplay()
     {
-        super(painter);
+        super(new BlackMetalLinearFrame());
     }
 
-    public AbstractLinearDisplay getPainter()
+    public SquareStopwatchDisplay(RectangularFrame frame)
     {
-        return (AbstractLinearDisplay) super.getPainter();
+        super(frame);
     }
-   
+
 }

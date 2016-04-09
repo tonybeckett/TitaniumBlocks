@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.backdrop.types;
 
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.BackdropColorModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.DarkGrayBModel;
 import us.jaba.titaniumblocks.core.Painter;
@@ -37,7 +37,7 @@ import us.jaba.titaniumblocks.core.Painter;
  *
  * @author tbeckett
  */
-public abstract class Backdrop extends CoreModel implements Painter, Serializable
+public abstract class Backdrop extends CoreBean implements Painter, Serializable
 {
 
     protected BackdropColorModel backgroundColorModel = new DarkGrayBModel();

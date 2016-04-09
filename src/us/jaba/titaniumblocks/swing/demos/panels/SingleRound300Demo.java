@@ -28,13 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
-import us.jaba.titaniumblocks.core.pointers.types.TaperedThickFlatPointer;
-import us.jaba.titaniumblocks.core.posts.types.MetalSilverPost;
 
 /**
  *
@@ -53,15 +49,15 @@ public class SingleRound300Demo extends SingleRoundDemo
         setTitle("300");
         setPanelTitle("SingleRound300Demo");
         //      this.setFramePainter(new GenericRoundFrame(new Gold()));
-        this.setPointerPainter(new TaperedThickFlatPointer(), new LineShadow());
+//        this.setPointerPainter(new TaperedThickFlatPointer(), new LineShadow());
         this.setUnits("degrees");
-        this.setCenterPostPainter(new MetalSilverPost());//new NullPost());
+//        this.setCenterPostPainter(new MetalSilverPost());//new NullPost());
         GradientPalette gp = new PureRed();
 //        gp.setMediumLight(gp.getMedium());
 //        gp.setMediumDark(gp.getMedium());
 //        gp.setDark(gp.getMedium());
 //        gp.setDarkest(gp.getMedium());
-        this.setPointerGradient(new PureBlack());
+//        this.setPointerGradient(new PureBlack());
     }
 
     /**

@@ -34,14 +34,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.lcd.SixteenSegmentCharImageFactory;
 
 /**
  *
  * @author tbeckett
  */
-public class SixteenSegmentDisplay extends CoreModel
+public class SixteenSegmentDisplay extends CoreBean
 {
 
     private final int numberOfCharacters;

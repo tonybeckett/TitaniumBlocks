@@ -33,40 +33,29 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.NullBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
+import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.rectangular.BasicLinearFrontcover;
-import us.jaba.titaniumblocks.core.frames.RectangularFrame;
-import us.jaba.titaniumblocks.core.frames.RectangularFrameImageFactory;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.ShinyMetalLinearFrame;
-import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
+import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
-import us.jaba.titaniumblocks.displays.AbstractLinearDisplay;
-import us.jaba.titaniumblocks.displays.LinearDisplay;
+import us.jaba.titaniumblocks.displays.AbstractDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public class SingleDisplay extends AbstractLinearDisplay implements LinearDisplay
+public class SingleDisplay extends AbstractDisplay
 {
 
-    private static final float DEFAULT_FONT_SCALE_FACTOR = 0.67f;
-    private final DoubleValueText doubleValueText;
-    private float fontScaleFactor = DEFAULT_FONT_SCALE_FACTOR;
-
     protected BackdropImageFactory backgroundImage;
-    protected RectangularFrameImageFactory linearFrameImage;
+    protected FrameImageFactory linearFrameImage;
     protected FrontcoverImageFactory foregroundImage;
-    protected DisabledImageFactory disabledImage;
-    protected TextImageFactory valueTextImage;
 
     public SingleDisplay()
     {
@@ -76,7 +65,7 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
     public SingleDisplay(Color c)
     {
         super();
-        linearFrameImage = new RectangularFrameImageFactory(new ShinyMetalLinearFrame());
+        linearFrameImage = new FrameImageFactory(new ShinyMetalLinearFrame());
         backgroundImage = new BackdropImageFactory(new NullBackdrop());
         doubleValueText = new DoubleValueText();
 
@@ -85,7 +74,6 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
         foregroundImage = new FrontcoverImageFactory(new BasicLinearFrontcover());
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
 
-        setColor(c);
     }
 
     @Override
@@ -101,8 +89,8 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
         image = linearFrameImage.build(dimensions);
         graphics.drawImage(image, 0, 0, null);
-        int offset = (int) linearFrameImage.getPainter().getFrameThickness();
-        Dimension interiorDim = linearFrameImage.getPainter().getInteriorDimension();
+        int offset = (int) linearFrameImage.getFrame().getFrameThickness();
+        Dimension interiorDim = linearFrameImage.getFrame().getInteriorDimension();
 
 //        valueTextImage.getTickmark().setFontSize((float) (interiorDim.getHeight() * fontScaleFactor));
         valueTextImage.getPainter().setFontSize((float) (Math.min(interiorDim.getHeight(), interiorDim.getWidth()) * fontScaleFactor));
@@ -111,7 +99,6 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 
-        
         image = valueTextImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
 
@@ -123,67 +110,13 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
 
     }
 
-    public Color getColor()
-    {
-        return valueTextImage.getPainter().getColor();
-    }
-
-    public void setColor(Color c)
-    {
-        valueTextImage.getPainter().setColor(c);
-    }
-
-    public Backdrop getBackgroundPainter()
-    {
-        return backgroundImage.getPainter();
-    }
-
-    public RectangularFrame getFramePainter()
-    {
-        return linearFrameImage.getPainter();
-    }
-
-    public Text getTextPainter()
-    {
-        return valueTextImage.getPainter();
-    }
-
-    public Frontcover getPainter()
-    {
-        return foregroundImage.getPainter();
-    }
-
-    public void setBackgroundPainter(Backdrop painter)
-    {
-        this.backgroundImage = new BackdropImageFactory(painter);
-    }
-
-    public void setLinearFramePainter(RectangularFrame linearFramePainter)
-    {
-        this.linearFrameImage = new RectangularFrameImageFactory(linearFramePainter);
-    }
-
-    public void setForegroundPainter(Frontcover foregroundPainter)
-    {
-        this.foregroundImage = new FrontcoverImageFactory(foregroundPainter);
-    }
-
-    public void setDisabledPainter(DisabledPainter disabledPainter)
-    {
-        this.disabledImage = new DisabledImageFactory(disabledPainter);
-    }
-
-    public void setValueTextPainter(Text valueTextPainter)
-    {
-        valueTextPainter.setColor(valueTextImage.getPainter().getColor());
-        this.valueTextImage = new TextImageFactory(valueTextPainter);
-    }
-
+    @Override
     public float getFontScaleFactor()
     {
         return fontScaleFactor;
     }
 
+    @Override
     public void setFontScaleFactor(float fontScaleFactor)
     {
         this.fontScaleFactor = fontScaleFactor;
@@ -192,6 +125,17 @@ public class SingleDisplay extends AbstractLinearDisplay implements LinearDispla
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 // intentional
+    }
+
+    public Text getValueText()
+    {
+        return unitsTextImage.getPainter();
+    }
+
+    @Override
+    public void setValueText(Text cm)
+    {
+        unitsTextImage.setPainter(cm);
     }
 
 }

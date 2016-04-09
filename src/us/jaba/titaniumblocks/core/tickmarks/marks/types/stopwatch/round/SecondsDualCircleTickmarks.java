@@ -47,9 +47,10 @@ public class SecondsDualCircleTickmarks extends AbstractRadialTickmark
         mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
         majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 5.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
-        final float radius = (float) (dimensions.getWidth() * 0.485f);
+        final float radius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
 
-        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * dimensions.getWidth())));
+        graphics.setFont(font.deriveFont((float) (TEXT_SCALE * getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);
@@ -57,7 +58,7 @@ public class SecondsDualCircleTickmarks extends AbstractRadialTickmark
         {
             " ", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
         };
-        ShapeUtils.placeTextOnRadius(graphics, centerPoint, radius * 0.725, 0.0, 30, text);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.725, 0.0, 30, text);
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);

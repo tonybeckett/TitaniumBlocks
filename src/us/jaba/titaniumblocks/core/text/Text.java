@@ -31,7 +31,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 
@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.font.BaseFont;
  *
  * @author tbeckett
  */
-public class Text extends CoreModel
+public class Text extends CoreBean
 {
 
     public static final double DEFAULT_RIGHT_OFFSET_FACTOR = 0.09; // offset = % width from right

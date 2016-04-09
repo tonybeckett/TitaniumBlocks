@@ -14,15 +14,15 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class KnobImageFactory extends CoreImageFactory
 {
 
-    public KnobImageFactory(KnobPainter painter)
+    public KnobImageFactory(Knob painter)
     {
         super(painter);
     }
 
     @Override
-    public KnobPainter getPainter()
+    public Knob getPainter()
     {
-        return (KnobPainter) super.getPainter();
+        return (Knob) super.getPainter();
     }
 
 }

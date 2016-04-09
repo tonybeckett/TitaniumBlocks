@@ -65,7 +65,7 @@ public class LcdSingleSectionDisplay extends LcdSingleDisplay
 
     public void setValue(double value)
     {
-        ((DoubleValueText) super.getTextPainter()).setValue(value);
+        ((DoubleValueText) super.getValueText()).setValue(value);
         basicSection.setValue(value);
     }
 

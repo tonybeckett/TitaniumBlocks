@@ -34,7 +34,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class Post extends CoreModel implements Serializable
+public class Post extends CoreBean implements Serializable
 {
 
     protected Scale size = new Scale(0.5f);

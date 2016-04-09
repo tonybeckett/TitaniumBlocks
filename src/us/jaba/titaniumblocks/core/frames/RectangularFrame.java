@@ -89,6 +89,16 @@ public class RectangularFrame extends BasicFrame
     {
         gradientFractions = fractions;
         gradientColors = colors;
+
+        interiorCalc = new FrameInteriorCalc()
+        {
+            @Override
+            public Dimension calculate(Dimension dimensions)
+            {
+                return new Dimension((int) ((double) dimensions.getWidth() - (2.0 * (double) frameThickness)), (int) ((double) dimensions.getHeight() - (2.0 * (double) frameThickness)));
+            }
+
+        };
     }
 
     public void setFrameThickness(int frameThickness)
@@ -96,8 +106,6 @@ public class RectangularFrame extends BasicFrame
         this.frameThickness = frameThickness;
         changed();
     }
-
-     
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)

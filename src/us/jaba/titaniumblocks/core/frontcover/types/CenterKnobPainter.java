@@ -34,13 +34,13 @@ import java.awt.LinearGradientPaint;
 import java.awt.RadialGradientPaint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class CenterKnobPainter extends CoreModel
+public class CenterKnobPainter extends CoreBean
 {
 
     private final float[] E_CENTER_KNOB_FRAME_FRACTIONS =

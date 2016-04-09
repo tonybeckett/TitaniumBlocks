@@ -30,14 +30,14 @@ package us.jaba.titaniumblocks.core.frames;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class BasicFrame extends CoreModel implements Serializable
+public class BasicFrame extends CoreBean implements Serializable
 {
     protected BasicEffect effect;
     protected FrameInteriorCalc interiorCalc;

@@ -25,13 +25,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays;
+package us.jaba.titaniumblocks.displays.round;
+
+import us.jaba.titaniumblocks.core.frames.RoundFrame;
+import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
 
 /**
  *
  * @author tbeckett
  */
-public interface LinearDisplay  
+public class RoundStopwatchDisplay extends AbstractStopwatchDisplay
 {
-     
+
+    public RoundStopwatchDisplay()
+    {
+        super(new BasicRoundFrame());
+    }
+
+    public RoundStopwatchDisplay(RoundFrame frame)
+    {
+        super(frame);
+    }
+
 }

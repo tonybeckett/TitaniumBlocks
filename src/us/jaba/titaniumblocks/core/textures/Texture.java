@@ -27,14 +27,14 @@
  */
 package us.jaba.titaniumblocks.core.textures;
 
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.Painter;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class Texture extends CoreModel implements Painter
+public abstract class Texture extends CoreBean implements Painter
 {
     
 }

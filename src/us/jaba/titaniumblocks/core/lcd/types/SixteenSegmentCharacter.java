@@ -35,7 +35,7 @@ import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.Arrays;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.HSLColor;
 import us.jaba.titaniumblocks.core.lcd.SixteenSegmentAlphabet;
 
@@ -43,7 +43,7 @@ import us.jaba.titaniumblocks.core.lcd.SixteenSegmentAlphabet;
  *
  * @author tbeckett
  */
-public class SixteenSegmentCharacter extends CoreModel
+public class SixteenSegmentCharacter extends CoreBean
 {
 
     private java.util.List<Integer> lightedSegments;

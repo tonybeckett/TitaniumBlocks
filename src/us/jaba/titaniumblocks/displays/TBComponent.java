@@ -25,65 +25,52 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.sections;
+package us.jaba.titaniumblocks.displays;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
-import us.jaba.titaniumblocks.core.CoreBean;
+import java.io.Serializable;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
  *
  * @author tbeckett
  */
-public class SectionList extends CoreBean
+public interface TBComponent extends Serializable
 {
 
-    private final ArrayList<Section> sections = new ArrayList();
-    protected int offset = 0;
+    Pointer getPointer();
+    void setPointer(Pointer pointer);
 
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
-    {
-        super.paint(graphics, dimensions);
+    Tickmark getTickmarks();
+    void setTickmarks(Tickmark tm);
 
-        paintSection(graphics, dimensions);
-    }
+    Backdrop getBackdrop();
+    void setBackdrop(Backdrop backdrop);
 
-    protected void paintSection(Graphics2D graphics, Dimension dimensions)
-    {
-        Iterator it = sections.iterator();
-        while( it.hasNext())
-        {
-            Section s = (Section) it.next();
-            s.paintSection(graphics, dimensions);
-        }
-    }
+    Post getCenterPost();
+    void setCenterPost(Post post);
 
-    public int size()
-    {
-        return sections.size();
-    }
+    BasicFrame getFrame();
+    void setFrame(BasicFrame Frame);
 
-    public Section get(int index)
-    {
-        return sections.get(index);
-    }
+    void setFrontCover(Frontcover frontcover);
+    Frontcover getFrontCover();
 
-    public boolean add(Section e)
-    {
-        return sections.add(e);
-    }
+    public TitleText getTitleText();
+    public void setTitleText(TitleText titleText);
 
-    public void clear()
-    {
-        sections.clear();
-    }
+    public void setSize(Dimension d);
+    public Dimension getSize();
+    
+    public void paint(Graphics2D graphics2D, Dimension dimension);
 
-    public Iterator<Section> iterator()
-    {
-        return sections.iterator();
-    }
+    public void setChanged();
 
 }

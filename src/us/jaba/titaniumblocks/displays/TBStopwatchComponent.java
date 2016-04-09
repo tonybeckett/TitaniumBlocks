@@ -25,19 +25,30 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.round;
+package us.jaba.titaniumblocks.displays;
 
 import java.io.Serializable;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
  *
  * @author tbeckett
  */
-public interface ClockValues extends Serializable
+public interface TBStopwatchComponent extends TBComponent, Serializable
 {
-    public double getHoursValue();
 
-    public void setHoursValue(double firstPointerValue);
+    Tickmark getSmallTickmarks();
+
+    void setSmallTickmarks(Tickmark tm);
+
+    Pointer getMinutesPointer();
+
+    void setMinutesPointer(Pointer minutePointer);
+
+    Pointer getSecondsPointer();
+
+    void setSecondsPointer(Pointer secondsPointer);
 
     public double getMinutesValue();
 

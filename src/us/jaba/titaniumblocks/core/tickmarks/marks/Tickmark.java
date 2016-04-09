@@ -31,7 +31,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.Serializable;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.text.painter.BasicRadialTextPainter;
@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.text.painter.FacingDown;
  *
  * @author tbeckett
  */
-public class Tickmark extends CoreModel implements Serializable
+public class Tickmark extends CoreBean implements Serializable
 {
 
     public static final float DEFAULT_MIN_VALUE = 0.0F;

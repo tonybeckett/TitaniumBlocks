@@ -28,14 +28,9 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import us.jaba.titaniumblocks.core.backdrop.types.round.PunchedSteelBackdrop;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureOrange;
 import us.jaba.titaniumblocks.core.frames.types.round.BrassRoundFrame;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularTwoPostLayout;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
-import us.jaba.titaniumblocks.core.pointers.types.MonumentPointer;
-import us.jaba.titaniumblocks.core.pointers.shadows.MonumentShadow;
 import us.jaba.titaniumblocks.core.posts.types.BigBrassPost;
 
 /**
@@ -45,21 +40,17 @@ import us.jaba.titaniumblocks.core.posts.types.BigBrassPost;
 public class SingleRound180Demo extends SingleRoundDemo
 {
 
-    /**
-     * Creates new form DisplaySingleDemo
-     */
     public SingleRound180Demo()
     {
         super(new CircularTwoPostLayout(270, 90, Direction.CLOCKWISE, 0.95f, 265, 95));
         setTitle("180");
         setPanelTitle("SingleRound180Demo");
-        this.setFramePainter(new BrassRoundFrame());
-        this.setBackdropPainter(new PunchedSteelBackdrop());
-        this.setCenterPostPainter(new BigBrassPost());
-        this.setSmallKnobsPainter( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
-        this.setColor(ColorPalette.WHITE);
-        this.setPointerPainter(new MonumentPointer(), new MonumentShadow());
-        this.setPointerGradient( new PureOrange());
+        this.setFrame(new BrassRoundFrame());
+        this.setBackdrop(new PunchedSteelBackdrop());
+        this.setCenterPost(new BigBrassPost());
+//        this.setSmallKnobs( new SmallBrassKnobPainter(), new SmallBrassKnobPainter());
+//        this.setColor(ColorPalette.WHITE);
+//        this.setPointer(new MonumentPointer(), new MonumentShadow());
         this.setUnits("degrees");
     }
 

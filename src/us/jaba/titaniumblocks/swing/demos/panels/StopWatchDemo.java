@@ -28,21 +28,19 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Calendar;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.NullRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SecondsDualCircleTriangleTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallSecondsDualCircleTickmarks;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.round.StopwatchPanel;
+import us.jaba.titaniumblocks.swing.panels.StopwatchPanel;
 
 /**
  *
@@ -60,9 +58,9 @@ public class StopWatchDemo extends javax.swing.JFrame
     {
         initComponents();
 
-        panel = new StopwatchPanel(ColorPalette.WHITE);
+        panel = new StopwatchPanel(new AbstractStopwatchDisplay());
         panel.setBackground(ColorPalette.WHITE);
-        panel.setRoundFrame(new NullRoundFrame());
+        panel.setFrame(new NullRoundFrame());
         panel.setTickmarks(new SecondsDualCircleTriangleTickmarks());
         panel.setSmallTickmarks(new SmallSecondsDualCircleTickmarks());
         panel.init(100, 100);
@@ -93,29 +91,17 @@ public class StopWatchDemo extends javax.swing.JFrame
 
     public void setRoundFrame(RoundFrame linearFramePainter)
     {
-        panel.setRoundFrame(linearFramePainter);
+        panel.setFrame(linearFramePainter);
     }
 
-    public void setColor(Color c)
-    {
-        panel.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        panel.setPointerGradient(cp);
-    }
+     
 
     public void setCenterPost(Post postPainter)
     {
         panel.setCenterPost(postPainter);
     }
 
-    public void setPointer(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        panel.setPointer(pointerPainter, shadowPainter);
-    }
-
+   
     public void setFrontCover(Frontcover foregroundPainter)
     {
         panel.setFrontCover(foregroundPainter);

@@ -28,18 +28,11 @@
 package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BrushedMetalBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.GradientPalette;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
-import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.displays.round.CompassDisplay;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.round.CompassPanel;
+import us.jaba.titaniumblocks.swing.panels.SinglePanel;
 
 /**
  *
@@ -48,7 +41,7 @@ import us.jaba.titaniumblocks.swing.panels.round.CompassPanel;
 public class CompassDemo extends javax.swing.JFrame
 {
 
-    final CompassPanel panel;
+    final SinglePanel panel;
 
     /**
      * Creates new form DisplaySingleDemo
@@ -57,10 +50,10 @@ public class CompassDemo extends javax.swing.JFrame
     {
         initComponents();
 
-        panel = new CompassPanel(ColorPalette.GRAY);
+        panel = new SinglePanel(new CompassDisplay());
 
         
-        panel.getGauge().getBackdropPainter().setBackgroundColor(new BrushedMetalBModel());
+        panel.getTBComponent().getBackdrop().setBackgroundColor(new BrushedMetalBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
@@ -79,47 +72,12 @@ public class CompassDemo extends javax.swing.JFrame
 
     }
 
-    public void setBackdropPainter(Backdrop painter)
-    {
-        panel.setBackdropPainter(painter);
-    }
-
-    public void setRoundFramePainter(RoundFrame linearFramePainter)
-    {
-        panel.setRoundFramePainter(linearFramePainter);
-    }
-
-    public void setColor(Color c)
-    {
-        panel.setColor(c);
-    }
-
-    public void setPointerGradient(GradientPalette cp)
-    {
-        panel.setPointerGradient(cp);
-    }
+    
 
    
 
      
-    public void setCenterPostPainter(Post postPainter)
-    {
-        panel.setCenterPostPainter(postPainter);
-    }
-
-   
-
-    public void setPointerPainter(Pointer pointerPainter, Pointer shadowPainter)
-    {
-        panel.setPointerPainter(pointerPainter, shadowPainter);
-    }
-
-     
-
-    public void setFrontCoverPainter(Frontcover foregroundPainter)
-    {
-        panel.setFrontCoverPainter(foregroundPainter);
-    }
+  
 
    
     /**

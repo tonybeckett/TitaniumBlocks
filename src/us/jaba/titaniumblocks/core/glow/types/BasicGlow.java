@@ -36,13 +36,13 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class BasicGlow extends CoreModel
+public class BasicGlow extends CoreBean
 {
 
     private Color brushColor;

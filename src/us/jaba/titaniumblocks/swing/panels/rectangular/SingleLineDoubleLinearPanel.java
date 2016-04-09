@@ -35,8 +35,6 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import javax.swing.JComponent;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
 import us.jaba.titaniumblocks.displays.rectangular.SingleDisplay;
 
 /**
@@ -100,7 +98,7 @@ public class SingleLineDoubleLinearPanel extends JComponent
 
     public void setValue(double value)
     {
-        ((DoubleValueText)singleGauge.getTextPainter()).setValue(value);
+//        ((DoubleValueText)singleGauge.getTextPainter()).setValue(value);
         invalidate();
         repaint();
     }
@@ -117,15 +115,7 @@ public class SingleLineDoubleLinearPanel extends JComponent
         singleGauge.paint((Graphics2D) g, new Dimension(getWidth(), getHeight()));
     }
 
-    public Backdrop getBackgroundPainter()
-    {
-        return singleGauge.getBackgroundPainter();
-    }
-
-    public void setBackgroundPainter(Backdrop painter)
-    {
-        singleGauge.setBackgroundPainter(painter);
-    }
+   
 
   
 }

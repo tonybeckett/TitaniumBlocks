@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.bargraph.leds;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.GradientPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 
@@ -36,7 +36,7 @@ import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
  *
  * @author tbeckett
  */
-public class LedModel extends CoreModel
+public class LedModel extends CoreBean
 {
 
     protected double maxValue;

@@ -28,14 +28,14 @@
 package us.jaba.titaniumblocks.core.glow;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.CoreModel;
+import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class Glow extends CoreModel
+public class Glow extends CoreBean
 {
     private Color glowColor;
     private boolean active;

@@ -114,8 +114,8 @@ public class BackdropCoreInfo
 
     public static final Class<?>[] ROUND_BACKDROP_MODELS =
     {
-        BasicBackdrop.class,
-        BrushedMetalBackdrop.class,
+        us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop.class,
+        us.jaba.titaniumblocks.core.backdrop.types.round.BrushedMetalBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.CarbonBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.LinenBackdrop.class,
         us.jaba.titaniumblocks.core.backdrop.types.round.NoisyPlasticBackdrop.class,

@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
  *
  * @author tbeckett
  */
-public class BigKnobPainter extends KnobPainter
+public class BigKnobPainter extends Knob
 {
 
     protected Color[] bigCenterBackgroundFrameColors;
