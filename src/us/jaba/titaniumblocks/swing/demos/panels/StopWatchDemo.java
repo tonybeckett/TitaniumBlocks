@@ -38,7 +38,7 @@ import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SecondsDualCircleTriangleTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallSecondsDualCircleTickmarks;
-import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDial;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.StopwatchPanel;
 
@@ -58,7 +58,7 @@ public class StopWatchDemo extends javax.swing.JFrame
     {
         initComponents();
 
-        panel = new StopwatchPanel(new AbstractStopwatchDisplay());
+        panel = new StopwatchPanel(new AbstractStopwatchDial());
         panel.setBackground(ColorPalette.WHITE);
         panel.setFrame(new NullRoundFrame());
         panel.setTickmarks(new SecondsDualCircleTriangleTickmarks());

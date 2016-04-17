@@ -42,14 +42,14 @@ public class CircularTwoPostLayout implements CircularLayout
     private int endAngle;
     private Direction direction;
     private int startPostAngle;
-    private float tickmarkRadius;
+    private float postRadius;
 
-    public CircularTwoPostLayout(int startAngle, int endAngle, Direction dir, float radius, int startPostAngle, int endPostAngle)
+    public CircularTwoPostLayout(int startAngle, int endAngle, Direction dir, float postRadius, int startPostAngle, int endPostAngle)
     {
         this.startAngle = startAngle;
         this.endAngle = endAngle;
         this.direction = dir;
-        this.tickmarkRadius = radius;
+        this.postRadius = postRadius;
         this.startPostAngle = startPostAngle;
         this.endPostAngle = endPostAngle;
 
@@ -73,7 +73,7 @@ public class CircularTwoPostLayout implements CircularLayout
      * @return the value of endAngle
      */
     @Override
-    public int getTickmarkEndAngle()
+    public int getEndAngle()
     {
         return endAngle;
     }
@@ -88,19 +88,13 @@ public class CircularTwoPostLayout implements CircularLayout
         this.endAngle = endAngle;
     }
 
-    @Override
-    public float getTickmarkRadius()
-    {
-        return tickmarkRadius;
-    }
-
     /**
      * Get the value of startAngle
      *
      * @return the value of startAngle
      */
     @Override
-    public int getTickmarkStartAngle()
+    public int getStartAngle()
     {
         return startAngle;
     }
@@ -121,7 +115,7 @@ public class CircularTwoPostLayout implements CircularLayout
      * @return the value of direction
      */
     @Override
-    public Direction getTickmarkDirection()
+    public Direction getDirection()
     {
         return direction;
     }
@@ -146,9 +140,14 @@ public class CircularTwoPostLayout implements CircularLayout
         this.startPostAngle = startPostAngle;
     }
 
-    public void setTickmarkRadius(float tickmarkRadius)
+    public float getPostRadius()
     {
-        this.tickmarkRadius = tickmarkRadius;
+        return postRadius;
+    }
+
+    public void setPostRadius(float postRadius)
+    {
+        this.postRadius = postRadius;
     }
 
 }

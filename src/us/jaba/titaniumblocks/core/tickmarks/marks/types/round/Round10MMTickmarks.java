@@ -27,69 +27,54 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.NumericRoundTickmarks;
 import java.awt.BasicStroke;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
-public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
+// Round 10 divisions Major and Minor tickmarks
+public class Round10MMTickmarks extends NumericRoundTickmarks
 {
 
-    protected String[] arrayOfFText =
+   
+    @Override
+    protected void generateTicks()
     {
-        "0", "20", "40", "60", "80", "100", "120"
-    };
-    protected String[] arrayOfCText =
-    {
-        "-20", "-10", "0", "10", "20", "30", "40", "50", "60"
-    };
-
-    public ThermometerCfTickmarks()
-    {
-        super(0.075);
-
-        minorStroke = majorStroke;
-        majorStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        float delta = (Math.abs(maxValue) - Math.abs(minValue)) / 10.0f;
+        String[] strings = new String[11];
+        for (int i = 0; i < 11; i++)
+        {
+            strings[i] = String.format("%d", (int) (minValue + (i * delta)));
+        }
+        this.labels = strings;
     }
+
+   
 
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-
-        // 300 degrees
-        double angleStep = 315.0 / 9.0;
-
-        graphics.setColor(textColor);
-
-        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
+        final int llen = labels.length - 1;
         final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
+        final float anglePerTick = (float) (CoordinateUtils.calcExtent(rangeModel.getAngleStart(), rangeModel.getAngleEnd(), rangeModel.getDirection()) / llen / 10.0);
+        minorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 1.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 4.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
-        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
-        textPainter.paint(graphics, centerPoint, textRadius * 0.85, 220.0, 1.0 * angleStep, arrayOfCText);
-
-        textPainter.paint(graphics, centerPoint, textRadius * 0.85, 180.0, 0.0, unitsC);
-
-        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() * 0.75)));
-        textPainter.paint(graphics, centerPoint, textRadius * 0.4, 228.0, 38.8, arrayOfFText);
-
-        textPainter.paint(graphics, centerPoint, textRadius * 0.475, 180.0, 0.0, unitsF);
-
-        graphics.setColor(minorColor);
         graphics.setStroke(minorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.6, tickRadius * 0.685, 220.0, angleStep / 10.0, (arrayOfCText.length - 1) * 10);
+        graphics.setColor(minorColor);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.93, tickRadius * 0.95, rangeModel.getAngleStart(), anglePerTick, llen * 10);
 
-        graphics.setColor(mediumColor);
-        graphics.setStroke(mediumStroke);
-        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 205.0, 140.0);
-
-        graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.6, tickRadius * 0.7, 220.0, angleStep, 9);
+        graphics.setColor(majorColor);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.9, tickRadius * 0.95, rangeModel.getAngleStart(), anglePerTick * llen, labels.length);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.55, tickRadius * 0.6, 228.0, 38.8, 7);
-
-        graphics.dispose();
+        graphics.setFont(getFont().deriveFont((float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
+        graphics.setColor(textColor);
+        this.textPainter.paint(graphics, centerPoint, textRadius * 0.8, rangeModel.getAngleStart(), anglePerTick * llen, labels);
 
     }
 

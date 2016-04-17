@@ -34,7 +34,6 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
@@ -42,10 +41,9 @@ import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
 import us.jaba.titaniumblocks.core.text.types.TitleText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
-import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
+import us.jaba.titaniumblocks.displays.AbstractSimpleDial;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.SinglePanel;
+import us.jaba.titaniumblocks.swing.panels.SimpleDialPanel;
 
 /**
  *
@@ -54,13 +52,13 @@ import us.jaba.titaniumblocks.swing.panels.SinglePanel;
 public class SingleRoundDemo extends javax.swing.JFrame
 {
 
-    public final SinglePanel panel;
+    public final SimpleDialPanel panel;
 
     public SingleRoundDemo(CircularLayout cl)
     {
         initComponents();
 
-        panel = new SinglePanel(new AbstractSingleDisplay(cl, new BasicRoundFrame()));
+        panel = new SimpleDialPanel(new AbstractSimpleDial(cl, new BasicRoundFrame()));
 
         panel.getTBComponent().getTitleText().setColor(ColorPalette.ALMOND);
         panel.getTBComponent().getBackdrop().setBackgroundColor(new WhiteBModel());

@@ -27,11 +27,17 @@
  */
 package us.jaba.titaniumblocks.swing.demos.panels;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Calendar;
+import java.util.List;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.frames.types.round.GoldRoundFrame;
+import us.jaba.titaniumblocks.core.font.FontSupport;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.FourNumbersTicks;
 import us.jaba.titaniumblocks.displays.round.RoundClockDial;
 import us.jaba.titaniumblocks.swing.Antimate;
 import us.jaba.titaniumblocks.swing.panels.ClockPanel;
@@ -40,35 +46,61 @@ import us.jaba.titaniumblocks.swing.panels.ClockPanel;
  *
  * @author tbeckett
  */
-public class RoundClockDemo extends javax.swing.JFrame
+public class RoundClockFramesDemo extends javax.swing.JFrame
 {
-    final ClockPanel panel;
 
-    public RoundClockDemo()
+    public RoundClockFramesDemo()
     {
         initComponents();
+        init();
 
-        panel = new ClockPanel(new RoundClockDial());
-        panel.setBackground(ColorPalette.WHITE);
-        panel.setFrame(new GoldRoundFrame());
+    }
 
-        panel.init(100, 100);
-        add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500 + 22));
-        this.setTitle("ClockDemo");
-//       this.setIconImage(Images.titaniumblocks128);
-        Antimate antimate = new Antimate(100.0, 0.1f)
+    private void init()
+    {
+
+        List<BasicFrame> frames = FramesCoreInfo.getInstanceOfEachRound();
+
+        GridLayout gl = new GridLayout();
+        gl.setColumns(4);
+        gl.setRows((frames.size() / 4) + 1);
+        this.jPanel1.setLayout(gl);
+        this.jPanel1.setBackground(Color.WHITE);
+
+        for (BasicFrame f : frames)
         {
-            @Override
-            public void update(double d)
+            final ClockPanel panel = new ClockPanel(new RoundClockDial());
+            panel.setBackground(ColorPalette.WHITE);
+            panel.setOpaque(false);
+            panel.setFrame(f);
+            panel.setTickmarks(new FourNumbersTicks());
+//            TitleText tt = new TitleText();
+//            tt.setFont(FontSupport.getStandardFont().deriveFont(56.0f));
+//
+//           
+//            panel.setTitleText(tt);
+            panel.getTitleText().setValue(f.getClass().getSimpleName().replace("RoundFrame", "").toUpperCase());
+            panel.getTitleText().setFont(FontSupport.getStandardFont().deriveFont(38.0f));
+            panel.getTitleText().setYPositionScale(new Scale(0.35));
+            panel.init(200, 200);
+            this.jPanel1.add(panel);
+
+//       this.setIconImage(Images.titaniumblocks128);
+            Antimate antimate = new Antimate(100.0, 0.1f)
             {
-                Calendar cal = Calendar.getInstance();
-                panel.setValueAnimated(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
-            }
-        };
+                @Override
+                public void update(double d)
+                {
+                    Calendar cal = Calendar.getInstance();
+                    panel.setValueAnimated(cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+                }
+            };
 
-        new Thread(antimate).start();
+            new Thread(antimate).start();
+        }
 
+        this.setSize(new Dimension(800, 800 + 22));
+        this.setTitle("TitaniumBlocks - RoundFramesDemo");
     }
 
     /**
@@ -81,14 +113,18 @@ public class RoundClockDemo extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jPanel1 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
     /**
      * @param args the command line arguments
@@ -133,7 +169,7 @@ public class RoundClockDemo extends javax.swing.JFrame
         {
             public void run()
             {
-                new RoundClockDemo().setVisible(true);
+                new RoundClockFramesDemo().setVisible(true);
             }
         });
     }

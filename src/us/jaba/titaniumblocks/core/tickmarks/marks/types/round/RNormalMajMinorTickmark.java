@@ -29,7 +29,8 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import us.jaba.titaniumblocks.core.text.TextSupport;
+import java.util.ArrayList;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.factories.RadialNormalTickFactory;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
@@ -39,6 +40,10 @@ public class RNormalMajMinorTickmark extends AbstractRadialTickmark
 {
 
     protected RadialNormalTickFactory tickFactory;
+    private String[] text =
+    {
+        "a"
+    };
 
     public RNormalMajMinorTickmark()
     {
@@ -49,35 +54,50 @@ public class RNormalMajMinorTickmark extends AbstractRadialTickmark
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
 
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
+
         rangeModel.setTickSpacing(1.0);
         rangeModel.setTickLength(sizeModel.getMinorTickLength());
 
         graphics.setStroke(minorStroke);
 
         graphics.setColor(minorColor);
-        for (RadialTick t : tickFactory.generateTicks())
-        {
-            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle());
-        }
+//        for (RadialTick t : tickFactory.generateTicks())
+//        {
+//            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle());
+//        }
 
-        rangeModel.setTickLength(sizeModel.getMajorTickLength());
-        rangeModel.setTickSpacing(10.0);
+//        rangeModel.setTickLength(sizeModel.getMajorTickLength());
+//        rangeModel.setTickSpacing(10.0);
+//    drawRadialLines(Graphics2D graphics, Point2D center, double radiusInner, double radiusOuter, double startAngle, double angleStep, int number)   
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.93, tickRadius * 0.95, rangeModel.getAngleStart(), rangeModel.getAnglePerTick(), rangeModel.getNumberOfTicks());
 
         graphics.setStroke(majorStroke);
+        graphics.setColor(majorColor);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.9, tickRadius * 0.95, rangeModel.getAngleStart(), rangeModel.getAnglePerTick() * 10.0, rangeModel.getNumberOfTicks() / 10);
 
         graphics.setFont(font);
-        for (RadialTick t : tickFactory.generateTicks())
-        {
-            graphics.setColor(majorColor);
-            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle());
 
-            graphics.setColor(textColor);
-            graphics.fill(TextSupport.rotateTextAroundCenter(graphics,
-                    Integer.toString((int) t.getValue()),
-                    (int) t.getTextPoint().getX(),
-                    (int) t.getTextPoint().getY(),
-                    t.getTextAngle()));
+        ArrayList<String> al = new ArrayList();
+        for( int i = 0; i <= 100; i = i+10)
+        {
+//        for (RadialTick t : tickFactory.generateTicks())
+//        {
+
+//            radialTickModel.paintTicks(graphics, null, 0.0, t.getInnerPoint(), t.getOuterPoint(), t.getCenterPoint(), t.getAngle());
+//            graphics.setColor(textColor);
+//                public void paint(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
+            al.add(Integer.toString(i));
+
+//            graphics.fill(TextSupport.rotateTextAroundCenter(graphics,
+//                    Integer.toString((int) t.getValue()),
+//                    (int) t.getTextPoint().getX(),
+//                    (int) t.getTextPoint().getY(),
+//                    t.getTextAngle()));
         }
+        graphics.setColor(textColor);
+        this.textPainter.paint(graphics, centerPoint, textRadius * 0.8, rangeModel.getAngleStart(), rangeModel.getAnglePerTick() * 10.0, al.toArray(new String[al.size()]) );
 
     }
 

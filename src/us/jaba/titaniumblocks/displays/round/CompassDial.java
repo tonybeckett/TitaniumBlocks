@@ -68,21 +68,21 @@ import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.round.Compass3Tickmarks;
 
-import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
+import us.jaba.titaniumblocks.displays.AbstractSimpleDial;
 
 
 /**
  *
  * @author tbeckett
  */
-public class CompassDisplay extends AbstractSingleDisplay 
+public class CompassDial extends AbstractSimpleDial 
 {
     private ShadowPointerImageFactory shadowImage;
 
    
  
 
-    public CompassDisplay()
+    public CompassDial()
     {
     
         super( new CircularNoPostLayout(CoordinateDefs.Direction.CLOCKWISE, 0.95f), new SilverRoundFrame());

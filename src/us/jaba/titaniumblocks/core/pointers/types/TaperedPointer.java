@@ -33,6 +33,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
+import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
@@ -56,53 +57,78 @@ public class TaperedPointer extends GradientPointer
     }
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
-
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
-        //graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
-        //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-        //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
-
         final GeneralPath pointerShape;
-//        
+//      
+        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
-         final double centerY = dimensions.getHeight() / 2.0;
+        final double centerY = dimensions.getHeight() / 2.0;
         final double maxY = dimensions.getHeight() / 2.0;
         double frontM = this.getRadiusPercent() * frontScale.getValue();
         double tailM = this.getRadiusPercent() * tailScale.getValue();
-        
-        pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
-        pointerShape.lineTo((0.5-0.015)  * imageWidth, centerY + (maxY * tailM));
-        pointerShape.lineTo(0.5 * imageWidth,  centerY + (maxY * tailM) * 1.05);
-        pointerShape.lineTo((0.5+0.015) * imageWidth,  centerY + (maxY * tailM));
 
-        pointerShape.lineTo(0.5 * imageWidth,  centerY - (maxY * frontM));
+        pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
+        pointerShape.lineTo((0.5 - 0.015) * imageWidth, centerY + (maxY * tailM));
+        pointerShape.lineTo(0.5 * imageWidth, centerY + (maxY * tailM) * 1.05);
+        pointerShape.lineTo((0.5 + 0.015) * imageWidth, centerY + (maxY * tailM));
+
+        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * frontM));
         pointerShape.closePath();
 
-        graphics.setPaint(new LinearGradientPaint(
-                new Point2D.Double(0.5 * imageWidth,  centerY - (maxY * frontM)),
-                new Point2D.Double(0.5 * imageWidth, 0.5046 * imageHeight),
-                new float[]
-                {
-                    0.0f, 1.0f
-                },
-                new Color[]
-                {
-                    this.getPrimaryColor().getMedium(), this.getPrimaryColor().getMediumDark()
-                }));
-        graphics.fill(pointerShape);
-        graphics.setColor(this.getPrimaryColor().getMediumDark());
-
-        graphics.setStroke(new BasicStroke((0.004672897196261682f * imageWidth), 0, 1));
-        graphics.draw(pointerShape);
-
-        graphics.dispose();
+       return new Area(pointerShape);
     }
+
+//    @Override
+//    public void paint(Graphics2D graphics, Dimension dimensions)
+//    {
+//
+//        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+//        graphics.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+//        //graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+//        //graphics.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+//        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+//        //graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//        final int imageWidth = (int) dimensions.getWidth();
+//        final int imageHeight = (int) dimensions.getHeight();
+//
+//        final GeneralPath pointerShape;
+////        
+//        pointerShape = new GeneralPath();
+//        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+//        final double centerY = dimensions.getHeight() / 2.0;
+//        final double maxY = dimensions.getHeight() / 2.0;
+//        double frontM = this.getRadiusPercent() * frontScale.getValue();
+//        double tailM = this.getRadiusPercent() * tailScale.getValue();
+//
+//        pointerShape.moveTo(0.5 * imageWidth, centerY - (maxY * frontM));
+//        pointerShape.lineTo((0.5 - 0.015) * imageWidth, centerY + (maxY * tailM));
+//        pointerShape.lineTo(0.5 * imageWidth, centerY + (maxY * tailM) * 1.05);
+//        pointerShape.lineTo((0.5 + 0.015) * imageWidth, centerY + (maxY * tailM));
+//
+//        pointerShape.lineTo(0.5 * imageWidth, centerY - (maxY * frontM));
+//        pointerShape.closePath();
+//
+//        graphics.setPaint(new LinearGradientPaint(
+//                new Point2D.Double(0.5 * imageWidth, centerY - (maxY * frontM)),
+//                new Point2D.Double(0.5 * imageWidth, 0.5046 * imageHeight),
+//                new float[]
+//                {
+//                    0.0f, 1.0f
+//                },
+//                new Color[]
+//                {
+//                    this.getPrimaryColor().getMedium(), this.getPrimaryColor().getMediumDark()
+//                }));
+//        graphics.fill(pointerShape);
+//        graphics.setColor(this.getPrimaryColor().getMediumDark());
+//
+//        graphics.setStroke(new BasicStroke((0.004672897196261682f * imageWidth), 0, 1));
+//        graphics.draw(pointerShape);
+//
+//        graphics.dispose();
+//    }
 }

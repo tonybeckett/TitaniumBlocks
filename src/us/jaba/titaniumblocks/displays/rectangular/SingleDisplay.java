@@ -44,13 +44,13 @@ import us.jaba.titaniumblocks.core.frames.types.rectangular.ShinyMetalLinearFram
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
-import us.jaba.titaniumblocks.displays.AbstractDisplay;
+import us.jaba.titaniumblocks.displays.AbstractDial;
 
 /**
  *
  * @author tbeckett
  */
-public class SingleDisplay extends AbstractDisplay
+public class SingleDisplay extends AbstractDial
 {
 
     protected BackdropImageFactory backgroundImage;

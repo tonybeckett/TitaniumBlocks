@@ -25,27 +25,35 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.rectangular;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types;
 
-import us.jaba.titaniumblocks.core.frames.RectangularFrame;
-import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
-import us.jaba.titaniumblocks.displays.AbstractClockDial;
+import java.util.Arrays;
+import java.util.List;
+import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.Round10MMTickmarks;
+
 
 /**
  *
  * @author tbeckett
  */
-public class SquareClockDisplay extends AbstractClockDial
+public class RoundTickmarksCoreInfo
 {
 
-    public SquareClockDisplay()
+    public static final Class<?>[] THERMOMETER_CLASSES =
     {
-        super(new BlackMetalLinearFrame());
+        Round10MMTickmarks.class,
+           
+    };
+
+    public static List<Class<?>> getAvailableClasses()
+    {
+        return Arrays.asList(THERMOMETER_CLASSES);
     }
 
-    public SquareClockDisplay(RectangularFrame frame)
+    public static List getInstanceOfEach()
     {
-        super(frame);
-    }
+        return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
 
+    }
 }

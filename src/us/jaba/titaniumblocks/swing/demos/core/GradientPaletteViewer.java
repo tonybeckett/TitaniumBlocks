@@ -144,7 +144,7 @@ public class GradientPaletteViewer extends javax.swing.JFrame
         }
 
         add(list);
-        this.setIconImage(Images.titaniumblocks16);
+//        this.setIconImage(Images.titaniumblocks16);
         this.setSize(new Dimension(900, 800));
     }
 

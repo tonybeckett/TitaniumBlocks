@@ -25,22 +25,37 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.round;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types;
 
-import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
-import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
+import java.util.Arrays;
+import java.util.List;
+import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerCfTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.ThermometerFcTickmarks;
+
 
 /**
  *
  * @author tbeckett
  */
-public class RoundSingleDisplay extends AbstractSingleDisplay
+public class ThermometerCoreInfo
 {
-    
-    public RoundSingleDisplay(CircularLayout circularLayout)
+
+    public static final Class<?>[] THERMOMETER_CLASSES =
     {
-        super(circularLayout, new SilverRoundFrame());
+        ThermometerFcTickmarks.class,
+        ThermometerCfTickmarks.class,
+        
+    };
+
+    public static List<Class<?>> getAvailableClasses()
+    {
+        return Arrays.asList(THERMOMETER_CLASSES);
     }
-    
+
+    public static List getInstanceOfEach()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
+
+    }
 }

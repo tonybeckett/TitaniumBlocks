@@ -29,21 +29,21 @@ package us.jaba.titaniumblocks.displays.round;
 
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
-import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDial;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundStopwatchDisplay extends AbstractStopwatchDisplay
+public class RoundStopwatchDial extends AbstractStopwatchDial
 {
 
-    public RoundStopwatchDisplay()
+    public RoundStopwatchDial()
     {
         super(new BasicRoundFrame());
     }
 
-    public RoundStopwatchDisplay(RoundFrame frame)
+    public RoundStopwatchDial(RoundFrame frame)
     {
         super(frame);
     }

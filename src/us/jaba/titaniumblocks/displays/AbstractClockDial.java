@@ -32,20 +32,21 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlue;
+import us.jaba.titaniumblocks.core.color.GradientPalette;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
 import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
 import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
-import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
+import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.round.NullFrontcover;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
@@ -55,48 +56,49 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
-import us.jaba.titaniumblocks.core.pointers.shadows.LineShadow;
 import us.jaba.titaniumblocks.core.pointers.types.LinePointer;
+import us.jaba.titaniumblocks.core.pointers.types.Pencil2Pointer;
 import us.jaba.titaniumblocks.core.posts.NullPost;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
-import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.SmallTickmarks;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.stopwatch.round.StopwatchSubsecondTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
 
 /**
  *
  * @author tbeckett
  */
-public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopwatchComponent
+public class AbstractClockDial extends AbstractDial implements TBClockComponent, Serializable
 {
 
     private int currentOffset = -1;
 
+    private PointerImageFactory hourPointerImage;
+    private ShadowPointerImageFactory hrShadowPointerImage;
+    private ShadowPointerImageFactory minShadowPointerImage;
     private PointerImageFactory minutePointerImage;
     private PointerImageFactory secondsPointerImage;
-
+ 
+    
     private double firstPointerValue = 0.39; // 0.0-1.0
     private double secondPointerValue = 0.39; // 0.0-1.0
     private double thirdPointerValue = 0.39; // 0.0-1.0
 
     protected CircularLayout circularLayout = new CircularNoPostLayout(CoordinateDefs.Direction.CLOCKWISE, 0.95f);
 
-    private final TickmarkImageFactory tickmarkSmallImage;
-
-    public AbstractStopwatchDisplay()
+    public AbstractClockDial(BasicFrame frame)
     {
-        this(new SilverRoundFrame());
+        init(frame);
     }
 
-    public AbstractStopwatchDisplay(BasicFrame frame)
+    private void init(BasicFrame frame)
     {
-        super();
+        frameImage = new FrameImageFactory(frame)
+        {
 
-        frameImage = new FrameImageFactory(frame);
+        };
         add(frameImage);
 
         BasicBackdrop bmbp = new BasicBackdrop();
@@ -104,25 +106,18 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
         backdropImage = new BackdropImageFactory(bmbp);
         add(backdropImage);
 
-        StopwatchSubsecondTickmarks ct = new StopwatchSubsecondTickmarks();
+        NumbersOut ct = new NumbersOut();
         ct.setTextColor(ColorPalette.BLACK);
         ct.setMajorColor(ColorPalette.BLACK);
         ct.setFont(BaseFont.SERIF_FONT);
         tickmarkImage = new TickmarkImageFactory(ct);
         add(tickmarkImage);
 
-        SmallTickmarks sct = new SmallTickmarks();
-        sct.setTextColor(ColorPalette.BLACK);
-        sct.setMajorColor(ColorPalette.BLACK);
-        sct.setFont(BaseFont.SERIF_FONT);
-        tickmarkSmallImage = new TickmarkImageFactory(sct);
-        add(tickmarkSmallImage);
-
         tbText = new TBText();
-        tbText.setColor(ColorPalette.BLACK);
+        tbText.setColor(ColorPalette.GRAY);
 
-        tbTextImage = new TextImageFactory(tbText);
-        add(tbTextImage);
+//        tbTextImage = new TextImageFactory(tbText);
+//        add(tbTextImage);
         frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
         add(frontcoverImage);
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
@@ -130,40 +125,62 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
         centerPostImage = new PostImageFactory(new NullPost());
         add(centerPostImage);
 
-        LineShadow t1spp = new LineShadow();
-        secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
-        add(secShadowPointerImage);
+        Pencil2Pointer hourp = new Pencil2Pointer();
+        hourp.setPrimaryColor(new PureBlack());
+        hourp.setFrontScale(new Scale(0.6));
+        hourp.setTailScale(new Scale(0.2));
+        hourPointerImage = new PointerImageFactory(hourp);
+        add(hourPointerImage);
+        hrShadowPointerImage = new ShadowPointerImageFactory(hourp);
+        add(hrShadowPointerImage);
 
-//        Pencil2Pointer hourp = new Pencil2Pointer();
-//        hourp.setPointerColor(new PureBlack());
-//        hourp.setFrontScale(0.65f);
-//        hourPointerImage = new PointerImageFactory(hourp);
-//        add(hourPointerImage);
-        LinePointer minp = new LinePointer();
-        minp.setRadiusPercent(0.45f);
-        minp.setPrimaryColor(new PureBlue());
-        minp.setFrontScale(new Scale(0.5));
-        minp.setTailScale(new Scale(0.2));
+        Pencil2Pointer minp = new Pencil2Pointer();
+        minp.setPrimaryColor(new PureBlack());
+
         minp.setCenterPostEnable(true);
-        minp.setCenterPinVisible(true);
-        minp.setCenterScale(new Scale(0.015));
+        minp.setCenterScale(new Scale(0.04));
+        minp.setFrontScale(new Scale(0.85));
+        minp.setTailScale(new Scale(0.2));
         minutePointerImage = new PointerImageFactory(minp);
         add(minutePointerImage);
+        minShadowPointerImage = new ShadowPointerImageFactory(minp);
+        add(minShadowPointerImage);
 
         LinePointer secp = new LinePointer();
         secp.setPrimaryColor(new PureRed());
-        secp.setRadiusPercent(0.95f);
+        secp.setFrontScale(new Scale(0.9));
         secp.setTailScale(new Scale(0.2));
-        secp.setFrontScale(new Scale(0.975));
         secp.setCenterPostEnable(true);
         secp.setCenterPinVisible(true);
-        secp.setCenterScale(new Scale(0.04));
+
         secondsPointerImage = new PointerImageFactory(secp);
         add(secondsPointerImage);
+
+        secShadowPointerImage = new ShadowPointerImageFactory(secp);
+        add(secShadowPointerImage);
 
         frontcoverImage = new FrontcoverImageFactory(new NullFrontcover());
         add(frontcoverImage);
 
+    }
+
+    private int adjustOffset(int offset, double graphicsAngle)
+    {
+        int answer = offset;
+        int a = (int) CoordinateUtils.toDegrees(graphicsAngle);
+
+        if (a > 95 && a < 165) // nw
+        {
+            answer = offset + 2;
+        } else if (a >= 165 && a <= 195)
+        {
+            answer = offset;
+        } else if (a > 195 && a < 265) // ne
+        {
+            answer = offset - 2;
+        }
+
+        return answer;
     }
 
     @Override
@@ -185,50 +202,41 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
             frameImage.setChanged();
             image = frameImage.build(dimensions);
         }
-
+//        System.out.println(String.format("dim %s - off %d", interiorDim.toString(), offset));
         graphics.drawImage(backdropImage.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(image, 0, 0, null);
 
         graphics.drawImage(tickmarkImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(tickmarkSmallImage.build(interiorDim), offset, offset - (interiorDim.height / 4), null);
+        graphics.drawImage(titleTextImage.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 
         AffineTransform currentTransform = graphics.getTransform();
 
-//        double angleStep = CoordinateUtils.calcGraphicsAngle(firstPointerValue +(secondPointerValue/12), circularLayout);
-//       
-//        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-//
-//        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2, null);
-//        graphics.setTransform(currentTransform);
-//        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-//
-//        graphics.drawImage(hourPointerImage.build(interiorDim), offset, offset, null);
-//        graphics.setTransform(currentTransform);
-        double angleStep = CoordinateUtils.calcGraphicsAngle(secondPointerValue, circularLayout);
-
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2 - (interiorDim.height / 4));
-
-        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2 - (interiorDim.height / 4), null);
+        double graphicsAngle = CoordinateUtils.calcGraphicsAngle(firstPointerValue + (secondPointerValue / 12), circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(hrShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset + 1, null);
+        graphics.setTransform(currentTransform);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(hourPointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
-        graphics.rotate(angleStep, dimensions.width / 2, (dimensions.height / 2) - (interiorDim.height / 4));
-
-        graphics.drawImage(minutePointerImage.build(interiorDim), offset, offset - (interiorDim.height / 4), null);
+        graphicsAngle = CoordinateUtils.calcGraphicsAngle(secondPointerValue + (thirdPointerValue / 60), circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(minShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset + 1, null);
+        graphics.setTransform(currentTransform);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.drawImage(minutePointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
-        angleStep = CoordinateUtils.calcGraphicsAngle(thirdPointerValue, circularLayout);
+        graphicsAngle = CoordinateUtils.calcGraphicsAngle(thirdPointerValue, circularLayout);
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
 
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
-        graphics.drawImage(secShadowPointerImage.build(interiorDim), offset - 2, offset - 2, null);
+        graphics.drawImage(secShadowPointerImage.build(interiorDim), adjustOffset(offset, graphicsAngle), offset - 1, null);
         graphics.setTransform(currentTransform);
-
-        graphics.rotate(angleStep, dimensions.width / 2, dimensions.height / 2);
-
+        graphics.rotate(graphicsAngle, dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(secondsPointerImage.build(interiorDim), offset, offset, null);
         graphics.setTransform(currentTransform);
 
@@ -236,27 +244,16 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
         graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
-    public double getFirstPointerValue()
+    @Override
+    public double getHoursValue()
     {
         return firstPointerValue;
     }
 
-    public void setFirstPointerValue(double firstPointerValue)
+    @Override
+    public void setHoursValue(double firstPointerValue)
     {
         this.firstPointerValue = firstPointerValue;
-    }
-
-    @Override
-    public double getSecondsValue()
-    {
-        return thirdPointerValue;
-    }
-
-    @Override
-    public void setSecondsValue(double secondPointerValue)
-    {
-        this.thirdPointerValue = secondPointerValue;
-
     }
 
     @Override
@@ -266,41 +263,51 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
     }
 
     @Override
-    public void setMinutesValue(double thirdPointerValue)
+    public void setMinutesValue(double secondPointerValue)
     {
-        this.secondPointerValue = thirdPointerValue;
+        this.secondPointerValue = secondPointerValue;
+
     }
 
-//    public Color getColor()
-//    {
-//        return valueTextImage.getPainter().getColor();
-//    }
-//
-//    public void setColor(Color c)
-//    {
-//
-//        //  tbTextImage.getTickmark().setColor(c);
-//    }
-    public Text getText()
+    @Override
+    public double getSecondsValue()
     {
-        return valueTextImage.getPainter();
+        return thirdPointerValue;
     }
+
+    @Override
+    public void setSecondsValue(double thirdPointerValue)
+    {
+        this.thirdPointerValue = thirdPointerValue;
+    }
+
+
+//    public Text getTextPainter()
+//    {
+//        return valueTextImage.getPainter();
+//    }
 
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
-//intentional
+// intentional
+    }
+
+    public void setPointerGradient(GradientPalette cp)
+    {
+        hourPointerImage.getPainter().setPrimaryColor(cp);
     }
 
     @Override
-    public void setSmallTickmarks(Tickmark cm)
+    public Pointer getHoursPointer()
     {
-        tickmarkSmallImage.setPainter(cm);
+        return hourPointerImage.getPainter();
     }
 
     @Override
-    public Tickmark getSmallTickmarks()
+    public void setHoursPointer(Pointer hourPointer)
     {
-        return tickmarkSmallImage.getPainter();
+        this.hourPointerImage.setPainter(hourPointer);
+        this.hrShadowPointerImage.setPainter(hourPointer);
     }
 
     @Override
@@ -310,9 +317,10 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
     }
 
     @Override
-    public void setMinutesPointer(Pointer pointer)
+    public void setMinutesPointer(Pointer minutePointer)
     {
-        minutePointerImage.setPainter(pointer);
+        this.minutePointerImage.setPainter(minutePointer);
+        this.minShadowPointerImage.setPainter(minutePointer);
     }
 
     @Override
@@ -322,9 +330,11 @@ public class AbstractStopwatchDisplay extends AbstractDisplay implements TBStopw
     }
 
     @Override
-    public void setSecondsPointer(Pointer pointer)
+    public void setSecondsPointer(Pointer secondsPointer)
     {
-        secondsPointerImage.setPainter(pointer);
+        this.secondsPointerImage.setPainter(secondsPointer);
+        this.secShadowPointerImage.setPainter(secondsPointer);
     }
+
 
 }

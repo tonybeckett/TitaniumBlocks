@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.swing.panels.rectangular;
 
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.displays.rectangular.SingleRectangularDisplay;
+import us.jaba.titaniumblocks.displays.rectangular.SimpleRectangularDial;
 import us.jaba.titaniumblocks.swing.panels.BasicPanel;
 
 /**
@@ -46,7 +46,7 @@ public class SingleRectangularPanel extends BasicPanel
     
     public SingleRectangularPanel(CircularLayout circularLayout)
     {
-        super(new SingleRectangularDisplay(circularLayout));
+        super(new SimpleRectangularDial(circularLayout));
 //        this.circularLayout = circularLayout;
         
         this.addComponentListener(componentListener);

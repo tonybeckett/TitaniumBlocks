@@ -29,21 +29,21 @@ package us.jaba.titaniumblocks.displays.round;
 
 import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
-import us.jaba.titaniumblocks.displays.AbstractClockDisplay;
+import us.jaba.titaniumblocks.displays.AbstractClockDial;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundClockDisplay extends AbstractClockDisplay
+public class RoundClockDial extends AbstractClockDial
 {
 
-    public RoundClockDisplay()
+    public RoundClockDial()
     {
         super(new BasicRoundFrame());
     }
 
-    public RoundClockDisplay(RoundFrame frame)
+    public RoundClockDial(RoundFrame frame)
     {
         super(frame);
     }

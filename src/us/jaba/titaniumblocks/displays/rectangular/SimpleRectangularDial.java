@@ -74,14 +74,14 @@ import us.jaba.titaniumblocks.core.text.types.TitleText;
 import us.jaba.titaniumblocks.core.text.types.UnitsText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
-import us.jaba.titaniumblocks.displays.AbstractDisplay;
+import us.jaba.titaniumblocks.displays.AbstractDial;
 
 
 /**
  *
  * @author tbeckett
  */
-public class SingleRectangularDisplay extends AbstractDisplay 
+public class SimpleRectangularDial extends AbstractDial 
 {
 
     private MySEPostFactory endPostImage;
@@ -114,12 +114,12 @@ public class SingleRectangularDisplay extends AbstractDisplay
         }
     };
 
-    public SingleRectangularDisplay(CircularLayout circularLayout)
+    public SimpleRectangularDial(CircularLayout circularLayout)
     {
         this(circularLayout, ColorPalette.BLACK);
     }
 
-    public SingleRectangularDisplay(CircularLayout circularLayout, Color c)
+    public SimpleRectangularDial(CircularLayout circularLayout, Color c)
     {
         super();
         this.circularLayout = circularLayout;
@@ -154,7 +154,7 @@ public class SingleRectangularDisplay extends AbstractDisplay
 
         TaperedPointer tpp = new TaperedPointer();
         tpp.setPrimaryColor(new PureBlack());
-        tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
+ //       tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
 
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
@@ -167,13 +167,13 @@ public class SingleRectangularDisplay extends AbstractDisplay
         tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
         tickmarkModel.useFixedTextAdjust();
 
-        tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getTickmarkStartAngle());
-        tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getTickmarkEndAngle());
-        tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getTickmarkDirection());
+        tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getStartAngle());
+        tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getEndAngle());
+        tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getDirection());
 
 //        double ff = CoordinateUtils.calcExtent(circularLayout.getTickmarkStartAngle(), circularLayout.getTickmarkEndAngle(), tickmarkModel.getRadialRangeModel());
 //        tickmarkModel.getRadialRangeModel().setAngleExtent(ff);
-        tickmarkModel.getRadialSizeModel().setRadiusAdj(circularLayout.getTickmarkRadius());
+//        tickmarkModel.getRadialSizeModel().setRadiusAdj(circularLayout.getTickmarkRadius());
         tickmarkImage = new TickmarkImageFactory(tickmarkModel);
         setColor(c);
     }

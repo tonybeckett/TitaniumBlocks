@@ -60,7 +60,7 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
  *
  * @author tbeckett
  */
-public class AbstractDisplay extends CoreBean implements TBComponent, Painter
+public class AbstractDial extends CoreBean implements TBComponent, Painter
 {
 
     protected static final float DEFAULT_FONT_SCALE_FACTOR = 0.67F;
@@ -88,7 +88,7 @@ public class AbstractDisplay extends CoreBean implements TBComponent, Painter
     protected LedImageFactory ledImageFactory;
     protected ShadowPointerImageFactory secShadowPointerImage;
 
-    public AbstractDisplay(BackdropImageFactory backdropImage, FrameImageFactory frameImage, PostImageFactory centerPostImage)
+    public AbstractDial(BackdropImageFactory backdropImage, FrameImageFactory frameImage, PostImageFactory centerPostImage)
     {
         init();
         this.backdropImage = backdropImage;
@@ -99,7 +99,7 @@ public class AbstractDisplay extends CoreBean implements TBComponent, Painter
         add(centerPostImage);
     }
 
-    public AbstractDisplay()
+    public AbstractDial()
     {
         init();  
     }
@@ -255,6 +255,7 @@ public class AbstractDisplay extends CoreBean implements TBComponent, Painter
     public void setTitleText(TitleText titleText)
     {
         this.titleValueText = titleText;
+        
     }
 
     @Override

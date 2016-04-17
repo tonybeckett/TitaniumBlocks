@@ -32,8 +32,9 @@ import java.io.Serializable;
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.displays.TBClockComponent;
-import us.jaba.titaniumblocks.displays.round.RoundClockDisplay;
+import us.jaba.titaniumblocks.displays.round.RoundClockDial;
 
 /**
  *
@@ -51,7 +52,7 @@ public class ClockPanel extends BasicPanel implements Serializable
 
     public ClockPanel()
     {
-        super(new RoundClockDisplay());
+        super(new RoundClockDial());
     }
 
 
@@ -143,6 +144,12 @@ public class ClockPanel extends BasicPanel implements Serializable
     public void setSecondsPointer(Pointer secondsPointer)
     {
         ((TBClockComponent) tbComponent).setSecondsPointer(secondsPointer);
+    }
+
+    @Override
+    public AbstractRadialTickmark getTickmarks()
+    {
+        return (AbstractRadialTickmark) super.getTickmarks(); 
     }
 
 }

@@ -36,15 +36,15 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class DisplayImageFactory extends CoreImageFactory
 {
 
-    public DisplayImageFactory(AbstractDisplay painter)
+    public DisplayImageFactory(AbstractDial painter)
     {
         super(painter);
     }
 
     @Override
-    public AbstractDisplay getPainter()
+    public AbstractDial getPainter()
     {
-        return (AbstractDisplay) super.getPainter();
+        return (AbstractDial) super.getPainter();
     }
 
 }

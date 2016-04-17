@@ -40,14 +40,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
-import us.jaba.titaniumblocks.core.Images;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.frames.BasicEffect;
 import us.jaba.titaniumblocks.core.frames.effects.EffectCoreInfo;
 import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
 import us.jaba.titaniumblocks.core.frames.RoundFrameImageFactory;
-import us.jaba.titaniumblocks.core.frames.RoundFrame;
 import us.jaba.titaniumblocks.core.frames.RoundFrameEffect;
+import us.jaba.titaniumblocks.core.frames.types.round.BasicRoundFrame;
 
 /**
  *
@@ -65,61 +64,65 @@ public class RoundFrameViewer extends javax.swing.JFrame
     public RoundFrameViewer() throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
         initComponents();
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        
+//        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         List<Class<?>> linearClassList = FramesCoreInfo.getRoundClasses();
         List<Class<?>> linearEffectClassList = EffectCoreInfo.getRoundClasses();
 
         int llen = linearClassList.size();
         int elen = linearEffectClassList.size();
 
-        GridLayout gl = new GridLayout();
-        gl.setRows(llen);
-        list.setLayout(gl);
-        Dimension dim = new Dimension(150, 150);
-        for (int i = 0; i < llen; i++)
-        {
-            Class<?> aLinearClass = linearClassList.get(i);
-            Constructor cLinear = aLinearClass.getConstructor();
-            RoundFrame framePainter = (RoundFrame) cLinear.newInstance();
+//        GridLayout gl = new GridLayout();
+//        gl.setRows(llen);
+//        list.setLayout(gl);
+        Dimension dim = new Dimension(250, 250);
+//        for (int i = 0; i < llen; i++)
+//        {
+//            Class<?> aLinearClass = linearClassList.get(i);
+//            Constructor cLinear = aLinearClass.getConstructor();
+//            RoundFrame framePainter = (RoundFrame) cLinear.newInstance();
 //            framePainter.setFrameThickness(20);
-            RoundFrameImageFactory lfg = new RoundFrameImageFactory(framePainter);
+        BasicRoundFrame framePainter = new BasicRoundFrame();
+        RoundFrameImageFactory lfg = new RoundFrameImageFactory(framePainter);
 
-            JPanel lpanel = new JPanel();
+        JPanel lpanel = new JPanel();
 
-            gl = new GridLayout();
-            gl.setColumns(elen);
-            lpanel.setLayout(gl);
-            lpanel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
-            for (int j = 0; j < elen; j++)
-            {
-                Class<?> eLinearClass = linearEffectClassList.get(j);
-                Constructor eLinear = eLinearClass.getConstructor();
-                RoundFrameEffect effectPainter = (RoundFrameEffect) eLinear.newInstance();
+        GridLayout gl = new GridLayout();
+        gl.setColumns(2);
+        gl.setRows(3);
+        lpanel.setLayout(gl);
+        lpanel.setBorder(new LineBorder(ColorPalette.BLACK, 1));
+        for (int j = 0; j < elen; j++)
+        {
+            Class<?> eLinearClass = linearEffectClassList.get(j);
+            Constructor eLinear = eLinearClass.getConstructor();
+            RoundFrameEffect effectPainter = (RoundFrameEffect) eLinear.newInstance();
 
-                framePainter.setEffect((BasicEffect) effectPainter);
-                JPanel epanel = new JPanel();
+            framePainter.setEffect((BasicEffect) effectPainter);
+            JPanel epanel = new JPanel();
+//
+            epanel.setLayout(new BorderLayout());
+            JLabel jlabel = new JLabel();
+            jlabel.setVerticalTextPosition(JLabel.BOTTOM);
+            jlabel.setHorizontalTextPosition(JLabel.CENTER);
+            jlabel.setText(framePainter.getClass().getSimpleName().replace("RoundFrame", "") + " - " + eLinearClass.getSimpleName().replace("Painter", "").replace("Radial", ""));
 
-                epanel.setLayout(new BorderLayout());
-                JLabel jlabel = new JLabel();
-                jlabel.setText(aLinearClass.getSimpleName().replace("FramePainter", "").replace("Radial", "") + "-" + eLinearClass.getSimpleName().replace("Painter", "").replace("Radial", ""));
+            jlabel.setIcon(new ImageIcon(lfg.build(dim)));
+            jlabel.setForeground(ColorPalette.BLACK);
+            jlabel.setBackground(ColorPalette.WHITE);
+            epanel.setBackground(ColorPalette.WHITE);
+            epanel.add(jlabel, BorderLayout.CENTER);
 
-                jlabel.setIcon(new ImageIcon(lfg.build(dim)));
-//            jlabel.setForeground(ColorPalette.BLACK);
-                jlabel.setBackground(ColorPalette.WHITE);
-                epanel.setBackground(ColorPalette.WHITE);
-                epanel.add(jlabel, BorderLayout.CENTER);
-
-                lpanel.add(epanel);
-            }
-            list.add(lpanel);
+            lpanel.add(epanel);
+//            }
+//            list.add(lpanel);
         }
-
-        jScrollPane1.setViewportView(list);
-
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
-         this.setIconImage(Images.titaniumblocks16);
-        this.setSize(new Dimension(800, 500));
+        add(lpanel);
+//        jScrollPane1.setViewportView(list);
+//
+//        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+//         this.setIconImage(Images.titaniumblocks16);
+        this.setSize(new Dimension(550, 900));
     }
 
     private void initComponents()

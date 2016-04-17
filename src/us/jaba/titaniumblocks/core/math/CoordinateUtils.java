@@ -182,17 +182,17 @@ public class CoordinateUtils
 
         double angleInDegrees = 100.0;
 
-        double ext = calcExtent(circularLayout.getTickmarkStartAngle(), circularLayout.getTickmarkEndAngle(), circularLayout.getTickmarkDirection());
+        double ext = calcExtent(circularLayout.getStartAngle(), circularLayout.getEndAngle(), circularLayout.getDirection());
 
-        switch (circularLayout.getTickmarkDirection())
+        switch (circularLayout.getDirection())
         {
 
             case COUNTER:
-                angleInDegrees = circularLayout.getTickmarkStartAngle() - (normalizedValue * ext);
+                angleInDegrees = circularLayout.getStartAngle() - (normalizedValue * ext);
                 break;
             case CLOCKWISE:
             default:
-                angleInDegrees = (circularLayout.getTickmarkStartAngle()) + (normalizedValue * ext);
+                angleInDegrees = (circularLayout.getStartAngle()) + (normalizedValue * ext);
                 break;
         }
 //        angleInDegrees = angleInDegrees - 90.0;

@@ -29,13 +29,13 @@ package us.jaba.titaniumblocks.displays.rectangular;
 
 import us.jaba.titaniumblocks.core.frames.RectangularFrame;
 import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
-import us.jaba.titaniumblocks.displays.AbstractStopwatchDisplay;
+import us.jaba.titaniumblocks.displays.AbstractStopwatchDial;
 
 /**
  *
  * @author tbeckett
  */
-public class SquareStopwatchDisplay extends AbstractStopwatchDisplay
+public class SquareStopwatchDisplay extends AbstractStopwatchDial
 {
 
     public SquareStopwatchDisplay()

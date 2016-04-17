@@ -25,27 +25,20 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.rectangular;
+package us.jaba.titaniumblocks.core.frames.types.round;
 
-import us.jaba.titaniumblocks.core.frames.RectangularFrame;
-import us.jaba.titaniumblocks.core.frames.types.rectangular.BlackMetalLinearFrame;
-import us.jaba.titaniumblocks.displays.AbstractClockDial;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class SquareClockDisplay extends AbstractClockDial
+public class TitaniumRoundFrame extends Gradient7RoundFrame
 {
-
-    public SquareClockDisplay()
+    
+    public TitaniumRoundFrame()
     {
-        super(new BlackMetalLinearFrame());
+        super(ColorPalette.TITANIUM);
     }
-
-    public SquareClockDisplay(RectangularFrame frame)
-    {
-        super(frame);
-    }
-
+    
 }

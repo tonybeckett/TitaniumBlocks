@@ -57,6 +57,7 @@ import us.jaba.titaniumblocks.core.frames.types.round.SilverRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.SteelRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.TiltedBlackRoundFrame;
 import us.jaba.titaniumblocks.core.frames.types.round.TiltedGrayRoundFrame;
+import us.jaba.titaniumblocks.core.frames.types.round.TitaniumRoundFrame;
 
 /**
  *
@@ -80,7 +81,8 @@ public class FramesCoreInfo
         SilverRoundFrame.class,
         SteelRoundFrame.class,
         TiltedBlackRoundFrame.class,
-        TiltedGrayRoundFrame.class
+        TiltedGrayRoundFrame.class,
+        TitaniumRoundFrame.class
     };
 
     public static final Class<?>[] RECTANGUALR_MODELS =

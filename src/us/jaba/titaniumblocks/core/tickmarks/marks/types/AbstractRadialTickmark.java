@@ -76,13 +76,14 @@ public class AbstractRadialTickmark extends Tickmark
     {
         this.rangeModel = radialRangeModel;
     }
-       
-     
+
     public void copy(AbstractRadialTickmark other)
     {
-        super.copy(other); 
- //       this.textPositionScale = other.textPositionScale;  Position is design dependent
+        super.copy(other);
+        //       this.textPositionScale = other.textPositionScale;  Position is design dependent
         this.textSizeScale = other.textSizeScale;
+        rangeModel = new RadialRangeModel( other.rangeModel.getCenter(), other.rangeModel.getRadius(), other.rangeModel.getAngleStart(), other.rangeModel.getAngleEnd());
+        rangeModel.setDirection(other.rangeModel.getDirection());
     }
 
     @Override
@@ -91,7 +92,7 @@ public class AbstractRadialTickmark extends Tickmark
         super.paint(graphics, dimensions);
 
         centerPoint.setLocation((dimensions.getWidth() / 2.0) + centerOffset.getX(), (dimensions.getHeight() / 2.0) + centerOffset.getY());
-
+     
         sizeModel.adjustUsing((float) dimensions.getWidth());
         rangeModel.setRadius(sizeModel.getRadius());
         rangeModel.setCenter(centerPoint);

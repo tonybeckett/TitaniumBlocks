@@ -29,23 +29,23 @@ package us.jaba.titaniumblocks.swing.panels;
 
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
-import us.jaba.titaniumblocks.displays.AbstractSingleDisplay;
-import us.jaba.titaniumblocks.displays.TBComponent;
+import us.jaba.titaniumblocks.core.knobs.Knob;
+import us.jaba.titaniumblocks.displays.AbstractSimpleDial;
 
 /**
  *
  * @author tbeckett
  */
-public class SinglePanel extends BasicPanel
+public class SimpleDialPanel extends BasicPanel
 {
 
     private Timeline timeline = new Timeline(this);
     private final Spline EASE = new Spline(0.5f);
     double value;
 
-    public SinglePanel(TBComponent component)
+    public SimpleDialPanel(AbstractSimpleDial dial)
     {
-        super(component);
+        super(dial);
         this.addComponentListener(componentListener);
     }
 
@@ -67,14 +67,49 @@ public class SinglePanel extends BasicPanel
 
     public void setValue(double value)
     {
-        ((AbstractSingleDisplay) tbComponent).setNormalizedValue(value / 100.0);
+        ((AbstractSimpleDial) tbComponent).setNormalizedValue(value / 100.0);
         invalidate();
         repaint();
     }
 
     public void setUnits(String value)
     {
-        ((AbstractSingleDisplay) tbComponent).setUnits(value);
+        ((AbstractSimpleDial) tbComponent).setUnits(value);
+    }
+
+    public void setMinValue(float value)
+    {
+        ((AbstractSimpleDial) tbComponent).setMinValue(value);
+        invalidate();
+        repaint();
+    }
+
+    public void setMaxValue(float value)
+    {
+        ((AbstractSimpleDial) tbComponent).setMaxValue(value);
+        invalidate();
+        repaint();
+    }
+
+    public void setStartKnob(Knob knob)
+    {
+        ((AbstractSimpleDial) tbComponent).setStartKnob(knob);
+
+    }
+
+    public Knob getStartKnob()
+    {
+        return ((AbstractSimpleDial) tbComponent).getStartKnob();
+    }
+
+    public void setStopKnob(Knob knob)
+    {
+        ((AbstractSimpleDial) tbComponent).setStopKnob(knob);
+    }
+
+    public Knob getStopKnob()
+    {
+        return ((AbstractSimpleDial) tbComponent).getStopKnob();
     }
 
 }

@@ -147,7 +147,7 @@ public class ShapeUtils
 
         for (int i = 0; i < number; i++)
         {
-            double gAngle = adjust(currentAngle - 270);
+            double gAngle = adjust(currentAngle - 270.0);
             Point2D.Double innerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusInner, gAngle);
             Point2D.Double outerPoint = CoordinateUtils.convertToGraphics2dPoint(center, radiusOuter, gAngle);
 
@@ -182,7 +182,7 @@ public class ShapeUtils
     {
         Point2D.Double pointStart = new Point2D.Double((double) center.getX() - radius, (double) center.getY() - radius);
 
-        int extent = (int) (endAngle + (360 - startAngle));
+        int extent = (int) (endAngle + (360.0 - startAngle));
 
         int width = (int) (radius * 2.0);
         int height = (int) (radius * 2.0);

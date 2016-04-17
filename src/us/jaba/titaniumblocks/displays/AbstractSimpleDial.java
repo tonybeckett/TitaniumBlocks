@@ -48,7 +48,6 @@ import us.jaba.titaniumblocks.core.knobs.Knob;
 import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
-import static us.jaba.titaniumblocks.core.math.CoordinateDefs.INVERTED_TEXT;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
@@ -60,49 +59,50 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.NumericRoundTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.Round10MMTickmarks;
 
 /**
  *
  * @author tbeckett
  */
-public class AbstractSingleDisplay extends AbstractDisplay implements TBComponent
+public class AbstractSimpleDial extends AbstractDial implements TBComponent
 {
 
 //    private PointerImageFactory pointerImage;
-    private final RNormalMajMedMinorTickmark tickmarkModel;
+    private final Round10MMTickmarks tickmarkModel;
     private final SingleBargraphLedOff led;
 //    private LedImageFactory ledImageFactory;
 //    private ShadowPointerImageFactory secShadowPointerImage;
     protected CircularLayout circularLayout;
-    private MySEPostFactory endPostImage;
-    
+    private MyStopPostFactory endPostImage;
+
     private int currentOffset = -1;
-    private MySWPostFactory startPostImage;
+    private MyStartPostFactory startPostImage;
+    private float minValue = 0.0f;
+    private float maxValue = 1.0f;
     
 
-    class MySWPostFactory extends PolarSmallPostFactory
+    class MyStartPostFactory extends PolarSmallPostFactory
     {
 
-        public MySWPostFactory(KnobImageFactory iFactory)
+        public MyStartPostFactory(KnobImageFactory iFactory)
         {
             super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getStartPostAngle()))));
         }
     };
 
-    class MySEPostFactory extends PolarSmallPostFactory
+    class MyStopPostFactory extends PolarSmallPostFactory
     {
 
-        public MySEPostFactory(KnobImageFactory iFactory)
+        public MyStopPostFactory(KnobImageFactory iFactory)
         {
             super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
         }
     };
 
-   
-
-    public AbstractSingleDisplay(CircularLayout circularLayout, BasicFrame frame)
+    public AbstractSimpleDial(CircularLayout circularLayout, BasicFrame frame)
     {
         super(new BackdropImageFactory(new BasicBackdrop()),
                 new FrameImageFactory(frame),
@@ -118,10 +118,10 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
         add(disabledImage);
 
-        startPostImage = new MySWPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+        startPostImage = new MyStartPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
         add(startPostImage);
 
-        endPostImage = new MySEPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+        endPostImage = new MyStopPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
         add(endPostImage);
 
         Type1Shadow t1spp = new Type1Shadow();
@@ -130,7 +130,7 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
 
         TaperedPointer tpp = new TaperedPointer();
         tpp.setPrimaryColor(new PureBlack());
-        tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
+//        tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
         add(pointerImage);
 
@@ -141,35 +141,21 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
 //        ledImageFactory = new LedImageFactory(led);
 //        add(ledImageFactory);
 
-        tickmarkModel = new RNormalMajMedMinorTickmark();
+        tickmarkModel = new Round10MMTickmarks();
 
-        tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
-        tickmarkModel.useFixedTextAdjust();
+//        tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
+//        tickmarkModel.useFixedTextAdjust();
 
-        tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getTickmarkStartAngle());
-        tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getTickmarkEndAngle());
-        tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getTickmarkDirection());
+        tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getStartAngle());
+        tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getEndAngle());
+        tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getDirection());
 
-        tickmarkModel.getRadialSizeModel().setRadiusAdj(circularLayout.getTickmarkRadius());
+//        tickmarkModel.getRadialSizeModel().setRadiusAdj(circularLayout.getTickmarkRadius());
         tickmarkImage = new TickmarkImageFactory(tickmarkModel);
         add(tickmarkImage);
 
-        
     }
-//
-//    @Override
-//    public Dimension getSize()
-//    {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-//
-//    @Override
-//    public void setSize(Dimension dimensions)
-//    {
-// //       unitsText.setFontSize((float) (dimensions.width / 500.0) * BaseFont.DEFAULT_FONT.getSize());
-// //       titleValueText.setFontSize((float) (dimensions.width / 500.0) * BaseFont.DEFAULT_FONT.getSize());
-// //       tickmarkModel.setFont(BaseFont.DEFAULT_FONT.deriveFont((float) (dimensions.width / 600.0) * BaseFont.DEFAULT_FONT.getSize()));
-//    }
+
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
@@ -180,7 +166,7 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 
         int offset = (int) frameImage.getFrame().getFrameThickness();
-        if ( offset != currentOffset)
+        if (offset != currentOffset)
         {
             setChanged();
             currentOffset = offset;
@@ -213,7 +199,6 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
         graphics.drawImage(tickmarkImage.build(interiorDim), offset, offset, null);
 
 //        graphics.drawImage(ledImageFactory.build(interiorDim), dimensions.width * 10 / 16, dimensions.height * 13 / 32, null);
-
         AffineTransform currentTransform = graphics.getTransform();
 
         double angleStep = CoordinateUtils.calcGraphicsAngle(normalizedValue, circularLayout);
@@ -233,7 +218,6 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
         graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
-  
     public double getNormalizedValue()
     {
         return normalizedValue;
@@ -263,20 +247,70 @@ public class AbstractSingleDisplay extends AbstractDisplay implements TBComponen
         return valueTextImage.getPainter();
     }
 
-    public void setSmallKnobs(Knob startPainter, Knob endPainter)
+//    public void setSmallKnobs(Knob startPainter, Knob endPainter)
+//    {
+//        startPostImage = new AbstractSimpleDial.MySWPostFactory(new KnobImageFactory(startPainter));
+//        add(startPostImage);
+//        endPostImage = new AbstractSimpleDial.MySEPostFactory(new KnobImageFactory(endPainter));
+//        add(endPostImage); /// ??????????
+//    }
+    public void setStartKnob(Knob knob)
     {
-        startPostImage = new AbstractSingleDisplay.MySWPostFactory(new KnobImageFactory(startPainter));
+        startPostImage = new AbstractSimpleDial.MyStartPostFactory(new KnobImageFactory(knob));
         add(startPostImage);
-        endPostImage = new AbstractSingleDisplay.MySEPostFactory(new KnobImageFactory(endPainter));
-        add(endPostImage); /// ??????????
     }
 
+    public Knob getStartKnob()
+    {
+        return (Knob) startPostImage.getPainter();
+    }
+    
+    public void setStopKnob(Knob knob)
+    {
+        endPostImage = new AbstractSimpleDial.MyStopPostFactory(new KnobImageFactory(knob));
+        add(endPostImage);
+    }
 
+    public Knob getStopKnob()
+    {
+        return (Knob) endPostImage.getPainter();
+    }
+
+    public CircularLayout getCircularLayout()
+    {
+        return circularLayout;
+    }
+
+    public void setCircularLayout(CircularLayout circularLayout)
+    {
+        this.circularLayout = circularLayout;
+    }
+    
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 // intentional
     }
 
+    public float getMinValue()
+    {
+        return minValue;
+    }
 
+    public void setMinValue(float value)
+    {
+        this.minValue = value;
+         ((NumericRoundTickmarks)tickmarkImage.getPainter()).setMinValue(value);
+    }
+
+    public float getMaxValue()
+    {
+        return maxValue;
+    }
+
+    public void setMaxValue(float value)
+    {
+        this.maxValue = value;
+        ((NumericRoundTickmarks)tickmarkImage.getPainter()).setMaxValue(value);
+    }
 
 }

@@ -35,24 +35,21 @@ import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
  */
 public interface CircularLayout
 {
-
     /**
      * Get the value of endAngle
      *
      * @return the value of endAngle
      */
-    int getTickmarkEndAngle();
+    int getEndAngle();
 
     /**
      * Get the value of startAngle
      *
      * @return the value of startAngle
      */
-    int getTickmarkStartAngle();
+    int getStartAngle();
 
-    Direction getTickmarkDirection();
-    
-    float getTickmarkRadius();
+    Direction getDirection();
 
     int getStartPostAngle();
 

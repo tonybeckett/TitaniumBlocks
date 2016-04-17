@@ -41,6 +41,7 @@ public class TextImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public Text getPainter()
     {
         return (Text) super.getPainter();

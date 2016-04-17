@@ -42,17 +42,23 @@ public class CircularNoPostLayout implements CircularLayout
     private int endAngle;
     private Direction direction;
     private int startPostAngle;
-    private float tickmarkRadius;
+    private float postRadius;
 
     public CircularNoPostLayout( Direction dir, float radius)
     {
         this.startAngle = 0;
         this.endAngle = 360;
         this.direction = dir;
-        this.tickmarkRadius = radius;
+        this.postRadius = radius;
         this.startPostAngle = 0;
         this.endPostAngle = 0;
 
+    }
+
+    @Override
+    public Direction getDirection()
+    {
+        return direction;
     }
 
     @Override
@@ -73,10 +79,12 @@ public class CircularNoPostLayout implements CircularLayout
      * @return the value of endAngle
      */
     @Override
-    public int getTickmarkEndAngle()
+    public int getEndAngle()
     {
         return endAngle;
     }
+
+   
 
     /**
      * Set the value of endAngle
@@ -88,21 +96,12 @@ public class CircularNoPostLayout implements CircularLayout
         this.endAngle = endAngle;
     }
 
-    @Override
-    public float getTickmarkRadius()
-    {
-        return tickmarkRadius;
-    }
+   
 
-    /**
-     * Get the value of startAngle
-     *
-     * @return the value of startAngle
-     */
     @Override
-    public int getTickmarkStartAngle()
+    public int getStartAngle()
     {
-        return startAngle;
+       return startAngle;
     }
 
     /**
@@ -115,26 +114,9 @@ public class CircularNoPostLayout implements CircularLayout
         this.startAngle = startAngle;
     }
 
-    /**
-     * Get the value of direction
-     *
-     * @return the value of direction
-     */
-    @Override
-    public Direction getTickmarkDirection()
-    {
-        return direction;
-    }
+    
 
-    /**
-     * Set the value of direction
-     *
-     * @param direction new value of direction
-     */
-    public void setDirection(Direction direction)
-    {
-        this.direction = direction;
-    }
+   
 
     public void setEndPostAngle(int endPostAngle)
     {
@@ -146,9 +128,9 @@ public class CircularNoPostLayout implements CircularLayout
         this.startPostAngle = startPostAngle;
     }
 
-    public void setTickmarkRadius(float tickmarkRadius)
+    public void setPostRadius(float radius)
     {
-        this.tickmarkRadius = tickmarkRadius;
+        this.postRadius = radius;
     }
 
 }

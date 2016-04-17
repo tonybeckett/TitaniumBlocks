@@ -30,9 +30,9 @@ package us.jaba.titaniumblocks.swing.demos.panels;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BrushedMetalBModel;
-import us.jaba.titaniumblocks.displays.round.CompassDisplay;
+import us.jaba.titaniumblocks.displays.round.CompassDial;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.SinglePanel;
+import us.jaba.titaniumblocks.swing.panels.SimpleDialPanel;
 
 /**
  *
@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.swing.panels.SinglePanel;
 public class CompassDemo extends javax.swing.JFrame
 {
 
-    final SinglePanel panel;
+    final SimpleDialPanel panel;
 
     /**
      * Creates new form DisplaySingleDemo
@@ -50,7 +50,7 @@ public class CompassDemo extends javax.swing.JFrame
     {
         initComponents();
 
-        panel = new SinglePanel(new CompassDisplay());
+        panel = new SimpleDialPanel(new CompassDial());
 
         
         panel.getTBComponent().getBackdrop().setBackgroundColor(new BrushedMetalBModel());

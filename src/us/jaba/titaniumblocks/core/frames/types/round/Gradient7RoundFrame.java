@@ -71,6 +71,13 @@ public class Gradient7RoundFrame extends BasicGradientRoundFrame
             gradientColors[i] = colors[i];
         }
     }
+    
+    public Gradient7RoundFrame(Color color)
+    {
+        super();
+        init(gradientFractions, gradientColors);
+        super.setPrimaryColor(color);
+    }
 
     @Override
     public void setPrimaryColor(Color primaryColor)
