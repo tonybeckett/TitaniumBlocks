@@ -31,6 +31,7 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
@@ -102,8 +103,8 @@ public class WindSpeedMPHTickmarks extends AbstractRadialTickmark
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.615, radius * 0.75, 210.0, mphAngleStep, arrayOfTextMPH.length);
 
         // tbd angles for these are being calculate wrong
-        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, radius * 0.675, 208.5, 148.5);
-        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, radius * 0.75, 209, 148.5);
+        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, radius * 0.675, 208.5, 148.5, Direction.CLOCKWISE);
+        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, radius * 0.75, 209, 148.5, Direction.CLOCKWISE);
 
         graphics.dispose();
 

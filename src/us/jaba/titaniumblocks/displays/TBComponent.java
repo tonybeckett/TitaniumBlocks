@@ -35,7 +35,7 @@ import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 
 /**
@@ -63,8 +63,8 @@ public interface TBComponent extends Serializable
     void setFrontCover(Frontcover frontcover);
     Frontcover getFrontCover();
 
-    public TitleText getTitleText();
-    public void setTitleText(TitleText titleText);
+    public Text getText1();
+    public void setText1(Text titleText);
 
     public void setSize(Dimension d);
     public Dimension getSize();

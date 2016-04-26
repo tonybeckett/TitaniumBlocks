@@ -54,4 +54,10 @@ public interface CircularLayout
     int getStartPostAngle();
 
     int getEndPostAngle();
+    
+    void setStartAngle(int angle);
+    
+    void setEndAngle(int angle);
+    
+    void setDirection(Direction d);
 }

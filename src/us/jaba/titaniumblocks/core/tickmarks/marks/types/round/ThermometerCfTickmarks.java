@@ -31,6 +31,7 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
@@ -56,7 +57,7 @@ public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
     @Override
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
-
+      
         // 300 degrees
         double angleStep = 315.0 / 9.0;
 
@@ -72,7 +73,6 @@ public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
 
         graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() * 0.75)));
         textPainter.paint(graphics, centerPoint, textRadius * 0.4, 228.0, 38.8, arrayOfFText);
-
         textPainter.paint(graphics, centerPoint, textRadius * 0.475, 180.0, 0.0, unitsF);
 
         graphics.setColor(minorColor);
@@ -81,7 +81,7 @@ public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 205.0, 140.0);
+        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 205.0, 140.0, Direction.CLOCKWISE);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);

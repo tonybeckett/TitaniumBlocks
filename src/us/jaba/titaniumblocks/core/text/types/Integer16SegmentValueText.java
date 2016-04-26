@@ -86,7 +86,7 @@ public class Integer16SegmentValueText extends Text
 
     }
 
-    public int getValue()
+    public int getIntegerValue()
     {
         return value;
     }

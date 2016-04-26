@@ -31,6 +31,7 @@ import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
@@ -57,7 +58,7 @@ public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
     public void subPaint(Graphics2D graphics, Dimension dimensions)
     {
 
-         graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
+        graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         final float textRadius = (float) (dimensions.getWidth() * 0.485f * this.textPositionScale.getValue());
@@ -65,25 +66,25 @@ public class ThermometerFcTickmarks extends ThermometerBaseTickmarks
 
         // 300 degrees
         double angleStep = 300.0 / 14.0;
-        textPainter.paint(graphics, centerPoint, textRadius   * 0.85, 220.0, angleStep, arrayOfFText);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.85, 220.0, angleStep, arrayOfFText);
 
-        textPainter.paint(graphics, centerPoint, textRadius   * 0.85, 180.0, 0.0, unitsF);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.85, 180.0, 0.0, unitsF);
 
         graphics.setFont(font.deriveFont(Font.BOLD, (float) (textScale * dimensions.getWidth() * 0.75)));
-        textPainter.paint(graphics, centerPoint, textRadius   * 0.45, 232.0, 38.8, arrayOfCText);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.45, 232.0, 38.8, arrayOfCText);
 
-        textPainter.paint(graphics, centerPoint, textRadius   * 0.45, 180.0, 0.0, unitsC);
+        textPainter.paint(graphics, centerPoint, textRadius * 0.45, 180.0, 0.0, unitsC);
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius   * 0.6,  tickRadius* 0.685, 220.0, angleStep / 5.0, 65);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.6, tickRadius * 0.685, 220.0, angleStep / 5.0, 65);
 
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius   * 0.55, tickRadius * 0.6, 232.0, 38.8 / 2.0, 15);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.55, tickRadius * 0.6, 232.0, 38.8 / 2.0, 15);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);
-       ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 205.0, 140.0);
+        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 207.5, 140.0, Direction.CLOCKWISE);
 
         ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.6, tickRadius * 0.7, 220.0, angleStep, 14);
 

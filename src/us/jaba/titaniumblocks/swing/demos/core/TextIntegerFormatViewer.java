@@ -77,7 +77,7 @@ public class TextIntegerFormatViewer extends BasicVerticalViewer
          
 //        sg.setPalette(new BlueLcdPalette());
         DisplayImageFactory lgi = new DisplayImageFactory(sg);
-        ivt.setValue(1234);
+        ivt.setIntegerValue(1234);
         return lgi.build(dim);
     }
 

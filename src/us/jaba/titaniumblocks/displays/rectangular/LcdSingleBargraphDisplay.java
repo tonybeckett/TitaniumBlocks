@@ -64,7 +64,7 @@ public class LcdSingleBargraphDisplay extends LcdSingleDisplay
 
     public void setValue(double value)
     {
-        ((DoubleValueText) super.getValueText()).setValue(value);
+        ((DoubleValueText) super.getValueText()).setDoubleValue(value);
         Bargraph20 bg = (Bargraph20) bargraphImage.getPainter();
         bg.setValue(value);
     }

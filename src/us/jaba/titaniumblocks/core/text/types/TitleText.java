@@ -83,7 +83,7 @@ public class TitleText extends Text
 
     }
 
-    public String getValue()
+    public String getIntegerValue()
     {
         return value;
     }

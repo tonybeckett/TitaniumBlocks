@@ -44,12 +44,13 @@ public class Text extends CoreBean
 
     public static final double DEFAULT_RIGHT_OFFSET_FACTOR = 0.09; // offset = % width from right
     public static final double DEFAULT_BASELINE_SCALE_FACTOR = 0.76; // offset = % width from right
-    
+
     protected double rightOffsetFactor = DEFAULT_RIGHT_OFFSET_FACTOR;
     protected double baselineScaleFactor = DEFAULT_BASELINE_SCALE_FACTOR;
-    
+
     protected Font font = BaseFont.DEFAULT_FONT;
     protected Color color = ColorPalette.BLACK;
+    protected String value = "text";
 
     public Text()
     {
@@ -61,6 +62,17 @@ public class Text extends CoreBean
         this.color = color;
     }
 
+    public String getValue()
+    {
+        return value;
+    }
+
+    public void setValue(String value)
+    {
+        this.value = value;
+        changed();
+    }
+    
     public void setFontSize(float size)
     {
 

@@ -90,11 +90,11 @@ public class ArrowHeadPointer extends GradientPointer
         pointerShape = new GeneralPath();
         pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
         pointerShape.moveTo(0.48 * imageWidth, centerY + (tailM * maxY) );
-        pointerShape.lineTo(0.48 * imageWidth,   centerY - (0.725  * maxY * frontM));
-        pointerShape.lineTo(0.46 * imageWidth,   centerY - (0.725  * maxY * frontM));
-        pointerShape.lineTo(0.495 * imageWidth,  centerY - (0.85  * maxY * frontM));
-        pointerShape.lineTo(0.53 * imageWidth,   centerY - (0.725  * maxY * frontM));
-        pointerShape.lineTo(0.515 * imageWidth,   centerY - (0.725  * maxY * frontM));
+        pointerShape.lineTo(0.48 * imageWidth,   centerY - (0.825  * maxY * frontM));
+        pointerShape.lineTo(0.46 * imageWidth,   centerY - (0.825  * maxY * frontM));
+        pointerShape.lineTo(0.495 * imageWidth,  centerY - (0.95  * maxY * frontM));
+        pointerShape.lineTo(0.53 * imageWidth,   centerY - (0.825  * maxY * frontM));
+        pointerShape.lineTo(0.515 * imageWidth,   centerY - (0.825  * maxY * frontM));
         pointerShape.lineTo(0.515 * imageWidth,  centerY + (tailM * maxY) );
         pointerShape.closePath();
         startPoint = new Point2D.Double(0.46 * imageWidth, 0.26 * imageHeight);

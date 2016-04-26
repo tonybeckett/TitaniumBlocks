@@ -86,12 +86,12 @@ public class IntegerValueText extends Text
 
     }
 
-    public int getValue()
+    public int getIntegerValue()
     {
         return value;
     }
 
-    public void setValue(int value)
+    public void setIntegerValue(int value)
     {
         this.value = value;
         changed();

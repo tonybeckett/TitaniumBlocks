@@ -82,7 +82,7 @@ public class StringPostUnitsText extends Text
 
     }
 
-    public String getValue()
+    public String getIntegerValue()
     {
         return value;
     }

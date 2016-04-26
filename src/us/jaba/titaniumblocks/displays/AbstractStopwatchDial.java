@@ -125,8 +125,7 @@ public class AbstractStopwatchDial extends AbstractDial implements TBStopwatchCo
         add(tbTextImage);
         frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
         add(frontcoverImage);
-        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
-        add(disabledImage);
+      
         centerPostImage = new PostImageFactory(new NullPost());
         add(centerPostImage);
 

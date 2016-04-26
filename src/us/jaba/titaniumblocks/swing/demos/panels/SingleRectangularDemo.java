@@ -57,7 +57,7 @@ public class SingleRectangularDemo extends javax.swing.JFrame
 
         panel = new SingleRectangularPanel(cl);
 
-        panel.getTBComponent().getTitleText().setColor(ColorPalette.ALMOND);
+        panel.getTBComponent().getText1().setColor(ColorPalette.ALMOND);
         panel.getTBComponent().getBackdrop().setBackgroundColor(new WhiteBModel());
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);

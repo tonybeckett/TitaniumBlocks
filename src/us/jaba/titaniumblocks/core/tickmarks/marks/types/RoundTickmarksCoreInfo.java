@@ -30,8 +30,10 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.Round10MMTickmarks;
-
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RoundDualArcsMmTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RoundDualMmTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RoundMmTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RoundMmmTickmarks;
 
 /**
  *
@@ -40,15 +42,17 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.Round10MMTickmark
 public class RoundTickmarksCoreInfo
 {
 
-    public static final Class<?>[] THERMOMETER_CLASSES =
+    public static final Class<?>[] CLASSES =
     {
-        Round10MMTickmarks.class,
-           
+        RoundMmTickmarks.class,
+        RoundMmmTickmarks.class,
+        RoundDualMmTickmarks.class,
+        RoundDualArcsMmTickmarks.class,
     };
 
     public static List<Class<?>> getAvailableClasses()
     {
-        return Arrays.asList(THERMOMETER_CLASSES);
+        return Arrays.asList(CLASSES);
     }
 
     public static List getInstanceOfEach()

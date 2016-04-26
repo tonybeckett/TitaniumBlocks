@@ -37,31 +37,25 @@ import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlack;
-import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.round.TopThirdRadialFrontcover;
-import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
-import us.jaba.titaniumblocks.core.knobs.Knob;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
-import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
-import us.jaba.titaniumblocks.core.math.Polar;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.types.TaperedPointer;
 import us.jaba.titaniumblocks.core.pointers.shadows.Type1Shadow;
-import us.jaba.titaniumblocks.core.posts.PolarSmallPostFactory;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.NumericRoundTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.Round10MMTickmarks;
+import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RoundMmTickmarks;
 
 /**
  *
@@ -71,37 +65,35 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
 {
 
 //    private PointerImageFactory pointerImage;
-    private final Round10MMTickmarks tickmarkModel;
-    private final SingleBargraphLedOff led;
+    private final AbstractRadialTickmark tickmarkModel;
+//    private final SingleBargraphLedOff led;
 //    private LedImageFactory ledImageFactory;
 //    private ShadowPointerImageFactory secShadowPointerImage;
     protected CircularLayout circularLayout;
-    private MyStopPostFactory endPostImage;
+//    private MyStopPostFactory endPostImage;
 
     private int currentOffset = -1;
-    private MyStartPostFactory startPostImage;
+//    private MyStartPostFactory startPostImage;
     private float minValue = 0.0f;
     private float maxValue = 1.0f;
-    
 
-    class MyStartPostFactory extends PolarSmallPostFactory
-    {
-
-        public MyStartPostFactory(KnobImageFactory iFactory)
-        {
-            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getStartPostAngle()))));
-        }
-    };
-
-    class MyStopPostFactory extends PolarSmallPostFactory
-    {
-
-        public MyStopPostFactory(KnobImageFactory iFactory)
-        {
-            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
-        }
-    };
-
+//    class MyStartPostFactory extends PolarSmallPostFactory
+//    {
+//
+//        public MyStartPostFactory(KnobImageFactory iFactory)
+//        {
+//            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getStartPostAngle()))));
+//        }
+//    };
+//
+//    class MyStopPostFactory extends PolarSmallPostFactory
+//    {
+//
+//        public MyStopPostFactory(KnobImageFactory iFactory)
+//        {
+//            super(iFactory, new Polar(0.925, CoordinateUtils.toRadians(CoordinateUtils.adjustToNativeAngle(circularLayout.getEndPostAngle()))));
+//        }
+//    };
     public AbstractSimpleDial(CircularLayout circularLayout, BasicFrame frame)
     {
         super(new BackdropImageFactory(new BasicBackdrop()),
@@ -115,15 +107,11 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
 
         doubleValueText = new DoubleValueText();
 
-        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
-        add(disabledImage);
-
-        startPostImage = new MyStartPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
-        add(startPostImage);
-
-        endPostImage = new MyStopPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
-        add(endPostImage);
-
+//        startPostImage = new MyStartPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+//        add(startPostImage);
+//
+//        endPostImage = new MyStopPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+//        add(endPostImage);
         Type1Shadow t1spp = new Type1Shadow();
         secShadowPointerImage = new ShadowPointerImageFactory(t1spp);
         add(secShadowPointerImage);
@@ -137,15 +125,13 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
         add(frontcoverImage);
 
-        led = new SingleBargraphLedOff();
+//        led = new SingleBargraphLedOff();
 //        ledImageFactory = new LedImageFactory(led);
 //        add(ledImageFactory);
-
-        tickmarkModel = new Round10MMTickmarks();
+        tickmarkModel = new RoundMmTickmarks();
 
 //        tickmarkModel.getRadialRangeModel().setTextAngleAdjust(INVERTED_TEXT);
 //        tickmarkModel.useFixedTextAdjust();
-
         tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getStartAngle());
         tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getEndAngle());
         tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getDirection());
@@ -155,7 +141,6 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
         add(tickmarkImage);
 
     }
-
 
     @Override
     public void paint(Graphics2D graphics, Dimension dimensions)
@@ -184,15 +169,12 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
 
         paintPreText(graphics, image, interiorDim, offset);
 
-        graphics.drawImage(disabledImage.build(interiorDim), offset, offset, null);
+//        graphics.drawImage(startPostImage.build(interiorDim), offset, offset, null);
+//
+//        graphics.drawImage(endPostImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(text1Image.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(startPostImage.build(interiorDim), offset, offset, null);
-
-        graphics.drawImage(endPostImage.build(interiorDim), offset, offset, null);
-
-        graphics.drawImage(titleTextImage.build(interiorDim), offset, offset, null);
-
-        graphics.drawImage(unitsTextImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(text2Image.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 
@@ -218,6 +200,7 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
         graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
     }
 
+    @Override
     public double getNormalizedValue()
     {
         return normalizedValue;
@@ -231,8 +214,8 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     public void setColor(Color c)
     {
         doubleValueText.setColor(c);
-        titleTextImage.getPainter().setColor(c);
-        unitsTextImage.getPainter().setColor(c);
+        text1Image.getPainter().setColor(c);
+        text2Image.getPainter().setColor(c);
         tbTextImage.getPainter().setColor(c);
 
         tickmarkModel.setMajorColor(c);
@@ -247,35 +230,28 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
         return valueTextImage.getPainter();
     }
 
-//    public void setSmallKnobs(Knob startPainter, Knob endPainter)
+// 
+//    public void setStartKnob(Knob knob)
 //    {
-//        startPostImage = new AbstractSimpleDial.MySWPostFactory(new KnobImageFactory(startPainter));
+//        startPostImage = new AbstractSimpleDial.MyStartPostFactory(new KnobImageFactory(knob));
 //        add(startPostImage);
-//        endPostImage = new AbstractSimpleDial.MySEPostFactory(new KnobImageFactory(endPainter));
-//        add(endPostImage); /// ??????????
 //    }
-    public void setStartKnob(Knob knob)
-    {
-        startPostImage = new AbstractSimpleDial.MyStartPostFactory(new KnobImageFactory(knob));
-        add(startPostImage);
-    }
-
-    public Knob getStartKnob()
-    {
-        return (Knob) startPostImage.getPainter();
-    }
-    
-    public void setStopKnob(Knob knob)
-    {
-        endPostImage = new AbstractSimpleDial.MyStopPostFactory(new KnobImageFactory(knob));
-        add(endPostImage);
-    }
-
-    public Knob getStopKnob()
-    {
-        return (Knob) endPostImage.getPainter();
-    }
-
+//
+//    public Knob getStartKnob()
+//    {
+//        return (Knob) startPostImage.getPainter();
+//    }
+//    
+//    public void setStopKnob(Knob knob)
+//    {
+//        endPostImage = new AbstractSimpleDial.MyStopPostFactory(new KnobImageFactory(knob));
+//        add(endPostImage);
+//    }
+//
+//    public Knob getStopKnob()
+//    {
+//        return (Knob) endPostImage.getPainter();
+//    }
     public CircularLayout getCircularLayout()
     {
         return circularLayout;
@@ -284,8 +260,12 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     public void setCircularLayout(CircularLayout circularLayout)
     {
         this.circularLayout = circularLayout;
+        tickmarkModel.getRadialRangeModel().setAngleStart(circularLayout.getStartAngle());
+        tickmarkModel.getRadialRangeModel().setEndAngle(circularLayout.getEndAngle());
+        tickmarkModel.getRadialRangeModel().setDirection(circularLayout.getDirection());
+        tickmarkModel.setRadialRangeModel(tickmarkModel.getRadialRangeModel());
     }
-    
+
     protected void paintPreText(Graphics2D graphics, BufferedImage image, Dimension dimensions, int offset)
     {
 // intentional
@@ -299,7 +279,7 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     public void setMinValue(float value)
     {
         this.minValue = value;
-         ((NumericRoundTickmarks)tickmarkImage.getPainter()).setMinValue(value);
+        ((NumericRoundTickmarks) tickmarkImage.getPainter()).setMinValue(value);
     }
 
     public float getMaxValue()
@@ -310,7 +290,40 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     public void setMaxValue(float value)
     {
         this.maxValue = value;
-        ((NumericRoundTickmarks)tickmarkImage.getPainter()).setMaxValue(value);
+        ((NumericRoundTickmarks) tickmarkImage.getPainter()).setMaxValue(value);
+    }
+
+    public int getEndAngle()
+    {
+        return circularLayout.getEndAngle();
+    }
+
+    public int getStartAngle()
+    {
+        return circularLayout.getStartAngle();
+    }
+
+    public CoordinateDefs.Direction getDirection()
+    {
+        return circularLayout.getDirection();
+    }
+
+    public void setStartAngle(int angle)
+    {
+        circularLayout.setStartAngle(angle);
+        ((NumericRoundTickmarks)tickmarkImage.getPainter()).setAngleStart(angle);
+    }
+
+    public void setEndAngle(int angle)
+    {
+        circularLayout.setEndAngle(angle);
+        ((NumericRoundTickmarks)tickmarkImage.getPainter()).setEndAngle(angle);
+    }
+
+    public void setDirection(CoordinateDefs.Direction d)
+    {
+        circularLayout.setDirection(d);
+       ((NumericRoundTickmarks)tickmarkImage.getPainter()).setDirection(d);
     }
 
 }

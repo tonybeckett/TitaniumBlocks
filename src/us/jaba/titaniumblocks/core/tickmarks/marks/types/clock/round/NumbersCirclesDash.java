@@ -39,7 +39,8 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
 public class NumbersCirclesDash extends AbstractRadialTickmark
 {
- private static final double DEFAULT_TEXT_POSITION = 0.79;
+
+    private static final double DEFAULT_TEXT_POSITION = 0.79;
     private static final double DEFAULT_TEXT_SCALE = 0.085;
     private String[] arrayOfText =
     {
@@ -53,11 +54,11 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
 
     public NumbersCirclesDash(String[] text, double textScaleFactor)
     {
-         super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
+        super(new Scale(DEFAULT_TEXT_POSITION), new Scale(textScaleFactor));
 
         this.arrayOfText = text;
-         
-       this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
+
+        this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (textScaleFactor * 500.0)));
 
     }
 
@@ -69,7 +70,7 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
         final float radius = (float) (dimensions.getWidth() * 0.485f);
         final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
 
-        graphics.setFont(getFont().deriveFont( (float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
+        graphics.setFont(getFont().deriveFont((float) (this.getTextSizeScale().getValue() * dimensions.getWidth())));
 
         graphics.setColor(textColor);
         graphics.setStroke(mediumStroke);

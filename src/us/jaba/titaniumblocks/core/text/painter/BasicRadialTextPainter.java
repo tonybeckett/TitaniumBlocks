@@ -38,12 +38,12 @@ import us.jaba.titaniumblocks.core.text.TextSupport;
  */
 public class BasicRadialTextPainter
 {
-    
+
     protected double adjustAngle(double angle)
     {
         return angle;
     }
-    
+
     protected double adjustToRadians(double a)
     {
         return CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(a)));
@@ -51,15 +51,16 @@ public class BasicRadialTextPainter
 
     public void paint(Graphics2D graphics, Point2D center, double radius, double startAngle, double angleStep, String[] text)
     {
-       int len = text.length;
+        int len = text.length;
         double currentAngle = startAngle;
         for (int i = 0; i < len; i++)
         {
             double gAngle = adjustToRadians(currentAngle - 270);
             Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
             TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), adjustAngle(gAngle));
+            System.out.println(String.format(" %s %f %f", text[i], gAngle, adjustAngle(gAngle)));
             currentAngle = currentAngle + angleStep;
-        }  
+        }
     }
 
 }

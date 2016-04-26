@@ -60,8 +60,6 @@ import us.jaba.titaniumblocks.core.pointers.types.LinePointer;
 import us.jaba.titaniumblocks.core.pointers.types.Pencil2Pointer;
 import us.jaba.titaniumblocks.core.posts.NullPost;
 import us.jaba.titaniumblocks.core.posts.PostImageFactory;
-import us.jaba.titaniumblocks.core.text.TextImageFactory;
-import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.TBText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.NumbersOut;
@@ -120,8 +118,7 @@ public class AbstractClockDial extends AbstractDial implements TBClockComponent,
 //        add(tbTextImage);
         frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
         add(frontcoverImage);
-        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
-        add(disabledImage);
+      
         centerPostImage = new PostImageFactory(new NullPost());
         add(centerPostImage);
 
@@ -209,7 +206,7 @@ public class AbstractClockDial extends AbstractDial implements TBClockComponent,
 
         graphics.drawImage(tickmarkImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(titleTextImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(text1Image.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 

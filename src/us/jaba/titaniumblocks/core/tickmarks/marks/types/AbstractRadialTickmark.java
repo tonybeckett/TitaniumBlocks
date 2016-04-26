@@ -35,6 +35,7 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.NORTH;
 import static us.jaba.titaniumblocks.core.math.CoordinateDefs.SOUTH_WEST;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
@@ -200,6 +201,24 @@ public class AbstractRadialTickmark extends Tickmark
     public void setTicksPositionScale(Scale ticksPositionScale)
     {
         this.ticksPositionScale = ticksPositionScale;
+        changed();
+    }
+
+    public void setAngleStart(double angSt)
+    {
+        rangeModel.setAngleStart(angSt);
+        changed();
+    }
+
+    public void setDirection(CoordinateDefs.Direction direction)
+    {
+        rangeModel.setDirection(direction);
+        changed();
+    }
+
+    public void setEndAngle(double d)
+    {
+        rangeModel.setEndAngle(d);
         changed();
     }
 

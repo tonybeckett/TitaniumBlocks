@@ -60,8 +60,8 @@ public class BasicBackdrop extends AbstractRoundBackdrop
     {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+        final int imageWidth = (int) Math.round(dimensions.getWidth()+0.5);
+        final int imageHeight = (int) Math.round(dimensions.getHeight()+0.5);
 
         final Ellipse2D shape = new Ellipse2D.Double(0 , 0 , imageWidth , imageHeight );
         final Point2D startPoint = new Point2D.Double(0, shape.getBounds2D().getMinY());

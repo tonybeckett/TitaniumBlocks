@@ -215,6 +215,18 @@ public class CoordinateUtils
      */
     public static void main(String args[])
     {
+        
+
+        System.out.println(String.format("%f", calcExtent( 90.0, 270.0, Direction.CLOCKWISE)));
+        System.out.println(String.format("%f", calcExtent( 90.0, 270.0, Direction.COUNTER)));
+        System.out.println(String.format("%f", calcExtent( 270.0, 90.0, Direction.CLOCKWISE)));
+        System.out.println(String.format("%f", calcExtent( 270.0, 90.0, Direction.COUNTER)));
+
+        System.out.println(String.format("%f", calcExtent( 0.0, 270.0, Direction.CLOCKWISE)));
+        System.out.println(String.format("%f", calcExtent( 0.0, 270.0, Direction.COUNTER)));
+        System.out.println(String.format("%f", calcExtent( 270.0, 0.0, Direction.CLOCKWISE)));
+        System.out.println(String.format("%f", calcExtent( 270.0, 0.0, Direction.COUNTER)));
+        
         Polar p = new Polar(0.5, Math.PI / 2.0);
 
         System.out.println(p.toString());

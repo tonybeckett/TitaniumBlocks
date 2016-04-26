@@ -91,25 +91,25 @@ public class SimpleDialPanel extends BasicPanel
         repaint();
     }
 
-    public void setStartKnob(Knob knob)
-    {
-        ((AbstractSimpleDial) tbComponent).setStartKnob(knob);
-
-    }
-
-    public Knob getStartKnob()
-    {
-        return ((AbstractSimpleDial) tbComponent).getStartKnob();
-    }
-
-    public void setStopKnob(Knob knob)
-    {
-        ((AbstractSimpleDial) tbComponent).setStopKnob(knob);
-    }
-
-    public Knob getStopKnob()
-    {
-        return ((AbstractSimpleDial) tbComponent).getStopKnob();
-    }
+//    public void setStartKnob(Knob knob)
+//    {
+//        ((AbstractSimpleDial) tbComponent).setStartKnob(knob);
+//
+//    }
+//
+//    public Knob getStartKnob()
+//    {
+//        return ((AbstractSimpleDial) tbComponent).getStartKnob();
+//    }
+//
+//    public void setStopKnob(Knob knob)
+//    {
+//        ((AbstractSimpleDial) tbComponent).setStopKnob(knob);
+//    }
+//
+//    public Knob getStopKnob()
+//    {
+//        return ((AbstractSimpleDial) tbComponent).getStopKnob();
+//    }
 
 }

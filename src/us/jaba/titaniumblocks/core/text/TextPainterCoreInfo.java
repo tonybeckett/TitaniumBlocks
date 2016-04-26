@@ -35,6 +35,7 @@ import us.jaba.titaniumblocks.core.text.painter.FacingIn;
 import us.jaba.titaniumblocks.core.text.painter.FacingLeft;
 import us.jaba.titaniumblocks.core.text.painter.FacingOut;
 import us.jaba.titaniumblocks.core.text.painter.FacingRight;
+import us.jaba.titaniumblocks.core.text.painter.FacingRightLeft;
 
 /**
  *
@@ -50,6 +51,7 @@ public class TextPainterCoreInfo
         FacingOut.class,
         FacingRight.class,
         FacingLeft.class,
+        FacingRightLeft.class
         
         
     };

@@ -75,12 +75,12 @@ public class DoubleValueText extends Text
 
     }
 
-    public double getValue()
+    public double getDoubleValue()
     {
         return value;
     }
 
-    public void setValue(double value)
+    public void setDoubleValue(double value)
     {
         this.value = value;
         changed();

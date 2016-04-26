@@ -72,7 +72,7 @@ public class SingleDisplay extends AbstractDial
         valueTextImage = new TextImageFactory(doubleValueText);
 
         foregroundImage = new FrontcoverImageFactory(new BasicLinearFrontcover());
-        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
+//        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
 
     }
 
@@ -105,8 +105,7 @@ public class SingleDisplay extends AbstractDial
         image = foregroundImage.build(interiorDim);
         graphics.drawImage(image, offset, offset, null);
 
-        image = disabledImage.build(interiorDim);
-        graphics.drawImage(image, offset, offset, null);
+     
 
     }
 
@@ -129,13 +128,13 @@ public class SingleDisplay extends AbstractDial
 
     public Text getValueText()
     {
-        return unitsTextImage.getPainter();
+        return text2Image.getPainter();
     }
 
     @Override
     public void setValueText(Text cm)
     {
-        unitsTextImage.setPainter(cm);
+        text2Image.setPainter(cm);
     }
 
 }

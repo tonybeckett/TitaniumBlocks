@@ -76,17 +76,20 @@ import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.round.RNormalMajMedMinorTickmark;
 import us.jaba.titaniumblocks.displays.AbstractDial;
 
-
 /**
  *
  * @author tbeckett
  */
-public class SimpleRectangularDial extends AbstractDial 
+public class SimpleRectangularDial extends AbstractDial
 {
 
-    private MySEPostFactory endPostImage;
-    private RectangularFrameImageFactory rectFrameImage;
+    private final DisabledImageFactory disabledImage;
 
+    private MySEPostFactory endPostImage;
+    private final LedImageFactory ledImageFactory;
+    private RectangularFrameImageFactory rectFrameImage;
+    TitleText titleValueText;
+    UnitsText unitsText;
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
 
@@ -134,10 +137,10 @@ public class SimpleRectangularDial extends AbstractDial
         valueTextImage = new TextImageFactory(doubleValueText);
 
         titleValueText = new TitleText();
-        titleTextImage = new TextImageFactory(titleValueText);
+        text1Image = new TextImageFactory(titleValueText);
 
         unitsText = new UnitsText();
-        unitsTextImage = new TextImageFactory(unitsText);
+        text2Image = new TextImageFactory(unitsText);
 
         tbText = new TBText();
         tbTextImage = new TextImageFactory(tbText);
@@ -154,7 +157,7 @@ public class SimpleRectangularDial extends AbstractDial
 
         TaperedPointer tpp = new TaperedPointer();
         tpp.setPrimaryColor(new PureBlack());
- //       tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
+        //       tpp.setRadiusPercent(circularLayout.getTickmarkRadius() + 0.025f);
         pointerImage = new PointerImageFactory(tpp);
 
         frontcoverImage = new FrontcoverImageFactory(new TopThirdRadialFrontcover());
@@ -213,9 +216,9 @@ public class SimpleRectangularDial extends AbstractDial
 
         graphics.drawImage(endPostImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(titleTextImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(text1Image.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(unitsTextImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(text2Image.build(interiorDim), offset, offset, null);
 
         graphics.drawImage(tbTextImage.build(interiorDim), offset, offset, null);
 
@@ -255,8 +258,8 @@ public class SimpleRectangularDial extends AbstractDial
     public void setColor(Color c)
     {
         doubleValueText.setColor(c);
-        titleTextImage.getPainter().setColor(c);
-        unitsTextImage.getPainter().setColor(c);
+        text1Image.getPainter().setColor(c);
+        text2Image.getPainter().setColor(c);
         tbTextImage.getPainter().setColor(c);
 
         tickmarkModel.setMajorColor(c);

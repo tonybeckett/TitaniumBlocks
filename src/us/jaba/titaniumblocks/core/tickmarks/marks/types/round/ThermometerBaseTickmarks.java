@@ -27,7 +27,9 @@
  */
 package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
-
+import java.awt.BasicStroke;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.text.StringSupport;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 
@@ -35,16 +37,32 @@ public class ThermometerBaseTickmarks extends AbstractRadialTickmark
 {
 
     protected double textScale = 0.075;
-    
-    protected String[] unitsC = { StringSupport.DEGREE+"C" };
-    protected String[] unitsF = { StringSupport.DEGREE+"F" };
+
+    protected String[] unitsC =
+    {
+        StringSupport.DEGREE + "C"
+    };
+    protected String[] unitsF =
+    {
+        StringSupport.DEGREE + "F"
+    };
 
     public ThermometerBaseTickmarks(double textScaleFactor)
     {
         textScale = textScaleFactor;
+        majorStroke = new BasicStroke(4.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        mediumStroke = new BasicStroke(2.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        minorStroke = new BasicStroke(1.0F, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+
     }
 
-   
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        minorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 1.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        majorStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
+        super.paint(graphics, dimensions);  
+    }
 
-   
 }

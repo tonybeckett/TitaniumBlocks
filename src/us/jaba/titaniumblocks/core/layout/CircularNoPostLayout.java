@@ -62,6 +62,12 @@ public class CircularNoPostLayout implements CircularLayout
     }
 
     @Override
+    public void setDirection(Direction d)
+    {
+        direction = d;
+    }
+
+    @Override
     public int getEndPostAngle()
     {
         return endPostAngle;
@@ -91,6 +97,7 @@ public class CircularNoPostLayout implements CircularLayout
      *
      * @param endAngle new value of endAngle
      */
+    @Override
     public void setEndAngle(int endAngle)
     {
         this.endAngle = endAngle;

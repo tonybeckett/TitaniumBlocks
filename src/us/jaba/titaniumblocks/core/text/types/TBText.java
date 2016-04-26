@@ -81,7 +81,7 @@ public class TBText extends Text
 
     }
 
-    public String getValue()
+    public String getIntegerValue()
     {
         return value;
     }

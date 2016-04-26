@@ -42,7 +42,7 @@ import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.displays.TBComponent;
 
@@ -173,15 +173,15 @@ public  class BasicPanel extends JComponent implements TBPanel
     }
 
     @Override
-    public TitleText getTitleText()
+    public Text getTitleText()
     {
-        return tbComponent.getTitleText();
+        return tbComponent.getText1();
     }
 
     @Override
-    public void setTitleText(TitleText titleText)
+    public void setTitleText(Text titleText)
     {
-        tbComponent.setTitleText(titleText);
+        tbComponent.setText1(titleText);
     }
 
     @Override

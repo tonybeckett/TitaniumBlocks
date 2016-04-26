@@ -36,6 +36,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.text.TextSupport;
 
@@ -178,15 +179,15 @@ public class ShapeUtils
         }
     }
 
-    public static void placeLineArcOnRadius(Graphics2D graphics, Point2D center, double radius, double startAngle, double endAngle)
+    public static void placeLineArcOnRadius(Graphics2D graphics, Point2D center, double radius, double startAngle, double endAngle, Direction direction)
     {
         Point2D.Double pointStart = new Point2D.Double((double) center.getX() - radius, (double) center.getY() - radius);
 
-        int extent = (int) (endAngle + (360.0 - startAngle));
-
+ //       int extent = (int) (endAngle + (360.0 - startAngle));
+        double extent = CoordinateUtils.calcExtent(startAngle, endAngle, direction);
         int width = (int) (radius * 2.0);
         int height = (int) (radius * 2.0);
-        graphics.drawArc((int)pointStart.x, (int)pointStart.y, width, height, (int) ((510 - startAngle) % 360), extent);
+        graphics.drawArc((int)pointStart.x, (int)pointStart.y, width, height, (int) ((510 - startAngle) % 360), (int) extent);
     }
 
     public static void placeArcOnRadius(Graphics2D graphics, Point2D center, double innerRadius, double outerRadius, double startAngle, double endAngle, double angleStep, int number)

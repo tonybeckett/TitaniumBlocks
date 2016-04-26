@@ -39,7 +39,7 @@ import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.displays.AbstractSimpleDial;
 import us.jaba.titaniumblocks.swing.Antimate;
@@ -60,7 +60,7 @@ public class SingleRoundDemo extends javax.swing.JFrame
 
         panel = new SimpleDialPanel(new AbstractSimpleDial(cl, new BasicRoundFrame()));
 
-        panel.getTBComponent().getTitleText().setColor(ColorPalette.ALMOND);
+        panel.getTBComponent().getText1().setColor(ColorPalette.ALMOND);
         panel.getTBComponent().getBackdrop().setBackgroundColor(new WhiteBModel());
         panel.getTBComponent().getPointer().setTailScale(new Scale(0.2));
         panel.getTBComponent().getPointer().setFrontScale(new Scale(0.8));
@@ -97,9 +97,9 @@ public class SingleRoundDemo extends javax.swing.JFrame
         return panel.getTickmarks();
     }
 
-    public TitleText getTitleText()
+    public PolarText getTitleText()
     {
-        return panel.getTitleText();
+        return (PolarText) panel.getTitleText();
     }
 
     public Post getCenterPost()

@@ -37,6 +37,7 @@ import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.font.FontSupport;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frames.types.FramesCoreInfo;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round.FourNumbersTicks;
 import us.jaba.titaniumblocks.displays.round.RoundClockDial;
 import us.jaba.titaniumblocks.swing.Antimate;
@@ -79,9 +80,9 @@ public class RoundClockFramesDemo extends javax.swing.JFrame
 //
 //           
 //            panel.setTitleText(tt);
-            panel.getTitleText().setValue(f.getClass().getSimpleName().replace("RoundFrame", "").toUpperCase());
+            ((PolarText)panel.getTitleText()).setValue(f.getClass().getSimpleName().replace("RoundFrame", "").toUpperCase());
             panel.getTitleText().setFont(FontSupport.getStandardFont().deriveFont(38.0f));
-            panel.getTitleText().setYPositionScale(new Scale(0.35));
+            ((PolarText)panel.getTitleText()).setRadiusAdjust(new Scale(0.35));
             panel.init(200, 200);
             this.jPanel1.add(panel);
 

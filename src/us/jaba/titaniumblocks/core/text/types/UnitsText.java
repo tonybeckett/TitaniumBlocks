@@ -75,7 +75,7 @@ public class UnitsText extends Text
 
     }
 
-    public String getValue()
+    public String getIntegerValue()
     {
         return value;
     }

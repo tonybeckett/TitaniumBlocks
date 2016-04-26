@@ -83,7 +83,7 @@ public class StringPreUnitsText extends Text
 
     }
 
-    public String getValue()
+    public String getIntegerValue()
     {
         return value;
     }

@@ -40,8 +40,6 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 public class RadialRangeModel
 {
 
-    
-
 //    private final Arc2D arc2D = new Arc2D.Double();
     private Point2D center;
     private double startAngle;
@@ -55,6 +53,10 @@ public class RadialRangeModel
     private double textDistance;
     private float textAngleAdjust = 0.0f;
 
+    public RadialRangeModel()
+    {
+        
+    }
 
     public RadialRangeModel(Point2D center, double radius, double startAngle, double endAngle)
     {

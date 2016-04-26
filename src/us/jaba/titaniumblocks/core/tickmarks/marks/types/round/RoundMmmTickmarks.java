@@ -25,52 +25,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.swing.panels;
+package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
+import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.io.Serializable;
-import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.frames.BasicFrame;
-import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.pointers.Pointer;
-import us.jaba.titaniumblocks.core.posts.Post;
-import us.jaba.titaniumblocks.core.text.Text;
-import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.core.math.CoordinateDefs;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 /**
  *
  * @author tbeckett
  */
-public interface TBPanel extends Serializable
+public class RoundMmmTickmarks extends RoundMmTickmarks
 {
 
-    Pointer getPointer();
-    void setPointer(Pointer pointer);
+    @Override
+    public void subPaint(Graphics2D graphics, Dimension dimensions)
+    {
+        super.subPaint(graphics, dimensions);
 
-    Tickmark getTickmarks();
-    void setTickmarks(Tickmark tm);
+        final int llen = labels.length - 1;
+        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        float anglePerTick = (float) (CoordinateUtils.calcExtent(rangeModel.getAngleStart(), rangeModel.getAngleEnd(), rangeModel.getDirection()) / llen / this.divisions);
+        if (rangeModel.getDirection() == CoordinateDefs.Direction.COUNTER)
+        {
+            anglePerTick = anglePerTick * -1.0f;
+        }
 
-    Backdrop getBackdrop();
-    void setBackdrop(Backdrop backdrop);
+        mediumStroke = new BasicStroke(((float) dimensions.width / TARGET_WINDOW_SIZE * 2.0F), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_BEVEL);
 
-    Post getCenterPost();
-    void setCenterPost(Post post);
+        graphics.setStroke(mediumStroke);
+        graphics.setColor(mediumColor);
+        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.9, tickRadius * 0.95, rangeModel.getAngleStart()+(anglePerTick*llen/2.0), anglePerTick * llen, labels.length-1);
 
-    BasicFrame getFrame();
-    void setFrame(BasicFrame Frame);
-
-    void setFrontCover(Frontcover frontcover);
-    Frontcover getFrontCover();
-
-    public Text getTitleText();
-    public void setTitleText(Text titleText);
-
-    public void setSize(Dimension d);
-    public Dimension getSize();
-    
-    public void paint(Graphics2D graphics2D);
-
-    public void setChanged();
+    }
 
 }

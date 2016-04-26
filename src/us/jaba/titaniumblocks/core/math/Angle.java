@@ -36,6 +36,11 @@ public class Angle
     // in degrees
     private double value;
 
+    public Angle(double value)
+    {
+        this.value = value;
+    }
+
     /**
      * Get the value of value
      *

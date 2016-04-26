@@ -108,9 +108,6 @@ public class CompassDial extends AbstractSimpleDial
         frontcoverImage = new FrontcoverImageFactory(new BasicRadialFrontcover());
         add(frontcoverImage);
 
-        disabledImage = new DisabledImageFactory(new NullLinearDisabled());
-        add(disabledImage);
-
         centerPostImage = new PostImageFactory(new BigSilverPost());
         add(centerPostImage);
 

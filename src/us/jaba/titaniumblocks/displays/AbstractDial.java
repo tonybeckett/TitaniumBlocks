@@ -34,14 +34,10 @@ import us.jaba.titaniumblocks.core.CoreBean;
 import us.jaba.titaniumblocks.core.Painter;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
-import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.DisabledPainter;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
-import us.jaba.titaniumblocks.core.led.Led;
-import us.jaba.titaniumblocks.core.led.LedImageFactory;
 import us.jaba.titaniumblocks.core.pointers.Pointer;
 import us.jaba.titaniumblocks.core.pointers.PointerImageFactory;
 import us.jaba.titaniumblocks.core.pointers.ShadowPointerImageFactory;
@@ -50,9 +46,8 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.TextImageFactory;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
 import us.jaba.titaniumblocks.core.text.types.TBText;
-import us.jaba.titaniumblocks.core.text.types.TitleText;
-import us.jaba.titaniumblocks.core.text.types.UnitsText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
 
@@ -77,15 +72,15 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
     protected double normalizedValue = 0.39;
     protected TBText tbText;
     protected TextImageFactory tbTextImage;
-    protected TextImageFactory titleTextImage;
-    protected TitleText titleValueText;
-    protected UnitsText unitsText;
-    protected TextImageFactory unitsTextImage;
+    protected TextImageFactory text1Image;
+    protected PolarText text1;
+    protected PolarText text2;
+    protected TextImageFactory text2Image;
     protected TextImageFactory valueTextImage;
     protected PointerImageFactory pointerImage;
-    protected DisabledImageFactory disabledImage;
+  
     protected TickmarkImageFactory tickmarkImage;
-    protected LedImageFactory ledImageFactory;
+  
     protected ShadowPointerImageFactory secShadowPointerImage;
 
     public AbstractDial(BackdropImageFactory backdropImage, FrameImageFactory frameImage, PostImageFactory centerPostImage)
@@ -110,13 +105,13 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
         valueTextImage = new TextImageFactory(doubleValueText);
         add(valueTextImage);
 
-        titleValueText = new TitleText();
-        titleTextImage = new TextImageFactory(titleValueText);
-        add(titleTextImage);
+        text1 = new PolarText();
+        text1Image = new TextImageFactory(text1);
+        add(text1Image);
 
-        unitsText = new UnitsText();
-        unitsTextImage = new TextImageFactory(unitsText);
-        add(unitsTextImage);
+        text2 = new PolarText();
+        text2Image = new TextImageFactory(text2);
+        add(text2Image);
 
         tbText = new TBText();
         tbTextImage = new TextImageFactory(tbText);
@@ -185,12 +180,12 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
 
     public void setTitle(String string)
     {
-        titleValueText.setValue(string);
+        text1.setValue(string);
     }
 
     public void setUnits(String units)
     {
-        unitsText.setValue(units);
+        text2.setValue(units);
     }
 
     public void setValueText(Text valueTextPainter)
@@ -219,11 +214,7 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
         this.fontScaleFactor = fontScaleFactor;
     }
 
-    public void setDisabled(DisabledPainter disabledPainter)
-    {
-        this.disabledImage.setPainter(disabledPainter);
-
-    }
+   
 
     @Override
     public void setPointer(Pointer pointerPainter)
@@ -240,21 +231,18 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
         return pointerImage.getPainter();
     }
 
-    public void setLed(Led ledPainter)
+    
+
+    @Override
+    public PolarText getText1()
     {
-        this.ledImageFactory.setPainter(ledPainter);
+        return text1;
     }
 
     @Override
-    public TitleText getTitleText()
+    public void setText1(Text text)
     {
-        return titleValueText;
-    }
-
-    @Override
-    public void setTitleText(TitleText titleText)
-    {
-        this.titleValueText = titleText;
+        this.text1 = (PolarText) text;
         
     }
 
@@ -292,14 +280,15 @@ public class AbstractDial extends CoreBean implements TBComponent, Painter
         return normalizedValue;
     }
 
-    public TitleText getTitleValueText()
+     
+    public PolarText getText2()
     {
-        return titleValueText;
+        return text2;
     }
 
-    public UnitsText getUnitsText()
+    public void setText2(Text text2)
     {
-        return unitsText;
+        this.text2 = (PolarText) text2;
     }
 
 }

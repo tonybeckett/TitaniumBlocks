@@ -41,7 +41,8 @@ public class NumericRoundTickmarks extends AbstractRadialTickmark
     protected String[] labels;
     protected float minValue;
     protected float maxValue;
-
+    protected int divisions = 10;
+    
     public static final String[] DEFAULT_LABELS =
     {
         "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"
@@ -60,7 +61,7 @@ public class NumericRoundTickmarks extends AbstractRadialTickmark
         init();
     }
 
-    protected void generateTicks()
+    protected void generateLabels()
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -73,8 +74,7 @@ public class NumericRoundTickmarks extends AbstractRadialTickmark
         this.setFont(FontSupport.getStandardFont().deriveFont(Font.BOLD, (float) (this.textSizeScale.getValue() * 500.0)));
     }
 
-
-public String[] getLabels()
+    public String[] getLabels()
     {
         return labels;
     }
@@ -94,7 +94,7 @@ public String[] getLabels()
     {
         this.maxValue = maxValue;
         changed();
-        generateTicks();
+        generateLabels();
 
     }
 
@@ -107,7 +107,18 @@ public String[] getLabels()
     {
         this.minValue = minValue;
         changed();
-        generateTicks();
+        generateLabels();
+    }
+
+    public int getDivisions()
+    {
+        return divisions;
+    }
+
+    public void setDivisions(int divisions)
+    {
+        this.divisions = divisions;
+        changed();
     }
 
 }

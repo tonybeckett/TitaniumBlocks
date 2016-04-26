@@ -36,7 +36,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-
 public abstract class AbstractRoundBackdrop extends Backdrop
 {
 
@@ -45,12 +44,12 @@ public abstract class AbstractRoundBackdrop extends Backdrop
     {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+        final int imageWidth = (int) Math.round(dimensions.getWidth() + 0.5);
+        final int imageHeight = (int) Math.round(dimensions.getHeight() + 0.5);
 
         // Background of gauge
 //        final Ellipse2D GAUGE_BACKGROUND = new Ellipse2D.Double(imageWidth * 0.08411215245723724, imageHeight * 0.08411215245723724, imageWidth * 0.8317756652832031, imageHeight * 0.8317756652832031);
-        final Ellipse2D GAUGE_BACKGROUND = new Ellipse2D.Double(0 , 0 , imageWidth , imageHeight );
+        final Ellipse2D GAUGE_BACKGROUND = new Ellipse2D.Double(0, 0, imageWidth, imageHeight);
         final Point2D GAUGE_BACKGROUND_START = new Point2D.Double(0, GAUGE_BACKGROUND.getBounds2D().getMinY());
         final Point2D GAUGE_BACKGROUND_STOP = new Point2D.Double(0, GAUGE_BACKGROUND.getBounds2D().getMaxY());
         if (GAUGE_BACKGROUND_START.equals(GAUGE_BACKGROUND_STOP))
@@ -77,7 +76,6 @@ public abstract class AbstractRoundBackdrop extends Backdrop
         graphics.setPaint(gaugeBackgroundGradient);
 
         graphics.fill(GAUGE_BACKGROUND);
-
 
         applyOverlay(graphics, dimensions, GAUGE_BACKGROUND);
 
@@ -111,7 +109,6 @@ public abstract class AbstractRoundBackdrop extends Backdrop
 //        graphics.fill(innerShadow);
 //
 //        graphics.fill(innerShadow);
-
         graphics.dispose();
 
     }
