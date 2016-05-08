@@ -25,48 +25,79 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.rectangular;
+package us.jaba.titaniumblocks.core.areas;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.sections.SectionImageFactory;
-import us.jaba.titaniumblocks.core.sections.painters.BasicSection;
-import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 /**
  *
  * @author tbeckett
  */
-public class LcdSingleSectionDisplay extends LcdSingleDisplay
+public class RadialArea extends ColorArea
 {
 
-    SectionImageFactory section;
-    BasicSection basicSection;
+    protected double startAngle;
+    protected double stopAngle;
+   
+    protected double outerRadius;
 
-    public LcdSingleSectionDisplay()
+    public RadialArea(double startAngle, double stopAngle, Color color, double outerRadius)
     {
-        super();
-        basicSection = new BasicSection();
-        section = new SectionImageFactory(basicSection);
-        basicSection.setColor(ColorPalette.RED);
+        super(color);
+        this.startAngle = startAngle;
+        this.stopAngle = stopAngle;
 
-        setValue(43.0);
+        
+        this.outerRadius = outerRadius;
+    }
+
+    public double getStartAngle()
+    {
+        return startAngle;
+    }
+
+    public void setStartAngle(double startAngle)
+    {
+        this.startAngle = startAngle;
+    }
+
+    public double getStopAngle()
+    {
+        return stopAngle;
+    }
+
+    public void setStopAngle(double stopAngle)
+    {
+        this.stopAngle = stopAngle;
+    }
+
+   
+
+    public double getOuterRadius()
+    {
+        return outerRadius;
+    }
+
+    public void setOuterRadius(double outerRadius)
+    {
+        this.outerRadius = outerRadius;
     }
 
     @Override
-    public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
+    protected void paintSection(Graphics2D graphics, Dimension dimensions)
     {
-        super.paintPreText(graphics, image, interiorDim, offset);
-        BufferedImage nimage = section.build(interiorDim);
-        graphics.drawImage(nimage, offset, offset, null);
-    }
+        super.paintSection(graphics, dimensions);
 
-    public void setValue(double value)
-    {
-        ((DoubleValueText) super.getValueText()).setDoubleValue(value);
-        basicSection.setValue(value);
+        final double centerX = dimensions.getWidth() / 2.0;
+        final double centerY = dimensions.getHeight() / 2.0;
+        Point2D.Double center = new Point2D.Double(centerX, centerY);
+
+        graphics.setColor(this.getColor());
+        ShapeUtils.placeArcsOnRadius(graphics, center, 0.0, outerRadius, this.getStartAngle(), this.getStopAngle(), 0, 1);
     }
 
 }

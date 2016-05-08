@@ -36,26 +36,27 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.gradients.GradientModel;
 import us.jaba.titaniumblocks.core.gradients.LinearGradientPainter;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallKnobPainter extends Knob
+public class SmallKnob extends PolarKnob
 {
 
     private GradientModel frame;
     private GradientModel innerShadow;
     private GradientModel knobStyle;
 
-    protected SmallKnobPainter(GradientModel frame, GradientModel innerShadow, GradientModel knobStyle)
+    protected SmallKnob(GradientModel frame, GradientModel innerShadow, GradientModel knobStyle)
     {
         this.frame = frame;
         this.innerShadow = innerShadow;
         this.knobStyle = knobStyle;
     }
 
-    protected SmallKnobPainter(GradientModel knobStyle)
+    protected SmallKnob(GradientModel knobStyle)
     {
         this.knobStyle = knobStyle;
 
@@ -90,33 +91,40 @@ public class SmallKnobPainter extends Knob
 
     }
 
-   
-
     @Override
-    public void paint(Graphics2D graphics2D, Dimension dimensions)
+    public void paint(Graphics2D graphics, Dimension dimensions)
     {
 
-        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+         final double radius = dimensions.getWidth() * 0.5;
 
-        final int imageWidth = (int) dimensions.getWidth();
-        final int imageHeight = (int) dimensions.getHeight();
+        Point2D.Double centerPoint = new Point2D.Double((dimensions.getWidth() / 2.0), (dimensions.getHeight() / 2.0));
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+       
 
-        LinearGradientPainter.paint(graphics2D, 0, 0, imageWidth, imageHeight, frame.getFractions(), frame.getColors());
 
-        LinearGradientPainter.paint(graphics2D,
-                (imageWidth - imageWidth * 0.77) / 2.0, (imageWidth - imageWidth * 0.77) / 2.0,
-                imageWidth * 0.77, imageWidth * 0.77, knobStyle.getFractions(), knobStyle.getColors());
+        ShapeUtils.placeCircleUsingLGradientOnRadius(graphics, centerPoint, radius * getRadiusAdjust().getValue(), radius * 0.046, getAngle().getValue(), frame.getFractions(), frame.getColors());
 
-        final Ellipse2D innerShadowShape = new Ellipse2D.Double((imageWidth - imageWidth * 0.77) / 2.0, (imageWidth - imageWidth * 0.77) / 2.0, imageWidth * 0.77, imageWidth * 0.77);
-        final Point2D innerShadowCenter = new Point2D.Double(innerShadowShape.getCenterX(), innerShadowShape.getCenterY());
+ //       LinearGradientPainter.paint(graphics2D, 0, 0, imageWidth, imageHeight, frame.getFractions(), frame.getColors());
 
-        final RadialGradientPaint gradientPaint = new RadialGradientPaint(innerShadowCenter, (float) (innerShadowShape.getWidth() / 2.0), innerShadow.getFractions(), innerShadow.getColors());
+        ShapeUtils.placeCircleUsingLGradientOnRadius(graphics, centerPoint, radius * getRadiusAdjust().getValue(), radius * 0.036, getAngle().getValue(), knobStyle.getFractions(), knobStyle.getColors());
+//       LinearGradientPainter.paint(graphics2D,
+//                (imageWidth - imageWidth * 0.77) / 2.0, (imageWidth - imageWidth * 0.77) / 2.0,
+//                imageWidth * 0.77, imageWidth * 0.77, knobStyle.getFractions(), knobStyle.getColors());
 
-        graphics2D.setPaint(gradientPaint);
+       ShapeUtils.placeCircleUsingRGradientOnRadius(graphics, centerPoint, radius * getRadiusAdjust().getValue(), radius * 0.026, getAngle().getValue(), innerShadow.getFractions(), innerShadow.getColors());
 
-        graphics2D.fill(innerShadowShape);
+//        final Ellipse2D innerShadowShape = new Ellipse2D.Double((imageWidth - imageWidth * 0.77) / 2.0, (imageWidth - imageWidth * 0.77) / 2.0, imageWidth * 0.77, imageWidth * 0.77);
+//        final Point2D innerShadowCenter = new Point2D.Double(innerShadowShape.getCenterX(), innerShadowShape.getCenterY());
+//
+//        final RadialGradientPaint gradientPaint = new RadialGradientPaint(innerShadowCenter, (float) (innerShadowShape.getWidth() / 2.0), innerShadow.getFractions(), innerShadow.getColors());
+//
+//        graphics.setPaint(gradientPaint);
+//
+//        graphics.fill(innerShadowShape);
 
-        graphics2D.dispose();
+        graphics.dispose();
     }
 
     public GradientModel getFrame()
@@ -138,7 +146,5 @@ public class SmallKnobPainter extends Knob
     {
         this.innerShadow = innerShadow;
     }
-
-   
 
 }

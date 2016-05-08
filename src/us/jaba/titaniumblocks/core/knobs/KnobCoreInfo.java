@@ -31,19 +31,19 @@ package us.jaba.titaniumblocks.core.knobs;
 import java.util.Arrays;
 import java.util.List;
 import us.jaba.titaniumblocks.core.CoreInfoSupport;
-import us.jaba.titaniumblocks.core.knobs.painter.BigBlackKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.BigBrassKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.BigChromeKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.BigSilverKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.BlackMetalKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.BrassMetalKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SilverMetalKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallBlackKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallCopperKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallNickelKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallWhiteKnobPainter;
+import us.jaba.titaniumblocks.core.knobs.painter.BigBlackKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.BigBrassKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.BigChromeKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.BigSilverKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.BlackMetalKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.BrassMetalKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SilverMetalKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallBlackKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallCopperKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallNickelKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnob;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallWhiteKnob;
 
 /**
  *
@@ -54,19 +54,19 @@ public class KnobCoreInfo
 
     public static final Class<?>[] KNOB_MODELS =
     {
-        BigBlackKnobPainter.class,
-        BigBrassKnobPainter.class,
-        BigChromeKnobPainter.class,
-        BigSilverKnobPainter.class,
-        BlackMetalKnobPainter.class,
-        BrassMetalKnobPainter.class,
-        SilverMetalKnobPainter.class,
-        SmallBlackKnobPainter.class,
-        SmallBrassKnobPainter.class,
-        SmallCopperKnobPainter.class,
-        SmallNickelKnobPainter.class,
-        SmallSilverKnobPainter.class,
-        SmallWhiteKnobPainter.class
+        BigBlackKnob.class,
+        BigBrassKnob.class,
+        BigChromeKnob.class,
+        BigSilverKnob.class,
+        BlackMetalKnob.class,
+        BrassMetalKnob.class,
+        SilverMetalKnob.class,
+        SmallBlackKnob.class,
+        SmallBrassKnob.class,
+        SmallCopperKnob.class,
+        SmallNickelKnob.class,
+        SmallSilverKnob.class,
+        SmallWhiteKnob.class
     };
 
     public static List<Class<?>> getAvailableClasses()

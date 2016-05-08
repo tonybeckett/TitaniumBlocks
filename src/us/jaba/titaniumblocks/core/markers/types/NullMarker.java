@@ -25,25 +25,23 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.markers.types;
 
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.MetalKnobPainter;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.markers.Marker;
 
 /**
  *
  * @author tbeckett
  */
-public class SilverMetalKnobPainter extends MetalKnobPainter
+public class NullMarker extends Marker
 {
 
-    public SilverMetalKnobPainter()
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
     {
-        super(new Color[]
-        {
-            new Color(204, 204, 204, 255),
-            new Color(87, 92, 98, 255)
-        });
+
     }
 
 }

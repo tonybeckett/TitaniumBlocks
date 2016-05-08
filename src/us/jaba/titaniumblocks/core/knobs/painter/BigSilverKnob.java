@@ -25,63 +25,46 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.sections;
+package us.jaba.titaniumblocks.core.knobs.painter;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
-import us.jaba.titaniumblocks.core.CoreBean;
+import java.awt.Color;
+import us.jaba.titaniumblocks.core.knobs.BigKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class SectionList extends CoreBean
+public class BigSilverKnob extends BigKnob
 {
 
-    private final ArrayList<Section> sections = new ArrayList();
-    protected int offset = 0;
-
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    public BigSilverKnob()
     {
-        super.paint(graphics, dimensions);
-
-        paintSection(graphics, dimensions);
-    }
-
-    protected void paintSection(Graphics2D graphics, Dimension dimensions)
-    {
-        for (Section s : sections)
-        {
-            s.paintSection(graphics, dimensions);
-        }
-    }
-
-    public int size()
-    {
-        return sections.size();
-    }
-
-    public Section get(int index)
-    {
-        return sections.get(index);
-    }
-
-    public boolean add(Section e)
-    {
-        return sections.add(e);
-    }
-
-    public void clear()
-    {
-        sections.clear();
-    }
-
-    public Iterator<Section> iterator()
-    {
-        return sections.iterator();
+        super(
+                new Color[]
+                {
+                  new Color(152, 152, 152, 255),
+                    new Color(118, 121, 126, 255)
+                },
+                new Color[]
+                {
+                   new Color(118, 121, 126, 255),
+                    new Color(191, 191, 191, 255)
+                },
+                new Color[]
+                {
+                    new Color(191, 191, 191, 255),
+                    new Color(116, 116, 116, 255),
+                    new Color(143, 144, 146, 255)
+                },
+                new Color[]
+                {
+                    new Color(215, 215, 215, 255),
+                    new Color(139, 142, 145, 255),
+                    new Color(100, 100, 100, 255),
+                    new Color(139, 142, 145, 255),
+                    new Color(215, 215, 215, 255)
+                }
+        );
     }
 
 }

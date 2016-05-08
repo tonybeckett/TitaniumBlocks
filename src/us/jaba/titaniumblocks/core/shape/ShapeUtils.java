@@ -27,7 +27,10 @@
  */
 package us.jaba.titaniumblocks.core.shape;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.RadialGradientPaint;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
@@ -36,9 +39,11 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.gradients.paint.ConicalGradientPaint;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;
 import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 import us.jaba.titaniumblocks.core.text.TextSupport;
+import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
@@ -158,7 +163,64 @@ public class ShapeUtils
         }
     }
 
-    public static void placeCircleOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double startAngle, double angleStep, boolean fill, int number)
+    public static void placeCircleOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double angle, boolean fill)
+    {
+
+        double sinValue = Math.sin((angle - 180.0) * Math.PI / 180.0);
+        double cosValue = Math.cos((angle - 180.0) * Math.PI / 180.0);
+        Point2D.Double centerPoint = new Point2D.Double((double) center.getX() + (radius * sinValue), (double) center.getY() + (radius * cosValue));
+
+        if (fill)
+        {
+            fillCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
+        } else
+        {
+            drawCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
+        }
+
+    }
+
+    public static void placeCircleUsingLGradientOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double angle, float[] fractions, Color[] colors)
+    {
+        double sinValue = Math.sin((angle - 180.0) * Math.PI / 180.0);
+        double cosValue = Math.cos((angle - 180.0) * Math.PI / 180.0);
+        Point2D.Double centerPoint = new Point2D.Double((double) center.getX() + (radius * sinValue), (double) center.getY() + (radius * cosValue));
+
+        final Point2D startPoint = new Point2D.Double(0, centerPoint.getY() - circleRadius);
+        final Point2D endPoint = new Point2D.Double(0, centerPoint.getY() + circleRadius);
+
+        PointSupport.validateGradientPoints(startPoint, endPoint);
+        final LinearGradientPaint gradient = new LinearGradientPaint(startPoint, endPoint, fractions, colors);
+        graphics.setPaint(gradient);
+
+        fillCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
+    }
+
+    public static void placeCircleUsingCGradientOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double angle, float[] fractions, Color[] colors)
+    {
+        double sinValue = Math.sin((angle - 180.0) * Math.PI / 180.0);
+        double cosValue = Math.cos((angle - 180.0) * Math.PI / 180.0);
+        Point2D.Double centerPoint = new Point2D.Double((double) center.getX() + (radius * sinValue), (double) center.getY() + (radius * cosValue));
+
+        final ConicalGradientPaint gradient = new ConicalGradientPaint(false, centerPoint, 0, fractions, colors);
+        graphics.setPaint(gradient);
+
+        fillCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
+    }
+
+    public static void placeCircleUsingRGradientOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double angle, float[] fractions, Color[] colors)
+    {
+        double sinValue = Math.sin((angle - 180.0) * Math.PI / 180.0);
+        double cosValue = Math.cos((angle - 180.0) * Math.PI / 180.0);
+        Point2D.Double centerPoint = new Point2D.Double((double) center.getX() + (radius * sinValue), (double) center.getY() + (radius * cosValue));
+
+        final RadialGradientPaint gradient = new RadialGradientPaint(centerPoint, (float)circleRadius, fractions, colors);
+        graphics.setPaint(gradient);
+
+        fillCircle(graphics, centerPoint.x, centerPoint.y, circleRadius);
+    }
+
+    public static void placeCirclesOnRadius(Graphics2D graphics, Point2D center, double radius, double circleRadius, double startAngle, double angleStep, boolean fill, int number)
     {
         double currentAngle = startAngle;
 
@@ -183,38 +245,53 @@ public class ShapeUtils
     {
         Point2D.Double pointStart = new Point2D.Double((double) center.getX() - radius, (double) center.getY() - radius);
 
- //       int extent = (int) (endAngle + (360.0 - startAngle));
         double extent = CoordinateUtils.calcExtent(startAngle, endAngle, direction);
-        int width = (int) (radius * 2.0);
-        int height = (int) (radius * 2.0);
-        graphics.drawArc((int)pointStart.x, (int)pointStart.y, width, height, (int) ((510 - startAngle) % 360), (int) extent);
+        double width = radius * 2.0;
+        double height = radius * 2.0;
+
+        double sa = ((360.0 - startAngle) + 90.0) % 360.0;
+        if (direction.equals(Direction.CLOCKWISE))
+        {
+            extent = extent * -1.0;
+        }
+        Arc2D.Double arc = new Arc2D.Double(pointStart.x, pointStart.y, width, height, sa, extent, Arc2D.OPEN);
+        graphics.draw(arc);
     }
 
-    public static void placeArcOnRadius(Graphics2D graphics, Point2D center, double innerRadius, double outerRadius, double startAngle, double endAngle, double angleStep, int number)
+    public static void placeAnArcOnRadius(Graphics2D graphics, Point2D center, double innerRadius, double outerRadius, double startAngle, double endAngle)
     {
-        double currentAngle = startAngle;
 
         Point2D.Double outerPointStart = new Point2D.Double((double) center.getX() - outerRadius, (double) center.getY() - outerRadius);
         Point2D.Double innerPointStart = new Point2D.Double((double) center.getX() - innerRadius, (double) center.getY() - innerRadius);
+
+//        double extent = endAngle - startAngle;
+        double extent = CoordinateUtils.calcExtent(startAngle, endAngle, Direction.CLOCKWISE);
+
+        Arc2D.Double outerArc = new Arc2D.Double(Arc2D.PIE);
+        outerArc.setFrame(outerPointStart.getX(), outerPointStart.getY(), outerRadius * 2, outerRadius * 2);
+        outerArc.setAngleStart(((360.0 - startAngle) + 90.0) % 360.0);
+        outerArc.setAngleExtent(-extent);
+
+        Area area = new Area(outerArc);
+        Arc2D.Double innerArc = new Arc2D.Double(Arc2D.PIE);
+        innerArc.setFrame(innerPointStart.getX(), innerPointStart.getY(), innerRadius * 2, innerRadius * 2);
+        innerArc.setAngleStart(((360.0 - startAngle) + 90.0) % 360.0);
+        innerArc.setAngleExtent(-extent);
+        area.subtract(new Area(innerArc));
+
+        graphics.fill(area);
+
+    }
+
+    public static void placeArcsOnRadius(Graphics2D graphics, Point2D center, double innerRadius, double outerRadius, double startAngle, double endAngle, double angleStep, int number)
+    {
+        double currentAngle = startAngle;
 
         double extent = endAngle - startAngle;
 
         for (int i = 0; i < number; i++)
         {
-            Arc2D.Double outerArc = new Arc2D.Double(Arc2D.PIE);
-            outerArc.setFrame(outerPointStart.getX(), outerPointStart.getY(), outerRadius * 2, outerRadius * 2);
-            outerArc.setAngleStart(450 - currentAngle % 360);
-            outerArc.setAngleExtent(-extent);
-
-            Area area = new Area(outerArc);
-            Arc2D.Double innerArc = new Arc2D.Double(Arc2D.PIE);
-            innerArc.setFrame(innerPointStart.getX(), innerPointStart.getY(), innerRadius * 2, innerRadius * 2);
-            innerArc.setAngleStart(450 - currentAngle % 360);
-            innerArc.setAngleExtent(-extent);
-            area.subtract(new Area(innerArc));
-
-            graphics.fill(area);
-
+            placeAnArcOnRadius(graphics, center, innerRadius, outerRadius, currentAngle, currentAngle + extent);
             currentAngle = currentAngle + angleStep;
         }
 

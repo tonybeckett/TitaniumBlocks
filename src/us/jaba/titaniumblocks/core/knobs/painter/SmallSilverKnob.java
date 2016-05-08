@@ -27,43 +27,29 @@
  */
 package us.jaba.titaniumblocks.core.knobs.painter;
 
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.BigKnobPainter;
+import us.jaba.titaniumblocks.core.gradients.GradientModel;
+import static us.jaba.titaniumblocks.core.knobs.KnobColors.SILVER;
+import us.jaba.titaniumblocks.core.knobs.SmallKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class BigBlackKnobPainter extends BigKnobPainter
+public class SmallSilverKnob extends SmallKnob
 {
 
-    public BigBlackKnobPainter()
+    public SmallSilverKnob()
     {
-        super(
-                new Color[]
+        super(new GradientModel(
+                new float[]
                 {
-                    new Color(129, 133, 136, 255),
-                    new Color(61, 61, 73, 255)
+                    0.0f,
+                    0.5f,
+                    1.0f
+
                 },
-                new Color[]
-                {
-                    new Color(26, 27, 32, 255),
-                    new Color(96, 97, 102, 255)
-                },
-                new Color[]
-                {
-                    new Color(191, 191, 191, 255),
-                    new Color(56, 57, 61, 255),
-                    new Color(143, 144, 146, 255)
-                },
-                new Color[]
-                {
-                    new Color(191, 191, 191, 255),
-                    new Color(94, 93, 99, 255),
-                    new Color(43, 42, 47, 255),
-                    new Color(78, 79, 81, 255),
-                    new Color(143, 144, 146, 255)
-                }
+               SILVER
+        )
         );
     }
 

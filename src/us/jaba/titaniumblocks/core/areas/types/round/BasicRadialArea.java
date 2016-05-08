@@ -25,63 +25,55 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.sections;
+package us.jaba.titaniumblocks.core.areas.types.round;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
-import us.jaba.titaniumblocks.core.CoreBean;
+import java.awt.RenderingHints;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.areas.RadialArea;
+import static us.jaba.titaniumblocks.core.shape.ShapeUtils.placeAnArcOnRadius;
 
 /**
  *
  * @author tbeckett
  */
-public class SectionList extends CoreBean
+public class BasicRadialArea extends RadialArea
 {
 
-    private final ArrayList<Section> sections = new ArrayList();
-    protected int offset = 0;
+    private float opacity = 0.35f;
+
+    public BasicRadialArea(double startAngle, double stopAngle, Color color,  double outerRadius)
+    {
+        super(startAngle, stopAngle, color, outerRadius);
+    }
+
+    public float getOpacity()
+    {
+        return opacity;
+    }
+
+    public void setOpacity(float opacity)
+    {
+        this.opacity = opacity;
+    }
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
-    {
-        super.paint(graphics, dimensions);
-
-        paintSection(graphics, dimensions);
-    }
-
     protected void paintSection(Graphics2D graphics, Dimension dimensions)
     {
-        for (Section s : sections)
-        {
-            s.paintSection(graphics, dimensions);
-        }
-    }
+        graphics.setColor(this.getColor());
+        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
-    public int size()
-    {
-        return sections.size();
-    }
+        Point2D center = new Point2D.Double(dimensions.width / 2.0, dimensions.height / 2.0);
+        double radius = (dimensions.getWidth() / 2.0);
 
-    public Section get(int index)
-    {
-        return sections.get(index);
-    }
+        placeAnArcOnRadius(graphics, center, 0.0, outerRadius * radius, startAngle, stopAngle);
 
-    public boolean add(Section e)
-    {
-        return sections.add(e);
-    }
-
-    public void clear()
-    {
-        sections.clear();
-    }
-
-    public Iterator<Section> iterator()
-    {
-        return sections.iterator();
+        super.paintSection(graphics, dimensions);
     }
 
 }

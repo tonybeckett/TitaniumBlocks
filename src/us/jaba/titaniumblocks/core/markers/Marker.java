@@ -25,32 +25,48 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.markers;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.SILVER;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import java.awt.Color;
+import java.io.Serializable;
+import us.jaba.titaniumblocks.core.CoreBean;
+import us.jaba.titaniumblocks.core.color.ColorPalette;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallSilverKnobPainter extends SmallKnobPainter
+public class Marker extends CoreBean implements Serializable
 {
 
-    public SmallSilverKnobPainter()
-    {
-        super(new GradientModel(
-                new float[]
-                {
-                    0.0f,
-                    0.5f,
-                    1.0f
+    protected boolean showOutline;
+    protected Color outlineColor;
 
-                },
-               SILVER
-        )
-        );
+    public Marker()
+    {
+        showOutline = false;
+        outlineColor = ColorPalette.BLACK;
     }
+
+    public boolean isShowOutline()
+    {
+        return showOutline;
+    }
+
+    public void setShowOutline(boolean showOutline)
+    {
+        this.showOutline = showOutline;
+    }
+
+    public Color getOutlineColor()
+    {
+        return outlineColor;
+    }
+
+    public void setOutlineColor(Color outlineColor)
+    {
+        this.outlineColor = outlineColor;
+    }
+   
 
 }

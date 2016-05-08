@@ -52,7 +52,7 @@ import us.jaba.titaniumblocks.core.frontcover.types.round.BasicRadialFrontcover;
 import us.jaba.titaniumblocks.core.frontcover.types.round.TopThirdRadialFrontcover;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
 import us.jaba.titaniumblocks.core.knobs.Knob;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnobPainter;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallSilverKnob;
 import us.jaba.titaniumblocks.core.layout.CircularLayout;
 import us.jaba.titaniumblocks.core.led.LedImageFactory;
 import us.jaba.titaniumblocks.core.led.types.SingleBargraphLedOff;
@@ -149,8 +149,8 @@ public class SimpleRectangularDial extends AbstractDial
         disabledImage = new DisabledImageFactory(new NullLinearDisabled());
         centerPostImage = new PostImageFactory(new BigSilverPost());
 
-        startPostImage = new MySWPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
-        endPostImage = new MySEPostFactory(new KnobImageFactory(new SmallSilverKnobPainter()));
+        startPostImage = new MySWPostFactory(new KnobImageFactory(new SmallSilverKnob()));
+        endPostImage = new MySEPostFactory(new KnobImageFactory(new SmallSilverKnob()));
 
         Type1Shadow t1spp = new Type1Shadow();
         secShadowPointerImage = new ShadowPointerImageFactory(t1spp);

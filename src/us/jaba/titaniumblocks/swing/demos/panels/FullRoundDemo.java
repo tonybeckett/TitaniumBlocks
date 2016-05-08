@@ -29,43 +29,47 @@ package us.jaba.titaniumblocks.swing.demos.panels;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.BrushedMetalBModel;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.LightGrayBModel;
+import us.jaba.titaniumblocks.core.backdrop.types.Backdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.compass.round.Compass2Tickmarks;
-import us.jaba.titaniumblocks.displays.round.CompassDial;
+import us.jaba.titaniumblocks.core.frames.BasicFrame;
+import us.jaba.titaniumblocks.core.frontcover.types.Frontcover;
+import us.jaba.titaniumblocks.core.layout.CircularLayout;
+import us.jaba.titaniumblocks.core.pointers.Pointer;
+import us.jaba.titaniumblocks.core.posts.Post;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
+import us.jaba.titaniumblocks.core.tickmarks.marks.Tickmark;
+import us.jaba.titaniumblocks.displays.round.FullRoundDial;
 import us.jaba.titaniumblocks.swing.Antimate;
-import us.jaba.titaniumblocks.swing.panels.SimpleDialPanel;
+import us.jaba.titaniumblocks.swing.panels.FullDialPanel;
 
 /**
  *
  * @author tbeckett
  */
-public class CompassDemo extends javax.swing.JFrame
+public class FullRoundDemo extends javax.swing.JFrame
 {
-
-    final SimpleDialPanel panel;
-
-    /**
-     * Creates new form DisplaySingleDemo
-     */
-    public CompassDemo()
+    
+    public final FullDialPanel panel;
+    
+    public FullRoundDemo(CircularLayout cl)
     {
         initComponents();
-
-        panel = new SimpleDialPanel(new CompassDial());
-
         
-        panel.getTBComponent().getBackdrop().setBackgroundColor(new BrushedMetalBModel());
+        panel = new FullDialPanel(new FullRoundDial(cl));
+        
+        panel.getTBComponent().getText1().setColor(ColorPalette.ALMOND);
+        panel.getTBComponent().getText1().setValue("text1");
+        
+        panel.getTBComponent().getBackdrop().setBackgroundColor(new LightGrayBModel());
+        panel.getTBComponent().getPointer().setTailScale(new Scale(0.2));
+        panel.getTBComponent().getPointer().setFrontScale(new Scale(0.8));
+        panel.getTBComponent().getTickmarks();
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
         this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
-        this.setTitle("CompassDemo");
-        
-        Compass2Tickmarks ct = new Compass2Tickmarks();
-        ct.setTextColor(ColorPalette.WHITE);
-        ct.setMajorColor(ColorPalette.WHITE);
-        panel.setTickmarks(ct);
-        
+
         Antimate antimate = new Antimate(100.0)
         {
             @Override
@@ -74,19 +78,86 @@ public class CompassDemo extends javax.swing.JFrame
                 panel.setValueAnimated(d);
             }
         };
-
+        
         new Thread(antimate).start();
-
+        
+    }
+    
+    public void setPanelTitle(String string)
+    {
+        super.setTitle(string);
+    }
+    
+    public Backdrop getBackdrop()
+    {
+        return panel.getBackdrop();
+    }
+    
+    public Tickmark getTickmarks()
+    {
+        return panel.getTickmarks();
+    }
+    
+    public PolarText getTitleText()
+    {
+        return (PolarText) panel.getTitleText();
+    }
+    
+    public Post getCenterPost()
+    {
+        return panel.getCenterPost();
+    }
+    
+    public BasicFrame getFrame()
+    {
+        return panel.getFrame();
+    }
+    
+    public Frontcover getFrontCover()
+    {
+        return panel.getFrontCover();
+    }
+    
+    public Pointer getPointer()
+    {
+        return panel.getPointer();
+    }
+    
+    public void setBackdrop(Backdrop painter)
+    {
+        panel.setBackdrop(painter);
+    }
+    
+    public void setFrame(BasicFrame frame)
+    {
+        panel.setFrame(frame);
+    }
+    
+    public void setFrontCover(Frontcover foregroundPainter)
+    {
+        panel.setFrontCover(foregroundPainter);
+    }
+    
+    public void setTickmarks(Tickmark tm)
+    {
+        panel.setTickmarks(tm);
+    }
+    
+    public void setCenterPost(Post postPainter)
+    {
+        panel.setCenterPost(postPainter);
+    }
+    
+    public void setPointer(Pointer pointer)
+    {
+        panel.setPointer(pointer);
+    }
+    
+    public void setUnits(String value)
+    {
+        panel.setUnits(value);
     }
 
-    
-
-   
-
-     
-  
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,52 +177,4 @@ public class CompassDemo extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-/**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
-    {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
-            java.util.logging.Logger.getLogger(SingleLineGaugeDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new CompassDemo().setVisible(true);
-            }
-        });
-    }
 }

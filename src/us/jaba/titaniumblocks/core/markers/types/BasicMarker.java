@@ -25,63 +25,43 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.sections;
+package us.jaba.titaniumblocks.core.markers.types;
 
 import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
-import us.jaba.titaniumblocks.core.CoreBean;
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Path2D;
+import us.jaba.titaniumblocks.core.markers.GradientMarker;
 
 /**
  *
  * @author tbeckett
  */
-public class SectionList extends CoreBean
+public class BasicMarker extends GradientMarker
 {
 
-    private final ArrayList<Section> sections = new ArrayList();
-    protected int offset = 0;
-
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    protected Area getShape(Dimension dimensions)
     {
-        super.paint(graphics, dimensions);
 
-        paintSection(graphics, dimensions);
-    }
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
 
-    protected void paintSection(Graphics2D graphics, Dimension dimensions)
-    {
-        for (Section s : sections)
-        {
-            s.paintSection(graphics, dimensions);
-        }
-    }
+        final GeneralPath pointerShape;
 
-    public int size()
-    {
-        return sections.size();
-    }
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48 * imageWidth, centerY + maxY);
+        pointerShape.lineTo(0.52 * imageWidth, centerY + maxY);
+        pointerShape.lineTo(0.52 * imageWidth, centerY + (maxY * 0.95));
+        pointerShape.lineTo(0.5 * imageWidth, centerY + (maxY * 0.89));
+        pointerShape.lineTo(0.48 * imageWidth, centerY + (maxY * 0.95));
+        pointerShape.lineTo(0.48 * imageWidth, centerY + maxY);
+        pointerShape.closePath();
 
-    public Section get(int index)
-    {
-        return sections.get(index);
-    }
-
-    public boolean add(Section e)
-    {
-        return sections.add(e);
-    }
-
-    public void clear()
-    {
-        sections.clear();
-    }
-
-    public Iterator<Section> iterator()
-    {
-        return sections.iterator();
+        return new Area(pointerShape);
     }
 
 }

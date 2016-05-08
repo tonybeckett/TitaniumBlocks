@@ -28,41 +28,41 @@
 package us.jaba.titaniumblocks.core.knobs.painter;
 
 import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.BigKnobPainter;
+import us.jaba.titaniumblocks.core.knobs.BigKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class BigSilverKnobPainter extends BigKnobPainter
+public class BigBlackKnob extends BigKnob
 {
 
-    public BigSilverKnobPainter()
+    public BigBlackKnob()
     {
         super(
                 new Color[]
                 {
-                  new Color(152, 152, 152, 255),
-                    new Color(118, 121, 126, 255)
+                    new Color(129, 133, 136, 255),
+                    new Color(61, 61, 73, 255)
                 },
                 new Color[]
                 {
-                   new Color(118, 121, 126, 255),
-                    new Color(191, 191, 191, 255)
+                    new Color(26, 27, 32, 255),
+                    new Color(96, 97, 102, 255)
                 },
                 new Color[]
                 {
                     new Color(191, 191, 191, 255),
-                    new Color(116, 116, 116, 255),
+                    new Color(56, 57, 61, 255),
                     new Color(143, 144, 146, 255)
                 },
                 new Color[]
                 {
-                    new Color(215, 215, 215, 255),
-                    new Color(139, 142, 145, 255),
-                    new Color(100, 100, 100, 255),
-                    new Color(139, 142, 145, 255),
-                    new Color(215, 215, 215, 255)
+                    new Color(191, 191, 191, 255),
+                    new Color(94, 93, 99, 255),
+                    new Color(43, 42, 47, 255),
+                    new Color(78, 79, 81, 255),
+                    new Color(143, 144, 146, 255)
                 }
         );
     }

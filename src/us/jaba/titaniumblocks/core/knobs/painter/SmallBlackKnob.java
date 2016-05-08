@@ -25,15 +25,32 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs;
+package us.jaba.titaniumblocks.core.knobs.painter;
 
-import us.jaba.titaniumblocks.core.Painter;
+import us.jaba.titaniumblocks.core.gradients.GradientModel;
+import static us.jaba.titaniumblocks.core.knobs.KnobColors.BLACK;
+import us.jaba.titaniumblocks.core.knobs.SmallKnob;
 
 /**
  *
  * @author tbeckett
  */
-public abstract class PointerPainter implements Painter
+public class SmallBlackKnob extends SmallKnob
 {
-    
+
+    public SmallBlackKnob()
+    {
+        super(new GradientModel(
+                new float[]
+                {
+                    0.0f,
+                    0.5f,
+                    1.0f
+
+                },
+                BLACK
+        )
+        );
+    }
+
 }

@@ -25,31 +25,64 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.areas;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.COPPER;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import us.jaba.titaniumblocks.core.sections.*;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Iterator;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallCopperKnobPainter extends SmallKnobPainter
+public class AreaList extends CoreBean
 {
 
-    public SmallCopperKnobPainter()
-    {
-        super(new GradientModel(
-                new float[]
-                {
-                    0.0f,
-                    0.5f,
-                    1.0f
+    private final ArrayList<Area> areas = new ArrayList();
+    protected int offset = 0;
 
-                },
-               COPPER)
-        );
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        super.paint(graphics, dimensions);
+
+        paintSection(graphics, dimensions);
+    }
+
+    protected void paintSection(Graphics2D graphics, Dimension dimensions)
+    {
+        for (Area s : areas)
+        {
+            s.paintSection(graphics, dimensions);
+        }
+    }
+
+    public int size()
+    {
+        return areas.size();
+    }
+
+    public Area get(int index)
+    {
+        return areas.get(index);
+    }
+
+    public boolean add(Area e)
+    {
+        return areas.add(e);
+    }
+
+    public void clear()
+    {
+        areas.clear();
+    }
+
+    public Iterator<Area> iterator()
+    {
+        return areas.iterator();
     }
 
 }

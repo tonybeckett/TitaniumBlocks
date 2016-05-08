@@ -25,32 +25,23 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.glow.types;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.BRASS;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.glow.Glow;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallBrassKnobPainter extends SmallKnobPainter
+public class NullRadialGlow extends Glow
 {
 
-    public SmallBrassKnobPainter()
+    @Override
+    public void paint(final Graphics2D graphics, final Dimension dimensions)
     {
-        super(new GradientModel(
-                new float[]
-                {
-                    0.0f,
-                    0.5f,
-                    1.0f
-
-                },
-                BRASS
-        )
-        );
+       
     }
 
 }

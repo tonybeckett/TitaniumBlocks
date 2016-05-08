@@ -41,10 +41,10 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 public class RadialSection extends ColorSection
 {
 
-    private double startAngle;
-    private double stopAngle;
-    private double innerRadius;
-    private double outerRadius;
+    protected double startAngle;
+    protected double stopAngle;
+    protected double innerRadius;
+    protected double outerRadius;
 
     public RadialSection(double startAngle, double stopAngle, Color color, double innerRadius, double outerRadius)
     {
@@ -106,7 +106,7 @@ public class RadialSection extends ColorSection
         Point2D.Double center = new Point2D.Double(centerX, centerY);
 
         graphics.setColor(this.getColor());
-        ShapeUtils.placeArcOnRadius(graphics, center, innerRadius, outerRadius, this.getStartAngle(), this.getStopAngle(), 0, 1);
+        ShapeUtils.placeArcsOnRadius(graphics, center, innerRadius, outerRadius, this.getStartAngle(), this.getStopAngle(), 0, 1);
     }
 
 }

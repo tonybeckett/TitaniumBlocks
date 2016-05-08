@@ -80,10 +80,10 @@ public class FourNumbersCircleTicks extends AbstractRadialTickmark
         graphics.setStroke(majorStroke);
         ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.95, 359.0, 90.0, 4);
         ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.95, 1.0, 90.0, 4);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 30.0, 30.0, true, 2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 120.0, 30.0, true, 2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 210.0, 30.0, true, 2);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 300.0, 30.0, true, 2);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 30.0, 30.0, true, 2);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 120.0, 30.0, true, 2);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 210.0, 30.0, true, 2);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.025, 300.0, 30.0, true, 2);
         graphics.dispose();
 
     }

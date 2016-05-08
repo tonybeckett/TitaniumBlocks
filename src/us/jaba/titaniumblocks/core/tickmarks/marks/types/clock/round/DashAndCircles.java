@@ -57,7 +57,7 @@ public class DashAndCircles extends AbstractRadialTickmark
         graphics.setStroke(mediumStroke);
         for (int i = 0; i < 12; i++)
         {
-            ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.930, tickRadius * 0.015, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, false, 4);
+            ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.930, tickRadius * 0.015, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, false, 4);
         }
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);

@@ -36,14 +36,14 @@ import us.jaba.titaniumblocks.core.CoreImageFactory;
 public class SectionImageFactory extends CoreImageFactory
 {
 
-    public SectionImageFactory(Section pp)
+    public SectionImageFactory(SectionList pp)
     {
         super(pp);
     }
 
-    public Section getSections()
+    public SectionList getSectionList()
     {
-        return (Section) super.getPainter(); 
+        return (SectionList) super.getPainter();
     }
 
 }

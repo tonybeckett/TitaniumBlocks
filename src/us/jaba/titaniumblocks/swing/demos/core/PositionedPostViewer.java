@@ -39,7 +39,7 @@ import javax.swing.border.LineBorder;
 import us.jaba.titaniumblocks.core.CoreImageFactory;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.knobs.KnobImageFactory;
-import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnobPainter;
+import us.jaba.titaniumblocks.core.knobs.painter.SmallBrassKnob;
 import us.jaba.titaniumblocks.core.posts.PostCoreInfo;
 
 /**
@@ -77,7 +77,7 @@ public class PositionedPostViewer extends BasicVerticalViewer
             Constructor c;
             Class<?> aClass = (Class<?>) next;
             c = aClass.getConstructor(KnobImageFactory.class);
-            CoreImageFactory instance = (CoreImageFactory) c.newInstance(new KnobImageFactory(new SmallBrassKnobPainter()));
+            CoreImageFactory instance = (CoreImageFactory) c.newInstance(new KnobImageFactory(new SmallBrassKnob()));
 
             return instance.build(dim);
         } catch (NoSuchMethodException ex)

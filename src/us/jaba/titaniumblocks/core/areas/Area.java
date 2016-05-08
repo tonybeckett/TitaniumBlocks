@@ -25,32 +25,31 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.areas;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.NICKEL;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import us.jaba.titaniumblocks.core.CoreBean;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallNickelKnobPainter extends SmallKnobPainter
+public abstract class Area extends CoreBean
 {
 
-    public SmallNickelKnobPainter()
-    {
-        super(new GradientModel(
-                new float[]
-                {
-                    0.0f,
-                    0.5f,
-                    1.0f
+    protected int offset = 0;
 
-                },
-               NICKEL
-        )
-        );
+    protected abstract void paintSection(Graphics2D graphics, Dimension dimensions);
+
+    public int getOffset()
+    {
+        return offset;
+    }
+
+    public void setOffset(int offset)
+    {
+        this.offset = offset;
     }
 
 }

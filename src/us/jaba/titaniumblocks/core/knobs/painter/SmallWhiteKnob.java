@@ -27,23 +27,29 @@
  */
 package us.jaba.titaniumblocks.core.knobs.painter;
 
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.MetalKnobPainter;
+import us.jaba.titaniumblocks.core.gradients.GradientModel;
+import static us.jaba.titaniumblocks.core.knobs.KnobColors.WHITE;
+import us.jaba.titaniumblocks.core.knobs.SmallKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class BrassMetalKnobPainter extends MetalKnobPainter
+public class SmallWhiteKnob extends SmallKnob
 {
 
-    public BrassMetalKnobPainter()
+    public SmallWhiteKnob()
     {
-        super(new Color[]
-        {
-            new Color(0x966E36),
-            new Color(0x7C5F3D)
-        });
+        super(new GradientModel(
+                new float[]
+                {
+                    0.0f,
+                    0.5f,
+                    1.0f
+
+                },
+                WHITE)
+        );
     }
 
 }

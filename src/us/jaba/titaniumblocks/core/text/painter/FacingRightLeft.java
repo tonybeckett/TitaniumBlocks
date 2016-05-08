@@ -35,7 +35,6 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
  */
 public class FacingRightLeft extends BasicRadialTextPainter
 {
-
     @Override
     protected double adjustAngle(double angle)
     {
@@ -51,5 +50,4 @@ public class FacingRightLeft extends BasicRadialTextPainter
         
         return result;
     }
-
 }

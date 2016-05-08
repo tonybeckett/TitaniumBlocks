@@ -35,15 +35,21 @@ import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.Scale;
 import us.jaba.titaniumblocks.core.color.ColorTools;
-import us.jaba.titaniumblocks.core.led.Led;
+import us.jaba.titaniumblocks.core.led.LedColor;
+import us.jaba.titaniumblocks.core.led.PolarLed;
+import us.jaba.titaniumblocks.core.led.colors.LedColorRed;
+import us.jaba.titaniumblocks.core.math.Angle;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
+import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.utils.PointSupport;
 
 /**
  *
  * @author tbeckett
  */
-public class RoundDialLed extends Led
+public class RoundDialLed extends PolarLed
 {
 
     private final float[] LED_FRACTIONS =
@@ -77,32 +83,46 @@ public class RoundDialLed extends Led
         1.0f
     };
 
-    @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    private final float[] LIGHT_REFLEX_FRACTIONS =
     {
-        super.paint(graphics, dimensions);
+        0.0f,
+        1.0f
+    };
 
-        int width = (int) (dimensions.getWidth() * 0.0934579439);
-        int height = (int) (dimensions.getHeight() * 0.0934579439);
+    private final Color[] LIGHTREFLEX_COLORS =
+    {
+        new Color(1.0f, 1.0f, 1.0f, 0.4f),
+        new Color(1.0f, 1.0f, 1.0f, 0.0f)
+    };
 
-        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+    private Color[] LED_OFF_COLORS;
+    private Color[] LED_ON_COLORS;
+    private Color[] LED_ON_CORONA_COLORS;
 
-        // Define led data
-        final Ellipse2D LED = new Ellipse2D.Double(0.25 * width, 0.25 * height, 0.5 * width, 0.5 * height);
-        final Ellipse2D LED_CORONA = new Ellipse2D.Double(0, 0, width, height);
+    public RoundDialLed()
+    {
+        setLedColor(new LedColorRed());
+        this.setAngle(new Angle(75.0));
+        this.setRadiusAdjust(new Scale(0.35));
+    }
 
-        final Point2D LED_CENTER = new Point2D.Double(LED.getCenterX(), LED.getCenterY());
+    @Override
+    public void setLedColor(LedColor ledColor)
+    {
+        super.setLedColor(ledColor);
 
-        final Color[] LED_ON_COLORS;
-        final Color[] LED_ON_CORONA_COLORS;
+        LED_OFF_COLORS = new Color[]
+        {
+            getLedColor().getInner1Off(),
+            getLedColor().getInner2Off(),
+            getLedColor().getOuterOff()
+        };
 
         LED_ON_COLORS = new Color[]
         {
-            getLedColor().getInner1On(),// LED_COLOR.INNER_COLOR1_ON,
-            getLedColor().getInner2On(),// LED_COLOR.INNER_COLOR2_ON,
-            getLedColor().getOuterOn()// LED_COLOR.OUTER_COLOR_ON
+            getLedColor().getInner1On(),
+            getLedColor().getInner2On(),
+            getLedColor().getOuterOn()
         };
 
         LED_ON_CORONA_COLORS = new Color[]
@@ -114,46 +134,69 @@ public class RoundDialLed extends Led
             ColorTools.setAlpha(getLedColor().getCorona(), 0.05f),
             ColorTools.setAlpha(getLedColor().getCorona(), 0.0f)
         };
+    }
 
+    @Override
+    public void paint(Graphics2D graphics, Dimension dimensions)
+    {
+        super.paint(graphics, dimensions);
+
+        final double radius = dimensions.getWidth() * 0.5;
+
+        double width = (dimensions.getWidth() * 0.0934579439);
+        double height = (dimensions.getHeight() * 0.0934579439);
+        Point2D.Double centerPoint = new Point2D.Double((dimensions.getWidth() / 2.0), (dimensions.getHeight() / 2.0));
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+        // Define led data
+        double gAngle = CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(getAngle().getValue() - 270.0)));
+        Point2D.Double ledCenter = CoordinateUtils.convertToGraphics2dPoint(centerPoint, getRadiusAdjust().getValue() * radius, gAngle);
+
+//        final Ellipse2D LED = new Ellipse2D.Double(0.25 * width, 0.25 * height, 0.5 * width, 0.5 * height);
+//        final Ellipse2D corona = new Ellipse2D.Double(0, 0, width, height);
         // Define gradients for the lower led
-        final RadialGradientPaint LED_ON_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.25f * width, LED_FRACTIONS, LED_ON_COLORS);
-        final RadialGradientPaint LED_INNER_SHADOW_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.25f * width, LED_INNER_SHADOW_FRACTIONS, LED_INNER_SHADOW_COLORS);
-        final RadialGradientPaint LED_ON_CORONA_GRADIENT = new RadialGradientPaint(LED_CENTER, 0.5f * width, LED_ON_CORONA_FRACTIONS, LED_ON_CORONA_COLORS);
+        final RadialGradientPaint offGradient = new RadialGradientPaint(ledCenter, (float) (0.22 * width), LED_FRACTIONS, LED_OFF_COLORS);
+
+        final RadialGradientPaint onGradient = new RadialGradientPaint(ledCenter, (float) (0.22 * width), LED_FRACTIONS, LED_ON_COLORS);
+        final RadialGradientPaint innerShadowGradient = new RadialGradientPaint(ledCenter, (float) (0.22 * width), LED_INNER_SHADOW_FRACTIONS, LED_INNER_SHADOW_COLORS);
+        final RadialGradientPaint onCoronaGradient = new RadialGradientPaint(ledCenter, (float) (0.22 * width), LED_ON_CORONA_FRACTIONS, LED_ON_CORONA_COLORS);
 
         // Define light reflex data
-        final Ellipse2D LED_LIGHTREFLEX = new Ellipse2D.Double(0.4 * width, 0.35 * width, 0.2 * width, 0.15 * width);
-        final Point2D LED_LIGHTREFLEX_START = new Point2D.Double(0, LED_LIGHTREFLEX.getMinY());
-        final Point2D LED_LIGHTREFLEX_STOP = new Point2D.Double(0, LED_LIGHTREFLEX.getMaxY());
-
-        final float[] LIGHT_REFLEX_FRACTIONS =
-        {
-            0.0f,
-            1.0f
-        };
-
-        final Color[] LIGHTREFLEX_COLORS =
-        {
-            new Color(1.0f, 1.0f, 1.0f, 0.4f),
-            new Color(1.0f, 1.0f, 1.0f, 0.0f)
-        };
+        final Ellipse2D lightReflexShape = new Ellipse2D.Double(width * 0.22, width * 0.22, width * 0.22, width * 0.22);
+        final Point2D lightReflexStartPoint = new Point2D.Double(0, lightReflexShape.getMinY());
+        final Point2D lightReflexStopPoint = new Point2D.Double(0, lightReflexShape.getMaxY());
 
         // Define light reflex gradients
-        if (PointSupport.pointsEqual(LED_LIGHTREFLEX_START, LED_LIGHTREFLEX_STOP))
+        if (PointSupport.pointsEqual(lightReflexStartPoint, lightReflexStopPoint))
         {
-            LED_LIGHTREFLEX_STOP.setLocation(LED_LIGHTREFLEX_STOP.getX(), LED_LIGHTREFLEX.getY() + 1);
+            lightReflexStopPoint.setLocation(lightReflexStopPoint.getX(), lightReflexShape.getY() + 1);
         }
-        final LinearGradientPaint LED_LIGHTREFLEX_GRADIENT = new LinearGradientPaint(LED_LIGHTREFLEX_START, LED_LIGHTREFLEX_STOP, LIGHT_REFLEX_FRACTIONS, LIGHTREFLEX_COLORS);
+        final LinearGradientPaint lightReflexGradient = new LinearGradientPaint(lightReflexStartPoint, lightReflexStopPoint, LIGHT_REFLEX_FRACTIONS, LIGHTREFLEX_COLORS);
 
         // Draw the led in on state
         // LED ON
-        graphics.setPaint(LED_ON_CORONA_GRADIENT);
-        graphics.fill(LED_CORONA);
-        graphics.setPaint(LED_ON_GRADIENT);
-        graphics.fill(LED);
-        graphics.setPaint(LED_INNER_SHADOW_GRADIENT);
-        graphics.fill(LED);
-        graphics.setPaint(LED_LIGHTREFLEX_GRADIENT);
-        graphics.fill(LED_LIGHTREFLEX);
+        if (this.isState())
+        {
+            graphics.setPaint(onCoronaGradient);
+//            graphics.fill(corona);
+            ShapeUtils.fillCircle(graphics, ledCenter.getX(), ledCenter.getY(), width * 0.22 * 4.0);
+
+            graphics.setPaint(onGradient);
+//            graphics.fill(LED);
+            ShapeUtils.fillCircle(graphics, ledCenter.getX(), ledCenter.getY(), width * 0.22);
+        } else
+        {
+            graphics.setPaint(offGradient);
+//            graphics.fill(LED);
+            ShapeUtils.fillCircle(graphics, ledCenter.getX(), ledCenter.getY(), width * 0.22);
+        }
+        graphics.setPaint(innerShadowGradient);
+        ShapeUtils.fillCircle(graphics, ledCenter.getX(), ledCenter.getY(), width * 0.22);
+//        graphics.fill(LED);
+        graphics.setPaint(lightReflexGradient);
+        graphics.fill(lightReflexShape);
 
     }
 

@@ -83,7 +83,7 @@ public class Compass2Tickmarks extends AbstractRadialTickmark
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.65);
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), radius * 0.7);
         ShapeUtils.drawRadialLines(graphics, centerPoint, radius * 0.65, radius * 0.7, 0.0, 15.0, 24);
-        ShapeUtils.placeArcOnRadius(graphics, centerPoint, radius * 0.65, radius * 0.7, 0.0, 15.0, 30.0, 12);
+        ShapeUtils.placeArcsOnRadius(graphics, centerPoint, radius * 0.65, radius * 0.7, 0.0, 15.0, 30.0, 12);
 
         ShapeUtils.placeTriangleOnRadius(graphics, centerPoint, radius * 0.075, radius * 0.2, radius * 0.3, 45.0, 90.0, true, 4);
         ShapeUtils.placeTriangleOnRadius(graphics, centerPoint, radius * 0.15, radius * 0.475, radius * 0.412, 0.0, 90.0, true, 4);

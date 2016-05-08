@@ -55,7 +55,7 @@ public class DotsAndCircles extends AbstractRadialTickmark
         {
             ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.90, tickRadius * 0.95, (30.0 * i) + (30.0 / 5.0), 30.0 / 5.0, 4);
         }
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.930, tickRadius * 0.0125, 0.0, 30.0, true, 12);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.930, tickRadius * 0.0125, 0.0, 30.0, true, 12);
 
         graphics.dispose();
 

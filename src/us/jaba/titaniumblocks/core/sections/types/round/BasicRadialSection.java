@@ -31,7 +31,10 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.sections.types.RadialSection;
+import static us.jaba.titaniumblocks.core.shape.ShapeUtils.placeAnArcOnRadius;
 
 /**
  *
@@ -39,6 +42,7 @@ import us.jaba.titaniumblocks.core.sections.types.RadialSection;
  */
 public class BasicRadialSection extends RadialSection
 {
+
     private float opacity = 0.5f;
 
     public BasicRadialSection(double startAngle, double stopAngle, Color color, double innerRadius, double outerRadius)
@@ -46,7 +50,6 @@ public class BasicRadialSection extends RadialSection
         super(startAngle, stopAngle, color, innerRadius, outerRadius);
     }
 
-  
     public float getOpacity()
     {
         return opacity;
@@ -56,12 +59,21 @@ public class BasicRadialSection extends RadialSection
     {
         this.opacity = opacity;
     }
-    
+
     @Override
     protected void paintSection(Graphics2D graphics, Dimension dimensions)
     {
+        graphics.setColor(this.getColor());
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        super.paintSection(graphics,dimensions);
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+
+        Point2D center = new Point2D.Double(dimensions.width / 2.0, dimensions.height / 2.0);
+        double radius = (dimensions.getWidth() / 2.0);
+
+        placeAnArcOnRadius(graphics, center, innerRadius * radius, outerRadius * radius, startAngle, stopAngle);
+
+        super.paintSection(graphics, dimensions);
     }
 
 }

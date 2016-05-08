@@ -25,46 +25,13 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
-
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.BigKnobPainter;
+package us.jaba.titaniumblocks.displays.round;
 
 /**
  *
  * @author tbeckett
  */
-public class BigBrassKnobPainter extends BigKnobPainter
+public class FullRoundLCDDial
 {
-
-    public BigBrassKnobPainter()
-    {
-        super(
-                new Color[]
-                {
-                    new Color(143, 117, 80, 255),
-                    new Color(100, 76, 49, 255)
-                },
-                new Color[]
-                {
-                    new Color(98, 75, 49, 255),
-                    new Color(149, 109, 54, 255)
-                },
-                new Color[]
-                {
-                    new Color(147, 108, 54, 255),
-                    new Color(82, 66, 50, 255),
-                    new Color(147, 108, 54, 255)
-                },
-                new Color[]
-                {
-                    new Color(223, 208, 174, 255),
-                    new Color(159, 136, 104, 255),
-                    new Color(122, 94, 62, 255),
-                    new Color(159, 136, 104, 255),
-                    new Color(223, 208, 174, 255)
-                }
-        );
-    }
-
+    
 }

@@ -42,7 +42,7 @@ public class Glow extends CoreBean
 
     public Glow()
     {
-        glowColor = ColorPalette.YELLOW;
+        glowColor = ColorPalette.CYANAQUA;
     }
 
     public Color getGlowColor()

@@ -25,63 +25,31 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.sections;
+package us.jaba.titaniumblocks.core.markers;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-import java.util.Iterator;
-import us.jaba.titaniumblocks.core.CoreBean;
+import us.jaba.titaniumblocks.core.CoreImageFactory;
 
 /**
  *
  * @author tbeckett
  */
-public class SectionList extends CoreBean
+public class MarkerImageFactory extends CoreImageFactory
 {
 
-    private final ArrayList<Section> sections = new ArrayList();
-    protected int offset = 0;
+    public MarkerImageFactory(Marker pp)
+    {
+        super(pp);
+    }
 
     @Override
-    public void paint(Graphics2D graphics, Dimension dimensions)
+    public Marker getPainter()
     {
-        super.paint(graphics, dimensions);
-
-        paintSection(graphics, dimensions);
+        return (Marker) super.getPainter();
     }
-
-    protected void paintSection(Graphics2D graphics, Dimension dimensions)
+    
+    public void setPainter(Marker p)
     {
-        for (Section s : sections)
-        {
-            s.paintSection(graphics, dimensions);
-        }
-    }
-
-    public int size()
-    {
-        return sections.size();
-    }
-
-    public Section get(int index)
-    {
-        return sections.get(index);
-    }
-
-    public boolean add(Section e)
-    {
-        return sections.add(e);
-    }
-
-    public void clear()
-    {
-        sections.clear();
-    }
-
-    public Iterator<Section> iterator()
-    {
-        return sections.iterator();
+        super.setPainter(p);
     }
 
 }

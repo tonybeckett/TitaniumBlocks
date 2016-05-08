@@ -31,13 +31,13 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.gradients.GradientModel;
 import static us.jaba.titaniumblocks.core.knobs.KnobColors.SILVER;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import us.jaba.titaniumblocks.core.knobs.SmallKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class NullKnobPainter extends SmallKnobPainter
+public class NullKnobPainter extends SmallKnob
 {
 
     public NullKnobPainter()

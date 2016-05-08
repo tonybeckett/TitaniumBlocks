@@ -58,7 +58,6 @@ public class BasicRadialTextPainter
             double gAngle = adjustToRadians(currentAngle - 270);
             Point2D.Double textPoint = CoordinateUtils.convertToGraphics2dPoint(center, radius, gAngle);
             TextSupport.rotateTextAroundCenter(graphics, text[i], textPoint.getX(), textPoint.getY(), adjustAngle(gAngle));
-            System.out.println(String.format(" %s %f %f", text[i], gAngle, adjustAngle(gAngle)));
             currentAngle = currentAngle + angleStep;
         }
     }

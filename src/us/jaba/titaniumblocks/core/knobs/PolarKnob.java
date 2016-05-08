@@ -25,49 +25,49 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.displays.rectangular;
+package us.jaba.titaniumblocks.core.knobs;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.sections.SectionImageFactory;
-import us.jaba.titaniumblocks.core.sections.painters.BasicSection;
-import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.math.Angle;
+import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 
 /**
  *
  * @author tbeckett
  */
-public class SingleSectionDisplay extends SingleDisplay
+public class PolarKnob extends Knob
 {
 
-    SectionImageFactory section;
-    BasicSection basicSection;
+    private Scale radiusAdjust = new Scale(0.5);
+    private Angle angle = new Angle(0.0);
 
-    public SingleSectionDisplay()
+    public Scale getRadiusAdjust()
     {
-        super(ColorPalette.BLACK);
-
-        basicSection = new BasicSection();
-        section = new SectionImageFactory(basicSection);
-        basicSection.setColor(ColorPalette.RED);
-        setValue(43.0);
+        return radiusAdjust;
     }
 
-    @Override
-    public void paintPreText(Graphics2D graphics, BufferedImage image, Dimension interiorDim, int offset)
+    public void setRadiusAdjust(Scale radiusAdjust)
     {
-
-        BufferedImage nimage = section.build(interiorDim);
-        graphics.drawImage(nimage, offset, offset, null);
-
+        this.radiusAdjust = radiusAdjust;
+        changed();
     }
 
-    public void setValue(double value)
+    public Angle getAngle()
     {
-        ((DoubleValueText) super.getValueText()).setDoubleValue(value);
-        basicSection.setValue(value);
+        return angle;
+    }
+
+    public void setAngle(Angle angle)
+    {
+        this.angle = angle;
+        changed();
+    }
+
+    public Point2D calculateKnobCenter(Point2D imageCenter, double radius)
+    {
+        double gAngle = CoordinateUtils.toRadians(CoordinateUtils.normalizeDegrees(CoordinateUtils.adjustToNativeAngle(getAngle().getValue() - 270.0)));
+        return CoordinateUtils.convertToGraphics2dPoint(imageCenter, getRadiusAdjust().getValue() * radius, gAngle);
     }
 
 }

@@ -82,8 +82,8 @@ public class NumbersCirclesDash extends AbstractRadialTickmark
         ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.25, tickRadius * 0.55, 0.0, 90.0, 4);
         ShapeUtils.drawCircle(graphics, centerPoint.getX(), centerPoint.getY(), tickRadius * 0.935);
 
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.008, 0.0, 30.0 / 5.0, true, 60);
-        ShapeUtils.placeCircleOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.015, 0.0, 30.0, true, 12);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.008, 0.0, 30.0 / 5.0, true, 60);
+        ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.650, tickRadius * 0.015, 0.0, 30.0, true, 12);
 
         graphics.dispose();
 

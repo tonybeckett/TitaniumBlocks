@@ -25,25 +25,55 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.led;
 
-import java.awt.Color;
-import us.jaba.titaniumblocks.core.knobs.MetalKnobPainter;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Point2D;
+import us.jaba.titaniumblocks.core.Scale;
+import us.jaba.titaniumblocks.core.color.lcdgradients.Standard;
+import us.jaba.titaniumblocks.core.font.BaseFont;
+import us.jaba.titaniumblocks.core.font.FontSupport;
+import us.jaba.titaniumblocks.core.math.Angle;
+import us.jaba.titaniumblocks.core.text.painter.BasicRadialTextPainter;
+import us.jaba.titaniumblocks.core.text.painter.FacingDown;
 
 /**
  *
  * @author tbeckett
  */
-public class BlackMetalKnobPainter extends MetalKnobPainter
+public class PolarLed extends Led
 {
 
-    public BlackMetalKnobPainter()
+    private Scale radiusAdjust = new Scale(0.5);
+    private Angle angle = new Angle(0.0);
+   
+ 
+    public Scale getRadiusAdjust()
     {
-        super(new Color[]
-        {
-            new Color(0x2B2A2F),
-            new Color(0x1A1B20)
-        });
+        return radiusAdjust;
     }
 
+    public void setRadiusAdjust(Scale radiusAdjust)
+    {
+        this.radiusAdjust = radiusAdjust;
+        changed();
+    }
+
+    public Angle getAngle()
+    {
+        return angle;
+    }
+
+    public void setAngle(Angle angle)
+    {
+        this.angle = angle;
+        changed();
+    }
+
+   
+
+   
 }

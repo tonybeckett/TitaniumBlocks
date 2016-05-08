@@ -81,7 +81,7 @@ public class ThermometerCfTickmarks extends ThermometerBaseTickmarks
 
         graphics.setColor(mediumColor);
         graphics.setStroke(mediumStroke);
-        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 205.0, 140.0, Direction.CLOCKWISE);
+        ShapeUtils.placeLineArcOnRadius(graphics, centerPoint, tickRadius * 0.6, 210.0, 140.0, Direction.CLOCKWISE);
 
         graphics.setColor(majorColor);
         graphics.setStroke(majorStroke);

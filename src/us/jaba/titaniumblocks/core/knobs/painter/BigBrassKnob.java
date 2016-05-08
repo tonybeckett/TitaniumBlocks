@@ -27,29 +27,43 @@
  */
 package us.jaba.titaniumblocks.core.knobs.painter;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.BLACK;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import java.awt.Color;
+import us.jaba.titaniumblocks.core.knobs.BigKnob;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallBlackKnobPainter extends SmallKnobPainter
+public class BigBrassKnob extends BigKnob
 {
 
-    public SmallBlackKnobPainter()
+    public BigBrassKnob()
     {
-        super(new GradientModel(
-                new float[]
+        super(
+                new Color[]
                 {
-                    0.0f,
-                    0.5f,
-                    1.0f
-
+                    new Color(143, 117, 80, 255),
+                    new Color(100, 76, 49, 255)
                 },
-                BLACK
-        )
+                new Color[]
+                {
+                    new Color(98, 75, 49, 255),
+                    new Color(149, 109, 54, 255)
+                },
+                new Color[]
+                {
+                    new Color(147, 108, 54, 255),
+                    new Color(82, 66, 50, 255),
+                    new Color(147, 108, 54, 255)
+                },
+                new Color[]
+                {
+                    new Color(223, 208, 174, 255),
+                    new Color(159, 136, 104, 255),
+                    new Color(122, 94, 62, 255),
+                    new Color(159, 136, 104, 255),
+                    new Color(223, 208, 174, 255)
+                }
         );
     }
 

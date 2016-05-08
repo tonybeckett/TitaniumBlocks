@@ -38,8 +38,8 @@ public class Led extends CoreBean
 {
 
     private LedColor ledColor;
-    
-    
+    protected boolean state = false;
+
     public Led()
     {
         ledColor = new LedColorRed();
@@ -51,7 +51,6 @@ public class Led extends CoreBean
         this.ledColor = ledColor;
     }
 
-    
     public LedColor getLedColor()
     {
         return ledColor;
@@ -60,8 +59,18 @@ public class Led extends CoreBean
     public void setLedColor(LedColor ledColor)
     {
         this.ledColor = ledColor;
+        changed();
     }
 
-  
+    public boolean isState()
+    {
+        return state;
+    }
+
+    public void setState(boolean state)
+    {
+        this.state = state;
+        changed();
+    }
 
 }

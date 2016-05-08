@@ -72,7 +72,7 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     protected CircularLayout circularLayout;
 //    private MyStopPostFactory endPostImage;
 
-    private int currentOffset = -1;
+    public int currentOffset = -1;
 //    private MyStartPostFactory startPostImage;
     private float minValue = 0.0f;
     private float maxValue = 1.0f;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Tony Beckett
+ * Copyright (c) 2012, Gerrit Grunwald
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,45 +25,73 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.tickmarks.marks.types.clock.round;
+package us.jaba.titaniumblocks.core.areas;
 
-import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import us.jaba.titaniumblocks.core.shape.ShapeUtils;
+import java.awt.RenderingHints;
 
-import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
-
-public class DashCirclesTicks extends AbstractRadialTickmark
+public class ColorArea extends Area
 {
- private static final double DEFAULT_TEXT_POSITION = 0.85;
-    public DashCirclesTicks()
+
+    private Color color;
+    private Color transparentColor;
+    private Color highlightColor;
+    private Color transparentHighlightColor;
+
+    public ColorArea(Color color)
     {
-        //intentional
+        this.color = color;
+    }
+
+    public Color getColor()
+    {
+        return color;
+    }
+
+    public void setColor(Color color)
+    {
+        this.color = color;
+    }
+
+    public Color getTransparentColor()
+    {
+        return transparentColor;
+    }
+
+    public void setTransparentColor(Color transparentColor)
+    {
+        this.transparentColor = transparentColor;
+    }
+
+    public Color getHighlightColor()
+    {
+        return highlightColor;
+    }
+
+    public void setHighlightColor(Color highlightColor)
+    {
+        this.highlightColor = highlightColor;
+    }
+
+    public Color getTransparentHighlightColor()
+    {
+        return transparentHighlightColor;
+    }
+
+    public void setTransparentHighlightColor(Color transparentHighlightColor)
+    {
+        this.transparentHighlightColor = transparentHighlightColor;
     }
 
     @Override
-    public void subPaint(Graphics2D graphics, Dimension dimensions)
+    protected void paintSection(Graphics2D graphics, Dimension dimensions)
     {
-        mediumStroke = new BasicStroke(((float) dimensions.width / 500.0f * 2.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
-        majorStroke = new BasicStroke(((float) dimensions.width / 500.0f * 5.0F), BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL);
 
-        final float tickRadius = (float) (dimensions.getWidth() * 0.485f * this.ticksPositionScale.getValue());
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        graphics.setColor(mediumColor);
-        graphics.setStroke(mediumStroke);
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.9, tickRadius * 0.95, 0.0, 6.0, 60);
-
-        graphics.setColor(majorColor);
-        graphics.setStroke(majorStroke);
-        for (int i = 0; i < 4; i++)
-        {
-            ShapeUtils.placeCirclesOnRadius(graphics, centerPoint, tickRadius * 0.750, tickRadius * 0.075, (90.0 * i) + 30.0, 30.0, false, 2);
-        }
-
-        ShapeUtils.drawRadialLines(graphics, centerPoint, tickRadius * 0.65, tickRadius * 0.85, 0, 90.0, 4);
-
-        graphics.dispose();
+        graphics.setColor(this.getColor());
 
     }
 

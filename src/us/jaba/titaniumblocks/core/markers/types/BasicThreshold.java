@@ -25,31 +25,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.knobs.painter;
+package us.jaba.titaniumblocks.core.markers.types;
 
-import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import static us.jaba.titaniumblocks.core.knobs.KnobColors.WHITE;
-import us.jaba.titaniumblocks.core.knobs.SmallKnobPainter;
+import java.awt.Dimension;
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Path2D;
+import us.jaba.titaniumblocks.core.markers.GradientMarker;
 
 /**
  *
  * @author tbeckett
  */
-public class SmallWhiteKnobPainter extends SmallKnobPainter
+public class BasicThreshold extends GradientMarker
 {
 
-    public SmallWhiteKnobPainter()
+    @Override
+    protected Area getShape(Dimension dimensions)
     {
-        super(new GradientModel(
-                new float[]
-                {
-                    0.0f,
-                    0.5f,
-                    1.0f
 
-                },
-                WHITE)
-        );
+        final int imageWidth = (int) dimensions.getWidth();
+        final int imageHeight = (int) dimensions.getHeight();
+        final int centerY = imageHeight / 2;
+        final int maxY = imageHeight / 2;
+
+        final GeneralPath pointerShape;
+
+        pointerShape = new GeneralPath();
+        pointerShape.setWindingRule(Path2D.WIND_EVEN_ODD);
+        pointerShape.moveTo(0.48 * imageWidth, centerY + (maxY * 0.8));
+        pointerShape.lineTo(0.52 * imageWidth, centerY + (maxY * 0.8));
+        pointerShape.lineTo(0.5 * imageWidth, centerY + (maxY * 0.89));
+        pointerShape.lineTo(0.48 * imageWidth, centerY + (maxY* 0.8));
+        pointerShape.closePath();
+
+        return new Area(pointerShape);
     }
 
 }
