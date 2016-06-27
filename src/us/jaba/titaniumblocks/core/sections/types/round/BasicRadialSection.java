@@ -45,9 +45,10 @@ public class BasicRadialSection extends RadialSection
 
     private float opacity = 0.5f;
 
-    public BasicRadialSection(double startAngle, double stopAngle, Color color, double innerRadius, double outerRadius)
+    public BasicRadialSection(double startAngle, double stopAngle, Color color, double innerRadius, double outerRadius, double opacity)
     {
         super(startAngle, stopAngle, color, innerRadius, outerRadius);
+        this.opacity = (float) opacity;
     }
 
     public float getOpacity()

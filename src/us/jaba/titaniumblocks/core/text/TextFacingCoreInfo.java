@@ -25,29 +25,45 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.led.colors;
+package us.jaba.titaniumblocks.core.text;
 
-import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.led.LedColor;
+import java.util.Arrays;
+import java.util.List;
+import us.jaba.titaniumblocks.core.CoreInfoSupport;
+import us.jaba.titaniumblocks.core.text.painter.FacingDown;
+import us.jaba.titaniumblocks.core.text.painter.FacingIn;
+import us.jaba.titaniumblocks.core.text.painter.FacingLeft;
+import us.jaba.titaniumblocks.core.text.painter.FacingOut;
+import us.jaba.titaniumblocks.core.text.painter.FacingRight;
+import us.jaba.titaniumblocks.core.text.painter.FacingRightLeft;
 
 /**
  *
  * @author tbeckett
  */
-public class LedColorRed extends LedColor
+public class TextFacingCoreInfo
 {
 
-    public LedColorRed()
+    public static final Class<?>[] TEXTPAINTER_CLASSES =
     {
+        FacingDown.class,
+        FacingIn.class,
+        FacingOut.class,
+        FacingRight.class,
+        FacingLeft.class,
+        FacingRightLeft.class
         
-        super(ColorPalette.RED.brighter().brighter(),
-                ColorPalette.RED.brighter().brighter(),
-                ColorPalette.RED,
-                ColorPalette.RED,
-                ColorPalette.RED.darker(),
-                ColorPalette.RED.darker(),
-                ColorPalette.RED.darker().darker());
+        
+    };
 
+    public static List<Class<?>> getAvailableClasses()
+    {
+        return Arrays.asList(TEXTPAINTER_CLASSES);
     }
 
+    public static List getInstanceOfEach()
+    {
+        return CoreInfoSupport.getInstanceOfEach(getAvailableClasses());
+
+    }
 }

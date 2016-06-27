@@ -28,7 +28,7 @@
 package us.jaba.titaniumblocks.core.led;
 
 import us.jaba.titaniumblocks.core.CoreBean;
-import us.jaba.titaniumblocks.core.led.colors.LedColorRed;
+import us.jaba.titaniumblocks.core.led.colors.RedLed;
 
 /**
  *
@@ -42,7 +42,7 @@ public class Led extends CoreBean
 
     public Led()
     {
-        ledColor = new LedColorRed();
+        ledColor = new RedLed();
 
     }
 

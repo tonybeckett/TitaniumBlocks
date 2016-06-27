@@ -52,6 +52,7 @@ import us.jaba.titaniumblocks.core.posts.PostImageFactory;
 import us.jaba.titaniumblocks.core.posts.types.BigSilverPost;
 import us.jaba.titaniumblocks.core.text.Text;
 import us.jaba.titaniumblocks.core.text.types.DoubleValueText;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.NumericRoundTickmarks;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.TickmarkImageFactory;
@@ -197,7 +198,7 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
 
         graphics.drawImage(centerPostImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(frontcoverImage.build(dimensions), 0, 0, null);
     }
 
     @Override
@@ -324,6 +325,17 @@ public class AbstractSimpleDial extends AbstractDial implements TBComponent
     {
         circularLayout.setDirection(d);
        ((NumericRoundTickmarks)tickmarkImage.getPainter()).setDirection(d);
+    }
+
+    @Override
+    public PolarText getText2()
+    {
+        return (PolarText) text2Image.getPainter();
+    }
+
+    public void setText2(PolarText text)
+    {
+        text2Image.setPainter(text);
     }
 
 }

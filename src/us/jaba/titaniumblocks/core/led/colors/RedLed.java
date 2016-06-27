@@ -25,45 +25,33 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
-package us.jaba.titaniumblocks.core.led;
+package us.jaba.titaniumblocks.core.led.colors;
 
-import us.jaba.titaniumblocks.core.Scale;
-import us.jaba.titaniumblocks.core.math.Angle;
+import us.jaba.titaniumblocks.core.color.gradientdefinitions.SSRed;
+import us.jaba.titaniumblocks.core.led.LedColor;
 
 /**
  *
  * @author tbeckett
  */
-public class PolarLed extends Led
+public class RedLed extends LedColor
 {
 
-    private Scale radiusAdjust = new Scale(0.5);
-    private Angle angle = new Angle(0.0);
-   
- 
-    public Scale getRadiusAdjust()
+    private static SSRed ssRed = new SSRed();
+    
+    public RedLed()
     {
-        return radiusAdjust;
-    }
 
-    public void setRadiusAdjust(Scale radiusAdjust)
-    {
-        this.radiusAdjust = radiusAdjust;
-        changed();
-    }
+        super(ssRed.getMediumLight(),
+                ssRed.getMediumLight(),
+                ssRed.getMediumDark(),
+                ssRed.getMediumLight(),
+                ssRed.getDark(),
+                ssRed.getDark(),
+                ssRed.getDarkest());
+       
 
-    public Angle getAngle()
-    {
-        return angle;
     }
-
-    public void setAngle(Angle angle)
-    {
-        this.angle = angle;
-        changed();
-    }
-
-   
 
    
 }

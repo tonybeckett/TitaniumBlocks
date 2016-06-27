@@ -29,7 +29,7 @@ package us.jaba.titaniumblocks.swing.panels;
 
 import org.pushingpixels.trident.Timeline;
 import org.pushingpixels.trident.ease.Spline;
-import us.jaba.titaniumblocks.core.knobs.Knob;
+import us.jaba.titaniumblocks.core.text.types.PolarText;
 import us.jaba.titaniumblocks.displays.AbstractSimpleDial;
 
 /**
@@ -111,5 +111,14 @@ public class SimpleDialPanel extends BasicPanel
 //    {
 //        return ((AbstractSimpleDial) tbComponent).getStopKnob();
 //    }
+    public PolarText getText2()
+    {
+        return ((AbstractSimpleDial) tbComponent).getText2();
+    }
+
+    public void setText2(PolarText text)
+    {
+        ((AbstractSimpleDial) tbComponent).setText2(text);
+    }
 
 }

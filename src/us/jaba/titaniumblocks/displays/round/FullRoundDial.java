@@ -171,23 +171,24 @@ public class FullRoundDial extends SimpleRoundDial
         graphics.setTransform(currentTransform);
 
         double marker1Angle = CoordinateUtils.calcGraphicsAngle(marker1Value, circularLayout);
-        graphics.rotate(marker1Angle, dimensions.width / 2, dimensions.height / 2);
+        graphics.rotate(marker1Angle - Math.PI , dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(markerImage1.build(interiorDim), offset + 1, offset, null);
         graphics.setTransform(currentTransform);
 
         double marker2Angle = CoordinateUtils.calcGraphicsAngle(marker2Value, circularLayout);
-        graphics.rotate(marker2Angle, dimensions.width / 2, dimensions.height / 2);
+        
+        graphics.rotate(marker2Angle- Math.PI , dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(markerImage2.build(interiorDim), offset + 1, offset, null);
         graphics.setTransform(currentTransform);
 
         double thresholdAngle = CoordinateUtils.calcGraphicsAngle(thresholdValue, circularLayout);
-        graphics.rotate(thresholdAngle, dimensions.width / 2, dimensions.height / 2);
+        graphics.rotate(thresholdAngle- Math.PI , dimensions.width / 2, dimensions.height / 2);
         graphics.drawImage(thresholdImage.build(interiorDim), offset + 1, offset, null);
         graphics.setTransform(currentTransform);
 
         graphics.drawImage(centerPostImage.build(interiorDim), offset, offset, null);
 
-        graphics.drawImage(frontcoverImage.build(interiorDim), offset, offset, null);
+        graphics.drawImage(frontcoverImage.build(dimensions), 0, 0, null);
     }
 
     public SectionList getSectionList()

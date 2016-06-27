@@ -141,50 +141,12 @@ public class GradientBigPost extends Post
         final double maxY = dimensions.getHeight() / 2.0;
 
         paintCircle(graphics, dimensions, maxY * size.getValue() * 0.12, BIGCENTER_BACKGROUNDFRAME_FRACTIONS, BIGCENTER_BACKGROUNDFRAME_COLORS);
-//        final Ellipse2D frame = (Ellipse2D) ShapeUtils.getCircle(centerX, centerY, maxY * size.getValue() * 0.12);
-//        final Point2D BIGCENTER_BACKGROUNDFRAME_START = new Point2D.Double(0, frame.getBounds2D().getMinY());
-//        final Point2D BIGCENTER_BACKGROUNDFRAME_STOP = new Point2D.Double(0, frame.getBounds2D().getMaxY());
-//
-//        PointSupport.validateGradientPoints(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP);
-//        final LinearGradientPaint BIGCENTER_BACKGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUNDFRAME_START, BIGCENTER_BACKGROUNDFRAME_STOP, BIGCENTER_BACKGROUNDFRAME_FRACTIONS, BIGCENTER_BACKGROUNDFRAME_COLORS);
-//        graphics.setPaint(BIGCENTER_BACKGROUNDFRAME_GRADIENT);
-//        graphics.fill(frame);
 
         paintCircle(graphics, dimensions, maxY * size.getValue() * 0.11, BIGCENTER_BACKGROUND_FRACTIONS, BIGCENTER_BACKGROUND_COLORS);
-//        final Ellipse2D back = (Ellipse2D) ShapeUtils.getCircle(centerX, centerY, maxY * size.getValue() * 0.11);
-////        final Ellipse2D BIGCENTER_BACKGROUND = new Ellipse2D.Double(imageWidth * 0.44392523169517517, imageHeight * 0.44392523169517517, 
-////                imageWidth * 0.11214950680732727, imageHeight * 0.11214950680732727);
-//        final Point2D BIGCENTER_BACKGROUND_START = new Point2D.Double(0, back.getBounds2D().getMinY());
-//        final Point2D BIGCENTER_BACKGROUND_STOP = new Point2D.Double(0, back.getBounds2D().getMaxY());
-//
-//        PointSupport.validateGradientPoints(BIGCENTER_BACKGROUND_START, BIGCENTER_BACKGROUND_STOP);
-//        final LinearGradientPaint BIGCENTER_BACKGROUND_GRADIENT = new LinearGradientPaint(BIGCENTER_BACKGROUND_START, BIGCENTER_BACKGROUND_STOP, BIGCENTER_BACKGROUND_FRACTIONS, BIGCENTER_BACKGROUND_COLORS);
-//        graphics.setPaint(BIGCENTER_BACKGROUND_GRADIENT);
-//        graphics.fill(back);
 
         paintCircle(graphics, dimensions, maxY * size.getValue() * 0.09, BIGCENTER_FOREGROUNDFRAME_FRACTIONS, BIGCENTER_FOREGROUNDFRAME_COLORS);
 
-//        final Ellipse2D foreFrame = (Ellipse2D) ShapeUtils.getCircle(centerX, centerY, maxY * size.getValue() * 0.09);
-////        final Ellipse2D BIGCENTER_FOREGROUNDFRAME = new Ellipse2D.Double(imageWidth * 0.4532710313796997, imageHeight * 0.4532710313796997, 
-////                imageWidth * 0.09345793724060059, imageHeight * 0.09345793724060059);
-//        final Point2D BIGCENTER_FOREGROUNDFRAME_START = new Point2D.Double(0, foreFrame.getBounds2D().getMinY());
-//        final Point2D BIGCENTER_FOREGROUNDFRAME_STOP = new Point2D.Double(0, foreFrame.getBounds2D().getMaxY());
-//
-//        PointSupport.validateGradientPoints(BIGCENTER_FOREGROUNDFRAME_START, BIGCENTER_FOREGROUNDFRAME_STOP);
-//        final LinearGradientPaint BIGCENTER_FOREGROUNDFRAME_GRADIENT = new LinearGradientPaint(BIGCENTER_FOREGROUNDFRAME_START, BIGCENTER_FOREGROUNDFRAME_STOP, BIGCENTER_FOREGROUNDFRAME_FRACTIONS, BIGCENTER_FOREGROUNDFRAME_COLORS);
-//        graphics.setPaint(BIGCENTER_FOREGROUNDFRAME_GRADIENT);
-//        graphics.fill(foreFrame);
         paintCircle(graphics, dimensions, maxY * size.getValue() * 0.08, BIGCENTER_FOREGROUND_FRACTIONS, BIGCENTER_FOREGROUND_COLORS);
-//        final Ellipse2D fore = (Ellipse2D) ShapeUtils.getCircle(centerX, centerY, maxY * size.getValue() * 0.08);
-////        final Ellipse2D BIGCENTER_FOREGROUND = new Ellipse2D.Double(imageWidth * 0.4579439163208008, imageHeight * 0.4579439163208008, 
-////                imageWidth * 0.08411216735839844, imageHeight * 0.08411216735839844);
-//        final Point2D BIGCENTER_FOREGROUND_START = new Point2D.Double(0, fore.getBounds2D().getMinY());
-//        final Point2D BIGCENTER_FOREGROUND_STOP = new Point2D.Double(0, fore.getBounds2D().getMaxY());
-//
-//        PointSupport.validateGradientPoints(BIGCENTER_FOREGROUND_START, BIGCENTER_FOREGROUND_STOP);
-//        final LinearGradientPaint BIGCENTER_FOREGROUND_GRADIENT = new LinearGradientPaint(BIGCENTER_FOREGROUND_START, BIGCENTER_FOREGROUND_STOP, BIGCENTER_FOREGROUND_FRACTIONS, BIGCENTER_FOREGROUND_COLORS);
-//        graphics.setPaint(BIGCENTER_FOREGROUND_GRADIENT);
-//        graphics.fill(fore);
 
     }
 }

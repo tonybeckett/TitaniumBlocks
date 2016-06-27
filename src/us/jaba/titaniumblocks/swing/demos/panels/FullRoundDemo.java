@@ -68,7 +68,7 @@ public class FullRoundDemo extends javax.swing.JFrame
         panel.getTBComponent().getTickmarks();
         panel.init(100, 100);
         add(panel, BorderLayout.CENTER);
-        this.setSize(new Dimension(500, 500 + 22)); // swing window heading removes 22 height
+        this.setSize(new Dimension(525, 525 + 22)); // swing window heading removes 22 height
 
         Antimate antimate = new Antimate(100.0)
         {

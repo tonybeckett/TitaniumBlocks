@@ -180,5 +180,5 @@ public class FullDialPanel extends SimpleDialPanel
     {
         fullRoundDial.setThresholdValue(thresholdValue);
     }
-    
+
 }

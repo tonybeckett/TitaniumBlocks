@@ -198,7 +198,7 @@ public class CoordinateUtils
 //        angleInDegrees = angleInDegrees - 90.0;
 //        angleInDegrees = normalizeDegrees(angleInDegrees);
 
-        return toRadians(angleInDegrees);
+        return normalizeRadians(toRadians(angleInDegrees));
     }
 
     public static Point2D.Double convertToGraphics2dPoint(Point2D center, double radius, double angle)
