@@ -34,13 +34,12 @@ import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.sizemodels.LinearSizeModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
 
 public class VerticalLinearTickFactory
 {
 
-    LinearSizeModel sizeModel;
-    LinearRangeModel rangeModel;
+    protected LinearSizeModel sizeModel;
+    protected LinearRangeModel rangeModel;
 
     public VerticalLinearTickFactory(LinearRangeModel linearRangeModel)
     {

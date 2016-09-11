@@ -56,8 +56,8 @@ import us.jaba.titaniumblocks.core.backdrop.types.round.StainlessGrindedBackdrop
 public class RoundBackdropEditor extends PropertyEditorSupport
 {
 
-    Map<String, Backdrop> m = new HashMap();
-    ArrayList<String> al = new ArrayList();
+    private Map<String, Backdrop> m = new HashMap();
+    private ArrayList<String> al = new ArrayList();
 
     public static final Class<?>[] ROUND_BACKDROPS =
     {

@@ -23,7 +23,7 @@ import us.jaba.titaniumblocks.core.textures.Texture;
 public class StainlessSteelPlateTexture extends Texture
 {
 
-    static final float[] FRACTIONS =
+    protected static final float[] FRACTIONS =
     {
         0f,
         0.03f,
@@ -42,7 +42,7 @@ public class StainlessSteelPlateTexture extends Texture
         1.0f
     };
 
-    static final Color[] COLORS =
+    protected static final Color[] COLORS =
     {
         new Color(0xFDFDFD),
         new Color(0xFDFDFD),

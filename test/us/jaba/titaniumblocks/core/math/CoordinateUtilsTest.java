@@ -138,8 +138,8 @@ public class CoordinateUtilsTest
     {
         System.out.println("toPoint2DFromCenter");
         Point2D center = new Point2D.Double(2.0, 3.0);
-        Polar p = new Polar(3.2, 55.0);;
-        Point2D expResult = new Point2D.Double(1.82656, 10.8364);;
+        Polar p = new Polar(3.2, 55.0);
+        Point2D expResult = new Point2D.Double(1.82656, 10.8364);
         Point2D result = CoordinateUtils.toPoint2DFromCenter(center, p);
         assertEquals(expResult.getX(), result.getX(), 0.0001);
         assertEquals(expResult.getY(), result.getY(), 0.0001);

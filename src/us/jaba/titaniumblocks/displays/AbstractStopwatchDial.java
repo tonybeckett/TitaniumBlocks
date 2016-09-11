@@ -39,8 +39,6 @@ import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureBlue;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.PureRed;
-import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.font.BaseFont;
 import us.jaba.titaniumblocks.core.frames.BasicFrame;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;

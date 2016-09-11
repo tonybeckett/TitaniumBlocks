@@ -30,12 +30,9 @@ package us.jaba.titaniumblocks.core.knobs;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import us.jaba.titaniumblocks.core.gradients.GradientModel;
-import us.jaba.titaniumblocks.core.gradients.LinearGradientPainter;
 import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 
 /**

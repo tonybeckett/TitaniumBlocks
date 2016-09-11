@@ -36,13 +36,13 @@ import java.awt.geom.Point2D;
 public class LinearTick
 {
 
-    Point2D textPoint = new Point2D.Double(0, 0);
+    private Point2D textPoint = new Point2D.Double(0, 0);
     private Point2D.Double startPoint;
     private Point2D.Double stopPoint;
 
-    double textDistance = 0.1;
-    double textAngle = 0.0;
-    double value = 0.0;
+    private double textDistance = 0.1;
+    private double textAngle = 0.0;
+    private double value = 0.0;
 
     public LinearTick()
     {

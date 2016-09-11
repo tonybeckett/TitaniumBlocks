@@ -38,7 +38,7 @@ public class TextDoubleFormat
 
     private boolean scientificFormat = false;
     private int numOfDecimals = 2;
-    private final DecimalFormatSymbols dfs = new java.text.DecimalFormatSymbols(java.util.Locale.US);
+    private final DecimalFormatSymbols dfs = new DecimalFormatSymbols(java.util.Locale.US);
     
     public String format(final double value)
     {

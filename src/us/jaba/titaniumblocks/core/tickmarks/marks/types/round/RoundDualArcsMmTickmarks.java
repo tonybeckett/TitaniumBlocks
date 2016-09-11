@@ -29,7 +29,6 @@ package us.jaba.titaniumblocks.core.tickmarks.marks.types.round;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.NumericRoundTickmarks;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import us.jaba.titaniumblocks.core.math.CoordinateDefs.Direction;

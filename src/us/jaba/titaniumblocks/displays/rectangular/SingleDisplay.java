@@ -35,8 +35,6 @@ import java.awt.image.BufferedImage;
 import us.jaba.titaniumblocks.core.backdrop.BackdropImageFactory;
 import us.jaba.titaniumblocks.core.backdrop.types.rectangular.NullBackdrop;
 import us.jaba.titaniumblocks.core.color.ColorPalette;
-import us.jaba.titaniumblocks.core.disabled.DisabledImageFactory;
-import us.jaba.titaniumblocks.core.disabled.types.NullLinearDisabled;
 import us.jaba.titaniumblocks.core.frames.FrameImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.FrontcoverImageFactory;
 import us.jaba.titaniumblocks.core.frontcover.types.rectangular.BasicLinearFrontcover;

@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTickModel;
 public class LineTicks extends LinearTickModel
 {
 
-    Line2D line = new Line2D.Double(0, 0, 1, 1);
+    private Line2D line = new Line2D.Double(0, 0, 1, 1);
 
     @Override
     public void paintTicks(Graphics2D graphics, Shape shape, Dimension dimensions, LinearTick linearTick)

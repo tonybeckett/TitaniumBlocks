@@ -165,7 +165,9 @@ public class RadialTickTest
         Point2D centerPoint = new Point2D.Double(100,100);
         RadialTick instance = new RadialTick();
         instance.setCenterPoint(centerPoint);
-         
+        Point2D expResult = null;
+        Point2D result = instance.getCenterPoint();
+        assertEquals(expResult, result);
     }
 
     /**

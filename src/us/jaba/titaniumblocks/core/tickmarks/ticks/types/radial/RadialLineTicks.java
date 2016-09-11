@@ -39,8 +39,9 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTickModel;
  */
 public class RadialLineTicks extends RadialTickModel
 {
- final Line2D TICK_LINE = new Line2D.Double(0, 0, 1, 1);
-         
+
+    protected final Line2D TICK_LINE = new Line2D.Double(0, 0, 1, 1);
+
     @Override
     public void paintTicks(Graphics2D graphics, Shape shape, double diameter, Point2D inner, Point2D outer, Point2D center, double alpha)
     {
@@ -48,5 +49,4 @@ public class RadialLineTicks extends RadialTickModel
         graphics.draw(TICK_LINE);
     }
 
-     
 }

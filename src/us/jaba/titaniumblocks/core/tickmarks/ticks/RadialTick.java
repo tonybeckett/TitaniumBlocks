@@ -37,16 +37,16 @@ import us.jaba.titaniumblocks.core.math.CoordinateUtils;
 public class RadialTick
 {
 
-    Point2D textPoint = new Point2D.Double(0, 0);
-    Point2D innerPoint = new Point2D.Double(0, 0);
-    Point2D outerPoint = new Point2D.Double(0, 0);
-    Point2D centerPoint = new Point2D.Double(0, 0);
-    double angle = 0.0;
-    double radius = 1.0;
-    double tickLength = 0.5;
-    double textDistance = 0.1;
-    double textAngle = 0.0;
-    double value = 0.0;
+    private Point2D textPoint = new Point2D.Double(0, 0);
+    private Point2D innerPoint = new Point2D.Double(0, 0);
+    private Point2D outerPoint = new Point2D.Double(0, 0);
+    private Point2D centerPoint = new Point2D.Double(0, 0);
+    private double angle = 0.0;
+    private double radius = 1.0;
+    private double tickLength = 0.5;
+    private double textDistance = 0.1;
+    private double textAngle = 0.0;
+    private double value = 0.0;
 
     // java coordinate system has positive x down so converting from polar needs to adjust.
     private void calc()

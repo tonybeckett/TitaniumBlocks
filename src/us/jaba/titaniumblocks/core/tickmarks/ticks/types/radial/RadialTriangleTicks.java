@@ -40,8 +40,8 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTickModel;
 public class RadialTriangleTicks extends RadialTickModel
 {
 
-    final Point2D outerPoint_LEFT;
-    final Point2D outerPoint_RIGHT;
+    private final Point2D outerPoint_LEFT;
+    private final Point2D outerPoint_RIGHT;
     private double TICK_LENGTH = 1.0;
 
     public RadialTriangleTicks()

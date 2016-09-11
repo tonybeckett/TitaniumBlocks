@@ -88,8 +88,8 @@ public class SimpleRectangularDial extends AbstractDial
     private MySEPostFactory endPostImage;
     private final LedImageFactory ledImageFactory;
     private RectangularFrameImageFactory rectFrameImage;
-    TitleText titleValueText;
-    UnitsText unitsText;
+    protected TitleText titleValueText;
+    protected UnitsText unitsText;
     private MySWPostFactory startPostImage;
     private final TickmarkImageFactory tickmarkImage;
 

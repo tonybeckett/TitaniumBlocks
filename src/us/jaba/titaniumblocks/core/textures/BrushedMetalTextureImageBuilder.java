@@ -18,7 +18,7 @@ import us.jaba.titaniumblocks.core.filters.BrushedMetalFilter;
 public class BrushedMetalTextureImageBuilder extends TextureImageBuilder
 {
 
-    BrushedMetalFilter filter;
+    private BrushedMetalFilter filter;
 
     private Color brushColor;
     private float shine;

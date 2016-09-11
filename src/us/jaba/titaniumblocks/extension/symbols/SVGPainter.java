@@ -42,7 +42,7 @@ public class SVGPainter extends Symbol
 {
 
     private final GraphicsNode svg;
-    URL url;
+    private URL url;
 
     public SVGPainter(URL url)
     {
@@ -76,9 +76,9 @@ public class SVGPainter extends Symbol
      *
      * @return a graphics node object that can be used for painting
      */
-    public static org.apache.batik.gvt.GraphicsNode getSvgIcon(java.net.URL url)
+    public static GraphicsNode getSvgIcon(java.net.URL url)
     {
-        org.apache.batik.gvt.GraphicsNode svgIcon = null;
+        GraphicsNode svgIcon = null;
         try
         {
             String xmlParser = org.apache.batik.util.XMLResourceDescriptor.getXMLParserClassName();

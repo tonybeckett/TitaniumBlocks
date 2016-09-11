@@ -34,7 +34,6 @@ import us.jaba.titaniumblocks.core.shape.ShapeUtils;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.factories.RadialNormalTickFactory;
 
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.AbstractRadialTickmark;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTick;
 
 public class RNormalMajMinorTickmark extends AbstractRadialTickmark
 {

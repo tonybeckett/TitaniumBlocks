@@ -58,8 +58,6 @@ import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.StainlessGrindedBM
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.TransparentBModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.WhiteBModel;
 import us.jaba.titaniumblocks.core.backdrop.colormodel.colors.YellowBModel;
-import us.jaba.titaniumblocks.core.backdrop.types.round.BasicBackdrop;
-import us.jaba.titaniumblocks.core.backdrop.types.round.BrushedMetalBackdrop;
 
 /**
  *

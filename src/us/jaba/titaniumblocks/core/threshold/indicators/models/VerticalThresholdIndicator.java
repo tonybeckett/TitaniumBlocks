@@ -49,14 +49,14 @@ import us.jaba.titaniumblocks.core.utils.PointSupport;
 public class VerticalThresholdIndicator extends ThresholdIndicatorModel
 {
 
-    final float[] THRESHOLD_FRACTIONS =
+    private final float[] THRESHOLD_FRACTIONS =
     {
         0.0f,
         0.3f,
         0.59f,
         1.0f
     };
-    Color[] THRESHOLD_COLORS;
+    private Color[] THRESHOLD_COLORS;
     private GradientPalette gradientPalette;
 
     public VerticalThresholdIndicator()

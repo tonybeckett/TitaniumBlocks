@@ -142,7 +142,7 @@ public class LevelTickmarks extends AbstractRadialTickmark
 
                     graphics.fill(TextSupport.rotateTextAroundCenter(graphics, "100%", (int) textPoint.getX(), (int) textPoint.getY(), (Math.PI - alpha)));
                 } else if (valueCounter == 0) {
-                    textPoint = new java.awt.geom.Point2D.Double(GAUGE_CENTER.getX() + (RADIUS - TEXT_DISTANCE * 2) * sinValue, GAUGE_CENTER.getY() + (RADIUS - TEXT_DISTANCE * 2) * cosValue);
+                    textPoint = new Point2D.Double(GAUGE_CENTER.getX() + (RADIUS - TEXT_DISTANCE * 2) * sinValue, GAUGE_CENTER.getY() + (RADIUS - TEXT_DISTANCE * 2) * cosValue);
                     graphics.setFont(PERCENTAGE_FONT);
 
                     graphics.fill(TextSupport.rotateTextAroundCenter(graphics, "0%", (int) textPoint.getX(), (int) textPoint.getY(), (Math.PI - alpha)));

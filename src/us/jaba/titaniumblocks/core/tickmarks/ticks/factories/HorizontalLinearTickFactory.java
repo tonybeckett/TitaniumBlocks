@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 import us.jaba.titaniumblocks.core.tickmarks.marks.types.sizemodels.LinearSizeModel;
 import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
-import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
 
 /**
  *
@@ -43,8 +42,8 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.LinearTick;
 public class HorizontalLinearTickFactory
 {
 
-    LinearSizeModel sizeModel;
-    LinearRangeModel rangeModel;
+    protected LinearSizeModel sizeModel;
+    protected LinearRangeModel rangeModel;
 
     public HorizontalLinearTickFactory(LinearRangeModel linearRangeModel)
     {

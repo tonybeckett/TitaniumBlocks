@@ -132,6 +132,9 @@ public class TextStroke implements Stroke
                     lastX = thisX;
                     lastY = thisY;
                     break;
+                    
+                default:
+                    break;
             }
             it.next();
         }

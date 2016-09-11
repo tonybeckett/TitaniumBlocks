@@ -40,7 +40,7 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTickModel;
 public class RadialCircleTicks extends RadialTickModel
 {
 
-    final Ellipse2D TICK_CIRCLE = new Ellipse2D.Double(0, 0, 1, 1);
+    private final Ellipse2D TICK_CIRCLE = new Ellipse2D.Double(0, 0, 1, 1);
 
     @Override
     public void paintTicks(Graphics2D graphics, Shape shape, double diameter, Point2D inner, Point2D outer, Point2D center, double alpha)

@@ -35,7 +35,6 @@ import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import us.jaba.titaniumblocks.core.color.gradientdefinitions.Lcd;
 import us.jaba.titaniumblocks.core.font.BaseFont;
-import us.jaba.titaniumblocks.core.text.TextDoubleFormat;
 import us.jaba.titaniumblocks.core.text.Text;
 
 /**

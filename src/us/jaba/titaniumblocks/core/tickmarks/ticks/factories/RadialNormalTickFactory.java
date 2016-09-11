@@ -41,7 +41,7 @@ import us.jaba.titaniumblocks.core.tickmarks.ticks.RadialTick;
 public class RadialNormalTickFactory
 {
 
-    RadialRangeModel tickmarkRadialRangeModel;
+    protected RadialRangeModel tickmarkRadialRangeModel;
 
     public RadialNormalTickFactory(RadialRangeModel tickmarkRadialRangeModel)
     {
