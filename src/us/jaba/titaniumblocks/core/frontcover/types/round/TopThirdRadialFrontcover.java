@@ -54,13 +54,13 @@ public class TopThirdRadialFrontcover extends AbstractRadialFrontcover
         final Point2D HIGHLIGHT_STOP = new Point2D.Double();
         
         HIGHLIGHT.setWindingRule(Path2D.WIND_EVEN_ODD);
-        HIGHLIGHT.moveTo(imageWidth * 0.08411214953271028, imageHeight * 0.49065420560747663);
-        HIGHLIGHT.curveTo(imageWidth * 0.08411214953271028, imageHeight * 0.5, imageWidth * 0.08411214953271028, imageHeight * 0.5046728971962616, imageWidth * 0.08411214953271028, imageHeight * 0.5093457943925234);
-        HIGHLIGHT.curveTo(imageWidth * 0.20093457943925233, imageHeight * 0.4532710280373832, imageWidth * 0.32710280373831774, imageHeight * 0.4158878504672897, imageWidth * 0.49065420560747663, imageHeight * 0.4158878504672897);
-        HIGHLIGHT.curveTo(imageWidth * 0.6588785046728972, imageHeight * 0.4158878504672897, imageWidth * 0.794392523364486, imageHeight * 0.4439252336448598, imageWidth * 0.9158878504672897, imageHeight * 0.514018691588785);
-        HIGHLIGHT.curveTo(imageWidth * 0.9158878504672897, imageHeight * 0.5046728971962616, imageWidth * 0.9205607476635514, imageHeight * 0.5, imageWidth * 0.9158878504672897, imageHeight * 0.49065420560747663);
-        HIGHLIGHT.curveTo(imageWidth * 0.9158878504672897, imageHeight * 0.2757009345794392, imageWidth * 0.7476635514018691, imageHeight * 0.08411214953271028, imageWidth * 0.5, imageHeight * 0.08411214953271028);
-        HIGHLIGHT.curveTo(imageWidth * 0.2523364485981308, imageHeight * 0.08411214953271028, imageWidth * 0.08411214953271028, imageHeight * 0.2803738317757009, imageWidth * 0.08411214953271028, imageHeight * 0.49065420560747663);
+        HIGHLIGHT.moveTo(imageWidth * 0.00, imageHeight * 0.49);
+        HIGHLIGHT.curveTo(imageWidth * 0.0 , imageHeight * 0.5, imageWidth * 0.0 , imageHeight * 0.51, imageWidth * 0.0 , imageHeight * 0.51);
+        HIGHLIGHT.curveTo(imageWidth * 0.2, imageHeight * 0.4532710, imageWidth * 0.327102, imageHeight * 0.415887, imageWidth * 0.49, imageHeight * 0.415887);
+        HIGHLIGHT.curveTo(imageWidth * 0.658878, imageHeight * 0.415887, imageWidth * 0.794392, imageHeight * 0.443925, imageWidth * 0.9999, imageHeight * 0.51);
+        HIGHLIGHT.curveTo(imageWidth * 0.9999, imageHeight * 0.51, imageWidth * 0.9999, imageHeight * 0.5, imageWidth * 0.9999, imageHeight * 0.49);
+        HIGHLIGHT.curveTo(imageWidth * 0.9999, imageHeight * 0.2757, imageWidth * 0.85, imageHeight * 0.0, imageWidth * 0.5, imageHeight * 0.0);
+        HIGHLIGHT.curveTo(imageWidth * 0.25233, imageHeight * 0.0, imageWidth * 0.0, imageHeight * 0.18, imageWidth * 0.0, imageHeight * 0.49);
         HIGHLIGHT.closePath();
         
         HIGHLIGHT_START.setLocation(0, HIGHLIGHT.getBounds2D().getMinY());

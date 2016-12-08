@@ -49,25 +49,35 @@ public class TopHalfCurvedRadialFrontcover extends AbstractRadialFrontcover
         final int imageWidth = (int) dimensions.getWidth();
         final int imageHeight = (int) dimensions.getHeight();
 
-        final GeneralPath HIGHLIGHT = new GeneralPath();
+        final GeneralPath curvePath = new GeneralPath();
         final Point2D HIGHLIGHT_START = new Point2D.Double();
         final Point2D HIGHLIGHT_STOP = new Point2D.Double();
 
-        HIGHLIGHT.setWindingRule(Path2D.WIND_EVEN_ODD);
-        HIGHLIGHT.moveTo(imageWidth * 0.08411214953271028, imageHeight * 0.5);
-        HIGHLIGHT.curveTo(imageWidth * 0.08411214953271028, imageHeight * 0.27102803738317754, imageWidth * 0.27102803738317754, imageHeight * 0.08411214953271028, imageWidth * 0.5, imageHeight * 0.08411214953271028);
-        HIGHLIGHT.curveTo(imageWidth * 0.7009345794392523, imageHeight * 0.08411214953271028, imageWidth * 0.8644859813084113, imageHeight * 0.22429906542056074, imageWidth * 0.9065420560747663, imageHeight * 0.411214953271028);
-        HIGHLIGHT.curveTo(imageWidth * 0.9112149532710281, imageHeight * 0.4392523364485981, imageWidth * 0.9112149532710281, imageHeight * 0.5186915887850467, imageWidth * 0.8457943925233645, imageHeight * 0.5373831775700935);
-        HIGHLIGHT.curveTo(imageWidth * 0.794392523364486, imageHeight * 0.5467289719626168, imageWidth * 0.5514018691588785, imageHeight * 0.411214953271028, imageWidth * 0.3925233644859813, imageHeight * 0.45794392523364486);
-        HIGHLIGHT.curveTo(imageWidth * 0.16822429906542055, imageHeight * 0.5093457943925234, imageWidth * 0.13551401869158877, imageHeight * 0.7757009345794392, imageWidth * 0.09345794392523364, imageHeight * 0.5934579439252337);
-        HIGHLIGHT.curveTo(imageWidth * 0.08878504672897196, imageHeight * 0.5607476635514018, imageWidth * 0.08411214953271028, imageHeight * 0.5327102803738317, imageWidth * 0.08411214953271028, imageHeight * 0.5);
-        HIGHLIGHT.closePath();
-        HIGHLIGHT_START.setLocation(0, HIGHLIGHT.getBounds2D().getMinY());
-        HIGHLIGHT_STOP.setLocation(0, HIGHLIGHT.getBounds2D().getMaxY());
+        curvePath.setWindingRule(Path2D.WIND_EVEN_ODD);
+        curvePath.moveTo(imageWidth * 0.0, imageHeight * 0.5);
+        // 9 to 12 curve
+         curvePath.curveTo(imageWidth * 0.0, imageHeight * 0.17102803738317754, imageWidth * 0.17102803738317754, imageHeight * 0.0, imageWidth * 0.5, imageHeight * 0.0);
+
+         // 12 to 3 curve
+        curvePath.curveTo(imageWidth * 0.70093, imageHeight * 0.0, imageWidth * 0.994485, imageHeight * 0.12429, imageWidth * 0.996542, imageHeight * 0.51121);
+        
+        // 3 oclock
+        curvePath.curveTo(imageWidth * 0.9999, imageHeight * 0.43925, imageWidth * 0.9999, imageHeight * 0.51869, imageWidth * 0.9, imageHeight * 0.53738);
+
+        // bottom curve
+        curvePath.curveTo(imageWidth * 0.794392, imageHeight * 0.546728, imageWidth * 0.55140, imageHeight * 0.41121, imageWidth * 0.39252, imageHeight * 0.45794);
+        
+        // 9 oclock curve
+        curvePath.curveTo(imageWidth * 0.168224, imageHeight * 0.50934, imageWidth * 0.1355, imageHeight * 0.7757, imageWidth * 0.013457, imageHeight * 0.69345);
+
+//        HIGHLIGHT.curveTo(imageWidth * 0.088785, imageHeight * 0.56074, imageWidth * 0.0, imageHeight * 0.5327, imageWidth * 0.0, imageHeight * 0.5);
+        curvePath.closePath();
+        HIGHLIGHT_START.setLocation(0, curvePath.getBounds2D().getMinY());
+        HIGHLIGHT_STOP.setLocation(0, curvePath.getBounds2D().getMaxY());
         PointSupport.validateGradientPoints(HIGHLIGHT_START, HIGHLIGHT_STOP);
         LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, highlightFractions, highlightColors);
         graphics.setPaint(HIGHLIGHT_GRADIENT);
-        graphics.fill(HIGHLIGHT);
+        graphics.fill(curvePath);
     }
 
 }

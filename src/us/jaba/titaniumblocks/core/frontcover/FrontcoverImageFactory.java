@@ -42,6 +42,7 @@ public class FrontcoverImageFactory extends CoreImageFactory
         super(painter);
     }
 
+    @Override
     public Frontcover getPainter()
     {
         return (Frontcover) super.getPainter(); 

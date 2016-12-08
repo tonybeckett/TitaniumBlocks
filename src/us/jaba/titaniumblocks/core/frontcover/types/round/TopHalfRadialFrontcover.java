@@ -54,15 +54,19 @@ public class TopHalfRadialFrontcover extends AbstractRadialFrontcover
         final Point2D HIGHLIGHT_STOP = new Point2D.Double();
 
         HIGHLIGHT.setWindingRule(Path2D.WIND_EVEN_ODD);
-        HIGHLIGHT.moveTo(imageWidth * 0.08411214953271028, imageHeight * 0.5093457943925234);
-        HIGHLIGHT.curveTo(imageWidth * 0.2102803738317757, imageHeight * 0.5560747663551402, imageWidth * 0.46261682242990654, imageHeight * 0.5607476635514018, imageWidth * 0.5, imageHeight * 0.5607476635514018);
-        HIGHLIGHT.curveTo(imageWidth * 0.5373831775700935, imageHeight * 0.5607476635514018, imageWidth * 0.794392523364486, imageHeight * 0.5607476635514018, imageWidth * 0.9158878504672897, imageHeight * 0.5093457943925234);
-        HIGHLIGHT.curveTo(imageWidth * 0.9158878504672897, imageHeight * 0.2757009345794392, imageWidth * 0.7383177570093458, imageHeight * 0.08411214953271028, imageWidth * 0.5, imageHeight * 0.08411214953271028);
-        HIGHLIGHT.curveTo(imageWidth * 0.2616822429906542, imageHeight * 0.08411214953271028, imageWidth * 0.08411214953271028, imageHeight * 0.2757009345794392, imageWidth * 0.08411214953271028, imageHeight * 0.5093457943925234);
+        HIGHLIGHT.moveTo(imageWidth * 0.000, imageHeight * 0.5093457);
+        HIGHLIGHT.curveTo(imageWidth * 0.2102803738317757, imageHeight * 0.5560747663551402, imageWidth * 0.46261682242990654, imageHeight * 0.560747, imageWidth * 0.5, imageHeight * 0.560747);
+        HIGHLIGHT.curveTo(imageWidth * 0.5373831775700935, imageHeight * 0.560747, imageWidth * 0.794392523364486, imageHeight * 0.560747, imageWidth * 0.99999, imageHeight * 0.5093457);
+
+        // top right quarter
+        HIGHLIGHT.curveTo(imageWidth * 0.99999, imageHeight * 0.2757009345794392, imageWidth * 0.8383177570093458, imageHeight * 0.00, imageWidth * 0.5, imageHeight * 0.0);
+
+        // top left quarter
+        HIGHLIGHT.curveTo(imageWidth * 0.2616822429906542, imageHeight * 0.0, imageWidth * 0.0, imageHeight * 0.175700, imageWidth * 0.0, imageHeight * 0.5093457);
         HIGHLIGHT.closePath();
         HIGHLIGHT_START.setLocation(0, HIGHLIGHT.getBounds2D().getMinY());
         HIGHLIGHT_STOP.setLocation(0, HIGHLIGHT.getBounds2D().getMaxY());
-        
+
         PointSupport.validateGradientPoints(HIGHLIGHT_START, HIGHLIGHT_STOP);
         LinearGradientPaint HIGHLIGHT_GRADIENT = new LinearGradientPaint(HIGHLIGHT_START, HIGHLIGHT_STOP, highlightFractions, highlightColors);
         graphics.setPaint(HIGHLIGHT_GRADIENT);
